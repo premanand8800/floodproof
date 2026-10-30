@@ -1,0 +1,409 @@
+{
+ "schema_version": "1.2",
+ "investigation_id": "776dfce255",
+ "created_at": "2026-10-30T10:34:52+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a86ed53237bbce27c/data/heldout/H04.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/heldout/H04.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "H04.mp4",
+  "duration": 19.066666666666666,
+  "has_audio": true,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 9,
+  "keyframe_times_s": [
+   0.0,
+   2.33,
+   3.33,
+   3.67,
+   4.67,
+   5.0,
+   6.67,
+   7.67,
+   12.0
+  ]
+ },
+ "claim": {
+  "text": "Earthquake in Nepal (Jul 2022)",
+  "event_date": "2022-07-12",
+  "place": "Nepal",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": null,
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 9.76,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/watch?v=5eJJpmYmJQU",
+    "title": "Deprem an\u0131nda yap\u0131labilecekler B\u00f6l\u00fcm 2 - YouTube",
+    "uploader": "Kenan Kesmez",
+    "upload_date": "2017-06-21",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:32:41+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 7",
+    "match": {
+     "decision": true,
+     "consistent_frames": 1,
+     "max_inliers": 73,
+     "mirrored": false,
+     "temporal_offset": 49.333333333333336,
+     "n_pairs": 6,
+     "score": 1.73,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 7,
+       "b_frame": 16,
+       "a_t": 7.666666666666667,
+       "b_t": 57.0,
+       "inliers": 73,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_6dbe5236.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2017-06-21",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=mtltACZUtGw",
+    "title": "Earthquake captured in camera .... - YouTube",
+    "uploader": "MSR TECH",
+    "upload_date": "2017-04-09",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:32:51+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 7",
+    "match": {
+     "decision": true,
+     "consistent_frames": 1,
+     "max_inliers": 123,
+     "mirrored": false,
+     "temporal_offset": 35.87683333333334,
+     "n_pairs": 21,
+     "score": 2.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 7,
+       "b_frame": 16,
+       "a_t": 7.666666666666667,
+       "b_t": 43.5435,
+       "inliers": 123,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_93fe12b7.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2017-04-09",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/watch?v=mtltACZUtGw",
+   "title": "Earthquake captured in camera .... - YouTube",
+   "uploader": "MSR TECH",
+   "upload_date": "2017-04-09",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T10:32:51+00:00",
+   "adapter": "yandex",
+   "found_via": "frame 7",
+   "match": {
+    "decision": true,
+    "consistent_frames": 1,
+    "max_inliers": 123,
+    "mirrored": false,
+    "temporal_offset": 35.87683333333334,
+    "n_pairs": 21,
+    "score": 2.0,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 7,
+      "b_frame": 16,
+      "a_t": 7.666666666666667,
+      "b_t": 43.5435,
+      "inliers": 123,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/yandex_93fe12b7.png",
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2017-04-09",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 40,
+  "candidate_status_counts": {
+   "not_proven": 7,
+   "unavailable": 3,
+   "proven": 2,
+   "pending": 26,
+   "too_long": 2
+  },
+  "adapters": {
+   "yandex": {
+    "frames": [
+     7,
+     0,
+     4
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 40,
+    "checked": 14,
+    "proven": 2
+   }
+  }
+ },
+ "clues": {
+  "status": "not_run"
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Nepal",
+   "name": "Nepal",
+   "lat": 28.3780464,
+   "lon": 83.9999901,
+   "source": "nominatim",
+   "confidence": "low",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": true,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2022-07-09",
+      "m3s": 105.17
+     },
+     {
+      "date": "2022-07-10",
+      "m3s": 95.61
+     },
+     {
+      "date": "2022-07-11",
+      "m3s": 90.83
+     },
+     {
+      "date": "2022-07-12",
+      "m3s": 88.33
+     },
+     {
+      "date": "2022-07-13",
+      "m3s": 86.3
+     },
+     {
+      "date": "2022-07-14",
+      "m3s": 81.79
+     },
+     {
+      "date": "2022-07-15",
+      "m3s": 78.07
+     }
+    ],
+    "baseline": 70.19,
+    "peak": 105.17,
+    "ratio": 1.5,
+    "cell": [
+     28.275002,
+     83.875
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2022-07-09",
+      "mm": 62.4
+     },
+     {
+      "date": "2022-07-10",
+      "mm": 17.6
+     },
+     {
+      "date": "2022-07-11",
+      "mm": 16.4
+     },
+     {
+      "date": "2022-07-12",
+      "mm": 3.5
+     },
+     {
+      "date": "2022-07-13",
+      "mm": 22.5
+     },
+     {
+      "date": "2022-07-14",
+      "mm": 26.6
+     },
+     {
+      "date": "2022-07-15",
+      "mm": 13.8
+     }
+    ],
+    "max_mm": 62.4
+   },
+   "status": "UNKNOWN"
+  },
+  "verdict": "UNKNOWN",
+  "reasons": [
+   "location resolved only to a whole country; too coarse to corroborate a local event"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=28.3780464&longitude=83.9999901&daily=river_discharge&start_date=2022-07-09&end_date=2022-07-15",
+   "https://www.openstreetmap.org/?mlat=28.3780464&mlon=83.9999901#map=10/28.3780464/83.9999901"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "OK",
+   "articles_in_window": 29,
+   "articles_baseline_30d": 168,
+   "sample_links": [
+    {
+     "url": "https://www.latestly.com/agency-news/world-news-india-provides-flood-relief-materials-to-nepal-3954007.html",
+     "title": "World News | India Provides Flood Relief Materials to Nepal",
+     "domain": "latestly.com",
+     "seen": "20220715T151500Z"
+    },
+    {
+     "url": "https://www.businesstoday.in/latest/economy/story/govt-provides-flood-relief-materials-to-nepal-341680-2022-07-15",
+     "title": "Govt provides flood relief materials to Nepal",
+     "domain": "businesstoday.in",
+     "seen": "20220715T143000Z"
+    },
+    {
+     "url": "http://www.telegraphnepal.com/nepal-will-the-hindu-muslim-grand-gulf-disintegrate-india/",
+     "title": "Nepal : Will the Hindu - Muslim grand gulf disintegrate India ? \u2013 Telegraph Nepal",
+     "domain": "telegraphnepal.com",
+     "seen": "20220715T120000Z"
+    },
+    {
+     "url": "https://english.newstracklive.com/news/india-hands-over-disaster-relief-materials-to-nepal-sc57-nu318-ta318-1239639-1.html",
+     "title": "India hands over disaster relief materials to Nepal",
+     "domain": "english.newstracklive.com",
+     "seen": "20220715T104500Z"
+    },
+    {
+     "url": "http://www.dhakacourier.com.bd/news/Nation_this_week/The-official-death-toll-from-the-devastating-floods/5464",
+     "title": "The official death toll from the devastating floods",
+     "domain": "dhakacourier.com.bd",
+     "seen": "20220715T103000Z"
+    }
+   ],
+   "context_only": true,
+   "query": "Nepal flood",
+   "capped_at": 250,
+   "note": "news coverage is context only; it counts articles that mention the place and event words and never proves a specific video is real"
+  }
+ },
+ "media_nature": {
+  "value": "unknown",
+  "confidence": 0.0,
+  "cited_frames": [],
+  "cited_timestamps_s": [],
+  "reasons": [],
+  "status": "NOT_RUN",
+  "note": "Muse clues were not available, so the media nature was not assessed."
+ },
+ "contradictions": [
+  {
+   "kind": "independently_dated_earlier_copy",
+   "text": "Footage was already published on 2017-04-09 (earliest copy found), before the claimed event date 2022-07-12.",
+   "evidence": [
+    "https://www.youtube.com/watch?v=mtltACZUtGw"
+   ],
+   "date_source": "yt-dlp metadata"
+  }
+ ],
+ "final_verdict": {
+  "label": "RECYCLED_FOOTAGE",
+  "summary": "The footage matches the earliest copy found, published on 2017-04-09 (https://www.youtube.com/watch?v=mtltACZUtGw, date independently fetched per yt-dlp metadata), before the claimed event date 2022-07-12. Matcher evidence: 1 temporally consistent frame(s), up to 123 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 2,
+   "proven_copies": 2,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "unknown",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 208.0,
+ "_wall_s": 208.0
+}

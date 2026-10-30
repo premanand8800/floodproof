@@ -1,0 +1,417 @@
+{
+ "schema_version": "1.2",
+ "investigation_id": "41e13ff327",
+ "created_at": "2026-10-30T10:31:24+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a86ed53237bbce27c/data/heldout/H02.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/heldout/H02.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "H02.mp4",
+  "duration": 28.066666666666666,
+  "has_audio": true,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 29,
+  "keyframe_times_s": [
+   0.0,
+   1.33,
+   1.67,
+   4.0,
+   5.33,
+   6.0,
+   6.67,
+   7.0,
+   7.33,
+   8.0,
+   8.33,
+   9.33,
+   10.33,
+   11.0,
+   12.33,
+   15.67,
+   18.0,
+   18.33,
+   20.33,
+   20.67,
+   22.33,
+   22.67,
+   23.0,
+   24.33,
+   26.0,
+   27.0,
+   27.33,
+   27.67,
+   28.0
+  ]
+ },
+ "claim": {
+  "text": "Flood in Gamgad, Mugu, Nepal (Aug 2022)",
+  "event_date": "2022-08-02",
+  "place": "Mugu, Nepal",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": null,
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 24.22,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/watch?v=eJ0psLySJYY",
+    "title": "Bharmour Landslide Breaking - YouTube",
+    "uploader": "Himachal Abhi Abhi",
+    "upload_date": "2025-07-09",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:28:37+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 10",
+    "match": {
+     "decision": true,
+     "consistent_frames": 2,
+     "max_inliers": 20,
+     "mirrored": false,
+     "temporal_offset": 27.5,
+     "n_pairs": 2,
+     "score": 2.2,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 13,
+       "b_frame": 13,
+       "a_t": 11.0,
+       "b_t": 38.5,
+       "inliers": 20,
+       "flip": false
+      },
+      {
+       "a_frame": 12,
+       "b_frame": 13,
+       "a_t": 10.333333333333334,
+       "b_t": 38.5,
+       "inliers": 16,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_29fba16f.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2025-07-09",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/shorts/VuxYKmGyk40",
+    "title": "Landslide in Jammu Kashmir : \u091c\u092e\u094d\u092e\u0942-\u0915\u0936\u094d\u092e\u0940\u0930 \u092e\u0947\u0902 \u092d\u0942\u0938\u094d\u0916\u0932\u0928 \u092a\u0930 \u0915\u094d\u092f\u093e \u092c\u094b\u0932\u0947 \u0938\u0941\u0930\u093f\u0902\u0926\u0930 \u091a\u094c\u0927\u0930\u0940# shorts #landslide - YouTube",
+    "uploader": "InKhabar Official",
+    "upload_date": "2025-04-20",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:28:37+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 10",
+    "match": {
+     "decision": true,
+     "consistent_frames": 2,
+     "max_inliers": 17,
+     "mirrored": false,
+     "temporal_offset": -8.333333333333332,
+     "n_pairs": 5,
+     "score": 2.17,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 17,
+       "b_frame": 7,
+       "a_t": 18.333333333333332,
+       "b_t": 10.0,
+       "inliers": 17,
+       "flip": false
+      },
+      {
+       "a_frame": 16,
+       "b_frame": 7,
+       "a_t": 18.0,
+       "b_t": 10.0,
+       "inliers": 15,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_452ce64f.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2025-04-20",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/shorts/VuxYKmGyk40",
+   "title": "Landslide in Jammu Kashmir : \u091c\u092e\u094d\u092e\u0942-\u0915\u0936\u094d\u092e\u0940\u0930 \u092e\u0947\u0902 \u092d\u0942\u0938\u094d\u0916\u0932\u0928 \u092a\u0930 \u0915\u094d\u092f\u093e \u092c\u094b\u0932\u0947 \u0938\u0941\u0930\u093f\u0902\u0926\u0930 \u091a\u094c\u0927\u0930\u0940# shorts #landslide - YouTube",
+   "uploader": "InKhabar Official",
+   "upload_date": "2025-04-20",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T10:28:37+00:00",
+   "adapter": "yandex",
+   "found_via": "frame 10",
+   "match": {
+    "decision": true,
+    "consistent_frames": 2,
+    "max_inliers": 17,
+    "mirrored": false,
+    "temporal_offset": -8.333333333333332,
+    "n_pairs": 5,
+    "score": 2.17,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 17,
+      "b_frame": 7,
+      "a_t": 18.333333333333332,
+      "b_t": 10.0,
+      "inliers": 17,
+      "flip": false
+     },
+     {
+      "a_frame": 16,
+      "b_frame": 7,
+      "a_t": 18.0,
+      "b_t": 10.0,
+      "inliers": 15,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/yandex_452ce64f.png",
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2025-04-20",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 40,
+  "candidate_status_counts": {
+   "not_proven": 7,
+   "unavailable": 1,
+   "proven": 2,
+   "pending": 26,
+   "too_long": 4
+  },
+  "adapters": {
+   "yandex": {
+    "frames": [
+     10,
+     2,
+     24
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 40,
+    "checked": 14,
+    "proven": 2
+   }
+  }
+ },
+ "clues": {
+  "status": "not_run"
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Mugu, Nepal",
+   "name": "Mugu, Karnali Province, 21100, Nepal",
+   "lat": 29.6776567,
+   "lon": 82.5303115,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2022-07-30",
+      "m3s": 136.09
+     },
+     {
+      "date": "2022-07-31",
+      "m3s": 136.4
+     },
+     {
+      "date": "2022-08-01",
+      "m3s": 136.4
+     },
+     {
+      "date": "2022-08-02",
+      "m3s": 135.77
+     },
+     {
+      "date": "2022-08-03",
+      "m3s": 133.28
+     },
+     {
+      "date": "2022-08-04",
+      "m3s": 132.35
+     },
+     {
+      "date": "2022-08-05",
+      "m3s": 136.09
+     }
+    ],
+    "baseline": 134.21,
+    "peak": 136.4,
+    "ratio": 1.02,
+    "cell": [
+     29.575005,
+     82.42502
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2022-07-30",
+      "mm": 2.2
+     },
+     {
+      "date": "2022-07-31",
+      "mm": 4.2
+     },
+     {
+      "date": "2022-08-01",
+      "mm": 2.8
+     },
+     {
+      "date": "2022-08-02",
+      "mm": 2.4
+     },
+     {
+      "date": "2022-08-03",
+      "mm": 6.2
+     },
+     {
+      "date": "2022-08-04",
+      "mm": 9.5
+     },
+     {
+      "date": "2022-08-05",
+      "mm": 3.1
+     }
+    ],
+    "max_mm": 9.5
+   },
+   "status": "NORMAL"
+  },
+  "verdict": "NO_EVIDENCE",
+  "reasons": [
+   "no Copernicus flood activation within 150 km / +-3 d",
+   "discharge ratio 1.02 (peak 136.4 vs baseline 134.2 m3/s), max rain 9.5 mm/day"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened",
+   "event_type=unknown: event type unknown, so the river-flood model may not apply; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen (public hydrology/activation data cannot resolve flash floods, GLOFs or landslides)."
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=29.6776567&longitude=82.5303115&daily=river_discharge&start_date=2022-07-30&end_date=2022-08-05",
+   "https://www.openstreetmap.org/?mlat=29.6776567&mlon=82.5303115#map=10/29.6776567/82.5303115"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Mugu flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Mugu+flood&mode=artlist&"
+  },
+  "verdict_display": "Insufficient corroboration \u2014 this does not show the event didn't happen"
+ },
+ "media_nature": {
+  "value": "unknown",
+  "confidence": 0.0,
+  "cited_frames": [],
+  "cited_timestamps_s": [],
+  "reasons": [],
+  "status": "NOT_RUN",
+  "note": "Muse clues were not available, so the media nature was not assessed."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "UNVERIFIED",
+  "summary": "The footage matches a previously published copy (https://www.youtube.com/shorts/VuxYKmGyk40, uploaded 2025-04-20), but that date is not earlier than the claimed event date, so recycling relative to the claim is not established. Insufficient corroboration \u2014 this does not show the event didn't happen (physical-world check). The claim could not be verified from the available evidence.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists.",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 2,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "unknown",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 261.7,
+ "_wall_s": 261.7
+}
