@@ -131,6 +131,27 @@ def test_committed_demo_debunks_are_still_grounded():
             assert debunk.check_grounded(r, [{"text": x["sentence"], "ref": x["ref"]} for x in refs], lg) == []
 
 
+def _posted(r):
+    r = copy.deepcopy(r)
+    r["claim"].update(event_date="2026-08-29", event_date_basis="date_posted")
+    return r
+
+
+def test_post_date_is_never_called_an_event_date():
+    r = _posted(load("failed_unverified"))
+    bad = [{"text": "It refers to an event dated 2026-08-29.", "ref": "claim.event_date"}]
+    assert any("only the date posted" in p for p in debunk.check_grounded(r, bad))
+    ok = [{"text": "The video was posted on 2026-08-29; no event date was stated.", "ref": "claim.event_date"}]
+    assert debunk.check_grounded(r, ok) == []
+    assert "POST DATE ONLY" in debunk.facts(r)["claim.event_date"]
+    t = debunk.template_debunk(r, ["en", "ne", "hi"])
+    assert "posted on 2026-08-29; no event date was stated" in t["texts"]["en"]
+    assert "event dated" not in t["texts"]["en"] and "2026-08-29" in t["texts"]["ne"]
+    r2 = copy.deepcopy(r)
+    r2["claim"]["event_date_basis"] = "user"
+    assert "POST DATE ONLY" not in debunk.facts(r2)["claim.event_date"]
+
+
 def test_headline_numbers_from_bench_files():
     from floodproof import web
     h = web.bench_headline()
