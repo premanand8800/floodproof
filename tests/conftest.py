@@ -27,6 +27,15 @@ def isolated_gvision_state(tmp_path, monkeypatch):
     monkeypatch.setattr(sources, "CACHE", tmp_path / "cache")
 
 
+@pytest.fixture(autouse=True)
+def no_live_gate(monkeypatch):
+    """pipeline.investigate must not call the network relevance gate in unit tests (gate tests use floodproof.gate directly)."""
+    import types
+    from floodproof import gate, pipeline
+    monkeypatch.setattr(pipeline, "gate_mod", types.SimpleNamespace(
+        check=lambda *a, **k: dict(decision="run", cost=0.0, seconds=0.0, metadata_signals={}, refs=[]), headline=gate.headline))
+
+
 @pytest.fixture(scope="session")
 def feats():
     from floodproof.matcher import ClipFeatures

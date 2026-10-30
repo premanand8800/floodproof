@@ -415,11 +415,32 @@ function sourceMap(rep, ref) {
     h("div", {class: "legend"}, kinds.map((k) => h("span", {}, h("i", {class: "k-" + k}), SEGKIND[k] || k))), detail);
 }
 
+function runAnyBtn(rep) {
+  const b = h("button", {class: "btn", type: "button", id: "runany", text: "Run anyway"});
+  b.onclick = () => {
+    const src = (rep.input || {}).source || "";
+    if (/^https?:\/\//i.test(src) && !$("#url").value && !$("#file").files.length) $("#url").value = src;
+    submitForm(true);
+  };
+  return b;
+}
+
 function render(rep, ref) {
   const out = $("#out"); out.replaceChildren();
   const v = rep.visual_matching, fv = rep.final_verdict, cl = rep.clues || {}, ph = rep.physical_world_check || {}, mem = rep.memory || {}, cm = rep.claim || {};
   const V = VERDICT[fv.label] || VERDICT.UNVERIFIED;
 
+  if (rep.gate && rep.gate.decision === "stop") {       // relevance gate stopped the run: say why, offer to run anyway
+    const g = rep.gate;
+    out.append(h("section", {class: "banner b-unv", "aria-label": "Relevance gate"},
+      h("div", {class: "lab", text: "Not disaster footage? (relevance gate)"}),
+      h("p", {class: "hl", text: (rep.headline || {}).sentence || fv.summary}),
+      h("p", {class: "note", text: "AI judgement from " + (g.refs || []).length + " cited frames, confidence " + Number(g.confidence).toFixed(2) + ". Nothing else was run, and this is not a verdict on the video. Gate cost $" + Number(g.cost || 0).toFixed(4) + "."}),
+      runAnyBtn(rep),
+      h("ul", {class: "limits"}, (fv.limits || []).map((x) => h("li", {text: x})))));
+    out.scrollIntoView({behavior: "smooth", block: "start"});
+    return;
+  }
   const hero = proofHero(rep, ref) || heroFor(rep, ref); if (hero) out.append(hero);
   // verdict banner: the label chip, then the headline sentence + facts; everything long is one click away
   const hl = rep.headline, dsc = rep.disclosure || {}, cpr = rep.claim_presence || {}, sg = rep.signals || {};
@@ -613,9 +634,9 @@ fetch("/api/demos").then((r) => r.json()).then((ds) => {
   });
 });
 
-$("#form").onsubmit = async (ev) => {
-  ev.preventDefault();
-  const fd = new FormData($("#form")); if (!$("#deep").checked) fd.delete("deep");
+$("#form").onsubmit = (ev) => { ev.preventDefault(); submitForm(false); };
+async function submitForm(force) {
+  const fd = new FormData($("#form")); if (!$("#deep").checked) fd.delete("deep"); if (force) fd.set("force", "1");
   $("#go").disabled = true; $("#status").textContent = " Running..."; const log = $("#log"); log.classList.remove("hide"); log.textContent = "";
   const r = await fetch("/api/investigate", {method: "POST", body: fd});
   if (!r.ok) { $("#status").textContent = r.status === 429 ? " Daily limit reached. Open a saved example instead." : " The request could not be started."; $("#go").disabled = false; return; }
@@ -628,7 +649,7 @@ $("#form").onsubmit = async (ev) => {
     if (j.status === "done") openReport("run", j.report); else $("#status").textContent = " The investigation could not be completed. Please try again.";
   };
   tick();
-};
+}
 </script>
 </body>
 </html>

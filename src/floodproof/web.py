@@ -2,7 +2,7 @@
 
   uv run floodproof serve [--port 8000]      then open http://127.0.0.1:8000
 Endpoints: GET / | GET /api/demos | GET /api/report/{kind}/{name} (kind = demo|run) | GET /files/{kind}/{name}/{path}
-           POST /api/investigate (multipart: file | url, claim, date, place, deep) -> {job} | GET /api/job/{id}
+           POST /api/investigate (multipart: file | url, claim, date, place, deep, force) -> {job} | GET /api/job/{id}
 """
 from __future__ import annotations
 
@@ -106,7 +106,7 @@ def bench_headline() -> dict:
                 sources=["bench/heldout_rescored.json (system B)", "bench/global_rescored.json", "bench/heldout_RESULTS.md and bench/global_RESULTS.md (cost)"])
 
 
-def _run_job(job_id, source, claim, date, place, deep):
+def _run_job(job_id, source, claim, date, place, deep, force=False):
     job = JOBS[job_id]
     log = lambda *a: job["log"].append(" ".join(str(x) for x in a)[:300])
     out = RUNS_DIR / job_id
@@ -116,7 +116,7 @@ def _run_job(job_id, source, claim, date, place, deep):
             rep = run_agent(source, claim=claim, date=date, place=place, out_dir=out, log=log)
         else:
             from .pipeline import investigate
-            rep = investigate(source, claim, date, place, out_dir=out, log=log)
+            rep = investigate(source, claim, date, place, out_dir=out, force=force, log=log)
         validate_report(rep)
         try:                                        # best-effort shareable debunk card; never blocks the report
             from .debunk import attach
@@ -168,7 +168,7 @@ def create_app():
 
     @app.post("/api/investigate")
     async def investigate_(file: UploadFile | None = File(None), url: str = Form(""), claim: str = Form(""), date: str = Form(""),
-                           place: str = Form(""), deep: str = Form(""), passcode: str = Form("")):
+                           place: str = Form(""), deep: str = Form(""), passcode: str = Form(""), force: str = Form("")):
         trusted = _passcode_ok(passcode)
         want_deep = deep in ("1", "true", "on")
         if want_deep and not trusted:
@@ -194,7 +194,7 @@ def create_app():
                 _RUNS_TODAY[today] = _RUNS_TODAY.get(today, 0) + 1
         job_id = uuid.uuid4().hex[:10]
         JOBS[job_id] = dict(status="running", log=[], started=time.time(), deep=want_deep)
-        threading.Thread(target=_run_job, args=(job_id, source, claim or None, date or None, place or None, JOBS[job_id]["deep"]),
+        threading.Thread(target=_run_job, args=(job_id, source, claim or None, date or None, place or None, JOBS[job_id]["deep"], force in ("1", "true", "on")),
                          daemon=True).start()
         return dict(job=job_id)
 

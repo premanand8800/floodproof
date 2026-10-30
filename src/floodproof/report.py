@@ -582,6 +582,19 @@ def validate_proof(p):
         assert ex.get("model"), "explanation needs model"
 
 
+GATE_DECISIONS = ("run", "stop", "run_forced")
+
+
+def validate_gate(g):
+    assert isinstance(g, dict) and g.get("decision") in GATE_DECISIONS, "gate.decision invalid"
+    assert isinstance(g.get("metadata_signals", {}), dict) and isinstance(g.get("refs", []), list), "gate signals/refs invalid"
+    for k in ("cost", "seconds"):
+        assert isinstance(g.get(k), (int, float)) and not isinstance(g.get(k), bool), f"gate.{k} must be a number"
+    if g["decision"] == "stop":
+        assert g.get("kind") and g.get("reason") and g["refs"], "a gate stop needs kind, reason and cited frames"
+        assert isinstance(g.get("confidence"), (int, float)) and g["confidence"] >= 0.8, "a gate stop needs confidence >= 0.8"
+
+
 def validate_report(r: dict):
     """Raise AssertionError if the report violates the schema/rules; returns r."""
     for k in REQUIRED_KEYS:
@@ -656,6 +669,8 @@ def validate_report(r: dict):
         assert hl["tone"] != "signals_agree" or (r.get("signals") or {}).get("qualifies"), "signals_agree headline needs a qualifying assessment"
     if r.get("source_map") is not None:
         validate_source_map(r)
+    if r.get("gate") is not None:          # optional relevance gate (older reports have none)
+        validate_gate(r["gate"])
     fv = r["final_verdict"]
     assert fv["label"] in LABELS and fv["summary"] and fv["limits"]
     if fv["label"] == "RECYCLED_FOOTAGE":

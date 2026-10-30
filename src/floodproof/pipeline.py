@@ -12,7 +12,7 @@ from . import ROOT, load_env, media
 from .matcher import ClipFeatures
 from .memory import Memory
 from .report import build_report, run_physical, write_report, validate_report
-from . import sources, investigator, infer
+from . import sources, investigator, infer, gate as gate_mod
 
 
 VERIFY_WORKERS = int(os.environ.get("FLOODPROOF_VERIFY_WORKERS", "3"))   # matcher is CPU-bound and the box also serves the site
@@ -119,11 +119,36 @@ def _best_frame(feats, out: Path, allowed=None):
     return p
 
 
+
+def _gate_stop_report(source, g, inv_id, out, t0):
+    """Minimal valid report for a video the relevance gate stopped. Label stays UNVERIFIED; nothing else was run."""
+    sentence = gate_mod.headline(g)
+    claim = dict(text=None, event_date=None, place=None, country_iso2=None, event_type="unknown")
+    inp = dict(source=source, path=None, url=source if media.is_url(source) else None, title=(g.get("metadata_signals") or {}).get("title"),
+               n_keyframes=0, keyframe_times_s=[])
+    visual = dict(status="NOT_FOUND", proven_matches=[], earliest_proven_copy=None, claimed_original=None, input_publication=None,
+                  candidates_checked=0, candidates_total=0, candidate_status_counts={}, adapters={}, source_stats={}, proven_by_source={})
+    rep = build_report(input_meta=inp, claim=claim, memory=dict(status="NOT_RUN"), visual=visual, clues=dict(status="not_run"),
+                       physical=dict(status="NOT_RUN"), investigation_id=inv_id)
+    rep["final_verdict"] = dict(label="UNVERIFIED", summary=sentence,
+                                limits=["The relevance gate stopped this run before any matching, search or clue step; no footage analysis was done.",
+                                        "The gate is an AI judgement from 4 sampled frames and metadata, and it can be wrong. Use Run anyway to check this video.",
+                                        "Unverified does not mean fake or false."],
+                                basis=dict(unverified_reason="relevance gate: video does not appear to show or claim to show a disaster"))
+    rep["headline"] = dict(tone="unverified", sentence=sentence,
+                           facts=[dict(text=f"Gate reason: {g.get('reason') or 'n/a'} (confidence {g.get('confidence')})", field="gate.reason")])
+    rep["gate"] = g
+    rep["timing_s"] = round(time.time() - t0, 1)
+    validate_report(rep)
+    write_report(rep, out)
+    return rep
+
+
 def investigate(source: str, claim: str | None = None, date: str | None = None, place: str | None = None,
                 claimed_source: str | None = None, out_dir: str | Path | None = None, memory: Memory | None = None,
                 use_memory=True, use_yandex=True, use_tavily=True, use_muse=True, remember=False,
                 use_gvision=True, use_youtube=True, use_lens=True,
-                max_verify=14, log=print) -> dict:
+                max_verify=14, use_gate=True, force=False, log=print) -> dict:
     """Full investigation. Returns the report dict (also written to out_dir/report.json with evidence/ PNGs)."""
     load_env()
     t0 = time.time()
@@ -131,6 +156,14 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
     inv_id = uuid.uuid4().hex[:10]
     out = Path(out_dir or ROOT / "runs" / inv_id); out.mkdir(parents=True, exist_ok=True)
     ev_dir = out / "evidence"; ev_dir.mkdir(exist_ok=True)
+
+    gate = None
+    if use_gate:
+        log("[0/6] relevance gate (does this video show or claim to show a disaster?)")
+        gate = gate_mod.check(source, force=force, log=log)
+        log(f"gate: {gate['decision']} kind={gate.get('kind')} conf={gate.get('confidence')} cost=${gate.get('cost')} {gate.get('seconds')}s")
+        if gate["decision"] == "stop":
+            return _gate_stop_report(source, gate, inv_id, out, t0)
 
     log("[1/6] fetching clip + keyframes")
     clip = media.fetch(source)
@@ -326,6 +359,8 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
     stage["dates_physical_report_wait"] = round(time.time() - t_mark[0], 1)
     if fast_path:
         rep["fast_path"] = "memory_hit"
+    if gate is not None:
+        rep["gate"] = gate
     rep["timing_s"] = round(time.time() - t0, 1)
     rep["stage_timings_s"] = dict(stage, verify_workers=VERIFY_WORKERS, verify_seconds=vinfo.get("seconds"), verify_checked=vinfo.get("checked"))
     validate_report(rep)
