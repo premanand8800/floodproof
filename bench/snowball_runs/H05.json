@@ -1,0 +1,87 @@
+{
+ "id": "H05",
+ "baseline_reported": 1,
+ "baseline_reproven": 1,
+ "baseline": [
+  {
+   "url": "https://www.youtube.com/watch?v=95pUW7cTazE",
+   "date": "2026-08-12",
+   "adapter": "yandex",
+   "independent": true
+  }
+ ],
+ "snowball": {
+  "rounds": [
+   {
+    "round": 1,
+    "seed_copy": "https://www.youtube.com/watch?v=95pUW7cTazE",
+    "queries": [
+     {
+      "q": "\u0e19\u0e49\u0e33\u0e44\u0e2b\u0e25\u0e2b\u0e25\u0e32\u0e01 \u0e1d\u0e19\u0e15\u0e01\u0e2b\u0e19\u0e31\u0e01 \u0e1a\u0e49\u0e32\u0e19\u0e1e\u0e31\u0e07",
+      "rationale": "Title keywords describe flash flood, heavy rain and house damage.",
+      "source_field": "title",
+      "language": "th"
+     },
+     {
+      "q": "\u0e1a\u0e49\u0e32\u0e19\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e25\u0e31\u0e07 \u0e1e\u0e31\u0e07\u0e25\u0e07 \u0e41\u0e21\u0e48\u0e19\u0e49\u0e33",
+      "rationale": "Title phrase describes a whole house collapsing into the river.",
+      "source_field": "title",
+      "language": "th"
+     },
+     {
+      "q": "house swept away river flood",
+      "rationale": "English translation of the Thai title description may match reuploads.",
+      "source_field": "title",
+      "language": "en"
+     },
+     {
+      "q": "flash flood house collapses river",
+      "rationale": "English keywords from the title could surface earlier copies.",
+      "source_field": "title",
+      "language": "en"
+     },
+     {
+      "q": "\u0e1d\u0e19\u0e15\u0e01\u0e2b\u0e19\u0e31\u0e01 \u0e19\u0e49\u0e33\u0e44\u0e2b\u0e25\u0e2b\u0e25\u0e32\u0e01",
+      "rationale": "Core Thai title terms for heavy rain and flash flood.",
+      "source_field": "title",
+      "language": "th"
+     }
+    ],
+    "candidates": 21,
+    "verified": 6,
+    "proven_new": [],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 2,
+     "yandex": 19,
+     "lens": 0
+    },
+    "seconds": 70.9,
+    "muse_error": null
+   }
+  ],
+  "stopped_reason": "round 1 found no new proven copy",
+  "cost": {
+   "openrouter_usd": 0.00727,
+   "lens_calls": 0,
+   "tavily_calls": 2,
+   "youtube_search_calls": 0,
+   "verifications": 6
+  },
+  "seconds": 70.9,
+  "limits": {
+   "max_rounds": 3,
+   "max_extra_verifications": 12,
+   "max_seconds": 90.0
+  },
+  "note": "Snowball only extends the list of matcher-proven copies. Muse's queries are search terms, never evidence, and no original is named."
+ },
+ "new": [],
+ "ledger_after": {
+  "muse": 0.0716975,
+  "lens": 1,
+  "tavily": 16,
+  "yt": 0
+ },
+ "reconstitute_seconds": 13.3
+}

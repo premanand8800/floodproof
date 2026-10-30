@@ -15,7 +15,7 @@ from .report import build_report, run_physical, write_report, validate_report
 from . import sources, investigator, infer, snowball, gate as gate_mod
 
 
-SNOWBALL_DEFAULT = os.environ.get("FLOODPROOF_SNOWBALL", "1") != "0"   # decided by bench/snowball_RESULTS.md (pre-registered rule)
+SNOWBALL_DEFAULT = os.environ.get("FLOODPROOF_SNOWBALL", "0") == "1"   # default OFF: bench/snowball_RESULTS.md (pre-registered rule not met)
 PHYSICAL_TIMEOUT_S = float(os.environ.get("FLOODPROOF_PHYSICAL_TIMEOUT", "45"))   # the physical check is context only: never let it hold the report
 VERIFY_WORKERS = int(os.environ.get("FLOODPROOF_VERIFY_WORKERS", "3"))   # matcher is CPU-bound and the box also serves the site
 

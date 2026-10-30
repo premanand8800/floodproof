@@ -1,0 +1,162 @@
+{
+ "id": "G07",
+ "baseline_reported": 3,
+ "baseline_reproven": 3,
+ "baseline": [
+  {
+   "url": "https://www.youtube.com/shorts/RIZq2r-LFEs",
+   "date": "2026-08-17",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/shorts/M2saA3On1F8",
+   "date": "2026-08-15",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/shorts/_fuECgS8S3U",
+   "date": "2026-06-09",
+   "adapter": "yandex",
+   "independent": true
+  }
+ ],
+ "snowball": {
+  "rounds": [
+   {
+    "round": 1,
+    "seed_copy": "https://www.youtube.com/shorts/_fuECgS8S3U",
+    "queries": [
+     {
+      "q": "Silne trz\u0119sienie ziemi Filipinach",
+      "rationale": "Title uses this Polish phrasing for the event.",
+      "source_field": "title",
+      "language": "pl"
+     },
+     {
+      "q": "Philippines earthquake June 2026",
+      "rationale": "Upload date 2026-06-09 suggests the quake happened just before.",
+      "source_field": "upload_date",
+      "language": "en"
+     },
+     {
+      "q": "trz\u0119sienie ziemi Filipiny 32 ofiary",
+      "rationale": "Description reports 32 victims in the Philippines earthquake.",
+      "source_field": "description",
+      "language": "pl"
+     },
+     {
+      "q": "Philippines earthquake panic hall video",
+      "rationale": "Frame shows a crowded hall panicking matching earthquake description.",
+      "source_field": "description",
+      "language": "en"
+     },
+     {
+      "q": "Telewizja Republika Filipiny trz\u0119sienie",
+      "rationale": "Uploader name may lead to same copy with source credits.",
+      "source_field": "uploader",
+      "language": "pl"
+     }
+    ],
+    "candidates": 36,
+    "verified": 6,
+    "proven_new": [
+     "https://www.youtube.com/shorts/mGOwM6dZZCY"
+    ],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 0,
+     "yandex": 20,
+     "lens": 17
+    },
+    "seconds": 46.5,
+    "muse_error": null
+   },
+   {
+    "round": 2,
+    "seed_copy": "https://www.youtube.com/shorts/mGOwM6dZZCY",
+    "queries": [
+     {
+      "q": "gempa Maumere gedung runtuh pelabuhan",
+      "rationale": "Description locates the dramatic footage to a collapsing building at Maumere port.",
+      "source_field": "description",
+      "language": "id"
+     },
+     {
+      "q": "gempa Flores 7.7 rumah sakit",
+      "rationale": "Description mentions a 7.7-magnitude quake and hospitals moving patients outside.",
+      "source_field": "description",
+      "language": "id"
+     },
+     {
+      "q": "Maumere earthquake building collapse port",
+      "rationale": "English version of the description's Maumere port collapse claim may match earlier uploads.",
+      "source_field": "description",
+      "language": "en"
+     },
+     {
+      "q": "Powerful 7.4 Magnitude Earthquake Strikes",
+      "rationale": "Exact title wording is often copy-pasted from earlier viral uploads.",
+      "source_field": "title",
+      "language": "en"
+     },
+     {
+      "q": "Indonesia earthquake indoor hall panic",
+      "rationale": "Frame shows indoor crowd panic unlike the port collapse, suggesting misattributed footage.",
+      "source_field": "title",
+      "language": "en"
+     }
+    ],
+    "candidates": 19,
+    "verified": 4,
+    "proven_new": [],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 2,
+     "lens": 17,
+     "yandex": {
+      "skipped": "time budget"
+     }
+    },
+    "seconds": 23.1,
+    "muse_error": null
+   }
+  ],
+  "stopped_reason": "round 2 found no new proven copy",
+  "cost": {
+   "openrouter_usd": 0.01907,
+   "lens_calls": 2,
+   "tavily_calls": 4,
+   "youtube_search_calls": 0,
+   "verifications": 10
+  },
+  "seconds": 69.6,
+  "limits": {
+   "max_rounds": 3,
+   "max_extra_verifications": 12,
+   "max_seconds": 90.0
+  },
+  "note": "Snowball only extends the list of matcher-proven copies. Muse's queries are search terms, never evidence, and no original is named."
+ },
+ "new": [
+  {
+   "url": "https://www.youtube.com/shorts/mGOwM6dZZCY",
+   "date": "2026-08-15",
+   "adapter": "lens",
+   "independent": true,
+   "uploader": "Express 24-7",
+   "round": 1,
+   "seed": "https://www.youtube.com/shorts/_fuECgS8S3U",
+   "consistent_frames": 11,
+   "max_inliers": 122
+  }
+ ],
+ "ledger_after": {
+  "muse": 0.15983575,
+  "lens": 4,
+  "tavily": 36,
+  "yt": 0
+ },
+ "reconstitute_seconds": 23.0
+}

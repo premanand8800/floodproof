@@ -16,6 +16,7 @@ def main(argv=None):
     inv.add_argument("--out", help="output dir (default runs/<id>)")
     inv.add_argument("--no-yandex", action="store_true"); inv.add_argument("--no-tavily", action="store_true")
     inv.add_argument("--no-muse", action="store_true"); inv.add_argument("--no-memory", action="store_true")
+    inv.add_argument("--snowball", action="store_true", help="after a copy is proven, search for more copies from its metadata (default off)")
     inv.add_argument("--remember", action="store_true", help="add the input to memory as discovered:<id>")
     inv.add_argument("--json", action="store_true", help="print report.json instead of the text summary")
     sv = sp.add_parser("serve", help="local web UI (renders from validated report.json)")
@@ -36,7 +37,7 @@ def main(argv=None):
         from .report import render_text
         rep = investigate(a.source, a.claim, a.date, a.place, a.claimed_source, a.out, use_memory=not a.no_memory,
                           use_yandex=not a.no_yandex, use_tavily=not a.no_tavily, use_muse=not a.no_muse,
-                          remember=a.remember, log=lambda s: print(s, file=sys.stderr))
+                          remember=a.remember, use_snowball=True if a.snowball else None, log=lambda s: print(s, file=sys.stderr))
         print(json.dumps(rep, indent=2, ensure_ascii=False, default=str) if a.json else render_text(rep))
         from pathlib import Path
         print(f"\nreport: {Path(a.out or 'runs/' + rep['investigation_id']).resolve()}/report.json", file=sys.stderr)

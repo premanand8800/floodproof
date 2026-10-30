@@ -1,0 +1,155 @@
+{
+ "id": "G02",
+ "baseline_reported": 4,
+ "baseline_reproven": 4,
+ "baseline": [
+  {
+   "url": "https://www.youtube.com/watch?v=WIDQbDai2jQ",
+   "date": "2021-09-03",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=DYUvH5ge8c0",
+   "date": "2021-09-04",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.tiktok.com/@nick_kratka/video/7423111816735247658",
+   "date": "2024-10-07",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=rZy2Um1H9do",
+   "date": "2021-09-06",
+   "adapter": "tavily",
+   "independent": true
+  }
+ ],
+ "snowball": {
+  "rounds": [
+   {
+    "round": 1,
+    "seed_copy": "https://www.youtube.com/watch?v=WIDQbDai2jQ",
+    "queries": [
+     {
+      "q": "Cranford NJ basement wall collapse",
+      "rationale": "Location overlay CRANFORD, NJ plus collapse action may appear in earlier local posts.",
+      "source_field": "caption",
+      "language": "en"
+     },
+     {
+      "q": "Basement wall collapses Ida flood",
+      "rationale": "Title phrasing may be copied from earlier upload of same footage.",
+      "source_field": "title",
+      "language": "en"
+     },
+     {
+      "q": "Cranford family basement Ida flooding",
+      "rationale": "Description says family's basement in Cranford flooded during Ida.",
+      "source_field": "description",
+      "language": "en"
+     },
+     {
+      "q": "Ida flood basement wall caves in",
+      "rationale": "Description phrase wall caves in with gushing water points to original wording.",
+      "source_field": "description",
+      "language": "en"
+     },
+     {
+      "q": "Cranford NJ Ida flood September 1 2021",
+      "rationale": "Upload on Sept 3 is after Ida, earlier phone video likely dated Sept 1-2.",
+      "source_field": "upload_date",
+      "language": "en"
+     }
+    ],
+    "candidates": 18,
+    "verified": 6,
+    "proven_new": [
+     "https://www.youtube.com/watch?app=desktop&v=V8vWmcab3Vg",
+     "https://www.youtube.com/watch?v=XlVbarpmDPs",
+     "https://www.youtube.com/watch?v=oTcqTYgwVR4",
+     "https://www.youtube.com/watch?app=desktop&v=Def5wxE0_qM"
+    ],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 0,
+     "yandex": 18,
+     "lens": 0
+    },
+    "seconds": 77.0,
+    "muse_error": null
+   }
+  ],
+  "stopped_reason": "time budget reached",
+  "cost": {
+   "openrouter_usd": 0.00674,
+   "lens_calls": 0,
+   "tavily_calls": 2,
+   "youtube_search_calls": 0,
+   "verifications": 6
+  },
+  "seconds": 77.0,
+  "limits": {
+   "max_rounds": 3,
+   "max_extra_verifications": 12,
+   "max_seconds": 90.0
+  },
+  "note": "Snowball only extends the list of matcher-proven copies. Muse's queries are search terms, never evidence, and no original is named."
+ },
+ "new": [
+  {
+   "url": "https://www.youtube.com/watch?app=desktop&v=V8vWmcab3Vg",
+   "date": "2021-09-04",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "THE WORLD TODAY",
+   "round": 1,
+   "seed": "https://www.youtube.com/watch?v=WIDQbDai2jQ",
+   "consistent_frames": 33,
+   "max_inliers": 86
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=XlVbarpmDPs",
+   "date": "2021-09-04",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "The Wrath of Nature",
+   "round": 1,
+   "seed": "https://www.youtube.com/watch?v=WIDQbDai2jQ",
+   "consistent_frames": 6,
+   "max_inliers": 55
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=oTcqTYgwVR4",
+   "date": "2021-09-05",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "CJC Recording",
+   "round": 1,
+   "seed": "https://www.youtube.com/watch?v=WIDQbDai2jQ",
+   "consistent_frames": 21,
+   "max_inliers": 71
+  },
+  {
+   "url": "https://www.youtube.com/watch?app=desktop&v=Def5wxE0_qM",
+   "date": "2021-09-03",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "CBS New York",
+   "round": 1,
+   "seed": "https://www.youtube.com/watch?v=WIDQbDai2jQ",
+   "consistent_frames": 20,
+   "max_inliers": 83
+  }
+ ],
+ "ledger_after": {
+  "muse": 0.10475849999999999,
+  "lens": 1,
+  "tavily": 24,
+  "yt": 0
+ },
+ "reconstitute_seconds": 53.6
+}

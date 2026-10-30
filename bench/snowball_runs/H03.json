@@ -1,0 +1,161 @@
+{
+ "id": "H03",
+ "baseline_reported": 5,
+ "baseline_reproven": 5,
+ "baseline": [
+  {
+   "url": "https://www.youtube.com/shorts/hS-bu7XQ89o",
+   "date": "2026-09-21",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.tiktok.com/@samiclick1/video/7678926938685148424",
+   "date": "2026-08-28",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=TeH24yaQNYI",
+   "date": "2021-07-04",
+   "adapter": "yandex",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=W0xvQCfDZOY",
+   "date": "2021-07-03",
+   "adapter": "yandex",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=jlZ8ZnwZP90",
+   "date": "2021-07-03",
+   "adapter": "yandex",
+   "independent": true
+  }
+ ],
+ "snowball": {
+  "rounds": [
+   {
+    "round": 1,
+    "seed_copy": "https://www.youtube.com/watch?v=W0xvQCfDZOY",
+    "queries": [
+     {
+      "q": "Japonya sel heyelan vurdu",
+      "rationale": "Title uses these Turkish words for Japan flood and landslide.",
+      "source_field": "title",
+      "language": "tr"
+     },
+     {
+      "q": "Atami landslide July 2021",
+      "rationale": "Description date and Japan landslide match the Atami July 2021 disaster.",
+      "source_field": "description",
+      "language": "en"
+     },
+     {
+      "q": "Japan flood landslide 19 missing",
+      "rationale": "Description reports at least 19 missing after flood and landslide.",
+      "source_field": "description",
+      "language": "en"
+     },
+     {
+      "q": "Japonya heyelan 19 kay\u0131p",
+      "rationale": "Description states the 19 missing figure in Turkish.",
+      "source_field": "description",
+      "language": "tr"
+     },
+     {
+      "q": "Shizuoka landslide video July 3",
+      "rationale": "Upload date of 2021-07-03 coincides with the Shizuoka landslide reports.",
+      "source_field": "upload_date",
+      "language": "en"
+     }
+    ],
+    "candidates": 19,
+    "verified": 6,
+    "proven_new": [
+     "https://www.youtube.com/watch?v=9rBDq5cPqiA",
+     "https://www.youtube.com/watch?v=_7fWqLWhptk",
+     "https://www.dailymotion.com/video/x82fi4e",
+     "https://www.youtube.com/watch?v=1b-6jkUrxBo"
+    ],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 0,
+     "yandex": 20,
+     "lens": 0
+    },
+    "seconds": 84.0,
+    "muse_error": null
+   }
+  ],
+  "stopped_reason": "time budget reached",
+  "cost": {
+   "openrouter_usd": 0.00792,
+   "lens_calls": 0,
+   "tavily_calls": 2,
+   "youtube_search_calls": 0,
+   "verifications": 6
+  },
+  "seconds": 84.0,
+  "limits": {
+   "max_rounds": 3,
+   "max_extra_verifications": 12,
+   "max_seconds": 90.0
+  },
+  "note": "Snowball only extends the list of matcher-proven copies. Muse's queries are search terms, never evidence, and no original is named."
+ },
+ "new": [
+  {
+   "url": "https://www.youtube.com/watch?v=9rBDq5cPqiA",
+   "date": "2021-07-03",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "\u307b\u3093\u307b\u3093",
+   "round": 1,
+   "seed": "https://www.youtube.com/watch?v=W0xvQCfDZOY",
+   "consistent_frames": 16,
+   "max_inliers": 91
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=_7fWqLWhptk",
+   "date": "2021-07-03",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "Yuleno Vlogs Life",
+   "round": 1,
+   "seed": "https://www.youtube.com/watch?v=W0xvQCfDZOY",
+   "consistent_frames": 17,
+   "max_inliers": 93
+  },
+  {
+   "url": "https://www.dailymotion.com/video/x82fi4e",
+   "date": "2021-07-03",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "HaberGlobal.com",
+   "round": 1,
+   "seed": "https://www.youtube.com/watch?v=W0xvQCfDZOY",
+   "consistent_frames": 27,
+   "max_inliers": 106
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=1b-6jkUrxBo",
+   "date": "2021-07-03",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "\u30c8\u30ea\u30d5\u30a1\u30af\u30ac\u30ec\u30fc\u30b8",
+   "round": 1,
+   "seed": "https://www.youtube.com/watch?v=W0xvQCfDZOY",
+   "consistent_frames": 16,
+   "max_inliers": 98
+  }
+ ],
+ "ledger_after": {
+  "muse": 0.04593175,
+  "lens": 1,
+  "tavily": 10,
+  "yt": 0
+ },
+ "reconstitute_seconds": 73.9
+}

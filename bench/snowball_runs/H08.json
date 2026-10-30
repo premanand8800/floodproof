@@ -1,0 +1,144 @@
+{
+ "id": "H08",
+ "baseline_reported": 1,
+ "baseline_reproven": 1,
+ "baseline": [
+  {
+   "url": "https://www.youtube.com/shorts/3ce4hJZiX1M",
+   "date": "2026-08-09",
+   "adapter": "lens",
+   "independent": true
+  }
+ ],
+ "snowball": {
+  "rounds": [
+   {
+    "round": 1,
+    "seed_copy": "https://www.youtube.com/shorts/3ce4hJZiX1M",
+    "queries": [
+     {
+      "q": "THE SILIGURI TODAY elephant",
+      "rationale": "The frame logo names a local outlet likely to have posted the footage earlier.",
+      "source_field": "watermark",
+      "language": "en"
+     },
+     {
+      "q": "Baby Elephant Rescues Man Drowned",
+      "rationale": "Title wording may have been copied verbatim from an earlier upload.",
+      "source_field": "title",
+      "language": "en"
+     },
+     {
+      "q": "Siliguri elephant flood rescue video",
+      "rationale": "Place name in the logo points to the Siliguri region as the origin.",
+      "source_field": "watermark",
+      "language": "en"
+     },
+     {
+      "q": "\u0939\u093e\u0925\u0940 \u092c\u093e\u0922\u093c \u0906\u0926\u092e\u0940 \u092c\u091a\u093e\u092f\u093e \u0938\u093f\u0932\u0940\u0917\u0941\u0921\u093c\u0940",
+      "rationale": "Hindi translation of the title plus logo place may surface regional earlier copies.",
+      "source_field": "title",
+      "language": "hi"
+     },
+     {
+      "q": "Voice of Sikkim elephant flood",
+      "rationale": "Searching the uploader name may reveal a credited original source.",
+      "source_field": "uploader",
+      "language": "en"
+     }
+    ],
+    "candidates": 22,
+    "verified": 6,
+    "proven_new": [
+     "https://www.instagram.com/reel/DbzjEztugEe?hl=en"
+    ],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 3,
+     "yandex": 19,
+     "lens": 0
+    },
+    "seconds": 52.3,
+    "muse_error": null
+   },
+   {
+    "round": 2,
+    "seed_copy": "https://www.instagram.com/reel/DbzjEztugEe?hl=en",
+    "queries": [
+     {
+      "q": "Baby Elephant Rescues Man Flood",
+      "rationale": "Description caption phrase may have been copied from an earlier upload.",
+      "source_field": "description",
+      "language": "en"
+     },
+     {
+      "q": "Siliguri elephant rescue drowning man",
+      "rationale": "Watermark place Siliguri plus rescue action narrows local origin search.",
+      "source_field": "watermark",
+      "language": "en"
+     },
+     {
+      "q": "The Voice Of Sikkim elephant",
+      "rationale": "Uploader name suggests a Sikkim regional repost of the same clip.",
+      "source_field": "uploader",
+      "language": "en"
+     },
+     {
+      "q": "elephant saves man flood Siliguri video",
+      "rationale": "Combines description action with watermark location to find earlier posts.",
+      "source_field": "description",
+      "language": "en"
+     }
+    ],
+    "candidates": 1,
+    "verified": 1,
+    "proven_new": [],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 1,
+     "lens": 0,
+     "yandex": {
+      "skipped": "time budget"
+     }
+    },
+    "seconds": 19.6,
+    "muse_error": null
+   }
+  ],
+  "stopped_reason": "round 2 found no new proven copy",
+  "cost": {
+   "openrouter_usd": 0.01799,
+   "lens_calls": 0,
+   "tavily_calls": 4,
+   "youtube_search_calls": 0,
+   "verifications": 7
+  },
+  "seconds": 71.9,
+  "limits": {
+   "max_rounds": 3,
+   "max_extra_verifications": 12,
+   "max_seconds": 90.0
+  },
+  "note": "Snowball only extends the list of matcher-proven copies. Muse's queries are search terms, never evidence, and no original is named."
+ },
+ "new": [
+  {
+   "url": "https://www.instagram.com/reel/DbzjEztugEe?hl=en",
+   "date": "2026-08-09",
+   "adapter": "tavily",
+   "independent": true,
+   "uploader": "The Voice Of Sikkim",
+   "round": 1,
+   "seed": "https://www.youtube.com/shorts/3ce4hJZiX1M",
+   "consistent_frames": 16,
+   "max_inliers": 47
+  }
+ ],
+ "ledger_after": {
+  "muse": 0.09801724999999999,
+  "lens": 1,
+  "tavily": 22,
+  "yt": 0
+ },
+ "reconstitute_seconds": 11.6
+}

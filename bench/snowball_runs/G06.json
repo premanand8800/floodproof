@@ -1,0 +1,156 @@
+{
+ "id": "G06",
+ "baseline_reported": 3,
+ "baseline_reproven": 3,
+ "baseline": [
+  {
+   "url": "https://www.youtube.com/watch?v=mFz7F0AER10",
+   "date": "2021-05-10",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.tiktok.com/@insanebynature1/video/7691053466621381918",
+   "date": "2026-09-29",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=IFzXB2dKgcU",
+   "date": "2021-04-09",
+   "adapter": "lens",
+   "independent": true
+  }
+ ],
+ "snowball": {
+  "rounds": [
+   {
+    "round": 1,
+    "seed_copy": "https://www.youtube.com/watch?v=IFzXB2dKgcU",
+    "queries": [
+     {
+      "q": "Greenland tsunami fishermen escape wave",
+      "rationale": "Title describes fishermen escaping a tsunami wave on Greenland's west coast.",
+      "source_field": "title",
+      "language": "en"
+     },
+     {
+      "q": "Nuugaatsiaq tsunami June 17 2017",
+      "rationale": "Description dates the landslide tsunami to the evening of June 17th 2017.",
+      "source_field": "description",
+      "language": "en"
+     },
+     {
+      "q": "Umiammakku Nunaat landslide footage",
+      "rationale": "Description names the Umiammakku Nunaat peninsula as the landslide source.",
+      "source_field": "description",
+      "language": "en"
+     },
+     {
+      "q": "Gr\u00f8nland tsunami fiskere 17 juni 2017",
+      "rationale": "Danish query for the Greenland event may surface earlier local uploads.",
+      "source_field": "description",
+      "language": "da"
+     }
+    ],
+    "candidates": 25,
+    "verified": 6,
+    "proven_new": [
+     "https://www.youtube.com/watch?v=Azyts3pG4Ys"
+    ],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 1,
+     "yandex": 12,
+     "lens": 13
+    },
+    "seconds": 51.2,
+    "muse_error": null
+   },
+   {
+    "round": 2,
+    "seed_copy": "https://www.youtube.com/watch?v=Azyts3pG4Ys",
+    "queries": [
+     {
+      "q": "Tsunami di Greenland akibat longsor",
+      "rationale": "Exact phrase from the copy title was likely copied from an earlier upload.",
+      "source_field": "title",
+      "language": "id"
+     },
+     {
+      "q": "Tsunami Greenland 17 Juni 2017",
+      "rationale": "Title gives the place Greenland and date in Indonesian that pinpoints the event.",
+      "source_field": "title",
+      "language": "id"
+     },
+     {
+      "q": "Greenland tsunami June 17 2017",
+      "rationale": "English translation of the title date and place may find earlier uploads.",
+      "source_field": "title",
+      "language": "en"
+     },
+     {
+      "q": "Greenland tsunami landslide 2017 video",
+      "rationale": "English keywords from the title event plus video targets the same footage.",
+      "source_field": "title",
+      "language": "en"
+     },
+     {
+      "q": "Greenland tsunami June 17 2017 original",
+      "rationale": "Title event terms plus original phrasing may surface an earlier source upload.",
+      "source_field": "title",
+      "language": "en"
+     }
+    ],
+    "candidates": 0,
+    "verified": 0,
+    "proven_new": [],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 1,
+     "lens": 0,
+     "yandex": {
+      "skipped": "time budget"
+     }
+    },
+    "seconds": 13.0,
+    "muse_error": null
+   }
+  ],
+  "stopped_reason": "round 2 found no new proven copy",
+  "cost": {
+   "openrouter_usd": 0.01739,
+   "lens_calls": 1,
+   "tavily_calls": 4,
+   "youtube_search_calls": 0,
+   "verifications": 6
+  },
+  "seconds": 64.2,
+  "limits": {
+   "max_rounds": 3,
+   "max_extra_verifications": 12,
+   "max_seconds": 90.0
+  },
+  "note": "Snowball only extends the list of matcher-proven copies. Muse's queries are search terms, never evidence, and no original is named."
+ },
+ "new": [
+  {
+   "url": "https://www.youtube.com/watch?v=Azyts3pG4Ys",
+   "date": "2021-04-15",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "My 404",
+   "round": 1,
+   "seed": "https://www.youtube.com/watch?v=IFzXB2dKgcU",
+   "consistent_frames": 21,
+   "max_inliers": 82
+  }
+ ],
+ "ledger_after": {
+  "muse": 0.140762,
+  "lens": 2,
+  "tavily": 32,
+  "yt": 0
+ },
+ "reconstitute_seconds": 13.4
+}

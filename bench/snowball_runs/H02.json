@@ -1,0 +1,93 @@
+{
+ "id": "H02",
+ "baseline_reported": 2,
+ "baseline_reproven": 2,
+ "baseline": [
+  {
+   "url": "https://www.youtube.com/watch?v=eJ0psLySJYY",
+   "date": "2025-07-09",
+   "adapter": "yandex",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/shorts/VuxYKmGyk40",
+   "date": "2025-04-20",
+   "adapter": "yandex",
+   "independent": true
+  }
+ ],
+ "snowball": {
+  "rounds": [
+   {
+    "round": 1,
+    "seed_copy": "https://www.youtube.com/shorts/VuxYKmGyk40",
+    "queries": [
+     {
+      "q": "\u091c\u092e\u094d\u092e\u0942-\u0915\u0936\u094d\u092e\u0940\u0930 \u092d\u0942\u0938\u094d\u0916\u0932\u0928 \u0938\u0941\u0930\u093f\u0902\u0926\u0930 \u091a\u094c\u0927\u0930\u0940",
+      "rationale": "Caption overlay names Surinder Chaudhary speaking on Jammu-Kashmir landslide.",
+      "source_field": "caption",
+      "language": "hi"
+     },
+     {
+      "q": "Surinder Chaudhary landslide Jammu Kashmir",
+      "rationale": "English title identifies speaker and disaster location.",
+      "source_field": "title",
+      "language": "en"
+     },
+     {
+      "q": "Jammu Kashmir landslide April 2025",
+      "rationale": "Upload date suggests event occurred on or just before 2025-04-20.",
+      "source_field": "upload_date",
+      "language": "en"
+     },
+     {
+      "q": "\u091c\u092e\u094d\u092e\u0942 \u0915\u0936\u094d\u092e\u0940\u0930 \u092d\u0942\u0938\u094d\u0916\u0932\u0928 \u0905\u092a\u094d\u0930\u0948\u0932 2025",
+      "rationale": "Hindi place terms plus upload date may find earlier local reports.",
+      "source_field": "upload_date",
+      "language": "hi"
+     },
+     {
+      "q": "Surinder Choudhary landslide statement",
+      "rationale": "Alternate spelling of name in title may surface earlier press byte.",
+      "source_field": "title",
+      "language": "en"
+     }
+    ],
+    "candidates": 19,
+    "verified": 6,
+    "proven_new": [],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 0,
+     "yandex": 20,
+     "lens": 0
+    },
+    "seconds": 51.7,
+    "muse_error": null
+   }
+  ],
+  "stopped_reason": "round 1 found no new proven copy",
+  "cost": {
+   "openrouter_usd": 0.01096,
+   "lens_calls": 0,
+   "tavily_calls": 2,
+   "youtube_search_calls": 0,
+   "verifications": 6
+  },
+  "seconds": 51.7,
+  "limits": {
+   "max_rounds": 3,
+   "max_extra_verifications": 12,
+   "max_seconds": 90.0
+  },
+  "note": "Snowball only extends the list of matcher-proven copies. Muse's queries are search terms, never evidence, and no original is named."
+ },
+ "new": [],
+ "ledger_after": {
+  "muse": 0.0380135,
+  "lens": 1,
+  "tavily": 8,
+  "yt": 0
+ },
+ "reconstitute_seconds": 39.8
+}

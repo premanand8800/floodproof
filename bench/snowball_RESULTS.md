@@ -20,3 +20,49 @@ Written and committed BEFORE any snowball evaluation run.
 
 ## Decision rule (fixed before the run)
 Ship snowball as default ON only if ALL hold: it improves the earliest date or finds an original in at least 2 cases; false attributions = 0; added time <= 90 s per investigation. Otherwise default OFF behind a flag (`FLOODPROOF_SNOWBALL=1` or `use_snowball=True`), and the spread timeline still uses the pipeline copies.
+
+---
+# Results (run after the section above was committed)
+
+Raw per-case output: `bench/snowball_runs/<ID>.json`; scorer: `bench/snowball_eval.py score` (no API calls) -> `bench/snowball_results.json`. Harness: `bench/snowball_eval.py run`.
+
+## Table (15 cases in scope; H09 and G03 had no proven copy in the baseline, so snowball does not run on them)
+| ID | Pipeline copies | New proven | Earliest date off -> on | Original (ground truth) found | Rounds | Snowball time | Stopped |
+|---|---|---|---|---|---|---|---|
+| H01 | 3 | 1 | 2025-02-26 -> **2024-09-07** | no (true original 2024-04-06) | 2 | 80 s | no new copy in round 2 |
+| H02 | 2 | 0 | 2025-04-20 | no | 1 | 52 s | no new copy |
+| H03 | 5 | 4 | 2021-07-03 (same) | no | 1 | 84 s | time budget |
+| H04 | 1 | 1 | 2017-06-21 (same) | no | 2 | 82 s | no new copy |
+| H05 | 1 | 0 | 2026-08-12 | no | 1 | 71 s | no new copy |
+| H06 | 1 | 0 | 2024-04-17 | no | 1 | 55 s | no new copy |
+| H07 | 3 | 0 | 2026-09-01 | no | 1 | 40 s | no new copy |
+| H08 | 1 | 1 | 2026-08-09 | no | 2 | 72 s | no new copy |
+| G02 | 4 | 4 | 2021-09-03 (same) | no | 1 | 77 s | time budget |
+| G05 | 4 | 3 | 2020-10-30 (same) | no | 2 | 82 s | no new copy |
+| G06 | 3 | 1 | 2021-04-09 | no | 2 | 64 s | no new copy |
+| G07 | 3 | 1 | 2026-06-09 | no | 2 | 70 s | no new copy |
+| G08 | 2 | 0 | 2023-01-28 | no | 1 | 41 s | no new copy |
+| G09 | 1 | 0 | 2025-07-30 | no | 1 | 45 s | no new copy |
+| G10 | 8 | 5 | 2023-09-04 (same) | no | 2 | 69 s | no new copy |
+
+## Summary against the metrics
+| Metric | Result |
+|---|---|
+| Earliest proven date moved earlier | **1 of 15** (H01: 2025-02-26 -> 2024-09-07; still 5 months after the true original, which was not found) |
+| Originals found (exact URL match with ground truth) | **0 of 15** (0 before, 0 after) |
+| New proven copies | **21 in 9 cases** (matcher-proven against the input, independently dated) |
+| False attribution | **0** (snowball names no original; the one case where a new copy predates the ground-truth original date, H04, is a 2017 copy of the same footage that the pipeline baseline already had, a known fact-check date issue from the held-out audit, not an attribution) |
+| Extra time | mean 65.5 s, max 84.0 s per investigation (cap 90 s); 2 cases stopped on the time budget |
+| Extra cost | OpenRouter $0.194 total (about $0.013 per case); Lens 5 calls by the harness ledger (4 inside cases, 1 smoke test, plus 1 diagnostic call outside it); Tavily 44 ledger calls (plus 2 diagnostic calls), under the 60 cap; YouTube Data API 0 calls (see below) |
+
+## Decision (rule fixed above)
+The rule needs the earliest date improved OR an original found in at least 2 cases. Result: 1. **The rule is not met, so snowball ships default OFF**, behind `FLOODPROOF_SNOWBALL=1`, `investigate(use_snowball=True)` or `floodproof investigate --snowball`. False attribution stayed 0 and time stayed under 90 s, but the benefit criterion failed. The spread timeline does not depend on the snowball: it is built from whatever proven copies the report has (pipeline copies by default).
+
+## Honest caveats
+- **YouTube Data API was unavailable during the evaluation (HTTP 429, daily quota already spent)**, so the planned YouTube search with `publishedBefore` ran in 0 rounds. The result is for snowball through Tavily, Yandex and Lens only. A rerun with YouTube quota could differ, particularly since the queries Muse writes are most useful as YouTube search text.
+- Tavily mostly returns news pages; only video-platform links are kept, so it produced few candidates (24 video-platform candidates over all rounds, 1 of the 21 new proven copies).
+- Lens returned no usable results in most rounds (4 calls billed in 15 cases, harness cap not reached). The reason was not logged per round; it was not a quota stop.
+- Paired design on saved baselines (see Design): not a fresh end-to-end run, so Yandex variance is excluded, but so is any effect of the snowball on the pipeline's own timing.
+- Most new copies were new Yandex frame results (round 1), i.e. a second Yandex search on a different frame (the seed copy's frame) rather than anything Muse read. Of the 21 new proven copies, 19 came from Yandex on the seed frame, 1 from Lens and 1 from Tavily (a Muse query): Muse's own queries contributed one proven copy.
+- One run per case, 15 cases, a small sample; H01's improvement is real (27 consistent frames, 122 inliers) but a single case.
+- Time caps are wall-clock and the evaluation host was also running other jobs.

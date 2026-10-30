@@ -1,0 +1,188 @@
+{
+ "id": "G05",
+ "baseline_reported": 4,
+ "baseline_reproven": 4,
+ "baseline": [
+  {
+   "url": "https://www.youtube.com/watch?v=k3TDLoG842o",
+   "date": "2023-02-09",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=mZSLSfafvyE",
+   "date": "2020-10-31",
+   "adapter": "yandex",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=-6YruoXMUM8",
+   "date": "2020-10-31",
+   "adapter": "yandex",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs",
+   "date": "2020-10-30",
+   "adapter": "yandex",
+   "independent": true
+  }
+ ],
+ "snowball": {
+  "rounds": [
+   {
+    "round": 1,
+    "seed_copy": "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs",
+    "queries": [
+     {
+      "q": "\u0130zmir deprem g\u00fcvenlik kameras\u0131",
+      "rationale": "Description says footage is \u0130zmir earthquake from security camera.",
+      "source_field": "description",
+      "language": "tr"
+     },
+     {
+      "q": "DHA \u0130zmir deprem g\u00fcvenlik kameras\u0131",
+      "rationale": "DHA logo watermark suggests original Turkish agency feed.",
+      "source_field": "watermark",
+      "language": "tr"
+     },
+     {
+      "q": "Izmir earthquake pizza shop CCTV",
+      "rationale": "Frame shows pizzeria interior shaking during quake described as \u0130zmir.",
+      "source_field": "description",
+      "language": "en"
+     },
+     {
+      "q": "Izmir earthquake 30 October 2020 CCTV",
+      "rationale": "Upload date 2020-10-30 matches Aegean Sea earthquake date.",
+      "source_field": "upload_date",
+      "language": "en"
+     },
+     {
+      "q": "Live Turkey Earthquake Izmir",
+      "rationale": "Title phrasing may be copied from earlier uploads.",
+      "source_field": "title",
+      "language": "en"
+     }
+    ],
+    "candidates": 20,
+    "verified": 6,
+    "proven_new": [
+     "https://www.youtube.com/watch?v=npFx1QG9kCs",
+     "https://www.youtube.com/watch?app=desktop&v=IM031BBdJJA",
+     "https://www.syria.tv/%D9%85%D9%8A%D8%AF%D9%8A%D8%A7/%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D8%B3%D8%AA%D8%B1%D9%8A%D9%85?playVideo=83341"
+    ],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 3,
+     "yandex": 20,
+     "lens": 0
+    },
+    "seconds": 64.5,
+    "muse_error": null
+   },
+   {
+    "round": 2,
+    "seed_copy": "https://www.youtube.com/watch?v=npFx1QG9kCs",
+    "queries": [
+     {
+      "q": "\u0130zmir Deprem An\u0131ndan En Net G\u00f6r\u00fcnt\u00fcler",
+      "rationale": "Exact title search can reveal other copies of the same compilation.",
+      "source_field": "title",
+      "language": "tr"
+     },
+     {
+      "q": "\u0130zmirde Deprem 6.6 \u015eiddetinde",
+      "rationale": "Description phrase in Turkish may match earlier uploads with same wording.",
+      "source_field": "description",
+      "language": "tr"
+     },
+     {
+      "q": "Izmir earthquake CCTV footage October 30",
+      "rationale": "Description gives Izmir 6.6 quake date so English CCTV terms may find earlier uploads.",
+      "source_field": "description",
+      "language": "en"
+     },
+     {
+      "q": "DHA Izmir earthquake kitchen footage",
+      "rationale": "Frame shows cafe kitchen interior and DHA watermark suggests agency credit.",
+      "source_field": "watermark",
+      "language": "en"
+     }
+    ],
+    "candidates": 0,
+    "verified": 0,
+    "proven_new": [],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": {
+      "skipped": "search budget reached before it finished"
+     },
+     "lens": 0,
+     "yandex": {
+      "skipped": "time budget"
+     }
+    },
+    "seconds": 17.2,
+    "muse_error": null
+   }
+  ],
+  "stopped_reason": "round 2 found no new proven copy",
+  "cost": {
+   "openrouter_usd": 0.01861,
+   "lens_calls": 0,
+   "tavily_calls": 2,
+   "youtube_search_calls": 0,
+   "verifications": 6
+  },
+  "seconds": 81.7,
+  "limits": {
+   "max_rounds": 3,
+   "max_extra_verifications": 12,
+   "max_seconds": 90.0
+  },
+  "note": "Snowball only extends the list of matcher-proven copies. Muse's queries are search terms, never evidence, and no original is named."
+ },
+ "new": [
+  {
+   "url": "https://www.youtube.com/watch?v=npFx1QG9kCs",
+   "date": "2020-10-30",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "G\u00fcncel Haberler",
+   "round": 1,
+   "seed": "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs",
+   "consistent_frames": 41,
+   "max_inliers": 324
+  },
+  {
+   "url": "https://www.youtube.com/watch?app=desktop&v=IM031BBdJJA",
+   "date": "2020-10-31",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "HaberiniAl",
+   "round": 1,
+   "seed": "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs",
+   "consistent_frames": 40,
+   "max_inliers": 339
+  },
+  {
+   "url": "https://www.syria.tv/%D9%85%D9%8A%D8%AF%D9%8A%D8%A7/%D8%B3%D9%88%D8%B1%D9%8A%D8%A7-%D8%B3%D8%AA%D8%B1%D9%8A%D9%85?playVideo=83341",
+   "date": "2020-10-31",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "\u0627\u0644\u062b\u0627\u0646\u064a\u0629 - Althania",
+   "round": 1,
+   "seed": "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs",
+   "consistent_frames": 36,
+   "max_inliers": 102
+  }
+ ],
+ "ledger_after": {
+  "muse": 0.123372,
+  "lens": 1,
+  "tavily": 28,
+  "yt": 0
+ },
+ "reconstitute_seconds": 27.4
+}

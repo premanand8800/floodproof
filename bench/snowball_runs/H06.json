@@ -1,0 +1,87 @@
+{
+ "id": "H06",
+ "baseline_reported": 1,
+ "baseline_reproven": 1,
+ "baseline": [
+  {
+   "url": "https://www.youtube.com/watch?v=FBuUGMAz8mw",
+   "date": "2024-04-17",
+   "adapter": "youtube_api",
+   "independent": true
+  }
+ ],
+ "snowball": {
+  "rounds": [
+   {
+    "round": 1,
+    "seed_copy": "https://www.youtube.com/watch?v=FBuUGMAz8mw",
+    "queries": [
+     {
+      "q": "Dubai Airport flooded tarmac plane",
+      "rationale": "Description says water flooding the tarmac at Dubai Airport, suggesting these keywords.",
+      "source_field": "description",
+      "language": "en"
+     },
+     {
+      "q": "FlyDubai Boeing 737 flood video",
+      "rationale": "Description identifies a Fly Dubai operated Boeing 737 pushing through water.",
+      "source_field": "description",
+      "language": "en"
+     },
+     {
+      "q": "Dubai International Airport April 16 floods",
+      "rationale": "Description dates the extreme weather to April 16 at Dubai International Airport.",
+      "source_field": "description",
+      "language": "en"
+     },
+     {
+      "q": "\u0645\u0637\u0627\u0631 \u062f\u0628\u064a \u063a\u0631\u0642 \u0627\u0644\u0637\u0627\u0626\u0631\u0627\u062a \u0633\u064a\u0648\u0644",
+      "rationale": "Title places event at Dubai Airport, so Arabic local posts may be earlier.",
+      "source_field": "title",
+      "language": "ar"
+     },
+     {
+      "q": "Dubai biblical flash floods airport",
+      "rationale": "Title uses biblical flash floods phrasing that may copy earlier caption wording.",
+      "source_field": "title",
+      "language": "en"
+     }
+    ],
+    "candidates": 20,
+    "verified": 6,
+    "proven_new": [],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 2,
+     "yandex": 9,
+     "lens": 10
+    },
+    "seconds": 54.9,
+    "muse_error": null
+   }
+  ],
+  "stopped_reason": "round 1 found no new proven copy",
+  "cost": {
+   "openrouter_usd": 0.00696,
+   "lens_calls": 1,
+   "tavily_calls": 2,
+   "youtube_search_calls": 0,
+   "verifications": 6
+  },
+  "seconds": 54.9,
+  "limits": {
+   "max_rounds": 3,
+   "max_extra_verifications": 12,
+   "max_seconds": 90.0
+  },
+  "note": "Snowball only extends the list of matcher-proven copies. Muse's queries are search terms, never evidence, and no original is named."
+ },
+ "new": [],
+ "ledger_after": {
+  "muse": 0.006961,
+  "lens": 1,
+  "tavily": 2,
+  "yt": 0
+ },
+ "reconstitute_seconds": 13.4
+}

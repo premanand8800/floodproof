@@ -1,0 +1,87 @@
+{
+ "id": "G09",
+ "baseline_reported": 1,
+ "baseline_reproven": 1,
+ "baseline": [
+  {
+   "url": "https://www.youtube.com/shorts/sZdClP1OmlQ",
+   "date": "2025-07-30",
+   "adapter": "lens",
+   "independent": true
+  }
+ ],
+ "snowball": {
+  "rounds": [
+   {
+    "round": 1,
+    "seed_copy": "https://www.youtube.com/shorts/sZdClP1OmlQ",
+    "queries": [
+     {
+      "q": "Kamchatka tsunami aerial wave footage",
+      "rationale": "Title claims a tsunami wave at Kamchatka peninsula so those keywords may find earlier copies.",
+      "source_field": "title",
+      "language": "en"
+     },
+     {
+      "q": "\u0446\u0443\u043d\u0430\u043c\u0438 \u041a\u0430\u043c\u0447\u0430\u0442\u043a\u0430 \u0432\u0438\u0434 \u0441\u0432\u0435\u0440\u0445\u0443 \u0432\u043e\u043b\u043d\u0430",
+      "rationale": "Title location translated to Russian may surface local uploads of the same footage.",
+      "source_field": "title",
+      "language": "ru"
+     },
+     {
+      "q": "8.7 earthquake Kamchatka tsunami video",
+      "rationale": "Title gives 8.7 magnitude earthquake phrasing that copies often repeat.",
+      "source_field": "title",
+      "language": "en"
+     },
+     {
+      "q": "Kamchatka tsunami July 29 2025 video",
+      "rationale": "Upload date is 2025-07-30 so searching the day before may catch earlier uploads.",
+      "source_field": "upload_date",
+      "language": "en"
+     },
+     {
+      "q": "Victor Mochere tsunami Kamchatka original",
+      "rationale": "Uploader name combined with title terms may reveal credited source.",
+      "source_field": "uploader",
+      "language": "en"
+     }
+    ],
+    "candidates": 22,
+    "verified": 6,
+    "proven_new": [],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 2,
+     "yandex": 20,
+     "lens": 0
+    },
+    "seconds": 45.0,
+    "muse_error": null
+   }
+  ],
+  "stopped_reason": "round 1 found no new proven copy",
+  "cost": {
+   "openrouter_usd": 0.00721,
+   "lens_calls": 0,
+   "tavily_calls": 2,
+   "youtube_search_calls": 0,
+   "verifications": 6
+  },
+  "seconds": 45.0,
+  "limits": {
+   "max_rounds": 3,
+   "max_extra_verifications": 12,
+   "max_seconds": 90.0
+  },
+  "note": "Snowball only extends the list of matcher-proven copies. Muse's queries are search terms, never evidence, and no original is named."
+ },
+ "new": [],
+ "ledger_after": {
+  "muse": 0.17783000000000002,
+  "lens": 4,
+  "tavily": 40,
+  "yt": 0
+ },
+ "reconstitute_seconds": 12.9
+}

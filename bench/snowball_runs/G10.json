@@ -1,0 +1,230 @@
+{
+ "id": "G10",
+ "baseline_reported": 8,
+ "baseline_reproven": 8,
+ "baseline": [
+  {
+   "url": "https://www.youtube.com/shorts/HnOsA8n8Xmw",
+   "date": "2023-09-11",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/shorts/J73_BroiAEE",
+   "date": "2023-09-04",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/shorts/y09fBcsXqkg",
+   "date": "2023-09-11",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.tiktok.com/@oceanosombrio/video/7348195254836759813",
+   "date": "2024-03-19",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/shorts/0Q3ZpJKpEoQ",
+   "date": "2023-09-10",
+   "adapter": "lens",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/shorts/RZd1_qcdl1w",
+   "date": "2024-07-15",
+   "adapter": "yandex",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/shorts/EVsV6_nIHzI",
+   "date": "2024-07-25",
+   "adapter": "yandex",
+   "independent": true
+  },
+  {
+   "url": "https://www.youtube.com/shorts/FV4Rjfyp0NU",
+   "date": "2024-02-22",
+   "adapter": "yandex",
+   "independent": true
+  }
+ ],
+ "snowball": {
+  "rounds": [
+   {
+    "round": 1,
+    "seed_copy": "https://www.youtube.com/shorts/J73_BroiAEE",
+    "queries": [
+     {
+      "q": "Tornado Damage Coastal Town",
+      "rationale": "Exact title wording may have been copied from an earlier upload.",
+      "source_field": "title",
+      "language": "en"
+     },
+     {
+      "q": "coastal town tornado footage",
+      "rationale": "Core title keywords could appear in earlier descriptions of the same clip.",
+      "source_field": "title",
+      "language": "en"
+     },
+     {
+      "q": "tornado coastal town August 2023",
+      "rationale": "Upload date 2023-09-04 suggests footage could predate September.",
+      "source_field": "upload_date",
+      "language": "en"
+     },
+     {
+      "q": "tornado damage shorts video",
+      "rationale": "Description marks it as shorts suggesting short-form reuploads elsewhere.",
+      "source_field": "description",
+      "language": "en"
+     }
+    ],
+    "candidates": 17,
+    "verified": 6,
+    "proven_new": [
+     "https://www.youtube.com/shorts/bKn06_J4Ep8",
+     "https://www.youtube.com/shorts/rirfYISH6oM",
+     "https://www.youtube.com/shorts/MP02b0HEFKg",
+     "https://www.youtube.com/shorts/2_X8wzmZclM",
+     "https://www.youtube.com/shorts/NyzObWAmHBM"
+    ],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 1,
+     "yandex": 19,
+     "lens": 0
+    },
+    "seconds": 46.3,
+    "muse_error": null
+   },
+   {
+    "round": 2,
+    "seed_copy": "https://www.youtube.com/shorts/2_X8wzmZclM",
+    "queries": [
+     {
+      "q": "\u0924\u092e\u093f\u0932\u0928\u093e\u0921\u0941 \u091a\u0947\u0928\u094d\u0928\u0908 \u092e\u0947\u0902 \u0924\u0942\u092b\u093e\u0928",
+      "rationale": "Exact Hindi title text may have been copied from earlier uploads.",
+      "source_field": "title",
+      "language": "hi"
+     },
+     {
+      "q": "Chennai storm tornado video",
+      "rationale": "English translation of the Hindi title may surface earlier misattributed copies.",
+      "source_field": "title",
+      "language": "en"
+     },
+     {
+      "q": "Chennai Michaung cyclone tornado December 2023",
+      "rationale": "Upload date 2023-12-07 coincides with Cyclone Michaung landfall near Chennai named in title.",
+      "source_field": "upload_date",
+      "language": "en"
+     },
+     {
+      "q": "tornado parking lot building video",
+      "rationale": "Frame shows large funnel over commercial buildings and flooded parking lot with fallen tree.",
+      "source_field": "title",
+      "language": "en"
+     }
+    ],
+    "candidates": 1,
+    "verified": 1,
+    "proven_new": [],
+    "sources": {
+     "youtube_api": 0,
+     "tavily": 1,
+     "lens": {
+      "skipped": "search budget reached before it finished"
+     },
+     "yandex": {
+      "skipped": "time budget"
+     }
+    },
+    "seconds": 22.2,
+    "muse_error": null
+   }
+  ],
+  "stopped_reason": "round 2 found no new proven copy",
+  "cost": {
+   "openrouter_usd": 0.01624,
+   "lens_calls": 0,
+   "tavily_calls": 4,
+   "youtube_search_calls": 0,
+   "verifications": 7
+  },
+  "seconds": 68.5,
+  "limits": {
+   "max_rounds": 3,
+   "max_extra_verifications": 12,
+   "max_seconds": 90.0
+  },
+  "note": "Snowball only extends the list of matcher-proven copies. Muse's queries are search terms, never evidence, and no original is named."
+ },
+ "new": [
+  {
+   "url": "https://www.youtube.com/shorts/bKn06_J4Ep8",
+   "date": "2024-04-10",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "rtsarovvideo",
+   "round": 1,
+   "seed": "https://www.youtube.com/shorts/J73_BroiAEE",
+   "consistent_frames": 20,
+   "max_inliers": 33
+  },
+  {
+   "url": "https://www.youtube.com/shorts/rirfYISH6oM",
+   "date": "2025-01-17",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "Force of Nature",
+   "round": 1,
+   "seed": "https://www.youtube.com/shorts/J73_BroiAEE",
+   "consistent_frames": 13,
+   "max_inliers": 23
+  },
+  {
+   "url": "https://www.youtube.com/shorts/MP02b0HEFKg",
+   "date": "2023-12-17",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "AtSwap",
+   "round": 1,
+   "seed": "https://www.youtube.com/shorts/J73_BroiAEE",
+   "consistent_frames": 20,
+   "max_inliers": 41
+  },
+  {
+   "url": "https://www.youtube.com/shorts/2_X8wzmZclM",
+   "date": "2023-12-07",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "shankar kumar 108",
+   "round": 1,
+   "seed": "https://www.youtube.com/shorts/J73_BroiAEE",
+   "consistent_frames": 20,
+   "max_inliers": 40
+  },
+  {
+   "url": "https://www.youtube.com/shorts/NyzObWAmHBM",
+   "date": "2025-04-25",
+   "adapter": "yandex",
+   "independent": true,
+   "uploader": "eSmart Classes",
+   "round": 1,
+   "seed": "https://www.youtube.com/shorts/J73_BroiAEE",
+   "consistent_frames": 21,
+   "max_inliers": 40
+  }
+ ],
+ "ledger_after": {
+  "muse": 0.19407075000000001,
+  "lens": 4,
+  "tavily": 44,
+  "yt": 0
+ },
+ "reconstitute_seconds": 19.1
+}
