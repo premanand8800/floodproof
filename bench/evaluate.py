@@ -27,7 +27,11 @@ LOO_ORIGINALS = ["ig_leigh", "ig_sainj", "yt_sun_italy", "yt_ie_nalagarh", "yt_d
                  "yt_japan2015", "ig_pak2022", "yt_sikkim_austria"]
 LOO_VARIANTS = ["crop70", "mirror", "combo"]
 # same footage uploaded twice (matcher-proven siblings in bench/true_pairs.json): a LOO hit on these is not a false attribution
-SIBLINGS = [{"ig_sainj", "yts_sainj"}, {"yt_tauktae1", "yt_tauktae2"}, {"ig_wayanad_el", "yt_wayanad_el"}]
+SIBLINGS = [{"ig_sainj", "yts_sainj"}, {"yt_tauktae1", "yt_tauktae2"}, {"ig_wayanad_el", "yt_wayanad_el"},
+            # found by the first LOO run, then CONFIRMED BY EYE on the inlier evidence (evidence/loo_review_*.png): identical frames
+            {"yt_ie_nalagarh", "yt_indexp_punjab"}, {"yt_tribune_nalagarh", "yt_indexp_punjab"}]
+REVIEWED_URL_SIBLINGS = {  # same footage, no local key: (original key, other url)
+    ("yt_tauktae1", "https://www.youtube.com/watch?v=TR79k9CyWhw"), ("yt_tauktae2", "https://www.youtube.com/watch?v=TR79k9CyWhw")}
 # real viral clips -> keys of their fact-checked originals (bench/cases.jsonl via search_loop.CASES)
 REAL = {"x_iambmane": ["ig_leigh", "yt_leigh"], "x_dmuppavarapu": ["yt_leigh", "ig_leigh"],
         "yts_viral_nalagarh": ["yt_ie_nalagarh", "yt_tribune_nalagarh"], "ig_viral_italy": ["yt_sun_italy"]}
@@ -67,7 +71,8 @@ def run_memory():
                        orig_url=src["source_url"], stage_frames=res.hits[0].match.consistent_frames if res.hits else 0)
             out["variants"].append(row)
             t = time.time(); r2 = mem.lookup(q, exclude={src["id"]}, origin_prefix="seed:")   # leave-one-out: true original removed
-            sib = [h for h in r2.hits if any(key in s and ek_key(mem, h.entry) in s for s in SIBLINGS)]
+            sib = [h for h in r2.hits if any(key in s and ek_key(mem, h.entry) in s for s in SIBLINGS)
+                   or (key, h.entry["source_url"]) in REVIEWED_URL_SIBLINGS]
             out["loo"].append(dict(key=key, variant=name, false_hits=[h.entry["source_url"] for h in r2.hits if h not in sib],
                                    sibling_hits=[h.entry["source_url"] for h in sib], sec=round(time.time() - t, 1)))
             print(row, out["loo"][-1], flush=True)
@@ -82,7 +87,8 @@ def run_memory():
         print(out["real"][-1], flush=True)
     v, l, r = out["variants"], out["loo"], out["real"]
     out["summary"] = dict(
-        seeded_original_recognition_variants=f"{sum(x['hit'] for x in v)}/{len(v)}",
+        seeded_original_recognition_variants=f"{sum(x['hit'] for x in v)}/{len(v)} (original ranked first)",
+        recognition_any_rank=f"{sum(any(x['orig_url'] == u for u in x['returned']) for x in v)}/{len(v)} (original among proven hits)",
         by_variant={n: f"{sum(x['hit'] for x in v if x['variant'] == n)}/{sum(1 for x in v if x['variant'] == n)}" for n in LOO_VARIANTS},
         truth_in_hash_shortlist=f"{sum(x['truth_in_hash_shortlist'] for x in v)}/{len(v)}",
         seeded_original_recognition_real_viral=f"{sum(x['hit'] for x in r)}/{len(r)}",

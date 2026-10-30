@@ -119,7 +119,9 @@ def test_schema_rejects_bad_reports():
 
 def test_physical_layer_not_run_when_module_missing(monkeypatch):
     import sys
+    import floodproof
     from floodproof import report
+    monkeypatch.delattr(floodproof, "physical", raising=False)
     monkeypatch.setitem(sys.modules, "floodproof.physical", None)
     p = report.run_physical("Nepal", None, None, "2026-08-26")
     assert p["status"] == "NOT_RUN"

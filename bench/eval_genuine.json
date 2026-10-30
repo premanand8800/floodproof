@@ -1,0 +1,183 @@
+{
+ "rows": [
+  {
+   "key": "ig_leigh",
+   "variant": "crop70",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "ig_leigh",
+   "variant": "mirror",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "ig_leigh",
+   "variant": "combo",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "ig_sainj",
+   "variant": "crop70",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "ig_sainj",
+   "variant": "mirror",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "ig_sainj",
+   "variant": "combo",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_sun_italy",
+   "variant": "crop70",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_sun_italy",
+   "variant": "mirror",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_sun_italy",
+   "variant": "combo",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_ie_nalagarh",
+   "variant": "crop70",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_ie_nalagarh",
+   "variant": "combo",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_dawn",
+   "variant": "crop70",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_dawn",
+   "variant": "mirror",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_dawn",
+   "variant": "combo",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_tauktae1",
+   "variant": "crop70",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_tauktae1",
+   "variant": "mirror",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_tauktae1",
+   "variant": "combo",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_ramban",
+   "variant": "crop70",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_ramban",
+   "variant": "mirror",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_ramban",
+   "variant": "combo",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_japan2015",
+   "variant": "crop70",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_japan2015",
+   "variant": "mirror",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_japan2015",
+   "variant": "combo",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "ig_pak2022",
+   "variant": "crop70",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "ig_pak2022",
+   "variant": "mirror",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "ig_pak2022",
+   "variant": "combo",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_sikkim_austria",
+   "variant": "crop70",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_sikkim_austria",
+   "variant": "mirror",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  },
+  {
+   "key": "yt_sikkim_austria",
+   "variant": "combo",
+   "label_correct_claim": "UNVERIFIED",
+   "label_wrong_date": "RECYCLED_FOOTAGE"
+  }
+ ],
+ "summary": {
+  "genuine_footage_false_positive_rate": "0/29 (genuine re-shares with the CORRECT claim date labelled RECYCLED_FOOTAGE)",
+  "correct_context_mismatch_detection_rate": "29/29 (same footage, WRONG later claim date, labelled RECYCLED_FOOTAGE)",
+  "caveat": "synthetic re-shares of benchmark originals; 'correct claim date' = the original's own upload date. Not an independent set."
+ }
+}

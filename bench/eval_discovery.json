@@ -1,0 +1,167 @@
+{
+ "rows": [
+  {
+   "key": "x_iambmane",
+   "found_truth": false,
+   "proven": [],
+   "label": "UNVERIFIED",
+   "candidates": 70,
+   "adapters": {
+    "yandex": {
+     "frames": [
+      40,
+      20,
+      5
+     ],
+     "captcha": false,
+     "searched": 3,
+     "errors": []
+    },
+    "tavily": {
+     "queries": 18,
+     "errors": []
+    }
+   },
+   "sec": 217,
+   "clue_location": "South Iceland ice-cap margin, likely Vatnajokull area"
+  },
+  {
+   "key": "yts_sainj",
+   "found_truth": false,
+   "proven": [],
+   "label": "UNVERIFIED",
+   "candidates": 70,
+   "adapters": {
+    "yandex": {
+     "frames": [
+      0,
+      45,
+      8
+     ],
+     "captcha": false,
+     "searched": 3,
+     "errors": []
+    },
+    "tavily": {
+     "queries": 18,
+     "errors": []
+    }
+   },
+   "sec": 229,
+   "clue_location": "Himalayan foothill town in northern India, Himachal Pradesh / Uttarakhand type area"
+  },
+  {
+   "key": "ig_viral_italy",
+   "found_truth": false,
+   "proven": [],
+   "label": "UNVERIFIED",
+   "candidates": 59,
+   "adapters": {
+    "yandex": {
+     "frames": [
+      0,
+      25,
+      6
+     ],
+     "captcha": false,
+     "searched": 3,
+     "errors": []
+    },
+    "tavily": {
+     "queries": 18,
+     "errors": []
+    }
+   },
+   "sec": 194,
+   "clue_location": "Unidentified mountain valley settlement, cannot confirm as Guptkashi"
+  },
+  {
+   "key": "yt_tauktae2",
+   "found_truth": false,
+   "proven": [
+    "https://www.youtube.com/watch?v=Yg2XPCvDjlE",
+    "https://www.youtube.com/watch?v=U472wfLXWp0",
+    "https://www.youtube.com/watch?app=desktop&v=JppzHaHZRO0",
+    "https://www.youtube.com/watch?v=B0Hnrt0zr9o"
+   ],
+   "label": "RECYCLED_FOOTAGE",
+   "candidates": 70,
+   "adapters": {
+    "yandex": {
+     "frames": [
+      0,
+      26,
+      11
+     ],
+     "captcha": false,
+     "searched": 3,
+     "errors": []
+    },
+    "tavily": {
+     "queries": 18,
+     "errors": []
+    }
+   },
+   "sec": 204,
+   "clue_location": "Kerala coast, west coast of India"
+  },
+  {
+   "key": "yts_viral_nalagarh",
+   "found_truth": false,
+   "proven": [],
+   "label": "UNVERIFIED",
+   "candidates": 70,
+   "adapters": {
+    "yandex": {
+     "frames": [
+      5,
+      26,
+      47
+     ],
+     "captcha": false,
+     "searched": 3,
+     "errors": []
+    },
+    "tavily": {
+     "queries": 18,
+     "errors": []
+    }
+   },
+   "sec": 205,
+   "clue_location": "Dharauli village (as named on-screen, unverified)"
+  },
+  {
+   "key": "yt_wayanad_el",
+   "found_truth": false,
+   "proven": [
+    "https://www.youtube.com/watch?v=1GSN7BAn1YQ"
+   ],
+   "label": "RECYCLED_FOOTAGE",
+   "candidates": 70,
+   "adapters": {
+    "yandex": {
+     "frames": [
+      0,
+      8,
+      16
+     ],
+     "captcha": false,
+     "searched": 3,
+     "errors": []
+    },
+    "tavily": {
+     "queries": 18,
+     "errors": []
+    }
+   },
+   "sec": 236,
+   "clue_location": "Unknown forested roadside in India, possibly Himalayan foothills / Northeast India"
+  }
+ ],
+ "summary": {
+  "previously_unseen_original_discovery_rate": "0/6",
+  "any_proven_copy": "2/6",
+  "prototype_baseline": "bench/search_S*.json + rev_S*.json: 0/8 originals found (Yandex rarely returns originals)",
+  "origin": "memory disabled"
+ }
+}

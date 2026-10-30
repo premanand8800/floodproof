@@ -1,0 +1,701 @@
+{
+ "variants": [
+  {
+   "key": "ig_leigh",
+   "variant": "crop70",
+   "hit": true,
+   "returned": [
+    "https://www.instagram.com/reel/DcUFQZhvGzS/"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 33.2,
+   "orig_date": "2026-08-21",
+   "orig_url": "https://www.instagram.com/reel/DcUFQZhvGzS/",
+   "stage_frames": 33
+  },
+  {
+   "key": "ig_leigh",
+   "variant": "mirror",
+   "hit": true,
+   "returned": [
+    "https://www.instagram.com/reel/DcUFQZhvGzS/"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 30.6,
+   "orig_date": "2026-08-21",
+   "orig_url": "https://www.instagram.com/reel/DcUFQZhvGzS/",
+   "stage_frames": 45
+  },
+  {
+   "key": "ig_leigh",
+   "variant": "combo",
+   "hit": true,
+   "returned": [
+    "https://www.instagram.com/reel/DcUFQZhvGzS/"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 30.0,
+   "orig_date": "2026-08-21",
+   "orig_url": "https://www.instagram.com/reel/DcUFQZhvGzS/",
+   "stage_frames": 39
+  },
+  {
+   "key": "ig_sainj",
+   "variant": "crop70",
+   "hit": true,
+   "returned": [
+    "https://www.instagram.com/p/C_pHwZgvMXg/",
+    "https://www.youtube.com/shorts/k95Yfi__4h0"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 46.0,
+   "orig_date": "2024-09-08",
+   "orig_url": "https://www.instagram.com/p/C_pHwZgvMXg/",
+   "stage_frames": 48
+  },
+  {
+   "key": "ig_sainj",
+   "variant": "mirror",
+   "hit": true,
+   "returned": [
+    "https://www.instagram.com/p/C_pHwZgvMXg/",
+    "https://www.youtube.com/shorts/k95Yfi__4h0"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 40.9,
+   "orig_date": "2024-09-08",
+   "orig_url": "https://www.instagram.com/p/C_pHwZgvMXg/",
+   "stage_frames": 48
+  },
+  {
+   "key": "ig_sainj",
+   "variant": "combo",
+   "hit": true,
+   "returned": [
+    "https://www.instagram.com/p/C_pHwZgvMXg/",
+    "https://www.youtube.com/shorts/k95Yfi__4h0"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 43.6,
+   "orig_date": "2024-09-08",
+   "orig_url": "https://www.instagram.com/p/C_pHwZgvMXg/",
+   "stage_frames": 48
+  },
+  {
+   "key": "yt_sun_italy",
+   "variant": "crop70",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=Nsb9eSzAEgQ"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 15.9,
+   "orig_date": "2025-07-01",
+   "orig_url": "https://www.youtube.com/watch?v=Nsb9eSzAEgQ",
+   "stage_frames": 31
+  },
+  {
+   "key": "yt_sun_italy",
+   "variant": "mirror",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=Nsb9eSzAEgQ"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 11.0,
+   "orig_date": "2025-07-01",
+   "orig_url": "https://www.youtube.com/watch?v=Nsb9eSzAEgQ",
+   "stage_frames": 43
+  },
+  {
+   "key": "yt_sun_italy",
+   "variant": "combo",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=Nsb9eSzAEgQ"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 12.4,
+   "orig_date": "2025-07-01",
+   "orig_url": "https://www.youtube.com/watch?v=Nsb9eSzAEgQ",
+   "stage_frames": 32
+  },
+  {
+   "key": "yt_ie_nalagarh",
+   "variant": "crop70",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=gG8y--iMl04",
+    "https://www.youtube.com/watch?v=1bI4bXO_E2w"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 11.9,
+   "orig_date": "2022-07-29",
+   "orig_url": "https://www.youtube.com/watch?v=gG8y--iMl04",
+   "stage_frames": 44
+  },
+  {
+   "key": "yt_ie_nalagarh",
+   "variant": "mirror",
+   "hit": false,
+   "returned": [
+    "https://www.youtube.com/watch?v=1bI4bXO_E2w",
+    "https://www.youtube.com/watch?v=gG8y--iMl04"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 20.4,
+   "orig_date": "2022-07-29",
+   "orig_url": "https://www.youtube.com/watch?v=gG8y--iMl04",
+   "stage_frames": 44
+  },
+  {
+   "key": "yt_ie_nalagarh",
+   "variant": "combo",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=gG8y--iMl04",
+    "https://www.youtube.com/watch?v=1bI4bXO_E2w"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 11.6,
+   "orig_date": "2022-07-29",
+   "orig_url": "https://www.youtube.com/watch?v=gG8y--iMl04",
+   "stage_frames": 43
+  },
+  {
+   "key": "yt_dawn",
+   "variant": "crop70",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=GlbjFxMUs6U"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 4.3,
+   "orig_date": "2024-08-01",
+   "orig_url": "https://www.youtube.com/watch?v=GlbjFxMUs6U",
+   "stage_frames": 19
+  },
+  {
+   "key": "yt_dawn",
+   "variant": "mirror",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=GlbjFxMUs6U"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 4.5,
+   "orig_date": "2024-08-01",
+   "orig_url": "https://www.youtube.com/watch?v=GlbjFxMUs6U",
+   "stage_frames": 48
+  },
+  {
+   "key": "yt_dawn",
+   "variant": "combo",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=GlbjFxMUs6U"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 4.6,
+   "orig_date": "2024-08-01",
+   "orig_url": "https://www.youtube.com/watch?v=GlbjFxMUs6U",
+   "stage_frames": 16
+  },
+  {
+   "key": "yt_tauktae1",
+   "variant": "crop70",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=bSkLZSRyRu0",
+    "https://www.youtube.com/watch?v=ObSniZmyxr8",
+    "https://www.youtube.com/watch?v=TR79k9CyWhw"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 32.5,
+   "orig_date": "2021-05-15",
+   "orig_url": "https://www.youtube.com/watch?v=bSkLZSRyRu0",
+   "stage_frames": 48
+  },
+  {
+   "key": "yt_tauktae1",
+   "variant": "mirror",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=bSkLZSRyRu0",
+    "https://www.youtube.com/watch?v=ObSniZmyxr8",
+    "https://www.youtube.com/watch?v=TR79k9CyWhw"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 33.3,
+   "orig_date": "2021-05-15",
+   "orig_url": "https://www.youtube.com/watch?v=bSkLZSRyRu0",
+   "stage_frames": 48
+  },
+  {
+   "key": "yt_tauktae1",
+   "variant": "combo",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=bSkLZSRyRu0",
+    "https://www.youtube.com/watch?v=ObSniZmyxr8",
+    "https://www.youtube.com/watch?v=TR79k9CyWhw"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 25.0,
+   "orig_date": "2021-05-15",
+   "orig_url": "https://www.youtube.com/watch?v=bSkLZSRyRu0",
+   "stage_frames": 48
+  },
+  {
+   "key": "yt_ramban",
+   "variant": "crop70",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=0T4UuJWXGB0"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 13.7,
+   "orig_date": "2019-07-28",
+   "orig_url": "https://www.youtube.com/watch?v=0T4UuJWXGB0",
+   "stage_frames": 39
+  },
+  {
+   "key": "yt_ramban",
+   "variant": "mirror",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=0T4UuJWXGB0"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 14.8,
+   "orig_date": "2019-07-28",
+   "orig_url": "https://www.youtube.com/watch?v=0T4UuJWXGB0",
+   "stage_frames": 48
+  },
+  {
+   "key": "yt_ramban",
+   "variant": "combo",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=0T4UuJWXGB0"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 13.3,
+   "orig_date": "2019-07-28",
+   "orig_url": "https://www.youtube.com/watch?v=0T4UuJWXGB0",
+   "stage_frames": 36
+  },
+  {
+   "key": "yt_japan2015",
+   "variant": "crop70",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=EEcotUWktuQ"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 6.7,
+   "orig_date": "2015-09-10",
+   "orig_url": "https://www.youtube.com/watch?v=EEcotUWktuQ",
+   "stage_frames": 33
+  },
+  {
+   "key": "yt_japan2015",
+   "variant": "mirror",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=EEcotUWktuQ"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 5.6,
+   "orig_date": "2015-09-10",
+   "orig_url": "https://www.youtube.com/watch?v=EEcotUWktuQ",
+   "stage_frames": 44
+  },
+  {
+   "key": "yt_japan2015",
+   "variant": "combo",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=EEcotUWktuQ"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 5.0,
+   "orig_date": "2015-09-10",
+   "orig_url": "https://www.youtube.com/watch?v=EEcotUWktuQ",
+   "stage_frames": 33
+  },
+  {
+   "key": "ig_pak2022",
+   "variant": "crop70",
+   "hit": true,
+   "returned": [
+    "https://www.instagram.com/p/ChzTcCQsZj-/"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 24.5,
+   "orig_date": "2022-08-28",
+   "orig_url": "https://www.instagram.com/p/ChzTcCQsZj-/",
+   "stage_frames": 47
+  },
+  {
+   "key": "ig_pak2022",
+   "variant": "mirror",
+   "hit": true,
+   "returned": [
+    "https://www.instagram.com/p/ChzTcCQsZj-/"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 26.2,
+   "orig_date": "2022-08-28",
+   "orig_url": "https://www.instagram.com/p/ChzTcCQsZj-/",
+   "stage_frames": 48
+  },
+  {
+   "key": "ig_pak2022",
+   "variant": "combo",
+   "hit": true,
+   "returned": [
+    "https://www.instagram.com/p/ChzTcCQsZj-/"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 25.8,
+   "orig_date": "2022-08-28",
+   "orig_url": "https://www.instagram.com/p/ChzTcCQsZj-/",
+   "stage_frames": 48
+  },
+  {
+   "key": "yt_sikkim_austria",
+   "variant": "crop70",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=ObYRYF3d38Y"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 2.2,
+   "orig_date": "2018-06-12",
+   "orig_url": "https://www.youtube.com/watch?v=ObYRYF3d38Y",
+   "stage_frames": 10
+  },
+  {
+   "key": "yt_sikkim_austria",
+   "variant": "mirror",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=ObYRYF3d38Y"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 3.0,
+   "orig_date": "2018-06-12",
+   "orig_url": "https://www.youtube.com/watch?v=ObYRYF3d38Y",
+   "stage_frames": 39
+  },
+  {
+   "key": "yt_sikkim_austria",
+   "variant": "combo",
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=ObYRYF3d38Y"
+   ],
+   "truth_in_hash_shortlist": true,
+   "sec": 2.1,
+   "orig_date": "2018-06-12",
+   "orig_url": "https://www.youtube.com/watch?v=ObYRYF3d38Y",
+   "stage_frames": 10
+  }
+ ],
+ "real": [
+  {
+   "viral": "x_iambmane",
+   "truth": [
+    "ig_leigh",
+    "yt_leigh"
+   ],
+   "hit": true,
+   "returned": [
+    "https://www.instagram.com/reel/DcUFQZhvGzS/"
+   ],
+   "sec": 30.3
+  },
+  {
+   "viral": "x_dmuppavarapu",
+   "truth": [
+    "yt_leigh",
+    "ig_leigh"
+   ],
+   "hit": true,
+   "returned": [
+    "https://www.youtube.com/watch?v=E5TOaoetGDo"
+   ],
+   "sec": 39.0
+  },
+  {
+   "viral": "yts_viral_nalagarh",
+   "truth": [
+    "yt_ie_nalagarh",
+    "yt_tribune_nalagarh"
+   ],
+   "hit": false,
+   "returned": [],
+   "sec": 16.8
+  },
+  {
+   "viral": "ig_viral_italy",
+   "truth": [
+    "yt_sun_italy"
+   ],
+   "hit": false,
+   "returned": [],
+   "sec": 15.5
+  }
+ ],
+ "loo": [
+  {
+   "key": "ig_leigh",
+   "variant": "crop70",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 13.6
+  },
+  {
+   "key": "ig_leigh",
+   "variant": "mirror",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 12.1
+  },
+  {
+   "key": "ig_leigh",
+   "variant": "combo",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 12.8
+  },
+  {
+   "key": "ig_sainj",
+   "variant": "crop70",
+   "false_hits": [],
+   "sibling_hits": [
+    "https://www.youtube.com/shorts/k95Yfi__4h0"
+   ],
+   "sec": 27.8
+  },
+  {
+   "key": "ig_sainj",
+   "variant": "mirror",
+   "false_hits": [],
+   "sibling_hits": [
+    "https://www.youtube.com/shorts/k95Yfi__4h0"
+   ],
+   "sec": 27.0
+  },
+  {
+   "key": "ig_sainj",
+   "variant": "combo",
+   "false_hits": [],
+   "sibling_hits": [
+    "https://www.youtube.com/shorts/k95Yfi__4h0"
+   ],
+   "sec": 26.7
+  },
+  {
+   "key": "yt_sun_italy",
+   "variant": "crop70",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 7.9
+  },
+  {
+   "key": "yt_sun_italy",
+   "variant": "mirror",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 6.9
+  },
+  {
+   "key": "yt_sun_italy",
+   "variant": "combo",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 6.0
+  },
+  {
+   "key": "yt_ie_nalagarh",
+   "variant": "crop70",
+   "false_hits": [],
+   "sibling_hits": [
+    "https://www.youtube.com/watch?v=1bI4bXO_E2w"
+   ],
+   "sec": 8.5
+  },
+  {
+   "key": "yt_ie_nalagarh",
+   "variant": "mirror",
+   "false_hits": [],
+   "sibling_hits": [
+    "https://www.youtube.com/watch?v=1bI4bXO_E2w"
+   ],
+   "sec": 13.3
+  },
+  {
+   "key": "yt_ie_nalagarh",
+   "variant": "combo",
+   "false_hits": [],
+   "sibling_hits": [
+    "https://www.youtube.com/watch?v=1bI4bXO_E2w"
+   ],
+   "sec": 9.0
+  },
+  {
+   "key": "yt_dawn",
+   "variant": "crop70",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 3.7
+  },
+  {
+   "key": "yt_dawn",
+   "variant": "mirror",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 3.0
+  },
+  {
+   "key": "yt_dawn",
+   "variant": "combo",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 2.7
+  },
+  {
+   "key": "yt_tauktae1",
+   "variant": "crop70",
+   "false_hits": [],
+   "sibling_hits": [
+    "https://www.youtube.com/watch?v=ObSniZmyxr8",
+    "https://www.youtube.com/watch?v=TR79k9CyWhw"
+   ],
+   "sec": 23.8
+  },
+  {
+   "key": "yt_tauktae1",
+   "variant": "mirror",
+   "false_hits": [],
+   "sibling_hits": [
+    "https://www.youtube.com/watch?v=ObSniZmyxr8",
+    "https://www.youtube.com/watch?v=TR79k9CyWhw"
+   ],
+   "sec": 24.9
+  },
+  {
+   "key": "yt_tauktae1",
+   "variant": "combo",
+   "false_hits": [],
+   "sibling_hits": [
+    "https://www.youtube.com/watch?v=ObSniZmyxr8",
+    "https://www.youtube.com/watch?v=TR79k9CyWhw"
+   ],
+   "sec": 18.4
+  },
+  {
+   "key": "yt_ramban",
+   "variant": "crop70",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 6.7
+  },
+  {
+   "key": "yt_ramban",
+   "variant": "mirror",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 6.9
+  },
+  {
+   "key": "yt_ramban",
+   "variant": "combo",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 6.6
+  },
+  {
+   "key": "yt_japan2015",
+   "variant": "crop70",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 4.6
+  },
+  {
+   "key": "yt_japan2015",
+   "variant": "mirror",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 3.3
+  },
+  {
+   "key": "yt_japan2015",
+   "variant": "combo",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 3.7
+  },
+  {
+   "key": "ig_pak2022",
+   "variant": "crop70",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 11.7
+  },
+  {
+   "key": "ig_pak2022",
+   "variant": "mirror",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 14.0
+  },
+  {
+   "key": "ig_pak2022",
+   "variant": "combo",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 12.2
+  },
+  {
+   "key": "yt_sikkim_austria",
+   "variant": "crop70",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 1.6
+  },
+  {
+   "key": "yt_sikkim_austria",
+   "variant": "mirror",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 2.1
+  },
+  {
+   "key": "yt_sikkim_austria",
+   "variant": "combo",
+   "false_hits": [],
+   "sibling_hits": [],
+   "sec": 1.5
+  }
+ ],
+ "summary": {
+  "seeded_original_recognition_variants": "29/30 (original ranked first)",
+  "by_variant": {
+   "crop70": "10/10",
+   "mirror": "9/10",
+   "combo": "10/10"
+  },
+  "truth_in_hash_shortlist": "30/30",
+  "seeded_original_recognition_real_viral": "2/4",
+  "false_attribution_loo": "0/30",
+  "sibling_hits_loo": 9,
+  "mean_sec_per_lookup": 18.5,
+  "memory_entries": 37,
+  "origin": "seed:benchmark (NOT discovery)",
+  "recognition_any_rank": "30/30 (original among proven hits)",
+  "loo_note": "9 LOO queries returned a proven hit on a DIFFERENT index entry: all 9 are same-footage uploads (visually confirmed; evidence/loo_review_*.png), counted as sibling hits, not false attributions."
+ }
+}

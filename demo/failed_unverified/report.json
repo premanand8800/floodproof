@@ -1,0 +1,555 @@
+{
+  "schema_version": "1.0",
+  "investigation_id": "0d5411f372",
+  "created_at": "2026-10-30T02:24:17+00:00",
+  "input": {
+    "source": "data/videos/yts_viral_nalagarh.mp4",
+    "path": "/home/samir-kumal/hackethon/floodproof/data/videos/yts_viral_nalagarh.mp4",
+    "url": null,
+    "uploader": null,
+    "upload_date": null,
+    "title": "yts_viral_nalagarh.mp4",
+    "duration": 75.0,
+    "has_audio": false,
+    "truncated": false,
+    "n_keyframes": 48,
+    "keyframe_times_s": [
+      0.0,
+      1.0,
+      2.67,
+      4.33,
+      5.67,
+      8.33,
+      9.67,
+      11.0,
+      12.33,
+      13.67,
+      15.0,
+      16.33,
+      17.67,
+      21.33,
+      23.33,
+      24.67,
+      26.0,
+      27.33,
+      28.67,
+      30.0,
+      32.0,
+      34.33,
+      36.33,
+      38.67,
+      40.67,
+      42.0,
+      43.33,
+      45.0,
+      47.0,
+      49.33,
+      51.33,
+      52.67,
+      54.33,
+      55.67,
+      57.0,
+      58.33,
+      59.67,
+      61.0,
+      62.33,
+      63.67,
+      65.0,
+      66.33,
+      67.67,
+      69.0,
+      70.33,
+      71.67,
+      73.0,
+      74.67
+    ]
+  },
+  "claim": {
+    "text": "Uttarkashi cloudburst, August 2025",
+    "event_date": "2025-08-05",
+    "place": "Uttarkashi",
+    "country_iso2": "IN",
+    "event_type": "flash_flood"
+  },
+  "memory": {
+    "status": "MISS",
+    "mode": "hash-shortlist(top_6)+match",
+    "entries_searched": 6,
+    "entries_total": 37,
+    "seconds": 22.12,
+    "hits": [],
+    "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+  },
+  "visual_matching": {
+    "status": "NOT_FOUND",
+    "proven_matches": [],
+    "earliest_proven_copy": null,
+    "claimed_original": null,
+    "input_publication": null,
+    "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is not asserted to be the source.",
+    "candidates_checked": 14,
+    "candidates_total": 70,
+    "candidate_status_counts": {
+      "too_long": 1,
+      "unavailable": 6,
+      "pending": 56,
+      "not_proven": 7
+    },
+    "adapters": {
+      "yandex": {
+        "frames": [
+          5,
+          26,
+          47
+        ],
+        "captcha": false,
+        "searched": 3,
+        "errors": []
+      },
+      "tavily": {
+        "queries": 18,
+        "errors": []
+      }
+    }
+  },
+  "clues": {
+    "shows": [
+      {
+        "text": "Two men stranded on a small mud/sand island in the middle of a fast-flowing muddy swollen river",
+        "refs": [
+          0,
+          7,
+          13,
+          20
+        ],
+        "timestamps_s": [
+          0.0,
+          11.0,
+          21.33,
+          32.0
+        ]
+      },
+      {
+        "text": "Group of 4-6 men on the riverbank attempting rope rescue, pulling rope, holding coils of rope, wading at edge",
+        "refs": [
+          0,
+          7,
+          13,
+          27,
+          34,
+          40,
+          47
+        ],
+        "timestamps_s": [
+          0.0,
+          11.0,
+          21.33,
+          45.0,
+          57.0,
+          65.0,
+          74.67
+        ]
+      },
+      {
+        "text": "Wide monsoon-swollen brown river with dense green low-elevation forest/vegetation on far bank and foreground",
+        "refs": [
+          0,
+          7,
+          13,
+          20,
+          40
+        ],
+        "timestamps_s": [
+          0.0,
+          11.0,
+          21.33,
+          32.0,
+          65.0
+        ]
+      }
+    ],
+    "scene_type": {
+      "value": "rural flooded riverbank",
+      "refs": [
+        0,
+        7,
+        13,
+        20,
+        40
+      ],
+      "timestamps_s": [
+        0.0,
+        11.0,
+        21.33,
+        32.0,
+        65.0
+      ]
+    },
+    "visible_text": [
+      {
+        "text": "धरौली गांव का एक नया वीडियो",
+        "language": "hi",
+        "refs": [
+          0,
+          7,
+          13,
+          20,
+          27,
+          34,
+          40,
+          47
+        ],
+        "timestamps_s": [
+          0.0,
+          11.0,
+          21.33,
+          32.0,
+          45.0,
+          57.0,
+          65.0,
+          74.67
+        ]
+      }
+    ],
+    "likely_location": {
+      "place": "Dharoli village (unidentified, captioned as धरौली गांव)",
+      "country": "India",
+      "confidence": 0.6,
+      "lat": null,
+      "lon": null,
+      "reasons": [
+        {
+          "text": "On-screen Hindi caption in all frames names Dharoli village, not Dharali",
+          "refs": [
+            0,
+            7,
+            13,
+            20,
+            27,
+            34,
+            40,
+            47
+          ],
+          "timestamps_s": [
+            0.0,
+            11.0,
+            21.33,
+            32.0,
+            45.0,
+            57.0,
+            65.0,
+            74.67
+          ]
+        },
+        {
+          "text": "South Asian men, Hindi language overlay, monsoon river flood typical of Indian plains",
+          "refs": [
+            0,
+            7,
+            20,
+            34
+          ],
+          "timestamps_s": [
+            0.0,
+            11.0,
+            32.0,
+            57.0
+          ]
+        },
+        {
+          "text": "Low-elevation dense green forest and wide muddy river, not high-altitude Himalayan valley morphology",
+          "refs": [
+            0,
+            7,
+            13,
+            20,
+            40
+          ],
+          "timestamps_s": [
+            0.0,
+            11.0,
+            21.33,
+            32.0,
+            65.0
+          ]
+        }
+      ]
+    },
+    "contradictions_with_claim": [
+      {
+        "text": "Caption says धरौली (Dharoli) not धराली (Dharali), the village destroyed in Uttarkashi 2025-08-05 flash flood",
+        "refs": [
+          0,
+          7,
+          13,
+          20,
+          27
+        ],
+        "timestamps_s": [
+          0.0,
+          11.0,
+          21.33,
+          32.0,
+          45.0
+        ]
+      },
+      {
+        "text": "Terrain is flat/low forested river plain, lacking steep Himalayan valley, mountains, buildings, or debris-flow/cloudburst destruction seen at Dharali-Uttarkashi",
+        "refs": [
+          0,
+          7,
+          13,
+          20,
+          40
+        ],
+        "timestamps_s": [
+          0.0,
+          11.0,
+          21.33,
+          32.0,
+          65.0
+        ]
+      },
+      {
+        "text": "Shows slow river-island rope rescue in muddy floodwater, not a cloudburst/flash-flood debris torrent sweeping through a mountain town",
+        "refs": [
+          0,
+          7,
+          13,
+          27
+        ],
+        "timestamps_s": [
+          0.0,
+          11.0,
+          21.33,
+          45.0
+        ]
+      },
+      {
+        "text": "Low-resolution crop with large crying-emoji sticker and added caption indicates recycled edited re-share, not original disaster documentation",
+        "refs": [
+          0,
+          7,
+          34,
+          47
+        ],
+        "timestamps_s": [
+          0.0,
+          11.0,
+          57.0,
+          74.67
+        ]
+      }
+    ],
+    "claim_parsed": {
+      "place": "Uttarkashi",
+      "country_iso2": "IN",
+      "event_type": "flash_flood"
+    },
+    "queries": [
+      {
+        "q": "धरौली गांव का एक नया वीडियो बाढ़",
+        "language": "hi",
+        "why": "Exact on-screen caption to find earliest upload"
+      },
+      {
+        "q": "धरौली गांव नदी में फंसे दो व्यक्ति रस्सी से रेस्क्यू",
+        "language": "hi",
+        "why": "Describes rescue action in local language"
+      },
+      {
+        "q": "धरौली गांव बाढ़ में फंसे लोग वीडियो",
+        "language": "hi",
+        "why": "Village name + flood to locate true source"
+      },
+      {
+        "q": "Dharoli village flood rope rescue video",
+        "language": "en",
+        "why": "Transliterated village name to find YouTube/Facebook copies"
+      },
+      {
+        "q": "two men stranded river island rope rescue India video",
+        "language": "en",
+        "why": "Neutral visual description avoiding claimed event name"
+      },
+      {
+        "q": "men stuck mid river mud island monsoon rescue rope India",
+        "language": "en",
+        "why": "Visual search for recycled flood rescue"
+      },
+      {
+        "q": "नदी के बीच टापू पर फंसे दो युवक रस्सी से बचाया",
+        "language": "hi",
+        "why": "Common phrasing for such rescues in Hindi media"
+      },
+      {
+        "q": "Dharauli Dharoli village river flood stranded rescue",
+        "language": "en",
+        "why": "Alternate spellings of village name to identify location"
+      }
+    ],
+    "rejected_clues": [],
+    "status": "ok",
+    "model": "meta/muse-spark-1.3",
+    "cost_usd": 0.01262,
+    "frames_shown": [
+      0,
+      7,
+      13,
+      20,
+      27,
+      34,
+      40,
+      47
+    ],
+    "frame_times_s": {
+      "0": 0.0,
+      "7": 11.0,
+      "13": 21.33,
+      "20": 32.0,
+      "27": 45.0,
+      "34": 57.0,
+      "40": 65.0,
+      "47": 74.67
+    },
+    "audio": {
+      "status": "no_audio_track"
+    },
+    "frame_images": [
+      "demo/failed_unverified/frames/frame_00_t0.0.jpg",
+      "demo/failed_unverified/frames/frame_07_t11.0.jpg",
+      "demo/failed_unverified/frames/frame_13_t21.3.jpg",
+      "demo/failed_unverified/frames/frame_20_t32.0.jpg",
+      "demo/failed_unverified/frames/frame_27_t45.0.jpg",
+      "demo/failed_unverified/frames/frame_34_t57.0.jpg",
+      "demo/failed_unverified/frames/frame_40_t65.0.jpg",
+      "demo/failed_unverified/frames/frame_47_t74.7.jpg"
+    ]
+  },
+  "physical_world_check": {
+    "location": {
+      "query": "Uttarkashi",
+      "name": "Uttarkashi, Uttarakhand, India",
+      "lat": 30.9635733,
+      "lon": 78.6362521,
+      "source": "nominatim",
+      "confidence": "high",
+      "class": "boundary",
+      "type": "administrative",
+      "alternatives": []
+    },
+    "official_event": {
+      "source": "copernicus_ems",
+      "status": "NO_RECORD",
+      "activations": []
+    },
+    "hydrology": {
+      "source": "open-meteo glofas v4",
+      "river_discharge": {
+        "series": [
+          {
+            "date": "2025-08-02",
+            "m3s": 155.68
+          },
+          {
+            "date": "2025-08-03",
+            "m3s": 151.41
+          },
+          {
+            "date": "2025-08-04",
+            "m3s": 150.71
+          },
+          {
+            "date": "2025-08-05",
+            "m3s": 150.71
+          },
+          {
+            "date": "2025-08-06",
+            "m3s": 150.01
+          },
+          {
+            "date": "2025-08-07",
+            "m3s": 162.68
+          },
+          {
+            "date": "2025-08-08",
+            "m3s": 164.2
+          }
+        ],
+        "baseline": 146.74,
+        "peak": 164.2,
+        "ratio": 1.12,
+        "cell": [
+          30.875,
+          78.625
+        ]
+      },
+      "rain": {
+        "series": [
+          {
+            "date": "2025-08-02",
+            "mm": 7.7
+          },
+          {
+            "date": "2025-08-03",
+            "mm": 15.6
+          },
+          {
+            "date": "2025-08-04",
+            "mm": 18.9
+          },
+          {
+            "date": "2025-08-05",
+            "mm": 20.2
+          },
+          {
+            "date": "2025-08-06",
+            "mm": 13.1
+          },
+          {
+            "date": "2025-08-07",
+            "mm": 0.0
+          },
+          {
+            "date": "2025-08-08",
+            "mm": 5.8
+          }
+        ],
+        "max_mm": 20.2
+      },
+      "status": "UNKNOWN"
+    },
+    "verdict": "NO_EVIDENCE",
+    "reasons": [
+      "no Copernicus flood activation within 150 km / +-3 d",
+      "discharge ratio 1.12 (peak 164.2 vs baseline 146.7 m3/s), max rain 20.2 mm/day"
+    ],
+    "limits": [
+      "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened",
+      "event_type=flash_flood: flash floods are too small and fast for GloFAS river discharge; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS"
+    ],
+    "links": [
+      "https://mapping.emergency.copernicus.eu/activations/",
+      "https://flood-api.open-meteo.com/v1/flood?latitude=30.9635733&longitude=78.6362521&daily=river_discharge&start_date=2025-08-02&end_date=2025-08-08",
+      "https://www.openstreetmap.org/?mlat=30.9635733&mlon=78.6362521#map=10/30.9635733/78.6362521"
+    ]
+  },
+  "final_verdict": {
+    "label": "UNVERIFIED",
+    "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. The physical-world check was not available or inconclusive. The claim could not be verified from the available evidence. Separately, the AI visual clues cite 4 cue(s) that argue against the claim (e.g. \"Caption says धरौली (Dharoli) not धराली (Dharali), the village destroyed in Uttarkashi 2025-08-05 flash flood\", frame ref [0, 7, 13, 20, 27]); these are model observations, not part of the visual-match proof.",
+    "limits": [
+      "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+      "Upload dates are platform metadata for the copy found; the earliest copy found is not necessarily the true source.",
+      "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+      "'Not found' means not found by these adapters, not that no earlier copy exists."
+    ],
+    "basis": {
+      "earlier_proven_copies": 0,
+      "proven_copies": 0,
+      "physical_supports": null,
+      "cited_contradictions": 4,
+      "date_conflicts": 0
+    }
+  },
+  "timing_s": 215.6
+}
