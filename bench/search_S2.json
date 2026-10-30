@@ -1,0 +1,163 @@
+{
+ "case": "S2",
+ "query": "x_dmuppavarapu",
+ "qdate": "2026-08-27",
+ "plan": {
+  "scene": "Aerial helicopter footage of a glacial ice-dammed lake in a green, treeless subarctic mountain valley under overcast summer skies. Before: calm lake with floating icebergs between green mossy hills and distant glaciers. After: same basin 24 hours later drained and choked with massive shattered electric-blue glacier ice blocks and mist. Filmed from inside/just outside a modern helicopter cockpit with glass avionics and GPS map visible. No buildings, roads, vehicles on ground, people, Himalayan architecture, or South Asian signs. Vegetation, topography and ice conditions inconsistent with Nepal-Tibet, consistent with high-latitude summer in Alaska/Canada.",
+  "visible_text": [
+   "THE LAKE BEFORE THE OUTBURST FLOOD.",
+   "THE \"LAKE\" 24 HOURS LATER",
+   "THIS FRESHLY EXPOSED ICE IS ELECTRIC BLUE BECAUSE IT IS EXTRAORDINARILY DENSE."
+  ],
+  "guess_location": "Alaska, USA - likely Suicide Basin / Mendenhall Glacier near Juneau glacial lake outburst flood (GLOF), not Nepal-Tibet",
+  "queries": [
+   "\"THE LAKE BEFORE THE OUTBURST FLOOD\"",
+   "\"THIS FRESHLY EXPOSED ICE IS ELECTRIC BLUE\"",
+   "\"THE LAKE\" \"24 HOURS LATER\" outburst helicopter ice",
+   "Alaska glacial lake outburst flood helicopter before after video",
+   "Mendenhall Suicide Basin lake drained helicopter video",
+   "Juneau glacial outburst flood blue ice helicopter footage",
+   "glacier lake drained overnight electric blue ice Alaska video",
+   "Alaska GLOF helicopter cockpit lake empty icebergs TikTok Instagram"
+  ]
+ },
+ "n_cands": 50,
+ "results": [
+  {
+   "url": "https://www.youtube.com/watch?v=vMhjq7PDujU",
+   "date": "20260827",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=fGUY_DAP1Ls",
+   "date": "20230313",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=BDPbtP-0AW8",
+   "date": "20200115",
+   "status": "checked",
+   "match": false,
+   "consistent": 1,
+   "max_inliers": 22,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=NpZQOFJm9OE",
+   "date": "20260826",
+   "status": "checked",
+   "match": false,
+   "consistent": 1,
+   "max_inliers": 16,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=oYIpFCkq8ac",
+   "date": "20250816",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=hdZqn19jbvs",
+   "date": "20250916",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.instagram.com/reel/DcUFQZhvGzS",
+   "date": "20260821",
+   "status": "download failed"
+  },
+  {
+   "url": "https://www.instagram.com/reel/DchkWUXt5aN",
+   "date": "20260827",
+   "status": "download failed"
+  },
+  {
+   "url": "https://www.instagram.com/reel/Db-9Rv5tXiw",
+   "date": "20260813",
+   "status": "download failed"
+  },
+  {
+   "url": "https://www.instagram.com/reel/DckQau0NVby",
+   "date": "20260828",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=HJFMU9YWsiA",
+   "date": "20250429",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=jzBzWuVetxk",
+   "date": "20230830",
+   "status": "checked",
+   "match": false,
+   "consistent": 1,
+   "max_inliers": 18,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=bBtjR6z6pbA",
+   "date": "20180531",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=xn9DWKSiqGQ",
+   "date": "20250811",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=pQs7-TLRMiE",
+   "date": "20260421",
+   "status": "checked",
+   "match": false,
+   "consistent": 1,
+   "max_inliers": 16,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=lY1okZGTxzs",
+   "date": "20230215",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  }
+ ],
+ "hit_true": false,
+ "hit_earlier": false,
+ "hits": [],
+ "cost_muse": 0.00708625,
+ "tavily_credits": 24,
+ "sec": 324
+}

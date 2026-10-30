@@ -1,0 +1,94 @@
+{
+ "case": "S8",
+ "n_cands": 55,
+ "n_video": 3,
+ "results": [
+  {
+   "url": "https://www.dailymotion.com/video/x2430j8",
+   "title": "Trabzon'u ya\u011fmur esir alt\u0131 - Dailymotion Video",
+   "date": "20140819",
+   "src": "S8_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.dailymotion.com/video/x25zkiy",
+   "title": "Trabzonlu sanatc\u0131lar\u0131n bonzai hasasiyeti - Dailymotion Video",
+   "date": "20140915",
+   "src": "S8_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=c5BHRmgwTVo",
+   "title": "Flood At Darbhanga Bihar (12-07-2017) - YouTube",
+   "date": "20170712",
+   "src": "S8_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://crazyshit.com/cnt/medias/115407-19-people-definitely-having-a-shittier-day-than-you",
+   "title": "CrazyShit.com 19 PEOPLE DEFINITELY HAVING A SHITTIER DAY THAN YOU - Crazy Shit",
+   "date": "NA",
+   "src": "S8_0",
+   "status": "download failed"
+  },
+  {
+   "url": "https://www.milliyet.com.tr/galeri/korkulan-oldu-2844328/14",
+   "title": "Korkulan oldu! - Son Dakika Haberleri Milliyet - Sayfa 14",
+   "src": "S8_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://dzen.ru/shorts/688b055f32b2265404856f48",
+   "title": "Sputnik \u0410\u0440\u043c\u0435\u043d\u0438\u044f \u041c\u043e\u0449\u043d\u044b\u0435 \u043b\u0438\u0432\u043d\u0438 \u0432 \u0414\u0435\u043b\u0438 \u0437\u0430\u0442\u043e\u043f\u0438\u043b\u0438 \u0443\u043b\u0438\u0446\u044b \u0414\u0437\u0435\u043d",
+   "src": "S8_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://bash.tube/videos/country/%D0%98%D0%BD%D0%B4%D0%B8%D1%8F/7",
+   "title": "\u041d\u043e\u0432\u043e\u0441\u0442\u0438 \u0418\u043d\u0434\u0438\u0438 (7/19) \u0410\u0433\u0440\u0435\u0433\u0430\u0442\u043e\u0440 \u0432\u0438\u0434\u0435\u043e \u043d\u043e\u0432\u043e\u0441\u0442\u0435\u0439 - BASH.TUBE",
+   "src": "S8_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://bash.tube/watch/637rw5dB4mpHGoX",
+   "title": "\u041e\u0434\u0438\u043d \u0438\u0437 \u043a\u0440\u0443\u043f\u043d\u0435\u0439\u0448\u0438\u0445 \u0433\u043e\u0440\u043e\u0434\u043e\u0432 \u043c\u0438\u0440\u0430 - 30-\u043c\u0438\u043b\u043b\u0438\u043e\u043d\u043d\u044b\u0439 \u0414\u0435\u043b\u0438 \u0432 \u0418\u043d\u0434\u0438\u0438 \u043f\u043e\u0434\u0442\u043e\u043f\u0438\u043b\u043e \u043f\u043e\u0441\u043b\u0435 \u0441\u0438\u043b\u044c\u043d\u0435\u0439\u0448\u0435\u0433\u043e \u043b\u0438\u0432\u043d\u044f",
+   "date": "NA",
+   "src": "S8_0",
+   "status": "download failed"
+  },
+  {
+   "url": "https://insiderpaper.com/deadly-typhoon-hits-taiwan-9-sailors-missing-after-ship-sinks/",
+   "title": "Deadly typhoon hits Taiwan, 6 sailors missing after ship sinks - Insider Paper",
+   "src": "S8_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.ndtv.com/india-news/delhi-government-deploys-top-officers-to-probe-139-waterlogging-hotspots-11976119/amp/1",
+   "title": "Delhi Government Deploys Top Officers To Probe 139 Waterlogging Hotspots",
+   "src": "S8_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.rediff.com/news/report/heavy-rains-create-havoc-in-new-delhi/20260824.htm",
+   "title": "Heavy Rains Create Havoc In New Delhi - Rediff.com India News",
+   "src": "S8_0",
+   "status": "no video/unavailable"
+  }
+ ],
+ "hits": []
+}

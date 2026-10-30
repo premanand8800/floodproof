@@ -1,0 +1,218 @@
+{
+ "https://www.facebook.com/reel/1069033048842990": [
+  false,
+  "ERROR: [facebook] 1069033048842990: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/iss"
+ ],
+ "https://www.facebook.com/reel/1574705387436469": [
+  false,
+  "ERROR: [facebook] 1574705387436469: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/iss"
+ ],
+ "https://www.facebook.com/watch/?v=1841431486754837": [
+  true,
+  "26.2|20250925|Kais Kalim"
+ ],
+ "https://www.instagram.com/p/C2AMQyYpf_f/": [
+  true,
+  "NA|20240112|\u0d2f\u0d3e\u0d24\u0d4d\u0d30\u0d15\u0d4d\u0d15\u0d3e\u0d30\u0d41\u0d1f\u0d46 \u0d36\u0d4d\u0d30\u0d26\u0d4d\u0d27\u0d2f\u0d4d\u0d15\u0d4d\u0d15\u0d4d"
+ ],
+ "https://www.instagram.com/p/C_pHwZgvMXg/": [
+  true,
+  "NA|20240908|Surender Chauhan"
+ ],
+ "https://www.instagram.com/p/ChzTcCQsZj-/": [
+  true,
+  "NA|20220828|\u5342n\u5c71\u5c3a"
+ ],
+ "https://www.instagram.com/p/DM-HSFMSxmk/": [
+  false,
+  "NA|20250805|The Times of India\nNA|20250805|The Times of India\nNA|20250805|The Times of India\nNA|20250805|The Times of India\nNA|20250805|The Times of India\nNA|20250805|The Times of India\nNA|20250805|The Times of India\nNA|20250805|The Times of India\nNA|20250805|The Times of India\nNA|20250805|The Times of India"
+ ],
+ "https://www.instagram.com/p/DblC1ypK_ME/": [
+  false,
+  "ERROR: [Instagram] DblC1ypK_ME: This content isn't available to everyone: It can't be seen by certain audiences."
+ ],
+ "https://www.instagram.com/p/DcnLvAKjtJS/": [
+  true,
+  "NA|20260829|Dilrangi Raja Dilrangi Raja"
+ ],
+ "https://www.instagram.com/reel/DM-jOqwztN0/": [
+  true,
+  "NA|20250805|Vikash Kumar"
+ ],
+ "https://www.instagram.com/reel/DNelmORq2-w/": [
+  false,
+  "ERROR: [Instagram] DNelmORq2-w: Instagram sent an empty media response. Check if this post is accessible in your browser"
+ ],
+ "https://www.instagram.com/reel/DafoQ6vAJCR/": [
+  true,
+  "NA|20260707|\u092a\u093f\u0902\u092a\u0930\u0940 \u091a\u093f\u0902\u091a\u0935\u0921 Live"
+ ],
+ "https://www.instagram.com/reel/DcUFQZhvGzS/": [
+  true,
+  "NA|20260821|Leigh Coates"
+ ],
+ "https://www.instagram.com/reels/DM-rGp0Jcx8/": [
+  true,
+  "NA|20250805|AccuWeather"
+ ],
+ "https://www.newsflare.com/video/361931/bridge-collapses-into-flooded-river-after-heavy-rain-in-indonesia": [
+  false,
+  "ERROR: Unsupported URL: https://www.newsflare.com/video/361931/bridge-collapses-into-flooded-river-after-heavy-rain-in-i"
+ ],
+ "https://www.newsflare.com/video/911535/dramatic-visuals-cloudburst-triggers-flash-floods-in-chamoli-bridge-swept-away-in-seconds": [
+  false,
+  "ERROR: [generic] dramatic-visuals-cloudburst-triggers-flash-floods-in-chamoli-bridge-swept-away-in-seconds: Unable to do"
+ ],
+ "https://www.youtube.com/shorts/1oT56HbSnVI": [
+  true,
+  "58|20260827|\u0bb5\u0bbe\u0ba9\u0bcd \u0ba4\u0bae\u0bbf\u0bb4\u0bcd TV"
+ ],
+ "https://www.youtube.com/shorts/I_AliFdgNl8": [
+  true,
+  "7|20240928|Ajesh Dhamala \ud83c\udfb5"
+ ],
+ "https://www.youtube.com/shorts/Uly-XbejfpA": [
+  true,
+  "126|20250806|Abhishek Khanduri"
+ ],
+ "https://www.youtube.com/shorts/k95Yfi__4h0": [
+  true,
+  "38|20240909|Mountains Life"
+ ],
+ "https://www.youtube.com/shorts/pbWIp_riVa0": [
+  false,
+  "ERROR: [youtube] pbWIp_riVa0: Video unavailable. This video is no longer available because the YouTube account associate"
+ ],
+ "https://www.youtube.com/watch?v=-UBuGHH_pIo": [
+  true,
+  "60|20240625|Disaster Update"
+ ],
+ "https://www.youtube.com/watch?v=0T4UuJWXGB0": [
+  true,
+  "152|20190728|ABP NEWS"
+ ],
+ "https://www.youtube.com/watch?v=0mRS62uE19M": [
+  true,
+  "28|20190807|minglemine"
+ ],
+ "https://www.youtube.com/watch?v=1bI4bXO_E2w": [
+  true,
+  "164|20220729|Indian Express Punjab"
+ ],
+ "https://www.youtube.com/watch?v=3Xfntr7EEbc": [
+  false,
+  "ERROR: [youtube] 3Xfntr7EEbc: Private video. If the owner of this video has granted you access, please sign in. Use --co"
+ ],
+ "https://www.youtube.com/watch?v=4tDxRJheb44": [
+  true,
+  "168|20241013|Siete Filmes"
+ ],
+ "https://www.youtube.com/watch?v=5LWNIhMBNYw": [
+  true,
+  "108|20210703|\u7523\u7d4c\u30cb\u30e5\u30fc\u30b9"
+ ],
+ "https://www.youtube.com/watch?v=E5TOaoetGDo": [
+  true,
+  "85|20250816|Leigh Coates"
+ ],
+ "https://www.youtube.com/watch?v=EEcotUWktuQ": [
+  true,
+  "112|20150910|IBTimes UK"
+ ],
+ "https://www.youtube.com/watch?v=GlbjFxMUs6U": [
+  true,
+  "60|20240801|DawnNews"
+ ],
+ "https://www.youtube.com/watch?v=MBLVrGHbJAc": [
+  true,
+  "110|20220729|The Tribune"
+ ],
+ "https://www.youtube.com/watch?v=NF35eTdABjM": [
+  true,
+  "99|20210405|KOMPASTV"
+ ],
+ "https://www.youtube.com/watch?v=NOPtY_tCrv0": [
+  true,
+  "490|20190729|Aaj Tak"
+ ],
+ "https://www.youtube.com/watch?v=Nsb9eSzAEgQ": [
+  true,
+  "226|20250701|The Sun"
+ ],
+ "https://www.youtube.com/watch?v=OZMFqH7PYWk": [
+  true,
+  "115|20210405|Official iNews"
+ ],
+ "https://www.youtube.com/watch?v=ObSniZmyxr8": [
+  true,
+  "24|20210518|BOMBAY BEATS BITES"
+ ],
+ "https://www.youtube.com/watch?v=ObYRYF3d38Y": [
+  true,
+  "53|20180612|Peter Maier"
+ ],
+ "https://www.youtube.com/watch?v=OkgI-d_xN_s": [
+  true,
+  "60|20240808|HUM News"
+ ],
+ "https://www.youtube.com/watch?v=TR79k9CyWhw": [
+  true,
+  "57|20210525|OTV"
+ ],
+ "https://www.youtube.com/watch?v=Umrf7HpK4u0": [
+  true,
+  "59|20230710|9 News Australia"
+ ],
+ "https://www.youtube.com/watch?v=bSkLZSRyRu0": [
+  true,
+  "24|20210515|Ryan Bharath Edits"
+ ],
+ "https://www.youtube.com/watch?v=e1IC4Ld9kkE": [
+  false,
+  "ERROR: [youtube] e1IC4Ld9kkE: Private video. If the owner of this video has granted you access, please sign in. Use --co"
+ ],
+ "https://www.youtube.com/watch?v=f7vkQkkrBvY": [
+  true,
+  "27|20240403|Travel With AJ"
+ ],
+ "https://www.youtube.com/watch?v=gG8y--iMl04": [
+  true,
+  "164|20220729|The Indian Express"
+ ],
+ "https://www.youtube.com/watch?v=kU3Dc6T8Sug": [
+  true,
+  "289|20181012|Live Storms Media"
+ ],
+ "https://www.youtube.com/watch?v=qO8SM9AXcNc": [
+  true,
+  "91|20240626|Mr RCSekhar Worlds Weather"
+ ],
+ "https://www.youtube.com/watch?v=qVt-ic-EOW4": [
+  true,
+  "15|20250527|\u092e\u0939\u093e\u0926\u0947\u0935 \u0915\u0940 \u0926\u093e\u0938\u0940 \ud83d\udd31\ud83d\ude4fmamta"
+ ],
+ "https://www.youtube.com/watch?v=v063it_3tTA": [
+  true,
+  "80|20160408|\u0627\u0628\u0648 \u0622\u0633\u0631 \u0627\u0644\u0634\u0645\u0631\u0627\u0646\u064a"
+ ],
+ "https://www.youtube.com/watch?v=wbCXA6sWlVo": [
+  true,
+  "211|20211013|Manorama News"
+ ],
+ "https://x.com/PRABHATROY22/status/1953192508957331568": [
+  false,
+  "ERROR: [twitter] 1953192508957331568: No video could be found in this tweet"
+ ],
+ "https://x.com/SmritiSharma_/status/1358349803743105024": [
+  true,
+  "76.274|20210207|Smriti Sharmaa"
+ ],
+ "https://x.com/dmuppavarapu/status/2092846095751905510": [
+  true,
+  "85.474|20260827|\ud83d\udeb2 \ud835\udcd3\ud835\udcf2\ud835\udcf5\ud835\udcee\ud835\udcee\ud835\udcf9 \ud83d\udeb2"
+ ],
+ "https://x.com/iambmane/status/2092696500640022649": [
+  true,
+  "154.388|20260826|Bhavesh Mane"
+ ]
+}

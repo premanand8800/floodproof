@@ -1,0 +1,74 @@
+{
+ "case": "S7",
+ "n_cands": 44,
+ "n_video": 2,
+ "results": [
+  {
+   "url": "https://www.youtube.com/watch?v=F3FBaInklUs",
+   "title": "Elephant gives thanks after crossing the road in his unique style. #NatureAndHeritage \ud83d\udc2f. Wildlife's - YouTube",
+   "date": "20211226",
+   "src": "S7_1",
+   "status": "checked",
+   "match": false,
+   "consistent": 1,
+   "max_inliers": 17,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?app=desktop&v=t0wM9tBwEkI",
+   "title": "Elephant trampled zookeeper to death at zoo in Changsha on Christmas Eve - YouTube",
+   "src": "S7_1",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://ok.ru/video/9366422817505?nomr=",
+   "title": "\u0418 \u0432\u043e\u0442 \u0435\u0449\u0435 ... \u043b\u044e\u0434\u0438 \u043f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u043b\u0438 \u0441\u043b\u043e\u043d\u043e\u0432 \u043f\u0435\u0440\u0435\u0439\u0442\u0438 \u0434\u043e\u0440\u043e\u0433\u0443 - \"\u0432\u043e\u0436\u0434\u044c\" \u0441\u0442\u0430\u0434\u0430 \u043f\u043e\u0431\u043b\u0430\u0433\u043e\u0434\u0430\u0440\u0438\u043b ! \u042f \u0443\u0432\u0435\u0440\u0435\u043d, \u0447\u0442\u043e \u044d\u0442\u043e \u0442\u0430\u043a ! \u0418 \u043e\u0447\u0435\u043d\u044c \u043c\u043d\u043e\u0433\u043e",
+   "src": "S7_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.sotwe.com/BeYogafull",
+   "title": "BijBeata @BeYogafull - Twitter Profile Sotwe",
+   "src": "S7_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://board.postjung.com/1356337",
+   "title": "\u0e19 \u0e01 \u0e17 \u0e2d \u0e07 \u0e40 \u0e17 \u0e22 \u0e27 \u0e2d \u0e07!\u0e0a \u0e32 \u0e07 \u0e1b \u0e32 \u0e41 \u0e15 \u0e21 \u0e32 \u0e23 \u0e22 \u0e32 \u0e17 \u0e44 \u0e17 \u0e22 \u0e04",
+   "src": "S7_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://libr.pixel63.fr/?sort=hot&t=&after=t3_rm2jwi",
+   "title": "libr.pixel63.fr",
+   "src": "S7_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://imgur.com/t/elephants/time",
+   "title": "elephants Images, Photos, Memes, Gifs, and Pictures Find the latest on Imgur",
+   "src": "S7_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.google.com/maps/place/data=!4m2!3m1!1s0x3ba5ea8fc89ad29b:0xec955245948111ec?hl=tr&gl=tr",
+   "title": "\u0417\u0430\u043a\u0430\u0437\u043d\u0438\u043a \u041d\u0430\u0433\u0430\u0440\u0430\u0445\u043e\u043b \u0422\u0430\u0439\u0433\u0435\u0440 - Google Haritalar",
+   "src": "S7_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://in.pinterest.com/pin/849561917184550208/",
+   "title": "Forest of Balco, Korba, Chhattisgarh. Chhattisgarh, Country, Forest",
+   "src": "S7_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.pinterest.ru/pin/849561917184550208/",
+   "title": "Forest of Balco, Korba, Chhattisgarh. (With images) Chhattisgarh, Forest, Country",
+   "src": "S7_0",
+   "status": "no video/unavailable"
+  }
+ ],
+ "hits": []
+}

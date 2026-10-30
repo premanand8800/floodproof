@@ -1,0 +1,174 @@
+{
+ "case": "S9",
+ "n_cands": 53,
+ "n_video": 8,
+ "results": [
+  {
+   "url": "https://www.youtube.com/watch?v=vkqW2p1GPHw",
+   "title": "Typhoon Uwan death toll climbs to 18 - OCD INQToday - YouTube",
+   "src": "S9_0",
+   "date": "20251111",
+   "status": "later than query"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=OzWtL7Z9uGQ",
+   "title": "\u0411\u0443\u0448\u0443\u044e\u0449\u0438\u0439 \u0443\u0440\u0430\u0433\u0430\u043d \"\u041d\u043e\u0440\u0430\" \u0432\u0431\u043b\u0438\u0437\u0438 \u041f\u0443\u044d\u0440\u0442\u043e-\u0412\u0430\u043b\u044c\u044f\u0440\u0442\u0430. \u0422\u0440\u043e\u043f\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0448\u0442\u043e\u0440\u043c \"\u041d\u043e\u0440\u0430\" \u0432 \u041c\u0435\u043a\u0441\u0438\u043a\u0435 \u0421\u043e\u0431\u044b\u0442\u0438\u044f \u043d\u0435\u0434\u0435\u043b\u0438 - YouTube",
+   "src": "S9_0",
+   "date": "20210829",
+   "status": "later than query"
+  },
+  {
+   "url": "https://www.youtube.com/watch?app=desktop&v=JppzHaHZRO0",
+   "title": "pozhiyoor Thengapattanam cyclone tauktae live tracking nature destroyed videos sea waves dangerous - YouTube",
+   "date": "20210515",
+   "src": "S9_1",
+   "status": "checked",
+   "match": true,
+   "consistent": 36,
+   "max_inliers": 269,
+   "png": "evidence/rev_S9_810697.png",
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=qYJOC6vRhdU",
+   "title": "\u0915\u0947\u0930\u0933 \u092f\u0947\u0925\u0947 \u091a\u0915\u094d\u0930\u093f\u0935\u093e\u0926\u0933 \u092e\u0941\u0933\u0947 \u0938\u092e\u0941\u0926\u094d\u0930\u093e\u091a\u0947 \u092a\u093e\u0923\u0940 \u0935\u0938\u094d\u0924\u0940 \u092e\u0927\u094d\u092f\u0947 \u0936\u093f\u0930\u0932\u0947 \u0932\u094b\u0915\u093e\u0902\u091a\u0940 \u0926\u0923\u093e\u0926\u0923 - YouTube",
+   "src": "S9_1",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=Yg2XPCvDjlE",
+   "title": "Heavy rain in kerala kollam alappad panchayath - YouTube",
+   "date": "20210515",
+   "src": "S9_1",
+   "status": "checked",
+   "match": true,
+   "consistent": 48,
+   "max_inliers": 299,
+   "png": "evidence/rev_S9_724163.png",
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=U472wfLXWp0",
+   "title": "Keral Face Cyclone Tauktae - YouTube",
+   "date": "20210515",
+   "src": "S9_1",
+   "status": "checked",
+   "match": true,
+   "consistent": 48,
+   "max_inliers": 254,
+   "png": "evidence/rev_S9_437270.png",
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=i26uDzXuLko",
+   "title": "A Call to the World - YouTube",
+   "date": "20091210",
+   "src": "S9_2",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=a3UiG8sBOKE",
+   "title": "El supertif\u00f3n Fung-Wong llega a Filipinas y deja al menos dos muertos Noticias Telemundo - YouTube",
+   "src": "S9_2",
+   "date": "20251110",
+   "status": "later than query"
+  },
+  {
+   "url": "https://jimbakkershow.com/news/hurricane-maria-lashes-turks-caicos-killing-30-people/",
+   "title": "Hurricane Maria lashes Turks and Caicos after killing 30 people",
+   "src": "S9_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://news.sky.com/story/theresa-may-pledges-cash-to-tackle-climate-change-at-paris-summit-11167208?dcmp=snt-sf-twitter",
+   "title": "Theresa May pledges cash to tackle climate change at Paris summit Politics News Sky News",
+   "src": "S9_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://news.sky.com/story/disasters-to-cost-global-insurers-95bn-says-swiss-re-11089610",
+   "title": "Hurricane and earthquake disasters to cost global insurers $95bn, says Swiss Re Money News Sky News",
+   "src": "S9_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://caliber.az/en/tag/BNPB",
+   "title": "BNPB Caliber.Az",
+   "src": "S9_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.bangkokpost.com/world/3134368/typhoon-moves-into-south-china-sea-after-pounding-philippines",
+   "title": "Bangkok Post - Typhoon moves into South China Sea after pounding Philippines",
+   "date": "NA",
+   "src": "S9_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.aljazeera.com/amp/news/2019/1/23/flooding-in-mozambique-as-tropical-cyclone-desmond-makes-landfall",
+   "title": "Flooding in Mozambique as Tropical Cyclone Desmond makes landfall Climate Crisis News Al Jazeera",
+   "src": "S9_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.aljazeera.com/news/2019/1/23/flooding-in-mozambique-as-tropical-cyclone-desmond-makes-landfall",
+   "title": "Flooding in Mozambique as Tropical Cyclone Desmond makes landfall Climate Crisis News Al Jazeera",
+   "src": "S9_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.sapeople.com/news/page/889/",
+   "title": "News - Page 889 of 2761 - SAPeople",
+   "src": "S9_0",
+   "status": "no video/unavailable"
+  }
+ ],
+ "hits": [
+  {
+   "url": "https://www.youtube.com/watch?app=desktop&v=JppzHaHZRO0",
+   "title": "pozhiyoor Thengapattanam cyclone tauktae live tracking nature destroyed videos sea waves dangerous - YouTube",
+   "date": "20210515",
+   "src": "S9_1",
+   "status": "checked",
+   "match": true,
+   "consistent": 36,
+   "max_inliers": 269,
+   "png": "evidence/rev_S9_810697.png",
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=Yg2XPCvDjlE",
+   "title": "Heavy rain in kerala kollam alappad panchayath - YouTube",
+   "date": "20210515",
+   "src": "S9_1",
+   "status": "checked",
+   "match": true,
+   "consistent": 48,
+   "max_inliers": 299,
+   "png": "evidence/rev_S9_724163.png",
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=U472wfLXWp0",
+   "title": "Keral Face Cyclone Tauktae - YouTube",
+   "date": "20210515",
+   "src": "S9_1",
+   "status": "checked",
+   "match": true,
+   "consistent": 48,
+   "max_inliers": 254,
+   "png": "evidence/rev_S9_437270.png",
+   "is_truth": false
+  }
+ ]
+}

@@ -1,0 +1,212 @@
+{
+ "case": "S2",
+ "n_cands": 59,
+ "n_video": 15,
+ "results": [
+  {
+   "url": "https://www.youtube.com/watch?app=desktop&v=TEndZ368It8",
+   "title": "Greenland Discovery Shows Ice Vulnerable to Rapid Melt - YouTube",
+   "date": "20210315",
+   "src": "S2_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 1,
+   "max_inliers": 23,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.tiktok.com/discover/what-happened-when-the-ice-sheet-collapsed-and-reached-the-game-dock-river",
+   "title": "What Happened When The Ice Sheet Collapsed and Reached The Game Dock River TikTok",
+   "src": "S2_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.tiktok.com/discover/emergency-response-to-glacier-collapse",
+   "title": "Emergency Response to Glacier Collapse TikTok",
+   "src": "S2_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=-GU8BpZg648",
+   "title": "Giant Calving at Helheim Glacier 2022 - YouTube",
+   "date": "20220810",
+   "src": "S2_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=VBmwKw4vRY0",
+   "title": "Freezing water in Arctic Ocean - YouTube",
+   "date": "20171222",
+   "src": "S2_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=ruRAykr55qE",
+   "title": "\u041e\u0442 \u0410\u043d\u0442\u0430\u0440\u043a\u0442\u0438\u0434\u044b \u043e\u0442\u043a\u043e\u043b\u043e\u043b\u0441\u044f \u0430\u0439\u0441\u0431\u0435\u0440\u0433 \u0440\u0430\u0437\u043c\u0435\u0440\u043e\u043c \u0441 \u0427\u0438\u043a\u0430\u0433\u043e - \u0442\u043e, \u0447\u0442\u043e \u0441\u043a\u0440\u044b\u0432\u0430\u043b\u043e\u0441\u044c \u043f\u043e\u0434 \u043d\u0438\u043c, \u0443\u0436\u0430\u0441\u0430\u0435\u0442 - YouTube",
+   "date": "20260727",
+   "src": "S2_0",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=lurskL9DBTs",
+   "title": "Burn, burqa, burn! - YouTube",
+   "date": "20160914",
+   "src": "S2_1",
+   "status": "checked",
+   "match": false,
+   "consistent": 1,
+   "max_inliers": 17,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=XQBLfFp-e0I",
+   "title": "iPhone 'thief' arraigned - New York Post - YouTube",
+   "date": "20120727",
+   "src": "S2_1",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=B1zZIRp6oMU",
+   "title": "Giant Flash flood in Iceland - YouTube",
+   "date": "20170911",
+   "src": "S2_1",
+   "status": "checked",
+   "match": false,
+   "consistent": 1,
+   "max_inliers": 18,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=xfXwmzzozw8",
+   "title": "Iceland - YouTube",
+   "date": "20200323",
+   "src": "S2_2",
+   "status": "download failed"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=04UU6SZNxSk",
+   "title": "NORDIC MOON Luminous Promo720p - YouTube",
+   "date": "20190410",
+   "src": "S2_2",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=9e_1IbeirjE",
+   "title": "\u041c\u0430\u0433\u0438\u044f \u0418\u0441\u043b\u0430\u043d\u0434\u0438\u0438 - YouTube",
+   "date": "20190226",
+   "src": "S2_2",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.tiktok.com/@jul1973katan/video/7614404079065894164",
+   "title": "\u0418\u0441\u043b\u0430\u043d\u0434\u0438\u044f TikTok",
+   "date": "20260307",
+   "src": "S2_2",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=V4HNmUkTweE&app=desktop",
+   "title": "Patagonia - Ice Trek on Viedma Glacier / Patagonya - Viedma Buzulunda Y\u00fcr\u00fcy\u00fc\u015f - YouTube",
+   "date": "20120102",
+   "src": "S2_2",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.freepik.com/videos/climate-change-crisis",
+   "title": "Climate change crisis Videos - HD and 4K to download Freepik",
+   "src": "S2_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.freepik.com/videos/mitigate-global-warming",
+   "title": "Mitigate global warming Videos - HD and 4K to download Freepik",
+   "src": "S2_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://vk.ru/clip584015149_456272285",
+   "title": "\ud83d\ude81 Un h\u00e9licopt\u00e8re de la Chine a atteint l'endroit o\u00f9 le glacier s'\u00e9tait \u00e9cras\u00e9, et l'eau qui en sortait a caus\u00e9 une d\u00e9va",
+   "src": "S2_0",
+   "date": "20260829",
+   "status": "later than query"
+  },
+  {
+   "url": "https://nl.pinterest.com/pin/take-me-on-a-helicopter-ride-amazingview-helicopterride-icemountains-in-2024--324188873193546323/",
+   "title": "\ud83e\uddca Take me on a helicopter ride! \ud83d\ude81 \ud83c\udfd4 #amazingview #helicopterride #icemountains in 2024",
+   "date": "20240216",
+   "src": "S2_0",
+   "status": "download failed"
+  },
+  {
+   "url": "https://www.pinterest.com/pin/helicopter-ride-over-ice-mountains--324188873193546323/",
+   "title": "\ud83e\uddca Helicopter Ride over Ice Mountains \ud83d\ude81 \ud83c\udfd4 Mountain helicopter ride, Iceland drone wallpaper, Iceland drone photos",
+   "date": "20240216",
+   "src": "S2_0",
+   "status": "download failed"
+  },
+  {
+   "url": "https://ru.pinterest.com/pin/helicopter-ride-over-ice-mountains--324188873193546323/",
+   "title": "\ud83e\uddca Helicopter Ride over Ice Mountains \ud83d\ude81 \ud83c\udfd4 Mountain helicopter ride, Iceland drone wallpaper, Iceland drone photos",
+   "date": "20240216",
+   "src": "S2_0",
+   "status": "download failed"
+  },
+  {
+   "url": "https://gettr.com/post/p251e400d8b",
+   "title": "carbongate on GETTR: Anyone with any knowledge of environmental science.",
+   "date": "20220810",
+   "src": "S2_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://poketube.fun/download?v=-GU8BpZg648",
+   "title": "Poke Download Video",
+   "src": "S2_0",
+   "status": "no video/unavailable"
+  }
+ ],
+ "hits": []
+}

@@ -1,0 +1,151 @@
+[
+ {
+  "a": "ig_leigh",
+  "b": "yt_ie_nalagarh",
+  "verdict": false,
+  "consistent": 1,
+  "max_inliers": 20,
+  "n_pairs": 1,
+  "best_phash_dist": 18,
+  "png": "evidence/neg_ig_leigh__yt_ie_nalagarh.png"
+ },
+ {
+  "a": "ig_sainj",
+  "b": "ig_pak2022",
+  "verdict": false,
+  "consistent": 0,
+  "max_inliers": 0,
+  "n_pairs": 0,
+  "best_phash_dist": 18
+ },
+ {
+  "a": "ig_viral_italy",
+  "b": "ig_dharali_accu",
+  "verdict": false,
+  "consistent": 0,
+  "max_inliers": 0,
+  "n_pairs": 0,
+  "best_phash_dist": 18
+ },
+ {
+  "a": "yt_ie_nalagarh",
+  "b": "yt_sun_italy",
+  "verdict": false,
+  "consistent": 0,
+  "max_inliers": 0,
+  "n_pairs": 0,
+  "best_phash_dist": 16
+ },
+ {
+  "a": "x_iambmane",
+  "b": "yt_croc",
+  "verdict": false,
+  "consistent": 1,
+  "max_inliers": 15,
+  "n_pairs": 1,
+  "best_phash_dist": 16,
+  "png": "evidence/neg_x_iambmane__yt_croc.png"
+ },
+ {
+  "a": "yts_nepal_vanTV",
+  "b": "yts_viral_nalagarh",
+  "verdict": false,
+  "consistent": 0,
+  "max_inliers": 0,
+  "n_pairs": 0,
+  "best_phash_dist": 18
+ },
+ {
+  "a": "yt_dawn",
+  "b": "yt_tauktae1",
+  "verdict": false,
+  "consistent": 0,
+  "max_inliers": 0,
+  "n_pairs": 0,
+  "best_phash_dist": 16
+ },
+ {
+  "a": "yt_hum",
+  "b": "yts_sainj",
+  "verdict": false,
+  "consistent": 0,
+  "max_inliers": 0,
+  "n_pairs": 0,
+  "best_phash_dist": 18
+ },
+ {
+  "a": "ig_wayanad_el",
+  "b": "yt_tribune_nalagarh",
+  "verdict": false,
+  "consistent": 1,
+  "max_inliers": 15,
+  "n_pairs": 1,
+  "best_phash_dist": 18,
+  "png": "evidence/neg_ig_wayanad_el__yt_tribune_nalagarh.png"
+ },
+ {
+  "a": "yt_leigh",
+  "b": "ig_viral_italy",
+  "verdict": false,
+  "consistent": 1,
+  "max_inliers": 16,
+  "n_pairs": 1,
+  "best_phash_dist": 18,
+  "png": "evidence/neg_yt_leigh__ig_viral_italy.png"
+ },
+ {
+  "a": "ig_pak2022",
+  "b": "yt_sun_italy",
+  "verdict": false,
+  "consistent": 0,
+  "max_inliers": 0,
+  "n_pairs": 0,
+  "best_phash_dist": 16
+ },
+ {
+  "a": "yts_ajesh_buddha",
+  "b": "ig_dharali_accu",
+  "verdict": false,
+  "consistent": 0,
+  "max_inliers": 0,
+  "n_pairs": 0,
+  "best_phash_dist": 16
+ },
+ {
+  "a": "x_dmuppavarapu",
+  "b": "yt_dawn",
+  "verdict": false,
+  "consistent": 1,
+  "max_inliers": 16,
+  "n_pairs": 1,
+  "best_phash_dist": 18,
+  "png": "evidence/neg_x_dmuppavarapu__yt_dawn.png"
+ },
+ {
+  "a": "yt_tauktae2",
+  "b": "yt_wayanad_el",
+  "verdict": false,
+  "consistent": 0,
+  "max_inliers": 0,
+  "n_pairs": 0,
+  "best_phash_dist": 16
+ },
+ {
+  "a": "ig_dharali_accu",
+  "b": "yts_sainj",
+  "verdict": false,
+  "consistent": 0,
+  "max_inliers": 0,
+  "n_pairs": 0,
+  "best_phash_dist": 16
+ },
+ {
+  "a": "yt_hum",
+  "b": "yt_ie_nalagarh",
+  "verdict": false,
+  "consistent": 0,
+  "max_inliers": 0,
+  "n_pairs": 0,
+  "best_phash_dist": 16
+ }
+]

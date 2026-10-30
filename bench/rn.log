@@ -1,0 +1,26 @@
+{'a': 'ig_leigh', 'b': 'yt_ie_nalagarh', 'verdict': False, 'consistent': 1, 'max_inliers': 20, 'n_pairs': 1, 'best_phash_dist': 18, 'png': 'evidence/neg_ig_leigh__yt_ie_nalagarh.png'}
+{'a': 'ig_sainj', 'b': 'ig_pak2022', 'verdict': False, 'consistent': 0, 'max_inliers': 0, 'n_pairs': 0, 'best_phash_dist': 18}
+{'a': 'ig_viral_italy', 'b': 'ig_dharali_accu', 'verdict': False, 'consistent': 0, 'max_inliers': 0, 'n_pairs': 0, 'best_phash_dist': 18}
+{'a': 'yt_ie_nalagarh', 'b': 'yt_sun_italy', 'verdict': False, 'consistent': 0, 'max_inliers': 0, 'n_pairs': 0, 'best_phash_dist': 16}
+{'a': 'x_iambmane', 'b': 'yt_croc', 'verdict': False, 'consistent': 1, 'max_inliers': 15, 'n_pairs': 1, 'best_phash_dist': 16, 'png': 'evidence/neg_x_iambmane__yt_croc.png'}
+{'a': 'yts_nepal_vanTV', 'b': 'yts_viral_nalagarh', 'verdict': False, 'consistent': 0, 'max_inliers': 0, 'n_pairs': 0, 'best_phash_dist': 18}
+{'a': 'yt_dawn', 'b': 'yt_tauktae1', 'verdict': False, 'consistent': 0, 'max_inliers': 0, 'n_pairs': 0, 'best_phash_dist': 16}
+{'a': 'yt_hum', 'b': 'yts_sainj', 'verdict': False, 'consistent': 0, 'max_inliers': 0, 'n_pairs': 0, 'best_phash_dist': 18}
+{'a': 'ig_wayanad_el', 'b': 'yt_tribune_nalagarh', 'verdict': False, 'consistent': 1, 'max_inliers': 15, 'n_pairs': 1, 'best_phash_dist': 18, 'png': 'evidence/neg_ig_wayanad_el__yt_tribune_nalagarh.png'}
+{'a': 'yt_leigh', 'b': 'ig_viral_italy', 'verdict': False, 'consistent': 1, 'max_inliers': 16, 'n_pairs': 1, 'best_phash_dist': 18, 'png': 'evidence/neg_yt_leigh__ig_viral_italy.png'}
+{'a': 'ig_pak2022', 'b': 'yt_sun_italy', 'verdict': False, 'consistent': 0, 'max_inliers': 0, 'n_pairs': 0, 'best_phash_dist': 16}
+{'a': 'yts_ajesh_buddha', 'b': 'ig_dharali_accu', 'verdict': False, 'consistent': 0, 'max_inliers': 0, 'n_pairs': 0, 'best_phash_dist': 16}
+{'a': 'x_dmuppavarapu', 'b': 'yt_dawn', 'verdict': False, 'consistent': 1, 'max_inliers': 16, 'n_pairs': 1, 'best_phash_dist': 18, 'png': 'evidence/neg_x_dmuppavarapu__yt_dawn.png'}
+{'a': 'yt_tauktae2', 'b': 'yt_wayanad_el', 'verdict': False, 'consistent': 0, 'max_inliers': 0, 'n_pairs': 0, 'best_phash_dist': 16}
+{'a': 'ig_dharali_accu', 'b': 'yts_sainj', 'verdict': False, 'consistent': 0, 'max_inliers': 0, 'n_pairs': 0, 'best_phash_dist': 16}
+{'a': 'yt_hum', 'b': 'yt_ie_nalagarh', 'verdict': False, 'consistent': 0, 'max_inliers': 0, 'n_pairs': 0, 'best_phash_dist': 16}
+{'src': 'yt_leigh', 'variant': 'crop70', 'verdict': True, 'consistent': 36, 'max_inliers': 283, 'flip': 0, 'best_phash_dist': 14, 'png': 'evidence/var_yt_leigh_crop70.png'}
+{'src': 'yt_leigh', 'variant': 'mirror', 'verdict': True, 'consistent': 48, 'max_inliers': 362, 'flip': 1, 'best_phash_dist': 0, 'png': 'evidence/var_yt_leigh_mirror.png'}
+{'src': 'yt_leigh', 'variant': 'overlay', 'verdict': True, 'consistent': 41, 'max_inliers': 251, 'flip': 0, 'best_phash_dist': 2, 'png': 'evidence/var_yt_leigh_overlay.png'}
+{'src': 'yt_leigh', 'variant': 'lowres', 'verdict': True, 'consistent': 42, 'max_inliers': 363, 'flip': 0, 'best_phash_dist': 0, 'png': 'evidence/var_yt_leigh_lowres.png'}
+{'src': 'yt_leigh', 'variant': 'combo', 'verdict': True, 'consistent': 41, 'max_inliers': 295, 'flip': 1, 'best_phash_dist': 12, 'png': 'evidence/var_yt_leigh_combo.png'}
+{'src': 'ig_sainj', 'variant': 'crop70', 'verdict': True, 'consistent': 48, 'max_inliers': 193, 'flip': 0, 'best_phash_dist': 18, 'png': 'evidence/var_ig_sainj_crop70.png'}
+{'src': 'ig_sainj', 'variant': 'mirror', 'verdict': True, 'consistent': 48, 'max_inliers': 352, 'flip': 1, 'best_phash_dist': 0, 'png': 'evidence/var_ig_sainj_mirror.png'}
+{'src': 'ig_sainj', 'variant': 'overlay', 'verdict': True, 'consistent': 48, 'max_inliers': 291, 'flip': 0, 'best_phash_dist': 4, 'png': 'evidence/var_ig_sainj_overlay.png'}
+{'src': 'ig_sainj', 'variant': 'lowres', 'verdict': True, 'consistent': 48, 'max_inliers': 269, 'flip': 0, 'best_phash_dist': 0, 'png': 'evidence/var_ig_sainj_lowres.png'}
+{'src': 'ig_sainj', 'variant': 'combo', 'verdict': True, 'consistent': 48, 'max_inliers': 204, 'flip': 1, 'best_phash_dist': 14, 'png': 'evidence/var_ig_sainj_combo.png'}

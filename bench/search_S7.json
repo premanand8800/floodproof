@@ -1,0 +1,124 @@
+{
+ "case": "S7",
+ "query": "yt_wayanad_el",
+ "qdate": "2024-04-03",
+ "plan": {
+  "scene": "Heavy monsoon rain in lush green forested hills, filmed from inside a bamboo-and-thatch roadside shelter behind a bamboo railing. A herd of 5-6 Asian elephants emerges from misty sal-like forest across a paved road with metal guardrail and runs past the camera left to right. Thatched bamboo roof structure with Buddhist prayer flags in green, red, white, blue hanging in foreground. No people, vehicles, watermarks clearly visible. Wet, overcast monsoon conditions, rural forested highway setting.",
+  "visible_text": [],
+  "guess_location": "Himalayan foothill / Terai belt likely Nepal (e.g. Chitwan-Sauraha area) or Bhutan / Northeast India border, not Wayanad Kerala, based on bamboo tea-shop architecture and Buddhist prayer flags",
+  "queries": [
+   "elephant herd running across road heavy rain video bamboo shelter",
+   "elephants crossing road in heavy rain forest original video",
+   "herd of elephants running in rain prayer flags tea shop",
+   "elephants running monsoon roadside shop old viral video",
+   "\u0935\u0930\u094d\u0937\u093e\u092e\u093e \u0939\u093e\u0924\u094d\u0924\u0940\u0915\u094b \u092c\u0925\u093e\u0928 \u0938\u0921\u0915 \u092a\u093e\u0930 \u0917\u0930\u0947\u0915\u094b \u092d\u093f\u0921\u093f\u092f\u094b",
+   "\u092c\u093e\u0930\u093f\u0936 \u092e\u0947\u0902 \u0939\u093e\u0925\u093f\u092f\u094b\u0902 \u0915\u093e \u091d\u0941\u0902\u0921 \u0938\u0921\u093c\u0915 \u092a\u093e\u0930 \u0915\u0930\u0924\u0947 \u0939\u0941\u090f \u0935\u0940\u0921\u093f\u092f\u094b \u091c\u0902\u0917\u0932",
+   "\u09ac\u09f0\u09b7\u09c1\u09a3\u09a4 \u09b9\u09be\u09a4\u09c0\u09f0 \u099c\u09be\u0995\u09c7 \u09f0\u09be\u09b8\u09cd\u09a4\u09be \u09aa\u09be\u09f0 \u0995\u09f0\u09be \u09ad\u09be\u0987\u09f0\u09c7\u09b2 \u09ad\u09bf\u09a1\u09bf\u0985",
+   "\u0e42\u0e02\u0e25\u0e07\u0e0a\u0e49\u0e32\u0e07\u0e27\u0e34\u0e48\u0e07\u0e02\u0e49\u0e32\u0e21\u0e16\u0e19\u0e19\u0e15\u0e2d\u0e19\u0e1d\u0e19\u0e15\u0e01\u0e2b\u0e19\u0e31\u0e01 \u0e04\u0e25\u0e34\u0e1b\u0e40\u0e14\u0e34\u0e21"
+  ]
+ },
+ "n_cands": 54,
+ "results": [
+  {
+   "url": "https://www.youtube.com/watch?v=ou-pXmH9noM",
+   "date": "20230619",
+   "status": "checked",
+   "match": false,
+   "consistent": 1,
+   "max_inliers": 16,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=-6-MBVHwx5Q",
+   "date": "20250523",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/shorts/3Mi3oVSQTcs",
+   "date": "20260924",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=ZsPIjsQ9Jkc",
+   "date": "20210909",
+   "status": "checked",
+   "match": false,
+   "consistent": 1,
+   "max_inliers": 15,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=r2cLH3wI0Ys",
+   "date": "20240919",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.youtube.com/shorts/4S1KAVEL3y0",
+   "date": "20260919",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.tiktok.com/@survivaljunkie0/video/7608944345395268877",
+   "title": "BUSHCRAFT: Building a Bamboo Shelter in a Heavy Thunderstorm \u26c8\ufe0f part 1... | TikTok",
+   "status": "unavailable"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=SBmw6W60AuY",
+   "date": "20260112",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=4zxAxbBuz8s",
+   "title": "Wildlife | Episode 5: Elephants of Africa & Asia | Free Documentary Nature",
+   "status": "unavailable"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=sFvGcG9l508",
+   "date": "20231103",
+   "status": "checked",
+   "match": false,
+   "consistent": 1,
+   "max_inliers": 24,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=YJyo-bfBAJE",
+   "date": "20260717",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=oDJE7B6kBaA",
+   "date": "20260311",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=QkZYQkIt4PY&vl=en",
+   "date": "20260424",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=gkSiunT6j3A",
+   "date": "20221021",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=fNzljQ5xtdA",
+   "date": "20261019",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=9lPKTYODw9Q",
+   "date": "20250902",
+   "status": "later than query (skipped)"
+  }
+ ],
+ "hit_true": false,
+ "hit_earlier": false,
+ "hits": [],
+ "cost_muse": 0.0090005,
+ "tavily_credits": 24,
+ "sec": 184
+}

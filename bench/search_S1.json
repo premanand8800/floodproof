@@ -1,0 +1,133 @@
+{
+ "case": "S1",
+ "query": "x_iambmane",
+ "qdate": "2026-08-26",
+ "plan": {
+  "scene": "Shot from open door of a helicopter (interior headrest with GelPro logo visible) flying over a vast grey debris-covered glacier with blue ice, crevasses, and milky glacial meltwater. Ground-level shots show a violent grey glacial river carrying blue-green ice chunks past a dark ice cliff / ice cave, and water gushing through a narrow glacier canyon. No buildings, villages, roads, Himalayan terrain, vehicles (except helicopter), people, or South Asian signs. Overcast daylight, summer melt season. English-language caption overlays in casual social-media font. No Nepali, Tibetan, or Chinese script, architecture, or vegetation visible. Terrain and ice style inconsistent with Nepal-Tibet, consistent with Alaska / Iceland subpolar glacier.",
+  "visible_text": [
+   "Let's go see where the water is going",
+   "The lake drains in about 36 hours, with so much force it breaks and drags ice chunks along with it from deep under the glacier",
+   "GelPro"
+  ],
+  "guess_location": "Alaska, USA - debris-covered glacier glacial lake outburst (likely Mendenhall Glacier / Suicide Basin near Juneau or Knik Glacier area), not Nepal-Tibet",
+  "queries": [
+   "\"Let's go see where the water is going\" glacier",
+   "\"The lake drains in about 36 hours\" glacier",
+   "helicopter glacier lake drains ice chunks video",
+   "Alaska Suicide Basin lake drain helicopter video",
+   "Mendenhall Glacier glacial lake outburst flood helicopter tour",
+   "Alaska glacier j\u00f6kulhlaup drains 36 hours TikTok Instagram",
+   "glacier flood breaks drags ice chunks from deep under glacier original video",
+   "helicopter tour glacier water gushing crevasse lake drain Alaska Iceland"
+  ]
+ },
+ "n_cands": 59,
+ "results": [
+  {
+   "url": "https://www.youtube.com/watch?v=Efvc-QJMFFs",
+   "date": "20250729",
+   "status": "checked",
+   "match": false,
+   "consistent": 1,
+   "max_inliers": 22,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=OpFLx-rBeUU",
+   "date": "20260206",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=VvVX1b3MpRo",
+   "date": "20230327",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=s9D-NgoTJQ4",
+   "date": "20201220",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=_sNWzVwN4h4",
+   "date": "20240404",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=_sNWzVwN4h4&xstg=CAMSBhUD-7L2Hw%3D%3D",
+   "date": "20240404",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.instagram.com/reel/DdE7rLDjfA0",
+   "date": "20260909",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=iORpmIrHYJM",
+   "date": "20231005",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=wJo8m4oKc6k",
+   "date": "20150615",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=h3Ff-AFth5g",
+   "date": "20250806",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=FfYURM1Ywss",
+   "date": "20231209",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=NpZQOFJm9OE",
+   "date": "20260826",
+   "status": "checked",
+   "match": false,
+   "consistent": 1,
+   "max_inliers": 28,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=UATFvTUP344",
+   "date": "20250418",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.instagram.com/reel/DeAe43DSFAb",
+   "date": "20261002",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.instagram.com/reel/DeMz59utV8j",
+   "date": "20261007",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.instagram.com/reel/Dccgjbbt7ox",
+   "date": "20260825",
+   "status": "download failed"
+  }
+ ],
+ "hit_true": false,
+ "hit_earlier": false,
+ "hits": [],
+ "cost_muse": 0.00821425,
+ "tavily_credits": 24,
+ "sec": 264
+}

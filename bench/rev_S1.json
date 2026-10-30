@@ -1,0 +1,83 @@
+{
+ "case": "S1",
+ "n_cands": 54,
+ "n_video": 2,
+ "results": [
+  {
+   "url": "https://www.youtube.com/watch?v=QKNhu9RH_ZE",
+   "title": "Tourists flee huge wave after glacier collapses in Iceland - YouTube",
+   "date": "20190404",
+   "src": "S1_1",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=H78Q26FMCe0",
+   "title": "EARTH A Fearless Planet 1080p FullHD Amazing Documentary - YouTube",
+   "date": "20140823",
+   "src": "S1_1",
+   "status": "too long"
+  },
+  {
+   "url": "https://m.mamul.am/ru/news/369224",
+   "title": "\u041a\u0430\u0442\u0430\u0441\u0442\u0440\u043e\u0444\u0430 \u0432 \u041d\u0435\u043f\u0430\u043b\u0435. \u041a\u0430\u043a \u0441\u0445\u043e\u0434 \u043b\u0435\u0434\u043d\u0438\u043a\u0430 \u043f\u043e\u0440\u043e\u0434\u0438\u043b \u0441\u0442\u0435\u043d\u0443 \"\u0436\u0438\u0434\u043a\u043e\u0433\u043e \u0431\u0435\u0442\u043e\u043d\u0430\" (\u0432\u0438\u0434\u0435\u043e)",
+   "src": "S1_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://m.mamul.am/ru/news/368930/p1",
+   "title": "#AlHadath: \u0421\u0428\u0410 \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0438\u043b\u0438 \u0441\u043d\u044f\u0442\u044c \u0441\u0430\u043d\u043a\u0446\u0438\u0438 \u0441 \u0418\u0440\u0430\u043d\u0430 \u0432 \u043e\u0431\u043c\u0435\u043d \u043d\u0430 \u043e\u0442\u043a\u0440\u044b\u0442\u0438\u0435 \u041e\u0440\u043c\u0443\u0437\u0430",
+   "src": "S1_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://mamul.am/ru/news/369224",
+   "title": "\u041a\u0430\u0442\u0430\u0441\u0442\u0440\u043e\u0444\u0430 \u0432 \u041d\u0435\u043f\u0430\u043b\u0435. \u041a\u0430\u043a \u0441\u0445\u043e\u0434 \u043b\u0435\u0434\u043d\u0438\u043a\u0430 \u043f\u043e\u0440\u043e\u0434\u0438\u043b \u0441\u0442\u0435\u043d\u0443 \"\u0436\u0438\u0434\u043a\u043e\u0433\u043e \u0431\u0435\u0442\u043e\u043d\u0430\" (\u0432\u0438\u0434\u0435\u043e)",
+   "src": "S1_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://misteriya.com/video/32944-razlom-aysberga.html",
+   "title": "\u0420\u0430\u0437\u043b\u043e\u043c \u0430\u0439\u0441\u0431\u0435\u0440\u0433\u0430 \" \u041c\u0438\u0441\u0442\u0435\u0440\u0438\u044f",
+   "date": "NA",
+   "src": "S1_0",
+   "status": "download failed"
+  },
+  {
+   "url": "https://misteriya.com/page/226/",
+   "title": "\u041c\u0438\u0441\u0442\u0435\u0440\u0438\u044f \" \u0421\u0442\u0440\u0430\u043d\u0438\u0446\u0430 226",
+   "date": "20151113",
+   "src": "S1_0",
+   "status": "download failed"
+  },
+  {
+   "url": "https://trinixy.ru/121415-razlom-aysberga.html",
+   "title": "\u0420\u0430\u0437\u043b\u043e\u043c \u0430\u0439\u0441\u0431\u0435\u0440\u0433\u0430 \" \u0422\u0440\u0438\u043d\u0438\u043a\u0441\u0438",
+   "date": "20120721",
+   "src": "S1_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://lisagermany.com/hiking-greenland-russell-glacier/greenland-russell-glacier-1050/",
+   "title": "Greenland-Russell-Glacier-ice-cave - Lisa Germany",
+   "src": "S1_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://ogrose.substack.com/p/the-water-falls",
+   "title": "The Water Falls - O.G. Rose",
+   "src": "S1_0",
+   "status": "no video/unavailable"
+  }
+ ],
+ "hits": []
+}

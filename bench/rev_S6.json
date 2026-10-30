@@ -1,0 +1,131 @@
+{
+ "case": "S6",
+ "n_cands": 58,
+ "n_video": 7,
+ "results": [
+  {
+   "url": "https://www.youtube.com/watch?v=i4LOMDyr9mI",
+   "title": "Pakistan Flood 2022 II Swat destruction (Part 2) - YouTube",
+   "date": "20220904",
+   "src": "S6_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 1,
+   "max_inliers": 17,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=mJn8It-V_R4",
+   "title": "Flood in India 2023,Uttarakhand,delhi,Himachal Pradesh, Punjab flood Pakistani reaction on India - YouTube",
+   "date": "20230725",
+   "src": "S6_0",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=Z1CYjr68L4Y",
+   "title": "AWARD-APR- Addressing Extreme Weather Related Diarrheal Disease Risks in the Asia Pacific Region - YouTube",
+   "date": "20200610",
+   "src": "S6_1",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=q9HWnrI33d8",
+   "title": "Himachal Pradesh Floods Live Many Dead as Monsoon Fury Wreaks Havoc Across India Red Alert Issued - YouTube",
+   "date": "20230710",
+   "src": "S6_1",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=3QebPY0zk6g",
+   "title": "Uttarakhand Weather: \u0909\u0924\u094d\u0924\u0930\u093e\u0916\u0902\u0921 \u0915\u0947 \u0915\u0908 \u091c\u093f\u0932\u094b\u0902 \u092e\u0947\u0902 IMD \u0928\u0947 \u091c\u093e\u0930\u0940 \u0915\u093f\u092f\u093e \u092d\u093e\u0930\u0940 \u092c\u093e\u0930\u093f\u0936 \u0915\u0947 \u0932\u093f\u090f \u0911\u0930\u0947\u0902\u091c \u0905\u0932\u0930\u094d\u091f - YouTube",
+   "date": "20230727",
+   "src": "S6_1",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=dWXzpaCgu5w",
+   "title": "Ek Jhatke me Sab Khatam Hogaya Kullu-Manali Flood2023 Puri Market hi chali gayi - YouTube",
+   "date": "20230715",
+   "src": "S6_2",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=qIeFYJt2sQA",
+   "title": "Uttarakhand flood: House collapses as flash flood in Chamoli - YouTube",
+   "date": "20190812",
+   "src": "S6_2",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.pakistantoday.com.pk/author/usman_torwali",
+   "title": "Usman Torwali - Author - Pakistan Today",
+   "src": "S6_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.pakistantoday.com.pk/2024/09/05/threat-to-river-swat",
+   "title": "Threat to River Swat - Pakistan Today",
+   "src": "S6_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://indianexpress.com/article/india/balganga-floods-tehri-garhwal-rain-roads-bridges-damaged-9476950/lite/",
+   "title": "Uttarakhand: Balganga floods parts of Tehri Garhwal after overnight rain; roads, bridges damaged",
+   "src": "S6_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://indianexpress.com/article/cities/chennai/tamilians-stuck-north-indian-states-safe-efforts-bring-back-tamil-nadu-minister-kkssr-ramachandran-8830651/lite/",
+   "title": "Tamilians stuck in north Indian states are safe, efforts on to bring them back: Tamil Nadu minister KKSSR Ramachandran C",
+   "date": "NA",
+   "src": "S6_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://github.com/AvansETI/LoraForNepal",
+   "title": "GitHub - AvansETI/LoraForNepal: Proof-of-concept for Lora 2.4GHz Early Warning System for Nepal",
+   "src": "S6_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.livemint.com/news/world/floods-landslides-claim-113-lives-in-nepal-1564316241429.html",
+   "title": "Floods, landslides claim 113 lives in Nepal",
+   "src": "S6_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.livemint.com/news/india/china-gives-india-satellite-data-on-india-s-flood-hit-regions-1564134284283.html",
+   "title": "China gives India satellite data on India's flood-hit regions",
+   "src": "S6_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://golosua.info/mzs-radyt-ukraintsiam-unykaty-podorozhei-do-indii/",
+   "title": "\u041c\u0417\u0421 \u0440\u0430\u0434\u0438\u0442\u044c \u0443\u043a\u0440\u0430\u0457\u043d\u0446\u044f\u043c \u0443\u043d\u0438\u043a\u0430\u0442\u0438 \u043f\u043e\u0434\u043e\u0440\u043e\u0436\u0435\u0439 \u0434\u043e \u0406\u043d\u0434\u0456\u0457 \u0413\u041e\u041b\u041e\u0421 - \u0406\u041d\u0424\u041e",
+   "src": "S6_0",
+   "status": "no video/unavailable"
+  }
+ ],
+ "hits": []
+}

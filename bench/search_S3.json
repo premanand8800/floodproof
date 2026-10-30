@@ -1,0 +1,126 @@
+{
+ "case": "S3",
+ "query": "yts_viral_nalagarh",
+ "qdate": "2025-08-06",
+ "plan": {
+  "scene": "Several young South Asian men in summer clothes (t-shirts, vests, shorts/pants) attempting rope rescue at a wide muddy monsoon-swollen river. Two men stranded on a small temporary sand/mud island in mid-river surrounded by fast brown floodwater. Others on vegetated riverbank holding/pulling long rope, throwing coiled rope. Background dense green trees/forest on far bank, no buildings, vehicles, or signs. Daylight, monsoon/greenery, rural riverbank terrain. Low-res vertical phone video with large crying emoji sticker top-right.",
+  "visible_text": [
+   "\u0927\u0930\u094c\u0932\u0940 \u0917\u093e\u0902\u0935 \u0915\u093e \u090f\u0915 \u0928\u092f\u093e \u0935\u0940\u0921\u093f\u092f\u094b"
+  ],
+  "guess_location": "Dharauli / Dharoli village, North India foothill region (likely Uttarakhand / Himachal Pradesh / UP) - rural monsoon river, not confirmed as Uttarkashi Dharali cloudburst site",
+  "queries": [
+   "\u0927\u0930\u094c\u0932\u0940 \u0917\u093e\u0902\u0935 \u0915\u093e \u090f\u0915 \u0928\u092f\u093e \u0935\u0940\u0921\u093f\u092f\u094b",
+   "\u0927\u0930\u094c\u0932\u0940 \u0917\u093e\u0902\u0935 \u0928\u0926\u0940 \u092e\u0947\u0902 \u092b\u0902\u0938\u0947 \u092f\u0941\u0935\u0915 \u0930\u0947\u0938\u094d\u0915\u094d\u092f\u0942 \u0935\u0940\u0921\u093f\u092f\u094b",
+   "\u0928\u0926\u0940 \u0915\u0947 \u092c\u0940\u091a \u091f\u093e\u092a\u0942 \u092a\u0930 \u092b\u0902\u0938\u0947 \u0926\u094b \u0932\u094b\u0917\u094b\u0902 \u0915\u094b \u0930\u0938\u094d\u0938\u0940 \u0938\u0947 \u092c\u091a\u093e\u092f\u093e",
+   "\u0909\u092b\u0928\u0924\u0940 \u0928\u0926\u0940 \u092e\u0947\u0902 \u092b\u0902\u0938\u0947 \u0932\u094b\u0917\u094b\u0902 \u0915\u093e \u0935\u0940\u0921\u093f\u092f\u094b \u0927\u0930\u094c\u0932\u0940",
+   "two men stranded on island in flooded river rope rescue India video",
+   "villagers rescue men trapped muddy river with rope monsoon",
+   "Dharoli village river flood rescue video",
+   "flooded river rope rescue viral video original before August 2025"
+  ]
+ },
+ "n_cands": 59,
+ "results": [
+  {
+   "url": "https://www.youtube.com/watch?v=6YUnE_eDWYo",
+   "date": "20250807",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=z9bb6dx3Gr8",
+   "date": "20250813",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=Vs-TNfgvlWk",
+   "date": "20250806",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=IJ5UHi-mDMw",
+   "date": "20250813",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=M1p4HWNQt3I",
+   "date": "20250810",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=D6FvpmjYYtg",
+   "date": "20250810",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.instagram.com/reel/DNFYgwCvmQE",
+   "date": "20250808",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.instagram.com/reel/DNA6br2tsJV",
+   "date": "20250806",
+   "status": "download failed"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=ylSzmF162Ac",
+   "date": "20250805",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=2AzPFQA5PBk",
+   "date": "20250808",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=4Zx7tlHd8uY",
+   "date": "20250808",
+   "status": "later than query (skipped)"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=3oxBzkaL-Y4",
+   "date": "20250805",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=d442L84vO7w",
+   "date": "20240807",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=eAwmis41g4o",
+   "date": "20250806",
+   "status": "too long"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=anKg5YgOgbQ",
+   "date": "20250806",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.instagram.com/reel/DcoFtqsSAFl",
+   "date": "20260829",
+   "status": "later than query (skipped)"
+  }
+ ],
+ "hit_true": false,
+ "hit_earlier": false,
+ "hits": [],
+ "cost_muse": 0.007173,
+ "tavily_credits": 24,
+ "sec": 186
+}

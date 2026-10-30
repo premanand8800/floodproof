@@ -1,0 +1,123 @@
+{
+ "case": "V1",
+ "n_cands": 59,
+ "n_video": 5,
+ "results": [
+  {
+   "url": "https://www.dailymotion.com/video/x9zdueu",
+   "title": "Spain searches for missing woman as Storm Leonardo floods south - video Dailymotion",
+   "date": "20260206",
+   "src": "V1_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.dailymotion.com/video/x9zduk8",
+   "title": "\u0625\u0633\u0628\u0627\u0646\u064a\u0627 \u062a\u0648\u0627\u0635\u0644 \u0627\u0644\u0628\u062d\u062b \u0639\u0646 \u0633\u064a\u062f\u0629 \u0645\u0641\u0642\u0648\u062f\u0629 \u0645\u0639 \u0641\u064a\u0636\u0627\u0646\u0627\u062a \u0627\u0644\u0639\u0627\u0635\u0641\u0629 \u0644\u064a\u0648\u0646\u0627\u0631\u062f\u0648 \u062c\u0646\u0648\u0628\u0627 - \u0641\u064a\u062f\u064a\u0648 Dailymotion",
+   "date": "20260206",
+   "src": "V1_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=cojfeI9cVLg",
+   "title": "Midnight Air Taxi Flight Test Milestone: 7,000 Feet Altitude - YouTube",
+   "date": "20250922",
+   "src": "V1_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=YjwnF-SyHg0",
+   "title": "May 18, 2021 - YouTube",
+   "date": "20210518",
+   "src": "V1_1",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.tiktok.com/discover/what-happened-when-the-ice-sheet-collapsed-and-reached-the-game-dock-river",
+   "title": "What Happened When The Ice Sheet Collapsed and Reached The Game Dock River TikTok",
+   "src": "V1_2",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.trthaber.com/haber/savunma/gokbey-yuksek-uctu-maksimum-servis-irtifasina-ulasildi-811091.html",
+   "title": "G\u00d6KBEY 'y\u00fcksek' u\u00e7tu: Maksimum servis irtifas\u0131na ula\u015f\u0131ld\u0131 - Son Dakika Haberleri",
+   "date": "20231108",
+   "src": "V1_0",
+   "status": "download failed"
+  },
+  {
+   "url": "https://www.yuzde100yerli.com/en/the-domestically-produced-gokbey-helicopter-is-ready-for-2024-its-ability-to-fly-at-an-altitude-of-20000-feet-with-a-single-engine-has-been-proven/",
+   "title": "The domestically produced G\u00d6KBEY helicopter is ready for 2024: its ability to fly at an altitude of 20,000 feet with a s",
+   "date": "20231108",
+   "src": "V1_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.yuzde100yerli.com/yerli-ve-milli-helikopter-gokbey-2024e-hazir-20-bin-feet-yukseklik-ve-tek-motorla-ucus-kabiliyeti-kanitlandi/?noamp=mobile&amp=",
+   "title": "Yerli ve milli helikopter G\u00d6KBEY, 2024\u2019e haz\u0131r: 20 bin feet y\u00fckseklik ve tek motorla u\u00e7u\u015f kabiliyeti kan\u0131tland\u0131",
+   "date": "20231108",
+   "src": "V1_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.aerotime.aero/articles/archer-aviation-midnight-evtol-highest-altitude",
+   "title": "Archer flies Midnight eVTOL aircraft at record altitude",
+   "src": "V1_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://futuretransport-news.com/archers-midnight-evtol-reaches-record-altitude-in-testing/",
+   "title": "Archer\u2019s Midnight eVTOL Reaches Record Altitude in Testing Future Transport-News",
+   "src": "V1_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://rtnk.me/drustvo/helikopter-iz-madjarske-gasio-vatru-u-danilovgradu/",
+   "title": "Helikopter iz Ma\u0111arske gasio vatru u Danilovgradu - Radio-Televizija Nik\u0161i\u0107",
+   "src": "V1_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://en.vijesti.me/news-b/society/770636/A-helicopter-from-Hungary-extinguished-a-fire-in-Danilovgrad",
+   "title": "A helicopter from Hungary extinguished a fire in Danilovgrad",
+   "src": "V1_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://en.vijesti.me/news-b/society/770647/suma-u-studenom-i-dalje-gori-velika-prirodna-katastrofa",
+   "title": "The forest in Studeno is still burning: \"A major natural disaster\"",
+   "src": "V1_0",
+   "status": "no video/unavailable"
+  }
+ ],
+ "hits": []
+}

@@ -1,0 +1,145 @@
+{
+ "case": "S5",
+ "n_cands": 34,
+ "n_video": 8,
+ "results": [
+  {
+   "url": "https://www.youtube.com/watch?v=xxt6GMtJLGw",
+   "title": "Himachal Pradesh: \u092d\u093e\u0930\u0940 \u092c\u093e\u0930\u093f\u0936 \u0915\u0947 \u091a\u0932\u0924\u0947 \u0915\u0908 \u091c\u0917\u0939 Landslide \u0938\u0947 \u0924\u092c\u093e\u0939\u0940 Solan Sirmaur Shimla Kinnaur - YouTube",
+   "src": "S5_1",
+   "date": "20250902",
+   "status": "later than query"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=nBzW38peHFo",
+   "title": "Monsoon 2025: \u092a\u0939\u093e\u0921\u093c\u094b\u0902 \u092a\u0930 \u0915\u0941\u0926\u0930\u0924 \u0915\u093e \u0915\u0939\u0930! Himachal Pradesh-Uttarakhand \u092e\u0947\u0902 Flood-Landslide \u0938\u0947 \u0924\u092c\u093e\u0939\u0940 - YouTube",
+   "date": "20250803",
+   "src": "S5_1",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=gcZk94qFP_4",
+   "title": "Breaking News: Uttarakhand \u092e\u0947\u0902 \u092c\u093e\u0930\u093f\u0936 \u0928\u0947 \u092e\u091a\u093e\u0908 \u0924\u092c\u093e\u0939\u0940, \u0938\u093e\u092e\u0928\u0947 \u0906\u0908 \u0921\u0930\u093e\u0928\u0947 \u0935\u093e\u0932\u0940 \u0924\u0938\u094d\u0935\u0940\u0930! Flood Mansoon - YouTube",
+   "date": "20240706",
+   "src": "S5_1",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=3ZhelY26DRM",
+   "title": "\u092c\u093e\u0930\u093f\u0936 \u0928\u0947 Himachal Pradesh, Uttarakhand \u092e\u0947\u0902 \u092e\u091a\u093e\u0908 \u092d\u093e\u0930\u0940 \u0924\u092c\u093e\u0939\u0940, Shimla \u092e\u0947\u0902 Landsliding \u092e\u0947\u0902 \u092a\u093e\u0902\u091a \u0926\u092c\u0947 - YouTube",
+   "date": "20190818",
+   "src": "S5_1",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=aezD0NzpEtU",
+   "title": "Himachal Flash Flood: \u0915\u0930\u094b\u0921\u093c\u094b\u0902 \u0915\u0947 Shirar Resort \u092a\u0930 \u092c\u0930\u0938\u093e Beas River \u0915\u093e \u0915\u0939\u0930; VIDEO \u0939\u0941\u0906 Viral Manali - YouTube",
+   "src": "S5_1",
+   "date": "20250828",
+   "status": "later than query"
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=mN_XB19QLsI",
+   "title": "At least 30 killed in India bus accident in Uttarakhand - YouTube",
+   "date": "20180701",
+   "src": "S5_1",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=4xAik8z_t3U",
+   "title": "Nepal Floods: \u092c\u093e\u0930\u093f\u0936 \u092c\u093e\u095d \u092d\u0942\u0938\u094d\u0916\u0932\u0928, \u0928\u0947\u092a\u093e\u0932 \u092e\u0947\u0902 \u092d\u093e\u0930\u0940 \u0924\u092c\u093e\u0939\u0940 \u0915\u093e \u092e\u0902\u091c\u0930, 5 \u0915\u0940 \u092e\u094c\u0924 25 \u0932\u093e\u092a\u0924\u093e Biparjoy Cyclone - YouTube",
+   "date": "20230619",
+   "src": "S5_2",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  },
+  {
+   "url": "https://www.youtube.com/watch?v=hbq5t8JIZ0w",
+   "title": "Flood Alert: \u092a\u0939\u093e\u095c\u094b\u0902 \u092a\u0930 Landslide, \u092e\u0948\u0926\u093e\u0928\u094b\u0902 \u092e\u0947\u0902 \u092c\u093e\u095d, \u092e\u093e\u0928\u0938\u0942\u0928 \u0928\u0947 \u092e\u091a\u093e\u0908 \u092d\u092f\u093e\u0928\u0915 \u0924\u092c\u093e\u0939\u0940! Haevy Rain IMD - YouTube",
+   "src": "S5_2",
+   "date": "20260824",
+   "status": "later than query"
+  },
+  {
+   "url": "https://www.dailymail.co.uk/news/article-14863471/flooding-heatwave-landslide-europe.html?ico=news%5Eheadlines",
+   "title": "The moment rare 'roll clouds' sweep across Portugal during record heatwave - while in Italy a 'water bomb' kills one per",
+   "date": "NA",
+   "src": "S5_0",
+   "status": "download failed"
+  },
+  {
+   "url": "https://news-pravda.com/world/2024/01/10/254772.html",
+   "title": "Ohio Senator James Vance says Russia produces as much ammunition in a day as the US does in a month - Pravda EN",
+   "src": "S5_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://deutsch.news-pravda.com/switzerland/2025/07/01/415665.html",
+   "title": "Hochwasser am Fluss Frejus in #Italien: Ein Toter - Pravda DE",
+   "src": "S5_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://www.dailymail.com/news/article-14863471/flooding-heatwave-landslide-europe.html",
+   "title": "The moment rare 'roll clouds' sweep across Portugal during record heatwave - while in Italy a 'water bomb' kills one per",
+   "date": "NA",
+   "src": "S5_0",
+   "status": "download failed"
+  },
+  {
+   "url": "https://www.ynet.co.il/news/article/bjrxr811hge",
+   "title": "\"\u05db\u05d9\u05e4\u05ea \u05d4\u05d7\u05d5\u05dd\" \u05d1\u05d0\u05d9\u05e8\u05d5\u05e4\u05d4: 40 \u05de\u05e2\u05dc\u05d5\u05ea \u05d1\u05e4\u05e8\u05d9\u05d6, \u05d0\u05d9\u05d9\u05e4\u05dc \u05e0\u05e1\u05d2\u05e8 \u05d7\u05dc\u05e7\u05d9\u05ea, \u05e9\u05d9\u05d8\u05e4\u05d5\u05df \u05e7\u05d8\u05dc\u05e0\u05d9 \u05d1\u05d0\u05d9\u05d8\u05dc\u05d9\u05d4",
+   "src": "S5_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://ok.ru/group/54277745934400?st.layer.refId1=155585221829440&st.layer.type=4",
+   "title": "\u0413\u0440\u0443\u043f\u043f\u0430 \u0423\u0434\u0438\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043f\u043b\u0430\u043d\u0435\u0442\u0430. \u0432 \u041e\u041a! \u0412\u0441\u0442\u0443\u043f\u0430\u0439, \u0447\u0438\u0442\u0430\u0439, \u043e\u0431\u0449\u0430\u0439\u0441\u044f \u0432 \u041e\u041a (\u041e\u0434\u043d\u043e\u043a\u043b\u0430\u0441\u0441\u043d\u0438\u043a\u0438)!",
+   "src": "S5_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://italy.news-pravda.com/world/2025/07/01/224926.html",
+   "title": "Il fiume Fr\u00e9jus \u00e8 emerso dalle sue rive e ha trasformato la localit\u00e0 italiana in un incubo di fango - Pravda Italia",
+   "src": "S5_0",
+   "status": "no video/unavailable"
+  },
+  {
+   "url": "https://vkvideo.ru/video-21245447_456259719",
+   "title": "\u0412\u0438\u0434\u0435\u043e \u043e\u0442 \u0424\u043e\u0431\u043e\u0441. \u041a\u0430\u0442\u0430\u043a\u043b\u0438\u0437\u043c\u044b \u0438 \u043a\u0430\u0442\u0430\u0441\u0442\u0440\u043e\u0444\u044b \u043f\u0440\u0438\u0440\u043e\u0434\u044b. - \u0412\u0438\u0434\u0435\u043e \u043e\u0442 \u0424\u043e\u0431\u043e\u0441. \u041a\u0430\u0442\u0430\u043a\u043b\u0438\u0437\u043c\u044b \u0438 \u043a\u0430\u0442\u0430\u0441\u0442\u0440\u043e\u0444\u044b \u043f\u0440\u0438\u0440\u043e\u0434\u044b. VK \u0412\u0438\u0434\u0435\u043e",
+   "date": "20240921",
+   "src": "S5_0",
+   "status": "checked",
+   "match": false,
+   "consistent": 0,
+   "max_inliers": 0,
+   "png": null,
+   "is_truth": false
+  }
+ ],
+ "hits": []
+}
