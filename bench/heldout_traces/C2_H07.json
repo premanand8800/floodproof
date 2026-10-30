@@ -1,0 +1,849 @@
+{
+  "schema_version": "1.0",
+  "investigation_id": "19dfe0c50d",
+  "created_at": "2026-10-30T05:13:33+00:00",
+  "input": {
+    "source": "/home/samir-kumal/hackethon/floodproof/data/heldout/H07.mp4",
+    "path": "/home/samir-kumal/hackethon/floodproof/data/heldout/H07.mp4",
+    "url": null,
+    "uploader": null,
+    "upload_date": null,
+    "title": "H07.mp4",
+    "duration": 10.766666666666667,
+    "has_audio": true,
+    "truncated": false,
+    "n_keyframes": 33,
+    "keyframe_times_s": [
+      0.0,
+      0.33,
+      0.67,
+      1.0,
+      1.33,
+      1.67,
+      2.0,
+      2.33,
+      2.67,
+      3.0,
+      3.33,
+      3.67,
+      4.0,
+      4.33,
+      4.67,
+      5.0,
+      5.33,
+      5.67,
+      6.0,
+      6.33,
+      6.67,
+      7.0,
+      7.33,
+      7.67,
+      8.0,
+      8.33,
+      8.67,
+      9.0,
+      9.33,
+      9.67,
+      10.0,
+      10.33,
+      10.67
+    ]
+  },
+  "claim": {
+    "text": "Nepal flash flood (Aug 2026)",
+    "event_date": "2026-08-26",
+    "place": "Nepal",
+    "country_iso2": "NP",
+    "event_type": "flash_flood"
+  },
+  "memory": {
+    "status": "MISS",
+    "mode": "hash-shortlist(top_6)+match",
+    "entries_searched": 6,
+    "entries_total": 37,
+    "seconds": 13.16,
+    "hits": []
+  },
+  "visual_matching": {
+    "status": "NOT_FOUND",
+    "proven_matches": [],
+    "earliest_proven_copy": null,
+    "claimed_original": null,
+    "input_publication": null,
+    "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is not asserted to be the source.",
+    "candidates_checked": 1,
+    "candidates_total": 119,
+    "candidate_status_counts": {
+      "too_long": 1
+    },
+    "adapters": {
+      "tavily": [
+        {
+          "query": "men in skullcaps reading books on mountain road soldiers high vis vest prayer",
+          "site": null,
+          "after": null,
+          "before": null,
+          "n": 2,
+          "error": null
+        },
+        {
+          "query": "мужчины в тюбетейках молятся в горах военные жилеты красный жилет",
+          "site": null,
+          "after": null,
+          "before": "2026-08-26",
+          "n": 2,
+          "error": null
+        },
+        {
+          "query": "mountain road funeral prayer flood victims bus soldiers valley",
+          "site": null,
+          "after": null,
+          "before": "2026-08-26",
+          "n": 2,
+          "error": null
+        },
+        {
+          "query": "Kyrgyzstan mountain road prayer funeral soldiers red vest bus",
+          "site": null,
+          "after": null,
+          "before": "2026-08-26",
+          "n": 2,
+          "error": null
+        },
+        {
+          "query": "тоодо китеп окуп дуба кылып жатышат аскерлер",
+          "site": null,
+          "after": null,
+          "before": "2026-08-26",
+          "n": 3,
+          "error": null
+        },
+        {
+          "query": "Кыргызстан сел кочкү жаназа намаз тоо жол",
+          "site": null,
+          "after": null,
+          "before": "2026-08-26",
+          "n": 0,
+          "error": null
+        }
+      ],
+      "yandex": [
+        {
+          "frames": [
+            0,
+            5,
+            14
+          ],
+          "captcha": false,
+          "searched": 3,
+          "errors": [],
+          "crop": null
+        },
+        {
+          "frames": [
+            9,
+            18,
+            23
+          ],
+          "captcha": false,
+          "searched": 3,
+          "errors": [],
+          "crop": null
+        },
+        {
+          "frames": [
+            0,
+            14,
+            23
+          ],
+          "captcha": false,
+          "searched": 3,
+          "errors": [],
+          "crop": [
+            150,
+            150,
+            850,
+            850
+          ]
+        }
+      ]
+    },
+    "agent_page_reads": []
+  },
+  "clues": {
+    "shows": [
+      {
+        "text": "Dozens of men wearing Muslim skullcaps/topis and long robes/tunics crouching and sitting along a dirt mountain road holding open books and appearing to read/recite together",
+        "refs": [
+          0,
+          5,
+          9,
+          14,
+          18,
+          23,
+          27
+        ],
+        "timestamps_s": [
+          0.0,
+          1.67,
+          3.0,
+          4.67,
+          6.0,
+          7.67,
+          9.0
+        ]
+      },
+      {
+        "text": "Camouflaged uniformed personnel wearing red high-visibility vests standing among and observing the seated group",
+        "refs": [
+          0,
+          5,
+          32
+        ],
+        "timestamps_s": [
+          0.0,
+          1.67,
+          10.67
+        ]
+      },
+      {
+        "text": "Parked white vans/buses and a blue bus on the mountain road behind the group, with lush green conifer-forested valley and hillsides in background, no floodwater or destruction visible",
+        "refs": [
+          5,
+          23,
+          32
+        ],
+        "timestamps_s": [
+          1.67,
+          7.67,
+          10.67
+        ]
+      }
+    ],
+    "scene_type": {
+      "value": "mountain valley roadside religious gathering",
+      "refs": [
+        0,
+        5,
+        18,
+        23,
+        32
+      ],
+      "timestamps_s": [
+        0.0,
+        1.67,
+        6.0,
+        7.67,
+        10.67
+      ]
+    },
+    "visible_text": [],
+    "likely_location": {
+      "place": "Green coniferous mountain valley in Central/South-Central Asia, possibly northern Pakistan or Kyrgyzstan/Tian Shan region",
+      "country": "Pakistan",
+      "confidence": 0.32,
+      "lat": null,
+      "lon": null,
+      "reasons": [
+        {
+          "text": "Participants wear Muslim skullcaps, long shalwar-like tunics and vests, holding books consistent with Quran recitation/du'a, pointing to Muslim-majority Central/South-Central Asian community rather than Nepal",
+          "refs": [
+            0,
+            5,
+            14,
+            18,
+            27
+          ],
+          "timestamps_s": [
+            0.0,
+            1.67,
+            4.67,
+            6.0,
+            9.0
+          ]
+        },
+        {
+          "text": "Lush steep green valley with spruce/pine forest and dirt mountain road with vans/buses typical of Tian Shan / Himalaya-Karakoram belt in northern Pakistan/Kyrgyzstan",
+          "refs": [
+            0,
+            5,
+            18,
+            23,
+            32
+          ],
+          "timestamps_s": [
+            0.0,
+            1.67,
+            6.0,
+            7.67,
+            10.67
+          ]
+        },
+        {
+          "text": "Physical appearance of several participants and camouflaged personnel with red-yellow high-vis vests suggests Central/South Asian emergency/military presence, no Nepali script, signs, or landscape cues visible",
+          "refs": [
+            5,
+            18,
+            32
+          ],
+          "timestamps_s": [
+            1.67,
+            6.0,
+            10.67
+          ]
+        }
+      ]
+    },
+    "contradictions_with_claim": [
+      {
+        "text": "No flash flood, floodwater, mud, debris, damaged buildings or rescue in water is visible in any frame; road is dry and gathering is calm",
+        "refs": [
+          0,
+          5,
+          14,
+          18,
+          23,
+          32
+        ],
+        "timestamps_s": [
+          0.0,
+          1.67,
+          4.67,
+          6.0,
+          7.67,
+          10.67
+        ]
+      },
+      {
+        "text": "Scene shows a stationary religious reading/prayer gathering with books, not a disaster impact or people fleeing water",
+        "refs": [
+          0,
+          5,
+          9,
+          14,
+          18,
+          27
+        ],
+        "timestamps_s": [
+          0.0,
+          1.67,
+          3.0,
+          4.67,
+          6.0,
+          9.0
+        ]
+      },
+      {
+        "text": "Dress (skullcaps, long robes), demography and conifer mountain setting with Central Asian-looking personnel provide no support for Nepal location and no Nepali text or identifiers visible",
+        "refs": [
+          0,
+          5,
+          18,
+          32
+        ],
+        "timestamps_s": [
+          0.0,
+          1.67,
+          6.0,
+          10.67
+        ]
+      }
+    ],
+    "claim_parsed": {
+      "place": "Nepal",
+      "country_iso2": "NP",
+      "event_type": "flash_flood"
+    },
+    "queries": [
+      {
+        "q": "men in skullcaps reading books on mountain road soldiers high vis vest prayer",
+        "language": "en",
+        "why": "Neutral English to find original of mountain roadside religious gathering without using claimed event name"
+      },
+      {
+        "q": "group reciting Quran on mountainside after flood bus military",
+        "language": "en",
+        "why": "English description of distinctive action to find earliest upload"
+      },
+      {
+        "q": "pahari sarak par dua parhte hue log fauji flood",
+        "language": "ur",
+        "why": "Urdu likely local language if northern Pakistan to find true source"
+      },
+      {
+        "q": "پہاڑ پر کتاب پڑھتے ہوئے لوگ سیلاب دعا فوج",
+        "language": "ur",
+        "why": "Urdu script query for Pakistan flood prayer video"
+      },
+      {
+        "q": "мужчины в тюбетейках молятся в горах военные жилеты",
+        "language": "ru",
+        "why": "Russian widely used in Kyrgyzstan/Kazakhstan if Central Asian Tian Shan location"
+      },
+      {
+        "q": "тоодо китеп окуп дуба кылып жатышат аскерлер",
+        "language": "ky",
+        "why": "Kyrgyz language query for mountain prayer with soldiers"
+      },
+      {
+        "q": "山谷公路集体诵经祈祷 士兵 山区",
+        "language": "zh",
+        "why": "Chinese query in case Xinjiang/Tian Shan Uyghur/Hui Muslim context"
+      },
+      {
+        "q": "mountain road funeral prayer flood victims bus soldiers valley",
+        "language": "en",
+        "why": "Alternative English to test if gathering was funeral/du'a for disaster victims recycled as flood footage"
+      }
+    ],
+    "rejected_clues": [],
+    "status": "ok",
+    "model": "meta/muse-spark-1.3",
+    "cost_usd": 0.02309,
+    "frames_shown": [
+      0,
+      5,
+      9,
+      14,
+      18,
+      23,
+      27,
+      32
+    ],
+    "frame_times_s": {
+      "0": 0.0,
+      "5": 1.67,
+      "9": 3.0,
+      "14": 4.67,
+      "18": 6.0,
+      "23": 7.67,
+      "27": 9.0,
+      "32": 10.67
+    },
+    "audio": {
+      "has_speech": false,
+      "language": null,
+      "transcript_summary": "No verifiable speech could be transcribed - audio not accessible to this text model and no clear words can be confirmed without invention",
+      "spoken_place_names": [],
+      "other_sounds": [],
+      "status": "ok",
+      "model": "meta/muse-spark-open",
+      "cost_usd": 0.00804
+    },
+    "frame_images": [
+      "/home/samir-kumal/hackethon/floodproof/.cache/heldout_runs/C2/H07/frames/frame_00_t0.0.jpg",
+      "/home/samir-kumal/hackethon/floodproof/.cache/heldout_runs/C2/H07/frames/frame_05_t1.7.jpg",
+      "/home/samir-kumal/hackethon/floodproof/.cache/heldout_runs/C2/H07/frames/frame_09_t3.0.jpg",
+      "/home/samir-kumal/hackethon/floodproof/.cache/heldout_runs/C2/H07/frames/frame_14_t4.7.jpg",
+      "/home/samir-kumal/hackethon/floodproof/.cache/heldout_runs/C2/H07/frames/frame_18_t6.0.jpg",
+      "/home/samir-kumal/hackethon/floodproof/.cache/heldout_runs/C2/H07/frames/frame_23_t7.7.jpg",
+      "/home/samir-kumal/hackethon/floodproof/.cache/heldout_runs/C2/H07/frames/frame_27_t9.0.jpg",
+      "/home/samir-kumal/hackethon/floodproof/.cache/heldout_runs/C2/H07/frames/frame_32_t10.7.jpg"
+    ]
+  },
+  "physical_world_check": {
+    "location": {
+      "query": "Nepal",
+      "name": "Nepal",
+      "lat": 28.3780464,
+      "lon": 83.9999901,
+      "source": "nominatim",
+      "confidence": "high",
+      "class": "boundary",
+      "type": "administrative",
+      "alternatives": []
+    },
+    "official_event": {
+      "source": "copernicus_ems",
+      "status": "CONFIRMED_EVENT",
+      "activations": [
+        {
+          "code": "EMSR927",
+          "title": "Flood in Nepal",
+          "event_time": "2026-08-25T22:00:00",
+          "activation_time": "2026-08-26T09:53:00",
+          "country": "Nepal",
+          "distance_km": 133.8,
+          "reason": "On the 26 August 2026, a flash flood reportedly triggered by a Glacial Lake Outburst Flood (GLOF) in Nepal has caused significant damage in Rasuwa District. Copernicus EMS Rapid Mapping was requested to provide flood extent and damage assessment emergency mapping.",
+          "url": "https://rapidmapping.emergency.copernicus.eu/EMSR927"
+        }
+      ]
+    },
+    "hydrology": {
+      "source": "open-meteo glofas v4",
+      "river_discharge": {
+        "series": [
+          {
+            "date": "2026-08-23",
+            "m3s": 130.22
+          },
+          {
+            "date": "2026-08-24",
+            "m3s": 124.31
+          },
+          {
+            "date": "2026-08-25",
+            "m3s": 117.85
+          },
+          {
+            "date": "2026-08-26",
+            "m3s": 113.55
+          },
+          {
+            "date": "2026-08-27",
+            "m3s": 117.58
+          },
+          {
+            "date": "2026-08-28",
+            "m3s": 112.24
+          },
+          {
+            "date": "2026-08-29",
+            "m3s": 105.91
+          }
+        ],
+        "baseline": 123.74,
+        "peak": 130.22,
+        "ratio": 1.05,
+        "cell": [
+          28.275002,
+          83.875
+        ]
+      },
+      "rain": {
+        "series": [
+          {
+            "date": "2026-08-23",
+            "mm": 22.9
+          },
+          {
+            "date": "2026-08-24",
+            "mm": 20.4
+          },
+          {
+            "date": "2026-08-25",
+            "mm": 14.9
+          },
+          {
+            "date": "2026-08-26",
+            "mm": 8.7
+          },
+          {
+            "date": "2026-08-27",
+            "mm": 4.9
+          },
+          {
+            "date": "2026-08-28",
+            "mm": 18.1
+          },
+          {
+            "date": "2026-08-29",
+            "mm": 43.1
+          }
+        ],
+        "max_mm": 43.1
+      },
+      "status": "UNKNOWN"
+    },
+    "verdict": "SUPPORTS",
+    "reasons": [
+      "Copernicus EMS EMSR927 (Flood in Nepal), 133.8 km away, event 2026-08-25T22:00:00"
+    ],
+    "limits": [
+      "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+    ],
+    "links": [
+      "https://mapping.emergency.copernicus.eu/activations/",
+      "https://flood-api.open-meteo.com/v1/flood?latitude=28.3780464&longitude=83.9999901&daily=river_discharge&start_date=2026-08-23&end_date=2026-08-29",
+      "https://www.openstreetmap.org/?mlat=28.3780464&mlon=83.9999901#map=10/28.3780464/83.9999901",
+      "https://rapidmapping.emergency.copernicus.eu/EMSR927"
+    ],
+    "queried": {
+      "place": "Nepal",
+      "date": "2026-08-26",
+      "event_type": "flash_flood",
+      "country": "NP"
+    }
+  },
+  "final_verdict": {
+    "label": "UNVERIFIED",
+    "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. The claim could not be verified from the available evidence. Separately, the AI visual clues cite 3 cue(s) that argue against the claim (e.g. \"No flash flood, floodwater, mud, debris, damaged buildings or rescue in water is visible in any frame; road is dry and gathering is calm\", frame ref [0, 5, 14, 18, 23, 32]); these are model observations, not part of the visual-match proof.",
+    "limits": [
+      "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+      "Upload dates are platform metadata for the copy found; the earliest copy found is not necessarily the true source.",
+      "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+      "'Not found' means not found by these adapters, not that no earlier copy exists."
+    ],
+    "basis": {
+      "earlier_proven_copies": 0,
+      "proven_copies": 0,
+      "physical_supports": true,
+      "cited_contradictions": 3,
+      "date_conflicts": 0
+    }
+  },
+  "agent_trace": {
+    "note": "SHOWN, NOT TRUSTED: the trace and the agent's summary never feed final_verdict or proven_matches.",
+    "model": "meta/muse-spark-open",
+    "steps": [
+      {
+        "step": 1,
+        "observation": "(start)",
+        "tool": "look_at_frames",
+        "args": {},
+        "reason": "Need visual clues to guide search",
+        "result": "{\"status\": \"ok\", \"shows\": [\"Dozens of men wearing Muslim skullcaps/topis and long robes/tunics crouching and sitting along a dirt mountain road holding open books and a\", \"Camouflaged uniformed personnel wearing red high-visibility vests standing among and observing the seated group\", \"Parked white vans/buses and a blue bus on the mountain road behind the group, with lush green conifer-forested valley and hillsides in backg\"], \"scene\": \"mountain valley roadside religious gathering\", \"visible_text\": [], \"likely_place\": \"Green coniferous mountain valley in Central/South-Central Asia, possibly northern Pakistan or Kyrgyzstan/Tian Shan region\", \"country\": \"Pakistan\", \"confidence\": 0.32, \"queries...(truncated)",
+        "duplicate": false,
+        "seconds": 31.5,
+        "decision": "continue"
+      },
+      {
+        "step": 2,
+        "observation": "{\"status\": \"ok\", \"shows\": [\"Dozens of men wearing Muslim skullcaps/topis and long robes/tunics crouching and sitting along a dirt mountain road holding open books and a\", \"Camouflaged uniformed personnel wearing red high-visibility vests standing among and observing the seated group\", \"Parked white vans/buses and a blue bus on the mountain road behind the group, with lush green conifer-forested valley and hillsides in backg\"], \"scene\": \"mountain valley roadside religious gathering\", \"visible_text\": [], \"likely_place\": \"Green coniferous mountain valley in Central/South-Central Asia, possibly northern Pakistan or Kyrgyzstan/Tian Shan region\", \"country\": \"Pakistan\", \"confidence\": 0.32, \"queries...(truncated)",
+        "tool": "memory_lookup",
+        "args": {},
+        "reason": "Check memory for known originals matching this scene",
+        "result": "{\"status\": \"MISS\", \"proven\": [], \"entries_total\": 37}",
+        "duplicate": false,
+        "seconds": 13.2,
+        "decision": "continue"
+      },
+      {
+        "step": 3,
+        "observation": "{\"status\": \"MISS\", \"proven\": [], \"entries_total\": 37}",
+        "tool": "text_search",
+        "args": {
+          "query": "men in skullcaps reading books on mountain road soldiers high vis vest prayer"
+        },
+        "reason": "No memory hit. Need to search for origin using visible clues.",
+        "result": "{\"error\": null, \"results\": [{\"url\": \"https://www.facebook.com/HoyTaraTravel/videos/the-mountaineers-prayer-spiritual-moments-invoking-gods-guidance-protection-hiki/3117422691832195?locale=hi_IN\", \"title\": \"Mountain Prayer for Hikers: Success, Safety and Guidance ...\", \"snippet\": \"The prayer emphasizes letting go of control, trusting that God may remove people or change plans, and having f\", \"date\": null}, {\"url\": \"https://www.timesofisrael.com/jewish-prayer-books-reportedly-allowed-onto-temple-mount-for-first-time\", \"title\": \"Jewish prayer books reportedly allowed onto Temple ...\", \"snippet\": \"Aug 16, 2026 — Jewish prayer books reportedly allowed onto Temple Mount for first time. Worshipers ...(truncated)",
+        "duplicate": false,
+        "seconds": 2.6,
+        "decision": "continue"
+      },
+      {
+        "step": 4,
+        "observation": "{\"error\": null, \"results\": [{\"url\": \"https://www.facebook.com/HoyTaraTravel/videos/the-mountaineers-prayer-spiritual-moments-invoking-gods-guidance-protection-hiki/3117422691832195?locale=hi_IN\", \"title\": \"Mountain Prayer for Hikers: Success, Safety and Guidance ...\", \"snippet\": \"The prayer emphasizes letting go of control, trusting that God may remove people or change plans, and having f\", \"date\": null}, {\"url\": \"https://www.timesofisrael.com/jewish-prayer-books-reportedly-allowed-onto-temple-mount-for-first-time\", \"title\": \"Jewish prayer books reportedly allowed onto Temple ...\", \"snippet\": \"Aug 16, 2026 — Jewish prayer books reportedly allowed onto Temple Mount for first time. Worshipers ...(truncated)",
+        "tool": "reverse_search",
+        "args": {
+          "frames": [
+            0,
+            5,
+            14
+          ]
+        },
+        "reason": "Scene shows religious gathering on mountain road with soldiers, not flood itself; need visual leads. Try reverse image search on keyframes.",
+        "result": "{\"captcha\": false, \"frames_searched\": 3, \"errors\": [], \"links\": [{\"url\": \"https://www.youtube.com/watch?app=desktop&v=ymRxaFlPk88\", \"title\": \"8 минут назад что происходит в Кыргызстан Бишкек новости Кыргызстан на\"}, {\"url\": \"https://www.youtube.com/watch?v=FVNaOrHe58c\", \"title\": \"ТАДЖИКИ-КЫРГЫЗЫ СРОЧНО НА ГРАНИЦЕ КОНФЛИКТ ТОЛПА ЛЮДЕЙ УЖАСНО НОВОСТИ \"}, {\"url\": \"https://www.youtube.com/watch?v=k6LoOVOe4nw\", \"title\": \"Hasbi Rabbi.wmv - YouTube\"}, {\"url\": \"https://www.youtube.com/watch?v=LEEnnPj6gaU\", \"title\": \"Rehmeta Eli Hewîk-Zazaki Mewlid çewlig Miyalu #mevlid #zazakî #bingöl \"}, {\"url\": \"https://www.youtube.com/watch?v=BSOmPJn9c3s\", \"title\": \"Мовлид Назам Мохьмад Закани Саламбек - YouTube\"...(truncated)",
+        "duplicate": false,
+        "seconds": 66.8,
+        "decision": "continue"
+      },
+      {
+        "step": 5,
+        "observation": "{\"captcha\": false, \"frames_searched\": 3, \"errors\": [], \"links\": [{\"url\": \"https://www.youtube.com/watch?app=desktop&v=ymRxaFlPk88\", \"title\": \"8 минут назад что происходит в Кыргызстан Бишкек новости Кыргызстан на\"}, {\"url\": \"https://www.youtube.com/watch?v=FVNaOrHe58c\", \"title\": \"ТАДЖИКИ-КЫРГЫЗЫ СРОЧНО НА ГРАНИЦЕ КОНФЛИКТ ТОЛПА ЛЮДЕЙ УЖАСНО НОВОСТИ \"}, {\"url\": \"https://www.youtube.com/watch?v=k6LoOVOe4nw\", \"title\": \"Hasbi Rabbi.wmv - YouTube\"}, {\"url\": \"https://www.youtube.com/watch?v=LEEnnPj6gaU\", \"title\": \"Rehmeta Eli Hewîk-Zazaki Mewlid çewlig Miyalu #mevlid #zazakî #bingöl \"}, {\"url\": \"https://www.youtube.com/watch?v=BSOmPJn9c3s\", \"title\": \"Мовлид Назам Мохьмад Закани Саламбек - YouTube\"...(truncated)",
+        "tool": "physical_check",
+        "args": {
+          "place": "Nepal",
+          "date": "2026-08-26",
+          "event_type": "flash_flood",
+          "country": "NP"
+        },
+        "reason": "Claim says Nepal flash flood Aug 26 2026; need to check if that event is plausible and search more locally for origin.",
+        "result": "{\"verdict\": \"SUPPORTS\"}",
+        "duplicate": false,
+        "seconds": 1.1,
+        "decision": "continue"
+      },
+      {
+        "step": 6,
+        "observation": "{\"verdict\": \"SUPPORTS\"}",
+        "tool": null,
+        "reason": "This mountain gathering doesn't match Nepal flooding claims — I'll trace its true origin through local-language searches.<|start|>assistant to=text_search<|message|>{\"query\": \"\\\"тоодо\\\" китеп окуп дуб",
+        "result": "invalid action",
+        "decision": "continue"
+      },
+      {
+        "step": 7,
+        "observation": "{\"verdict\": \"SUPPORTS\"}",
+        "tool": null,
+        "reason": "<|start|>assistant to=commentary<|message|>No hit on Nepal – the scene points far north. I'll pull a wider set of regional queries to track the original.<|eom|><|start|>assistant to=text_search<|messa",
+        "result": "invalid action",
+        "decision": "continue"
+      },
+      {
+        "step": 8,
+        "observation": "invalid action",
+        "tool": "text_search",
+        "args": {
+          "query": "мужчины в тюбетейках молятся в горах военные жилеты красный жилет",
+          "before": "2026-08-26"
+        },
+        "reason": "Initial vision suggests mountain road prayer with soldiers in red vests - likely Central Asia. Prior reverse_search undetailed. Need to try local-language queries and maybe new reverse frames to locate original.",
+        "result": "{\"error\": null, \"results\": [{\"url\": \"https://www.occrp.org/ru/ficher/begstvo-skvoz-ad-ot-islamistov-as-sabab\", \"title\": \"Бегство сквозь ад от исламистов «аш-Шабаб»\", \"snippet\": \"Oct 25, 2018 — Вы должны отрастить бороду, носить белую одежду и тафью (головной убор наподобие тюбетейки. Сле\", \"date\": null}, {\"url\": \"https://geyin.az/ru/blog/post/indigenous-north-american-dress-a-complete-guide-to-regalia-\", \"title\": \"Одежда коренных народов Северной Америки - Geyin.az\", \"snippet\": \"Jul 31, 2026 — «Одежды коренных американцев» как единого явления не существует. Есть сотни отдельных традиций \", \"date\": null}]}",
+        "duplicate": false,
+        "seconds": 2.2,
+        "decision": "continue"
+      },
+      {
+        "step": 9,
+        "observation": "{\"error\": null, \"results\": [{\"url\": \"https://www.occrp.org/ru/ficher/begstvo-skvoz-ad-ot-islamistov-as-sabab\", \"title\": \"Бегство сквозь ад от исламистов «аш-Шабаб»\", \"snippet\": \"Oct 25, 2018 — Вы должны отрастить бороду, носить белую одежду и тафью (головной убор наподобие тюбетейки. Сле\", \"date\": null}, {\"url\": \"https://geyin.az/ru/blog/post/indigenous-north-american-dress-a-complete-guide-to-regalia-\", \"title\": \"Одежда коренных народов Северной Америки - Geyin.az\", \"snippet\": \"Jul 31, 2026 — «Одежды коренных американцев» как единого явления не существует. Есть сотни отдельных традиций \", \"date\": null}]}",
+        "tool": "text_search",
+        "args": {
+          "query": "mountain road funeral prayer flood victims bus soldiers valley",
+          "before": "2026-08-26"
+        },
+        "reason": "Initial searches vague; need more targeted search on mountain road prayer with soldiers. Try suggested English query with date filter before claim.",
+        "result": "{\"error\": null, \"results\": [{\"url\": \"https://www.mybuckhannon.com/latest-updates-search-continues-for-missing-residents-as-flood-waters-recede-in-upshur-county\", \"title\": \"Latest flood updates: Supply pickup, debris removal, vaccine clinics and more\", \"snippet\": \"Do not wait: West Virginia Army National Guard units can continue coordinated pickup only while debris remains\", \"date\": null}, {\"url\": \"https://www.facebook.com/groups/971865684050393/posts/1442893190280971\", \"title\": \"*FUNERAL COSTS/REIMBURSEMENT for Kerr County ...\", \"snippet\": \"We are sending our deepest prayers and unwavering love to every person affected, to those still waiting for ne\", \"date\": null}]}",
+        "duplicate": false,
+        "seconds": 2.4,
+        "decision": "continue"
+      },
+      {
+        "step": 10,
+        "observation": "{\"error\": null, \"results\": [{\"url\": \"https://www.mybuckhannon.com/latest-updates-search-continues-for-missing-residents-as-flood-waters-recede-in-upshur-county\", \"title\": \"Latest flood updates: Supply pickup, debris removal, vaccine clinics and more\", \"snippet\": \"Do not wait: West Virginia Army National Guard units can continue coordinated pickup only while debris remains\", \"date\": null}, {\"url\": \"https://www.facebook.com/groups/971865684050393/posts/1442893190280971\", \"title\": \"*FUNERAL COSTS/REIMBURSEMENT for Kerr County ...\", \"snippet\": \"We are sending our deepest prayers and unwavering love to every person affected, to those still waiting for ne\", \"date\": null}]}",
+        "tool": "text_search",
+        "args": {
+          "query": "Kyrgyzstan mountain road prayer funeral soldiers red vest bus",
+          "before": "2026-08-26"
+        },
+        "reason": "Need to search with local context Kyrgyzstan/Pakistan flood prayer",
+        "result": "{\"error\": null, \"results\": [{\"url\": \"https://www.bbc.com/news/world-asia-16186907\", \"title\": \"Kyrgyzstan country profile - BBC News\", \"snippet\": \"## TIMELINE\\n\\nBishkek, the capital of Kyrgyzstan, and the Kyrgyz Ala-Too mountains\\n\\nThe capital Bishkek and the\", \"date\": null}, {\"url\": \"https://apps.apple.com/us/app/moovit-bus-transit-tracker/id498477945\", \"title\": \"‎Moovit: Bus & Transit Tracker App - App Store\", \"snippet\": \"Smart travel by carpool & bus\\n View\\n\\n  \\n View\\n\\n  \\n\\n  Red Regional\\n\\n  Navigation [...] English, Arabic, Bulgari\", \"date\": null}]}",
+        "duplicate": false,
+        "seconds": 2.2,
+        "decision": "continue"
+      },
+      {
+        "step": 11,
+        "observation": "{\"error\": null, \"results\": [{\"url\": \"https://www.bbc.com/news/world-asia-16186907\", \"title\": \"Kyrgyzstan country profile - BBC News\", \"snippet\": \"## TIMELINE\\n\\nBishkek, the capital of Kyrgyzstan, and the Kyrgyz Ala-Too mountains\\n\\nThe capital Bishkek and the\", \"date\": null}, {\"url\": \"https://apps.apple.com/us/app/moovit-bus-transit-tracker/id498477945\", \"title\": \"‎Moovit: Bus & Transit Tracker App - App Store\", \"snippet\": \"Smart travel by carpool & bus\\n View\\n\\n  \\n View\\n\\n  \\n\\n  Red Regional\\n\\n  Navigation [...] English, Arabic, Bulgari\", \"date\": null}]}",
+        "tool": "reverse_search",
+        "args": {
+          "frames": [
+            9,
+            18,
+            23
+          ]
+        },
+        "reason": "Need to target different frames and crop for reverse search to get better hits",
+        "result": "{\"captcha\": false, \"frames_searched\": 3, \"errors\": [], \"links\": [{\"url\": \"https://www.youtube.com/watch?v=WmMJ29IJ3iU\", \"title\": \"ӨЛГӨНДӨ АСМАН ЖЕР ЫЙЛАЙ ТУРГАНДАЙ БОЛУҢУЗ - YouTube\"}, {\"url\": \"https://www.youtube.com/watch?v=q57cv3wF6OQ\", \"title\": \"Күрес-5,2- 2014ж.Сарыағаш медресесі 💚 АЛИ студиясы - YouTube\"}, {\"url\": \"https://www.tiktok.com/discover/%D0%BD%D0%B0%D1%88%D0%BB%D0%B8-%D1%85%D0%B8%D0%B7%D0%B0%D1%80%D0%B0-%D0%B8%D0%BB%D0%B8-%D0%BD%D0%B5%D1%82\", \"title\": \"Нашли Хизара Или Нет TikTok\"}, {\"url\": \"https://www.tiktok.com/discover/%D0%B0%D0%BC%D0%B0%D0%BD-%D0%BD%D0%B0%D1%88%D0%B5%D0%BB%D1%81%D1%8F\", \"title\": \"Аман Нашелся TikTok\"}, {\"url\": \"https://www.tiktok.com/discover/%D0%BF%D1%8...(truncated)",
+        "duplicate": false,
+        "seconds": 67.5,
+        "decision": "continue"
+      },
+      {
+        "step": 12,
+        "observation": "{\"captcha\": false, \"frames_searched\": 3, \"errors\": [], \"links\": [{\"url\": \"https://www.youtube.com/watch?v=WmMJ29IJ3iU\", \"title\": \"ӨЛГӨНДӨ АСМАН ЖЕР ЫЙЛАЙ ТУРГАНДАЙ БОЛУҢУЗ - YouTube\"}, {\"url\": \"https://www.youtube.com/watch?v=q57cv3wF6OQ\", \"title\": \"Күрес-5,2- 2014ж.Сарыағаш медресесі 💚 АЛИ студиясы",
+        "tool": null,
+        "reason": "<|start|>assistant to=commentary<|message|>That Nepal flood claim doesn't line up with what I see — I'll hunt for where this mountain prayer footage first appeared.<|eom|><|start|>assistant to=text_se",
+        "result": "invalid action",
+        "decision": "continue"
+      },
+      {
+        "step": 13,
+        "observation": "invalid action",
+        "tool": "text_search",
+        "args": {
+          "query": "тоодо китеп окуп дуба кылып жатышат аскерлер",
+          "before": "2026-08-26"
+        },
+        "reason": "Need Kyrgyz-language search for prayer on mountain road with soldiers",
+        "result": "{\"error\": null, \"results\": [{\"url\": \"https://www.hakikatkitabevi.net/downloads/255.pdf\", \"title\": \"ИСЛАМ ДИНИ\", \"snippet\": \"себепчи кылып, дуба кылуу сахих (туура) жана жаиз (уруксат). Ошол сыяктуу олуялар жана салих адамдарды себепчи\", \"date\": null}, {\"url\": \"https://www.scribd.com/document/550686049/%D0%A7%D1%83%D0%B1%D0%B0%D0%BA-%D0%B0%D0%B6%D1%8B-%D0%96%D0%B0%D0%BB%D0%B8%D0%BB%D0%BE%D0%B2-%D0%91%D0%90%D0%9A%D0%A2%D0%AB%D0%9B%D0%A3%D0%A3%D0%9B%D0%A3%D0%9A%D0%A2%D0%A3%D0%9D-%D0%A4%D0%9E%D0%A0%D0%9C%D0%A3%D0%9B%D0%90%D0%A1%D0%AB\", \"title\": \"Чубак ажы Жалилов - БАКТЫЛУУЛУКТУН ФОРМУЛАСЫ\", \"snippet\": \"Дуба окуп жакшырта аласызбы же күч- түү дуба окуган молдо таап бериңизчи. Аяна -Аларды жаман ...(truncated)",
+        "duplicate": false,
+        "seconds": 2.5,
+        "decision": "continue"
+      },
+      {
+        "step": 14,
+        "observation": "{\"error\": null, \"results\": [{\"url\": \"https://www.hakikatkitabevi.net/downloads/255.pdf\", \"title\": \"ИСЛАМ ДИНИ\", \"snippet\": \"себепчи кылып, дуба кылуу сахих (туура) жана жаиз (уруксат). Ошол сыяктуу олуялар жана салих адамдарды себепчи\", \"date\": null}, {\"url\": \"https://www.scribd.com/document/550686049/%D0%A7%D1%83%D0%B1%D0%B0%D0%BA-%D0%B0%D0%B6%D1%8B-%D0%96%D0%B0%D0%BB%D0%B8%D0%BB%D0%BE%D0%B2-%D0%91%D0%90%D0%9A%D0%A2%D0%AB%D0%9B%D0%A3%D0%A3%D0%9B%D0%A3%D0%9A%D0%A2%D0%A3%D0%9D-%D0%A4%D0%9E%D0%A0%D0%9C%D0%A3%D0%9B%D0%90%D0%A1%D0%AB\", \"title\": \"Чубак ажы Жалилов - БАКТЫЛУУЛУКТУН ФОРМУЛАСЫ\", \"snippet\": \"Дуба окуп жакшырта аласызбы же күч- түү дуба окуган молдо таап бериңизчи. Аяна -Аларды жаман ...(truncated)",
+        "tool": "text_search",
+        "args": {
+          "query": "Кыргызстан сел кочкү жаназа намаз тоо жол",
+          "before": "2026-08-26"
+        },
+        "reason": "Need earlier original; try local-language flood funeral search.",
+        "result": "{\"error\": null, \"results\": []}",
+        "duplicate": false,
+        "seconds": 1.5,
+        "decision": "continue"
+      },
+      {
+        "step": 15,
+        "observation": "{\"error\": null, \"results\": []}",
+        "tool": null,
+        "reason": "<|start|>assistant to=commentary<|message|>This Nepal flood claim looks recycled - the mountain prayer scene suggests Central Asia. I'll hunt for the true original source.<|eom|><|start|>assistant to=",
+        "result": "invalid action",
+        "decision": "continue"
+      },
+      {
+        "step": 16,
+        "observation": "invalid action",
+        "tool": "look_at_frames",
+        "args": {},
+        "reason": "Need visual clues to guide search; look_at_frames provides scene analysis and suggested queries.",
+        "result": "{\"error\": \"duplicate call blocked (loop-breaker); choose a different tool or arguments\"}",
+        "duplicate": true,
+        "seconds": 0.0,
+        "decision": "continue"
+      },
+      {
+        "step": 17,
+        "observation": "{\"error\": \"duplicate call blocked (loop-breaker); choose a different tool or arguments\"}",
+        "tool": "memory_lookup",
+        "args": {},
+        "reason": "Try memory lookup for matcher hits and verify reverse search candidates",
+        "result": "{\"error\": \"duplicate call blocked (loop-breaker); choose a different tool or arguments\"}",
+        "duplicate": true,
+        "seconds": 0.0,
+        "decision": "continue"
+      },
+      {
+        "step": 18,
+        "observation": "{\"error\": \"duplicate call blocked (loop-breaker); choose a different tool or arguments\"}",
+        "tool": "reverse_search",
+        "args": {
+          "frames": [
+            0,
+            14,
+            23
+          ],
+          "crop": [
+            150,
+            150,
+            850,
+            850
+          ]
+        },
+        "reason": "Need visual clues; previous reverse searches gave Kyrgyz religious videos but no verification. Try cropped reverse search on keyframes with praying men to get better matches.",
+        "result": "{\"captcha\": false, \"frames_searched\": 3, \"errors\": [], \"links\": [{\"url\": \"https://www.youtube.com/watch?v=Bu6vsgz0x50\", \"title\": \"Уйгурлар кыйналыб жатат где Аравия - YouTube\"}, {\"url\": \"https://www.youtube.com/watch?app=desktop&v=No9JaiNzuh0\", \"title\": \"مصر العربية الصين تحاول طمس هوية المسلمين من قومية \\\"خوي\\\" - YouTube\"}, {\"url\": \"https://www.youtube.com/watch?v=uJWPG6rxoaA\", \"title\": \"Şemmamme Tarikatçılar - YouTube\"}, {\"url\": \"https://www.youtube.com/watch?v=atsSM4Udwag\", \"title\": \"Çok komik - gülme garantili... - YouTube\"}, {\"url\": \"https://www.youtube.com/watch?v=atsSM4Udwag&app=desktop\", \"title\": \"Çok komik - gülme garantili... - YouTube\"}, {\"url\": \"https://www.youtube.com/watch?v=Xs...(truncated)",
+        "duplicate": false,
+        "seconds": 67.2,
+        "decision": "continue"
+      },
+      {
+        "step": 19,
+        "observation": "{\"captcha\": false, \"frames_searched\": 3, \"errors\": [], \"links\": [{\"url\": \"https://www.youtube.com/watch?v=Bu6vsgz0x50\", \"title\": \"Уйгурлар кыйналыб жатат где Аравия - YouTube\"}, {\"url\": \"https://www.youtube.com/watch?app=desktop&v=No9JaiNzuh0\", \"title\": \"مصر العربية الصين تحاول طمس هوية المسلمين من قومية \\\"خوي\\\" - YouTube\"}, {\"url\": \"https://www.youtube.com/watch?v=uJWPG6rxoaA\", \"title\": \"Şemmamme Tarikatçılar - YouTube\"}, {\"url\": \"https://www.youtube.com/watch?v=atsSM4Udwag\", \"title\": \"Çok komik - gülme garantili... - YouTube\"}, {\"url\": \"https://www.youtube.com/watch?v=atsSM4Udwag&app=desktop\", \"title\": \"Çok komik - gülme garantili... - YouTube\"}, {\"url\": \"https://www.youtube.com/watch?v=Xs...(truncated)",
+        "tool": "fetch_and_verify",
+        "args": {
+          "url": "https://www.youtube.com/watch?v=WmMJ29IJ3iU"
+        },
+        "reason": "Only one verification attempt remains; testing the top Yandex hit from frames 9,18,23 - WmMJ29IJ3iU - which title suggests Kyrgyz mountain mourning context matching described prayer scene, to see if it is the recycled original.",
+        "result": "{\"url\": \"https://www.youtube.com/watch?v=WmMJ29IJ3iU\", \"status\": \"too_long\", \"upload_date\": \"2025-03-19\", \"uploader\": \"Максат ажы Токтомушев\", \"title\": \"ӨЛГӨНДӨ АСМАН ЖЕР ЫЙЛАЙ ТУРГАНДАЙ БОЛУҢУЗ - YouTube\"}",
+        "duplicate": false,
+        "seconds": 1.9,
+        "decision": "continue"
+      },
+      {
+        "step": 20,
+        "tool": "stop",
+        "reason": "budget_exhausted",
+        "decision": "stop"
+      }
+    ],
+    "agent_summary": null,
+    "agent_original_url": null,
+    "summary_audit": [],
+    "stop_reason": "budget_exhausted",
+    "tool_calls": 15,
+    "cost_usd": 0.1092
+  },
+  "timing_s": 339.7
+}

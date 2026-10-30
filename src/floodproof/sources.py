@@ -70,7 +70,8 @@ def memory_candidates(mem, feats: ClipFeatures, evidence_dir: Path | None = None
 
 
 # ---------------------------------------------------------------- yandex
-def yandex_candidates(feats: ClipFeatures, n_frames=3, workdir: Path | None = None, headless=True, max_links=40):
+def yandex_candidates(feats: ClipFeatures, n_frames=3, workdir: Path | None = None, headless=True, max_links=40,
+                      frames: list | None = None, crop: tuple | None = None):
     """Scripted Yandex Images reverse search. Returns (candidates, info). A captcha => skipped (never bypassed)."""
     import numpy as np
     from playwright.sync_api import sync_playwright
@@ -78,7 +79,9 @@ def yandex_candidates(feats: ClipFeatures, n_frames=3, workdir: Path | None = No
     # sharpest frames, spread out
     sharp = sorted(((cv2.Laplacian(cv2.cvtColor(f, cv2.COLOR_BGR2GRAY), cv2.CV_64F).var(), i) for i, f in enumerate(feats.frames)), reverse=True)
     pick = []
-    for _, i in sharp:
+    if frames:                       # caller (the agent) chose the keyframes; ids are validated here
+        pick = [int(i) for i in frames if 0 <= int(i) < len(feats)][:4]
+    for _, i in (sharp if not pick else []):
         if all(abs(i - j) > max(2, len(feats) * 0.15) for j in pick):
             pick.append(i)
         if len(pick) == n_frames:
@@ -89,7 +92,11 @@ def yandex_candidates(feats: ClipFeatures, n_frames=3, workdir: Path | None = No
         b = p.chromium.launch(headless=headless)
         for i in pick:
             img = wd / f"{hashlib.sha1(feats.path.encode()).hexdigest()[:8]}_{i}.jpg"
-            cv2.imwrite(str(img), feats.frames[i])
+            fr = feats.frames[i]
+            if crop:                 # normalized 0-1000 box (x0, y0, x1, y1)
+                h, w = fr.shape[:2]; x0, y0, x1, y1 = crop
+                fr = fr[int(y0 * h / 1000):max(int(y1 * h / 1000), int(y0 * h / 1000) + 8), int(x0 * w / 1000):max(int(x1 * w / 1000), int(x0 * w / 1000) + 8)]
+            cv2.imwrite(str(img), fr)
             pg = b.new_context(viewport={"width": 1280, "height": 800}, locale="en-US").new_page()
             try:
                 pg.goto("https://yandex.com/images/", timeout=40000); time.sleep(2)
@@ -138,6 +145,28 @@ def tavily_candidates(queries, per_query=6, max_queries=6, max_links=30):
                 seen.setdefault(_clean_url(x["url"]), (x.get("title", ""), q))
     items = sorted(seen.items(), key=lambda kv: not any(h in kv[0] for h in VIDEO_HOSTS))[:max_links]
     return [Candidate(u, t, "tavily", f"query: {q[:60]}") for u, (t, q) in items], info
+
+
+def tavily_search(query, site=None, after=None, before=None, max_results=8):
+    """One agent-written Tavily query with optional site / date filters. Returns (results, info); results are
+    {url,title,snippet,published_date} and are only PROPOSALS (untrusted text)."""
+    load_env()
+    key = os.environ.get("TAVILY_API_KEY")
+    if not key:
+        return [], dict(error="TAVILY_API_KEY missing")
+    body = {"query": query[:300], "max_results": max_results}
+    if site:
+        body["include_domains"] = [site] if isinstance(site, str) else list(site)[:5]
+    if after:
+        body["start_date"] = after
+    if before:
+        body["end_date"] = before
+    try:
+        r = requests.post("https://api.tavily.com/search", json=body, headers={"Authorization": f"Bearer {key}"}, timeout=60).json()
+    except Exception as e:
+        return [], dict(error=str(e)[:100])
+    return [dict(url=_clean_url(x["url"]), title=x.get("title", ""), snippet=(x.get("content") or "")[:160],
+                 published_date=x.get("published_date")) for x in r.get("results", [])], dict(error=r.get("detail") and str(r["detail"])[:100])
 
 
 # ---------------------------------------------------------------- verification
