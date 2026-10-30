@@ -70,3 +70,16 @@ def test_file_upload_starts_job(monkeypatch, tmp_path):
     r = TestClient(web.create_app()).post("/api/investigate", files={"file": ("clip.mp4", b"\x00" * 100, "video/mp4")})
     assert r.status_code == 200 and "job" in r.json()
     web.JOBS.clear()
+
+
+def test_index_script_parses(tmp_path):
+    """Guard against merge damage in the inline UI script (a missing brace froze the page once)."""
+    import re, shutil, subprocess
+    from floodproof.web import STATIC
+    node = shutil.which("node")
+    if not node:
+        pytest.skip("node not installed")
+    js = re.findall(r"<script>(.*?)</script>", (STATIC / "index.html").read_text(), re.S)
+    for i, code in enumerate(js):
+        f = tmp_path / f"s{i}.js"; f.write_text(code)
+        assert subprocess.run([node, "--check", str(f)], capture_output=True).returncode == 0, f"script {i} has a syntax error"

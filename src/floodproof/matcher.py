@@ -280,6 +280,53 @@ def evidence_png(r: MatchResult, out_png, title=""):
     return str(out_png)
 
 
+PROOF_INLIERS = 40
+
+
+def proof_inliers(frame_a, frame_b, flip=False, top=PROOF_INLIERS):
+    """RANSAC inliers of one frame pair as normalised 0-1 coordinates [[x1,y1,x2,y2],...], strongest SIFT response first.
+    frame_a is the UNFLIPPED viral frame; when the match was found against its mirror, x1 is mapped back (1-x)."""
+    sift = _sift()
+    ga = cv2.cvtColor(frame_a, cv2.COLOR_BGR2GRAY)
+    if flip:
+        ga = cv2.flip(ga, 1)
+    ka, da = sift.detectAndCompute(ga, None)
+    kb, db = sift.detectAndCompute(cv2.cvtColor(frame_b, cv2.COLOR_BGR2GRAY), None)
+    if da is None or db is None or len(ka) < 12 or len(kb) < 12:
+        return []
+    m = cv2.BFMatcher(cv2.NORM_L2).knnMatch(da, db, k=2)
+    good = [x[0] for x in m if len(x) == 2 and x[0].distance < 0.75 * x[1].distance]
+    if len(good) < 10:
+        return []
+    pa = np.float32([ka[g.queryIdx].pt for g in good]); pb = np.float32([kb[g.trainIdx].pt for g in good])
+    H, mask = cv2.findHomography(pa, pb, cv2.RANSAC, 4.0)
+    if H is None:
+        return []
+    idx = [k for k, ok in enumerate(mask.ravel()) if ok]
+    idx.sort(key=lambda k: -ka[good[k].queryIdx].response)
+    (ha, wa), (hb, wb) = ga.shape[:2], frame_b.shape[:2]
+    out = []
+    for k in idx[:top]:
+        x1 = pa[k][0] / wa
+        out.append([round(float(1 - x1 if flip else x1), 4), round(float(pa[k][1] / ha), 4),
+                    round(float(pb[k][0] / wb), 4), round(float(pb[k][1] / hb), 4)])
+    return [[min(1.0, max(0.0, v)) for v in row] for row in out]
+
+
+def proof_artifacts(r: MatchResult, out_dir, tag):
+    """For a PROVEN match: save the clean best-pair frames (no lines drawn) and the inlier coordinates.
+    Returns {viral_frame, copy_frame, viral_t, copy_t, mirrored, inliers} (frame paths absolute), or None."""
+    if not (r and r.decision and r.pairs and r.a and r.b):
+        return None
+    i, j, n, sp, flip = r.pairs[0]
+    out_dir = os.path.abspath(out_dir); os.makedirs(out_dir, exist_ok=True)
+    pv, pc = os.path.join(out_dir, f"proof_{tag}_viral.jpg"), os.path.join(out_dir, f"proof_{tag}_copy.jpg")
+    cv2.imwrite(pv, r.a.frames[i], [cv2.IMWRITE_JPEG_QUALITY, 90])
+    cv2.imwrite(pc, r.b.frames[j], [cv2.IMWRITE_JPEG_QUALITY, 90])
+    return dict(viral_frame=pv, copy_frame=pc, viral_t=round(float(r.a.times[i]), 2), copy_t=round(float(r.b.times[j]), 2),
+                mirrored=bool(flip), inliers=proof_inliers(r.a.frames[i], r.b.frames[j], bool(flip)))
+
+
 def make_variant(src, dst, vf, extra=()):
     """Synthetic recycled variant (crop / mirror / overlay / re-encode) via ffmpeg, for evaluation and tests."""
     import subprocess

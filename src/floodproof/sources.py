@@ -22,7 +22,7 @@ import cv2
 import requests
 
 from . import CACHE, load_env
-from .matcher import ClipFeatures, match
+from .matcher import ClipFeatures, match, proof_artifacts
 from . import media
 
 VIDEO_HOSTS = ("youtube.com/watch", "youtube.com/shorts", "youtu.be", "instagram.com/reel", "instagram.com/p/",
@@ -57,6 +57,7 @@ class Candidate:
     date_note: str | None = None
     date_alternatives: list = field(default_factory=list)
     also_from: list = field(default_factory=list)   # other adapters that proposed the same URL (merged by dedupe)
+    proof: dict | None = None          # clean best-pair frames + RANSAC inlier coordinates (+ optional Muse explanation)
 
     def to_dict(self):
         return asdict(self)
@@ -82,6 +83,11 @@ def memory_candidates(mem, feats: ClipFeatures, evidence_dir: Path | None = None
                                _now(), e.get("uploader"), True, h.match.to_dict(),
                                str(Path(evidence_dir) / f"memory_{e['id']}.png") if evidence_dir else None, e,
                                stored_date=e.get("upload_date"), date_independent=False))
+        if evidence_dir:
+            try:
+                cands[-1].proof = proof_artifacts(h.match, evidence_dir, f"memory_{e['id']}")
+            except Exception:
+                pass
     return cands, res
 
 
@@ -487,6 +493,7 @@ def verify_candidate(c: Candidate, q: ClipFeatures, query_date: str | None = Non
         if m.decision and evidence_dir:
             tag = hashlib.sha1(c.url.encode()).hexdigest()[:8]
             c.evidence_png = m.evidence(Path(evidence_dir) / f"{c.adapter}_{tag}.png", f"{c.adapter} candidate {c.url[-50:]} date={c.upload_date}")
+            c.proof = proof_artifacts(m, evidence_dir, f"{c.adapter}_{tag}")
     except Exception as e:
         c.status = "error"; c.hint += f" ({str(e)[:60]})"
     finally:

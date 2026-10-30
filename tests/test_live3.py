@@ -308,7 +308,7 @@ def test_report_validates_mixed_and_rejects_bad_frame():
     r["media_nature"] = mn
     r["input"]["n_keyframes"] = 6
     validate_report(r)
-    assert r["schema_version"] == "1.4"
+    assert r["schema_version"] == "1.5"
     for bad in (labels((1, "likely_ai_generated"), (9, "camera_footage")), labels((1, "likely_ai_generated"), (2, "likely_ai_generated")),
                 [dict(frame=1, label="weird")]):
         r["media_nature"] = dict(mn, per_frame=bad)
