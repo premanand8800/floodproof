@@ -1,6 +1,6 @@
 import os, json, requests
 from dotenv import load_dotenv
-load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env"))
 TAV = os.environ["TAVILY_API_KEY"]; OR = os.environ["OPENROUTER_API_KEY"]
 def tavily(q, n=8, domains=None, extract=False, **kw):
     body = {"query": q, "max_results": n, "include_raw_content": extract, **kw}
