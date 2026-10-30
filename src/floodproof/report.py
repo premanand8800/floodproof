@@ -271,6 +271,8 @@ def validate_report(r: dict):
     assert v["status"] in ("FOUND", "NOT_FOUND")
     assert "physical_world_check" in r and isinstance(r["physical_world_check"], dict)
     assert (v["status"] == "FOUND") == bool(v.get("proven_matches")), "FOUND iff proven matches present"
+    for a, st in (v.get("source_stats") or {}).items():
+        assert st["proven"] <= st["checked"] <= st["candidates"], f"source_stats inconsistent for {a}"
     for m in v.get("proven_matches", []):
         for k in ("url", "upload_date", "date_source", "retrieved_at", "adapter", "match"):
             assert k in m, f"proven match missing {k}"

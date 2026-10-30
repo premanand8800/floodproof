@@ -7,6 +7,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import os
 import statistics
 import time
 from datetime import date as _date, datetime, timedelta
@@ -64,6 +65,30 @@ def _cached_json(url: str, params: dict, use_cache: bool = True, ttl: float | No
             p.write_text(json.dumps(data))
         except Exception:
             pass
+    return data
+
+
+def _http_post_json(url: str, body: dict) -> object:
+    """POST json; isolated so tests can monkeypatch."""
+    with _client() as c:
+        r = c.post(url, json=body)
+        r.raise_for_status()
+        return r.json()
+
+
+def _cached_post(url: str, body: dict, ttl: float | None = None):
+    p = _cache_path(url, body)
+    if p.exists() and (ttl is None or time.time() - p.stat().st_mtime < ttl):
+        try:
+            return json.loads(p.read_text())
+        except Exception:
+            pass
+    data = _http_post_json(url, body)
+    try:
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        p.write_text(json.dumps(data))
+    except Exception:
+        pass
     return data
 
 
@@ -222,6 +247,129 @@ def official_event(lat: float, lon: float, day: _date, window_days: int) -> dict
     return out
 
 
+# ---------------------------------------------------------------- ReliefWeb (official disaster entries)
+RELIEFWEB_API = "https://api.reliefweb.int/v2"   # v1 was decommissioned; v2 needs an approved appname
+RELIEFWEB_TTL_S = 24 * 3600
+RW_TYPES = {  # our event_type -> ReliefWeb disaster type names (any of)
+    "flood": {"flood", "flash flood"}, "flash_flood": {"flash flood", "flood"}, "glof": {"flood", "flash flood"},
+    "landslide": {"land slide", "mud slide", "landslide"}, "cyclone": {"tropical cyclone", "storm surge", "severe local storm"},
+    "storm_surge": {"storm surge", "tropical cyclone", "flood"},
+    "unknown": {"flood", "flash flood", "land slide", "tropical cyclone"},
+}
+ISO2_TO_ISO3 = dict(AF="AFG", BD="BGD", BT="BTN", BR="BRA", BI="BDI", KH="KHM", CM="CMR", CN="CHN", CO="COL", CD="COD",
+                    EC="ECU", EG="EGY", ET="ETH", FJ="FJI", FR="FRA", DE="DEU", GH="GHA", GR="GRC", GT="GTM", HT="HTI",
+                    HN="HND", IN="IND", ID="IDN", IR="IRN", IQ="IRQ", IT="ITA", JP="JPN", KE="KEN", LA="LAO", LB="LBN",
+                    MG="MDG", MW="MWI", MY="MYS", ML="MLI", MX="MEX", MM="MMR", MZ="MOZ", NP="NPL", NG="NGA", NE="NER",
+                    PK="PAK", PE="PER", PH="PHL", PL="POL", RO="ROU", RU="RUS", SO="SOM", ZA="ZAF", KR="KOR", SS="SSD",
+                    ES="ESP", LK="LKA", SD="SDN", SY="SYR", TZ="TZA", TH="THA", TR="TUR", UG="UGA", UA="UKR", US="USA",
+                    VN="VNM", YE="YEM", ZM="ZMB", ZW="ZWE", AU="AUS", CA="CAN", CL="CHL", AR="ARG", BO="BOL", NZ="NZL",
+                    TD="TCD", AO="AGO", RW="RWA", SL="SLE", LR="LRD", GB="GBR", AT="AUT", CZ="CZE", CH="CHE", BE="BEL")
+
+
+def reliefweb(country: str | None, day: _date, window_days: int = 7, event_type: str = "unknown",
+              appname: str | None = None) -> dict:
+    """Official ReliefWeb disaster entries for country + matching type within +-window_days of the claimed date.
+    Never raises. status: MATCH | NO_MATCH | SKIPPED | UNAVAILABLE."""
+    out = {"source": "reliefweb", "status": "SKIPPED", "disasters": [], "window_days": window_days}
+    iso3 = ISO2_TO_ISO3.get((country or "").upper())
+    if not iso3:
+        out["reason"] = "country unknown or not mapped; ReliefWeb needs a country"
+        return out
+    app = appname or os.environ.get("RELIEFWEB_APPNAME") or "floodproof"
+    lo, hi = day - timedelta(days=window_days), day + timedelta(days=window_days)
+    body = {"limit": 30, "sort": ["date.event:desc"],
+            "filter": {"operator": "AND", "conditions": [
+                {"field": "country.iso3", "value": iso3},
+                {"field": "date.event", "value": {"from": f"{lo}T00:00:00+00:00", "to": f"{hi}T23:59:59+00:00"}}]},
+            "fields": {"include": ["name", "date", "type", "country", "url", "status", "glide"]}}
+    url = f"{RELIEFWEB_API}/disasters?appname={app}"
+    try:
+        data = _cached_post(url, body, ttl=RELIEFWEB_TTL_S)
+    except Exception as e:  # noqa: BLE001
+        out["status"] = "UNAVAILABLE"
+        msg = str(e)
+        out["reason"] = ("ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+                         if "403" in msg else f"ReliefWeb request failed: {msg[:120]}")
+        return out
+    if isinstance(data, dict) and data.get("error"):
+        out["status"] = "UNAVAILABLE"
+        out["reason"] = "ReliefWeb error: " + str((data["error"] or {}).get("message"))[:140]
+        return out
+    want = RW_TYPES.get(event_type, RW_TYPES["unknown"])
+    for d in (data.get("data") or []) if isinstance(data, dict) else []:
+        f = d.get("fields") or {}
+        types = [str(t.get("name", "")).lower() for t in f.get("type") or []]
+        if not any(t in want for t in types):
+            continue
+        out["disasters"].append({"id": d.get("id"), "name": f.get("name"), "types": types,
+                                 "date": ((f.get("date") or {}).get("event") or "")[:10], "status": f.get("status"),
+                                 "glide": f.get("glide"), "url": f.get("url") or f"https://reliefweb.int/disaster/{d.get('id')}"})
+    out["status"] = "MATCH" if out["disasters"] else "NO_MATCH"
+    return out
+
+
+# ---------------------------------------------------------------- GDELT (news coverage; context only)
+GDELT_API = "https://api.gdeltproject.org/api/v2/doc/doc"
+GDELT_TTL_S = 12 * 3600
+GDELT_MIN_GAP_S = 5.5          # GDELT asks for at most one request per 5 s
+_last_gdelt = 0.0
+NEWS_WORDS = {"flood": "flood", "flash_flood": "flash flood", "glof": "glacial lake flood", "landslide": "landslide",
+              "cyclone": "cyclone", "storm_surge": "storm surge", "unknown": "flood"}
+
+
+def _gdelt_count(query: str, start: datetime, end: datetime) -> tuple[int, list]:
+    global _last_gdelt
+    params = {"query": query, "mode": "artlist", "format": "json", "maxrecords": 250, "sort": "datedesc",
+              "startdatetime": start.strftime("%Y%m%d%H%M%S"), "enddatetime": end.strftime("%Y%m%d%H%M%S")}
+    cached = _cache_path(GDELT_API, params).exists()
+    if not cached:
+        wait = GDELT_MIN_GAP_S - (time.time() - _last_gdelt)
+        if wait > 0:
+            time.sleep(wait)
+    try:
+        try:
+            data = _cached_json(GDELT_API, params, ttl=GDELT_TTL_S)
+        except httpx.HTTPStatusError as e:      # shared IPs get 429 often: one slow retry, then degrade
+            if e.response.status_code != 429:
+                raise
+            time.sleep(12)
+            data = _cached_json(GDELT_API, params, ttl=GDELT_TTL_S)
+    finally:
+        if not cached:
+            _last_gdelt = time.time()
+    arts = (data.get("articles") or []) if isinstance(data, dict) else []
+    return len(arts), arts
+
+
+def news_coverage(place: str | None, day: _date, window_days: int = 3, event_type: str = "flood") -> dict:
+    """GDELT DOC 2.0 article counts for '<place> <event>' in the claim window vs the 30 days before it. Context only:
+    it never SUPPORTS by itself. Counts are capped at 250 per query (maxrecords). Never raises."""
+    out = {"source": "gdelt", "label": "news coverage", "status": "SKIPPED", "articles_in_window": None,
+           "articles_baseline_30d": None, "sample_links": [], "context_only": True}
+    if not place:
+        out["reason"] = "no place to query"
+        return out
+    name = place.split(",")[0].strip()
+    word = NEWS_WORDS.get(event_type, "flood")
+    q = f'"{name}" {word}' if " " in name else f"{name} {word}"
+    ws = datetime.combine(day - timedelta(days=window_days), datetime.min.time())
+    we = datetime.combine(day + timedelta(days=window_days), datetime.min.time()) + timedelta(hours=23, minutes=59, seconds=59)
+    out["query"] = q
+    try:
+        n_win, arts = _gdelt_count(q, ws, we)
+        n_base, _ = _gdelt_count(q, ws - timedelta(days=30), ws - timedelta(seconds=1))
+    except Exception as e:  # noqa: BLE001
+        out["status"] = "UNAVAILABLE"
+        out["reason"] = f"GDELT request failed: {str(e)[:120]}"
+        return out
+    out.update(status="OK", articles_in_window=n_win, articles_baseline_30d=n_base, capped_at=250,
+               sample_links=[{"url": a.get("url"), "title": a.get("title"), "domain": a.get("domain"),
+                              "seen": a.get("seendate")} for a in arts[:5] if a.get("url")])
+    out["note"] = ("news coverage is context only; it counts articles that mention the place and event words and "
+                   "never proves a specific video is real")
+    return out
+
+
 # ---------------------------------------------------------------- hydrology
 def hydrology(lat: float, lon: float, day: _date, window_days: int) -> dict:
     out = {"source": "open-meteo glofas v4", "river_discharge": None, "rain": None, "status": "UNKNOWN"}
@@ -332,6 +480,9 @@ def check(place: str | None = None, lat: float | None = None, lon: float | None 
     ev = official_event(la, lo, day, window_days)
     hy = hydrology(la, lo, day, window_days)
     res["official_event"], res["hydrology"] = ev, hy
+    rw = reliefweb(country, day, 7, event_type)
+    ev["reliefweb"] = rw
+    res["news_coverage"] = news_coverage(place or loc.get("query"), day, window_days, event_type)
     links.append("https://mapping.emergency.copernicus.eu/activations/")
     links.append(f"https://flood-api.open-meteo.com/v1/flood?latitude={la}&longitude={lo}"
                  f"&daily=river_discharge&start_date={day - timedelta(days=window_days)}"
@@ -351,6 +502,12 @@ def check(place: str | None = None, lat: float | None = None, lon: float | None 
             links.append(a["url"])
             reasons.append(f"Copernicus EMS {a['code']} ({a['title']}), {a['distance_km']} km away, "
                            f"event {a['event_time'] or a['activation_time']}")
+    if rw["status"] == "MATCH":
+        support = True
+        for d in rw["disasters"][:3]:
+            links.append(d["url"])
+            reasons.append(f"ReliefWeb official disaster entry: {d['name']} ({d['date']}), type {', '.join(d['types'])}, "
+                           f"same country within +-{rw['window_days']} d: {d['url']}")
     if ratio is not None and ratio >= 3 and rd["peak"] >= MIN_PEAK_M3S:
         support = True
         reasons.append(f"river discharge peak {rd['peak']:.1f} m3/s is {ratio}x the 30-day baseline "
