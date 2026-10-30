@@ -1,9 +1,9 @@
 {
   "schema_version": "1.5",
-  "investigation_id": "9bf2f67ad9",
-  "created_at": "2026-10-30T18:00:37+00:00",
+  "investigation_id": "0c9cf160ac",
+  "created_at": "2026-10-30T21:20:10+00:00",
   "input": {
-    "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a72ec46071288700d/data/videos/x_iambmane.mp4",
+    "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a9101790cc8e14bbf/data/videos/x_iambmane.mp4",
     "path": "/home/samir-kumal/hackethon/floodproof/data/videos/x_iambmane.mp4",
     "url": null,
     "uploader": null,
@@ -86,7 +86,7 @@
     "mode": "hash-shortlist(top_6)+match",
     "entries_searched": 6,
     "entries_total": 37,
-    "seconds": 37.16,
+    "seconds": 34.93,
     "hits": [
       {
         "url": "https://www.instagram.com/reel/DcUFQZhvGzS/",
@@ -125,10 +125,12 @@
         "uploader": "Leigh Coates",
         "upload_date": "2026-08-21",
         "date_source": "yt-dlp live metadata",
-        "upload_timestamp": "2026-08-21T19:34:21Z",
-        "retrieved_at": "2026-10-30T17:59:47+00:00",
+        "upload_timestamp": null,
+        "retrieved_at": "2026-10-30T05:33:30+00:00",
         "adapter": "memory",
         "found_via": "entry 3",
+        "found_by": "memory",
+        "snowball_seed": null,
         "also_found_by": [],
         "match": {
           "decision": true,
@@ -805,42 +807,38 @@
           "explanation": {
             "items": [
               {
-                "what": "blurred dark helicopter rotor blade streak at the very top edge",
+                "what": "the same dark blurred rotor blade streak",
                 "region_a": "top-left",
                 "region_b": "top-left"
               },
               {
-                "what": "overcast grey cloudy sky with identical cloud pattern and distant dark mountain ridge on the horizon",
-                "region_a": "top-center",
-                "region_b": "top-center"
-              },
-              {
-                "what": "long glacier wall with bright blue ice sections and white mist-spray along its base",
-                "region_a": "center",
-                "region_b": "center"
-              },
-              {
-                "what": "black helicopter door frame and grey interior seat and panel on the left side with same curved edge and shading",
-                "region_a": "middle-left",
-                "region_b": "middle-left"
-              },
-              {
-                "what": "round grey equipment cap with white GelPro lettering in the lower left above a black vent",
+                "what": "the same black interior frame with gray component bearing white 'GeliPro' text",
                 "region_a": "bottom-left",
                 "region_b": "bottom-left"
               },
               {
-                "what": "jumbled field of broken white and light-blue ice chunks extending to the lower right",
+                "what": "the same overcast gray cloud pattern in the sky",
+                "region_a": "top-center",
+                "region_b": "top-center"
+              },
+              {
+                "what": "the same blue-tinted vertical sections of the ice wall with mist in front",
+                "region_a": "center",
+                "region_b": "center"
+              },
+              {
+                "what": "the same pattern of broken white ice rubble field below",
                 "region_a": "bottom-right",
                 "region_b": "bottom-right"
               }
             ],
             "differences": [
-              "no crop, mirror, caption bar or watermark change visible; only very minor sharpness-brightness variation from compression"
+              "slight crop / framing shift with Image B showing marginally more at the bottom edge",
+              "slight brightness and sharpness difference with Image B appearing slightly brighter and clearer"
             ],
             "model": "meta/muse-spark-1.3",
             "label": "AI explanation of a matcher-proven match: the proof is the geometric match, not this text",
-            "cost_usd": 0.00793
+            "cost_usd": 0.00843
           }
         },
         "stored_date": "2026-08-21",
@@ -866,6 +864,17 @@
             "old/unrelated video falsely linked to claimed event"
           ],
           "note": "original as cited by fact-checkers; not independently verified as the first upload"
+        },
+        "muse_read": {
+          "visible_text": [
+            {
+              "text": "GeliPro",
+              "kind": "logo"
+            }
+          ],
+          "usernames": [],
+          "model": "meta/muse-spark-1.3",
+          "label": "AI observation (Muse): search hints and text read from the frame; never evidence"
         }
       }
     ],
@@ -875,10 +884,12 @@
       "uploader": "Leigh Coates",
       "upload_date": "2026-08-21",
       "date_source": "yt-dlp live metadata",
-      "upload_timestamp": "2026-08-21T19:34:21Z",
-      "retrieved_at": "2026-10-30T17:59:47+00:00",
+      "upload_timestamp": null,
+      "retrieved_at": "2026-10-30T05:33:30+00:00",
       "adapter": "memory",
       "found_via": "entry 3",
+      "found_by": "memory",
+      "snowball_seed": null,
       "also_found_by": [],
       "match": {
         "decision": true,
@@ -1555,42 +1566,38 @@
         "explanation": {
           "items": [
             {
-              "what": "blurred dark helicopter rotor blade streak at the very top edge",
+              "what": "the same dark blurred rotor blade streak",
               "region_a": "top-left",
               "region_b": "top-left"
             },
             {
-              "what": "overcast grey cloudy sky with identical cloud pattern and distant dark mountain ridge on the horizon",
-              "region_a": "top-center",
-              "region_b": "top-center"
-            },
-            {
-              "what": "long glacier wall with bright blue ice sections and white mist-spray along its base",
-              "region_a": "center",
-              "region_b": "center"
-            },
-            {
-              "what": "black helicopter door frame and grey interior seat and panel on the left side with same curved edge and shading",
-              "region_a": "middle-left",
-              "region_b": "middle-left"
-            },
-            {
-              "what": "round grey equipment cap with white GelPro lettering in the lower left above a black vent",
+              "what": "the same black interior frame with gray component bearing white 'GeliPro' text",
               "region_a": "bottom-left",
               "region_b": "bottom-left"
             },
             {
-              "what": "jumbled field of broken white and light-blue ice chunks extending to the lower right",
+              "what": "the same overcast gray cloud pattern in the sky",
+              "region_a": "top-center",
+              "region_b": "top-center"
+            },
+            {
+              "what": "the same blue-tinted vertical sections of the ice wall with mist in front",
+              "region_a": "center",
+              "region_b": "center"
+            },
+            {
+              "what": "the same pattern of broken white ice rubble field below",
               "region_a": "bottom-right",
               "region_b": "bottom-right"
             }
           ],
           "differences": [
-            "no crop, mirror, caption bar or watermark change visible; only very minor sharpness-brightness variation from compression"
+            "slight crop / framing shift with Image B showing marginally more at the bottom edge",
+            "slight brightness and sharpness difference with Image B appearing slightly brighter and clearer"
           ],
           "model": "meta/muse-spark-1.3",
           "label": "AI explanation of a matcher-proven match: the proof is the geometric match, not this text",
-          "cost_usd": 0.00793
+          "cost_usd": 0.00843
         }
       },
       "stored_date": "2026-08-21",
@@ -1616,6 +1623,17 @@
           "old/unrelated video falsely linked to claimed event"
         ],
         "note": "original as cited by fact-checkers; not independently verified as the first upload"
+      },
+      "muse_read": {
+        "visible_text": [
+          {
+            "text": "GeliPro",
+            "kind": "logo"
+          }
+        ],
+        "usernames": [],
+        "model": "meta/muse-spark-1.3",
+        "label": "AI observation (Muse): search hints and text read from the frame; never evidence"
       }
     },
     "claimed_original": null,
@@ -1655,20 +1673,18 @@
   "clues": {
     "shows": [
       {
-        "text": "aerial handheld view from open helicopter door flying over a vast debris-covered glacier with blue ice cliff, icebergs and grey meltwater",
+        "text": "helicopter-door view over vast shattered blue-white glacier icefield with mist/spray",
         "refs": [
           0,
-          7,
-          13
+          7
         ],
         "timestamps_s": [
           0.0,
-          11.0,
-          21.0
+          11.0
         ]
       },
       {
-        "text": "turbulent grey glacial floodwater carrying blue-white ice chunks flowing from a dark subglacial portal / ice cave at the glacier margin",
+        "text": "grey silty outburst floodwater carrying ice chunks emerging from dark debris-covered glacier portal",
         "refs": [
           13,
           20,
@@ -1683,7 +1699,7 @@
         ]
       },
       {
-        "text": "close overhead view of meltwater canyon and skylight cut through dark debris-covered ice with whitewater rushing underneath and over icefalls",
+        "text": "close-up of dark glacier canyon and skylight opening with whitewater torrent rushing through and under the ice",
         "refs": [
           40,
           47
@@ -1702,9 +1718,7 @@
         13,
         20,
         27,
-        34,
-        40,
-        47
+        34
       ],
       "timestamps_s": [
         0.0,
@@ -1712,23 +1726,19 @@
         21.0,
         30.33,
         41.0,
-        54.0,
-        62.33,
-        74.67
+        54.0
       ]
     },
     "visible_text": [
       {
-        "text": "HeliPro (visible partially as GeliPro / elPro on helicopter interior)",
+        "text": "GeliPro",
         "language": "en",
         "is_place": false,
         "refs": [
-          0,
-          7
+          0
         ],
         "timestamps_s": [
-          0.0,
-          11.0
+          0.0
         ]
       },
       {
@@ -1766,69 +1776,70 @@
       }
     ],
     "likely_location": {
-      "place": "Mendenhall Glacier / Suicide Basin area, Alaska",
-      "country": "United States",
+      "place": "Vatnajokull ice cap, southern Iceland",
+      "country": "Iceland",
       "confidence": 0.6,
-      "lat": 58.441,
-      "lon": -134.561,
+      "lat": 64.4189,
+      "lon": -16.678,
       "reasons": [
         {
-          "text": "vast treeless debris-covered glacier with blue ice wall and braided grey outwash, not Himalayan valley with villages/forest",
+          "text": "vast flat ice sheet with blue ice face and black volcanic debris/ash cover, not Himalayan valley glacier",
           "refs": [
             0,
             7,
+            13
+          ],
+          "timestamps_s": [
+            0.0,
+            11.0,
+            21.0
+          ]
+        },
+        {
+          "text": "barren dark volcanic hills, grey silt water and subglacial portal with no trees, villages or terraces",
+          "refs": [
             13,
             20,
             27
           ],
           "timestamps_s": [
-            0.0,
-            11.0,
             21.0,
             30.33,
             41.0
           ]
         },
         {
-          "text": "English science explainer describing subglacial lake draining in ~36 hours lifting ice and carving canyon/skylight matches well-documented Suicide Basin GLOF at Mendenhall",
+          "text": "subglacial drainage with canyon and skylight described in English captions matches Icelandic jokulhlaup",
           "refs": [
             7,
             20,
-            40
+            40,
+            47
           ],
           "timestamps_s": [
             11.0,
             30.33,
-            62.33
-          ]
-        },
-        {
-          "text": "tour helicopter branding HeliPro visible in door view suggests Alaska commercial glacier helicopter operation",
-          "refs": [
-            0,
-            7
-          ],
-          "timestamps_s": [
-            0.0,
-            11.0
+            62.33,
+            74.67
           ]
         }
       ]
     },
     "location_hypotheses": [
       {
-        "place": "Mendenhall Glacier / Suicide Basin area, Alaska",
-        "country": "United States",
+        "place": "Vatnajokull ice cap, southern Iceland",
+        "country": "Iceland",
         "confidence": 0.6,
-        "lat": 58.441,
-        "lon": -134.561,
+        "lat": 64.4189,
+        "lon": -16.678,
         "cited_frames": [
           0,
           7,
           13,
           20,
           27,
-          40
+          40,
+          47
         ],
         "cited_timestamps_s": [
           0.0,
@@ -1836,48 +1847,49 @@
           21.0,
           30.33,
           41.0,
-          62.33
+          62.33,
+          74.67
         ],
         "reasons": [
           {
-            "text": "vast treeless debris-covered glacier with blue ice wall and braided grey outwash, not Himalayan valley with villages/forest",
+            "text": "vast flat ice sheet with blue ice face and black volcanic debris/ash cover, not Himalayan valley glacier",
             "refs": [
               0,
               7,
+              13
+            ],
+            "timestamps_s": [
+              0.0,
+              11.0,
+              21.0
+            ]
+          },
+          {
+            "text": "barren dark volcanic hills, grey silt water and subglacial portal with no trees, villages or terraces",
+            "refs": [
               13,
               20,
               27
             ],
             "timestamps_s": [
-              0.0,
-              11.0,
               21.0,
               30.33,
               41.0
             ]
           },
           {
-            "text": "English science explainer describing subglacial lake draining in ~36 hours lifting ice and carving canyon/skylight matches well-documented Suicide Basin GLOF at Mendenhall",
+            "text": "subglacial drainage with canyon and skylight described in English captions matches Icelandic jokulhlaup",
             "refs": [
               7,
               20,
-              40
+              40,
+              47
             ],
             "timestamps_s": [
               11.0,
               30.33,
-              62.33
-            ]
-          },
-          {
-            "text": "tour helicopter branding HeliPro visible in door view suggests Alaska commercial glacier helicopter operation",
-            "refs": [
-              0,
-              7
-            ],
-            "timestamps_s": [
-              0.0,
-              11.0
+              62.33,
+              74.67
             ]
           }
         ],
@@ -1887,25 +1899,39 @@
     ],
     "observations_against_claim": [
       {
-        "text": "terrain is flat high-latitude debris-covered ice with no Himalayan peaks, Nepalese settlements, vegetation or infrastructure visible",
+        "text": "terrain is flat subpolar icecap with black volcanic debris and grey silt, not steep vegetated Himalayan valleys of Nepal",
         "refs": [
           0,
           7,
           13,
-          20,
-          27
+          20
         ],
         "timestamps_s": [
           0.0,
           11.0,
           21.0,
-          30.33,
-          41.0
+          30.33
         ],
         "status": "UNVERIFIED_MODEL_OBSERVATION"
       },
       {
-        "text": "on-screen English captions describe generic subglacial drainage process over ~36 hours with no mention of Nepal or 2026-08-26",
+        "text": "no Nepali script, people, settlements or Himalayan markers; only English science captions and helicopter hardware text",
+        "refs": [
+          0,
+          7,
+          20,
+          40
+        ],
+        "timestamps_s": [
+          0.0,
+          11.0,
+          30.33,
+          62.33
+        ],
+        "status": "UNVERIFIED_MODEL_OBSERVATION"
+      },
+      {
+        "text": "captions describe 36-hour subglacial lake drainage lifting ice and carving skylight canyon, no link to claimed Nepal 2026-08-26 event",
         "refs": [
           7,
           20,
@@ -1917,25 +1943,11 @@
           62.33
         ],
         "status": "UNVERIFIED_MODEL_OBSERVATION"
-      },
-      {
-        "text": "helicopter tour branding and continuous aerial observation style points to North American/European glacier tourism, not Nepal disaster coverage",
-        "refs": [
-          0,
-          7,
-          13
-        ],
-        "timestamps_s": [
-          0.0,
-          11.0,
-          21.0
-        ],
-        "status": "UNVERIFIED_MODEL_OBSERVATION"
       }
     ],
     "media_nature": {
       "value": "camera_footage",
-      "confidence": 0.93,
+      "confidence": 0.9,
       "cited_frames": [
         0,
         7,
@@ -1958,7 +1970,7 @@
       ],
       "reasons": [
         {
-          "text": "shaky helicopter door view with rotor blur, natural clouds and ice texture, compression noise",
+          "text": "helicopter door frame and rotor blur over real glacier ice with natural noise",
           "refs": [
             0
           ],
@@ -1967,7 +1979,7 @@
           ]
         },
         {
-          "text": "aerial helicopter view of blue ice cliff with natural light and added caption overlay",
+          "text": "helicopter view of blue ice cliff with added caption overlay, natural textures",
           "refs": [
             7
           ],
@@ -1976,7 +1988,7 @@
           ]
         },
         {
-          "text": "handheld aerial view of glacier portal and ice-filled water with natural detail",
+          "text": "shaky helicopter view of debris-covered ice front and silty water",
           "refs": [
             13
           ],
@@ -1985,7 +1997,7 @@
           ]
         },
         {
-          "text": "low aerial view of floodwater and ice chunks with caption, natural murky water texture",
+          "text": "real floodwater with ice chunks and caption text over live footage",
           "refs": [
             20
           ],
@@ -1994,7 +2006,7 @@
           ]
         },
         {
-          "text": "realistic turbulent water and dark debris ice with natural irregular shapes",
+          "text": "natural turbulent grey water and dark glacier ice, no synthetic warping",
           "refs": [
             27
           ],
@@ -2003,7 +2015,7 @@
           ]
         },
         {
-          "text": "close aerial view of dirty ice cave and rushing water with natural shadows",
+          "text": "close aerial of rugged glacier ice and portal with natural detail",
           "refs": [
             34
           ],
@@ -2018,57 +2030,57 @@
           "frame": 0,
           "t": 0.0,
           "label": "camera_footage",
-          "confidence": 0.95,
-          "reason": "shaky helicopter door view with rotor blur, natural clouds and ice texture, compression noise"
+          "confidence": 0.92,
+          "reason": "helicopter door frame and rotor blur over real glacier ice with natural noise"
         },
         {
           "frame": 7,
           "t": 11.0,
           "label": "camera_footage",
-          "confidence": 0.95,
-          "reason": "aerial helicopter view of blue ice cliff with natural light and added caption overlay"
+          "confidence": 0.9,
+          "reason": "helicopter view of blue ice cliff with added caption overlay, natural textures"
         },
         {
           "frame": 13,
           "t": 21.0,
           "label": "camera_footage",
-          "confidence": 0.93,
-          "reason": "handheld aerial view of glacier portal and ice-filled water with natural detail"
+          "confidence": 0.9,
+          "reason": "shaky helicopter view of debris-covered ice front and silty water"
         },
         {
           "frame": 20,
           "t": 30.33,
           "label": "camera_footage",
-          "confidence": 0.93,
-          "reason": "low aerial view of floodwater and ice chunks with caption, natural murky water texture"
+          "confidence": 0.9,
+          "reason": "real floodwater with ice chunks and caption text over live footage"
         },
         {
           "frame": 27,
           "t": 41.0,
           "label": "camera_footage",
-          "confidence": 0.93,
-          "reason": "realistic turbulent water and dark debris ice with natural irregular shapes"
+          "confidence": 0.92,
+          "reason": "natural turbulent grey water and dark glacier ice, no synthetic warping"
         },
         {
           "frame": 34,
           "t": 54.0,
           "label": "camera_footage",
-          "confidence": 0.92,
-          "reason": "close aerial view of dirty ice cave and rushing water with natural shadows"
+          "confidence": 0.9,
+          "reason": "close aerial of rugged glacier ice and portal with natural detail"
         },
         {
           "frame": 40,
           "t": 62.33,
           "label": "camera_footage",
-          "confidence": 0.92,
-          "reason": "overhead view of glacier canyon with caption, natural cracked ice texture"
+          "confidence": 0.88,
+          "reason": "glacier surface canyon with caption overlay, still photographic ice texture"
         },
         {
           "frame": 47,
           "t": 74.67,
           "label": "camera_footage",
-          "confidence": 0.92,
-          "reason": "close view of whitewater waterfall through dark canyon with natural spray and motion blur"
+          "confidence": 0.9,
+          "reason": "torrent of whitewater through dark gorge filmed from helicopter, natural motion blur"
         }
       ],
       "by_class": {
@@ -2096,48 +2108,48 @@
       {
         "q": "\"Water pressure lifts the ice and drains downhill under the glacier\"",
         "language": "en",
-        "why": "exact caption search to find original upload"
+        "why": "exact caption to find original upload"
       },
       {
         "q": "\"The lake drains in about 36 hours\" glacier ice chunks",
         "language": "en",
-        "why": "exact caption phrase to locate source video"
+        "why": "exact caption to find true source"
       },
       {
-        "q": "\"has carved a canyon and opened a skylight through the glacier\"",
+        "q": "\"has carved a canyon and opened a skylight\" glacier",
         "language": "en",
-        "why": "exact caption phrase to trace earliest post"
+        "why": "exact caption to trace viral video"
       },
       {
-        "q": "helicopter glacier lake drains 36 hours ice chunks video",
+        "q": "helicopter glacier lake drains under glacier 36 hours video",
         "language": "en",
-        "why": "neutral description without claimed place to find true event"
+        "why": "neutral description avoiding claimed place"
       },
       {
-        "q": "Mendenhall Suicide Basin helicopter GLOF drainage canyon skylight video",
+        "q": "glacier outburst flood skylight canyon helicopter ice chunks",
         "language": "en",
-        "why": "suspected Alaska location for glacial outburst flood"
+        "why": "visual features to identify event"
       },
       {
-        "q": "glacial outburst flood helicopter black glacier ice cave lake drains video",
+        "q": "jokulhlaup helicopter lake drains under glacier icebergs video",
         "language": "en",
-        "why": "visual description to find matching glacier flood footage"
+        "why": "Iceland term for subglacial outburst flood"
       },
       {
-        "q": "HeliPro helicopter glacier flood lake drain video",
+        "q": "Mendenhall Glacier Suicide Basin helicopter outburst 36 hours",
         "language": "en",
-        "why": "visible operator branding to identify tour company and location"
+        "why": "check well-known Alaska GLOF with same mechanism"
       },
       {
-        "q": "jökulhlaup helicopter video glacier canyon skylight subglacial water",
-        "language": "en",
-        "why": "alternative high-latitude glacial flood term (Iceland/Alaska) to find source"
+        "q": "Skafta Grimsvotn jokulhlaup helicopter uppistaða ísjakar",
+        "language": "is",
+        "why": "check Icelandic source in local language"
       }
     ],
     "rejected_clues": [],
     "status": "ok",
     "model": "meta/muse-spark-1.3",
-    "cost_usd": 0.02614,
+    "cost_usd": 0.0295,
     "frames_shown": [
       0,
       7,
@@ -2161,32 +2173,33 @@
     "audio": {
       "has_speech": false,
       "language": null,
-      "transcript_summary": "",
+      "transcript_summary": "No speech, place names, or dates spoken - audio contains only natural disaster sounds",
       "spoken_place_names": [],
       "spoken_dates": [],
       "partial_dates": [],
       "other_sounds": [
-        "helicopter rotor noise",
-        "rushing water/flood noise",
-        "wind"
+        "loud rumbling",
+        "landslide/debris flow crashing",
+        "rushing water",
+        "rock impacts"
       ],
       "dropped_untimed": 0,
       "status": "ok",
       "model": "meta/muse-spark-open",
-      "cost_usd": 0.00637,
+      "cost_usd": 0.00464,
       "truncated": false,
       "analyzed_seconds": 75.0,
       "attempts": 1
     },
     "frame_images": [
-      "demo/success_recycled/frames/frame_00_t0.0.jpg",
-      "demo/success_recycled/frames/frame_07_t11.0.jpg",
-      "demo/success_recycled/frames/frame_13_t21.0.jpg",
-      "demo/success_recycled/frames/frame_20_t30.3.jpg",
-      "demo/success_recycled/frames/frame_27_t41.0.jpg",
-      "demo/success_recycled/frames/frame_34_t54.0.jpg",
-      "demo/success_recycled/frames/frame_40_t62.3.jpg",
-      "demo/success_recycled/frames/frame_47_t74.7.jpg"
+      "/home/samir-kumal/hackethon/floodproof/runs/snowdemo_success/frames/frame_00_t0.0.jpg",
+      "/home/samir-kumal/hackethon/floodproof/runs/snowdemo_success/frames/frame_07_t11.0.jpg",
+      "/home/samir-kumal/hackethon/floodproof/runs/snowdemo_success/frames/frame_13_t21.0.jpg",
+      "/home/samir-kumal/hackethon/floodproof/runs/snowdemo_success/frames/frame_20_t30.3.jpg",
+      "/home/samir-kumal/hackethon/floodproof/runs/snowdemo_success/frames/frame_27_t41.0.jpg",
+      "/home/samir-kumal/hackethon/floodproof/runs/snowdemo_success/frames/frame_34_t54.0.jpg",
+      "/home/samir-kumal/hackethon/floodproof/runs/snowdemo_success/frames/frame_40_t62.3.jpg",
+      "/home/samir-kumal/hackethon/floodproof/runs/snowdemo_success/frames/frame_47_t74.7.jpg"
     ]
   },
   "physical_world_check": {
@@ -2316,19 +2329,50 @@
     "news_coverage": {
       "source": "gdelt",
       "label": "news coverage",
-      "status": "UNAVAILABLE",
-      "articles_in_window": null,
-      "articles_baseline_30d": null,
-      "sample_links": [],
+      "status": "OK",
+      "articles_in_window": 250,
+      "articles_baseline_30d": 4,
+      "sample_links": [
+        {
+          "url": "https://www.tio.ch/svizzera/attualita/1946797/ghiacciai-in-ritirata-e-permafrost-che-si-scioglie-una-minaccia-silenziosa-sulle-alpi",
+          "title": "Ghiacciai in ritirata e permafrost che si scioglie : una minaccia silenziosa sulle Alpi",
+          "domain": "tio.ch",
+          "seen": "20260830T003000Z"
+        },
+        {
+          "url": "https://www.lbc.co.uk/article/nepal-flooding-uk-team-5Hjdgfb_2/",
+          "title": "Nepal flooding death toll nears 700 and thousands missing as united kingdom team arrives to provide support",
+          "domain": "lbc.co.uk",
+          "seen": "20260830T003000Z"
+        },
+        {
+          "url": "https://thenorthlines.com/disastrous-floods-hit-nepal-china-border-ravaging-himalayan-nation/",
+          "title": "Disastrous Floods hit Nepal - China border , ravaging Himalayan nation",
+          "domain": "thenorthlines.com",
+          "seen": "20260829T233000Z"
+        },
+        {
+          "url": "http://www.myanmarnews.net/news/279273727/one-himachal-resident-reported-missing-in-nepal-floods-monsoon-death-toll-reaches-249-in-60-days",
+          "title": "One Himachal resident reported missing in Nepal floods , monsoon death toll reaches 249 in 60 days",
+          "domain": "myanmarnews.net",
+          "seen": "20260829T223000Z"
+        },
+        {
+          "url": "https://www.reviewnepal.com/rasuwa-tragedy-shows-a-changing-himalaya-and-why-nepal-needs-climate-justice/",
+          "title": "Rasuwa Tragedy Shows a Changing Himalaya and Why Nepal Needs Climate Justice",
+          "domain": "reviewnepal.com",
+          "seen": "20260829T223000Z"
+        }
+      ],
       "context_only": true,
       "query": "Nepal glacial lake flood",
-      "reason": "news coverage unavailable right now",
-      "error_type": "ConnectTimeout"
+      "capped_at": 250,
+      "note": "news coverage is context only; it counts articles that mention the place and event words and never proves a specific video is real"
     }
   },
   "media_nature": {
     "value": "camera_footage",
-    "confidence": 0.93,
+    "confidence": 0.9,
     "cited_frames": [
       0,
       7,
@@ -2351,7 +2395,7 @@
     ],
     "reasons": [
       {
-        "text": "shaky helicopter door view with rotor blur, natural clouds and ice texture, compression noise",
+        "text": "helicopter door frame and rotor blur over real glacier ice with natural noise",
         "refs": [
           0
         ],
@@ -2360,7 +2404,7 @@
         ]
       },
       {
-        "text": "aerial helicopter view of blue ice cliff with natural light and added caption overlay",
+        "text": "helicopter view of blue ice cliff with added caption overlay, natural textures",
         "refs": [
           7
         ],
@@ -2369,7 +2413,7 @@
         ]
       },
       {
-        "text": "handheld aerial view of glacier portal and ice-filled water with natural detail",
+        "text": "shaky helicopter view of debris-covered ice front and silty water",
         "refs": [
           13
         ],
@@ -2378,7 +2422,7 @@
         ]
       },
       {
-        "text": "low aerial view of floodwater and ice chunks with caption, natural murky water texture",
+        "text": "real floodwater with ice chunks and caption text over live footage",
         "refs": [
           20
         ],
@@ -2387,7 +2431,7 @@
         ]
       },
       {
-        "text": "realistic turbulent water and dark debris ice with natural irregular shapes",
+        "text": "natural turbulent grey water and dark glacier ice, no synthetic warping",
         "refs": [
           27
         ],
@@ -2396,7 +2440,7 @@
         ]
       },
       {
-        "text": "close aerial view of dirty ice cave and rushing water with natural shadows",
+        "text": "close aerial of rugged glacier ice and portal with natural detail",
         "refs": [
           34
         ],
@@ -2411,57 +2455,57 @@
         "frame": 0,
         "t": 0.0,
         "label": "camera_footage",
-        "confidence": 0.95,
-        "reason": "shaky helicopter door view with rotor blur, natural clouds and ice texture, compression noise"
+        "confidence": 0.92,
+        "reason": "helicopter door frame and rotor blur over real glacier ice with natural noise"
       },
       {
         "frame": 7,
         "t": 11.0,
         "label": "camera_footage",
-        "confidence": 0.95,
-        "reason": "aerial helicopter view of blue ice cliff with natural light and added caption overlay"
+        "confidence": 0.9,
+        "reason": "helicopter view of blue ice cliff with added caption overlay, natural textures"
       },
       {
         "frame": 13,
         "t": 21.0,
         "label": "camera_footage",
-        "confidence": 0.93,
-        "reason": "handheld aerial view of glacier portal and ice-filled water with natural detail"
+        "confidence": 0.9,
+        "reason": "shaky helicopter view of debris-covered ice front and silty water"
       },
       {
         "frame": 20,
         "t": 30.33,
         "label": "camera_footage",
-        "confidence": 0.93,
-        "reason": "low aerial view of floodwater and ice chunks with caption, natural murky water texture"
+        "confidence": 0.9,
+        "reason": "real floodwater with ice chunks and caption text over live footage"
       },
       {
         "frame": 27,
         "t": 41.0,
         "label": "camera_footage",
-        "confidence": 0.93,
-        "reason": "realistic turbulent water and dark debris ice with natural irregular shapes"
+        "confidence": 0.92,
+        "reason": "natural turbulent grey water and dark glacier ice, no synthetic warping"
       },
       {
         "frame": 34,
         "t": 54.0,
         "label": "camera_footage",
-        "confidence": 0.92,
-        "reason": "close aerial view of dirty ice cave and rushing water with natural shadows"
+        "confidence": 0.9,
+        "reason": "close aerial of rugged glacier ice and portal with natural detail"
       },
       {
         "frame": 40,
         "t": 62.33,
         "label": "camera_footage",
-        "confidence": 0.92,
-        "reason": "overhead view of glacier canyon with caption, natural cracked ice texture"
+        "confidence": 0.88,
+        "reason": "glacier surface canyon with caption overlay, still photographic ice texture"
       },
       {
         "frame": 47,
         "t": 74.67,
         "label": "camera_footage",
-        "confidence": 0.92,
-        "reason": "close view of whitewater waterfall through dark canyon with natural spray and motion blur"
+        "confidence": 0.9,
+        "reason": "torrent of whitewater through dark gorge filmed from helicopter, natural motion blur"
       }
     ],
     "by_class": {
@@ -2491,7 +2535,7 @@
   ],
   "final_verdict": {
     "label": "RECYCLED_FOOTAGE",
-    "summary": "The footage matches the earliest copy found, published on 2026-08-21 (https://www.instagram.com/reel/DcUFQZhvGzS/, date independently fetched per yt-dlp live metadata), before the claimed event date 2026-08-26. Matcher evidence: 48 temporally consistent frame(s), up to 330 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen. Separately, the AI visual clues report 3 unverified observation(s) that clash with the claim (e.g. \"terrain is flat high-latitude debris-covered ice with no Himalayan peaks, Nepalese settlements, vegetation or infrastructure visible\", frame ref [0, 7, 13, 20, 27]); these are model observations, not independent evidence and not part of the visual-match proof.",
+    "summary": "The footage matches the earliest copy found, published on 2026-08-21 (https://www.instagram.com/reel/DcUFQZhvGzS/, date independently fetched per yt-dlp live metadata), before the claimed event date 2026-08-26. Matcher evidence: 48 temporally consistent frame(s), up to 330 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen. Separately, the AI visual clues report 3 unverified observation(s) that clash with the claim (e.g. \"terrain is flat subpolar icecap with black volcanic debris and grey silt, not steep vegetated Himalayan valleys of Nepal\", frame ref [0, 7, 13, 20]); these are model observations, not independent evidence and not part of the visual-match proof.",
     "limits": [
       "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
       "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
@@ -2630,89 +2674,164 @@
       "basis": "matcher proof"
     }
   ],
+  "spread": [
+    {
+      "url": "https://www.instagram.com/reel/DcUFQZhvGzS/",
+      "platform": "Instagram",
+      "uploader": "Leigh Coates",
+      "date": "2026-08-21",
+      "date_source": "yt-dlp live metadata",
+      "date_independent": true,
+      "found_by": "memory",
+      "likely_parent": null,
+      "visible_text": [
+        "GeliPro"
+      ]
+    }
+  ],
+  "snowball": {
+    "rounds": [
+      {
+        "round": 1,
+        "seed_copy": "https://www.instagram.com/reel/DcUFQZhvGzS/",
+        "queries": [
+          {
+            "q": "helipilotleigh Columbia Glacier GLOF",
+            "rationale": "Title includes Video by helipilotleigh indicating a handle to search for uploads.",
+            "source_field": "title",
+            "language": "en"
+          },
+          {
+            "q": "Leigh Coates Columbia Glacier helicopter",
+            "rationale": "Uploader name Leigh Coates provides a name to search alongside location.",
+            "source_field": "uploader",
+            "language": "en"
+          },
+          {
+            "q": "Columbia Glacier glacial lake outburst flood",
+            "rationale": "Description names Columbia Glacier in Alaska and annual occurrence since 2014.",
+            "source_field": "description",
+            "language": "en"
+          },
+          {
+            "q": "Jökulhlaup Columbia Glacier helicopter video",
+            "rationale": "Description uses Jökulhlaup and GLOF terms to describe the flood event.",
+            "source_field": "description",
+            "language": "en"
+          },
+          {
+            "q": "GeliPro helicopter glacier flood",
+            "rationale": "GeliPro text visible inside helicopter cabin offers an additional search term.",
+            "source_field": "watermark",
+            "language": "en"
+          }
+        ],
+        "candidates": 28,
+        "verified": 6,
+        "proven_new": [],
+        "sources": {
+          "youtube_api": 0,
+          "tavily": 2,
+          "yandex": 11,
+          "lens": 15
+        },
+        "seconds": 47.2,
+        "muse_error": null
+      }
+    ],
+    "stopped_reason": "round 1 found no new proven copy",
+    "cost": {
+      "openrouter_usd": 0.01045,
+      "lens_calls": 1,
+      "tavily_calls": 2,
+      "youtube_search_calls": 0,
+      "verifications": 6
+    },
+    "seconds": 47.2,
+    "limits": {
+      "max_rounds": 3,
+      "max_extra_verifications": 12,
+      "max_seconds": 90.0
+    },
+    "note": "Snowball only extends the list of matcher-proven copies. Muse's queries are search terms, never evidence, and no original is named."
+  },
   "fast_path": "memory_hit",
   "gate": {
     "decision": "run",
-    "kind": "disaster_footage",
-    "reason": "Frames show a glacial lake outburst with rapid drainage and on-screen text describing destructive force.",
+    "kind": "other",
+    "reason": "Frames show rapid glacial meltwater release and flood-like flow under and from the glacier.",
     "refs": [
       1,
       2,
       3,
       4
     ],
-    "confidence": 0.7,
+    "confidence": 0.65,
     "metadata_signals": {},
-    "cost": 0.00113,
-    "seconds": 45.5,
+    "cost": 0.0,
+    "seconds": 0.0,
     "relevant": "yes",
     "shows_disaster_or_emergency": true,
-    "model": "meta/muse-glimmer-30b"
+    "model": "meta/muse-glimmer-30b",
+    "cached": true
   },
-  "timing_s": 134.9,
+  "timing_s": 141.1,
   "stage_timings_s": {
-    "fetch_keyframes_only": 4.1,
-    "gate_total": 45.5,
-    "gate_wait_after_fetch": 41.4,
-    "fetch_and_keyframes": 45.5,
-    "muse": 23.7,
-    "memory": 37.3,
-    "memory_muse_wait_claim": 37.3,
+    "fetch_keyframes_only": 3.7,
+    "gate_total": 0.0,
+    "gate_wait_after_fetch": 0.0,
+    "fetch_and_keyframes": 3.7,
+    "muse": 32.4,
+    "memory": 35.1,
+    "memory_muse_wait_claim": 35.1,
     "discovery": 0.0,
     "discovery_by_source": {},
     "verify_total_incl_overlap": 0.0,
-    "dates_physical_report_wait": 52.1,
+    "snowball": 47.2,
+    "dates_physical_report_wait": 102.3,
     "verify_workers": 3,
     "verify_seconds": 0.0,
     "verify_checked": 0
   },
   "debunk": {
     "texts": {
-      "en": "Earliest proven copy was published on 2026-08-21 by Leigh Coates on Instagram, before the claimed event date of 2026-08-26. The claim refers to a Nepal GLOF. The earlier copy is at https://www.instagram.com/reel/DcUFQZhvGzS/ uploaded by Leigh Coates. Visual matching shows 48 consistent frames with a max of 330 inliers. This indicates the footage was recycled, but it does not prove the event did not occur.",
-      "ne": "सबैभन्दा पहिले प्रमाणित प्रतिलिपि 2026-08-21 मा Leigh Coates द्वारा Instagram मा प्रकाशित भएको थियो, जुन दावी गरिएको घटना मिति 2026-08-26 भन्दा पहिले हो। दावी नेपाल GLOF बारे हो। पहिलको प्रतिलिपि https://www.instagram.com/reel/DcUFQZhvGzS/ मा छ र यो Leigh Coates द्वारा अपलोड गरिएको हो। दृश्य मिलानले 48 सुसंगत फ्रेमहरू र अधिकतम 330 इनलायर्स देखाएको छ। यसले फुटेज पुनः प्रयोग भएको देखाउँछ, तर यसले घटना भएन भनेर प्रमाणित गर्दैन।"
+      "en": "An earliest copy found was published on 2026-08-21 on Instagram by Leigh Coates, which is before the claimed event date of 2026-08-26. The claim is about a Nepal GLOF on 2026-08-26 in Nepal. The copy at https://www.instagram.com/reel/DcUFQZhvGzS/ matches the video with 48 consistent frames and a max of 330 inliers. A visual match shows the footage was published earlier and does not prove whether a GLOF actually happened in Nepal on the claimed date.",
+      "ne": "Instagram मा Leigh Coates द्वारा प्रकाशित 2026-08-21 को सबैभन्दा पुरानो प्रमाणित प्रतिलिपि फेला परेको छ, जुन दावी गरिएको घटना मिति 2026-08-26 भन्दा पहिलेको हो। दावी नेपालमा 2026-08-26 मा भएको GLOF को बारेमा हो। https://www.instagram.com/reel/DcUFQZhvGzS/ मा रहेको प्रतिलिपिले भिडियोसँग 48 सुसंगत फ्रेम र अधिकतम 330 inliers सहित मिलान देखाउँछ। दृश्य मिलानले फुटेज पहिले नै प्रकाशित भएको देखाउँछ र यसले 2026-08-26 मा नेपालमा GLOF साँच्चै भयो भन्ने प्रमाण गर्दैन।"
     },
     "field_refs": {
       "en": [
         {
-          "sentence": "Earliest proven copy was published on 2026-08-21 by Leigh Coates on Instagram, before the claimed event date of 2026-08-26.",
+          "sentence": "An earliest copy found was published on 2026-08-21 on Instagram by Leigh Coates, which is before the claimed event date of 2026-08-26.",
           "ref": "visual_matching.earliest_proven_copy.upload_date"
         },
         {
-          "sentence": "The claim refers to a Nepal GLOF.",
+          "sentence": "The claim is about a Nepal GLOF on 2026-08-26 in Nepal.",
           "ref": "claim.text"
         },
         {
-          "sentence": "The earlier copy is at https://www.instagram.com/reel/DcUFQZhvGzS/ uploaded by Leigh Coates.",
-          "ref": "visual_matching.earliest_proven_copy.url"
-        },
-        {
-          "sentence": "Visual matching shows 48 consistent frames with a max of 330 inliers.",
+          "sentence": "The copy at https://www.instagram.com/reel/DcUFQZhvGzS/ matches the video with 48 consistent frames and a max of 330 inliers.",
           "ref": "visual_matching.earliest_proven_copy.match.consistent_frames"
         },
         {
-          "sentence": "This indicates the footage was recycled, but it does not prove the event did not occur.",
+          "sentence": "A visual match shows the footage was published earlier and does not prove whether a GLOF actually happened in Nepal on the claimed date.",
           "ref": "final_verdict.label"
         }
       ],
       "ne": [
         {
-          "sentence": "सबैभन्दा पहिले प्रमाणित प्रतिलिपि 2026-08-21 मा Leigh Coates द्वारा Instagram मा प्रकाशित भएको थियो, जुन दावी गरिएको घटना मिति 2026-08-26 भन्दा पहिले हो।",
+          "sentence": "Instagram मा Leigh Coates द्वारा प्रकाशित 2026-08-21 को सबैभन्दा पुरानो प्रमाणित प्रतिलिपि फेला परेको छ, जुन दावी गरिएको घटना मिति 2026-08-26 भन्दा पहिलेको हो।",
           "ref": "visual_matching.earliest_proven_copy.upload_date"
         },
         {
-          "sentence": "दावी नेपाल GLOF बारे हो।",
+          "sentence": "दावी नेपालमा 2026-08-26 मा भएको GLOF को बारेमा हो।",
           "ref": "claim.text"
         },
         {
-          "sentence": "पहिलको प्रतिलिपि https://www.instagram.com/reel/DcUFQZhvGzS/ मा छ र यो Leigh Coates द्वारा अपलोड गरिएको हो।",
-          "ref": "visual_matching.earliest_proven_copy.url"
-        },
-        {
-          "sentence": "दृश्य मिलानले 48 सुसंगत फ्रेमहरू र अधिकतम 330 इनलायर्स देखाएको छ।",
+          "sentence": "https://www.instagram.com/reel/DcUFQZhvGzS/ मा रहेको प्रतिलिपिले भिडियोसँग 48 सुसंगत फ्रेम र अधिकतम 330 inliers सहित मिलान देखाउँछ।",
           "ref": "visual_matching.earliest_proven_copy.match.consistent_frames"
         },
         {
-          "sentence": "यसले फुटेज पुनः प्रयोग भएको देखाउँछ, तर यसले घटना भएन भनेर प्रमाणित गर्दैन।",
+          "sentence": "दृश्य मिलानले फुटेज पहिले नै प्रकाशित भएको देखाउँछ र यसले 2026-08-26 मा नेपालमा GLOF साँच्चै भयो भन्ने प्रमाण गर्दैन।",
           "ref": "final_verdict.label"
         }
       ]
@@ -2723,6 +2842,6 @@
       "en",
       "ne"
     ],
-    "cost_usd": 0.00305
+    "cost_usd": 0.00318
   }
 }

@@ -207,9 +207,10 @@ def _demo():
 
 
 def test_demo_reports_stay_valid_without_new_fields():
-    r = _demo()
-    assert "snowball" not in r
-    validate_report(r)
+    old = json.loads((Path(__file__).resolve().parents[1] / "demo" / "genuine_wrong_date" / "report.json").read_text())
+    assert "snowball" not in old
+    validate_report(old)
+    validate_report(_demo())
 
 
 def test_validate_snowball_and_spread_rules():

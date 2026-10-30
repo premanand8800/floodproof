@@ -66,3 +66,9 @@ The rule needs the earliest date improved OR an original found in at least 2 cas
 - Most new copies were new Yandex frame results (round 1), i.e. a second Yandex search on a different frame (the seed copy's frame) rather than anything Muse read. Of the 21 new proven copies, 19 came from Yandex on the seed frame, 1 from Lens and 1 from Tavily (a Muse query): Muse's own queries contributed one proven copy.
 - One run per case, 15 cases, a small sample; H01's improvement is real (27 consistent frames, 122 inliers) but a single case.
 - Time caps are wall-clock and the evaluation host was also running other jobs.
+
+## Demo regenerated with snowball on (`demo/success_recycled`)
+Full investigation (memory copy read-only, `scripts/snowball_demo.py`): RECYCLED_FOOTAGE, 1 proven copy (the memory-proven Instagram reel dated 2026-08-21, date re-fetched live). Snowball ran 1 round (47 s): Muse read the reel (title credits a handle, description names Columbia Glacier, watermark "GeliPro"), proposed 5 queries, 28 new candidates, 6 verified, 0 newly proven. So the glacier demo's spread timeline has one real entry and no likely parent; this is the honest result, not a staged one. Multi-copy timeline rendering was checked on a synthetic report (not committed). Demo spend: $0.010 Muse (snowball) plus the run's own Muse calls, 1 Lens call, 2 Tavily calls.
+
+## Spend for this task
+OpenRouter: $0.194 evaluation plus about $0.07 for the demo run and debunk card (well under $0.80). Lens: 4 in-case calls + 1 smoke test + 1 diagnostic + 1 demo = 7 of the 40 cap. Tavily: 44 + 2 diagnostic + 2 demo = 48 of 60. YouTube Data API: quota was exhausted (429), 0 snowball searches.

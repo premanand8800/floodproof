@@ -17,6 +17,8 @@ os.environ["FLOODPROOF_SNOWBALL_RUNS_DIR"] = str(runs)
 rep = pipeline.investigate(str(ROOT / "data/videos/x_iambmane.mp4"), claim="Nepal GLOF", date="2026-08-26", place="Nepal", out_dir=out, memory=mem,
                            remember=False, use_snowball=True, log=print)
 validate_report(rep)
+from floodproof.debunk import attach
+attach(out / "report.json")                       # the shareable card, as the web app does after a run
 dst = ROOT / "demo" / "success_recycled"
 shutil.rmtree(dst, ignore_errors=True)
 shutil.copytree(out, dst, ignore=shutil.ignore_patterns("snowball"))

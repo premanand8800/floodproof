@@ -42,6 +42,8 @@ Numbers as `bench/EVALUATION.md` states them (all scorers make no API calls; not
    Every report shows its limitations.
 10. **Report.** `report.json` is the single source of truth, and the web UI renders only validated reports. An optional **Deep investigate (experimental)** mode runs a Muse Spark Open tool-calling agent and shows its full trace.
 
+**Snowball search and "How it spread" (experimental, default off).** After the pipeline proves a copy, `--snowball` lets Muse read that copy's title, uploader, description and watermarks, propose up to 5 queries for earlier uploads, and search (Tavily, Yandex, Lens, YouTube); every candidate is still proven by the matcher (at most 3 rounds, 12 extra checks, 90 s). Pre-registered evaluation (`bench/snowball_RESULTS.md`): earliest date moved earlier in 1 of 15 cases, 0 originals found, 21 new proven copies in 9 cases, 0 false attributions, so it ships off. The report page's "How it spread" timeline orders all proven copies by date and shows a "likely derived, not proof" parent only from measurable evidence.
+
 ## Evaluation (honest numbers)
 
 | Set | Earlier copy found | Original found | False attribution | Genuine false positives |
