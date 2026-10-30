@@ -89,6 +89,7 @@ footer{color:var(--mute);font-size:.82rem;margin-top:30px}
     <div class="full chk"><input type="checkbox" id="deep" name="deep" value="1">
       <div><label for="deep" style="margin:0;color:var(--ink)">Deep investigate (experimental)</label>
       <span class="note">Runs a tool-calling agent and shows its full trace. Extra investigation does not guarantee a better verdict.</span></div></div>
+    <div><label for="passcode">Judge passcode</label><input type="password" id="passcode" name="passcode" placeholder="optional; needed for Deep investigate" autocomplete="off"></div>
     <div class="full"><button class="btn" id="go" type="submit">Run investigation</button>
       <span class="note" id="status" role="status" aria-live="polite"></span></div>
   </form>

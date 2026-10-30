@@ -7,6 +7,7 @@ Endpoints: GET / | GET /api/demos | GET /api/report/{kind}/{name} (kind = demo|r
 from __future__ import annotations
 
 import json
+import os
 import threading
 import time
 import uuid
@@ -26,6 +27,17 @@ DEMO_TITLES = {
     "genuine_wrong_date": "Genuine footage, wrong date claimed",
 }
 JOBS: dict[str, dict] = {}
+# Public-deployment guard: demos are free; live runs cost API money and CPU.
+# FLOODPROOF_PASSCODE (in .env) lifts the daily cap and unlocks Deep investigate.
+DAILY_PUBLIC_RUNS = int(os.environ.get("FLOODPROOF_DAILY_RUNS", "15"))
+MAX_UPLOAD = 80 * 1024 * 1024
+_RUNS_TODAY: dict[str, int] = {}
+_LOCK = threading.Lock()
+
+
+def _passcode_ok(code: str) -> bool:
+    want = os.environ.get("FLOODPROOF_PASSCODE", "")
+    return bool(want) and code.strip() == want
 
 
 def _safe_name(s: str) -> str:
@@ -112,17 +124,32 @@ def create_app():
 
     @app.post("/api/investigate")
     async def investigate_(file: UploadFile | None = File(None), url: str = Form(""), claim: str = Form(""), date: str = Form(""),
-                           place: str = Form(""), deep: str = Form("")):
+                           place: str = Form(""), deep: str = Form(""), passcode: str = Form("")):
+        trusted = _passcode_ok(passcode)
+        want_deep = deep in ("1", "true", "on")
+        if want_deep and not trusted:
+            raise HTTPException(403, "Deep investigate needs the judge passcode.")
+        if any(j["status"] == "running" for j in JOBS.values()):
+            raise HTTPException(429, "Another investigation is running. Try again in a few minutes.")
+        today = time.strftime("%Y-%m-%d")
+        if not trusted and _RUNS_TODAY.get(today, 0) >= DAILY_PUBLIC_RUNS:
+            raise HTTPException(429, "Daily public run limit reached. Try the demos, or use the judge passcode.")
         if file is not None and file.filename:
             UPLOADS.mkdir(parents=True, exist_ok=True)
             src = UPLOADS / (uuid.uuid4().hex[:8] + "_" + _safe_name(Path(file.filename).stem) + Path(file.filename).suffix[:6])
-            src.write_bytes(await file.read()); source = str(src)
+            data = await file.read(MAX_UPLOAD + 1)
+            if len(data) > MAX_UPLOAD:
+                raise HTTPException(413, "Video too large (max 80 MB).")
+            src.write_bytes(data); source = str(src)
         elif url.strip().startswith(("http://", "https://")):
             source = url.strip()
         else:
             raise HTTPException(400, "give a video file or an http(s) URL")
+        with _LOCK:
+            if not trusted:
+                _RUNS_TODAY[today] = _RUNS_TODAY.get(today, 0) + 1
         job_id = uuid.uuid4().hex[:10]
-        JOBS[job_id] = dict(status="running", log=[], started=time.time(), deep=deep in ("1", "true", "on"))
+        JOBS[job_id] = dict(status="running", log=[], started=time.time(), deep=want_deep)
         threading.Thread(target=_run_job, args=(job_id, source, claim or None, date or None, place or None, JOBS[job_id]["deep"]),
                          daemon=True).start()
         return dict(job=job_id)
