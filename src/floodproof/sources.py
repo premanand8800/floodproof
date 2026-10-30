@@ -58,6 +58,8 @@ class Candidate:
     date_alternatives: list = field(default_factory=list)
     also_from: list = field(default_factory=list)   # other adapters that proposed the same URL (merged by dedupe)
     upload_timestamp: str | None = None   # exact UTC publication time when the platform gave one (else the date is a UTC calendar date only)
+    snowball_round: int | None = None  # set when the snowball search (not the pipeline) found this copy
+    snowball_seed: str | None = None   # the proven copy whose metadata/frame led to it
     proof: dict | None = None          # clean best-pair frames + RANSAC inlier coordinates (+ optional Muse explanation)
 
     def to_dict(self):
@@ -226,7 +228,7 @@ def _simplify_query(q):
     return " ".join(toks[:3])
 
 
-def youtube_api_candidates(queries, claim_date=None, max_queries=3, max_results=15, key=None):
+def youtube_api_candidates(queries, claim_date=None, max_queries=3, max_results=15, key=None, relevance_only=False):
     """YouTube Data API v3 search.list: videos published on/before claim date + 1 day. Per query: a date-ordered pass AND a
     relevance pass (order=date alone returns only the newest uploads before the cutoff, which hides the clip itself on a popular
     topic); a query that returns nothing is retried once in a shorter form. The snippet publishedAt is kept only as stored_date;
@@ -263,7 +265,7 @@ def youtube_api_candidates(queries, claim_date=None, max_queries=3, max_results=
                 seen.setdefault(f"https://www.youtube.com/watch?v={vid}", (sn.get("title", ""), (sn.get("publishedAt") or "")[:10] or None, q))
         return n
     for q in _diversify(list(queries))[:max_queries]:
-        n = run(q, order="date")
+        n = 0 if relevance_only else run(q, order="date")      # relevance_only: one search (100 quota units) per query, used by the snowball
         n += run(q, order="relevance", maxResults=10)
         if not n:
             info["zero_result_queries"].append(q[:80])

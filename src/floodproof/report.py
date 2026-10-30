@@ -677,6 +677,12 @@ def add_clarity(rep):
         rep.pop("input_publication_before_claim", None)
     rep["headline"] = build_headline(rep)
     rep["source_map"] = build_source_map(rep)
+    from .spread import build_spread
+    sp = build_spread(rep)               # optional: 'how it spread' (every proven copy by date, with a likely parent only on measurable evidence)
+    if sp:
+        rep["spread"] = sp
+    else:
+        rep.pop("spread", None)
     assert rep["final_verdict"]["label"] == label
     return rep
 
@@ -802,6 +808,12 @@ def validate_report(r: dict):
         assert hl["tone"] != "signals_agree" or (r.get("signals") or {}).get("qualifies"), "signals_agree headline needs a qualifying assessment"
     if r.get("source_map") is not None:
         validate_source_map(r)
+    if r.get("snowball") is not None:      # optional snowball search block (older reports have none)
+        from .spread import validate_snowball
+        validate_snowball(r)
+    if r.get("spread") is not None:        # optional spread timeline
+        from .spread import validate_spread
+        validate_spread(r)
     if r.get("input_publication_before_claim") is not None:       # optional finding (schema 1.6): must match the report's own data
         f = r["input_publication_before_claim"]
         want = input_before_claim(input_publication(v), r["claim"])

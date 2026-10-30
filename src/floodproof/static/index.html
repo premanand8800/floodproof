@@ -196,6 +196,19 @@ details.layer .lb{padding:0 18px 18px}
 .kv{display:grid;grid-template-columns:max-content 1fr;gap:3px 14px;font-size:.92rem;margin:8px 0}.kv dt{color:var(--mute)}.kv dd{margin:0;overflow-wrap:anywhere}
 @media (max-width:560px){.kv{grid-template-columns:1fr}.kv dd{margin-bottom:6px}}
 .frames{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px;margin-top:10px}.frames figure{margin:0}.frames img{width:100%;border-radius:6px;border:1px solid var(--line);display:block}.frames figcaption{font-size:.72rem;color:var(--mute)}
+.tl{list-style:none;margin:14px 0 0;padding:0 0 0 24px;position:relative}
+.tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl>li{position:relative;margin:0 0 12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);min-width:0}
+.tl>li::before{content:"";position:absolute;left:-23px;top:17px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:2px solid var(--surface)}
+.tl>li.first{border-color:var(--rec)}.tl>li.first::before{background:var(--rec)}
+.tl>li.inp{border-style:dashed}.tl>li.inp::before{background:var(--mute)}
+.tl .dt{font-family:var(--ff-h);font-weight:700;font-size:1.1rem}
+.tl .row1{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tl .plat{font-family:var(--ff-m);font-size:.74rem;font-weight:600;padding:2px 8px;border-radius:6px;background:var(--surface2);border:1px solid var(--line);color:var(--ink)}
+.tl .meta{font-size:.88rem;color:var(--mute);margin-top:4px;overflow-wrap:anywhere}
+.tl .parent{margin-top:8px;padding:8px 10px;border-left:3px solid var(--ai);background:var(--aibg);border-radius:0 8px 8px 0;font-size:.88rem}
+.tl .parent ul{margin:4px 0 0;padding-left:18px}
+.snowq{border-top:1px solid var(--line);padding-top:8px;margin-top:8px;font-size:.9rem}.snowq ul{margin:4px 0;padding-left:18px}
 .proof{display:block;max-width:100%;max-height:60vh;object-fit:contain;border:1px solid var(--line);border-radius:8px;margin-top:8px;background:#000}
 .trace-step{border-top:1px solid var(--line);padding:8px 0;font-size:.88rem}
 .sig-ok::marker{content:"\2713  "}.sig-no::marker{content:"\2717  "}
@@ -462,6 +475,51 @@ function proofHero(rep, ref) {
   hero.append(row);
   hero.append(h("p", {class: "note", text: "The green lines join the " + (p.inliers || []).length + " strongest keypoint matches between these two frames" + (p.mirrored ? " (the copy is mirrored)" : "") + ". The proof is this geometric match."}));
   return hero;
+}
+// ---------- how it spread: proven copies by date (pipeline + snowball), likely parent only on measurable evidence
+const PLAT = {YouTube: "YT", Instagram: "IG", TikTok: "TT", Facebook: "FB", X: "X", Vimeo: "VM"};
+function spreadSection(rep, ref) {
+  const sp = rep.spread, sb = rep.snowball;
+  if (!Array.isArray(sp) || !sp.length || (sp.length < 2 && !sb)) return null;
+  const nNew = sb ? (sb.rounds || []).reduce((n, r) => n + (r.proven_new || []).length, 0) : 0;
+  const byUrl = Object.fromEntries(sp.map((e) => [e.url, e]));
+  const short = (u, n) => String(u).replace(/^https?:\/\/(www\.)?/, "").slice(0, n);
+  const sec = h("section", {class: "card", "aria-label": "How it spread"},
+    h("div", {class: "card-h"}, h("h2", {text: "How it spread"}), badge(sp.length + " proven " + (sp.length === 1 ? "copy" : "copies"), "b-na")),
+    h("p", {class: "note", text: "Every copy the matcher proved, oldest first. A parent arrow is a likely link built from measurable evidence only. It is not proof, and the oldest copy found is not necessarily the original."}));
+  const ol = h("ol", {class: "tl"});
+  sp.forEach((e, i) => {
+    const li = h("li", {class: i === 0 && e.date ? "first" : ""});
+    li.append(h("div", {class: "row1"}, h("span", {class: "plat", text: PLAT[e.platform] || e.platform}), h("span", {class: "dt", text: e.date || "date unknown"}),
+      e.date ? badge(e.date_independent ? "date verified live" : "date not independently verified", e.date_independent ? "b-ok" : "b-unv") : null));
+    li.append(h("div", {class: "meta"}, h("strong", {text: e.platform}), e.uploader ? " · " + e.uploader : "", " · ", link(e.url, short(e.url, 56))));
+    li.append(h("div", {class: "meta", text: "Found by: " + (e.found_by || "pipeline") + (e.date_source ? " · date from " + e.date_source : "")}));
+    if (e.likely_parent) {
+      const par = byUrl[e.likely_parent.url] || {};
+      li.append(h("div", {class: "parent"}, h("strong", {text: "↳ Likely derived from the " + (par.platform || "") + " copy of " + (par.date || "an earlier date")}),
+        " (" + e.likely_parent.label + ")", h("ul", {}, (e.likely_parent.reasons || []).map((x) => h("li", {text: x})))));
+    } else if (e.parent_note) li.append(h("div", {class: "meta", text: e.parent_note}));
+    ol.append(li);
+  });
+  const ip = (rep.visual_matching || {}).input_publication || null;
+  const inp = rep.input || {};
+  ol.append(h("li", {class: "inp"}, h("div", {class: "row1"}, h("span", {class: "plat", text: "INPUT"}), h("span", {class: "dt", text: (ip && ip.upload_date) || "video you checked"})),
+    h("div", {class: "meta", text: "The video you checked" + (rep.claim && rep.claim.event_date ? "; claimed event date " + rep.claim.event_date : "")})));
+  sec.append(ol);
+  if (sb) {
+    const rounds = sb.rounds || [];
+    const cost = sb.cost || {};
+    const d = h("details", {class: "mini"}, h("summary", {text: "Snowball search: " + rounds.length + (rounds.length === 1 ? " round, " : " rounds, ") + nNew + (nNew === 1 ? " new copy" : " new copies")}),
+      h("p", {class: "note", text: "After a copy was proven, Muse read its title, uploader, description and visible watermarks and proposed searches for earlier uploads. Every candidate was then checked by the same frame matcher; Muse's text is a search hint, never evidence. Stopped: " + sb.stopped_reason + ". " +
+        (sb.seconds != null ? sb.seconds + " s" : "") + (sb.cost ? ", " + cost.verifications + " extra checks, " + cost.lens_calls + " Lens call(s), $" + Number(cost.openrouter_usd || 0).toFixed(4) + " Muse" : "") + "."}));
+    rounds.forEach((r) => d.append(h("div", {class: "snowq"},
+      h("strong", {text: "Round " + r.round + ": read "}), link(r.seed_copy, short(r.seed_copy, 48)),
+      h("div", {class: "note", text: r.candidates + " new candidates, " + r.verified + " checked by the matcher, " + (r.proven_new || []).length + " newly proven"}),
+      (r.queries || []).length ? h("ul", {}, r.queries.map((q) => h("li", {}, h("code", {text: q.q}), " " + (q.language ? "(" + q.language + ") " : "") + q.rationale, h("span", {class: "note", text: " [from " + q.source_field + "]"})))) : h("div", {class: "note", text: "Muse proposed no usable queries."}))));
+    if (!rounds.length) d.append(h("div", {class: "snowq note", text: "No round ran: " + sb.stopped_reason + "."}));
+    sec.append(d);
+  }
+  return sec;
 }
 function explanationCard(rep) {
   const v = rep.visual_matching || {}, ep = v.earliest_proven_copy;
@@ -789,6 +847,7 @@ function render(rep, ref) {
   out.append(banner);
 
   const hero = proofHero(rep, ref) || heroFor(rep, ref); if (hero) out.append(hero);
+  const spr = spreadSection(rep, ref); if (spr) out.append(spr);
   const ex = explanationCard(rep); if (ex) out.append(ex);
   const nb = natureBox(rep); if (nb) out.append(nb);
   const smp = sourceMap(rep, ref); if (smp) out.append(smp);

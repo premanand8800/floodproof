@@ -12,9 +12,10 @@ from . import ROOT, load_env, media
 from .matcher import ClipFeatures
 from .memory import Memory
 from .report import build_report, run_physical, write_report, validate_report
-from . import sources, investigator, infer, gate as gate_mod
+from . import sources, investigator, infer, snowball, gate as gate_mod
 
 
+SNOWBALL_DEFAULT = os.environ.get("FLOODPROOF_SNOWBALL", "1") != "0"   # decided by bench/snowball_RESULTS.md (pre-registered rule)
 PHYSICAL_TIMEOUT_S = float(os.environ.get("FLOODPROOF_PHYSICAL_TIMEOUT", "45"))   # the physical check is context only: never let it hold the report
 VERIFY_WORKERS = int(os.environ.get("FLOODPROOF_VERIFY_WORKERS", "3"))   # matcher is CPU-bound and the box also serves the site
 
@@ -28,7 +29,9 @@ def _proven_entry(c: sources.Candidate, out_dir: Path):
     ev = rel(c.evidence_png) if c.evidence_png else None
     proof = dict(c.proof, viral_frame=rel(c.proof["viral_frame"]), copy_frame=rel(c.proof["copy_frame"])) if c.proof else None
     return dict(url=c.url, title=c.title, uploader=c.uploader, upload_date=c.upload_date, date_source=c.date_source,
-                upload_timestamp=c.upload_timestamp, retrieved_at=c.retrieved_at, adapter=c.adapter, found_via=c.hint, also_found_by=list(c.also_from), match=c.match, evidence_png=ev, proof=proof,
+                upload_timestamp=c.upload_timestamp, retrieved_at=c.retrieved_at, adapter=c.adapter, found_via=c.hint,
+                found_by=(f"snowball round {c.snowball_round} ({c.adapter})" if c.snowball_round else c.adapter),
+                snowball_seed=c.snowball_seed if c.snowball_round else None, also_found_by=list(c.also_from), match=c.match, evidence_png=ev, proof=proof,
                 stored_date=c.stored_date, stored_date_source=("memory entry (inherited)" if c.stored_date else None), independent_date=c.independent_date, independent_date_source=c.independent_date_source,
                 date_independent=bool(c.date_independent), date_note=c.date_note,
                 date_alternatives=list(c.date_alternatives or []),
@@ -170,7 +173,7 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
                 claimed_source: str | None = None, out_dir: str | Path | None = None, memory: Memory | None = None,
                 use_memory=True, use_yandex=True, use_tavily=True, use_muse=True, remember=False,
                 use_gvision=True, use_youtube=True, use_lens=True,
-                max_verify=14, use_gate=True, force=False, log=print) -> dict:
+                max_verify=14, use_gate=True, force=False, use_snowball=None, log=print) -> dict:
     """Full investigation. Returns the report dict (also written to out_dir/report.json with evidence/ PNGs)."""
     load_env()
     t0 = time.time()
@@ -371,6 +374,21 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
         c = by_url.get(h["url"])
         if c:
             h.update(independent_date=c.independent_date, independent_date_source=c.independent_date_source, date_independent=c.date_independent)
+    snow, snow_reads = None, {}
+    if (SNOWBALL_DEFAULT if use_snowball is None else use_snowball) and proven and use_muse:
+        log("[4b/6] snowball search from the proven copies")
+        t_s = time.time()
+        try:
+            new, snow, snow_reads = snowball.run(feats=feats, proven=proven, seen_urls=[c.url for c in cands], query_date=clip.upload_date,
+                                                 self_url=self_url, out_dir=out, ev_dir=ev_dir, log=log)
+            cands.extend(new)
+            uniq = sources.merge_and_prioritize(cands)
+            proven = [c for c in uniq if c.proven]
+            sources.enrich_dates([c for c in proven if not c.date_independent])
+        except Exception as e:                     # snowball is an extra: a failure never costs the pipeline's own result
+            snow = dict(rounds=[], stopped_reason=f"snowball failed: {type(e).__name__}", cost=dict(openrouter_usd=0.0, lens_calls=0, verifications=0),
+                        seconds=round(time.time() - t_s, 1))
+        stage["snowball"] = round(time.time() - t_s, 1)
     earliest = sources.earliest_proven_copy(uniq)
     claimed_orig = None
     if claimed_source:
@@ -378,6 +396,16 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
         claimed_orig = dict(url=cs, matcher_proven=any(c.url == cs for c in proven),
                             note="the original as asserted by the user/claim; only 'matcher_proven' if a candidate with this URL was verified")
     entries = [_proven_entry(c, out) for c in proven]
+    if use_muse and len(entries) >= 2:           # Muse reads watermarks/overlays on each copy's frame: evidence for the spread timeline's parent links
+        todo = [(e["url"], out / e["proof"]["copy_frame"]) for e in sorted(entries, key=lambda e: e.get("upload_date") or "9999")
+                if e.get("proof") and e["url"] not in snow_reads]
+        more, rcost = snowball.read_copies(todo, cap=max(0, 6 - len(snow_reads)))
+        snow_reads.update(more)
+        if snow is not None:
+            snow["cost"]["spread_read_usd"] = round(rcost, 5)
+    for e in entries:
+        if e["url"] in snow_reads:
+            e["muse_read"] = snow_reads[e["url"]]
     if earliest and use_muse:
         attach_explanation(entries, earliest.url, out, log=log)
     earliest_entry = next((x for x in entries if earliest and x["url"] == earliest.url), None)
@@ -406,6 +434,8 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
     rep = build_report(input_meta=input_meta, claim=claim_d, memory=memory_layer, visual=visual, clues=clues,
                        physical=physical, investigation_id=inv_id)
     stage["dates_physical_report_wait"] = round(time.time() - t_mark[0], 1)
+    if snow is not None:
+        rep["snowball"] = snow
     if fast_path:
         rep["fast_path"] = "memory_hit"
     if gate is not None:
