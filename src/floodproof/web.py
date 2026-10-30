@@ -160,7 +160,8 @@ def create_app():
 
     @app.get("/", response_class=HTMLResponse)
     def index():
-        return (STATIC / "index.html").read_text()
+        # no-cache: browsers must revalidate, so visitors always get the current UI after a deploy
+        return HTMLResponse((STATIC / "index.html").read_text(), headers={"Cache-Control": "no-cache"})
 
     @app.get("/api/headline")
     def headline():
