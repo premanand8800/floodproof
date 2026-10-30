@@ -1,0 +1,470 @@
+[
+ {
+  "id": "I01",
+  "expected": "irrelevant",
+  "note": "music_video",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "music_video",
+  "reason": "Frames show Rick Astley official music video with no disaster content.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.99,
+  "relevant": "no",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00059,
+  "seconds": 23.9,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I02",
+  "expected": "irrelevant",
+  "note": "gaming",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "gaming",
+  "reason": "Video is Minecraft survival gameplay with no disaster or emergency content.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.98,
+  "relevant": "no",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00086,
+  "seconds": 32.2,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I03",
+  "expected": "irrelevant",
+  "note": "vlog",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "talking_head",
+  "reason": "Video is a personal fall vlog with rainy driving and indoor talking, no disaster or emergency shown.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.97,
+  "relevant": "no",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00105,
+  "seconds": 46.3,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I04",
+  "expected": "irrelevant",
+  "note": "ad",
+  "stopped": false,
+  "decision": "run",
+  "kind": "ad",
+  "reason": "Frames show a Super Bowl commercial with an alien character and people in everyday settings, no disaster or emergency.",
+  "refs": [],
+  "confidence": 0.95,
+  "relevant": "no",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00098,
+  "seconds": 42.0,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I05",
+  "expected": "irrelevant",
+  "note": "lecture",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "other",
+  "reason": "The video is a Khan Academy calculus lecture on limits with chalkboard equations and graphs, no disaster content.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.99,
+  "relevant": "no",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00107,
+  "seconds": 19.3,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I06",
+  "expected": "irrelevant",
+  "note": "cooking",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "other",
+  "reason": "Video shows cooking pasta with garlic, salt, pepper and sauce, no disaster content.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.99,
+  "relevant": "no",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00092,
+  "seconds": 11.4,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I07",
+  "expected": "irrelevant",
+  "note": "sports",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "other",
+  "reason": "Frames show NBA basketball game highlights with no disaster or emergency content.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.98,
+  "relevant": "no",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00092,
+  "seconds": 13.7,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I08",
+  "expected": "irrelevant",
+  "note": "unboxing",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "other",
+  "reason": "Video shows iPhone unboxing and setup with no disaster content.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.98,
+  "relevant": "no",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00098,
+  "seconds": 27.5,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I09",
+  "expected": "irrelevant",
+  "note": "podcast",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "talking_head",
+  "reason": "Podcast discussion of ancient civilizations with talking-head footage and archival images, no disaster or emergency shown or claimed.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.85,
+  "relevant": "no",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00161,
+  "seconds": 47.2,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I10",
+  "expected": "irrelevant",
+  "note": "trailer",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "ad",
+  "reason": "It's a Marvel film trailer with fictional CGI action, not real disaster footage.",
+  "refs": [
+   2,
+   4
+  ],
+  "confidence": 0.95,
+  "relevant": "no",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00174,
+  "seconds": 40.7,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "R01",
+  "expected": "relevant",
+  "note": "tribute music video with flood footage",
+  "stopped": false,
+  "decision": "run",
+  "kind": "music_video",
+  "reason": "Title is a tribute song for Nepal flood victims and frames 1-3 show flood damage.",
+  "refs": [
+   1,
+   2,
+   3
+  ],
+  "confidence": 0.95,
+  "relevant": "yes",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00082,
+  "seconds": 21.9,
+  "error": null,
+  "kw": [
+   "flood",
+   "victims"
+  ]
+ },
+ {
+  "id": "R02",
+  "expected": "relevant",
+  "note": "tsunami tribute video",
+  "stopped": false,
+  "decision": "run",
+  "kind": "music_video",
+  "reason": "Frames show only calm sunset shorelines with no damage, water surge, or emergency activity.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.85,
+  "relevant": "no",
+  "model": "meta/muse-spark-1.3",
+  "cost": 0.01263,
+  "seconds": 72.9,
+  "error": null,
+  "kw": [
+   "earthquake",
+   "tsunami"
+  ]
+ },
+ {
+  "id": "R03",
+  "expected": "relevant",
+  "note": "AI Nepal tribute (AI-generated before/after)",
+  "stopped": false,
+  "decision": "run",
+  "kind": "other",
+  "reason": "Title claims a before-and-after flash flood tribute though sampled frames show only scenic Nepal views.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.75,
+  "relevant": "yes",
+  "model": "meta/muse-spark-1.3",
+  "cost": 0.01542,
+  "seconds": 96.5,
+  "error": null,
+  "kw": [
+   "devastat",
+   "flash flood",
+   "rescue",
+   "survivor",
+   "victims"
+  ]
+ },
+ {
+  "id": "R04",
+  "expected": "relevant",
+  "note": "FRANCE 24 Nepal flood reconstruction",
+  "stopped": false,
+  "decision": "run",
+  "kind": "news_about_disaster",
+  "reason": "Frames show mud/debris flood, landslide animation and satellite mapping of the Nepal disaster.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.95,
+  "relevant": "yes",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00122,
+  "seconds": 41.9,
+  "error": null,
+  "kw": [
+   "collapse",
+   "devastat",
+   "disaster",
+   "flood",
+   "glacier",
+   "landslide",
+   "rescue"
+  ]
+ },
+ {
+  "id": "R05",
+  "expected": "relevant",
+  "note": "Hurricane Beryl raw footage",
+  "stopped": false,
+  "decision": "run",
+  "kind": "disaster_footage",
+  "reason": "Frames show intense wind, rain and flying debris during Hurricane Beryl landfall.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.97,
+  "relevant": "yes",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.001,
+  "seconds": 31.2,
+  "error": null,
+  "kw": [
+   "hurricane",
+   "storm"
+  ]
+ },
+ {
+  "id": "R06",
+  "expected": "relevant",
+  "note": "Durban waves aerial",
+  "stopped": false,
+  "decision": "run",
+  "kind": "disaster_footage",
+  "reason": "Aerial video shows massive storm waves flooding Durban beachfront and crowds evacuating.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.95,
+  "relevant": "yes",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00095,
+  "seconds": 26.6,
+  "error": null,
+  "kw": [
+   "cyclone",
+   "storm"
+  ]
+ },
+ {
+  "id": "R07",
+  "expected": "relevant",
+  "note": "NatGeo Japan tsunami",
+  "stopped": false,
+  "decision": "run",
+  "kind": "disaster_footage",
+  "reason": "Title and frames show town destruction and turbulent water consistent with Japan 2011 tsunami/earthquake disaster.",
+  "refs": [
+   2,
+   4
+  ],
+  "confidence": 0.85,
+  "relevant": "yes",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.0012,
+  "seconds": 37.4,
+  "error": null,
+  "kw": [
+   "disaster",
+   "earthquake",
+   "tsunami"
+  ]
+ },
+ {
+  "id": "R08",
+  "expected": "relevant",
+  "note": "short news clip Betrawoti flood",
+  "stopped": false,
+  "decision": "run",
+  "kind": "disaster_footage",
+  "reason": "Frames show a muddy flood wave inundating buildings in a Nepalese valley.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.97,
+  "relevant": "yes",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00101,
+  "seconds": 29.6,
+  "error": null,
+  "kw": [
+   "flood"
+  ]
+ },
+ {
+  "id": "R09",
+  "expected": "relevant",
+  "note": "flash flood compilation",
+  "stopped": false,
+  "decision": "run",
+  "kind": "disaster_footage",
+  "reason": "Video is a compilation of flash flood footage with people and vehicles in floodwaters.",
+  "refs": [
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.95,
+  "relevant": "yes",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.0012,
+  "seconds": 41.0,
+  "error": null,
+  "kw": [
+   "disaster",
+   "flash flood",
+   "flood"
+  ]
+ },
+ {
+  "id": "R10",
+  "expected": "relevant",
+  "note": "BBC Pakistan floods news",
+  "stopped": false,
+  "decision": "run",
+  "kind": "news_about_disaster",
+  "reason": "BBC news report shows flood aftermath with landslide debris, destruction and aid distribution.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.98,
+  "relevant": "yes",
+  "model": "meta/muse-glimmer-30b",
+  "cost": 0.00126,
+  "seconds": 28.4,
+  "error": null,
+  "kw": [
+   "flash flood",
+   "flood"
+  ]
+ }
+]

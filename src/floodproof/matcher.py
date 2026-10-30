@@ -179,8 +179,14 @@ class MatchResult:
                      b_t=round(self.b.times[j], 2) if self.b else None, inliers=n, flip=bool(f))
                 for i, (j, n, f) in sorted(best.items())][:cap]
 
+    @property
+    def weak(self) -> bool:
+        """A match that rests ONLY on the single-frame path (< MIN_CONSISTENT consistent frames, >= STRONG_SINGLE inliers).
+        Shown, but never enough on its own for RECYCLED_FOOTAGE (see report.landmark_veto / proven_before)."""
+        return bool(self.decision and self.consistent_frames < MIN_CONSISTENT)
+
     def to_dict(self):
-        return dict(decision=self.decision, consistent_frames=self.consistent_frames, max_inliers=self.max_inliers,
+        return dict(decision=self.decision, weak_match=self.weak, consistent_frames=self.consistent_frames, max_inliers=self.max_inliers,
                     mirrored=self.mirrored, temporal_offset=self.temporal_offset, n_pairs=self.n_pairs,
                     score=round(self.score, 2), stage=self.stage, matched_frames=self.matched_frames(),
                     best_pairs=[dict(a_frame=i, b_frame=j, a_t=self.a.times[i] if self.a else None,

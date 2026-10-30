@@ -101,12 +101,33 @@ def is_independent(m) -> bool:
     return not str(m.get("date_source") or "").startswith("memory")
 
 
+LANDMARK_RE = re.compile(r"landmark|monument|tower|bridge|cathedral|church|temple|mosque|statue|skyline|famous|palace|castle|stadium|"
+                         r"waterfall|falls\b|colosseum|opera house|big ben|eiffel", re.I)
+
+
+def landmark_scene(clues):
+    """True if Muse's scene description names a landmark-type scene (landmarks are filmed by many people: a lone matching frame is weak)."""
+    st = ((clues or {}).get("scene_type") or {}).get("value") if (clues or {}).get("status") == "ok" else None
+    return bool(st and LANDMARK_RE.search(str(st)))
+
+
+def mark_weak_blocked(proven, clues):
+    """Single-frame-only matches (match.weak_match) cannot support RECYCLED when Muse calls the scene a landmark; flag them in place."""
+    lm = landmark_scene(clues)
+    for m in proven:
+        mm = m.get("match") or {}
+        if mm.get("weak_match") and lm:
+            mm["weak_blocked"] = "scene described as a landmark scene; a single matching frame is not enough"
+    return proven
+
+
 def proven_before(proven, claim_date, independent_only=False):
     """Matcher-proven copies strictly earlier than the claimed event date. If sources disagree on a copy's date, ALL
     reported dates must predate the claim (conservative: a conflict that straddles the claim date does not count)."""
     if not claim_date:
         return []
-    ok = [m for m in proven if all_dates(m) and max(all_dates(m)) < claim_date and (is_independent(m) or not independent_only)]
+    ok = [m for m in proven if all_dates(m) and max(all_dates(m)) < claim_date and (is_independent(m) or not independent_only)
+          and not (m.get("match") or {}).get("weak_blocked")]
     return sorted(ok, key=lambda m: min(all_dates(m)))
 
 
@@ -197,7 +218,7 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
         # Physical-world SUPPORTS is context only and can NEVER raise the verdict (C2 H05 bug: a debunked clip judged consistent).
         # CONSISTENT_WITH_CLAIM needs provenance evidence: an independently dated copy (input publication or proven copy) that
         # falls within a few days of the claimed event date, no earlier independent copy, no observations against the claim.
-        ind = [m for m in proven if is_independent(m) and m.get("upload_date")]
+        ind = [m for m in proven if is_independent(m) and m.get("upload_date") and not (m.get("match") or {}).get("weak_match")]
         # Circularity guard: when the claimed date was inferred from the post itself (title/caption/narration/post date),
         # the post's own publication date cannot confirm it; only OTHER independently dated copies count.
         if ((claim or {}).get("source") or {}).get("event_date") == "inferred_from_post":
@@ -549,7 +570,7 @@ def add_clarity(rep):
 
 
 def build_report(*, input_meta, claim, memory, visual, clues, physical, investigation_id=None):
-    proven = visual.get("proven_matches", [])
+    proven = mark_weak_blocked(visual.get("proven_matches", []), clues)
     rep = dict(schema_version=SCHEMA_VERSION, investigation_id=investigation_id or uuid.uuid4().hex[:12],
                created_at=datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
                input=input_meta, claim=claim, memory=memory, visual_matching=visual, clues=clues,

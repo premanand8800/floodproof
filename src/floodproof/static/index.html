@@ -514,7 +514,7 @@ function render(rep, ref) {
       dates(m),
       m.date_alternatives && m.date_alternatives.length ? h("div", {class: "note", text: "Dates disagree: " + m.date_alternatives.map((a) => a.date + " per " + a.source).join("; ") + ". The later one is used."}) : null,
       m.date_note ? h("div", {class: "warn", text: m.date_note}) : null,
-      h("div", {class: "note", text: m.match.consistent_frames + " temporally consistent frame(s); up to " + m.match.max_inliers + " inliers" + (m.match.mirrored ? "; mirrored" : "") + "."}),
+      h("div", {class: "note", text: m.match.consistent_frames + " temporally consistent frame(s); up to " + m.match.max_inliers + " inliers" + (m.match.mirrored ? "; mirrored" : "") + (m.match.weak_match ? ". WEAK MATCH: only one frame pair matched (no temporal consistency), so this alone cannot establish recycling" + (m.match.weak_blocked ? " (" + m.match.weak_blocked + ")" : "") : ".")}),
       m.evidence_png ? img(ref, m.evidence_png, "Side-by-side matched frames: input clip on the left, copy on the right, with matched keypoints", "proof") : null,
       (m.match.best_pairs || []).length ? h("details", {}, h("summary", {text: "Matched frame pairs (" + m.match.best_pairs.length + ")"}),
         h("ul", {class: "plain"}, m.match.best_pairs.map((p) => h("li", {text: "input frame " + p.a_frame + " = copy frame " + p.b_frame + ": " + p.inliers + " inliers" + (p.flip ? " (mirrored)" : "")})))) : null);
