@@ -1,0 +1,326 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "74db033c5f",
+ "created_at": "2026-10-30T12:20:59+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/heldout/H03.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/heldout/H03.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "H03.mp4",
+  "duration": 60.0,
+  "has_audio": true,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   1.0,
+   1.67,
+   4.33,
+   5.67,
+   7.0,
+   8.33,
+   9.33,
+   11.0,
+   13.0,
+   13.67,
+   15.0,
+   16.0,
+   16.67,
+   17.67,
+   18.33,
+   19.0,
+   20.33,
+   21.0,
+   21.67,
+   24.67,
+   26.67,
+   28.67,
+   29.67,
+   30.67,
+   33.33,
+   35.0,
+   37.67,
+   38.67,
+   40.0,
+   42.67,
+   45.0,
+   46.33,
+   47.0,
+   48.0,
+   48.67,
+   49.67,
+   50.33,
+   51.0,
+   52.0,
+   52.67,
+   53.33,
+   54.33,
+   55.0,
+   56.33,
+   57.33,
+   58.0,
+   59.33
+  ]
+ },
+ "claim": {
+  "text": "Flash flood / landslide in Sikkim (Oct 2023)",
+  "event_date": "2023-10-06",
+  "place": "Sikkim, India",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": null,
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 36.85,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "NOT_FOUND",
+  "proven_matches": [],
+  "earliest_proven_copy": null,
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 39,
+  "candidate_status_counts": {
+   "unavailable": 2,
+   "download_failed": 6,
+   "pending": 25,
+   "not_proven": 6
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 3,
+    "errors": [],
+    "query_source": "claim text (Muse unavailable)"
+   },
+   "yandex": {
+    "frames": [
+     25,
+     0,
+     16
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "tavily": {
+    "candidates": 15,
+    "checked": 10,
+    "proven": 0
+   },
+   "yandex": {
+    "candidates": 24,
+    "checked": 4,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {},
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": null,
+   "note": null
+  }
+ },
+ "clues": {
+  "status": "not_run"
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Sikkim, India",
+   "name": "Sikkim, India",
+   "lat": 27.6015413,
+   "lon": 88.4545973,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2023-10-03",
+      "m3s": 139.28
+     },
+     {
+      "date": "2023-10-04",
+      "m3s": 142.55
+     },
+     {
+      "date": "2023-10-05",
+      "m3s": 144.55
+     },
+     {
+      "date": "2023-10-06",
+      "m3s": 150.36
+     },
+     {
+      "date": "2023-10-07",
+      "m3s": 142.22
+     },
+     {
+      "date": "2023-10-08",
+      "m3s": 132.97
+     },
+     {
+      "date": "2023-10-09",
+      "m3s": 133.28
+     }
+    ],
+    "baseline": 231.815,
+    "peak": 150.36,
+    "ratio": 0.65,
+    "cell": [
+     27.525002,
+     88.475006
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2023-10-03",
+      "mm": 2.9
+     },
+     {
+      "date": "2023-10-04",
+      "mm": 16.5
+     },
+     {
+      "date": "2023-10-05",
+      "mm": 0.4
+     },
+     {
+      "date": "2023-10-06",
+      "mm": 0.5
+     },
+     {
+      "date": "2023-10-07",
+      "mm": 45.5
+     },
+     {
+      "date": "2023-10-08",
+      "mm": 42.6
+     },
+     {
+      "date": "2023-10-09",
+      "mm": 1.8
+     }
+    ],
+    "max_mm": 45.5
+   },
+   "status": "UNKNOWN"
+  },
+  "verdict": "NO_EVIDENCE",
+  "reasons": [
+   "no Copernicus flood activation within 150 km / +-3 d",
+   "discharge ratio 0.65 (peak 150.4 vs baseline 231.8 m3/s), max rain 45.5 mm/day"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened",
+   "event_type=unknown: event type unknown, so the river-flood model may not apply; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen (public hydrology/activation data cannot resolve flash floods, GLOFs or landslides)."
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=27.6015413&longitude=88.4545973&daily=river_discharge&start_date=2023-10-03&end_date=2023-10-09",
+   "https://www.openstreetmap.org/?mlat=27.6015413&mlon=88.4545973#map=10/27.6015413/88.4545973"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Sikkim flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Sikkim+flood&mode=artlis"
+  },
+  "verdict_display": "Insufficient corroboration \u2014 this does not show the event didn't happen"
+ },
+ "media_nature": {
+  "value": "unknown",
+  "confidence": 0.0,
+  "cited_frames": [],
+  "cited_timestamps_s": [],
+  "reasons": [],
+  "status": "NOT_RUN",
+  "note": "Muse clues were not available, so the media nature was not assessed."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "UNVERIFIED",
+  "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. Insufficient corroboration \u2014 this does not show the event didn't happen (physical-world check). The claim could not be verified from the available evidence.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists.",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 0,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "unknown",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 166.8,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 19.2,
+  "memory": 36.9,
+  "memory_muse_wait_claim": 36.9,
+  "discovery": 103.2,
+  "discovery_by_source": {
+   "tavily": 3.9,
+   "yandex": 71.7
+  },
+  "verify_total_incl_overlap": 7.5,
+  "dates_physical_report_wait": 7.5,
+  "verify_workers": 3,
+  "verify_seconds": 106.8,
+  "verify_checked": 14
+ },
+ "_wall_s": 166.8,
+ "_lens_calls_so_far": 0
+}

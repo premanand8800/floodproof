@@ -1,0 +1,1179 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "9ab9f61986",
+ "created_at": "2026-10-30T12:55:17+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/global/G05.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/G05.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "G05.mp4",
+  "duration": 60.0,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   8.0,
+   11.84,
+   13.76,
+   16.0,
+   16.96,
+   17.92,
+   18.88,
+   19.84,
+   20.8,
+   21.44,
+   22.4,
+   23.36,
+   24.32,
+   25.28,
+   26.24,
+   27.2,
+   28.16,
+   29.12,
+   30.08,
+   31.04,
+   32.0,
+   32.96,
+   33.92,
+   34.88,
+   35.84,
+   36.8,
+   37.76,
+   38.72,
+   39.36,
+   40.32,
+   41.6,
+   42.88,
+   44.16,
+   45.44,
+   46.4,
+   47.36,
+   48.32,
+   48.96,
+   49.92,
+   50.88,
+   51.84,
+   52.8,
+   53.76,
+   55.04,
+   56.96,
+   58.24,
+   59.84
+  ]
+ },
+ "claim": {
+  "text": "CCTV footage of the February 2023 Turkey earthquake",
+  "event_date": "2023-02-06",
+  "place": "Turkey",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "TR",
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 9.83,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/watch?v=mZSLSfafvyE",
+    "title": "Turkey earthquake 2020 CCTV viral footage ll earthquake in Turkey 2020 ll earthquake Greece 2020 - YouTube",
+    "uploader": "Jai jawan News",
+    "upload_date": "2020-10-31",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T12:54:49+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 0",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 40,
+     "max_inliers": 259,
+     "mirrored": false,
+     "temporal_offset": 0.0,
+     "n_pairs": 1423,
+     "score": 41.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 0,
+       "b_frame": 0,
+       "a_t": 0.0,
+       "b_t": 0.0,
+       "inliers": 259,
+       "flip": false
+      },
+      {
+       "a_frame": 21,
+       "b_frame": 17,
+       "a_t": 32.0,
+       "b_t": 31.628242704955998,
+       "inliers": 126,
+       "flip": false
+      },
+      {
+       "a_frame": 42,
+       "b_frame": 35,
+       "a_t": 52.8,
+       "b_t": 52.38427698008337,
+       "inliers": 114,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_77ab6352.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2020-10-31",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=-6YruoXMUM8",
+    "title": "\u0644\u062d\u0638\u0627\u062a \u0645\u0631\u0639\u0628\u0629 \u0644\u0644\u0632\u0644\u0632\u0627\u0644 \u0627\u0644\u0630\u064a \u0636\u0631\u0628 \u0648\u0644\u0627\u064a\u0629 \u0625\u0632\u0645\u064a\u0631 - YouTube",
+    "uploader": "\u0627\u0644\u062b\u0627\u0646\u064a\u0629 - Althania",
+    "upload_date": "2020-10-31",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T12:54:49+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 0",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 36,
+     "max_inliers": 102,
+     "mirrored": false,
+     "temporal_offset": 3.2560523854069245,
+     "n_pairs": 961,
+     "score": 37.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 42,
+       "b_frame": 29,
+       "a_t": 52.8,
+       "b_t": 56.05605238540692,
+       "inliers": 102,
+       "flip": false
+      },
+      {
+       "a_frame": 34,
+       "b_frame": 24,
+       "a_t": 45.44,
+       "b_t": 48.71537885874649,
+       "inliers": 94,
+       "flip": false
+      },
+      {
+       "a_frame": 21,
+       "b_frame": 14,
+       "a_t": 32.0,
+       "b_t": 35.36869971936389,
+       "inliers": 86,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_ab9167a3.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2020-10-31",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs",
+    "title": "Live Turkey Earthquake - YouTube",
+    "uploader": "LIVE TRADING",
+    "upload_date": "2020-10-30",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T12:54:58+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 0",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 40,
+     "max_inliers": 346,
+     "mirrored": false,
+     "temporal_offset": 16.96,
+     "n_pairs": 1388,
+     "score": 41.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 1,
+       "b_frame": 2,
+       "a_t": 8.0,
+       "b_t": 24.96,
+       "inliers": 346,
+       "flip": false
+      },
+      {
+       "a_frame": 45,
+       "b_frame": 31,
+       "a_t": 56.96,
+       "b_t": 75.2,
+       "inliers": 200,
+       "flip": false
+      },
+      {
+       "a_frame": 21,
+       "b_frame": 15,
+       "a_t": 32.0,
+       "b_t": 48.64,
+       "inliers": 194,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_b98db001.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2020-10-30",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?app=desktop&v=IM031BBdJJA",
+    "title": "\u0130zmir Deprem An\u0131 - 19 (2020) (Sallanma ve \u00c7\u0131\u011fl\u0131klar) #izmir #deprem #izmirdepremi #depremizmir - YouTube",
+    "uploader": "HaberiniAl",
+    "upload_date": "2020-10-31",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T12:55:04+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 0",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 40,
+     "max_inliers": 339,
+     "mirrored": false,
+     "temporal_offset": 16.96,
+     "n_pairs": 1422,
+     "score": 41.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 1,
+       "b_frame": 2,
+       "a_t": 8.0,
+       "b_t": 24.96,
+       "inliers": 339,
+       "flip": false
+      },
+      {
+       "a_frame": 45,
+       "b_frame": 31,
+       "a_t": 56.96,
+       "b_t": 73.6,
+       "inliers": 262,
+       "flip": false
+      },
+      {
+       "a_frame": 21,
+       "b_frame": 15,
+       "a_t": 32.0,
+       "b_t": 48.64,
+       "inliers": 209,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_958a18c4.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2020-10-31",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs",
+   "title": "Live Turkey Earthquake - YouTube",
+   "uploader": "LIVE TRADING",
+   "upload_date": "2020-10-30",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T12:54:58+00:00",
+   "adapter": "yandex",
+   "found_via": "frame 0",
+   "also_found_by": [],
+   "match": {
+    "decision": true,
+    "consistent_frames": 40,
+    "max_inliers": 346,
+    "mirrored": false,
+    "temporal_offset": 16.96,
+    "n_pairs": 1388,
+    "score": 41.0,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 1,
+      "b_frame": 2,
+      "a_t": 8.0,
+      "b_t": 24.96,
+      "inliers": 346,
+      "flip": false
+     },
+     {
+      "a_frame": 45,
+      "b_frame": 31,
+      "a_t": 56.96,
+      "b_t": 75.2,
+      "inliers": 200,
+      "flip": false
+     },
+     {
+      "a_frame": 21,
+      "b_frame": 15,
+      "a_t": 32.0,
+      "b_t": 48.64,
+      "inliers": 194,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/yandex_b98db001.png",
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2020-10-30",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 70,
+  "candidate_status_counts": {
+   "download_failed": 2,
+   "not_proven": 4,
+   "proven": 4,
+   "pending": 56,
+   "unavailable": 1,
+   "too_long": 3
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     0,
+     46,
+     34
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 40,
+    "checked": 4,
+    "proven": 4
+   },
+   "tavily": {
+    "candidates": 30,
+    "checked": 10,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {
+   "yandex": [
+    "https://www.youtube.com/watch?v=mZSLSfafvyE",
+    "https://www.youtube.com/watch?v=-6YruoXMUM8",
+    "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs",
+    "https://www.youtube.com/watch?app=desktop&v=IM031BBdJJA"
+   ]
+  },
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": "camera_footage",
+   "note": "48 of 48 keyframes are near frames labelled camera_footage"
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "Overhead CCTV view inside a commercial bakery/kitchen during violent shaking; stainless tables and equipment shift, floor blurs, staff brace, crouch and hold onto tables",
+    "refs": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ],
+    "timestamps_s": [
+     0.0,
+     18.88,
+     24.32,
+     31.04,
+     37.76,
+     45.44,
+     50.88,
+     59.84
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "indoor commercial kitchen",
+   "refs": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ],
+   "timestamps_s": [
+    0.0,
+    18.88,
+    24.32,
+    31.04,
+    37.76,
+    45.44,
+    50.88,
+    59.84
+   ]
+  },
+  "visible_text": [
+   {
+    "text": "DHA",
+    "language": "tr",
+    "is_place": false,
+    "refs": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ],
+    "timestamps_s": [
+     0.0,
+     18.88,
+     24.32,
+     31.04,
+     37.76,
+     45.44,
+     50.88,
+     59.84
+    ]
+   }
+  ],
+  "likely_location": {
+   "place": "Unknown city",
+   "country": "Turkey",
+   "confidence": 0.55,
+   "lat": null,
+   "lon": null,
+   "reasons": [
+    {
+     "text": "DHA logo watermark in top-right is the mark of Turkish news agency Demiroren Haber Ajansi, suggesting Turkish source",
+     "refs": [
+      0,
+      7,
+      20,
+      34
+     ],
+     "timestamps_s": [
+      0.0,
+      18.88,
+      31.04,
+      45.44
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "Unknown city",
+    "country": "Turkey",
+    "confidence": 0.55,
+    "lat": null,
+    "lon": null,
+    "cited_frames": [
+     0,
+     7,
+     20,
+     34
+    ],
+    "cited_timestamps_s": [
+     0.0,
+     18.88,
+     31.04,
+     45.44
+    ],
+    "reasons": [
+     {
+      "text": "DHA logo watermark in top-right is the mark of Turkish news agency Demiroren Haber Ajansi, suggesting Turkish source",
+      "refs": [
+       0,
+       7,
+       20,
+       34
+      ],
+      "timestamps_s": [
+       0.0,
+       18.88,
+       31.04,
+       45.44
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [],
+  "media_nature": {
+   "value": "camera_footage",
+   "confidence": 0.9,
+   "cited_frames": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    18.88,
+    24.32,
+    31.04,
+    37.76,
+    45.44,
+    50.88,
+    59.84
+   ],
+   "reasons": [
+    {
+     "text": "sharp overhead CCTV view of kitchen with staff before strong shaking",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "same overhead CCTV view with motion blur from violent shaking",
+     "refs": [
+      7
+     ],
+     "timestamps_s": [
+      18.88
+     ]
+    },
+    {
+     "text": "same overhead CCTV view with motion blur from continued shaking",
+     "refs": [
+      13
+     ],
+     "timestamps_s": [
+      24.32
+     ]
+    },
+    {
+     "text": "overhead CCTV view of kitchen staff bracing during shaking",
+     "refs": [
+      20
+     ],
+     "timestamps_s": [
+      31.04
+     ]
+    },
+    {
+     "text": "overhead CCTV view with blur, consistent with security camera during earthquake",
+     "refs": [
+      27
+     ],
+     "timestamps_s": [
+      37.76
+     ]
+    },
+    {
+     "text": "overhead CCTV view of staff holding tables as shaking continues",
+     "refs": [
+      34
+     ],
+     "timestamps_s": [
+      45.44
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "sharp overhead CCTV view of kitchen with staff before strong shaking"
+    },
+    {
+     "frame": 7,
+     "t": 18.88,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "same overhead CCTV view with motion blur from violent shaking"
+    },
+    {
+     "frame": 13,
+     "t": 24.32,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "same overhead CCTV view with motion blur from continued shaking"
+    },
+    {
+     "frame": 20,
+     "t": 31.04,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "overhead CCTV view of kitchen staff bracing during shaking"
+    },
+    {
+     "frame": 27,
+     "t": 37.76,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "overhead CCTV view with blur, consistent with security camera during earthquake"
+    },
+    {
+     "frame": 34,
+     "t": 45.44,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "overhead CCTV view of staff holding tables as shaking continues"
+    },
+    {
+     "frame": 40,
+     "t": 50.88,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "same CCTV perspective with motion blur and natural noise"
+    },
+    {
+     "frame": 47,
+     "t": 59.84,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "same overhead CCTV view of kitchen during shaking"
+    }
+   ],
+   "by_class": {
+    "camera_footage": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ]
+   },
+   "summary": "camera footage (frames 0,7,13,20,27,34,40,47) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "place": "Turkey",
+   "country_iso2": "TR",
+   "event_type": "unknown"
+  },
+  "queries": [
+   {
+    "q": "DHA deprem mutfak g\u00fcvenlik kameras\u0131",
+    "language": "tr",
+    "why": "Watermark is DHA, search Turkish agency archive for original kitchen clip"
+   },
+   {
+    "q": "deprem an\u0131 f\u0131r\u0131n mutfak kamera g\u00f6r\u00fcnt\u00fcleri",
+    "language": "tr",
+    "why": "Find Turkish reports of bakery/kitchen CCTV during earthquake"
+   },
+   {
+    "q": "pastane mutfak deprem CCTV sars\u0131nt\u0131",
+    "language": "tr",
+    "why": "Local terms for patisserie kitchen to locate earliest upload"
+   },
+   {
+    "q": "DHA deprem g\u00fcvenlik kameras\u0131 mutfak \u00e7al\u0131\u015fanlar\u0131",
+    "language": "tr",
+    "why": "Combine agency name with kitchen staff to find source news package"
+   },
+   {
+    "q": "deprem s\u0131ras\u0131nda mutfak \u00e7al\u0131\u015fanlar\u0131 kamera",
+    "language": "tr",
+    "why": "Neutral Turkish description avoiding claimed date to find recycled uses"
+   },
+   {
+    "q": "commercial kitchen earthquake security camera footage staff bracing",
+    "language": "en",
+    "why": "Neutral English description to find same interior clip out of context"
+   },
+   {
+    "q": "bakery earthquake interior CCTV footage shaking",
+    "language": "en",
+    "why": "Search for same scene without Turkey 2023 terms"
+   },
+   {
+    "q": "kitchen earthquake CCTV viral video interior shaking tables",
+    "language": "en",
+    "why": "Broad search for earliest upload of this interior earthquake clip"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.01405,
+  "frames_shown": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "7": 18.88,
+   "13": 24.32,
+   "20": 31.04,
+   "27": 37.76,
+   "34": 45.44,
+   "40": 50.88,
+   "47": 59.84
+  },
+  "audio": {
+   "status": "no_audio_track"
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G05/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G05/frames/frame_07_t18.9.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G05/frames/frame_13_t24.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G05/frames/frame_20_t31.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G05/frames/frame_27_t37.8.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G05/frames/frame_34_t45.4.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G05/frames/frame_40_t50.9.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G05/frames/frame_47_t59.8.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Turkey",
+   "name": "Turkey",
+   "lat": 39.294076,
+   "lon": 35.2316631,
+   "source": "nominatim",
+   "confidence": "low",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": true,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "UNAVAILABLE",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2023-02-03",
+      "m3s": 0.3
+     },
+     {
+      "date": "2023-02-04",
+      "m3s": 0.25
+     },
+     {
+      "date": "2023-02-05",
+      "m3s": 0.22
+     },
+     {
+      "date": "2023-02-06",
+      "m3s": 0.37
+     },
+     {
+      "date": "2023-02-07",
+      "m3s": 0.34
+     },
+     {
+      "date": "2023-02-08",
+      "m3s": 0.26
+     },
+     {
+      "date": "2023-02-09",
+      "m3s": 0.2
+     }
+    ],
+    "baseline": 0.14,
+    "peak": 0.37,
+    "ratio": 2.64,
+    "cell": [
+     39.175003,
+     35.125015
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2023-02-03",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-02-04",
+      "mm": 0.5
+     },
+     {
+      "date": "2023-02-05",
+      "mm": 1.0
+     },
+     {
+      "date": "2023-02-06",
+      "mm": 13.7
+     },
+     {
+      "date": "2023-02-07",
+      "mm": 1.1
+     },
+     {
+      "date": "2023-02-08",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-02-09",
+      "mm": 0.4
+     }
+    ],
+    "max_mm": 13.7
+   },
+   "status": "UNKNOWN"
+  },
+  "verdict": "UNKNOWN",
+  "reasons": [
+   "location resolved only to a whole country; too coarse to corroborate a local event"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=39.294076&longitude=35.2316631&daily=river_discharge&start_date=2023-02-03&end_date=2023-02-09",
+   "https://www.openstreetmap.org/?mlat=39.294076&mlon=35.2316631#map=10/39.294076/35.2316631"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "OK",
+   "articles_in_window": 250,
+   "articles_baseline_30d": 250,
+   "sample_links": [
+    {
+     "url": "https://chaspik.spb.ru/chaspik.spb.ru/piknews/348427-rogov-minimum-tri-vzryva-prozvuchali-v-gorode-zaporoge.html",
+     "title": "\u0421\u0432\u0435\u0442\u043b\u0430\u043d\u0430 \u0425\u043e\u0440\u043a\u0438\u043d\u0430 : \u00ab \u0412 \u0444\u0443\u0442\u0431\u043e\u043b\u0435 \u0438 \u0445\u043e\u043a\u043a\u0435\u0435 \u0431\u043e\u043b\u044c\u0448\u0438\u0435 \u0437\u0430\u0440\u043f\u043b\u0430\u0442\u044b . \u041d\u043e \u044f \u043d\u0435 \u0441\u043c\u043e\u0442\u0440\u044e \u043d\u0438\u043a\u043e\u043c\u0443 \u0432 \u043a\u0430\u0440\u043c\u0430\u043d \u0438 \u043d\u0435 \u0441\u043c\u0435\u044e \u043d\u0438\u0447\u0435\u0433\u043e \u0433\u043e\u0432\u043e\u0440\u0438\u0442\u044c \u00bb ",
+     "domain": "chaspik.spb.ru",
+     "seen": "20230210T004500Z"
+    },
+    {
+     "url": "https://chaspik.spb.ru/chaspik.spb.ru/piknews/348352-supergigant-cheburashka-ne-spaset-kinoprokat-v-odinochku.html",
+     "title": "\u0421\u0430\u043c\u044b\u0439 \u043d\u0430\u0440\u043e\u0434\u043d\u044b\u0439 \u0430\u0432\u0442\u043e\u0441\u043f\u043e\u0440\u0442 : \u043a\u0440\u0430\u0441\u0438\u0432\u043e\u0435 \u0432\u0438\u0434\u0435\u043e \u0437\u0438\u043c\u043d\u0435\u0433\u043e \u0434\u0440\u0438\u0444\u0442\u0430 \u043d\u0430 \u0416\u0438\u0433\u0443\u043b\u044f\u0445",
+     "domain": "chaspik.spb.ru",
+     "seen": "20230210T003000Z"
+    },
+    {
+     "url": "https://chaspik.spb.ru/chaspik.spb.ru/piknews/348387-10-serialov-o-psihoterapevtah-vybor-tatyany-aleshichevoj.html",
+     "title": " \u00ab \u0427\u0443\u0442\u044c \u0438\u043d\u0444\u0430\u0440\u043a\u0442 \u043d\u0435 \u0441\u043b\u0443\u0447\u0438\u043b\u0441\u044f \u00bb: \u0414\u0430\u043d\u043a\u043e \u043e \u0437\u0430\u0434\u0435\u0440\u0436\u0430\u043d\u0438\u0438 \u0432 \u041c\u043e\u043b\u0434\u0430\u0432\u0438\u0438",
+     "domain": "chaspik.spb.ru",
+     "seen": "20230210T003000Z"
+    },
+    {
+     "url": "https://chaspik.spb.ru/chaspik.spb.ru/piknews/348297-v-kongress-ssha-vnesena-rezolyutsiya-o-prekraschenii-pomoschi-ukraine.html",
+     "title": "\u041f\u043e\u043b\u0438\u0446\u0438\u044f \u0415\u043a\u0430\u0442\u0435\u0440\u0438\u043d\u0431\u0443\u0440\u0433\u0430 \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442 \u0438\u043d\u0446\u0438\u0434\u0435\u043d\u0442 \u0441 \u043c\u0430\u0441\u0441\u043e\u0432\u043e\u0439 \u0434\u0440\u0430\u043a\u043e\u0439 \u0432 \u043e\u0431\u0449\u0435\u0436\u0438\u0442\u0438\u0438 \u0423\u0440\u0424\u0423",
+     "domain": "chaspik.spb.ru",
+     "seen": "20230210T001500Z"
+    },
+    {
+     "url": "https://chaspik.spb.ru/chaspik.spb.ru/piknews/348332-vladimir-zelenskij-vovleksya-v-turne-prezident-ukrainy-poprosil-v-bryussele-istrebiteli-i-chlenstvo-.html",
+     "title": "\u0412 \u00ab \u0423\u0440\u0430\u043b\u044c\u0441\u043a\u0438\u0445 \u0430\u0432\u0438\u0430\u043b\u0438\u043d\u0438\u044f\u0445 \u00bb \u043d\u0430\u0437\u0432\u0430\u043b\u0438 \u043f\u0440\u0438\u0447\u0438\u043d\u0443 \u0432\u043e\u0437\u0433\u043e\u0440\u0430\u043d\u0438\u044f \u043d\u0430 \u0431\u043e\u0440\u0442\u0443 \u0441\u0430\u043c\u043e\u043b\u0435\u0442\u0430",
+     "domain": "chaspik.spb.ru",
+     "seen": "20230210T001500Z"
+    }
+   ],
+   "context_only": true,
+   "query": "Turkey flood",
+   "capped_at": 250,
+   "note": "news coverage is context only; it counts articles that mention the place and event words and never proves a specific video is real"
+  }
+ },
+ "media_nature": {
+  "value": "camera_footage",
+  "confidence": 0.9,
+  "cited_frames": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   18.88,
+   24.32,
+   31.04,
+   37.76,
+   45.44,
+   50.88,
+   59.84
+  ],
+  "reasons": [
+   {
+    "text": "sharp overhead CCTV view of kitchen with staff before strong shaking",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "same overhead CCTV view with motion blur from violent shaking",
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     18.88
+    ]
+   },
+   {
+    "text": "same overhead CCTV view with motion blur from continued shaking",
+    "refs": [
+     13
+    ],
+    "timestamps_s": [
+     24.32
+    ]
+   },
+   {
+    "text": "overhead CCTV view of kitchen staff bracing during shaking",
+    "refs": [
+     20
+    ],
+    "timestamps_s": [
+     31.04
+    ]
+   },
+   {
+    "text": "overhead CCTV view with blur, consistent with security camera during earthquake",
+    "refs": [
+     27
+    ],
+    "timestamps_s": [
+     37.76
+    ]
+   },
+   {
+    "text": "overhead CCTV view of staff holding tables as shaking continues",
+    "refs": [
+     34
+    ],
+    "timestamps_s": [
+     45.44
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "sharp overhead CCTV view of kitchen with staff before strong shaking"
+   },
+   {
+    "frame": 7,
+    "t": 18.88,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "same overhead CCTV view with motion blur from violent shaking"
+   },
+   {
+    "frame": 13,
+    "t": 24.32,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "same overhead CCTV view with motion blur from continued shaking"
+   },
+   {
+    "frame": 20,
+    "t": 31.04,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "overhead CCTV view of kitchen staff bracing during shaking"
+   },
+   {
+    "frame": 27,
+    "t": 37.76,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "overhead CCTV view with blur, consistent with security camera during earthquake"
+   },
+   {
+    "frame": 34,
+    "t": 45.44,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "overhead CCTV view of staff holding tables as shaking continues"
+   },
+   {
+    "frame": 40,
+    "t": 50.88,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "same CCTV perspective with motion blur and natural noise"
+   },
+   {
+    "frame": 47,
+    "t": 59.84,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "same overhead CCTV view of kitchen during shaking"
+   }
+  ],
+  "by_class": {
+   "camera_footage": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ]
+  },
+  "summary": "camera footage (frames 0,7,13,20,27,34,40,47) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [
+  {
+   "kind": "independently_dated_earlier_copy",
+   "text": "Footage was already published on 2020-10-30 (earliest copy found), before the claimed event date 2023-02-06.",
+   "evidence": [
+    "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs"
+   ],
+   "date_source": "yt-dlp metadata"
+  }
+ ],
+ "final_verdict": {
+  "label": "RECYCLED_FOOTAGE",
+  "summary": "The footage matches the earliest copy found, published on 2020-10-30 (https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs, date independently fetched per yt-dlp metadata), before the claimed event date 2023-02-06. Matcher evidence: 40 temporally consistent frame(s), up to 346 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 4,
+   "proven_copies": 4,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "camera_footage",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 114.8,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 1.5,
+  "memory": 9.8,
+  "muse": 16.6,
+  "memory_muse_wait_claim": 16.6,
+  "discovery": 66.3,
+  "discovery_by_source": {
+   "tavily": 12.3,
+   "yandex": 66.3
+  },
+  "verify_total_incl_overlap": 30.4,
+  "dates_physical_report_wait": 30.4,
+  "verify_workers": 3,
+  "verify_seconds": 52.4,
+  "verify_checked": 14
+ },
+ "_wall_s": 114.8,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 0
+}

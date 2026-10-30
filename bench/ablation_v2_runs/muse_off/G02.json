@@ -1,0 +1,330 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "7b6c758268",
+ "created_at": "2026-10-30T13:08:21+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/global/G02.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/G02.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "G02.mp4",
+  "duration": 27.266666666666666,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 42,
+  "keyframe_times_s": [
+   0.0,
+   5.33,
+   11.67,
+   12.0,
+   13.0,
+   14.67,
+   15.0,
+   15.33,
+   15.67,
+   16.0,
+   16.33,
+   16.67,
+   17.0,
+   17.33,
+   17.67,
+   18.0,
+   18.33,
+   18.67,
+   19.0,
+   19.33,
+   19.67,
+   20.0,
+   20.33,
+   20.67,
+   21.0,
+   21.33,
+   21.67,
+   22.0,
+   22.67,
+   23.0,
+   23.33,
+   23.67,
+   24.0,
+   24.33,
+   24.67,
+   25.0,
+   25.33,
+   25.67,
+   26.0,
+   26.33,
+   26.67,
+   27.0
+  ]
+ },
+ "claim": {
+  "text": "House wall collapsing in floodwater during Hurricane Milton, Florida",
+  "event_date": "2024-10-09",
+  "place": "Florida, USA",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": null,
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 19.58,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "NOT_FOUND",
+  "proven_matches": [],
+  "earliest_proven_copy": null,
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 41,
+  "candidate_status_counts": {
+   "pending": 27,
+   "unavailable": 1,
+   "not_proven": 10,
+   "too_long": 1,
+   "download_failed": 2
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 3,
+    "errors": [],
+    "query_source": "claim text (Muse unavailable)"
+   },
+   "yandex": {
+    "frames": [
+     17,
+     33,
+     25
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 28,
+    "checked": 5,
+    "proven": 0
+   },
+   "tavily": {
+    "candidates": 13,
+    "checked": 9,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {},
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": null,
+   "note": null
+  }
+ },
+ "clues": {
+  "status": "not_run"
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Florida, USA",
+   "name": "Florida, United States",
+   "lat": 27.7567667,
+   "lon": -81.4639835,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": [
+    {
+     "name": "Florida, Puerto Rico, 00650, United States",
+     "lat": 18.3755793,
+     "lon": -66.5602412,
+     "class": "boundary",
+     "type": "administrative"
+    }
+   ]
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2024-10-06",
+      "m3s": 7.2
+     },
+     {
+      "date": "2024-10-07",
+      "m3s": 8.62
+     },
+     {
+      "date": "2024-10-08",
+      "m3s": 9.96
+     },
+     {
+      "date": "2024-10-09",
+      "m3s": 12.15
+     },
+     {
+      "date": "2024-10-10",
+      "m3s": 13.96
+     },
+     {
+      "date": "2024-10-11",
+      "m3s": 14.56
+     },
+     {
+      "date": "2024-10-12",
+      "m3s": 15.98
+     }
+    ],
+    "baseline": 7.0649999999999995,
+    "peak": 15.98,
+    "ratio": 2.26,
+    "cell": [
+     27.875,
+     -81.47499
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2024-10-06",
+      "mm": 84.0
+     },
+     {
+      "date": "2024-10-07",
+      "mm": 6.9
+     },
+     {
+      "date": "2024-10-08",
+      "mm": 3.2
+     },
+     {
+      "date": "2024-10-09",
+      "mm": 45.8
+     },
+     {
+      "date": "2024-10-10",
+      "mm": 6.8
+     },
+     {
+      "date": "2024-10-11",
+      "mm": 0.8
+     },
+     {
+      "date": "2024-10-12",
+      "mm": 0.2
+     }
+    ],
+    "max_mm": 84.0
+   },
+   "status": "UNKNOWN"
+  },
+  "verdict": "NO_EVIDENCE",
+  "reasons": [
+   "no Copernicus flood activation within 150 km / +-3 d",
+   "discharge ratio 2.26 (peak 16.0 vs baseline 7.1 m3/s), max rain 84.0 mm/day"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened",
+   "event_type=unknown: event type unknown, so the river-flood model may not apply; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen (public hydrology/activation data cannot resolve flash floods, GLOFs or landslides)."
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=27.7567667&longitude=-81.4639835&daily=river_discharge&start_date=2024-10-06&end_date=2024-10-12",
+   "https://www.openstreetmap.org/?mlat=27.7567667&mlon=-81.4639835#map=10/27.7567667/-81.4639835"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Florida flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Florida+flood&mode=artli"
+  },
+  "verdict_display": "Insufficient corroboration \u2014 this does not show the event didn't happen"
+ },
+ "media_nature": {
+  "value": "unknown",
+  "confidence": 0.0,
+  "cited_frames": [],
+  "cited_timestamps_s": [],
+  "reasons": [],
+  "status": "NOT_RUN",
+  "note": "Muse clues were not available, so the media nature was not assessed."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "UNVERIFIED",
+  "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. Insufficient corroboration \u2014 this does not show the event didn't happen (physical-world check). The claim could not be verified from the available evidence.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists.",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 0,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "unknown",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 111.3,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 3.3,
+  "memory": 19.6,
+  "memory_muse_wait_claim": 19.6,
+  "discovery": 66.0,
+  "discovery_by_source": {
+   "tavily": 4.5,
+   "yandex": 66.0
+  },
+  "verify_total_incl_overlap": 22.5,
+  "dates_physical_report_wait": 22.5,
+  "verify_workers": 3,
+  "verify_seconds": 71.3,
+  "verify_checked": 14
+ },
+ "_wall_s": 111.3,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 0
+}

@@ -1,0 +1,321 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "833676a531",
+ "created_at": "2026-10-30T12:45:15+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/heldout/H05.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/heldout/H05.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "H05.mp4",
+  "duration": 32.80011777777778,
+  "has_audio": true,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   1.0,
+   2.33,
+   4.0,
+   4.33,
+   5.0,
+   5.67,
+   6.0,
+   6.67,
+   7.33,
+   8.0,
+   8.33,
+   9.0,
+   9.67,
+   10.0,
+   10.67,
+   11.67,
+   12.33,
+   13.67,
+   14.33,
+   15.67,
+   16.33,
+   17.0,
+   17.67,
+   18.0,
+   18.67,
+   19.33,
+   19.67,
+   20.67,
+   21.33,
+   22.0,
+   22.33,
+   23.33,
+   24.0,
+   24.33,
+   25.0,
+   25.67,
+   26.0,
+   26.67,
+   27.67,
+   28.33,
+   28.67,
+   29.33,
+   30.0,
+   30.33,
+   31.33,
+   32.0,
+   32.67
+  ]
+ },
+ "claim": {
+  "text": "Rasuwa (Nepal) floods (2026)",
+  "event_date": null,
+  "place": "Rasuwa, Nepal",
+  "source": {
+   "text": "user",
+   "event_date": null,
+   "place": "user"
+  },
+  "event_date_basis": null,
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": null,
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 19.23,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/watch?v=95pUW7cTazE",
+    "title": "\u0e19 \u0e33 \u0e44 \u0e2b \u0e25 \u0e2b \u0e25 \u0e32 \u0e01 \u0e1d \u0e19 \u0e15 \u0e01 \u0e2b \u0e19 \u0e01 \u0e1a \u0e32 \u0e19 \u0e17 \u0e07 \u0e2b \u0e25 \u0e07 \u0e1e \u0e07 \u0e25 \u0e07",
+    "uploader": "\u0e40\u0e01\u0e29\u0e15\u0e23 \u0e2d\u0e35\u0e2a\u0e32\u0e19",
+    "upload_date": "2026-08-12",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T12:45:01+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 44",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 27,
+     "max_inliers": 256,
+     "mirrored": false,
+     "temporal_offset": -4.333662965381508,
+     "n_pairs": 599,
+     "score": 28.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 19,
+       "b_frame": 16,
+       "a_t": 14.33338480126468,
+       "b_t": 9.999721835883172,
+       "inliers": 256,
+       "flip": false
+      },
+      {
+       "a_frame": 21,
+       "b_frame": 19,
+       "a_t": 16.333391982836496,
+       "b_t": 11.999666203059807,
+       "inliers": 255,
+       "flip": false
+      },
+      {
+       "a_frame": 18,
+       "b_frame": 15,
+       "a_t": 13.66671574074074,
+       "b_t": 9.33307371349096,
+       "inliers": 241,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_5945408d.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2026-08-12",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/watch?v=95pUW7cTazE",
+   "title": "\u0e19 \u0e33 \u0e44 \u0e2b \u0e25 \u0e2b \u0e25 \u0e32 \u0e01 \u0e1d \u0e19 \u0e15 \u0e01 \u0e2b \u0e19 \u0e01 \u0e1a \u0e32 \u0e19 \u0e17 \u0e07 \u0e2b \u0e25 \u0e07 \u0e1e \u0e07 \u0e25 \u0e07",
+   "uploader": "\u0e40\u0e01\u0e29\u0e15\u0e23 \u0e2d\u0e35\u0e2a\u0e32\u0e19",
+   "upload_date": "2026-08-12",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T12:45:01+00:00",
+   "adapter": "yandex",
+   "found_via": "frame 44",
+   "also_found_by": [],
+   "match": {
+    "decision": true,
+    "consistent_frames": 27,
+    "max_inliers": 256,
+    "mirrored": false,
+    "temporal_offset": -4.333662965381508,
+    "n_pairs": 599,
+    "score": 28.0,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 19,
+      "b_frame": 16,
+      "a_t": 14.33338480126468,
+      "b_t": 9.999721835883172,
+      "inliers": 256,
+      "flip": false
+     },
+     {
+      "a_frame": 21,
+      "b_frame": 19,
+      "a_t": 16.333391982836496,
+      "b_t": 11.999666203059807,
+      "inliers": 255,
+      "flip": false
+     },
+     {
+      "a_frame": 18,
+      "b_frame": 15,
+      "a_t": 13.66671574074074,
+      "b_t": 9.33307371349096,
+      "inliers": 241,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/yandex_5945408d.png",
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2026-08-12",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 55,
+  "candidate_status_counts": {
+   "pending": 41,
+   "unavailable": 2,
+   "not_proven": 5,
+   "too_long": 2,
+   "proven": 1,
+   "download_failed": 4
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 3,
+    "errors": [],
+    "query_source": "claim text (Muse unavailable)"
+   },
+   "yandex": {
+    "frames": [
+     2,
+     44,
+     21
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 40,
+    "checked": 4,
+    "proven": 1
+   },
+   "tavily": {
+    "candidates": 15,
+    "checked": 10,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {
+   "yandex": [
+    "https://www.youtube.com/watch?v=95pUW7cTazE"
+   ]
+  },
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": null,
+   "note": null
+  }
+ },
+ "clues": {
+  "status": "not_run"
+ },
+ "physical_world_check": {
+  "status": "NOT_RUN",
+  "reason": "no claim date supplied"
+ },
+ "media_nature": {
+  "value": "unknown",
+  "confidence": 0.0,
+  "cited_frames": [],
+  "cited_timestamps_s": [],
+  "reasons": [],
+  "status": "NOT_RUN",
+  "note": "Muse clues were not available, so the media nature was not assessed."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "UNVERIFIED",
+  "summary": "The footage matches a previously published copy (https://www.youtube.com/watch?v=95pUW7cTazE, uploaded 2026-08-12), but no claimed event date was given, so recycling relative to the claim is not established. The physical-world check was not available or inconclusive. The claim could not be verified from the available evidence.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 1,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "unknown",
+   "claim_date_basis": null
+  }
+ },
+ "timing_s": 102.3,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 1.7,
+  "memory": 19.2,
+  "memory_muse_wait_claim": 19.2,
+  "discovery": 65.1,
+  "discovery_by_source": {
+   "tavily": 4.2,
+   "yandex": 65.1
+  },
+  "verify_total_incl_overlap": 16.2,
+  "dates_physical_report_wait": 16.2,
+  "verify_workers": 3,
+  "verify_seconds": 57.7,
+  "verify_checked": 14
+ },
+ "_wall_s": 102.3,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 0
+}

@@ -1,0 +1,961 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "a1e9710b6a",
+ "created_at": "2026-10-30T12:51:48+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/global/G02.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/G02.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "G02.mp4",
+  "duration": 27.266666666666666,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 42,
+  "keyframe_times_s": [
+   0.0,
+   5.33,
+   11.67,
+   12.0,
+   13.0,
+   14.67,
+   15.0,
+   15.33,
+   15.67,
+   16.0,
+   16.33,
+   16.67,
+   17.0,
+   17.33,
+   17.67,
+   18.0,
+   18.33,
+   18.67,
+   19.0,
+   19.33,
+   19.67,
+   20.0,
+   20.33,
+   20.67,
+   21.0,
+   21.33,
+   21.67,
+   22.0,
+   22.67,
+   23.0,
+   23.33,
+   23.67,
+   24.0,
+   24.33,
+   24.67,
+   25.0,
+   25.33,
+   25.67,
+   26.0,
+   26.33,
+   26.67,
+   27.0
+  ]
+ },
+ "claim": {
+  "text": "House wall collapsing in floodwater during Hurricane Milton, Florida",
+  "event_date": "2024-10-09",
+  "place": "Florida, USA",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "US",
+  "event_type": "cyclone"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 27.6,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "NOT_FOUND",
+  "proven_matches": [],
+  "earliest_proven_copy": null,
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 58,
+  "candidate_status_counts": {
+   "pending": 44,
+   "download_failed": 1,
+   "not_proven": 8,
+   "too_long": 5
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     17,
+     11,
+     33
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 28,
+    "checked": 4,
+    "proven": 0
+   },
+   "tavily": {
+    "candidates": 30,
+    "checked": 10,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {},
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": "camera_footage",
+   "note": "42 of 42 keyframes are near frames labelled camera_footage"
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "Flooded indoor room filmed from fixed fisheye camera with murky brown water covering floor, papers and furniture floating",
+    "refs": [
+     0,
+     6
+    ],
+    "timestamps_s": [
+     0.0,
+     15.0
+    ]
+   },
+   {
+    "text": "Far wall/windows give way and turbulent floodwater rushes into the room, tossing furniture, debris and containers around",
+    "refs": [
+     12,
+     18,
+     23,
+     29,
+     35,
+     41
+    ],
+    "timestamps_s": [
+     17.0,
+     19.0,
+     20.67,
+     23.0,
+     25.0,
+     27.0
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "flooded building interior",
+   "refs": [
+    0,
+    6,
+    12,
+    18,
+    23,
+    29,
+    35,
+    41
+   ],
+   "timestamps_s": [
+    0.0,
+    15.0,
+    17.0,
+    19.0,
+    20.67,
+    23.0,
+    25.0,
+    27.0
+   ]
+  },
+  "visible_text": [
+   {
+    "text": "House wall collapses in florida hurricane",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     0,
+     6,
+     12,
+     18,
+     23,
+     29,
+     35,
+     41
+    ],
+    "timestamps_s": [
+     0.0,
+     15.0,
+     17.0,
+     19.0,
+     20.67,
+     23.0,
+     25.0,
+     27.0
+    ]
+   },
+   {
+    "text": "TikTok",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     0,
+     6,
+     12,
+     18,
+     23,
+     29,
+     35,
+     41
+    ],
+    "timestamps_s": [
+     0.0,
+     15.0,
+     17.0,
+     19.0,
+     20.67,
+     23.0,
+     25.0,
+     27.0
+    ]
+   },
+   {
+    "text": "@daily_mrpostman",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     0,
+     6,
+     12,
+     18,
+     23,
+     29,
+     35,
+     41
+    ],
+    "timestamps_s": [
+     0.0,
+     15.0,
+     17.0,
+     19.0,
+     20.67,
+     23.0,
+     25.0,
+     27.0
+    ]
+   }
+  ],
+  "likely_location": {
+   "place": "unknown",
+   "country": "unknown",
+   "confidence": 0.0,
+   "lat": null,
+   "lon": null,
+   "reasons": [
+    {
+     "text": "Only generic flooded indoor room visible with no exterior, landmarks, street signs, language cues or architectural details to identify place or country",
+     "refs": [
+      0,
+      6,
+      12,
+      18
+     ],
+     "timestamps_s": [
+      0.0,
+      15.0,
+      17.0,
+      19.0
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "unknown",
+    "country": "unknown",
+    "confidence": 0.0,
+    "lat": null,
+    "lon": null,
+    "cited_frames": [
+     0,
+     6,
+     12,
+     18
+    ],
+    "cited_timestamps_s": [
+     0.0,
+     15.0,
+     17.0,
+     19.0
+    ],
+    "reasons": [
+     {
+      "text": "Only generic flooded indoor room visible with no exterior, landmarks, street signs, language cues or architectural details to identify place or country",
+      "refs": [
+       0,
+       6,
+       12,
+       18
+      ],
+      "timestamps_s": [
+       0.0,
+       15.0,
+       17.0,
+       19.0
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [
+   {
+    "text": "No visible geographic, linguistic or event-specific cues linking the interior to Florida or to Hurricane Milton on 2024-10-09",
+    "refs": [
+     0,
+     6,
+     12,
+     18,
+     23,
+     29,
+     35,
+     41
+    ],
+    "timestamps_s": [
+     0.0,
+     15.0,
+     17.0,
+     19.0,
+     20.67,
+     23.0,
+     25.0,
+     27.0
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   },
+   {
+    "text": "Location caption is an added TikTok overlay from repost account @daily_mrpostman, not an in-camera timestamp, news graphic or original source identifier",
+    "refs": [
+     0,
+     6,
+     12,
+     18
+    ],
+    "timestamps_s": [
+     0.0,
+     15.0,
+     17.0,
+     19.0
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   },
+   {
+    "text": "Interior with office-like desks, cabinets and large open space does not clearly match a house as claimed",
+    "refs": [
+     0,
+     6
+    ],
+    "timestamps_s": [
+     0.0,
+     15.0
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   }
+  ],
+  "media_nature": {
+   "value": "camera_footage",
+   "confidence": 0.81,
+   "cited_frames": [
+    0,
+    6,
+    12,
+    18,
+    23,
+    29,
+    35,
+    41
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    15.0,
+    17.0,
+    19.0,
+    20.67,
+    23.0,
+    25.0,
+    27.0
+   ],
+   "reasons": [
+    {
+     "text": "Fixed fisheye interior view with natural noise, lighting and floating debris; no AI warping",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "Same fixed security-camera view of flooded room with natural detail",
+     "refs": [
+      6
+     ],
+     "timestamps_s": [
+      15.0
+     ]
+    },
+    {
+     "text": "Blurry but shows natural turbulent water entry and debris motion",
+     "refs": [
+      12
+     ],
+     "timestamps_s": [
+      17.0
+     ]
+    },
+    {
+     "text": "Turbulent water and tumbling furniture with natural motion blur",
+     "refs": [
+      18
+     ],
+     "timestamps_s": [
+      19.0
+     ]
+    },
+    {
+     "text": "Continued fixed-view flood rush with natural physics",
+     "refs": [
+      23
+     ],
+     "timestamps_s": [
+      20.67
+     ]
+    },
+    {
+     "text": "Water-borne debris and furniture in fixed fisheye view",
+     "refs": [
+      29
+     ],
+     "timestamps_s": [
+      23.0
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "Fixed fisheye interior view with natural noise, lighting and floating debris; no AI warping"
+    },
+    {
+     "frame": 6,
+     "t": 15.0,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "Same fixed security-camera view of flooded room with natural detail"
+    },
+    {
+     "frame": 12,
+     "t": 17.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "Blurry but shows natural turbulent water entry and debris motion"
+    },
+    {
+     "frame": 18,
+     "t": 19.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "Turbulent water and tumbling furniture with natural motion blur"
+    },
+    {
+     "frame": 23,
+     "t": 20.67,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "Continued fixed-view flood rush with natural physics"
+    },
+    {
+     "frame": 29,
+     "t": 23.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "Water-borne debris and furniture in fixed fisheye view"
+    },
+    {
+     "frame": 35,
+     "t": 25.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "Same CCTV viewpoint with churning water, no synthetic tells"
+    },
+    {
+     "frame": 41,
+     "t": 27.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "Fixed interior camera with dark turbulent floodwater and displaced furniture"
+    }
+   ],
+   "by_class": {
+    "camera_footage": [
+     0,
+     6,
+     12,
+     18,
+     23,
+     29,
+     35,
+     41
+    ]
+   },
+   "summary": "camera footage (frames 0,6,12,18,23,29,35,41) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "place": "Florida",
+   "country_iso2": "US",
+   "event_type": "cyclone"
+  },
+  "queries": [
+   {
+    "q": "wall collapses flood water inside room security camera",
+    "language": "en",
+    "why": "Neutral description to find earliest upload of wall-collapse flood clip"
+   },
+   {
+    "q": "house wall collapses flooding interior video furniture washed away",
+    "language": "en",
+    "why": "Matches overlay text without claimed hurricane name to find recycled copies"
+   },
+   {
+    "q": "CCTV wall collapse flood furniture floating office",
+    "language": "en",
+    "why": "Interior looks office-like, may be original description"
+   },
+   {
+    "q": "indoor security camera wall breaks floodwater rushes in",
+    "language": "en",
+    "why": "Describes key action to locate true source"
+   },
+   {
+    "q": "flooded room fisheye camera wall gives way video",
+    "language": "en",
+    "why": "Fisheye lens is distinctive for reverse image search"
+   },
+   {
+    "q": "muro colapsa inundacion interior camara seguridad video",
+    "language": "es",
+    "why": "Spanish query for Florida/US Hispanic media copies"
+   },
+   {
+    "q": "mur s'effondre inondation interieur video surveillance",
+    "language": "fr",
+    "why": "Find non-English reposts that may predate claim"
+   },
+   {
+    "q": "TikTok @daily_mrpostman house wall collapses florida hurricane",
+    "language": "en",
+    "why": "Trace reposting account to identify source and date"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.01771,
+  "frames_shown": [
+   0,
+   6,
+   12,
+   18,
+   23,
+   29,
+   35,
+   41
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "6": 15.0,
+   "12": 17.0,
+   "18": 19.0,
+   "23": 20.67,
+   "29": 23.0,
+   "35": 25.0,
+   "41": 27.0
+  },
+  "audio": {
+   "status": "no_audio_track"
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_06_t15.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_12_t17.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_18_t19.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_23_t20.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_29_t23.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_35_t25.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_41_t27.0.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Florida, USA",
+   "name": "Florida, United States",
+   "lat": 27.7567667,
+   "lon": -81.4639835,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": [
+    {
+     "name": "Florida, Puerto Rico, 00650, United States",
+     "lat": 18.3755793,
+     "lon": -66.5602412,
+     "class": "boundary",
+     "type": "administrative"
+    }
+   ]
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "UNAVAILABLE",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2024-10-06",
+      "m3s": 7.2
+     },
+     {
+      "date": "2024-10-07",
+      "m3s": 8.62
+     },
+     {
+      "date": "2024-10-08",
+      "m3s": 9.96
+     },
+     {
+      "date": "2024-10-09",
+      "m3s": 12.15
+     },
+     {
+      "date": "2024-10-10",
+      "m3s": 13.96
+     },
+     {
+      "date": "2024-10-11",
+      "m3s": 14.56
+     },
+     {
+      "date": "2024-10-12",
+      "m3s": 15.98
+     }
+    ],
+    "baseline": 7.0649999999999995,
+    "peak": 15.98,
+    "ratio": 2.26,
+    "cell": [
+     27.875,
+     -81.47499
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2024-10-06",
+      "mm": 84.0
+     },
+     {
+      "date": "2024-10-07",
+      "mm": 6.9
+     },
+     {
+      "date": "2024-10-08",
+      "mm": 3.2
+     },
+     {
+      "date": "2024-10-09",
+      "mm": 45.8
+     },
+     {
+      "date": "2024-10-10",
+      "mm": 6.8
+     },
+     {
+      "date": "2024-10-11",
+      "mm": 0.8
+     },
+     {
+      "date": "2024-10-12",
+      "mm": 0.2
+     }
+    ],
+    "max_mm": 84.0
+   },
+   "status": "UNKNOWN"
+  },
+  "verdict": "NO_EVIDENCE",
+  "reasons": [
+   "no Copernicus flood activation within 150 km / +-3 d",
+   "discharge ratio 2.26 (peak 16.0 vs baseline 7.1 m3/s), max rain 84.0 mm/day"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened",
+   "event_type=cyclone: cyclone wind/surge damage is not represented in GloFAS river discharge; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen (public hydrology/activation data cannot resolve flash floods, GLOFs or landslides)."
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=27.7567667&longitude=-81.4639835&daily=river_discharge&start_date=2024-10-06&end_date=2024-10-12",
+   "https://www.openstreetmap.org/?mlat=27.7567667&mlon=-81.4639835#map=10/27.7567667/-81.4639835"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Florida cyclone",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Florida+cyclone&mode=art"
+  },
+  "verdict_display": "Insufficient corroboration \u2014 this does not show the event didn't happen"
+ },
+ "media_nature": {
+  "value": "camera_footage",
+  "confidence": 0.81,
+  "cited_frames": [
+   0,
+   6,
+   12,
+   18,
+   23,
+   29,
+   35,
+   41
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   15.0,
+   17.0,
+   19.0,
+   20.67,
+   23.0,
+   25.0,
+   27.0
+  ],
+  "reasons": [
+   {
+    "text": "Fixed fisheye interior view with natural noise, lighting and floating debris; no AI warping",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "Same fixed security-camera view of flooded room with natural detail",
+    "refs": [
+     6
+    ],
+    "timestamps_s": [
+     15.0
+    ]
+   },
+   {
+    "text": "Blurry but shows natural turbulent water entry and debris motion",
+    "refs": [
+     12
+    ],
+    "timestamps_s": [
+     17.0
+    ]
+   },
+   {
+    "text": "Turbulent water and tumbling furniture with natural motion blur",
+    "refs": [
+     18
+    ],
+    "timestamps_s": [
+     19.0
+    ]
+   },
+   {
+    "text": "Continued fixed-view flood rush with natural physics",
+    "refs": [
+     23
+    ],
+    "timestamps_s": [
+     20.67
+    ]
+   },
+   {
+    "text": "Water-borne debris and furniture in fixed fisheye view",
+    "refs": [
+     29
+    ],
+    "timestamps_s": [
+     23.0
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "Fixed fisheye interior view with natural noise, lighting and floating debris; no AI warping"
+   },
+   {
+    "frame": 6,
+    "t": 15.0,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "Same fixed security-camera view of flooded room with natural detail"
+   },
+   {
+    "frame": 12,
+    "t": 17.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "Blurry but shows natural turbulent water entry and debris motion"
+   },
+   {
+    "frame": 18,
+    "t": 19.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "Turbulent water and tumbling furniture with natural motion blur"
+   },
+   {
+    "frame": 23,
+    "t": 20.67,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "Continued fixed-view flood rush with natural physics"
+   },
+   {
+    "frame": 29,
+    "t": 23.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "Water-borne debris and furniture in fixed fisheye view"
+   },
+   {
+    "frame": 35,
+    "t": 25.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "Same CCTV viewpoint with churning water, no synthetic tells"
+   },
+   {
+    "frame": 41,
+    "t": 27.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "Fixed interior camera with dark turbulent floodwater and displaced furniture"
+   }
+  ],
+  "by_class": {
+   "camera_footage": [
+    0,
+    6,
+    12,
+    18,
+    23,
+    29,
+    35,
+    41
+   ]
+  },
+  "summary": "camera footage (frames 0,6,12,18,23,29,35,41) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "UNVERIFIED",
+  "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. Insufficient corroboration \u2014 this does not show the event didn't happen (physical-world check). The claim could not be verified from the available evidence. Separately, the AI visual clues report 3 unverified observation(s) that clash with the claim (e.g. \"No visible geographic, linguistic or event-specific cues linking the interior to Florida or to Hurricane Milton on 2024-10-09\", frame ref [0, 6, 12, 18, 23, 29, 35, 41]); these are model observations, not independent evidence and not part of the visual-match proof.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists.",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 0,
+   "physical_supports": null,
+   "unverified_model_observations": 3,
+   "date_conflicts": 0,
+   "media_nature": "camera_footage",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 125.4,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 2.8,
+  "muse": 15.7,
+  "memory": 27.6,
+  "memory_muse_wait_claim": 27.6,
+  "discovery": 69.0,
+  "discovery_by_source": {
+   "tavily": 13.7,
+   "yandex": 69.0
+  },
+  "verify_total_incl_overlap": 26.0,
+  "dates_physical_report_wait": 26.0,
+  "verify_workers": 3,
+  "verify_seconds": 72.2,
+  "verify_checked": 14
+ },
+ "_wall_s": 125.4,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 0
+}

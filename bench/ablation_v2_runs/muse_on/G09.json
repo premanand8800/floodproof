@@ -1,0 +1,863 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "82e3668842",
+ "created_at": "2026-10-30T13:02:21+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/global/G09.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/G09.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "G09.mp4",
+  "duration": 13.52,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 37,
+  "keyframe_times_s": [
+   0.0,
+   0.32,
+   0.64,
+   1.6,
+   2.24,
+   2.56,
+   2.88,
+   3.2,
+   3.52,
+   3.84,
+   4.16,
+   4.48,
+   4.8,
+   5.12,
+   5.44,
+   5.76,
+   6.08,
+   6.4,
+   7.04,
+   7.36,
+   7.68,
+   8.0,
+   8.32,
+   8.64,
+   8.96,
+   9.28,
+   9.6,
+   9.92,
+   10.24,
+   10.56,
+   10.88,
+   11.52,
+   11.84,
+   12.16,
+   12.48,
+   12.8,
+   13.44
+  ]
+ },
+ "claim": {
+  "text": "Real tsunami footage after the M8.8 Kamchatka, Russia earthquake (wave behind a wave)",
+  "event_date": "2025-07-30",
+  "place": "Kamchatka, Russia",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "RU",
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 12.23,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "NOT_FOUND",
+  "proven_matches": [],
+  "earliest_proven_copy": null,
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 70,
+  "candidate_status_counts": {
+   "download_failed": 1,
+   "not_proven": 9,
+   "pending": 56,
+   "unavailable": 1,
+   "too_long": 3
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     12,
+     25,
+     36
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 40,
+    "checked": 4,
+    "proven": 0
+   },
+   "tavily": {
+    "candidates": 30,
+    "checked": 10,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {},
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": null,
+   "note": null
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "Aerial view filmed through an aircraft window with engine cowling visible showing deep blue ocean with a long thin white foam line offshore moving toward a sandy beach and small coastal town",
+    "refs": [
+     0,
+     5,
+     10
+    ],
+    "timestamps_s": [
+     0.0,
+     2.56,
+     4.16
+    ]
+   },
+   {
+    "text": "Large white surf-like breakers washing along the coastline and forming unusual overlapping V-shaped 'wave behind a wave' patterns with turquoise water and foam",
+    "refs": [
+     10,
+     15,
+     21,
+     26,
+     31,
+     36
+    ],
+    "timestamps_s": [
+     4.16,
+     5.76,
+     8.0,
+     9.6,
+     11.52,
+     13.44
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "coastal",
+   "refs": [
+    5,
+    10,
+    21
+   ],
+   "timestamps_s": [
+    2.56,
+    4.16,
+    8.0
+   ]
+  },
+  "visible_text": [],
+  "likely_location": {
+   "place": "unknown",
+   "country": "unknown",
+   "confidence": 0.1,
+   "lat": null,
+   "lon": null,
+   "reasons": [
+    {
+     "text": "No legible signs, landmarks, or geography to identify location; tropical-looking turquoise water, sandy beach and green fields with low-density houses are generic and not identifiable as Kamchatka",
+     "refs": [
+      5,
+      10,
+      21
+     ],
+     "timestamps_s": [
+      2.56,
+      4.16,
+      8.0
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "unknown",
+    "country": "unknown",
+    "confidence": 0.1,
+    "lat": null,
+    "lon": null,
+    "cited_frames": [
+     5,
+     10,
+     21
+    ],
+    "cited_timestamps_s": [
+     2.56,
+     4.16,
+     8.0
+    ],
+    "reasons": [
+     {
+      "text": "No legible signs, landmarks, or geography to identify location; tropical-looking turquoise water, sandy beach and green fields with low-density houses are generic and not identifiable as Kamchatka",
+      "refs": [
+       5,
+       10,
+       21
+      ],
+      "timestamps_s": [
+       2.56,
+       4.16,
+       8.0
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [
+   {
+    "text": "Real tsunamis are not visible in deep open ocean as a narrow white breaking surf line as shown far offshore; the video shows surf-style breakers in deep water",
+    "refs": [
+     0,
+     5
+    ],
+    "timestamps_s": [
+     0.0,
+     2.56
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   },
+   {
+    "text": "Impossible wave physics with two large breaking fronts meeting at a sharp V-angle offshore as 'wave behind a wave', inconsistent with real tsunami propagation",
+    "refs": [
+     15,
+     21,
+     31
+    ],
+    "timestamps_s": [
+     5.76,
+     8.0,
+     11.52
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   },
+   {
+    "text": "Bright turquoise tropical-looking water, sandy beach and green suburban landscape inconsistent with subarctic Kamchatka coastline; no Russian features visible",
+    "refs": [
+     5,
+     10,
+     21
+    ],
+    "timestamps_s": [
+     2.56,
+     4.16,
+     8.0
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   },
+   {
+    "text": "Overly smooth plastic water texture, morphing shoreline and wave shapes suggest synthetic imagery rather than real camera recording of 2025-07-30 event",
+    "refs": [
+     15,
+     26,
+     31,
+     36
+    ],
+    "timestamps_s": [
+     5.76,
+     9.6,
+     11.52,
+     13.44
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   }
+  ],
+  "media_nature": {
+   "value": "likely_ai_generated",
+   "confidence": 0.76,
+   "cited_frames": [
+    0,
+    5,
+    10,
+    15,
+    21,
+    26,
+    31,
+    36
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    2.56,
+    4.16,
+    5.76,
+    8.0,
+    9.6,
+    11.52,
+    13.44
+   ],
+   "reasons": [
+    {
+     "text": "thin unnaturally uniform white line in deep ocean, overly smooth water, low detail",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "overly smooth plastic ocean and coastline, surf line looks rendered",
+     "refs": [
+      5
+     ],
+     "timestamps_s": [
+      2.56
+     ]
+    },
+    {
+     "text": "impossibly thick blocky foam front, smooth texture, morphing town edge",
+     "refs": [
+      10
+     ],
+     "timestamps_s": [
+      4.16
+     ]
+    },
+    {
+     "text": "impossible V-shaped wave-behind-wave collision, physically implausible",
+     "refs": [
+      15
+     ],
+     "timestamps_s": [
+      5.76
+     ]
+    },
+    {
+     "text": "gigantic foam sheet with smooth painterly texture, impossible scale and physics",
+     "refs": [
+      21
+     ],
+     "timestamps_s": [
+      8.0
+     ]
+    },
+    {
+     "text": "formless churning foam without natural spray detail, morphing shoreline",
+     "refs": [
+      26
+     ],
+     "timestamps_s": [
+      9.6
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "likely_ai_generated",
+     "confidence": 0.7,
+     "reason": "thin unnaturally uniform white line in deep ocean, overly smooth water, low detail"
+    },
+    {
+     "frame": 5,
+     "t": 2.56,
+     "label": "likely_ai_generated",
+     "confidence": 0.7,
+     "reason": "overly smooth plastic ocean and coastline, surf line looks rendered"
+    },
+    {
+     "frame": 10,
+     "t": 4.16,
+     "label": "likely_ai_generated",
+     "confidence": 0.75,
+     "reason": "impossibly thick blocky foam front, smooth texture, morphing town edge"
+    },
+    {
+     "frame": 15,
+     "t": 5.76,
+     "label": "likely_ai_generated",
+     "confidence": 0.85,
+     "reason": "impossible V-shaped wave-behind-wave collision, physically implausible"
+    },
+    {
+     "frame": 21,
+     "t": 8.0,
+     "label": "likely_ai_generated",
+     "confidence": 0.8,
+     "reason": "gigantic foam sheet with smooth painterly texture, impossible scale and physics"
+    },
+    {
+     "frame": 26,
+     "t": 9.6,
+     "label": "likely_ai_generated",
+     "confidence": 0.75,
+     "reason": "formless churning foam without natural spray detail, morphing shoreline"
+    },
+    {
+     "frame": 31,
+     "t": 11.52,
+     "label": "likely_ai_generated",
+     "confidence": 0.8,
+     "reason": "dark hole and swirling shapes in wave, morphing inconsistent water physics"
+    },
+    {
+     "frame": 36,
+     "t": 13.44,
+     "label": "likely_ai_generated",
+     "confidence": 0.75,
+     "reason": "elongated smooth foam band with rendered look, lack of natural noise and detail"
+    }
+   ],
+   "by_class": {
+    "likely_ai_generated": [
+     0,
+     5,
+     10,
+     15,
+     21,
+     26,
+     31,
+     36
+    ]
+   },
+   "summary": "likely AI-generated shots (frames 0,5,10,15,21,26,31,36) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "place": "Kamchatka, Russia",
+   "country_iso2": "RU",
+   "event_type": "unknown"
+  },
+  "queries": [
+   {
+    "q": "wave behind a wave tsunami airplane window video",
+    "language": "en",
+    "why": "exact phrase from claim to find earliest upload and fact-checks"
+   },
+   {
+    "q": "tsunami seen from airplane window viral fake",
+    "language": "en",
+    "why": "to find debunks of aerial tsunami clip"
+   },
+   {
+    "q": "aerial ocean white wave line AI tsunami video",
+    "language": "en",
+    "why": "to find if clip identified as AI-generated"
+   },
+   {
+    "q": "tsunami aerial view beach houses airplane engine video origin",
+    "language": "en",
+    "why": "neutral description without claimed event to find true source"
+   },
+   {
+    "q": "breaking wave V shape offshore aerial video fake",
+    "language": "en",
+    "why": "distinctive visual to locate original"
+   },
+   {
+    "q": "\u0432\u0438\u0434 \u0446\u0443\u043d\u0430\u043c\u0438 \u0438\u0437 \u0438\u043b\u043b\u044e\u043c\u0438\u043d\u0430\u0442\u043e\u0440\u0430 \u0441\u0430\u043c\u043e\u043b\u0435\u0442\u0430 \u0432\u043e\u043b\u043d\u0430 \u0437\u0430 \u0432\u043e\u043b\u043d\u043e\u0439 \u0432\u0438\u0434\u0435\u043e",
+    "language": "ru",
+    "why": "Russian query to check claimed Kamchatka context and local fact-checks"
+   },
+   {
+    "q": "\u0446\u0443\u043d\u0430\u043c\u0438 \u041a\u0430\u043c\u0447\u0430\u0442\u043a\u0430 \u0432\u0438\u0434 \u0441 \u0441\u0430\u043c\u043e\u043b\u0435\u0442\u0430 \u0444\u0435\u0439\u043a \u0432\u0438\u0434\u0435\u043e",
+    "language": "ru",
+    "why": "to find Russian debunks reusing this footage"
+   },
+   {
+    "q": "tsunami footage from plane window July 2025 debunk",
+    "language": "en",
+    "why": "to find fact-checks around claimed event date without assuming location"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.01668,
+  "frames_shown": [
+   0,
+   5,
+   10,
+   15,
+   21,
+   26,
+   31,
+   36
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "5": 2.56,
+   "10": 4.16,
+   "15": 5.76,
+   "21": 8.0,
+   "26": 9.6,
+   "31": 11.52,
+   "36": 13.44
+  },
+  "audio": {
+   "status": "no_audio_track"
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G09/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G09/frames/frame_05_t2.6.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G09/frames/frame_10_t4.2.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G09/frames/frame_15_t5.8.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G09/frames/frame_21_t8.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G09/frames/frame_26_t9.6.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G09/frames/frame_31_t11.5.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G09/frames/frame_36_t13.4.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Kamchatka, Russia",
+   "name": "Kamchatka Krai, Far Eastern Federal District, Russia",
+   "lat": 57.1914882,
+   "lon": 160.0383819,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "UNAVAILABLE",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2025-07-27",
+      "m3s": 3.52
+     },
+     {
+      "date": "2025-07-28",
+      "m3s": 3.46
+     },
+     {
+      "date": "2025-07-29",
+      "m3s": 3.19
+     },
+     {
+      "date": "2025-07-30",
+      "m3s": 2.78
+     },
+     {
+      "date": "2025-07-31",
+      "m3s": 2.72
+     },
+     {
+      "date": "2025-08-01",
+      "m3s": 2.47
+     },
+     {
+      "date": "2025-08-02",
+      "m3s": 2.67
+     }
+    ],
+    "baseline": 4.904999999999999,
+    "peak": 3.52,
+    "ratio": 0.72,
+    "cell": [
+     57.175003,
+     159.92502
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2025-07-27",
+      "mm": 4.3
+     },
+     {
+      "date": "2025-07-28",
+      "mm": 2.1
+     },
+     {
+      "date": "2025-07-29",
+      "mm": 0.4
+     },
+     {
+      "date": "2025-07-30",
+      "mm": 0.1
+     },
+     {
+      "date": "2025-07-31",
+      "mm": 6.0
+     },
+     {
+      "date": "2025-08-01",
+      "mm": 9.9
+     },
+     {
+      "date": "2025-08-02",
+      "mm": 0.7
+     }
+    ],
+    "max_mm": 9.9
+   },
+   "status": "NORMAL"
+  },
+  "verdict": "NO_EVIDENCE",
+  "reasons": [
+   "no Copernicus flood activation within 150 km / +-3 d",
+   "discharge ratio 0.72 (peak 3.5 vs baseline 4.9 m3/s), max rain 9.9 mm/day"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened",
+   "event_type=unknown: event type unknown, so the river-flood model may not apply; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen (public hydrology/activation data cannot resolve flash floods, GLOFs or landslides)."
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=57.1914882&longitude=160.0383819&daily=river_discharge&start_date=2025-07-27&end_date=2025-08-02",
+   "https://www.openstreetmap.org/?mlat=57.1914882&mlon=160.0383819#map=10/57.1914882/160.0383819"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Kamchatka flood",
+   "reason": "GDELT request failed: _ssl.c:993: The handshake operation timed out"
+  },
+  "verdict_display": "Insufficient corroboration \u2014 this does not show the event didn't happen"
+ },
+ "media_nature": {
+  "value": "likely_ai_generated",
+  "confidence": 0.76,
+  "cited_frames": [
+   0,
+   5,
+   10,
+   15,
+   21,
+   26,
+   31,
+   36
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   2.56,
+   4.16,
+   5.76,
+   8.0,
+   9.6,
+   11.52,
+   13.44
+  ],
+  "reasons": [
+   {
+    "text": "thin unnaturally uniform white line in deep ocean, overly smooth water, low detail",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "overly smooth plastic ocean and coastline, surf line looks rendered",
+    "refs": [
+     5
+    ],
+    "timestamps_s": [
+     2.56
+    ]
+   },
+   {
+    "text": "impossibly thick blocky foam front, smooth texture, morphing town edge",
+    "refs": [
+     10
+    ],
+    "timestamps_s": [
+     4.16
+    ]
+   },
+   {
+    "text": "impossible V-shaped wave-behind-wave collision, physically implausible",
+    "refs": [
+     15
+    ],
+    "timestamps_s": [
+     5.76
+    ]
+   },
+   {
+    "text": "gigantic foam sheet with smooth painterly texture, impossible scale and physics",
+    "refs": [
+     21
+    ],
+    "timestamps_s": [
+     8.0
+    ]
+   },
+   {
+    "text": "formless churning foam without natural spray detail, morphing shoreline",
+    "refs": [
+     26
+    ],
+    "timestamps_s": [
+     9.6
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "likely_ai_generated",
+    "confidence": 0.7,
+    "reason": "thin unnaturally uniform white line in deep ocean, overly smooth water, low detail"
+   },
+   {
+    "frame": 5,
+    "t": 2.56,
+    "label": "likely_ai_generated",
+    "confidence": 0.7,
+    "reason": "overly smooth plastic ocean and coastline, surf line looks rendered"
+   },
+   {
+    "frame": 10,
+    "t": 4.16,
+    "label": "likely_ai_generated",
+    "confidence": 0.75,
+    "reason": "impossibly thick blocky foam front, smooth texture, morphing town edge"
+   },
+   {
+    "frame": 15,
+    "t": 5.76,
+    "label": "likely_ai_generated",
+    "confidence": 0.85,
+    "reason": "impossible V-shaped wave-behind-wave collision, physically implausible"
+   },
+   {
+    "frame": 21,
+    "t": 8.0,
+    "label": "likely_ai_generated",
+    "confidence": 0.8,
+    "reason": "gigantic foam sheet with smooth painterly texture, impossible scale and physics"
+   },
+   {
+    "frame": 26,
+    "t": 9.6,
+    "label": "likely_ai_generated",
+    "confidence": 0.75,
+    "reason": "formless churning foam without natural spray detail, morphing shoreline"
+   },
+   {
+    "frame": 31,
+    "t": 11.52,
+    "label": "likely_ai_generated",
+    "confidence": 0.8,
+    "reason": "dark hole and swirling shapes in wave, morphing inconsistent water physics"
+   },
+   {
+    "frame": 36,
+    "t": 13.44,
+    "label": "likely_ai_generated",
+    "confidence": 0.75,
+    "reason": "elongated smooth foam band with rendered look, lack of natural noise and detail"
+   }
+  ],
+  "by_class": {
+   "likely_ai_generated": [
+    0,
+    5,
+    10,
+    15,
+    21,
+    26,
+    31,
+    36
+   ]
+  },
+  "summary": "likely AI-generated shots (frames 0,5,10,15,21,26,31,36) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "UNVERIFIED",
+  "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. Insufficient corroboration \u2014 this does not show the event didn't happen (physical-world check). The claim could not be verified from the available evidence. Media nature (AI observation from frames 0,5,10,15,21,26,31,36, not proof; does not change the label): Not camera footage: likely AI-generated (AI observation)  Separately, the AI visual clues report 4 unverified observation(s) that clash with the claim (e.g. \"Real tsunamis are not visible in deep open ocean as a narrow white breaking surf line as shown far offshore; the video shows surf-style brea\", frame ref [0, 5]); these are model observations, not independent evidence and not part of the visual-match proof.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists.",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 0,
+   "physical_supports": null,
+   "unverified_model_observations": 4,
+   "date_conflicts": 0,
+   "media_nature": "likely_ai_generated",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 97.3,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 2.2,
+  "memory": 12.2,
+  "muse": 17.1,
+  "memory_muse_wait_claim": 17.1,
+  "discovery": 63.3,
+  "discovery_by_source": {
+   "tavily": 12.4,
+   "yandex": 63.3
+  },
+  "verify_total_incl_overlap": 14.8,
+  "dates_physical_report_wait": 14.8,
+  "verify_workers": 3,
+  "verify_seconds": 42.2,
+  "verify_checked": 14
+ },
+ "_wall_s": 97.3,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 0
+}
