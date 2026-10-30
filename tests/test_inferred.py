@@ -76,7 +76,7 @@ def test_compilation_earlier_copy_wording_and_posted_date_never_recycles():
     fv = r["final_verdict"]
     assert fv["label"] == "UNVERIFIED" and "contains a clip published earlier" in fv["summary"]
     assert "AI observation" in fv["summary"] and "do not by themselves mean recycling" in fv["summary"]
-    assert r["schema_version"] == "1.2" and r["media_nature"]["value"] == "news_compilation" and not r["contradictions"]
+    assert r["schema_version"] == "1.3" and r["media_nature"]["value"] == "news_compilation" and not r["contradictions"]
 
 
 def test_media_nature_never_changes_label():

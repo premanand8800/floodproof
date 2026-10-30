@@ -71,6 +71,26 @@ def list_demos() -> list[dict]:
     return out
 
 
+# Per-check cost is stated in the frozen bench write-ups (system B only): heldout $0.153 over 9 cases, global $0.156 over 11 cases.
+BENCH_COST_USD = {"heldout": 0.153, "global": 0.156}
+
+
+def bench_headline() -> dict:
+    """Headline numbers computed from bench/heldout_rescored.json (pipeline B rows only) and bench/global_rescored.json."""
+    bench = ROOT / "bench"
+    ho = [x for x in json.loads((bench / "heldout_rescored.json").read_text()) if x.get("system") == "B"]
+    gl_all = json.loads((bench / "global_rescored.json").read_text())
+    gl = [x for x in gl_all if x.get("kind") == "debunked"]
+    proven = sum(bool(x["found_earlier_copy"]) for x in ho + gl)
+    false_acc = sum(bool(x.get("false_attribution_corrected") or x.get("false_attribution") or x.get("wrong_verdict")) for x in ho + gl)
+    genuine_fp = sum(bool(x.get("genuine_false_positive")) for x in gl_all if x.get("kind") == "genuine")
+    checks = len(ho) + len(gl_all)
+    cents = round(100 * sum(BENCH_COST_USD.values()) / checks, 1)
+    return dict(clips=len(ho) + len(gl), earlier_copy_proven=proven, false_accusations=false_acc, genuine_false_positives=genuine_fp,
+                genuine_clips=len(gl_all) - len(gl), cents_per_check=cents, checks_costed=checks,
+                sources=["bench/heldout_rescored.json (system B)", "bench/global_rescored.json", "bench/heldout_RESULTS.md and bench/global_RESULTS.md (cost)"])
+
+
 def _run_job(job_id, source, claim, date, place, deep):
     job = JOBS[job_id]
     log = lambda *a: job["log"].append(" ".join(str(x) for x in a)[:300])
@@ -83,6 +103,11 @@ def _run_job(job_id, source, claim, date, place, deep):
             from .pipeline import investigate
             rep = investigate(source, claim, date, place, out_dir=out, log=log)
         validate_report(rep)
+        try:                                        # best-effort shareable debunk card; never blocks the report
+            from .debunk import attach
+            attach(out / "report.json")
+        except Exception as e:
+            log("debunk skipped:", f"{type(e).__name__}: {e}")
         job.update(status="done", report=job_id)
     except Exception as e:
         job.update(status="error", error=f"{type(e).__name__}: {str(e)[:300]}")
@@ -97,6 +122,10 @@ def create_app():
     @app.get("/", response_class=HTMLResponse)
     def index():
         return (STATIC / "index.html").read_text()
+
+    @app.get("/api/headline")
+    def headline():
+        return bench_headline()
 
     @app.get("/api/demos")
     def demos():

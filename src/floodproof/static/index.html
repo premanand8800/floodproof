@@ -65,14 +65,36 @@ pre.log{background:var(--bg);border:1px solid var(--line);border-radius:8px;padd
 .hide{display:none}
 footer{color:var(--mute);font-size:.82rem;margin-top:30px}
 .nature{margin:10px 0;padding:10px 14px;border-radius:8px;border:1px solid #c9a227;background:#fff8e1;color:#4a3b00}.nature.n-cam{border-color:#9bb;background:#eef6f6;color:#234}.nature ul{margin:6px 0 0 18px}
+
+.tagline{display:inline-block;margin:6px 0 0;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;font-size:.85rem;letter-spacing:.02em}
+.strip{margin:10px 0;padding:12px 14px;border-radius:12px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);font-size:1.02rem}
+.strip b{font-size:1.25rem}.strip .note{display:block;margin-top:4px}
+.hero{margin:14px 0 0;padding:16px;border-radius:14px;background:var(--card);border:2px solid var(--rec);box-shadow:var(--shadow)}
+.hero .kick{font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mute)}
+.hero .big{font-size:clamp(1.5rem,5vw,2.3rem);font-weight:800;line-height:1.15;margin:4px 0;color:var(--rec)}
+.hero .sub{font-size:1.05rem;margin:2px 0 10px}
+.hero .stats{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.hero .stat{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:6px 12px}
+.hero .stat b{display:block;font-size:1.3rem}
+.sbslabels{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:.9rem;color:var(--mute)}
+.sbslabels strong{color:var(--ink)}
+.hero .crop{overflow:hidden;border-radius:8px;border:1px solid var(--line);background:#000;aspect-ratio:720/640;margin-top:4px}
+.hero .crop img{display:block;width:100%;height:auto}
+.dcard textarea.dtext{width:100%;min-height:9em;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;font-size:1rem;line-height:1.5;resize:vertical}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.tabs button{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:5px 14px;cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--accent);border-color:var(--accent);color:#fff}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header>
-  <h1>FloodProof<small>Where has this disaster video been published before? Evidence for fact-checkers, not a verdict on truth.</small></h1>
+  <h1>FloodProof<small>FloodProof doesn't guess if a disaster video is fake. It finds the earlier copy and shows you the proof, in the language the rumour is spreading in.</small>
+    <span class="tagline">No fake score. Evidence.</span></h1>
   <button class="btn ghost" id="theme" type="button" aria-label="Toggle dark or light theme">Theme</button>
 </header>
+
+<div class="strip hide" id="strip" role="note" aria-label="Benchmark headline"></div>
 
 <section class="card" aria-labelledby="demo-h">
   <div class="card-h"><h2 id="demo-h">Open a saved example (instant, nothing is run)</h2></div>
@@ -153,11 +175,77 @@ function dates(m) {
   return dl;
 }
 
+const fmtDate = (d) => { try { return new Date(d + "T00:00:00Z").toLocaleDateString("en-GB", {day: "numeric", month: "short", year: "numeric", timeZone: "UTC"}); } catch (e) { return d; } };
+const daysBetween = (a, b) => Math.round((Date.parse(b + "T00:00:00Z") - Date.parse(a + "T00:00:00Z")) / 864e5);
+const hostOf = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return ""; } };
+const PLATFORM = {"instagram.com": "Instagram", "youtube.com": "YouTube", "youtu.be": "YouTube", "facebook.com": "Facebook", "x.com": "X", "twitter.com": "X", "tiktok.com": "TikTok"};
+const platformOf = (u) => PLATFORM[hostOf(u)] || hostOf(u) || "unknown platform";
+
+// proof-first hero: only when the verdict is RECYCLED and a matcher-proven copy with an evidence image exists
+function heroFor(rep, ref) {
+  const v = rep.visual_matching, fv = rep.final_verdict, cm = rep.claim || {};
+  if (fv.label !== "RECYCLED_FOOTAGE") return null;
+  const pm = v.proven_matches || [], ep = v.earliest_proven_copy;
+  const m = ep && (pm.find((x) => x.url === ep.url) || ep);
+  if (!m || !m.evidence_png || !m.upload_date) return null;
+  const n = cm.event_date ? daysBetween(m.upload_date, cm.event_date) : null;
+  const before = n != null && n > 0 ? " — " + n + " day" + (n === 1 ? "" : "s") + " before the claimed event" : "";
+  const pair = (m.match.best_pairs || [])[0];
+  return h("section", {class: "hero", "aria-label": "Proof: earlier copy"},
+    h("div", {class: "kick", text: "Proof: earliest copy found"}),
+    h("div", {class: "big", text: "Published earlier: " + fmtDate(m.upload_date) + before}),
+    h("div", {class: "sub"}, platformOf(m.url) + (m.uploader ? " · " + m.uploader : "") + " · ", link(m.url),
+      m.date_independent ? "" : " (date not independently verified)",
+      cm.event_date ? " · claimed event date " + fmtDate(cm.event_date) : ""),
+    h("div", {class: "sbslabels"}, h("span", {}, h("strong", {text: "Viral clip"}), " (the video you checked)"),
+      h("span", {}, h("strong", {text: "Earlier copy"}), " (" + fmtDate(m.upload_date) + ")")),
+    h("div", {class: "crop"}, img(ref, m.evidence_png, "Side by side: viral clip frame on the left, earlier copy frame on the right; green lines join the same keypoints")),
+    h("div", {class: "note", text: "Best matched frame pair" + (pair ? " (viral frame " + pair.a_frame + " = copy frame " + pair.b_frame + ", " + pair.inliers + " inliers)" : "") + ". Green lines join the same keypoints in both frames."}),
+    h("details", {}, h("summary", {text: "Full evidence image (all matched frame pairs)"}),
+      img(ref, m.evidence_png, "Matched keypoints between the viral clip (left) and the earlier copy (right)", "proof")),
+    h("div", {class: "stats"},
+      h("div", {class: "stat"}, h("b", {text: m.match.max_inliers}), "inliers (best frame pair)"),
+      h("div", {class: "stat"}, h("b", {text: m.match.consistent_frames}), "temporally consistent frames"),
+      h("div", {class: "stat"}, h("b", {text: platformOf(m.url)}), m.uploader || "uploader unknown")),
+    h("div", {class: "note", text: "This is the earliest copy found, not asserted to be the original source. It shows the footage was published earlier; it does not show the claimed event did not happen."}));
+}
+
+const LANGNAME = {en: "English", ne: "नेपाली (Nepali)", hi: "हिन्दी (Hindi)"};
+function debunkCard(rep) {
+  const d = rep.debunk;
+  if (!d || !d.texts) return null;
+  const langs = Object.keys(d.texts);
+  const ta = h("textarea", {class: "dtext", readonly: true, "aria-label": "Shareable debunk text"});
+  const refsBox = h("ul", {class: "plain"});
+  const tabs = h("div", {class: "tabs", role: "tablist"});
+  const status = h("span", {class: "note", role: "status"});
+  const show = (lg) => {
+    ta.value = d.texts[lg]; ta.lang = lg;
+    [...tabs.children].forEach((b) => b.setAttribute("aria-selected", b.dataset.lg === lg ? "true" : "false"));
+    refsBox.replaceChildren(...((d.field_refs || {})[lg] || []).map((x) => h("li", {}, x.sentence, " ", h("code", {text: "[" + x.ref + "]"}))));
+  };
+  langs.forEach((lg) => tabs.append(h("button", {type: "button", role: "tab", "data-lg": lg, text: LANGNAME[lg] || lg})));
+  [...tabs.children].forEach((b) => { b.onclick = () => show(b.dataset.lg); });
+  const copy = h("button", {class: "btn", type: "button", text: "Copy text"});
+  copy.onclick = async () => {
+    try { await navigator.clipboard.writeText(ta.value); } catch (e) { ta.removeAttribute("readonly"); ta.select(); document.execCommand("copy"); ta.setAttribute("readonly", ""); }
+    status.textContent = " Copied.";
+  };
+  const c = card("Shareable debunk card", badge(d.grounded ? "checked against the report" : "template (model text rejected)", d.grounded ? "b-ok" : "b-unv"),
+    tabs, ta, h("div", {style: "margin-top:8px"}, copy, status),
+    h("div", {class: "note", text: "Written from this report only; every date, link and number was checked against report.json. Model: " + d.model + "."}),
+    h("details", {}, h("summary", {text: "Where each sentence comes from"}), refsBox));
+  c.classList.add("dcard");
+  show(langs[0]);
+  return c;
+}
+
 function render(rep, ref) {
   const out = $("#out"); out.replaceChildren();
   const v = rep.visual_matching, fv = rep.final_verdict, cl = rep.clues || {}, ph = rep.physical_world_check || {}, mem = rep.memory || {}, cm = rep.claim || {};
   const V = VERDICT[fv.label] || VERDICT.UNVERIFIED;
 
+  const hero = heroFor(rep, ref); if (hero) out.append(hero);
   // verdict banner: the label, never a score
   out.append(h("section", {class: "banner " + V.cls, "aria-label": "Verdict"},
     h("div", {class: "lab", text: V.title + " (" + fv.label + ")"}),
@@ -166,6 +254,8 @@ function render(rep, ref) {
     (fv.basis && fv.basis.unverified_reason) ? h("div", {class: "warn", text: "Reason: " + fv.basis.unverified_reason}) : null,
     h("div", {class: "limits-h", text: "Limitations (always shown)"}),
     h("ul", {class: "limits"}, (fv.limits || []).map((x) => h("li", {text: x})))));
+
+  const dc = debunkCard(rep); if (dc) out.append(dc);
 
   // media nature: AI observation chip right under the verdict (never changes the label)
   const mn = rep.media_nature || {};
@@ -306,6 +396,15 @@ async function openReport(kind, name) {
   if (!r.ok) { $("#out").replaceChildren(h("p", {class: "err", text: "Could not load report: " + (await r.text()).slice(0, 200)})); return; }
   render(await r.json(), {kind, name});
 }
+
+fetch("/api/headline").then((r) => r.ok ? r.json() : null).then((x) => {
+  if (!x) return;
+  const el = $("#strip");
+  el.append(document.createTextNode("Across "), h("b", {text: x.clips + " real debunked viral clips"}), ": earlier copy proven in ", h("b", {text: x.earlier_copy_proven}),
+    ", ", h("b", {text: x.false_accusations + " false accusations"}), ", ~", h("b", {text: x.cents_per_check + "¢ per check"}), ".",
+    h("span", {class: "note", text: "Pipeline B on frozen benchmarks (" + x.sources.slice(0, 2).join(", ") + "). These are earliest copies, not originals (0 originals found). " + x.genuine_clips + " genuine clips: " + x.genuine_false_positives + " false positives. Small sample, fact-checks with downloadable posts only; cost averaged over " + x.checks_costed + " checks."}));
+  el.classList.remove("hide");
+}).catch(() => {});
 
 fetch("/api/demos").then((r) => r.json()).then((ds) => {
   const p = $("#picker");

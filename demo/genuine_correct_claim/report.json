@@ -589,5 +589,64 @@
       "date_conflicts": 0
     }
   },
-  "timing_s": 198.7
+  "timing_s": 198.7,
+  "debunk": {
+    "texts": {
+      "en": "The post claims \"Nepal flood, Kathmandu\". The claimed event date is 2024-09-28. The claimed place is Kathmandu. No earlier matching footage was found in the search. A consistent finding does not by itself prove what is shown in the video or confirm the exact location and time.",
+      "ne": "पोस्टले \"Nepal flood, Kathmandu\" दाबी गरेको छ। दाबी गरिएको घटनाको मिति 2024-09-28 हो। दाबी गरिएको स्थान काठमाडौं हो। खोजीमा पहिले प्रकाशित मिल्दो फुटेज भेटिएन। निष्कर्ष मिल्दो हुनुले आफैंमा भिडियोमा देखिएको कुरा वा यसको ठीक स्थान र समय पुष्टि गर्दैन।"
+    },
+    "field_refs": {
+      "en": [
+        {
+          "sentence": "The post claims \"Nepal flood, Kathmandu\".",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "The claimed event date is 2024-09-28.",
+          "ref": "claim.event_date"
+        },
+        {
+          "sentence": "The claimed place is Kathmandu.",
+          "ref": "claim.place"
+        },
+        {
+          "sentence": "No earlier matching footage was found in the search.",
+          "ref": "visual_matching.status"
+        },
+        {
+          "sentence": "A consistent finding does not by itself prove what is shown in the video or confirm the exact location and time.",
+          "ref": "final_verdict.label"
+        }
+      ],
+      "ne": [
+        {
+          "sentence": "पोस्टले \"Nepal flood, Kathmandu\" दाबी गरेको छ।",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "दाबी गरिएको घटनाको मिति 2024-09-28 हो।",
+          "ref": "claim.event_date"
+        },
+        {
+          "sentence": "दाबी गरिएको स्थान काठमाडौं हो।",
+          "ref": "claim.place"
+        },
+        {
+          "sentence": "खोजीमा पहिले प्रकाशित मिल्दो फुटेज भेटिएन।",
+          "ref": "visual_matching.status"
+        },
+        {
+          "sentence": "निष्कर्ष मिल्दो हुनुले आफैंमा भिडियोमा देखिएको कुरा वा यसको ठीक स्थान र समय पुष्टि गर्दैन।",
+          "ref": "final_verdict.label"
+        }
+      ]
+    },
+    "model": "meta/muse-glimmer-30b",
+    "grounded": true,
+    "languages": [
+      "en",
+      "ne"
+    ],
+    "cost_usd": 0.00258
+  }
 }

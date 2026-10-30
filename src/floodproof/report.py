@@ -19,7 +19,7 @@ import uuid
 from pathlib import Path
 
 LABELS = ("RECYCLED_FOOTAGE", "CONSISTENT_WITH_CLAIM", "UNVERIFIED")
-SCHEMA_VERSION = "1.2"
+SCHEMA_VERSION = "1.3"   # 1.3: optional report["debunk"] (see debunk.py); 1.2 reports stay valid
 REQUIRED_KEYS = ("schema_version", "investigation_id", "created_at", "input", "claim", "memory", "visual_matching",
                  "clues", "physical_world_check", "final_verdict")
 
@@ -305,6 +305,9 @@ def validate_report(r: dict):
             if cs.get("event_date") == "inferred_from_post":
                 assert r["claim"].get("event_date_basis") in ("title", "description", "on_screen_text", "date_posted")
     assert r["memory"]["status"] in ("HIT", "MISS", "NOT_RUN")
+    if r.get("debunk") is not None:      # optional (schema 1.3); older reports simply do not have it
+        from .debunk import validate_debunk
+        validate_debunk(r["debunk"])
     fv = r["final_verdict"]
     assert fv["label"] in LABELS and fv["summary"] and fv["limits"]
     if fv["label"] == "RECYCLED_FOOTAGE":
