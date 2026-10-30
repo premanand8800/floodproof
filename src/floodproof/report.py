@@ -197,6 +197,10 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
         # CONSISTENT_WITH_CLAIM needs provenance evidence: an independently dated copy (input publication or proven copy) that
         # falls within a few days of the claimed event date, no earlier independent copy, no observations against the claim.
         ind = [m for m in proven if is_independent(m) and m.get("upload_date")]
+        # Circularity guard: when the claimed date was inferred from the post itself (title/caption/narration/post date),
+        # the post's own publication date cannot confirm it; only OTHER independently dated copies count.
+        if ((claim or {}).get("source") or {}).get("event_date") == "inferred_from_post":
+            ind = [m for m in ind if m.get("adapter") != "input_url"]
         timing_ok = bool(claim_date and ind and
                          -1 <= (datetime.date.fromisoformat(min(m["upload_date"] for m in ind)[:10]) - datetime.date.fromisoformat(claim_date[:10])).days <= 3)
         if timing_ok and not contrad and not earlier and not unverified_earlier and phys is not False:

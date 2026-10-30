@@ -102,3 +102,12 @@ def test_schema_1_1_demo_still_validates():
     r = _rep("unknown", dict(text="t", event_date=None), [])
     r["schema_version"] = "1.1"; r.pop("media_nature")
     validate_report(r)
+
+
+def test_inferred_date_not_confirmed_by_own_post():
+    # claim date inferred from the post; only evidence is the post's own publication 3 days later -> circular, stays UNVERIFIED
+    claim = dict(text="t", event_date="2026-08-26", event_date_basis="spoken_in_narration_partial_year",
+                 inferred_note="Claim inferred from the post's title/caption (you did not enter one)",
+                 source=dict(text="inferred_from_post", event_date="inferred_from_post", place=None))
+    r = validate_report(_rep("camera_footage", claim, []))
+    assert r["final_verdict"]["label"] == "UNVERIFIED"
