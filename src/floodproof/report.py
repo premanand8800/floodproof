@@ -281,7 +281,9 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
             e = min([m for m in proven_real if m.get("upload_date")] or proven_real, key=lambda m: m.get("upload_date") or "9999")
             s = (("The video contains a clip published earlier (" if compilation else "The footage matches a previously published copy (") + f"{e['url']}"
                  f"{', uploaded ' + e['upload_date'] if e.get('upload_date') else ', upload date unavailable'}), but "
-                 + ("that date is not earlier than the claimed event date" if claim_date and e.get("upload_date")
+                 + (("that date is too close to the claimed event date to count as earlier (time-zone margin, see below)"
+                     if within and e.get("upload_date") and e["upload_date"][:10] < claim_date[:10]
+                     else "that date is not earlier than the claimed event date") if claim_date and e.get("upload_date")
                     else ("the claimed date is only the date this post was published (" + str(post_date) + "), which says nothing about when the event happened"
                           if posted else "no claimed event date was given") if not claim_date else "its date is unknown")
                  + ", so recycling relative to the claim is not established. ")
@@ -553,7 +555,11 @@ def build_headline(rep) -> dict:
                     facts=[dict(text=f"{s['label']}: {s['detail']}", field=s["field"]) for s in sig["agree"][:3]])
     n_checked = vis.get("candidates_checked", 0)
     basis = claim.get("event_date_basis")
+    cd = claim.get("event_date") or ""
+    close = [m for m in proven if (m.get("upload_date") or "")[:10] and cd and (m.get("upload_date") or "")[:10] < cd[:10]]
     f1 = (dict(text=f"No matcher-proven earlier copy among {n_checked} candidates checked", field="visual_matching.candidates_checked") if not proven else
+          dict(text=f"A copy dated {close[0]['upload_date'][:10]} matched, but that is too close to the claimed date to rule out a time-zone difference",
+               field="visual_matching.proven_matches") if close else
           dict(text=f"{len(proven)} copy(ies) matched, but none is independently dated before the claim", field="visual_matching.proven_matches"))
     f2 = (dict(text="No event date is known; only the date this video was posted", field="claim.event_date_basis") if (basis == "date_posted" or not claim.get("event_date")) else
           dict(text=f"Claimed event date {claim['event_date']} (from {str(basis).replace('_', ' ')})", field="claim.event_date_basis"))
