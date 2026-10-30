@@ -1,0 +1,1440 @@
+{
+  "schema_version": "1.5",
+  "investigation_id": "36057e5a74",
+  "created_at": "2026-10-30T16:28:02+00:00",
+  "input": {
+    "source": "https://www.youtube.com/watch?v=oWzdgBNfhQU",
+    "path": "(downloaded excerpt removed after run)",
+    "url": "https://www.youtube.com/watch?v=oWzdgBNfhQU",
+    "uploader": "National Geographic",
+    "upload_date": "2011-06-13",
+    "title": "Rare Video: Japan Tsunami | National Geographic",
+    "duration": 215,
+    "has_audio": true,
+    "truncated": true,
+    "description": "June 9, 2011 — The March 11 earthquake and tsunami left more than 28,000 dead or missing. See incredible footage of the tsunami swamping cities and turning buildings into rubble.\n➡ Subscribe: https://on.natgeo.com/4p5A0D6\n\n➡ Access our digital archive by becoming a member of National Geographic: https://on.natgeo.com/37tNUGE\n\n#NationalGeographic #Japan #Tsunami\n\nAbout National Geographic:\nNational Geographic is the world's premium destination for critically acclaimed storytelling around science and exploration. Discover amazing wildlife, ancient civilizations, hidden worlds, and the incredible wonders of our Earth. Through world-class scientists, photographers, journalists, and filmmakers, Nat Geo inspires fans of all ages to connect with, explore, and care about the world.\n\nGet More National Geographic:\nOfficial Site: https://nationalgeographic.com\nInstagram: https://instagram.com/natgeo \nFacebook: https://facebook.com/natgeo\nThreads: https://threads.com/@natgeo\nX: https://x.com/NatGeo\nLinkedIn: https://linkedin.com/company/national-geographic\nTikTok: https://tiktok.com/@natgeo\nReddit: https://reddit.com/user/nationalgeographic\nTikTok: http://www.tiktok.com/@natgeo\nTenor: http://on.natgeo.com/31b3Koc\n\nRare Video: Japan Tsunami | National Geographic \nhttps://youtu.be/oWzdgBNfhQU\n\nNational Geographic\nhttps://www.youtube.com/natgeo",
+    "n_keyframes": 48,
+    "keyframe_times_s": [
+      0.0,
+      1.67,
+      3.34,
+      5.34,
+      7.01,
+      8.68,
+      10.34,
+      12.35,
+      14.01,
+      16.68,
+      26.36,
+      28.03,
+      29.7,
+      31.36,
+      33.37,
+      35.04,
+      37.04,
+      38.71,
+      40.37,
+      42.04,
+      43.71,
+      45.71,
+      47.38,
+      49.72,
+      51.38,
+      53.05,
+      54.72,
+      58.06,
+      60.06,
+      63.06,
+      64.73,
+      66.4,
+      68.07,
+      69.74,
+      71.74,
+      73.74,
+      75.74,
+      77.74,
+      79.41,
+      81.41,
+      83.42,
+      86.42,
+      90.76,
+      95.43,
+      101.77,
+      107.11,
+      112.45,
+      119.79
+    ]
+  },
+  "claim": {
+    "text": "Rare Video: Japan Tsunami | National Geographic",
+    "event_date": "2011-03-11",
+    "place": "Japan",
+    "source": {
+      "text": "inferred_from_post",
+      "event_date": "inferred_from_post",
+      "place": "inferred_from_post"
+    },
+    "event_date_basis": "spoken_in_narration",
+    "event_date_basis_detail": "event date from narration; the description date is a publishing date. date spoken in the narration ('March 11, 2011', audio@6.5); AI transcription, may contain errors",
+    "inferred_note": "Claim inferred from the post's title/caption (you did not enter one)",
+    "publication_date": {
+      "date": "2011-06-09",
+      "basis": "description",
+      "detail": "explicit date in the post description"
+    },
+    "country_iso2": "JP",
+    "event_type": "tsunami",
+    "specific_place": {
+      "name": "Kesennuma",
+      "source": "narration",
+      "country_level_claim": "Japan",
+      "resolved_name": "Kesennuma, Miyagi Prefecture, Japan"
+    }
+  },
+  "memory": {
+    "status": "MISS",
+    "mode": "hash-shortlist(top_6)+match",
+    "entries_searched": 0,
+    "entries_total": 0,
+    "seconds": 0.05,
+    "hits": [],
+    "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+  },
+  "visual_matching": {
+    "status": "NOT_FOUND",
+    "proven_matches": [],
+    "earliest_proven_copy": null,
+    "claimed_original": null,
+    "input_publication": {
+      "url": "https://www.youtube.com/watch?v=oWzdgBNfhQU",
+      "upload_date": "2011-06-13",
+      "date_source": "yt-dlp metadata",
+      "retrieved_at": "2026-10-30T16:27:46+00:00",
+      "uploader": "National Geographic"
+    },
+    "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+    "candidates_checked": 14,
+    "candidates_total": 79,
+    "candidate_status_counts": {
+      "too_long": 2,
+      "pending": 65,
+      "not_proven": 6,
+      "unavailable": 2,
+      "later_than_query": 4
+    },
+    "adapters": {
+      "gvision": {
+        "source": "gvision",
+        "frames": [],
+        "calls": 0,
+        "errors": [],
+        "status": "not_configured",
+        "unavailable": "billing not enabled",
+        "skipped": "unavailable (billing not enabled)",
+        "cached": true
+      },
+      "lens": {
+        "source": "lens",
+        "calls": 1,
+        "errors": []
+      },
+      "youtube_api": {
+        "source": "youtube_api",
+        "queries": 2,
+        "errors": [
+          "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp",
+          "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp",
+          "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp",
+          "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp",
+          "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp",
+          "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp"
+        ],
+        "zero_result_queries": [
+          "Kesennuma rooftop tsunami footage March 2011 NHK",
+          "釜石 防波堤 津波 越流 映像 2011"
+        ]
+      },
+      "tavily": {
+        "queries": 18,
+        "errors": [],
+        "query_source": "muse query"
+      },
+      "yandex": {
+        "frames": [
+          34,
+          25,
+          40
+        ],
+        "captcha": false,
+        "searched": 3,
+        "errors": []
+      }
+    },
+    "source_stats": {
+      "yandex": {
+        "candidates": 40,
+        "checked": 3,
+        "proven": 0
+      },
+      "youtube_api": {
+        "candidates": 10,
+        "checked": 6,
+        "proven": 0
+      },
+      "tavily": {
+        "candidates": 29,
+        "checked": 5,
+        "proven": 0
+      }
+    },
+    "early_stop": {
+      "stopped": false
+    },
+    "proven_by_source": {},
+    "fast_path": null,
+    "keyframe_selection": {
+      "preferred": "camera_footage",
+      "note": "40 of 48 keyframes are near frames labelled camera_footage"
+    }
+  },
+  "clues": {
+    "shows": [
+      {
+        "text": "interior of a building with ceiling debris and papers scattered across floor after shaking",
+        "refs": [
+          7
+        ],
+        "timestamps_s": [
+          12.35
+        ]
+      },
+      {
+        "text": "muddy tsunami floodwater inundating a coastal city, carrying debris and vehicles",
+        "refs": [
+          13,
+          20
+        ],
+        "timestamps_s": [
+          31.36,
+          43.71
+        ]
+      },
+      {
+        "text": "white van stranded amid rubble and destroyed walls with debris field around",
+        "refs": [
+          20
+        ],
+        "timestamps_s": [
+          43.71
+        ]
+      },
+      {
+        "text": "floodwater surging between dense multi-story buildings in a coastal town",
+        "refs": [
+          27
+        ],
+        "timestamps_s": [
+          58.06
+        ]
+      },
+      {
+        "text": "wide view of Japanese coastal town with tiled roofs, hills behind, dust/smoke and flooding",
+        "refs": [
+          34,
+          40
+        ],
+        "timestamps_s": [
+          71.74,
+          83.42
+        ]
+      },
+      {
+        "text": "animated infographic diagram of wave with grid background and height label",
+        "refs": [
+          47
+        ],
+        "timestamps_s": [
+          119.79
+        ]
+      }
+    ],
+    "scene_type": {
+      "value": "coastal city inundated by tsunami",
+      "refs": [
+        13,
+        20,
+        27,
+        34,
+        40
+      ],
+      "timestamps_s": [
+        31.36,
+        43.71,
+        58.06,
+        71.74,
+        83.42
+      ]
+    },
+    "visible_text": [
+      {
+        "text": "NHK",
+        "language": "en",
+        "is_place": false,
+        "refs": [
+          7,
+          34,
+          40
+        ],
+        "timestamps_s": [
+          12.35,
+          71.74,
+          83.42
+        ]
+      },
+      {
+        "text": "LOCATION WAVE AT SEA HEIGHT 2FT",
+        "language": "en",
+        "is_place": false,
+        "refs": [
+          47
+        ],
+        "timestamps_s": [
+          119.79
+        ]
+      }
+    ],
+    "likely_location": {
+      "place": "Tohoku coast, Japan (Kesennuma / Kamaishi area)",
+      "country": "Japan",
+      "confidence": 0.85,
+      "lat": 39.275,
+      "lon": 141.888,
+      "reasons": [
+        {
+          "text": "dense Japanese coastal town with tiled roofs and hills behind matches Tohoku",
+          "refs": [
+            34,
+            40
+          ],
+          "timestamps_s": [
+            71.74,
+            83.42
+          ]
+        },
+        {
+          "text": "NHK watermark indicates Japanese broadcaster source",
+          "refs": [
+            7,
+            34,
+            40
+          ],
+          "timestamps_s": [
+            12.35,
+            71.74,
+            83.42
+          ]
+        },
+        {
+          "text": "audio narration names Kesennuma high-rise rooftop footage and Kamaishi City seawall",
+          "refs": [
+            "audio@36.0",
+            "audio@58.0"
+          ],
+          "timestamps_s": [
+            36.0,
+            58.0
+          ]
+        }
+      ]
+    },
+    "location_hypotheses": [
+      {
+        "place": "Tohoku coast, Japan (Kesennuma / Kamaishi area)",
+        "country": "Japan",
+        "confidence": 0.85,
+        "lat": 39.275,
+        "lon": 141.888,
+        "cited_frames": [
+          7,
+          34,
+          40
+        ],
+        "cited_timestamps_s": [
+          12.35,
+          71.74,
+          83.42
+        ],
+        "reasons": [
+          {
+            "text": "dense Japanese coastal town with tiled roofs and hills behind matches Tohoku",
+            "refs": [
+              34,
+              40
+            ],
+            "timestamps_s": [
+              71.74,
+              83.42
+            ]
+          },
+          {
+            "text": "NHK watermark indicates Japanese broadcaster source",
+            "refs": [
+              7,
+              34,
+              40
+            ],
+            "timestamps_s": [
+              12.35,
+              71.74,
+              83.42
+            ]
+          },
+          {
+            "text": "audio narration names Kesennuma high-rise rooftop footage and Kamaishi City seawall",
+            "refs": [
+              "audio@36.0",
+              "audio@58.0"
+            ],
+            "timestamps_s": [
+              36.0,
+              58.0
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_HYPOTHESIS",
+        "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+      }
+    ],
+    "observations_against_claim": [],
+    "media_nature": {
+      "value": "news_compilation",
+      "confidence": 0.85,
+      "cited_frames": [
+        7,
+        13,
+        20,
+        27,
+        34,
+        40
+      ],
+      "cited_timestamps_s": [
+        12.35,
+        31.36,
+        43.71,
+        58.06,
+        71.74,
+        83.42
+      ],
+      "reasons": [
+        {
+          "text": "shaky interior real-world debris scene with natural blur",
+          "refs": [
+            7
+          ],
+          "timestamps_s": [
+            12.35
+          ]
+        },
+        {
+          "text": "aerial/ elevated real floodwater with debris and vehicle",
+          "refs": [
+            13
+          ],
+          "timestamps_s": [
+            31.36
+          ]
+        },
+        {
+          "text": "ground-level real rubble and van with natural detail",
+          "refs": [
+            20
+          ],
+          "timestamps_s": [
+            43.71
+          ]
+        },
+        {
+          "text": "elevated real city flooding between buildings",
+          "refs": [
+            27
+          ],
+          "timestamps_s": [
+            58.06
+          ]
+        },
+        {
+          "text": "elevated real town view with natural haze and roofs",
+          "refs": [
+            34
+          ],
+          "timestamps_s": [
+            71.74
+          ]
+        },
+        {
+          "text": "elevated real town view with dust and rooftops",
+          "refs": [
+            40
+          ],
+          "timestamps_s": [
+            83.42
+          ]
+        }
+      ],
+      "status": "AI_OBSERVATION_HYPOTHESIS",
+      "per_frame": [
+        {
+          "frame": 0,
+          "t": 0.0,
+          "label": "unknown",
+          "confidence": 0.0,
+          "reason": "entirely black, no discernible content"
+        },
+        {
+          "frame": 7,
+          "t": 12.35,
+          "label": "camera_footage",
+          "confidence": 0.85,
+          "reason": "shaky interior real-world debris scene with natural blur"
+        },
+        {
+          "frame": 13,
+          "t": 31.36,
+          "label": "camera_footage",
+          "confidence": 0.85,
+          "reason": "aerial/ elevated real floodwater with debris and vehicle"
+        },
+        {
+          "frame": 20,
+          "t": 43.71,
+          "label": "camera_footage",
+          "confidence": 0.85,
+          "reason": "ground-level real rubble and van with natural detail"
+        },
+        {
+          "frame": 27,
+          "t": 58.06,
+          "label": "camera_footage",
+          "confidence": 0.85,
+          "reason": "elevated real city flooding between buildings"
+        },
+        {
+          "frame": 34,
+          "t": 71.74,
+          "label": "camera_footage",
+          "confidence": 0.85,
+          "reason": "elevated real town view with natural haze and roofs"
+        },
+        {
+          "frame": 40,
+          "t": 83.42,
+          "label": "camera_footage",
+          "confidence": 0.85,
+          "reason": "elevated real town view with dust and rooftops"
+        },
+        {
+          "frame": 47,
+          "t": 119.79,
+          "label": "graphic_or_text",
+          "confidence": 0.95,
+          "reason": "grid diagram with caption text and solid color sidebar, not camera"
+        }
+      ],
+      "by_class": {
+        "camera_footage": [
+          7,
+          13,
+          20,
+          27,
+          34,
+          40
+        ],
+        "graphic_or_text": [
+          47
+        ]
+      },
+      "summary": "camera footage (frames 7,13,20,27,34,40) (AI observation)",
+      "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+    },
+    "on_screen_dates": [],
+    "claim_parsed": {
+      "place": "Japan",
+      "country_iso2": "JP",
+      "event_type": "tsunami"
+    },
+    "queries": [
+      {
+        "q": "Kesennuma rooftop tsunami footage March 2011 NHK",
+        "language": "en",
+        "why": "to find earliest upload of rooftop clip described in audio"
+      },
+      {
+        "q": "Kamaishi seawall overtopped tsunami video 2011",
+        "language": "en",
+        "why": "to verify seawall clip source"
+      },
+      {
+        "q": "Japan tsunami airport interior ceiling collapse debris video 2011",
+        "language": "en",
+        "why": "to identify interior clip in frame 7"
+      },
+      {
+        "q": "National Geographic Japan tsunami 2011 documentary footage",
+        "language": "en",
+        "why": "to find compilation reuse"
+      },
+      {
+        "q": "気仙沼 津波 屋上 映像 2011",
+        "language": "ja",
+        "why": "Japanese search for Kesennuma rooftop footage"
+      },
+      {
+        "q": "釜石 防波堤 津波 越流 映像 2011",
+        "language": "ja",
+        "why": "Japanese search for Kamaishi seawall overtopping"
+      },
+      {
+        "q": "東日本大震災 津波 NHK 映像 気仙沼 釜石",
+        "language": "ja",
+        "why": "Japanese search for original NHK broadcast source"
+      },
+      {
+        "q": "津波 浸水 市街地 車 瓦礫 映像 2011年3月11日",
+        "language": "ja",
+        "why": "neutral Japanese search for flooded city with debris without claimed title"
+      }
+    ],
+    "rejected_clues": [],
+    "status": "ok",
+    "model": "meta/muse-spark-1.3",
+    "cost_usd": 0.02387,
+    "frames_shown": [
+      0,
+      7,
+      13,
+      20,
+      27,
+      34,
+      40,
+      47
+    ],
+    "frame_times_s": {
+      "0": 0.0,
+      "7": 12.35,
+      "13": 31.36,
+      "20": 43.71,
+      "27": 58.06,
+      "34": 71.74,
+      "40": 83.42,
+      "47": 119.79
+    },
+    "audio": {
+      "has_speech": true,
+      "language": "en",
+      "transcript_summary": "English narration describes the magnitude 9.0 earthquake that shook northern Japan on March 11, 2011, centered about 80 miles offshore, triggering immediate tsunami warnings and causing residents of coastal cities to run to higher ground on hills and tall buildings where footage was captured. It describes people in Kesennuma watching from a high-rise rooftop as the tsunami inundated the city, and shows water overtopping an 18-foot seawall in Kamaishi City, described as the world's deepest and largest seawall, which was insufficient for the disaster. The narrator states this was the largest quake ever known in Japan and one of the five largest ever recorded in the world, with more than 28,000 confirmed dead or missing, caused by two tectonic plates pushing together under the sea.",
+      "spoken_place_names": [
+        {
+          "name": "northern Japan",
+          "audio_t": 1.5
+        },
+        {
+          "name": "Kesennuma",
+          "audio_t": 36.0
+        },
+        {
+          "name": "Kamaishi City",
+          "audio_t": 58.0
+        },
+        {
+          "name": "Japan",
+          "audio_t": 72.0
+        }
+      ],
+      "spoken_dates": [
+        {
+          "date": "2011-03-11",
+          "text": "March 11, 2011",
+          "audio_t": 6.5
+        }
+      ],
+      "partial_dates": [],
+      "other_sounds": [],
+      "dropped_untimed": 0,
+      "status": "ok",
+      "model": "meta/muse-spark-open",
+      "cost_usd": 0.01027,
+      "truncated": true,
+      "analyzed_seconds": 90,
+      "attempts": 1
+    },
+    "frame_images": [
+      "demo/genuine_japan_tsunami/frames/frame_00_t0.0.jpg",
+      "demo/genuine_japan_tsunami/frames/frame_07_t12.3.jpg",
+      "demo/genuine_japan_tsunami/frames/frame_13_t31.4.jpg",
+      "demo/genuine_japan_tsunami/frames/frame_20_t43.7.jpg",
+      "demo/genuine_japan_tsunami/frames/frame_27_t58.1.jpg",
+      "demo/genuine_japan_tsunami/frames/frame_34_t71.7.jpg",
+      "demo/genuine_japan_tsunami/frames/frame_40_t83.4.jpg",
+      "demo/genuine_japan_tsunami/frames/frame_47_t119.8.jpg"
+    ]
+  },
+  "physical_world_check": {
+    "location": {
+      "query": "Kesennuma",
+      "name": "Kesennuma, Miyagi Prefecture, Japan",
+      "lat": 38.9080078,
+      "lon": 141.5698223,
+      "source": "narration",
+      "confidence": "high",
+      "alternatives": [],
+      "fallback_from": "Japan",
+      "note": "the claimed place is only a country; the specific place 'Kesennuma' named in the narration is used"
+    },
+    "official_event": {
+      "source": "copernicus_ems",
+      "status": "NO_RECORD",
+      "activations": [],
+      "reliefweb": {
+        "source": "reliefweb",
+        "status": "not_configured",
+        "disasters": [],
+        "window_days": 7,
+        "reason": "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+      },
+      "usgs": {
+        "source": "usgs",
+        "status": "MATCH",
+        "events": [
+          {
+            "id": "official20110311054624120_30",
+            "mag": 9.1,
+            "place": "2011 Great Tohoku Earthquake, Japan",
+            "time": "2011-03-11T05:46+00:00",
+            "distance_km": 97.4,
+            "depth_km": 29,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/official20110311054624120_30"
+          },
+          {
+            "id": "usp000hvpa",
+            "mag": 7.9,
+            "place": "47 km E of ?arai, Japan",
+            "time": "2011-03-11T06:15+00:00",
+            "distance_km": 294.9,
+            "depth_km": 42.6,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvpa"
+          },
+          {
+            "id": "usp000hvpg",
+            "mag": 7.7,
+            "place": "272 km ESE of Kamaishi, Japan",
+            "time": "2011-03-11T06:25+00:00",
+            "distance_km": 279.3,
+            "depth_km": 18.6,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvpg"
+          },
+          {
+            "id": "usp000hvhj",
+            "mag": 7.3,
+            "place": "120 km SE of ?funato, Japan",
+            "time": "2011-03-09T02:45+00:00",
+            "distance_km": 122.3,
+            "depth_km": 32,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvhj"
+          },
+          {
+            "id": "usp000hvp5",
+            "mag": 6.7,
+            "place": "134 km ESE of Kamaishi, Japan",
+            "time": "2011-03-11T06:08+00:00",
+            "distance_km": 155.8,
+            "depth_km": 2.8,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvp5"
+          },
+          {
+            "id": "usp000hvuu",
+            "mag": 6.6,
+            "place": "50 km ESE of ?tsuchi, Japan",
+            "time": "2011-03-11T11:36+00:00",
+            "distance_km": 85.5,
+            "depth_km": 25.7,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvuu"
+          },
+          {
+            "id": "usp000hvpc",
+            "mag": 6.6,
+            "place": "133 km ENE of Hasaki, Japan",
+            "time": "2011-03-11T06:18+00:00",
+            "distance_km": 326.7,
+            "depth_km": 16,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvpc"
+          },
+          {
+            "id": "usp000hvpd",
+            "mag": 6.5,
+            "place": "115 km ENE of Hasaki, Japan",
+            "time": "2011-03-11T06:20+00:00",
+            "distance_km": 325.9,
+            "depth_km": 49.3,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvpd"
+          },
+          {
+            "id": "usp000hvkh",
+            "mag": 6.5,
+            "place": "128 km SE of ?funato, Japan",
+            "time": "2011-03-09T21:24+00:00",
+            "distance_km": 127.3,
+            "depth_km": 15,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvkh"
+          },
+          {
+            "id": "usp000hw7r",
+            "mag": 6.5,
+            "place": "146 km E of Namie, Japan",
+            "time": "2011-03-12T01:47+00:00",
+            "distance_km": 173.8,
+            "depth_km": 20,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hw7r"
+          },
+          {
+            "id": "usp000hvrd",
+            "mag": 6.5,
+            "place": "81 km NE of Hasaki, Japan",
+            "time": "2011-03-11T08:19+00:00",
+            "distance_km": 304.9,
+            "depth_km": 6.8,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvrd"
+          },
+          {
+            "id": "usp000hvp4",
+            "mag": 6.4,
+            "place": "108 km ESE of Kitaibaraki, Japan",
+            "time": "2011-03-11T06:07+00:00",
+            "distance_km": 278.1,
+            "depth_km": 32.3,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvp4"
+          },
+          {
+            "id": "usp000hvnw",
+            "mag": 6.4,
+            "place": "208 km E of Namie, Japan",
+            "time": "2011-03-11T05:55+00:00",
+            "distance_km": 232.2,
+            "depth_km": 35,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvnw"
+          },
+          {
+            "id": "usp000hvqm",
+            "mag": 6.3,
+            "place": "49 km ESE of Kamaishi, Japan",
+            "time": "2011-03-11T07:29+00:00",
+            "distance_km": 68.7,
+            "depth_km": 45.4,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvqm"
+          },
+          {
+            "id": "usp000hvp3",
+            "mag": 6.3,
+            "place": "47 km SE of Kamaishi, Japan",
+            "time": "2011-03-11T06:06+00:00",
+            "distance_km": 63.2,
+            "depth_km": 42.7,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvp3"
+          },
+          {
+            "id": "usp000hvp9",
+            "mag": 6.3,
+            "place": "221 km SE of ?funato, Japan",
+            "time": "2011-03-11T06:15+00:00",
+            "distance_km": 222.8,
+            "depth_km": 35,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvp9"
+          },
+          {
+            "id": "usp000hvnv",
+            "mag": 6.3,
+            "place": "30 km NNE of Namie, Japan",
+            "time": "2011-03-11T05:54+00:00",
+            "distance_km": 137.2,
+            "depth_km": 32.3,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvnv"
+          },
+          {
+            "id": "usp000hvy0",
+            "mag": 6.3,
+            "place": "92 km ENE of Hasaki, Japan",
+            "time": "2011-03-11T15:13+00:00",
+            "distance_km": 324.7,
+            "depth_km": 21,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvy0"
+          },
+          {
+            "id": "usp000hvqf",
+            "mag": 6.3,
+            "place": "near the east coast of Honshu, Japan",
+            "time": "2011-03-11T07:14+00:00",
+            "distance_km": 259.2,
+            "depth_km": 24.7,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvqf"
+          },
+          {
+            "id": "usp000hvnx",
+            "mag": 6.3,
+            "place": "103 km E of Namie, Japan",
+            "time": "2011-03-11T05:58+00:00",
+            "distance_km": 151.7,
+            "depth_km": 50.7,
+            "tsunami_flag": 0,
+            "url": "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvnx"
+          }
+        ],
+        "window_days": 2,
+        "min_magnitude": 5.0,
+        "radius_km": 500
+      }
+    },
+    "hydrology": {
+      "source": "open-meteo glofas v4",
+      "river_discharge": null,
+      "rain": null,
+      "status": "SKIPPED",
+      "reason": "river discharge does not apply to tsunami; the USGS earthquake catalogue is checked instead"
+    },
+    "verdict": "SUPPORTS",
+    "reasons": [
+      "USGS earthquake M9.1 2011 Great Tohoku Earthquake, Japan, 97.4 km from the place, 2011-03-11T05:46+00:00 (+-2 d, M>=5): https://earthquake.usgs.gov/earthquakes/eventpage/official20110311054624120_30",
+      "USGS earthquake M7.9 47 km E of ?arai, Japan, 294.9 km from the place, 2011-03-11T06:15+00:00 (+-2 d, M>=5): https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvpa"
+    ],
+    "limits": [
+      "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+    ],
+    "links": [
+      "https://mapping.emergency.copernicus.eu/activations/",
+      "https://www.openstreetmap.org/?mlat=38.9080078&mlon=141.5698223#map=10/38.9080078/141.5698223",
+      "https://earthquake.usgs.gov/earthquakes/eventpage/official20110311054624120_30",
+      "https://earthquake.usgs.gov/earthquakes/eventpage/usp000hvpa"
+    ],
+    "news_coverage": {
+      "source": "gdelt",
+      "label": "news coverage",
+      "status": "UNAVAILABLE",
+      "articles_in_window": null,
+      "articles_baseline_30d": null,
+      "sample_links": [],
+      "context_only": true,
+      "query": "Kesennuma tsunami",
+      "reason": "news coverage unavailable right now",
+      "error_type": "JSONDecodeError"
+    }
+  },
+  "media_nature": {
+    "value": "news_compilation",
+    "confidence": 0.85,
+    "cited_frames": [
+      7,
+      13,
+      20,
+      27,
+      34,
+      40
+    ],
+    "cited_timestamps_s": [
+      12.35,
+      31.36,
+      43.71,
+      58.06,
+      71.74,
+      83.42
+    ],
+    "reasons": [
+      {
+        "text": "shaky interior real-world debris scene with natural blur",
+        "refs": [
+          7
+        ],
+        "timestamps_s": [
+          12.35
+        ]
+      },
+      {
+        "text": "aerial/ elevated real floodwater with debris and vehicle",
+        "refs": [
+          13
+        ],
+        "timestamps_s": [
+          31.36
+        ]
+      },
+      {
+        "text": "ground-level real rubble and van with natural detail",
+        "refs": [
+          20
+        ],
+        "timestamps_s": [
+          43.71
+        ]
+      },
+      {
+        "text": "elevated real city flooding between buildings",
+        "refs": [
+          27
+        ],
+        "timestamps_s": [
+          58.06
+        ]
+      },
+      {
+        "text": "elevated real town view with natural haze and roofs",
+        "refs": [
+          34
+        ],
+        "timestamps_s": [
+          71.74
+        ]
+      },
+      {
+        "text": "elevated real town view with dust and rooftops",
+        "refs": [
+          40
+        ],
+        "timestamps_s": [
+          83.42
+        ]
+      }
+    ],
+    "status": "AI_OBSERVATION_HYPOTHESIS",
+    "per_frame": [
+      {
+        "frame": 0,
+        "t": 0.0,
+        "label": "unknown",
+        "confidence": 0.0,
+        "reason": "entirely black, no discernible content"
+      },
+      {
+        "frame": 7,
+        "t": 12.35,
+        "label": "camera_footage",
+        "confidence": 0.85,
+        "reason": "shaky interior real-world debris scene with natural blur"
+      },
+      {
+        "frame": 13,
+        "t": 31.36,
+        "label": "camera_footage",
+        "confidence": 0.85,
+        "reason": "aerial/ elevated real floodwater with debris and vehicle"
+      },
+      {
+        "frame": 20,
+        "t": 43.71,
+        "label": "camera_footage",
+        "confidence": 0.85,
+        "reason": "ground-level real rubble and van with natural detail"
+      },
+      {
+        "frame": 27,
+        "t": 58.06,
+        "label": "camera_footage",
+        "confidence": 0.85,
+        "reason": "elevated real city flooding between buildings"
+      },
+      {
+        "frame": 34,
+        "t": 71.74,
+        "label": "camera_footage",
+        "confidence": 0.85,
+        "reason": "elevated real town view with natural haze and roofs"
+      },
+      {
+        "frame": 40,
+        "t": 83.42,
+        "label": "camera_footage",
+        "confidence": 0.85,
+        "reason": "elevated real town view with dust and rooftops"
+      },
+      {
+        "frame": 47,
+        "t": 119.79,
+        "label": "graphic_or_text",
+        "confidence": 0.95,
+        "reason": "grid diagram with caption text and solid color sidebar, not camera"
+      }
+    ],
+    "by_class": {
+      "camera_footage": [
+        7,
+        13,
+        20,
+        27,
+        34,
+        40
+      ],
+      "graphic_or_text": [
+        47
+      ]
+    },
+    "summary": "camera footage (frames 7,13,20,27,34,40) (AI observation)",
+    "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "contradictions": [],
+  "final_verdict": {
+    "label": "UNVERIFIED",
+    "summary": "[Claim inferred from the post's title/caption (you did not enter one); date basis: spoken_in_narration.] The input URL was itself published on 2011-06-13 (per yt-dlp metadata), which is not before the claimed event date, so recycling relative to the claim is not established. The claim could not be verified from the available evidence. Media nature (AI observation from frames 7,13,20,27,34,40, not proof; does not change the label): Edited news report containing third-party clips — earlier copies of individual clips are expected and do not by themselves mean recycling. ",
+    "limits": [
+      "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+      "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+      "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+      "'Not found' means not found by these adapters, not that no earlier copy exists.",
+      "Dates are UTC calendar dates from the platform. Without an exact timestamp a copy must be dated at least 2 days before the claimed date to count as earlier (time-zone margin: Nepal is UTC+5:45)."
+    ],
+    "basis": {
+      "earlier_proven_copies": 0,
+      "proven_copies": 0,
+      "physical_supports": true,
+      "unverified_model_observations": 0,
+      "date_conflicts": 0,
+      "media_nature": "news_compilation",
+      "claim_date_basis": "spoken_in_narration",
+      "input_posted_before_claim": false
+    }
+  },
+  "disclosure": {
+    "type": "none",
+    "evidence": []
+  },
+  "claim_presence": {
+    "value": "asserts_real_event",
+    "reason": "the title/claim presents this as footage ('Rare Video')"
+  },
+  "signals": {
+    "agree": [
+      {
+        "key": "date",
+        "label": "Date named in the clip",
+        "detail": "narration says March 11, 2011 (claimed 2011-03-11)",
+        "field": "clues.audio.spoken_dates"
+      },
+      {
+        "key": "place",
+        "label": "Place named in the clip",
+        "detail": "northern Japan (claimed place: Japan)",
+        "field": "clues.audio.spoken_place_names"
+      },
+      {
+        "key": "broadcaster",
+        "label": "Broadcaster logo or credit",
+        "detail": "NHK visible on screen (a logo can be added to a copy; context only)",
+        "field": "clues.visible_text"
+      },
+      {
+        "key": "official_event",
+        "label": "Official event record",
+        "detail": "USGS M9.1 2011 Great Tohoku Earthquake, Japan, 97.4 km away",
+        "field": "physical_world_check.official_event"
+      },
+      {
+        "key": "no_earlier_copy",
+        "label": "No earlier copy proven",
+        "detail": "the frame matcher found no earlier copy (absence of evidence, not proof)",
+        "field": "visual_matching.status"
+      }
+    ],
+    "against": [],
+    "count": 5,
+    "needed": 3,
+    "qualifies": true,
+    "note": "Context only: these signals never change the label. Real events are what fakes get attached to, so signals that agree with a claim do not prove the footage is genuine."
+  },
+  "headline": {
+    "tone": "signals_agree",
+    "sentence": "Signals point to genuine footage of the Japan tsunami (5 signals agree). Not proven by a dated copy.",
+    "facts": [
+      {
+        "text": "Date named in the clip: narration says March 11, 2011 (claimed 2011-03-11)",
+        "field": "clues.audio.spoken_dates"
+      },
+      {
+        "text": "Place named in the clip: northern Japan (claimed place: Japan)",
+        "field": "clues.audio.spoken_place_names"
+      },
+      {
+        "text": "Broadcaster logo or credit: NHK visible on screen (a logo can be added to a copy; context only)",
+        "field": "clues.visible_text"
+      }
+    ]
+  },
+  "source_map": [
+    {
+      "start_s": 0.0,
+      "end_s": 11.34,
+      "kind": "unknown",
+      "sources": [],
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "basis": "no source found"
+    },
+    {
+      "start_s": 11.34,
+      "end_s": 13.18,
+      "kind": "camera_unmatched",
+      "sources": [],
+      "frames": [
+        7
+      ],
+      "basis": "Muse per-frame media label (AI observation, not proof)"
+    },
+    {
+      "start_s": 13.18,
+      "end_s": 30.53,
+      "kind": "unknown",
+      "sources": [],
+      "frames": [
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "basis": "no source found"
+    },
+    {
+      "start_s": 30.53,
+      "end_s": 32.36,
+      "kind": "camera_unmatched",
+      "sources": [],
+      "frames": [
+        13
+      ],
+      "basis": "Muse per-frame media label (AI observation, not proof)"
+    },
+    {
+      "start_s": 32.36,
+      "end_s": 42.88,
+      "kind": "unknown",
+      "sources": [],
+      "frames": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "basis": "no source found"
+    },
+    {
+      "start_s": 42.88,
+      "end_s": 44.71,
+      "kind": "camera_unmatched",
+      "sources": [],
+      "frames": [
+        20
+      ],
+      "basis": "Muse per-frame media label (AI observation, not proof)"
+    },
+    {
+      "start_s": 44.71,
+      "end_s": 56.39,
+      "kind": "unknown",
+      "sources": [],
+      "frames": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "basis": "no source found"
+    },
+    {
+      "start_s": 56.39,
+      "end_s": 59.06,
+      "kind": "camera_unmatched",
+      "sources": [],
+      "frames": [
+        27
+      ],
+      "basis": "Muse per-frame media label (AI observation, not proof)"
+    },
+    {
+      "start_s": 59.06,
+      "end_s": 70.74,
+      "kind": "unknown",
+      "sources": [],
+      "frames": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "basis": "no source found"
+    },
+    {
+      "start_s": 70.74,
+      "end_s": 72.74,
+      "kind": "camera_unmatched",
+      "sources": [],
+      "frames": [
+        34
+      ],
+      "basis": "Muse per-frame media label (AI observation, not proof)"
+    },
+    {
+      "start_s": 72.74,
+      "end_s": 82.41,
+      "kind": "unknown",
+      "sources": [],
+      "frames": [
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "basis": "no source found"
+    },
+    {
+      "start_s": 82.41,
+      "end_s": 84.92,
+      "kind": "camera_unmatched",
+      "sources": [],
+      "frames": [
+        40
+      ],
+      "basis": "Muse per-frame media label (AI observation, not proof)"
+    },
+    {
+      "start_s": 84.92,
+      "end_s": 116.12,
+      "kind": "unknown",
+      "sources": [],
+      "frames": [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "basis": "no source found"
+    },
+    {
+      "start_s": 116.12,
+      "end_s": 121.79,
+      "kind": "graphic",
+      "sources": [],
+      "frames": [
+        47
+      ],
+      "basis": "Muse per-frame media label (AI observation, not proof)"
+    }
+  ],
+  "timing_s": 125.7,
+  "stage_timings_s": {
+    "fetch_and_keyframes": 10.3,
+    "memory": 0.1,
+    "muse": 22.9,
+    "memory_muse_wait_claim": 22.9,
+    "discovery": 67.6,
+    "discovery_by_source": {
+      "gvision": 0.1,
+      "lens": 0.5,
+      "youtube_api": 1.7,
+      "tavily": 11.6,
+      "yandex": 67.6
+    },
+    "verify_total_incl_overlap": 8.9,
+    "dates_physical_report_wait": 24.9,
+    "verify_workers": 3,
+    "verify_seconds": 28.0,
+    "verify_checked": 14
+  },
+  "debunk": {
+    "texts": {
+      "en": "Several independent signals in the video agree with the claim, including a date named in the clip, a place named in the clip, and a broadcaster logo or credit, but this agreement does not prove the footage is genuine. The video is presented as \"Rare Video: Japan Tsunami | National Geographic\". It is linked to the place Japan. The claimed event date is 2011-03-11. No earlier visual match was found for the footage.",
+      "ne": "भिडियोमा धेरै स्वतन्त्र सङ्केतहरूले दावीलाई समर्थन गर्छन्, जसमा क्लिपमा उल्लेखित मिति, क्लिपमा उल्लेखित स्थान, र प्रसारणकर्ता लोगो वा क्रेडिट समावेश छ, तर यो सहमतिले भिडियो प्रामाणिक छ भन्ने प्रमाण गर्दैन। भिडियोलाई \"Rare Video: Japan Tsunami | National Geographic\" को रूपमा प्रस्तुत गरिएको छ। यसलाई स्थान जापानसँग जोडिएको छ। दावी गरिएको घटना मिति 2011-03-11 हो। यस फुटेजको लागि पहिलेको दृश्य मिलान फेला परेको छैन।"
+    },
+    "field_refs": {
+      "en": [
+        {
+          "sentence": "Several independent signals in the video agree with the claim, including a date named in the clip, a place named in the clip, and a broadcaster logo or credit, but this agreement does not prove the footage is genuine.",
+          "ref": "signals.count"
+        },
+        {
+          "sentence": "The video is presented as \"Rare Video: Japan Tsunami | National Geographic\".",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "It is linked to the place Japan.",
+          "ref": "claim.place"
+        },
+        {
+          "sentence": "The claimed event date is 2011-03-11.",
+          "ref": "claim.event_date"
+        },
+        {
+          "sentence": "No earlier visual match was found for the footage.",
+          "ref": "visual_matching.status"
+        }
+      ],
+      "ne": [
+        {
+          "sentence": "भिडियोमा धेरै स्वतन्त्र सङ्केतहरूले दावीलाई समर्थन गर्छन्, जसमा क्लिपमा उल्लेखित मिति, क्लिपमा उल्लेखित स्थान, र प्रसारणकर्ता लोगो वा क्रेडिट समावेश छ, तर यो सहमतिले भिडियो प्रामाणिक छ भन्ने प्रमाण गर्दैन।",
+          "ref": "signals.count"
+        },
+        {
+          "sentence": "भिडियोलाई \"Rare Video: Japan Tsunami | National Geographic\" को रूपमा प्रस्तुत गरिएको छ।",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "यसलाई स्थान जापानसँग जोडिएको छ।",
+          "ref": "claim.place"
+        },
+        {
+          "sentence": "दावी गरिएको घटना मिति 2011-03-11 हो।",
+          "ref": "claim.event_date"
+        },
+        {
+          "sentence": "यस फुटेजको लागि पहिलेको दृश्य मिलान फेला परेको छैन।",
+          "ref": "visual_matching.status"
+        }
+      ]
+    },
+    "model": "meta/muse-glimmer-30b",
+    "grounded": true,
+    "languages": [
+      "en",
+      "ne"
+    ],
+    "cost_usd": 0.00367
+  }
+}

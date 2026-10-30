@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.5",
   "investigation_id": "d88d36abfd",
   "created_at": "2026-10-30T05:38:04+00:00",
   "input": {
@@ -510,6 +510,15 @@
     ],
     "verdict_display": "Insufficient corroboration — this does not show the event didn't happen"
   },
+  "media_nature": {
+    "value": "unknown",
+    "confidence": 0.0,
+    "cited_frames": [],
+    "cited_timestamps_s": [],
+    "reasons": [],
+    "status": "NOT_RUN",
+    "note": "Muse clues were not available, so the media nature was not assessed."
+  },
   "contradictions": [],
   "final_verdict": {
     "label": "UNVERIFIED",
@@ -519,6 +528,7 @@
       "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
       "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
       "'Not found' means not found by these adapters, not that no earlier copy exists.",
+      "Dates are UTC calendar dates from the platform. Without an exact timestamp a copy must be dated at least 2 days before the claimed date to count as earlier (time-zone margin: Nepal is UTC+5:45).",
       "Insufficient corroboration — this does not show the event didn't happen."
     ],
     "basis": {
@@ -526,68 +536,11 @@
       "proven_copies": 0,
       "physical_supports": null,
       "unverified_model_observations": 2,
-      "date_conflicts": 0
+      "date_conflicts": 0,
+      "media_nature": "unknown",
+      "claim_date_basis": null,
+      "input_posted_before_claim": false
     }
-  },
-  "timing_s": 219.5,
-  "debunk": {
-    "texts": {
-      "en": "The claim is about a Uttarkashi cloudburst in August 2025. The claimed event date is 2025-08-05. The claimed place is Uttarkashi. No earlier copy of the footage was found and visual matching returned not found. This does not prove the event did not happen.",
-      "ne": "दाबी उत्तरकाशीमा अगस्ट 2025 को बादल विस्फोटको बारेमा हो। दाबी गरिएको घटनाको मिति 2025-08-05 हो। दाबी गरिएको स्थान उत्तरकाशी हो। खोजमा फुटेजको पहिलेका कुनै प्रतिलिपि फेला परेन र दृश्य मिलान 'नभेटिएको' देखाइएको छ। यसले घटना भएन भन्ने प्रमाणित गर्दैन।"
-    },
-    "field_refs": {
-      "en": [
-        {
-          "sentence": "The claim is about a Uttarkashi cloudburst in August 2025.",
-          "ref": "claim.text"
-        },
-        {
-          "sentence": "The claimed event date is 2025-08-05.",
-          "ref": "claim.event_date"
-        },
-        {
-          "sentence": "The claimed place is Uttarkashi.",
-          "ref": "claim.place"
-        },
-        {
-          "sentence": "No earlier copy of the footage was found and visual matching returned not found.",
-          "ref": "visual_matching.status"
-        },
-        {
-          "sentence": "This does not prove the event did not happen.",
-          "ref": "final_verdict.label"
-        }
-      ],
-      "ne": [
-        {
-          "sentence": "दाबी उत्तरकाशीमा अगस्ट 2025 को बादल विस्फोटको बारेमा हो।",
-          "ref": "claim.text"
-        },
-        {
-          "sentence": "दाबी गरिएको घटनाको मिति 2025-08-05 हो।",
-          "ref": "claim.event_date"
-        },
-        {
-          "sentence": "दाबी गरिएको स्थान उत्तरकाशी हो।",
-          "ref": "claim.place"
-        },
-        {
-          "sentence": "खोजमा फुटेजको पहिलेका कुनै प्रतिलिपि फेला परेन र दृश्य मिलान 'नभेटिएको' देखाइएको छ।",
-          "ref": "visual_matching.status"
-        },
-        {
-          "sentence": "यसले घटना भएन भन्ने प्रमाणित गर्दैन।",
-          "ref": "final_verdict.label"
-        }
-      ]
-    },
-    "model": "meta/muse-glimmer-30b",
-    "grounded": true,
-    "languages": [
-      "en",
-      "ne"
-    ],
-    "cost_usd": 0.00278
   },
   "disclosure": {
     "type": "none",
@@ -688,5 +641,65 @@
       ],
       "basis": "no source found"
     }
-  ]
+  ],
+  "timing_s": 219.5,
+  "debunk": {
+    "texts": {
+      "en": "No visual match was found for this claim. The claim is about a Uttarkashi cloudburst, August 2025. The stated event date is 2025-08-05. The stated place is Uttarkashi. The absence of a match does not confirm or deny whether the event occurred or the footage is authentic.",
+      "ne": "यस दाबीका लागि कुनै दृश्य मिलान फेला परेन। दाबी उत्तर्काशीमा अगस्ट २०२५ को क्लाउडबर्स्टको बारेमा हो। उल्लेखित घटना मिति २०२५-०८-०५ हो। उल्लेखित स्थान उत्तर्काशी हो। मिलानको अभावले घटना घट्यो वा फुटेज प्रामाणिक छ भन्ने पुष्टि गर्दैन।"
+    },
+    "field_refs": {
+      "en": [
+        {
+          "sentence": "No visual match was found for this claim.",
+          "ref": "visual_matching.status"
+        },
+        {
+          "sentence": "The claim is about a Uttarkashi cloudburst, August 2025.",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "The stated event date is 2025-08-05.",
+          "ref": "claim.event_date"
+        },
+        {
+          "sentence": "The stated place is Uttarkashi.",
+          "ref": "claim.place"
+        },
+        {
+          "sentence": "The absence of a match does not confirm or deny whether the event occurred or the footage is authentic.",
+          "ref": "final_verdict.label"
+        }
+      ],
+      "ne": [
+        {
+          "sentence": "यस दाबीका लागि कुनै दृश्य मिलान फेला परेन।",
+          "ref": "visual_matching.status"
+        },
+        {
+          "sentence": "दाबी उत्तर्काशीमा अगस्ट २०२५ को क्लाउडबर्स्टको बारेमा हो।",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "उल्लेखित घटना मिति २०२५-०८-०५ हो।",
+          "ref": "claim.event_date"
+        },
+        {
+          "sentence": "उल्लेखित स्थान उत्तर्काशी हो।",
+          "ref": "claim.place"
+        },
+        {
+          "sentence": "मिलानको अभावले घटना घट्यो वा फुटेज प्रामाणिक छ भन्ने पुष्टि गर्दैन।",
+          "ref": "final_verdict.label"
+        }
+      ]
+    },
+    "model": "meta/muse-glimmer-30b",
+    "grounded": true,
+    "languages": [
+      "en",
+      "ne"
+    ],
+    "cost_usd": 0.00245
+  }
 }

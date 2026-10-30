@@ -1,0 +1,632 @@
+{
+  "schema_version": "1.5",
+  "investigation_id": "3f33a2ba1e",
+  "created_at": "2026-10-30T16:22:05+00:00",
+  "input": {
+    "source": "https://youtu.be/wfajaXfHyKk",
+    "path": "(downloaded excerpt removed after run)",
+    "url": "https://www.youtube.com/watch?v=wfajaXfHyKk",
+    "uploader": "Uncovered World",
+    "upload_date": "2026-08-30",
+    "title": "How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary",
+    "duration": 365,
+    "has_audio": true,
+    "truncated": true,
+    "description": "On August 26, 2026, a devastating natural disaster struck Nepal’s Himalayan region. But how did a glacier and mountain collapse turn into a massive flood?\n\nIn this 2D Animation Documentary, we explore the chain of events behind the disaster — from the collapse of ice and rock to the sudden flood of water, debris, and mud through the mountain valleys.\n\nWe’ll also examine the role of glacier instability, landslides, rising temperatures, and climate change, and why scientists are closely watching the changing Himalayan landscape.\n\nHow did it happen? What triggered the flood? And could something similar happen again?\n\nWatch the full documentary to understand the story behind one of the Himalayas’ most frightening natural disasters.\n\nThis documentary is created for educational and informational purposes based on available reports and scientific information. Disaster figures and scientific assessments may change as investigations continue.\n\n\nNepal Flood 2026, Nepal Flood, How Did Nepal Flood Happen, Nepal Flood Explained, Nepal Glacier Collapse, Glacier Collapse Nepal, Nepal Landslide, Nepal Flash Flood, Himalayan Flood, Himalaya Disaster, Langtang Lirung, Trishuli River, Gyirong Port, Nepal Natural Disaster, Nepal Disaster 2026, Glacier Melting, Himalayan Glacier, Climate Change Himalaya, Flood Documentary, Nepal Documentary, Disaster Documentary, 2D Animation Documentary, Hindi Documentary, History Documentary, Natural Disaster Explained, Himalayan Disaster Explained\n\n\n#NepalFlood #GlacierCollapse #Himalayas #Nepal #Flood #Documentary #2DAnimation #NaturalDisaster #ClimateChange",
+    "n_keyframes": 48,
+    "keyframe_times_s": [
+      0.0,
+      4.33,
+      13.0,
+      14.33,
+      15.67,
+      17.33,
+      21.33,
+      28.67,
+      31.0,
+      32.67,
+      35.33,
+      38.67,
+      40.0,
+      41.33,
+      42.67,
+      44.67,
+      46.33,
+      48.67,
+      53.67,
+      55.0,
+      56.33,
+      61.0,
+      64.33,
+      66.33,
+      68.33,
+      70.0,
+      72.0,
+      73.67,
+      79.33,
+      82.67,
+      88.0,
+      90.67,
+      93.33,
+      94.67,
+      96.0,
+      97.33,
+      98.67,
+      100.0,
+      101.33,
+      102.67,
+      105.0,
+      108.33,
+      110.33,
+      112.33,
+      115.0,
+      116.67,
+      118.0,
+      119.67
+    ]
+  },
+  "claim": {
+    "text": "How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary",
+    "event_date": "2026-08-26",
+    "place": "Nepal",
+    "source": {
+      "text": "inferred_from_post",
+      "event_date": "inferred_from_post",
+      "place": "inferred_from_post"
+    },
+    "event_date_basis": "description",
+    "event_date_basis_detail": "explicit date in the post description",
+    "inferred_note": "Claim inferred from the post's title/caption (you did not enter one)",
+    "place_basis": "country named in the post title/caption/on-screen text (country-level)",
+    "country_iso2": "NP",
+    "event_type": "unknown"
+  },
+  "memory": {
+    "status": "MISS",
+    "mode": "hash-shortlist(top_6)+match",
+    "entries_searched": 0,
+    "entries_total": 0,
+    "seconds": 0.06,
+    "hits": [],
+    "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+  },
+  "visual_matching": {
+    "status": "NOT_FOUND",
+    "proven_matches": [],
+    "earliest_proven_copy": null,
+    "claimed_original": null,
+    "input_publication": {
+      "url": "https://www.youtube.com/watch?v=wfajaXfHyKk",
+      "upload_date": "2026-08-30",
+      "date_source": "yt-dlp metadata",
+      "retrieved_at": "2026-10-30T16:22:05+00:00",
+      "uploader": "Uncovered World"
+    },
+    "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+    "candidates_checked": 14,
+    "candidates_total": 76,
+    "candidate_status_counts": {
+      "too_long": 3,
+      "not_proven": 11,
+      "pending": 62
+    },
+    "adapters": {
+      "gvision": {
+        "source": "gvision",
+        "frames": [],
+        "calls": 0,
+        "errors": [],
+        "status": "not_configured",
+        "unavailable": "billing not enabled",
+        "skipped": "unavailable (billing not enabled)",
+        "cached": true
+      },
+      "lens": {
+        "source": "lens",
+        "calls": 1,
+        "errors": []
+      },
+      "youtube_api": {
+        "source": "youtube_api",
+        "queries": 2,
+        "errors": [],
+        "zero_result_queries": []
+      },
+      "tavily": {
+        "queries": 3,
+        "errors": [],
+        "query_source": "claim text (Muse unavailable)"
+      },
+      "yandex": {
+        "frames": [
+          5,
+          16,
+          44
+        ],
+        "captcha": false,
+        "searched": 3,
+        "errors": []
+      }
+    },
+    "source_stats": {
+      "yandex": {
+        "candidates": 40,
+        "checked": 3,
+        "proven": 0
+      },
+      "youtube_api": {
+        "candidates": 21,
+        "checked": 6,
+        "proven": 0
+      },
+      "tavily": {
+        "candidates": 15,
+        "checked": 5,
+        "proven": 0
+      }
+    },
+    "early_stop": {
+      "stopped": false
+    },
+    "proven_by_source": {},
+    "fast_path": null,
+    "keyframe_selection": {
+      "preferred": null,
+      "note": null
+    }
+  },
+  "clues": {
+    "status": "error",
+    "error": "unparseable reply: Expecting ',' delimiter: line 1 column 1968 (char 1967)",
+    "raw": "{\"shows\": [{\"text\": \"Black title card with text introducing Nepal flood dated 26 Aug 2026\", \"refs\": [0]}, {\"text\": \"Stylized 2D animation of blurry ice/glacier close-up\", \"refs\": [7]}, {\"text\": \"Stylized 2D animation of cracked rock cliff with small waterfalls and ice on top\", \"refs\": [13]}, {\"text\": \"Stylized 2D animation of large white ice wall/glacier above rocky mountain with dust\", \"refs\": [20]}, {\"text\": \"Stylized 2D animation of interior monitoring room with seismograph drum and screens\",",
+    "model": "meta/muse-spark-1.3",
+    "cost_usd": 0.01644,
+    "frames_shown": [
+      0,
+      7,
+      13,
+      20,
+      27,
+      34,
+      40,
+      47
+    ],
+    "audio": {
+      "has_speech": true,
+      "language": "hi",
+      "transcript_summary": "Speaker narrates in Hindi that on 26 August 2026 around 9:30 am in the Trishuli Valley (Trishuli Ghati) of Rasuwa district on Nepal's northern border all was calm as usual with snow on mountain tops and the river flowing normally. He says no one knew nature was about to show its cruelest form. In the Himalaya near Langtang Lirung a huge thousand-year-old ice wall had been weakening unnoticed, with geologists attributing it to warming causing ice to melt, ground to loosen and unseen cracks. That morning the wall near Langtang Lirung suddenly broke causing a massive landslide that shook the mountain, recorded as magnitude 5.2 by seismographs in America and Germany though it was not an earthquake.",
+      "spoken_place_names": [
+        {
+          "name": "Nepal",
+          "audio_t": 6.5
+        },
+        {
+          "name": "Rasuwa",
+          "audio_t": 8.2
+        },
+        {
+          "name": "Trishuli Valley",
+          "audio_t": 9.8
+        },
+        {
+          "name": "Himalaya",
+          "audio_t": 27.0
+        },
+        {
+          "name": "Langtang Lirung",
+          "audio_t": 29.5
+        },
+        {
+          "name": "America",
+          "audio_t": 88.0
+        },
+        {
+          "name": "Germany",
+          "audio_t": 89.5
+        }
+      ],
+      "spoken_dates": [
+        {
+          "date": "2026-08-26",
+          "text": "26 अगस्त 2026",
+          "audio_t": 1.2
+        }
+      ],
+      "partial_dates": [],
+      "other_sounds": [],
+      "dropped_untimed": 0,
+      "status": "ok",
+      "model": "meta/muse-spark-open",
+      "cost_usd": 0.02144,
+      "truncated": true,
+      "analyzed_seconds": 90,
+      "attempts": 1
+    }
+  },
+  "physical_world_check": {
+    "location": {
+      "query": "Nepal",
+      "name": "Nepal",
+      "lat": 28.3780464,
+      "lon": 83.9999901,
+      "source": "nominatim",
+      "confidence": "low",
+      "class": "boundary",
+      "type": "administrative",
+      "country_level": true,
+      "alternatives": []
+    },
+    "official_event": {
+      "source": "copernicus_ems",
+      "status": "CONFIRMED_EVENT",
+      "activations": [
+        {
+          "code": "EMSR927",
+          "title": "Flood in Nepal",
+          "event_time": "2026-08-25T22:00:00",
+          "activation_time": "2026-08-26T09:53:00",
+          "country": "Nepal",
+          "distance_km": 133.8,
+          "reason": "On the 26 August 2026, a flash flood reportedly triggered by a Glacial Lake Outburst Flood (GLOF) in Nepal has caused significant damage in Rasuwa District. Copernicus EMS Rapid Mapping was requested to provide flood extent and damage assessment emergency mapping.",
+          "url": "https://rapidmapping.emergency.copernicus.eu/EMSR927"
+        }
+      ],
+      "reliefweb": {
+        "source": "reliefweb",
+        "status": "not_configured",
+        "disasters": [],
+        "window_days": 7,
+        "reason": "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+      }
+    },
+    "hydrology": {
+      "source": "open-meteo glofas v4",
+      "river_discharge": {
+        "series": [
+          {
+            "date": "2026-08-23",
+            "m3s": 130.22
+          },
+          {
+            "date": "2026-08-24",
+            "m3s": 124.31
+          },
+          {
+            "date": "2026-08-25",
+            "m3s": 117.85
+          },
+          {
+            "date": "2026-08-26",
+            "m3s": 113.55
+          },
+          {
+            "date": "2026-08-27",
+            "m3s": 117.58
+          },
+          {
+            "date": "2026-08-28",
+            "m3s": 112.24
+          },
+          {
+            "date": "2026-08-29",
+            "m3s": 105.91
+          }
+        ],
+        "baseline": 123.74,
+        "peak": 130.22,
+        "ratio": 1.05,
+        "cell": [
+          28.275002,
+          83.875
+        ]
+      },
+      "rain": {
+        "series": [
+          {
+            "date": "2026-08-23",
+            "mm": 22.9
+          },
+          {
+            "date": "2026-08-24",
+            "mm": 20.4
+          },
+          {
+            "date": "2026-08-25",
+            "mm": 14.9
+          },
+          {
+            "date": "2026-08-26",
+            "mm": 8.7
+          },
+          {
+            "date": "2026-08-27",
+            "mm": 4.9
+          },
+          {
+            "date": "2026-08-28",
+            "mm": 18.1
+          },
+          {
+            "date": "2026-08-29",
+            "mm": 43.1
+          }
+        ],
+        "max_mm": 43.1
+      },
+      "status": "UNKNOWN"
+    },
+    "verdict": "UNKNOWN",
+    "reasons": [
+      "location resolved only to a whole country; too coarse to corroborate a local event"
+    ],
+    "limits": [
+      "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+    ],
+    "links": [
+      "https://mapping.emergency.copernicus.eu/activations/",
+      "https://flood-api.open-meteo.com/v1/flood?latitude=28.3780464&longitude=83.9999901&daily=river_discharge&start_date=2026-08-23&end_date=2026-08-29",
+      "https://www.openstreetmap.org/?mlat=28.3780464&mlon=83.9999901#map=10/28.3780464/83.9999901"
+    ],
+    "news_coverage": {
+      "source": "gdelt",
+      "label": "news coverage",
+      "status": "UNAVAILABLE",
+      "articles_in_window": null,
+      "articles_baseline_30d": null,
+      "sample_links": [],
+      "context_only": true,
+      "query": "Nepal flood",
+      "reason": "news coverage unavailable right now",
+      "error_type": "HTTPStatusError"
+    }
+  },
+  "media_nature": {
+    "value": "unknown",
+    "confidence": 0.0,
+    "cited_frames": [],
+    "cited_timestamps_s": [],
+    "reasons": [],
+    "status": "NOT_RUN",
+    "note": "Muse clues were not available, so the media nature was not assessed."
+  },
+  "contradictions": [],
+  "final_verdict": {
+    "label": "UNVERIFIED",
+    "summary": "[Claim inferred from the post's title/caption (you did not enter one); date basis: description.] The input URL was itself published on 2026-08-30 (per yt-dlp metadata), which is not before the claimed event date, so recycling relative to the claim is not established. The physical-world check was not available or inconclusive. The claim could not be verified from the available evidence.",
+    "limits": [
+      "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+      "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+      "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+      "'Not found' means not found by these adapters, not that no earlier copy exists.",
+      "Dates are UTC calendar dates from the platform. Without an exact timestamp a copy must be dated at least 2 days before the claimed date to count as earlier (time-zone margin: Nepal is UTC+5:45)."
+    ],
+    "basis": {
+      "earlier_proven_copies": 0,
+      "proven_copies": 0,
+      "physical_supports": null,
+      "unverified_model_observations": 0,
+      "date_conflicts": 0,
+      "media_nature": "unknown",
+      "claim_date_basis": "description",
+      "input_posted_before_claim": false
+    }
+  },
+  "disclosure": {
+    "type": "animation",
+    "evidence": [
+      {
+        "field": "title",
+        "text": "Happen? | Glacier Collapse Explained | 2D Animation Documentary"
+      },
+      {
+        "field": "description",
+        "text": "turn into a massive flood? In this 2D Animation Documentary, we explore the chain of"
+      },
+      {
+        "field": "description",
+        "text": "Documentary, Disaster Documentary, 2D Animation Documentary, Hindi Documentary, History"
+      }
+    ]
+  },
+  "claim_presence": {
+    "value": "tribute_or_explainer",
+    "reason": "the title is framed as a tribute/explainer ('How Did'), not as footage of the event"
+  },
+  "signals": {
+    "agree": [
+      {
+        "key": "no_earlier_copy",
+        "label": "No earlier copy proven",
+        "detail": "the frame matcher found no earlier copy (absence of evidence, not proof)",
+        "field": "visual_matching.status"
+      }
+    ],
+    "against": [
+      "the uploader labels the video animation"
+    ],
+    "count": 1,
+    "needed": 3,
+    "qualifies": false,
+    "note": "Context only: these signals never change the label. Real events are what fakes get attached to, so signals that agree with a claim do not prove the footage is genuine."
+  },
+  "headline": {
+    "tone": "ai_disclosed",
+    "sentence": "The uploader describes this video as an animation. It is not documentary footage of the event in Nepal.",
+    "facts": [
+      {
+        "text": "The uploader's own words (title): “Happen? | Glacier Collapse Explained | 2D Animation Documentary”",
+        "field": "disclosure.evidence"
+      },
+      {
+        "text": "The title is framed as a tribute/explainer ('How Did'), not as footage of the event",
+        "field": "claim_presence"
+      },
+      {
+        "text": "No earlier copy was proven among 14 candidates checked",
+        "field": "visual_matching.candidates_checked"
+      }
+    ]
+  },
+  "source_map": [
+    {
+      "start_s": 0.0,
+      "end_s": 121.67,
+      "kind": "unknown",
+      "sources": [],
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "basis": "no source found"
+    }
+  ],
+  "timing_s": 218.4,
+  "stage_timings_s": {
+    "fetch_and_keyframes": 70.9,
+    "memory": 0.1,
+    "muse": 32.4,
+    "memory_muse_wait_claim": 32.4,
+    "discovery": 72.5,
+    "discovery_by_source": {
+      "gvision": 0.0,
+      "lens": 9.8,
+      "youtube_api": 0.8,
+      "tavily": 5.1,
+      "yandex": 68.8
+    },
+    "verify_total_incl_overlap": 42.6,
+    "dates_physical_report_wait": 42.6,
+    "verify_workers": 3,
+    "verify_seconds": 105.2,
+    "verify_checked": 14
+  },
+  "debunk": {
+    "texts": {
+      "en": "The uploader’s own description identifies this video as an animation, so it is not documentary footage of the claimed event. It is presented as 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary'. The claim references an event date of 2026-08-26. No visual match for real-world footage was found in the search. This does not prove whether a glacier-collapse flood occurred in Nepal on that date.",
+      "ne": "अपलोडकर्ताको आफ्नै विवरणले यो भिडियोलाई एनिमेसनको रूपमा पहिचान गर्दछ, त्यसैले यो दावी गरिएको घटनाको दस्तावेजी फुटेज होइन। यसलाई 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary' को रूपमा प्रस्तुत गरिएको छ। दावीले 2026-08-26 को घटना मिति उल्लेख गर्दछ। खोजमा वास्तविक फुटेजको कुनै दृश्य मिलान फेला परेन। यसले 2026-08-26 मा नेपालमा हिमनदी-प्रकोप बाढी भएको थियो वा थिएन भन्ने कुरा प्रमाणित गर्दैन।",
+      "hi": "अपलोडर के अपने विवरण में इस वीडियो को एनिमेशन के रूप में पहचाना गया है, इसलिए यह दावा किए गए घटना का दस्तावेजी फुटेज नहीं है। इसे 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary' के रूप में प्रस्तुत किया गया है। दावा 2026-08-26 की घटना तिथि का उल्लेख करता है। खोज में वास्तविक फुटेज का कोई दृश्य मिलान नहीं मिला। इससे यह साबित नहीं होता कि उस तिथि को नेपाल में ग्लेशियर-पतन से बाढ़ आई थी या नहीं।"
+    },
+    "field_refs": {
+      "en": [
+        {
+          "sentence": "The uploader’s own description identifies this video as an animation, so it is not documentary footage of the claimed event.",
+          "ref": "disclosure.type"
+        },
+        {
+          "sentence": "It is presented as 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary'.",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "The claim references an event date of 2026-08-26.",
+          "ref": "claim.event_date"
+        },
+        {
+          "sentence": "No visual match for real-world footage was found in the search.",
+          "ref": "visual_matching.status"
+        },
+        {
+          "sentence": "This does not prove whether a glacier-collapse flood occurred in Nepal on that date.",
+          "ref": "final_verdict.label"
+        }
+      ],
+      "ne": [
+        {
+          "sentence": "अपलोडकर्ताको आफ्नै विवरणले यो भिडियोलाई एनिमेसनको रूपमा पहिचान गर्दछ, त्यसैले यो दावी गरिएको घटनाको दस्तावेजी फुटेज होइन।",
+          "ref": "disclosure.type"
+        },
+        {
+          "sentence": "यसलाई 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary' को रूपमा प्रस्तुत गरिएको छ।",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "दावीले 2026-08-26 को घटना मिति उल्लेख गर्दछ।",
+          "ref": "claim.event_date"
+        },
+        {
+          "sentence": "खोजमा वास्तविक फुटेजको कुनै दृश्य मिलान फेला परेन।",
+          "ref": "visual_matching.status"
+        },
+        {
+          "sentence": "यसले 2026-08-26 मा नेपालमा हिमनदी-प्रकोप बाढी भएको थियो वा थिएन भन्ने कुरा प्रमाणित गर्दैन।",
+          "ref": "final_verdict.label"
+        }
+      ],
+      "hi": [
+        {
+          "sentence": "अपलोडर के अपने विवरण में इस वीडियो को एनिमेशन के रूप में पहचाना गया है, इसलिए यह दावा किए गए घटना का दस्तावेजी फुटेज नहीं है।",
+          "ref": "disclosure.type"
+        },
+        {
+          "sentence": "इसे 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary' के रूप में प्रस्तुत किया गया है।",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "दावा 2026-08-26 की घटना तिथि का उल्लेख करता है।",
+          "ref": "claim.event_date"
+        },
+        {
+          "sentence": "खोज में वास्तविक फुटेज का कोई दृश्य मिलान नहीं मिला।",
+          "ref": "visual_matching.status"
+        },
+        {
+          "sentence": "इससे यह साबित नहीं होता कि उस तिथि को नेपाल में ग्लेशियर-पतन से बाढ़ आई थी या नहीं।",
+          "ref": "final_verdict.label"
+        }
+      ]
+    },
+    "model": "meta/muse-glimmer-30b",
+    "grounded": true,
+    "languages": [
+      "en",
+      "ne",
+      "hi"
+    ],
+    "cost_usd": 0.00465
+  }
+}

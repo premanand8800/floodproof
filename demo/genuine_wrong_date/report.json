@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.5",
   "investigation_id": "0c2ad08983",
   "created_at": "2026-10-30T05:37:54+00:00",
   "input": {
@@ -592,100 +592,36 @@
       "https://rapidmapping.emergency.copernicus.eu/EMSR927"
     ]
   },
-  "contradictions": [
-    {
-      "kind": "independently_dated_earlier_copy",
-      "text": "Footage was already published on 2024-09-28 (earliest copy found), before the claimed event date 2026-08-26.",
-      "evidence": [
-        "https://www.youtube.com/watch?v=sIQTP1LJy30"
-      ],
-      "date_source": "yt-dlp metadata"
-    }
-  ],
+  "media_nature": {
+    "value": "unknown",
+    "confidence": 0.0,
+    "cited_frames": [],
+    "cited_timestamps_s": [],
+    "reasons": [],
+    "status": "NOT_RUN",
+    "note": "Muse clues were not available, so the media nature was not assessed."
+  },
+  "contradictions": [],
   "final_verdict": {
     "label": "RECYCLED_FOOTAGE",
-    "summary": "The footage matches the earliest copy found, published on 2024-09-28 (https://www.youtube.com/watch?v=sIQTP1LJy30, date independently fetched per yt-dlp metadata), before the claimed event date 2026-08-26. The input is itself that publication. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen.",
+    "summary": "This video was posted on 2024-09-28, before the claimed event on 2026-08-26 (publication date per yt-dlp metadata). A post published before the claimed event cannot show that event. This is the input video's own publication date, not an earlier copy found by the matcher, and it does not show that the claimed event did not happen.",
     "limits": [
       "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
       "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
       "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
-      "'Not found' means not found by these adapters, not that no earlier copy exists."
+      "'Not found' means not found by these adapters, not that no earlier copy exists.",
+      "Dates are UTC calendar dates from the platform. Without an exact timestamp a copy must be dated at least 2 days before the claimed date to count as earlier (time-zone margin: Nepal is UTC+5:45)."
     ],
     "basis": {
-      "earlier_proven_copies": 1,
+      "earlier_proven_copies": 0,
       "proven_copies": 0,
       "physical_supports": true,
       "unverified_model_observations": 0,
-      "date_conflicts": 0
+      "date_conflicts": 0,
+      "media_nature": "unknown",
+      "claim_date_basis": null,
+      "input_posted_before_claim": true
     }
-  },
-  "timing_s": 209.6,
-  "debunk": {
-    "texts": {
-      "en": "The claim is \"Nepal flood, Kathmandu\". The claimed event date is 2026-08-26. The claim places the event in Kathmandu. An earliest copy found is a YouTube video at https://www.youtube.com/watch?v=sIQTP1LJy30. The video was uploaded on 2024-09-28 by Voice of America, which predates the claimed 2026-08-26 date. Finding the footage earlier does not prove that a flood did not occur in Kathmandu on the claimed date.",
-      "ne": "दाबी 'नेपाल बाढी, काठमाडौं' हो। दाबी गरिएको घटना मिति 2026-08-26 हो। दाबीले घटनाको स्थान काठमाडौं राखेको छ। फेला परेको सबैभन्दा पुरानो प्रतिलिपि YouTube मा https://www.youtube.com/watch?v=sIQTP1LJy30 मा रहेको भिडियो हो। यो भिडियो Voice of America द्वारा 2024-09-28 मा अपलोड गरिएको थियो, जुन दाबी गरिएको 2026-08-26 मितिभन्दा पहिलेको हो। फुटेज पहिले फेला परेको हुनाले काठमाडौंमा दाबी गरिएको मितिमा बाढी नभएको प्रमाणित गर्दैन।"
-    },
-    "field_refs": {
-      "en": [
-        {
-          "sentence": "The claim is \"Nepal flood, Kathmandu\".",
-          "ref": "claim.text"
-        },
-        {
-          "sentence": "The claimed event date is 2026-08-26.",
-          "ref": "claim.event_date"
-        },
-        {
-          "sentence": "The claim places the event in Kathmandu.",
-          "ref": "claim.place"
-        },
-        {
-          "sentence": "An earliest copy found is a YouTube video at https://www.youtube.com/watch?v=sIQTP1LJy30.",
-          "ref": "visual_matching.input_publication.url"
-        },
-        {
-          "sentence": "The video was uploaded on 2024-09-28 by Voice of America, which predates the claimed 2026-08-26 date.",
-          "ref": "visual_matching.input_publication.upload_date"
-        },
-        {
-          "sentence": "Finding the footage earlier does not prove that a flood did not occur in Kathmandu on the claimed date.",
-          "ref": "final_verdict.label"
-        }
-      ],
-      "ne": [
-        {
-          "sentence": "दाबी 'नेपाल बाढी, काठमाडौं' हो।",
-          "ref": "claim.text"
-        },
-        {
-          "sentence": "दाबी गरिएको घटना मिति 2026-08-26 हो।",
-          "ref": "claim.event_date"
-        },
-        {
-          "sentence": "दाबीले घटनाको स्थान काठमाडौं राखेको छ।",
-          "ref": "claim.place"
-        },
-        {
-          "sentence": "फेला परेको सबैभन्दा पुरानो प्रतिलिपि YouTube मा https://www.youtube.com/watch?v=sIQTP1LJy30 मा रहेको भिडियो हो।",
-          "ref": "visual_matching.input_publication.url"
-        },
-        {
-          "sentence": "यो भिडियो Voice of America द्वारा 2024-09-28 मा अपलोड गरिएको थियो, जुन दाबी गरिएको 2026-08-26 मितिभन्दा पहिलेको हो।",
-          "ref": "visual_matching.input_publication.upload_date"
-        },
-        {
-          "sentence": "फुटेज पहिले फेला परेको हुनाले काठमाडौंमा दाबी गरिएको मितिमा बाढी नभएको प्रमाणित गर्दैन।",
-          "ref": "final_verdict.label"
-        }
-      ]
-    },
-    "model": "meta/muse-glimmer-30b",
-    "grounded": true,
-    "languages": [
-      "en",
-      "ne"
-    ],
-    "cost_usd": 0.00495
   },
   "disclosure": {
     "type": "none",
@@ -711,28 +647,40 @@
       }
     ],
     "against": [
-      "a proven earlier copy exists"
+      "this video was posted on 2024-09-28, before the claimed event on 2026-08-26"
     ],
     "count": 2,
     "needed": 3,
     "qualifies": false,
     "note": "Context only: these signals never change the label. Real events are what fakes get attached to, so signals that agree with a claim do not prove the footage is genuine."
   },
+  "input_publication_before_claim": {
+    "finding": "input_publication_before_claim",
+    "text": "This video was posted before the event it is claimed to show.",
+    "input_date": "2024-09-28",
+    "claim_date": "2026-08-26",
+    "url": "https://www.youtube.com/watch?v=sIQTP1LJy30",
+    "date_source": "yt-dlp metadata",
+    "upload_timestamp": null,
+    "precision": "date",
+    "margin_days": 697,
+    "note": "This is the video's own publication date, not an earlier copy found by the matcher. A post published before the claimed event cannot show that event; it does not show the claimed event did not happen."
+  },
   "headline": {
     "tone": "recycled",
-    "sentence": "This footage was already published on 2024-09-28, before the claimed event date 2026-08-26.",
+    "sentence": "This video was posted on 2024-09-28, before the claimed event on 2026-08-26.",
     "facts": [
       {
-        "text": "Earliest copy found: youtube.com, dated 2024-09-28 (date from yt-dlp metadata)",
-        "field": "visual_matching.earliest_proven_copy"
+        "text": "Its own publication date: 2024-09-28 (from yt-dlp metadata)",
+        "field": "visual_matching.input_publication"
       },
       {
-        "text": "The input URL is itself that earlier publication",
-        "field": "visual_matching.proven_matches"
+        "text": "Claimed event date: 2026-08-26 (697 days later)",
+        "field": "input_publication_before_claim.claim_date"
       },
       {
-        "text": "Recycled does not mean fake, and the claimed event itself may be real",
-        "field": "final_verdict.label"
+        "text": "This is the video's own publication date, not an earlier copy found by the matcher; the claimed event itself may be real",
+        "field": "input_publication_before_claim.note"
       }
     ]
   },
@@ -794,5 +742,57 @@
       ],
       "basis": "no source found"
     }
-  ]
+  ],
+  "timing_s": 209.6,
+  "debunk": {
+    "texts": {
+      "en": "This video was posted on 2024-09-28, before the claimed event on 2026-08-26. It is being shared as Nepal flood, Kathmandu. The upload is available on YouTube at https://www.youtube.com/watch?v=sIQTP1LJy30. A post date earlier than the claimed event does not prove that flooding did not occur in Kathmandu on 2026-08-26.",
+      "ne": "यो भिडियो 2024-09-28 मा पोस्ट गरिएको थियो, दाबी गरिएको घटना 2026-08-26 भन्दा पहिले। यसलाई नेपाल बाढी, काठमाडौंको रूपमा साझा गरिएको छ। यो अपलोड युट्युबमा https://www.youtube.com/watch?v=sIQTP1LJy30 मा उपलब्ध छ। दाबी गरिएको मितिभन्दा पहिले पोस्ट मिति हुनुले 2026-08-26 मा काठमाडौंमा बाढी नआएको प्रमाण गर्दैन।"
+    },
+    "field_refs": {
+      "en": [
+        {
+          "sentence": "This video was posted on 2024-09-28, before the claimed event on 2026-08-26.",
+          "ref": "input_publication_before_claim.input_date"
+        },
+        {
+          "sentence": "It is being shared as Nepal flood, Kathmandu.",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "The upload is available on YouTube at https://www.youtube.com/watch?v=sIQTP1LJy30.",
+          "ref": "input_publication_before_claim.url"
+        },
+        {
+          "sentence": "A post date earlier than the claimed event does not prove that flooding did not occur in Kathmandu on 2026-08-26.",
+          "ref": "claim.event_date"
+        }
+      ],
+      "ne": [
+        {
+          "sentence": "यो भिडियो 2024-09-28 मा पोस्ट गरिएको थियो, दाबी गरिएको घटना 2026-08-26 भन्दा पहिले।",
+          "ref": "input_publication_before_claim.input_date"
+        },
+        {
+          "sentence": "यसलाई नेपाल बाढी, काठमाडौंको रूपमा साझा गरिएको छ।",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "यो अपलोड युट्युबमा https://www.youtube.com/watch?v=sIQTP1LJy30 मा उपलब्ध छ।",
+          "ref": "input_publication_before_claim.url"
+        },
+        {
+          "sentence": "दाबी गरिएको मितिभन्दा पहिले पोस्ट मिति हुनुले 2026-08-26 मा काठमाडौंमा बाढी नआएको प्रमाण गर्दैन।",
+          "ref": "claim.event_date"
+        }
+      ]
+    },
+    "model": "meta/muse-glimmer-30b",
+    "grounded": true,
+    "languages": [
+      "en",
+      "ne"
+    ],
+    "cost_usd": 0.0027
+  }
 }

@@ -22,18 +22,22 @@ DEMO_DIR = ROOT / "demo"
 RUNS_DIR = ROOT / "runs"
 UPLOADS = CACHE / "uploads"
 STATIC = Path(__file__).parent / "static"
-DEMO_TITLES = {
-    "success_recycled": "Recycled: Alaska glacier shared as Nepal GLOF",
+DEMO_TITLES = {          # insertion order = card order on the home page: a recycled fake, an AI clip, genuine footage, then the others
+    "success_recycled": "Recycled fake: Alaska glacier shared as Nepal GLOF",
+    "ai_glacier_animation": "AI / animation: a glacier-collapse explainer, not footage",
+    "genuine_japan_tsunami": "Genuine footage: 2011 Japan tsunami",
     "reshare_memory": "Re-share caught by memory",
     "genuine_correct_claim": "Genuine footage, correct date",
-    "genuine_wrong_date": "Genuine footage, wrong date claimed",
+    "genuine_wrong_date": "Posted before the claimed event",
     "failed_unverified": "Unverified: no earlier copy found",
 }
 DEMO_BLURBS = {
     "success_recycled": "A proven earlier copy, posted 5 days before the claimed event.",
+    "ai_glacier_animation": "The uploader calls it a 2D animation: not documentary footage of the Nepal flood.",
+    "genuine_japan_tsunami": "Broadcaster footage with five agreeing signals. Not proven by a dated copy, and not called fake.",
     "reshare_memory": "A mirrored, re-edited re-share, recognised from a previously verified clip.",
-    "genuine_correct_claim": "The earliest copy is dated at the claimed event: nothing contradicts the claim.",
-    "genuine_wrong_date": "Real footage, but the claimed date is not supported.",
+    "genuine_correct_claim": "The video was posted on the claimed date: nothing contradicts the claim.",
+    "genuine_wrong_date": "Real footage, but this video was posted years before the event it is claimed to show.",
     "failed_unverified": "No earlier copy found. A normal outcome, not a finding of fakery.",
 }
 DEMO_ORDER = list(DEMO_TITLES)
@@ -81,6 +85,8 @@ def list_demos() -> list[dict]:
         thumb = (ep.get("proof") or {}).get("viral_frame") or next(iter((r.get("clues") or {}).get("frame_images") or []), None)
         if thumb and thumb.startswith("frames/") is False and "/" in thumb and not thumb.startswith("evidence/"):
             thumb = "frames/" + thumb.split("/")[-1]
+        if not thumb and (d.parent / "frames" / "lens.jpg").is_file():
+            thumb = "frames/lens.jpg"
         out.append(dict(name=d.parent.name, title=DEMO_TITLES.get(d.parent.name, d.parent.name), label=r["final_verdict"]["label"],
                         claim=r["claim"].get("text"), blurb=DEMO_BLURBS.get(d.parent.name), thumb=thumb))
     return out

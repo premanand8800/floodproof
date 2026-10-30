@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.5",
   "investigation_id": "9b3ea4fc05",
   "created_at": "2026-10-30T05:37:44+00:00",
   "input": {
@@ -571,83 +571,36 @@
       "https://www.openstreetmap.org/?mlat=27.708317&mlon=85.3205817#map=10/27.708317/85.3205817"
     ]
   },
+  "media_nature": {
+    "value": "unknown",
+    "confidence": 0.0,
+    "cited_frames": [],
+    "cited_timestamps_s": [],
+    "reasons": [],
+    "status": "NOT_RUN",
+    "note": "Muse clues were not available, so the media nature was not assessed."
+  },
   "contradictions": [],
   "final_verdict": {
     "label": "CONSISTENT_WITH_CLAIM",
-    "summary": "The input URL was itself published on 2024-09-28 (per yt-dlp metadata), which is not earlier than the claimed event date, so recycling relative to the claim is not established. The earliest independently dated copy was published within days of the claimed event date, and no earlier copy or cited contradiction was found, and the physical-world check adds supporting context (context only; it did not change the verdict). This means no contradiction was found in the available evidence; it is not a finding that the footage is authentic.",
+    "summary": "The input URL was itself published on 2024-09-28 (per yt-dlp metadata), which is not before the claimed event date, so recycling relative to the claim is not established. The input video itself was posted within days of the claimed event date (its own publication date, not independent corroboration of the claim), and no earlier copy or cited contradiction was found, and the physical-world check adds supporting context (context only; it did not change the verdict). This means no contradiction was found in the available evidence; it is not a finding that the footage is authentic.",
     "limits": [
       "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
       "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
       "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
-      "'Not found' means not found by these adapters, not that no earlier copy exists."
+      "'Not found' means not found by these adapters, not that no earlier copy exists.",
+      "Dates are UTC calendar dates from the platform. Without an exact timestamp a copy must be dated at least 2 days before the claimed date to count as earlier (time-zone margin: Nepal is UTC+5:45)."
     ],
     "basis": {
       "earlier_proven_copies": 0,
       "proven_copies": 0,
       "physical_supports": true,
       "unverified_model_observations": 0,
-      "date_conflicts": 0
+      "date_conflicts": 0,
+      "media_nature": "unknown",
+      "claim_date_basis": null,
+      "input_posted_before_claim": false
     }
-  },
-  "timing_s": 198.7,
-  "debunk": {
-    "texts": {
-      "en": "The post claims \"Nepal flood, Kathmandu\". The claimed event date is 2024-09-28. The claimed place is Kathmandu. No earlier matching footage was found in the search. A consistent finding does not by itself prove what is shown in the video or confirm the exact location and time.",
-      "ne": "पोस्टले \"Nepal flood, Kathmandu\" दाबी गरेको छ। दाबी गरिएको घटनाको मिति 2024-09-28 हो। दाबी गरिएको स्थान काठमाडौं हो। खोजीमा पहिले प्रकाशित मिल्दो फुटेज भेटिएन। निष्कर्ष मिल्दो हुनुले आफैंमा भिडियोमा देखिएको कुरा वा यसको ठीक स्थान र समय पुष्टि गर्दैन।"
-    },
-    "field_refs": {
-      "en": [
-        {
-          "sentence": "The post claims \"Nepal flood, Kathmandu\".",
-          "ref": "claim.text"
-        },
-        {
-          "sentence": "The claimed event date is 2024-09-28.",
-          "ref": "claim.event_date"
-        },
-        {
-          "sentence": "The claimed place is Kathmandu.",
-          "ref": "claim.place"
-        },
-        {
-          "sentence": "No earlier matching footage was found in the search.",
-          "ref": "visual_matching.status"
-        },
-        {
-          "sentence": "A consistent finding does not by itself prove what is shown in the video or confirm the exact location and time.",
-          "ref": "final_verdict.label"
-        }
-      ],
-      "ne": [
-        {
-          "sentence": "पोस्टले \"Nepal flood, Kathmandu\" दाबी गरेको छ।",
-          "ref": "claim.text"
-        },
-        {
-          "sentence": "दाबी गरिएको घटनाको मिति 2024-09-28 हो।",
-          "ref": "claim.event_date"
-        },
-        {
-          "sentence": "दाबी गरिएको स्थान काठमाडौं हो।",
-          "ref": "claim.place"
-        },
-        {
-          "sentence": "खोजीमा पहिले प्रकाशित मिल्दो फुटेज भेटिएन।",
-          "ref": "visual_matching.status"
-        },
-        {
-          "sentence": "निष्कर्ष मिल्दो हुनुले आफैंमा भिडियोमा देखिएको कुरा वा यसको ठीक स्थान र समय पुष्टि गर्दैन।",
-          "ref": "final_verdict.label"
-        }
-      ]
-    },
-    "model": "meta/muse-glimmer-30b",
-    "grounded": true,
-    "languages": [
-      "en",
-      "ne"
-    ],
-    "cost_usd": 0.00258
   },
   "disclosure": {
     "type": "none",
@@ -680,11 +633,11 @@
   },
   "headline": {
     "tone": "consistent",
-    "sentence": "No contradiction found: the earliest independently dated copy (2024-09-28) falls within days of the claimed event date 2024-09-28. This is not proof the footage is authentic.",
+    "sentence": "No contradiction found: this video was posted on 2024-09-28, within days of the claimed event date 2024-09-28 (its own publication date, not independent corroboration). This is not proof the footage is authentic.",
     "facts": [
       {
-        "text": "Earliest independently dated copy: 2024-09-28",
-        "field": "visual_matching.earliest_proven_copy"
+        "text": "The video's own publication date: 2024-09-28",
+        "field": "visual_matching.input_publication"
       },
       {
         "text": "No earlier copy and no independent contradiction were found",
@@ -754,5 +707,65 @@
       ],
       "basis": "no source found"
     }
-  ]
+  ],
+  "timing_s": 198.7,
+  "debunk": {
+    "texts": {
+      "en": "No earlier copy of this footage was found in the search. The description refers to a Nepal flood in Kathmandu. The claimed event date is 2024-09-28. The claimed place is Kathmandu. This finding does not prove the footage shows that specific flood or confirms the event happened as described.",
+      "ne": "खोजीमा यस फुटेजको पहिलेको प्रतिलिपि फेला परेन। यो विवरण काठमाडौंमा नेपालमा आएको बाढीसँग सम्बन्धित छ। दाबी गरिएको घटनाको मिति 2024-09-28 हो। दाबी गरिएको स्थान काठमाडौं हो। यो निष्कर्षले फुटेजले त्यो विशेष बाढीलाई देखाउँछ भन्ने वा घटना वर्णन गरिएझैं भएको पुष्टि गर्दैन।"
+    },
+    "field_refs": {
+      "en": [
+        {
+          "sentence": "No earlier copy of this footage was found in the search.",
+          "ref": "visual_matching.status"
+        },
+        {
+          "sentence": "The description refers to a Nepal flood in Kathmandu.",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "The claimed event date is 2024-09-28.",
+          "ref": "claim.event_date"
+        },
+        {
+          "sentence": "The claimed place is Kathmandu.",
+          "ref": "claim.place"
+        },
+        {
+          "sentence": "This finding does not prove the footage shows that specific flood or confirms the event happened as described.",
+          "ref": "final_verdict.label"
+        }
+      ],
+      "ne": [
+        {
+          "sentence": "खोजीमा यस फुटेजको पहिलेको प्रतिलिपि फेला परेन।",
+          "ref": "visual_matching.status"
+        },
+        {
+          "sentence": "यो विवरण काठमाडौंमा नेपालमा आएको बाढीसँग सम्बन्धित छ।",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "दाबी गरिएको घटनाको मिति 2024-09-28 हो।",
+          "ref": "claim.event_date"
+        },
+        {
+          "sentence": "दाबी गरिएको स्थान काठमाडौं हो।",
+          "ref": "claim.place"
+        },
+        {
+          "sentence": "यो निष्कर्षले फुटेजले त्यो विशेष बाढीलाई देखाउँछ भन्ने वा घटना वर्णन गरिएझैं भएको पुष्टि गर्दैन।",
+          "ref": "final_verdict.label"
+        }
+      ]
+    },
+    "model": "meta/muse-glimmer-30b",
+    "grounded": true,
+    "languages": [
+      "en",
+      "ne"
+    ],
+    "cost_usd": 0.00231
+  }
 }

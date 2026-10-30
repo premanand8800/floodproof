@@ -1350,6 +1350,15 @@
       "https://rapidmapping.emergency.copernicus.eu/EMSR927"
     ]
   },
+  "media_nature": {
+    "value": "unknown",
+    "confidence": 0.0,
+    "cited_frames": [],
+    "cited_timestamps_s": [],
+    "reasons": [],
+    "status": "NOT_RUN",
+    "note": "Muse clues were not available, so the media nature was not assessed."
+  },
   "contradictions": [
     {
       "kind": "independently_dated_earlier_copy",
@@ -1367,84 +1376,19 @@
       "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
       "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
       "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
-      "'Not found' means not found by these adapters, not that no earlier copy exists."
+      "'Not found' means not found by these adapters, not that no earlier copy exists.",
+      "Dates are UTC calendar dates from the platform. Without an exact timestamp a copy must be dated at least 2 days before the claimed date to count as earlier (time-zone margin: Nepal is UTC+5:45)."
     ],
     "basis": {
       "earlier_proven_copies": 1,
       "proven_copies": 1,
       "physical_supports": true,
       "unverified_model_observations": 3,
-      "date_conflicts": 0
+      "date_conflicts": 0,
+      "media_nature": "unknown",
+      "claim_date_basis": null,
+      "input_posted_before_claim": false
     }
-  },
-  "timing_s": 264.5,
-  "debunk": {
-    "texts": {
-      "en": "The claim describes a Nepal glacier lake outburst flood dated 2026-08-26 in Nepal. An earlier copy of the footage was found uploaded on 2026-08-21, which predates the claimed event date of 2026-08-26. The earliest copy is on Instagram by uploader Leigh Coates. The video can be seen at https://www.instagram.com/reel/DcUFQZhvGzS/ and visual matching shows 48 consistent frames with up to 330 inliers. This only shows the footage was published earlier; it does not prove whether a flood occurred on the claimed date in Nepal.",
-      "ne": "दाबीमा 2026-08-26 मा नेपालमा हिमनदी ताल विस्फोट बाढी भएको भनिएको छ। फुटेजको सबैभन्दा पुरानो प्रमाणित प्रतिलिपि 2026-08-21 मा अपलोड गरिएको फेला परेको छ, जुन दाबी गरिएको घटनाको मिति 2026-08-26 भन्दा पहिले हो। सबैभन्दा पुरानो प्रतिलिपि इन्स्टाग्राममा Leigh Coates द्वारा पोस्ट गरिएको हो। भिडियो https://www.instagram.com/reel/DcUFQZhvGzS/ मा हेर्न सकिन्छ र भिजुअल मिलानले 48 वटा निरन्तर फ्रेम र अधिकतम 330 इनलायर देखाएको छ। यसले फुटेज पहिले प्रकाशित भएको देखाउँछ मात्र; यसले 2026-08-26 मा नेपालमा बाढी घट्यो कि भएन भन्ने प्रमाणित गर्दैन।"
-    },
-    "field_refs": {
-      "en": [
-        {
-          "sentence": "The claim describes a Nepal glacier lake outburst flood dated 2026-08-26 in Nepal.",
-          "ref": "claim.text"
-        },
-        {
-          "sentence": "An earlier copy of the footage was found uploaded on 2026-08-21, which predates the claimed event date of 2026-08-26.",
-          "ref": "visual_matching.earliest_proven_copy.upload_date"
-        },
-        {
-          "sentence": "The earliest copy is on Instagram by uploader Leigh Coates.",
-          "ref": "visual_matching.earliest_proven_copy.uploader"
-        },
-        {
-          "sentence": "The video can be seen at https://www.instagram.com/reel/DcUFQZhvGzS/ and visual matching shows 48 consistent frames with up to 330 inliers.",
-          "ref": "visual_matching.earliest_proven_copy.url"
-        },
-        {
-          "sentence": "This only shows the footage was published earlier; it does not prove whether a flood occurred on the claimed date in Nepal.",
-          "ref": "final_verdict.label"
-        }
-      ],
-      "ne": [
-        {
-          "sentence": "दाबीमा 2026-08-26 मा नेपालमा हिमनदी ताल विस्फोट बाढी भएको भनिएको छ।",
-          "ref": "claim.text"
-        },
-        {
-          "sentence": "फुटेजको सबैभन्दा पुरानो प्रमाणित प्रतिलिपि 2026-08-21 मा अपलोड गरिएको फेला परेको छ, जुन दाबी गरिएको घटनाको मिति 2026-08-26 भन्दा पहिले हो।",
-          "ref": "visual_matching.earliest_proven_copy.upload_date"
-        },
-        {
-          "sentence": "सबैभन्दा पुरानो प्रतिलिपि इन्स्टाग्राममा Leigh Coates द्वारा पोस्ट गरिएको हो।",
-          "ref": "visual_matching.earliest_proven_copy.uploader"
-        },
-        {
-          "sentence": "भिडियो https://www.instagram.com/reel/DcUFQZhvGzS/ मा हेर्न सकिन्छ र भिजुअल मिलानले 48 वटा निरन्तर फ्रेम र अधिकतम 330 इनलायर देखाएको छ।",
-          "ref": "visual_matching.earliest_proven_copy.url"
-        },
-        {
-          "sentence": "यसले फुटेज पहिले प्रकाशित भएको देखाउँछ मात्र; यसले 2026-08-26 मा नेपालमा बाढी घट्यो कि भएन भन्ने प्रमाणित गर्दैन।",
-          "ref": "final_verdict.label"
-        }
-      ]
-    },
-    "model": "meta/muse-glimmer-30b",
-    "grounded": true,
-    "languages": [
-      "en",
-      "ne"
-    ],
-    "cost_usd": 0.00342
-  },
-  "media_nature": {
-    "value": "unknown",
-    "confidence": 0.0,
-    "cited_frames": [],
-    "cited_timestamps_s": [],
-    "reasons": [],
-    "status": "NOT_RUN",
-    "note": "Muse clues were not available, so the media nature was not assessed."
   },
   "disclosure": {
     "type": "none",
@@ -1667,5 +1611,65 @@
       ],
       "basis": "no source found"
     }
-  ]
+  ],
+  "timing_s": 264.5,
+  "debunk": {
+    "texts": {
+      "en": "An earlier copy was published on 2026-08-21 on Instagram by Leigh Coates, before the claimed event date of 2026-08-26. The reel can be seen at https://www.instagram.com/reel/DcUFQZhvGzS/. Visual matching found 48 consistent frames with a max of 330 inliers. The claim describes a Nepal glacier lake outburst flood in August 2026. This only shows the footage was online earlier; it does not prove the event did not happen.",
+      "ne": "Leigh Coates द्वारा Instagram मा 2026-08-21 मा प्रकाशित पहिल्यैको प्रतिलिपि फेला परेको छ, जुन दाबी गरिएको 2026-08-26 घटनाको मितिभन्दा पहिले हो। रिल https://www.instagram.com/reel/DcUFQZhvGzS/ मा हेर्न सकिन्छ। दृश्य मिलानले अधिकतम 330 इनलायर्ससहित 48 सुसंगत फ्रेमहरू देखाएको छ। दाबीले अगस्ट 2026 मा नेपालमा हिमनदी ताल विस्फोट बाढीको वर्णन गरेको छ। योले केवल फुटेज पहिले अनलाइन थियो भन्ने देखाउँछ; यसले घटना भएन भन्ने प्रमाणित गर्दैन।"
+    },
+    "field_refs": {
+      "en": [
+        {
+          "sentence": "An earlier copy was published on 2026-08-21 on Instagram by Leigh Coates, before the claimed event date of 2026-08-26.",
+          "ref": "visual_matching.earliest_proven_copy.upload_date"
+        },
+        {
+          "sentence": "The reel can be seen at https://www.instagram.com/reel/DcUFQZhvGzS/.",
+          "ref": "visual_matching.earliest_proven_copy.url"
+        },
+        {
+          "sentence": "Visual matching found 48 consistent frames with a max of 330 inliers.",
+          "ref": "visual_matching.earliest_proven_copy.match.consistent_frames"
+        },
+        {
+          "sentence": "The claim describes a Nepal glacier lake outburst flood in August 2026.",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "This only shows the footage was online earlier; it does not prove the event did not happen.",
+          "ref": "final_verdict.label"
+        }
+      ],
+      "ne": [
+        {
+          "sentence": "Leigh Coates द्वारा Instagram मा 2026-08-21 मा प्रकाशित पहिल्यैको प्रतिलिपि फेला परेको छ, जुन दाबी गरिएको 2026-08-26 घटनाको मितिभन्दा पहिले हो।",
+          "ref": "visual_matching.earliest_proven_copy.upload_date"
+        },
+        {
+          "sentence": "रिल https://www.instagram.com/reel/DcUFQZhvGzS/ मा हेर्न सकिन्छ।",
+          "ref": "visual_matching.earliest_proven_copy.url"
+        },
+        {
+          "sentence": "दृश्य मिलानले अधिकतम 330 इनलायर्ससहित 48 सुसंगत फ्रेमहरू देखाएको छ।",
+          "ref": "visual_matching.earliest_proven_copy.match.consistent_frames"
+        },
+        {
+          "sentence": "दाबीले अगस्ट 2026 मा नेपालमा हिमनदी ताल विस्फोट बाढीको वर्णन गरेको छ।",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "योले केवल फुटेज पहिले अनलाइन थियो भन्ने देखाउँछ; यसले घटना भएन भन्ने प्रमाणित गर्दैन।",
+          "ref": "final_verdict.label"
+        }
+      ]
+    },
+    "model": "meta/muse-glimmer-30b",
+    "grounded": true,
+    "languages": [
+      "en",
+      "ne"
+    ],
+    "cost_usd": 0.00339
+  }
 }
