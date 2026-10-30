@@ -1,0 +1,636 @@
+{
+ "rows": [
+  {
+   "id": "G02",
+   "kind": "debunked",
+   "completed": true,
+   "sec": 230.6,
+   "cost": 0.0132,
+   "label": "RECYCLED_FOOTAGE",
+   "n_proven": 5,
+   "proven_urls": [
+    [
+     "https://www.youtube.com/watch?app=desktop&v=pjR9b6cKQDM",
+     "2021-09-03"
+    ],
+    [
+     "https://www.youtube.com/watch?v=pjR9b6cKQDM",
+     "2021-09-03"
+    ],
+    [
+     "https://www.youtube.com/watch?v=DYUvH5ge8c0",
+     "2021-09-04"
+    ],
+    [
+     "https://www.youtube.com/watch?v=GHYolJVWcUM",
+     "2021-09-03"
+    ],
+    [
+     "https://www.youtube.com/watch?v=WIDQbDai2jQ",
+     "2021-09-03"
+    ]
+   ],
+   "earliest_proven": [
+    "https://www.youtube.com/watch?app=desktop&v=pjR9b6cKQDM",
+    "2021-09-03"
+   ],
+   "found_original": false,
+   "found_earlier_copy": true,
+   "media_nature": "camera_footage",
+   "clues_status": "ok",
+   "clues_model": "meta/muse-spark-1.3",
+   "physical_status": null,
+   "physical_verdict": "NO_EVIDENCE",
+   "physical_ran": true,
+   "physical_located": true,
+   "physical_loc_name": "Florida, United States",
+   "physical_loc_source": "nominatim",
+   "physical_loc_conf": "high",
+   "physical_reasons": [
+    "no Copernicus flood activation within 150 km / +-3 d",
+    "discharge ratio 2.26 (peak 16.0 vs baseline 7.1 m3/s), max rain 84.0 mm/day"
+   ],
+   "captcha": false,
+   "adapters": {
+    "yandex": null,
+    "tavily": null
+   },
+   "candidates_checked": 14,
+   "candidates_total": 58,
+   "memory_status": "MISS",
+   "summary": "The footage matches the earliest copy found, published on 2021-09-03 (https://www.youtube.com/watch?app=desktop&v=pjR9b6cKQDM, date independently fetched per yt-dlp metadata), before the claimed event date 2024-10-09. Matcher evidence: 29 temporally consistent frame(s), up to 70 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the cla"
+  },
+  {
+   "id": "G03",
+   "kind": "debunked",
+   "completed": true,
+   "sec": 206.2,
+   "cost": 0.0156,
+   "label": "UNVERIFIED",
+   "n_proven": 0,
+   "proven_urls": [],
+   "earliest_proven": null,
+   "found_original": false,
+   "found_earlier_copy": false,
+   "media_nature": "likely_ai_generated",
+   "clues_status": "ok",
+   "clues_model": "meta/muse-spark-1.3",
+   "physical_status": null,
+   "physical_verdict": "NO_EVIDENCE",
+   "physical_ran": true,
+   "physical_located": true,
+   "physical_loc_name": "Texas, United States",
+   "physical_loc_source": "nominatim",
+   "physical_loc_conf": "high",
+   "physical_reasons": [
+    "no Copernicus flood activation within 150 km / +-3 d",
+    "discharge ratio 1.94 (peak 22.2 vs baseline 11.4 m3/s), max rain 13.1 mm/day"
+   ],
+   "captcha": false,
+   "adapters": {
+    "yandex": null,
+    "tavily": null
+   },
+   "candidates_checked": 14,
+   "candidates_total": 70,
+   "memory_status": "MISS",
+   "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. Insufficient corroboration \u2014 this does not show the event didn't happen (physical-world check). The claim could not be verified from the available evidence. Media nature (AI observation from frames 10,14,17,21,24, not proof; does not change the label): Not camera footage: likely AI-generated (AI observa"
+  },
+  {
+   "id": "G05",
+   "kind": "debunked",
+   "completed": true,
+   "sec": 237.8,
+   "cost": 0.0127,
+   "label": "RECYCLED_FOOTAGE",
+   "n_proven": 13,
+   "proven_urls": [
+    [
+     "https://www.youtube.com/watch?v=mZSLSfafvyE",
+     "2020-10-31"
+    ],
+    [
+     "https://www.youtube.com/watch?v=-6YruoXMUM8",
+     "2020-10-31"
+    ],
+    [
+     "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs",
+     "2020-10-30"
+    ],
+    [
+     "https://www.youtube.com/watch?app=desktop&v=IM031BBdJJA",
+     "2020-10-31"
+    ],
+    [
+     "https://www.youtube.com/watch?v=npFx1QG9kCs",
+     "2020-10-30"
+    ],
+    [
+     "https://www.youtube.com/watch?v=J4NDayfAqeE",
+     "2020-10-31"
+    ],
+    [
+     "https://www.youtube.com/watch?app=desktop&v=MT7caLD9SDs",
+     "2023-02-06"
+    ],
+    [
+     "https://www.youtube.com/watch?v=J-X6X23LnYE",
+     "2023-02-08"
+    ],
+    [
+     "https://www.youtube.com/watch?v=mScTDQ8S42c",
+     "2023-02-07"
+    ],
+    [
+     "https://www.youtube.com/watch?app=desktop&v=xmNyWhJant0",
+     "2023-02-06"
+    ],
+    [
+     "https://www.youtube.com/watch?app=desktop&v=kvWGHW0ZsW8",
+     "2023-02-07"
+    ],
+    [
+     "https://www.youtube.com/watch?v=IA-TzjAb4Ns",
+     "2023-02-06"
+    ],
+    [
+     "https://www.youtube.com/watch?v=sSOjbDZfl-0",
+     "2023-02-07"
+    ]
+   ],
+   "earliest_proven": [
+    "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs",
+    "2020-10-30"
+   ],
+   "found_original": false,
+   "found_earlier_copy": true,
+   "media_nature": "camera_footage",
+   "clues_status": "ok",
+   "clues_model": "meta/muse-spark-1.3",
+   "physical_status": null,
+   "physical_verdict": "UNKNOWN",
+   "physical_ran": true,
+   "physical_located": true,
+   "physical_loc_name": "Turkey",
+   "physical_loc_source": "nominatim",
+   "physical_loc_conf": "low",
+   "physical_reasons": [
+    "location resolved only to a whole country; too coarse to corroborate a local event"
+   ],
+   "captcha": false,
+   "adapters": {
+    "yandex": null,
+    "tavily": null
+   },
+   "candidates_checked": 14,
+   "candidates_total": 70,
+   "memory_status": "MISS",
+   "summary": "The footage matches the earliest copy found, published on 2020-10-30 (https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs, date independently fetched per yt-dlp metadata), before the claimed event date 2023-02-06. Matcher evidence: 40 temporally consistent frame(s), up to 346 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the cl"
+  },
+  {
+   "id": "G06",
+   "kind": "debunked",
+   "completed": true,
+   "sec": 173.2,
+   "cost": 0.0106,
+   "label": "RECYCLED_FOOTAGE",
+   "n_proven": 5,
+   "proven_urls": [
+    [
+     "https://www.youtube.com/watch?v=Jq0UOluD9HY",
+     "2021-05-21"
+    ],
+    [
+     "https://www.youtube.com/watch?v=A4UYLML07NU",
+     "2020-10-20"
+    ],
+    [
+     "https://www.youtube.com/watch?v=0-ToNGdOUrs",
+     "2020-10-17"
+    ],
+    [
+     "https://www.youtube.com/watch?v=Azyts3pG4Ys",
+     "2021-04-15"
+    ],
+    [
+     "https://www.youtube.com/watch?v=mFz7F0AER10",
+     "2021-05-10"
+    ]
+   ],
+   "earliest_proven": [
+    "https://www.youtube.com/watch?v=0-ToNGdOUrs",
+    "2020-10-17"
+   ],
+   "found_original": false,
+   "found_earlier_copy": true,
+   "media_nature": "camera_footage",
+   "clues_status": "ok",
+   "clues_model": "meta/muse-spark-1.3",
+   "physical_status": null,
+   "physical_verdict": "NO_EVIDENCE",
+   "physical_ran": true,
+   "physical_located": true,
+   "physical_loc_name": "Kamchatka Krai, Far Eastern Federal District, Russia",
+   "physical_loc_source": "nominatim",
+   "physical_loc_conf": "high",
+   "physical_reasons": [
+    "no Copernicus flood activation within 150 km / +-3 d",
+    "discharge ratio 0.72 (peak 3.5 vs baseline 4.9 m3/s), max rain 9.9 mm/day"
+   ],
+   "captcha": false,
+   "adapters": {
+    "yandex": null,
+    "tavily": null
+   },
+   "candidates_checked": 14,
+   "candidates_total": 70,
+   "memory_status": "MISS",
+   "summary": "The footage matches the earliest copy found, published on 2020-10-17 (https://www.youtube.com/watch?v=0-ToNGdOUrs, date independently fetched per yt-dlp metadata), before the claimed event date 2025-07-30. Matcher evidence: 19 temporally consistent frame(s), up to 63 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event d"
+  },
+  {
+   "id": "G07",
+   "kind": "debunked",
+   "completed": true,
+   "sec": 232.0,
+   "cost": 0.0187,
+   "label": "RECYCLED_FOOTAGE",
+   "n_proven": 2,
+   "proven_urls": [
+    [
+     "https://www.youtube.com/shorts/_fuECgS8S3U",
+     "2026-06-09"
+    ],
+    [
+     "https://ok.ru/video/16520302299840",
+     "2026-08-15"
+    ]
+   ],
+   "earliest_proven": [
+    "https://www.youtube.com/shorts/_fuECgS8S3U",
+    "2026-06-09"
+   ],
+   "found_original": false,
+   "found_earlier_copy": true,
+   "media_nature": "camera_footage",
+   "clues_status": "ok",
+   "clues_model": "meta/muse-spark-1.3",
+   "physical_status": null,
+   "physical_verdict": "UNKNOWN",
+   "physical_ran": true,
+   "physical_located": true,
+   "physical_loc_name": "Indonesia",
+   "physical_loc_source": "nominatim",
+   "physical_loc_conf": "low",
+   "physical_reasons": [
+    "location resolved only to a whole country; too coarse to corroborate a local event"
+   ],
+   "captcha": false,
+   "adapters": {
+    "yandex": null,
+    "tavily": null
+   },
+   "candidates_checked": 14,
+   "candidates_total": 70,
+   "memory_status": "MISS",
+   "summary": "The footage matches the earliest copy found, published on 2026-06-09 (https://www.youtube.com/shorts/_fuECgS8S3U, date independently fetched per yt-dlp metadata), before the claimed event date 2026-08-15. Matcher evidence: 11 temporally consistent frame(s), up to 104 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event d"
+  },
+  {
+   "id": "G08",
+   "kind": "debunked",
+   "completed": true,
+   "sec": 244.1,
+   "cost": 0.012,
+   "label": "UNVERIFIED",
+   "n_proven": 0,
+   "proven_urls": [],
+   "earliest_proven": null,
+   "found_original": false,
+   "found_earlier_copy": false,
+   "media_nature": "camera_footage",
+   "clues_status": "ok",
+   "clues_model": "meta/muse-spark-1.3",
+   "physical_status": null,
+   "physical_verdict": "SUPPORTS",
+   "physical_ran": true,
+   "physical_located": true,
+   "physical_loc_name": "New York, United States",
+   "physical_loc_source": "nominatim",
+   "physical_loc_conf": "high",
+   "physical_reasons": [
+    "river discharge peak 296.2 m3/s is 4.98x the 30-day baseline 59.5 m3/s"
+   ],
+   "captcha": false,
+   "adapters": {
+    "yandex": null,
+    "tavily": null
+   },
+   "candidates_checked": 14,
+   "candidates_total": 70,
+   "memory_status": "MISS",
+   "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. The claim could not be verified from the available evidence."
+  },
+  {
+   "id": "G09",
+   "kind": "debunked",
+   "completed": true,
+   "sec": 246.2,
+   "cost": 0.0169,
+   "label": "UNVERIFIED",
+   "n_proven": 0,
+   "proven_urls": [],
+   "earliest_proven": null,
+   "found_original": false,
+   "found_earlier_copy": false,
+   "media_nature": "likely_ai_generated",
+   "clues_status": "ok",
+   "clues_model": "meta/muse-spark-1.3",
+   "physical_status": null,
+   "physical_verdict": "NO_EVIDENCE",
+   "physical_ran": true,
+   "physical_located": true,
+   "physical_loc_name": "Kamchatka Krai, Far Eastern Federal District, Russia",
+   "physical_loc_source": "nominatim",
+   "physical_loc_conf": "high",
+   "physical_reasons": [
+    "no Copernicus flood activation within 150 km / +-3 d",
+    "discharge ratio 0.72 (peak 3.5 vs baseline 4.9 m3/s), max rain 9.9 mm/day"
+   ],
+   "captcha": false,
+   "adapters": {
+    "yandex": null,
+    "tavily": null
+   },
+   "candidates_checked": 14,
+   "candidates_total": 70,
+   "memory_status": "MISS",
+   "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. Insufficient corroboration \u2014 this does not show the event didn't happen (physical-world check). The claim could not be verified from the available evidence. Media nature (AI observation from frames 0,5,10,15,21,31, not proof; does not change the label): Not camera footage: likely AI-generated (AI observ"
+  },
+  {
+   "id": "G10",
+   "kind": "debunked",
+   "completed": true,
+   "sec": 178.6,
+   "cost": 0.016,
+   "label": "RECYCLED_FOOTAGE",
+   "n_proven": 11,
+   "proven_urls": [
+    [
+     "https://www.youtube.com/shorts/RZd1_qcdl1w",
+     "2024-07-15"
+    ],
+    [
+     "https://www.youtube.com/shorts/J73_BroiAEE",
+     "2023-09-04"
+    ],
+    [
+     "https://www.youtube.com/shorts/EVsV6_nIHzI",
+     "2024-07-25"
+    ],
+    [
+     "https://www.youtube.com/shorts/FV4Rjfyp0NU",
+     "2024-02-22"
+    ],
+    [
+     "https://www.youtube.com/shorts/B8AITkdutYk",
+     "2023-10-14"
+    ],
+    [
+     "https://www.youtube.com/shorts/J73_BroiAEE?si=k4-50Le6XzKSXwJh",
+     "2023-09-04"
+    ],
+    [
+     "https://www.youtube.com/shorts/_VqTlwqg9UA",
+     "2023-09-13"
+    ],
+    [
+     "https://www.youtube.com/shorts/opy0DLYEDtw",
+     "2023-09-10"
+    ],
+    [
+     "https://www.youtube.com/shorts/bKn06_J4Ep8",
+     "2024-04-10"
+    ],
+    [
+     "https://www.youtube.com/shorts/rirfYISH6oM",
+     "2025-01-17"
+    ],
+    [
+     "https://www.youtube.com/shorts/MP02b0HEFKg",
+     "2023-12-17"
+    ]
+   ],
+   "earliest_proven": [
+    "https://www.youtube.com/shorts/J73_BroiAEE",
+    "2023-09-04"
+   ],
+   "found_original": false,
+   "found_earlier_copy": true,
+   "media_nature": "camera_footage",
+   "clues_status": "ok",
+   "clues_model": "meta/muse-spark-1.3",
+   "physical_status": null,
+   "physical_verdict": "UNKNOWN",
+   "physical_ran": true,
+   "physical_located": true,
+   "physical_loc_name": "Libya",
+   "physical_loc_source": "nominatim",
+   "physical_loc_conf": "low",
+   "physical_reasons": [
+    "location resolved only to a whole country; too coarse to corroborate a local event"
+   ],
+   "captcha": false,
+   "adapters": {
+    "yandex": null,
+    "tavily": null
+   },
+   "candidates_checked": 14,
+   "candidates_total": 70,
+   "memory_status": "MISS",
+   "summary": "The footage matches the earliest copy found, published on 2023-09-04 (https://www.youtube.com/shorts/J73_BroiAEE, date independently fetched per yt-dlp metadata), before the claimed event date 2023-09-10. Matcher evidence: 20 temporally consistent frame(s), up to 36 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event di"
+  },
+  {
+   "id": "N01",
+   "kind": "genuine",
+   "completed": true,
+   "sec": 181.8,
+   "cost": 0.0154,
+   "label": "CONSISTENT_WITH_CLAIM",
+   "n_proven": 2,
+   "proven_urls": [
+    [
+     "https://www.youtube.com/watch?v=b3IDvWWwmS4",
+     "2025-05-03"
+    ],
+    [
+     "https://www.youtube.com/watch?v=Tntucl9uW4c",
+     "2025-04-30"
+    ]
+   ],
+   "earliest_proven": [
+    "https://www.youtube.com/watch?v=Tntucl9uW4c",
+    "2025-04-30"
+   ],
+   "found_original": false,
+   "found_earlier_copy": false,
+   "media_nature": "news_compilation",
+   "clues_status": "ok",
+   "clues_model": "meta/muse-spark-1.3",
+   "physical_status": null,
+   "physical_verdict": "NO_EVIDENCE",
+   "physical_ran": true,
+   "physical_located": true,
+   "physical_loc_name": "Jerusalem, Jerusalem Subdistrict, Jerusalem District, Israel",
+   "physical_loc_source": "nominatim",
+   "physical_loc_conf": "high",
+   "physical_reasons": [
+    "no Copernicus flood activation within 150 km / +-3 d",
+    "discharge ratio 1.07 (peak 0.9 vs baseline 0.8 m3/s), max rain 1.3 mm/day"
+   ],
+   "captcha": false,
+   "adapters": {
+    "yandex": null,
+    "tavily": null
+   },
+   "candidates_checked": 14,
+   "candidates_total": 70,
+   "memory_status": "MISS",
+   "summary": "The video contains a clip published earlier (https://www.youtube.com/watch?v=Tntucl9uW4c, uploaded 2025-04-30), but that date is not earlier than the claimed event date, so recycling relative to the claim is not established. The earliest independently dated copy was published within days of the claimed event date, and no earlier copy or cited contradiction was found. This means no contradiction wa"
+  },
+  {
+   "id": "N02",
+   "kind": "genuine",
+   "completed": true,
+   "sec": 238.2,
+   "cost": 0.0145,
+   "label": "CONSISTENT_WITH_CLAIM",
+   "n_proven": 1,
+   "proven_urls": [
+    [
+     "https://www.youtube.com/watch?v=N7ce0TUdiGc",
+     "2024-07-01"
+    ]
+   ],
+   "earliest_proven": [
+    "https://www.youtube.com/watch?v=N7ce0TUdiGc",
+    "2024-07-01"
+   ],
+   "found_original": false,
+   "found_earlier_copy": false,
+   "media_nature": "camera_footage",
+   "clues_status": "ok",
+   "clues_model": "meta/muse-spark-1.3",
+   "physical_status": null,
+   "physical_verdict": "UNKNOWN",
+   "physical_ran": true,
+   "physical_located": true,
+   "physical_loc_name": "Carriacou, Six Roads, Carriacou and Petite Martinique, Grenada",
+   "physical_loc_source": "nominatim",
+   "physical_loc_conf": "high",
+   "physical_reasons": [
+    "a data source failed; cannot assess"
+   ],
+   "captcha": false,
+   "adapters": {
+    "yandex": null,
+    "tavily": null
+   },
+   "candidates_checked": 14,
+   "candidates_total": 70,
+   "memory_status": "MISS",
+   "summary": "The footage matches a previously published copy (https://www.youtube.com/watch?v=N7ce0TUdiGc, uploaded 2024-07-01), but that date is not earlier than the claimed event date, so recycling relative to the claim is not established. The earliest independently dated copy was published within days of the claimed event date, and no earlier copy or cited contradiction was found. This means no contradictio"
+  },
+  {
+   "id": "N03",
+   "kind": "genuine",
+   "completed": true,
+   "sec": 233.7,
+   "cost": 0.0108,
+   "label": "UNVERIFIED",
+   "n_proven": 13,
+   "proven_urls": [
+    [
+     "https://www.youtube.com/watch?v=vBkbkIovE8A",
+     "2022-10-10"
+    ],
+    [
+     "https://www.youtube.com/watch?v=2itzrExPKQs",
+     "2020-03-10"
+    ],
+    [
+     "https://www.youtube.com/watch?v=InsrGmYLAvo",
+     "2023-02-06"
+    ],
+    [
+     "https://www.youtube.com/watch?v=7Wu7OWtLz04",
+     "2023-02-06"
+    ],
+    [
+     "https://www.youtube.com/watch?v=mnViNcnYies",
+     "2023-02-06"
+    ],
+    [
+     "https://www.youtube.com/watch?app=desktop&v=42hhQwSgQ_A",
+     "2022-01-11"
+    ],
+    [
+     "https://www.youtube.com/watch?v=TJbi3cApqmk",
+     "2023-02-07"
+    ],
+    [
+     "https://www.youtube.com/watch?app=desktop&v=2xvPoRqxzEA",
+     "2021-04-19"
+    ],
+    [
+     "https://www.youtube.com/watch?app=desktop&v=x14ru6QqZQM",
+     "2017-03-27"
+    ],
+    [
+     "https://www.youtube.com/watch?v=iIBLi3fVI1Q",
+     "2021-07-04"
+    ],
+    [
+     "https://www.youtube.com/watch?app=desktop&v=F89VC-0Tcms",
+     "2019-03-19"
+    ],
+    [
+     "https://www.youtube.com/watch?v=uGi3Q3LTbiE",
+     "2022-11-26"
+    ],
+    [
+     "https://www.youtube.com/watch?v=JPMOgbnfg04",
+     "2020-11-07"
+    ]
+   ],
+   "earliest_proven": [
+    "https://www.youtube.com/watch?app=desktop&v=x14ru6QqZQM",
+    "2017-03-27"
+   ],
+   "found_original": false,
+   "found_earlier_copy": false,
+   "media_nature": "camera_footage",
+   "clues_status": "ok",
+   "clues_model": "meta/muse-spark-1.3",
+   "physical_status": null,
+   "physical_verdict": "SUPPORTS",
+   "physical_ran": true,
+   "physical_located": true,
+   "physical_loc_name": "Durban, eThekwini Metropolitan Municipality, KwaZulu-Natal, 4057, South Africa",
+   "physical_loc_source": "nominatim",
+   "physical_loc_conf": "high",
+   "physical_reasons": [
+    "river discharge peak 26.4 m3/s is 7.0x the 30-day baseline 3.8 m3/s"
+   ],
+   "captcha": false,
+   "adapters": {
+    "yandex": null,
+    "tavily": null
+   },
+   "candidates_checked": 14,
+   "candidates_total": 70,
+   "memory_status": "MISS",
+   "summary": "The footage matches a previously published copy (https://www.youtube.com/watch?app=desktop&v=x14ru6QqZQM, uploaded 2017-03-27), but that date is not earlier than the claimed event date, so recycling relative to the claim is not established. The claim could not be verified from the available evidence."
+  }
+ ],
+ "usage_start": 4.85492375,
+ "usage_end": 5.01121725
+}
