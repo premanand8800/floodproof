@@ -284,6 +284,7 @@ function proofHero(rep, ref) {
       h("div", {class: "note", text: "Described by " + ex.model + " from the two frames above; only what is visible."})));
   }
   return hero;
+}
 const fmtDate = (d) => { try { return new Date(d + "T00:00:00Z").toLocaleDateString("en-GB", {day: "numeric", month: "short", year: "numeric", timeZone: "UTC"}); } catch (e) { return d; } };
 const daysBetween = (a, b) => Math.round((Date.parse(b + "T00:00:00Z") - Date.parse(a + "T00:00:00Z")) / 864e5);
 const hostOf = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return ""; } };
