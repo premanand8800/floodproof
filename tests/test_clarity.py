@@ -387,3 +387,66 @@ def test_ui_hides_unconfigured_and_raw_errors():
                    "Signals checked (", "Full summary and what this does NOT mean", "Limitations ("):
         assert needle in html, needle
     assert "(cl.error ||" not in html and '"Failed: " + j.error' not in html and "au.error ||" not in html
+
+
+# ---------------------------------------------------------------- K. source map
+def sm_report(proven, labels, n=6, claim_date="2026-08-26"):
+    times = [float(i * 2) for i in range(n)]
+    claim = dict(text="x", event_date=claim_date, place="Nepal", event_type="glof", event_date_basis="user")
+    clues = dict(status="ok", media_nature=dict(value="camera_footage", confidence=.8, cited_frames=[0, 5], reasons=[], status="AI_OBSERVATION_HYPOTHESIS",
+                                                 per_frame=[dict(frame=i, t=times[i], label=l, confidence=.7, reason="") for i, l in enumerate(labels)]),
+                 visible_text=[], on_screen_dates=[], observations_against_claim=[], claim_parsed={})
+    r = build_report(input_meta=dict(source="u", url="https://youtu.be/in", n_keyframes=n, keyframe_times_s=times, duration=12.0), claim=claim,
+                     memory=dict(status="MISS"), visual=dict(status="FOUND" if proven else "NOT_FOUND", proven_matches=proven), clues=clues,
+                     physical=dict(status="NOT_RUN"))
+    return validate_report(r)
+
+
+def copy_with_frames(url, frames, date="2026-08-21"):
+    m = proven_copy(date)
+    m["url"] = url
+    m["match"] = dict(m["match"], matched_frames=[dict(a_frame=f, a_t=f * 2.0, b_frame=f, b_t=f * 2.0 + 1, inliers=50, flip=False) for f in frames])
+    return m
+
+
+def test_source_map_merges_segments_and_never_guesses():
+    labels = ["camera_footage", "camera_footage", "camera_footage", "likely_ai_generated", "likely_ai_generated", "graphic_or_text"]
+    r = sm_report([copy_with_frames("https://www.instagram.com/reel/A/", [0, 1]), copy_with_frames("https://www.tiktok.com/@u/video/1", [2], "2026-08-22")], labels)
+    sm = r["source_map"]
+    assert [s["kind"] for s in sm] == ["matched_source", "matched_source", "ai_generated", "graphic"]
+    assert sm[0]["frames"] == [0, 1] and sm[0]["sources"][0]["platform"] == "Instagram" and sm[0]["sources"][0]["frames_matched"] == 2
+    assert sm[1]["sources"][0]["platform"] == "TikTok" and sm[1]["sources"][0]["date"] == "2026-08-22"
+    assert not sm[2]["sources"] and not sm[3]["sources"]                # Muse kinds never carry a source
+    assert sm[0]["start_s"] == 0.0 and sm[-1]["end_s"] <= 12.0
+
+
+def test_source_map_no_match_uses_muse_label_or_unknown():
+    r = sm_report([], ["camera_footage", "unknown", "unknown", "animation_or_cgi", "animation_or_cgi", "unknown"])
+    assert [s["kind"] for s in r["source_map"]] == ["camera_unmatched", "unknown", "animation", "unknown"]
+    assert all(not s["sources"] for s in r["source_map"])
+
+
+def test_source_map_validation_rejects_invented_source():
+    r = sm_report([copy_with_frames("https://www.instagram.com/reel/A/", [0])], ["camera_footage"] * 6)
+    r["source_map"][1]["kind"] = "matched_source"
+    r["source_map"][1]["sources"] = [dict(url="https://invented.example/x", date="2020-01-01", date_source="x", frames_matched=1)]
+    with pytest.raises(AssertionError):
+        validate_report(r)
+    r2 = sm_report([], ["camera_footage"] * 6)
+    r2["source_map"][0]["kind"] = "ai_generated"; r2["source_map"][0]["sources"] = [dict(url="u")]
+    with pytest.raises(AssertionError):
+        validate_report(r2)
+
+
+def test_source_map_backward_compatible_and_label_untouched():
+    r = report()
+    r.pop("source_map", None)
+    assert validate_report(r)
+    from floodproof.matcher import MatchResult
+    assert "matched_frames" in MatchResult(False, 0, 0, False, None, 0, 0.0, []).to_dict()
+
+
+def test_ui_has_source_map():
+    html = STATIC.read_text()
+    for needle in ("function sourceMap", "AI observation (Muse per-frame label)", "No source found"):
+        assert needle in html

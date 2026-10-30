@@ -94,6 +94,18 @@ code.cite{font-size:.72rem;color:var(--mute);white-space:nowrap}
 .lim1{font-size:.88rem;color:var(--mute);margin:8px 0 2px}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 0}
 .sig-ok::marker{content:"\2713  "}.sig-no::marker{content:"\2717  "}
+.smap{margin:12px 0 0}
+.smap .bar{display:flex;height:34px;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--bg)}
+.smap .seg{border:0;border-right:1px solid var(--card);padding:0;cursor:pointer;min-width:6px}
+.smap .seg:last-child{border-right:0}
+.smap .seg[aria-pressed=true]{outline:3px solid var(--accent);outline-offset:-3px}
+.k-matched_source{background:#b3261e}.k-ai_generated{background:#5b3fa0}.k-animation{background:#a8559a}.k-graphic{background:#6b7b88}.k-camera_unmatched{background:#2a7f9a}.k-unknown{background:repeating-linear-gradient(45deg,#9aa6b0,#9aa6b0 4px,#c9d1d8 4px,#c9d1d8 8px)}
+.smap .legend{display:flex;gap:10px;flex-wrap:wrap;font-size:.78rem;color:var(--mute);margin:6px 0}
+.smap .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.smap .detail{border:1px solid var(--line);border-radius:8px;padding:10px;font-size:.9rem;background:var(--card);margin-top:6px}
+.smap .scale{display:flex;justify-content:space-between;font-size:.72rem;color:var(--mute)}
+.smap .pair2{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.smap .pair2 img{width:100%;border-radius:6px;border:1px solid var(--line)}
 .tagline{display:inline-block;margin:6px 0 0;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;font-size:.85rem;letter-spacing:.02em}
 .strip{margin:10px 0;padding:12px 14px;border-radius:12px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);font-size:1.02rem}
 .strip b{font-size:1.25rem}.strip .note{display:block;margin-top:4px}
@@ -370,6 +382,37 @@ function debunkCard(rep) {
   return c;
 }
 
+
+const SEGKIND = {matched_source: "Matched to a source (matcher proof)", ai_generated: "AI-generated look", animation: "Animation", graphic: "Graphic / screen", camera_unmatched: "Camera footage, no source found", unknown: "No source found"};
+function sourceMap(rep, ref) {
+  const sm = rep.source_map;
+  if (!Array.isArray(sm) || !sm.length) return null;
+  const total = Math.max(0.1, sm[sm.length - 1].end_s - sm[0].start_s), t0 = sm[0].start_s;
+  const detail = h("div", {class: "detail", "aria-live": "polite"}, "Select a segment to see its range, source and date.");
+  const bar = h("div", {class: "bar", role: "group", "aria-label": "Source map of the video timeline"});
+  const fmt = (x) => Number(x).toFixed(1) + " s";
+  const show = (sg, btn) => {
+    [...bar.children].forEach((b) => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
+    detail.replaceChildren(h("strong", {text: fmt(sg.start_s) + " to " + fmt(sg.end_s) + ": " + (SEGKIND[sg.kind] || sg.kind)}),
+      (sg.sources || []).map((so) => h("div", {class: "src"},
+        h("div", {}, link(so.url, so.platform + ": " + so.url.replace(/^https?:\/\/(www\.)?/, "").slice(0, 50))),
+        h("div", {class: "note", text: "Published " + (so.date || "date unknown") + " (" + (so.date_source || "?") + (so.date_independent ? ", independently verified" : ", NOT independently verified") + "); " + so.frames_matched + " matched frame(s)" + (so.copy_t_range ? "; copy at " + so.copy_t_range[0] + " to " + so.copy_t_range[1] + " s" : "")}),
+        so.proof ? h("div", {class: "pair2"}, img(ref, so.proof.viral_frame, "Frame from the video you checked", ""), img(ref, so.proof.copy_frame, "Matching frame from the source", "")) :
+          (so.evidence_png ? img(ref, so.evidence_png, "Side-by-side matched frames", "proof") : null))),
+      sg.kind === "matched_source" ? null : h("div", {class: "note", text: sg.kind === "unknown" || sg.kind === "camera_unmatched" ? "No source found: this does not mean none exists." : "AI observation (Muse per-frame label): a hypothesis, not proof."}));
+  };
+  sm.forEach((sg) => {
+    const b = h("button", {type: "button", class: "seg k-" + sg.kind, "aria-pressed": "false", style: "flex:" + Math.max(0.5, (sg.end_s - sg.start_s) / total * 100) + " 1 0",
+      "aria-label": fmt(sg.start_s) + " to " + fmt(sg.end_s) + ": " + (SEGKIND[sg.kind] || sg.kind), title: fmt(sg.start_s) + " to " + fmt(sg.end_s) + ": " + (SEGKIND[sg.kind] || sg.kind)});
+    b.onclick = () => show(sg, b); bar.append(b);
+  });
+  const kinds = [...new Set(sm.map((x) => x.kind))];
+  return h("section", {class: "smap card", "aria-label": "Source map"}, h("h2", {text: "Source map: where each part of this video comes from"}),
+    h("div", {class: "note", text: "A segment gets a source only when the frame matcher proved it. Colours for AI / animation / graphic are Muse observations."}),
+    bar, h("div", {class: "scale"}, h("span", {text: fmt(t0)}), h("span", {text: fmt(sm[sm.length - 1].end_s)})),
+    h("div", {class: "legend"}, kinds.map((k) => h("span", {}, h("i", {class: "k-" + k}), SEGKIND[k] || k))), detail);
+}
+
 function render(rep, ref) {
   const out = $("#out"); out.replaceChildren();
   const v = rep.visual_matching, fv = rep.final_verdict, cl = rep.clues || {}, ph = rep.physical_world_check || {}, mem = rep.memory || {}, cm = rep.claim || {};
@@ -402,6 +445,7 @@ function render(rep, ref) {
   }
   out.append(banner);
 
+  const smp = sourceMap(rep, ref); if (smp) out.append(smp);
   const dc = debunkCard(rep); if (dc) out.append(dc);
 
   // media nature: AI observation chip right under the verdict (never changes the label)
