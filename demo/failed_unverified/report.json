@@ -588,5 +588,105 @@
       "ne"
     ],
     "cost_usd": 0.00278
-  }
+  },
+  "disclosure": {
+    "type": "none",
+    "evidence": []
+  },
+  "claim_presence": {
+    "value": "asserts_real_event",
+    "reason": "the post presents the video together with a claim about an event"
+  },
+  "signals": {
+    "agree": [
+      {
+        "key": "no_earlier_copy",
+        "label": "No earlier copy proven",
+        "detail": "the frame matcher found no earlier copy (absence of evidence, not proof)",
+        "field": "visual_matching.status"
+      }
+    ],
+    "against": [],
+    "count": 1,
+    "needed": 3,
+    "qualifies": false,
+    "note": "Context only: these signals never change the label. Real events are what fakes get attached to, so signals that agree with a claim do not prove the footage is genuine."
+  },
+  "headline": {
+    "tone": "unverified",
+    "sentence": "We could not verify this video from the available evidence. That does not mean it is fake, and it does not mean it is genuine.",
+    "facts": [
+      {
+        "text": "No matcher-proven earlier copy among 14 candidates checked",
+        "field": "visual_matching.candidates_checked"
+      },
+      {
+        "text": "Claimed event date 2025-08-05 (from None)",
+        "field": "claim.event_date_basis"
+      },
+      {
+        "text": "Physical-world check: Insufficient corroboration — this does not show the event didn't happen",
+        "field": "physical_world_check.verdict"
+      }
+    ]
+  },
+  "source_map": [
+    {
+      "start_s": 0.0,
+      "end_s": 75.0,
+      "kind": "unknown",
+      "sources": [],
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "basis": "no source found"
+    }
+  ]
 }

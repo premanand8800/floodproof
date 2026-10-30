@@ -1019,5 +1019,229 @@
       "claim_date_basis": "user"
     }
   },
-  "timing_s": 75.7
+  "timing_s": 75.7,
+  "disclosure": {
+    "type": "none",
+    "evidence": []
+  },
+  "claim_presence": {
+    "value": "asserts_real_event",
+    "reason": "the post presents the video together with a claim about an event"
+  },
+  "signals": {
+    "agree": [],
+    "against": [
+      "a proven earlier copy exists"
+    ],
+    "count": 0,
+    "needed": 3,
+    "qualifies": false,
+    "note": "Context only: these signals never change the label. Real events are what fakes get attached to, so signals that agree with a claim do not prove the footage is genuine."
+  },
+  "headline": {
+    "tone": "recycled",
+    "sentence": "This footage was already published on 2026-08-21, before the claimed event date 2026-08-26.",
+    "facts": [
+      {
+        "text": "Earliest copy found: instagram.com, dated 2026-08-21 (date from yt-dlp live metadata)",
+        "field": "visual_matching.earliest_proven_copy"
+      },
+      {
+        "text": "The frame matcher links the two: 32 consistent frames, up to 166 inliers",
+        "field": "visual_matching.proven_matches"
+      },
+      {
+        "text": "Recycled does not mean fake, and the claimed event itself may be real",
+        "field": "final_verdict.label"
+      }
+    ]
+  },
+  "source_map": [
+    {
+      "start_s": 0.0,
+      "end_s": 35.5,
+      "kind": "unknown",
+      "sources": [],
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "basis": "no source found"
+    },
+    {
+      "start_s": 35.5,
+      "end_s": 37.0,
+      "kind": "matched_source",
+      "sources": [
+        {
+          "url": "https://www.instagram.com/reel/DcUFQZhvGzS/",
+          "date": "2026-08-21",
+          "date_source": "yt-dlp live metadata",
+          "date_independent": true,
+          "platform": "Instagram",
+          "frames_matched": 1,
+          "copy_t_range": [
+            36.666666666666664,
+            36.666666666666664
+          ],
+          "best_pair": {
+            "a_frame": 23,
+            "b_frame": 24,
+            "inliers": 166
+          },
+          "evidence_png": "evidence/memory_3.png",
+          "proof": {
+            "viral_frame": "evidence/proof_memory_3_viral.jpg",
+            "copy_frame": "evidence/proof_memory_3_copy.jpg",
+            "viral_t": 36.33,
+            "copy_t": 36.67
+          }
+        }
+      ],
+      "frames": [
+        23
+      ],
+      "basis": "matcher proof"
+    },
+    {
+      "start_s": 37.0,
+      "end_s": 50.34,
+      "kind": "unknown",
+      "sources": [],
+      "frames": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "basis": "no source found"
+    },
+    {
+      "start_s": 50.34,
+      "end_s": 52.67,
+      "kind": "matched_source",
+      "sources": [
+        {
+          "url": "https://www.instagram.com/reel/DcUFQZhvGzS/",
+          "date": "2026-08-21",
+          "date_source": "yt-dlp live metadata",
+          "date_independent": true,
+          "platform": "Instagram",
+          "frames_matched": 1,
+          "copy_t_range": [
+            52.0,
+            52.0
+          ],
+          "best_pair": {
+            "a_frame": 32,
+            "b_frame": 33,
+            "inliers": 161
+          },
+          "evidence_png": "evidence/memory_3.png",
+          "proof": {
+            "viral_frame": "evidence/proof_memory_3_viral.jpg",
+            "copy_frame": "evidence/proof_memory_3_copy.jpg",
+            "viral_t": 36.33,
+            "copy_t": 36.67
+          }
+        }
+      ],
+      "frames": [
+        32
+      ],
+      "basis": "matcher proof"
+    },
+    {
+      "start_s": 52.67,
+      "end_s": 57.17,
+      "kind": "unknown",
+      "sources": [],
+      "frames": [
+        33,
+        34,
+        35
+      ],
+      "basis": "no source found"
+    },
+    {
+      "start_s": 57.17,
+      "end_s": 58.34,
+      "kind": "matched_source",
+      "sources": [
+        {
+          "url": "https://www.instagram.com/reel/DcUFQZhvGzS/",
+          "date": "2026-08-21",
+          "date_source": "yt-dlp live metadata",
+          "date_independent": true,
+          "platform": "Instagram",
+          "frames_matched": 1,
+          "copy_t_range": [
+            57.666666666666664,
+            57.666666666666664
+          ],
+          "best_pair": {
+            "a_frame": 36,
+            "b_frame": 36,
+            "inliers": 164
+          },
+          "evidence_png": "evidence/memory_3.png",
+          "proof": {
+            "viral_frame": "evidence/proof_memory_3_viral.jpg",
+            "copy_frame": "evidence/proof_memory_3_copy.jpg",
+            "viral_t": 36.33,
+            "copy_t": 36.67
+          }
+        }
+      ],
+      "frames": [
+        36
+      ],
+      "basis": "matcher proof"
+    },
+    {
+      "start_s": 58.34,
+      "end_s": 75.0,
+      "kind": "unknown",
+      "sources": [],
+      "frames": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "basis": "no source found"
+    }
+  ]
 }

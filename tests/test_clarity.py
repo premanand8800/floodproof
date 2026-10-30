@@ -450,3 +450,19 @@ def test_ui_has_source_map():
     html = STATIC.read_text()
     for needle in ("function sourceMap", "AI observation (Muse per-frame label)", "No source found"):
         assert needle in html
+
+
+def test_reconstructed_is_not_a_disclosure_and_snippets_keep_whole_words():
+    assert detect_disclosure("Nepal flood reconstructed minute by minute | FRANCE 24", "", [])["type"] == "none"
+    d = detect_disclosure("Nepal Before & After the Flash Flood | AI-Generated Video | A Tribute to Nepal", "", [])
+    assert not d["evidence"][0]["text"].startswith("al ")
+
+
+def test_specific_place_suffix_is_stripped_for_geocoding(monkeypatch):
+    def geo(place, cc=None):
+        return dict(name="Kamaishi, Japan", lat=39.27, lon=141.8, confidence="high", country_level=False) if place == "Kamaishi" else dict(lat=None, lon=None, confidence="low")
+    monkeypatch.setattr(P, "geocode", geo)
+    monkeypatch.setattr(pipeline, "run_physical", lambda place, lat, lon, *a: dict(status="OK", verdict="NO_EVIDENCE", location=dict(lat=lat, lon=lon), reasons=[], limits=[], links=[]))
+    clues = japan_clues(dict(audio=dict(status="ok", has_speech=True, spoken_dates=[], partial_dates=[], spoken_place_names=[dict(name="Northern Japan", audio_t=2.5), dict(name="Kamaishi City", audio_t=38.5)])))
+    res = pipeline._physical(dict(place="Japan", country_iso2="JP", event_type="tsunami", text="x"), clues, "2011-03-11")
+    assert res["location"]["lat"] == 39.27 and res["location"]["query"] == "Kamaishi City"

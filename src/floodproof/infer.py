@@ -227,13 +227,21 @@ DISCLOSURE_PATTERNS = (
         r"\banimat(?:ion|ed)\b|\b[23]d\s+(?:animation|render(?:ing)?)\b|\bcgi\b|\bmotion graphics\b|#\s?animation\b", re.I)),
     ("reenactment", re.compile(
         r"\bre-?enact(?:ment|ed|ing)?\b|\billustrat(?:ive|ion|ed)\b|\bsimulat(?:ion|ed)\b|\bdramati[sz](?:ation|ed)\b|"
-        r"\bartist(?:'s|s')?\s+(?:impression|rendering|concept)\b|\brecreat(?:ion|ed)\b|\breconstruct(?:ion|ed)\b", re.I)),
+        r"\bartist(?:'s|s')?\s+(?:impression|rendering|concept)\b|\brecreat(?:ion|ed)\b", re.I)),
 )
 DISCLOSURE_PRIORITY = ("ai_generated", "animation", "reenactment")
 
 
 def _snip(text, m, width=40):
     a, b = max(0, m.start() - width), min(len(text), m.end() + width)
+    while a > 0 and not text[a - 1].isspace():      # never cut a word in half
+        a += 1
+        if a >= m.start():
+            a = m.start(); break
+    while b < len(text) and not text[b].isspace():
+        b -= 1
+        if b <= m.end():
+            b = m.end(); break
     return re.sub(r"\s+", " ", text[a:b]).strip()
 
 

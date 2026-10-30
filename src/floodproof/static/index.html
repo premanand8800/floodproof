@@ -65,6 +65,7 @@ input[type=text],input[type=url],input[type=date],textarea{width:100%;background
 .not-mean{margin-top:10px;padding:10px 12px;border-radius:8px;background:var(--card);color:var(--ink);border:1px dashed var(--line);font-size:.95rem}
 .limits{margin:6px 0 0;padding-left:20px;color:var(--ink);font-size:.92rem}
 .limits-h{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);margin-top:12px}
+.note,.card p,.card li,.card dd{overflow-wrap:anywhere}
 .note{color:var(--mute);font-size:.9rem}
 .src{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
 .src:first-of-type{border-top:0;margin-top:0;padding-top:0}
@@ -90,7 +91,7 @@ footer{color:var(--mute);font-size:.82rem;margin-top:30px}
 .hl{font-size:clamp(1.15rem,3.6vw,1.5rem);font-weight:800;line-height:1.3;margin:10px 0 6px;color:var(--ink)}
 ul.facts{margin:4px 0 8px;padding-left:20px;font-size:1rem}
 ul.facts li{margin:3px 0}
-code.cite{font-size:.72rem;color:var(--mute);white-space:nowrap}
+code.cite{font-size:.72rem;color:var(--mute)}
 .lim1{font-size:.88rem;color:var(--mute);margin:8px 0 2px}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 0}
 .sig-ok::marker{content:"\2713  "}.sig-no::marker{content:"\2717  "}
@@ -106,6 +107,7 @@ code.cite{font-size:.72rem;color:var(--mute);white-space:nowrap}
 .smap .scale{display:flex;justify-content:space-between;font-size:.72rem;color:var(--mute)}
 .smap .pair2{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
 .smap .pair2 img{width:100%;border-radius:6px;border:1px solid var(--line)}
+code{white-space:normal;word-break:break-word}
 .tagline{display:inline-block;margin:6px 0 0;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;font-size:.85rem;letter-spacing:.02em}
 .strip{margin:10px 0;padding:12px 14px;border-radius:12px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);font-size:1.02rem}
 .strip b{font-size:1.25rem}.strip .note{display:block;margin-top:4px}
@@ -393,13 +395,13 @@ function sourceMap(rep, ref) {
   const fmt = (x) => Number(x).toFixed(1) + " s";
   const show = (sg, btn) => {
     [...bar.children].forEach((b) => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
-    detail.replaceChildren(h("strong", {text: fmt(sg.start_s) + " to " + fmt(sg.end_s) + ": " + (SEGKIND[sg.kind] || sg.kind)}),
+    detail.replaceChildren(...[h("strong", {text: fmt(sg.start_s) + " to " + fmt(sg.end_s) + ": " + (SEGKIND[sg.kind] || sg.kind)}),
       (sg.sources || []).map((so) => h("div", {class: "src"},
         h("div", {}, link(so.url, so.platform + ": " + so.url.replace(/^https?:\/\/(www\.)?/, "").slice(0, 50))),
         h("div", {class: "note", text: "Published " + (so.date || "date unknown") + " (" + (so.date_source || "?") + (so.date_independent ? ", independently verified" : ", NOT independently verified") + "); " + so.frames_matched + " matched frame(s)" + (so.copy_t_range ? "; copy at " + so.copy_t_range[0] + " to " + so.copy_t_range[1] + " s" : "")}),
         so.proof ? h("div", {class: "pair2"}, img(ref, so.proof.viral_frame, "Frame from the video you checked", ""), img(ref, so.proof.copy_frame, "Matching frame from the source", "")) :
           (so.evidence_png ? img(ref, so.evidence_png, "Side-by-side matched frames", "proof") : null))),
-      sg.kind === "matched_source" ? null : h("div", {class: "note", text: sg.kind === "unknown" || sg.kind === "camera_unmatched" ? "No source found: this does not mean none exists." : "AI observation (Muse per-frame label): a hypothesis, not proof."}));
+      sg.kind === "matched_source" ? null : h("div", {class: "note", text: sg.kind === "unknown" || sg.kind === "camera_unmatched" ? "No source found: this does not mean none exists." : "AI observation (Muse per-frame label): a hypothesis, not proof."})].flat().filter(Boolean));
   };
   sm.forEach((sg) => {
     const b = h("button", {type: "button", class: "seg k-" + sg.kind, "aria-pressed": "false", style: "flex:" + Math.max(0.5, (sg.end_s - sg.start_s) / total * 100) + " 1 0",

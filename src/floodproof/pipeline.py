@@ -1,6 +1,7 @@
 """investigate(): the end-to-end entry point used by the CLI and the web app."""
 from __future__ import annotations
 
+import re
 import time
 import uuid
 import os
@@ -61,10 +62,14 @@ def _physical(claim_d, clues, date):
         for cand, label in infer.fallback_places(claim_d, clues, cn)[:6]:
             if cn and infer._norm(cn) in infer._norm(cand):
                 continue                              # "northern Japan" is still a region of the country, not a place
-            try:
-                g = ph.geocode(cand, cc)
-            except Exception:
-                continue
+            g = {}
+            for q in dict.fromkeys([cand, re.sub(r"\s+(?:city|town|village|prefecture|district|province|municipality)$", "", cand, flags=re.I).strip()]):
+                try:
+                    g = ph.geocode(q, cc)
+                except Exception:
+                    continue
+                if g.get("lat") is not None:
+                    break
             if g.get("lat") is None or g.get("country_level"):
                 continue
             r2 = run_physical(cand, g["lat"], g["lon"], date, 3, et, cc)
