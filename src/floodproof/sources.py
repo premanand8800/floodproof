@@ -270,18 +270,65 @@ def lens_candidates(image_url: str | None, max_links=30, key=None):
     return [Candidate(u, t, "lens", "google lens best keyframe") for u, t in list(seen.items())[:max_links]], info
 
 
-def merge_and_prioritize(cands):
-    """Dedupe by URL (remember every adapter that proposed it) and order for the verify budget: already proven first,
-    then URLs proposed by several sources, then video-platform URLs. Stable otherwise."""
+def norm_url(u):
+    """Normalised URL key for de-duplication: scheme/www/tracking/trailing-slash/fragment removed, youtu.be and shorts -> watch?v=."""
+    from urllib.parse import urlparse, parse_qsl
+    try:
+        p = urlparse(u.strip())
+    except Exception:
+        return u
+    host = p.netloc.lower().removeprefix("www.").removeprefix("m.")
+    path = p.path.rstrip("/")
+    q = [(k, v) for k, v in parse_qsl(p.query) if not k.startswith("utm_") and k not in ("si", "feature", "fbclid", "igshid", "igsh")]
+    if host == "youtu.be" and path:
+        return f"youtube.com/watch?v={path.lstrip('/')}"
+    if host.endswith("youtube.com"):
+        m = re.match(r"/(?:shorts|embed|live)/([\w-]{11})", path)
+        if m:
+            return f"youtube.com/watch?v={m[1]}"
+        v = dict(q).get("v")
+        if v:
+            return f"youtube.com/watch?v={v}"
+    return host + path + ("?" + "&".join(f"{k}={v}" for k, v in sorted(q)) if q else "")
+
+
+SOURCE_ORDER = ("gvision", "yandex", "lens", "youtube_api", "tavily")
+
+
+def merge_and_prioritize(cands, max_n=None, min_slots=2):
+    """Dedupe by normalised URL (remember every adapter that proposed it) and order for the verify budget so no single source
+    can fill it: already-proven first; then URLs proposed by several sources (capped so the guaranteed slots below still fit);
+    then, when a budget `max_n` is given, a guaranteed layer of up to `min_slots` per source that has candidates; then the rest
+    round-robin across sources, video-platform URLs before other links. Within a source the order of proposal is kept."""
     uniq = {}
     for c in cands:
-        k = uniq.get(c.url)
+        k = uniq.get(norm_url(c.url))
         if k is None:
-            uniq[c.url] = c
+            uniq[norm_url(c.url)] = c
         elif c.adapter != k.adapter and c.adapter not in k.also_from:
             k.also_from.append(c.adapter)
-    out = list(uniq.values())
-    out.sort(key=lambda c: (not c.proven, -len(c.also_from), not any(h in c.url for h in VIDEO_HOSTS)))
+    allc = list(uniq.values())
+    proven = [c for c in allc if c.proven]
+    rest = [c for c in allc if not c.proven]
+    vid = lambda c: any(h in c.url for h in VIDEO_HOSTS)
+    srcs = [a for a in SOURCE_ORDER if any(c.adapter == a for c in rest)] + sorted({c.adapter for c in rest} - set(SOURCE_ORDER))
+    multi = sorted((c for c in rest if c.also_from), key=lambda c: (-len(c.also_from), not vid(c)))
+    if max_n:
+        multi = multi[:max(0, max_n - len(proven) - min_slots * len(srcs))]
+    taken = {id(c) for c in multi}
+    per = {a: sorted((c for c in rest if c.adapter == a and id(c) not in taken), key=lambda c: not vid(c)) for a in srcs}   # stable sort
+    out = proven + multi
+    if max_n:
+        for a in srcs:
+            g = per[a][:min_slots]
+            out += g; taken |= {id(c) for c in g}
+    left = {a: [c for c in per[a] if id(c) not in taken] for a in srcs}
+    for tier in (True, False):                       # video-platform URLs first, round-robin across sources
+        lists = {a: [c for c in left[a] if vid(c) == tier] for a in srcs}
+        while any(lists.values()):
+            for a in srcs:
+                if lists[a]:
+                    out.append(lists[a].pop(0))
     return out
 
 
@@ -354,25 +401,34 @@ def yandex_candidates(feats: ClipFeatures, n_frames=3, workdir: Path | None = No
 
 
 # ---------------------------------------------------------------- tavily
-def tavily_candidates(queries, per_query=6, max_queries=6, max_links=30):
+def tavily_candidates(queries, per_query=6, max_queries=6, max_links=30, label="query"):
     load_env()
     key = os.environ.get("TAVILY_API_KEY")
     info = dict(queries=0, errors=[])
     if not key:
         return [], dict(info, errors=["TAVILY_API_KEY missing"])
     seen = {}
-    for q in queries[:max_queries]:
-        for kw in ({"include_domains": ["youtube.com"]}, {"include_domains": ["instagram.com", "facebook.com", "x.com", "tiktok.com"]}, {"topic": "news"}):
-            try:
-                r = requests.post("https://api.tavily.com/search", json={"query": q, "max_results": per_query, **kw},
-                                  headers={"Authorization": f"Bearer {key}"}, timeout=60).json()
-                info["queries"] += 1
-            except Exception as e:
-                info["errors"].append(str(e)[:100]); continue
+    kws = ({"include_domains": ["youtube.com"]}, {"include_domains": ["instagram.com", "facebook.com", "x.com", "tiktok.com"]}, {"topic": "news"})
+    jobs = [(q, kw) for q in queries[:max_queries] for kw in kws]
+
+    def one(job):
+        q, kw = job
+        try:
+            r = requests.post("https://api.tavily.com/search", json={"query": q, "max_results": per_query, **kw},
+                              headers={"Authorization": f"Bearer {key}"}, timeout=60).json()
+            return q, r, None
+        except Exception as e:
+            return q, None, str(e)[:100]
+    with cf.ThreadPoolExecutor(6) as ex:            # independent HTTP calls; results are merged in the original job order
+        for q, r, err in ex.map(one, jobs):
+            if err:
+                info["errors"].append(err); continue
+            info["queries"] += 1
             for x in r.get("results", []):
                 seen.setdefault(_clean_url(x["url"]), (x.get("title", ""), q))
     items = sorted(seen.items(), key=lambda kv: not any(h in kv[0] for h in VIDEO_HOSTS))[:max_links]
-    return [Candidate(u, t, "tavily", f"query: {q[:60]}") for u, (t, q) in items], info
+    info["query_source"] = label
+    return [Candidate(u, t, "tavily", f"{label}: {q[:60]}") for u, (t, q) in items], info
 
 
 def tavily_search(query, site=None, after=None, before=None, max_results=8):

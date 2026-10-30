@@ -25,7 +25,7 @@ def _proven_entry(c: sources.Candidate, out_dir: Path):
         except ValueError:
             pass
     return dict(url=c.url, title=c.title, uploader=c.uploader, upload_date=c.upload_date, date_source=c.date_source,
-                retrieved_at=c.retrieved_at, adapter=c.adapter, found_via=c.hint, match=c.match, evidence_png=ev,
+                retrieved_at=c.retrieved_at, adapter=c.adapter, found_via=c.hint, also_found_by=list(c.also_from), match=c.match, evidence_png=ev,
                 stored_date=c.stored_date, stored_date_source=("memory entry (inherited)" if c.stored_date else None), independent_date=c.independent_date, independent_date_source=c.independent_date_source,
                 date_independent=bool(c.date_independent), date_note=c.date_note,
                 date_alternatives=list(c.date_alternatives or []),
@@ -103,6 +103,27 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
     stage["fetch_and_keyframes"] = round(time.time() - t0, 1); t_mark[0] = time.time()
     memory_layer = dict(status="NOT_RUN")
     cands: list[sources.Candidate] = []
+
+    def _muse():
+        t = time.time()
+        try:
+            r = investigator.investigate_clip(clip, feats, claim, date, frames_dir=out / "frames",
+                                              post_text=(clip.title if (clip.url and not claim) else None) and
+                                              ((clip.title or "") + (" | " + clip.description[:500] if clip.description else "")))
+        except Exception as e:
+            r = dict(status="error", error=str(e)[:200])
+        stage["muse"] = round(time.time() - t, 1)
+        return r
+    pool = ThreadPoolExecutor(2)
+    muse_fut = None
+    if use_muse:
+        log("[3/6] Muse Spark clues (in parallel with the memory lookup)")
+        muse_fut = pool.submit(_muse)
+    early_phys = None
+    if not use_muse and date and place:          # claim fully user-given and no Muse to wait for: the physical check can start now
+        ce = infer.infer_claim(clip, claim, date, place, dict(status="not_run"))
+        ce["country_iso2"], ce["event_type"] = ce.get("country_iso2"), "unknown"
+        early_phys = pool.submit(_physical, ce, dict(status="not_run"), date)
     if use_memory and mem is not None:
         log("[2/6] memory lookup")
         mc, res = sources.memory_candidates(mem, feats, evidence_dir=ev_dir)
@@ -114,15 +135,8 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
                                        context=(c.memory_entry or {}).get("event_context")) for c in mc],
                             note="memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching")
 
-    clues = dict(status="not_run")
-    if use_muse:
-        log("[3/6] Muse Spark clues")
-        try:
-            clues = investigator.investigate_clip(clip, feats, claim, date, frames_dir=out / "frames",
-                                                  post_text=(clip.title if (clip.url and not claim) else None) and
-                                                  ((clip.title or "") + (" | " + clip.description[:500] if clip.description else "")))
-        except Exception as e:
-            clues = dict(status="error", error=str(e)[:200])
+    stage["memory"] = round(time.time() - t_mark[0], 1)
+    clues = muse_fut.result() if muse_fut else dict(status="not_run")
     cp = (clues.get("claim_parsed") or {}) if clues.get("status") == "ok" else {}
     claim_d = infer.infer_claim(clip, claim, date, place, clues)
     claim, date, place = claim_d["text"], claim_d["event_date"], claim_d["place"]
@@ -132,13 +146,17 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
 
     web = {}
     claim_queries = [q["q"] for q in clues["queries"]] if clues.get("status") == "ok" else ([claim] if claim else [])
-    stage["memory_muse_claim"] = round(time.time() - t_mark[0], 1); t_mark[0] = time.time()
+    stage["memory_muse_wait_claim"] = round(time.time() - t_mark[0], 1); t_mark[0] = time.time()
 
     # Real camera clips are the ones worth tracing to earlier copies (AI-generated shots have no original): when Muse labelled any
     # frame camera_footage, reverse-search keyframes are picked only among those.
     cam = set(investigator.camera_frame_ids(clues, len(feats)))
     cam_note = f"{len(cam)} of {len(feats)} keyframes are near frames labelled camera_footage" if cam else None
     pick = lambda n: sources._spread_frames(feats, n, cam or None)
+
+    def _drop_self():
+        if self_url:
+            cands[:] = [c for c in cands if c.url != sources._clean_url(self_url)]
 
     def _timed(name, fn):
         t = time.time()
@@ -152,46 +170,78 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
         url = sources.public_frame_url(best, out, ROOT / "runs") if best else None
         return sources.lens_candidates(url)
 
+    phys_fut = early_phys or pool.submit(_physical, claim_d, clues, date)       # context only and independent of discovery: overlap it with the search
+    mem_proven = [c for c in cands if c.proven and c.stored_date]
+    stop_date = sources_stop_date(claim_d)
+    fast_path = bool(stop_date and any(c.stored_date < stop_date for c in mem_proven))
     jobs = []
-    if use_gvision:
+    if fast_path:
+        log("fast path: memory proved a copy dated before the claim; skipping external search")
+        web["fast_path"] = dict(skipped="memory hit dated before the claim")
+    if use_gvision and not fast_path:
         jobs.append(("gvision", lambda: sources.gvision_candidates(feats, frames=pick(4) if cam else None)))
-    if use_yandex:
+    if use_yandex and not fast_path:
         jobs.append(("yandex", lambda: sources.yandex_candidates(feats, frames=pick(3) if cam else None)))
-    if use_lens and not any(c.proven for c in cands):     # a copy already proven by memory makes the Lens quota pointless
+    if fast_path:
+        pass
+    elif use_lens and not any(c.proven for c in cands):     # a copy already proven by memory makes the Lens quota pointless
         jobs.append(("lens", _lens))
     elif use_lens:
         web["lens"] = dict(skipped="not needed (a copy is already proven)")
-    if use_youtube:
+    if use_youtube and not fast_path:
         jobs.append(("youtube_api", lambda: sources.youtube_api_candidates(claim_queries, date)))
-    if use_tavily and clues.get("status") == "ok":
-        jobs.append(("tavily", lambda: sources.tavily_candidates(claim_queries)))
+    if use_tavily and claim_queries and not fast_path:       # Muse queries when Muse worked, else the plain claim text (labelled)
+        qlabel = "muse query" if clues.get("status") == "ok" else "claim text (Muse unavailable)"
+        jobs.append(("tavily", lambda: sources.tavily_candidates(claim_queries, label=qlabel)))
     log(f"[4/6] discovery in parallel: {', '.join(n for n, _ in jobs)}")
     disc_t = {}
-    results = {}
-    if jobs:
-        with ThreadPoolExecutor(len(jobs)) as ex:
-            for name, res, err, secs in ex.map(lambda j: _timed(*j), jobs):
-                results[name], disc_t[name] = (res, err), secs
-    for name in ("gvision", "yandex", "lens", "youtube_api", "tavily"):      # reverse-image sources first, then text search
-        if name not in results:
-            continue
-        res, err = results[name]
+    ex = ThreadPoolExecutor(max(1, len(jobs)))
+    futs = {name: ex.submit(_timed, name, fn) for name, fn in jobs}
+
+    def absorb(name):
+        _, res, err, secs = futs[name].result()
+        disc_t[name] = secs
         if err is not None:
             web[name] = dict(status="error", error=(str(err)[:150] if name == "yandex" else type(err).__name__))
         else:
-            cs, info = res; cands += cs; web[name] = info
-    _drop_self()
-    stage["discovery"] = round(time.time() - t_mark[0], 1); stage["discovery_by_source"] = disc_t; t_mark[0] = time.time()
+            cs, info = res; cands.extend(cs); web[name] = info
+        _drop_self()
 
-    todo = sources.merge_and_prioritize(cands)
-    n = min(max_verify, sum(1 for c in todo if not c.proven and c.status == "pending"))
-    vinfo = {}
-    if n > 0:
-        log(f"verifying up to {n} candidates with the matcher ({VERIFY_WORKERS} workers)")
+    stop_ref = sources_stop_date(claim_d)
+    vinfo = dict(checked=0, seconds=0.0, early_stop=False, skipped_lower_priority=0)
+
+    def _verify_pass(max_n, label):
+        todo = sources.merge_and_prioritize([c for c in cands if c.proven or c.status == "pending"], max_n=max_n)
+        n = min(max_n, sum(1 for c in todo if not c.proven and c.status == "pending"))
+        if n <= 0 or fast_path:
+            return
+        log(f"verifying up to {n} candidates with the matcher ({label}; {VERIFY_WORKERS} workers)")
+        vi = {}
         sources.verify_candidates(todo, feats, query_date=clip.upload_date, self_url=self_url, evidence_dir=ev_dir, max_n=n,
-                                  workers=VERIFY_WORKERS, stop_before=sources_stop_date(claim_d), info=vinfo)
-    uniq = todo
-    stage["verify"] = round(time.time() - t_mark[0], 1); t_mark[0] = time.time()
+                                  workers=VERIFY_WORKERS, stop_before=stop_ref, info=vi)
+        vinfo["checked"] += vi.get("checked", 0); vinfo["seconds"] = round(vinfo["seconds"] + vi.get("seconds", 0), 1)
+        vinfo["early_stop"] = vinfo["early_stop"] or vi.get("early_stop", False)
+        vinfo["skipped_lower_priority"] += vi.get("skipped_lower_priority", 0)
+
+    # Yandex (scripted browser, ~1 min) is the slow source: verify the fast sources' candidates while it is still running,
+    # then the rest of the budget once its candidates are in.
+    slow = [n for n in ("yandex",) if n in futs]
+    for name in ("gvision", "lens", "youtube_api", "tavily"):
+        if name in futs:
+            absorb(name)
+    if slow and cands and not futs["yandex"].done() and not fast_path:
+        _verify_pass(max(2, max_verify // 2), "fast sources, while Yandex is still searching")
+    if slow and vinfo["early_stop"] and not futs["yandex"].done():
+        web["yandex"] = dict(skipped="not waited for: an earlier independently dated copy was already proven")
+    else:
+        for name in slow:
+            absorb(name)
+    ex.shutdown(wait=False)
+    stage["discovery"] = round(time.time() - t_mark[0], 1); stage["discovery_by_source"] = disc_t; t_mark[0] = time.time()
+    if not vinfo["early_stop"]:
+        _verify_pass(max_verify - vinfo["checked"], "final")
+    uniq = sources.merge_and_prioritize(cands)
+    stage["verify_total_incl_overlap"] = round(time.time() - t_mark[0], 1)
     log(f"checked {len([c for c in uniq if c.status != 'pending'])} of {len(uniq)} candidates"
         + (" (stopped early: independently dated earlier copy proven)" if vinfo.get("early_stop") else ""))
 
@@ -221,15 +271,19 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
                   early_stop=(dict(stopped=True, skipped_lower_priority=vinfo.get("skipped_lower_priority"),
                                    reason="a matcher-proven copy with an independently fetched upload date before the claimed date was found, and every remaining candidate was in a lower priority tier")
                               if vinfo.get("early_stop") else dict(stopped=False)),
+                  proven_by_source={a: [c.url for c in proven if a == c.adapter or a in c.also_from] for a in sorted({x for c in proven for x in [c.adapter] + list(c.also_from)})},
+                  fast_path="memory_hit" if fast_path else None,
                   keyframe_selection=dict(preferred="camera_footage" if cam else None, note=cam_note))
 
-    phys_place = claim_d.get("place")
-    physical = _physical(claim_d, clues, date)
+    physical = phys_fut.result()
+    pool.shutdown(wait=False)
     rep = build_report(input_meta=input_meta, claim=claim_d, memory=memory_layer, visual=visual, clues=clues,
                        physical=physical, investigation_id=inv_id)
-    stage["dates_physical_report"] = round(time.time() - t_mark[0], 1)
+    stage["dates_physical_report_wait"] = round(time.time() - t_mark[0], 1)
+    if fast_path:
+        rep["fast_path"] = "memory_hit"
     rep["timing_s"] = round(time.time() - t0, 1)
-    rep["stage_timings_s"] = dict(stage, verify_workers=VERIFY_WORKERS, verify=vinfo.get("seconds", stage.get("verify")))
+    rep["stage_timings_s"] = dict(stage, verify_workers=VERIFY_WORKERS, verify_seconds=vinfo.get("seconds"), verify_checked=vinfo.get("checked"))
     validate_report(rep)
     write_report(rep, out)
     if remember and mem is not None:

@@ -133,7 +133,7 @@ def analyze_audio(clip: Clip, workdir: Path | None = None) -> dict:
               "\"partial_dates\": [{\"month\": int 1-12, \"day\": int, \"text\": str, \"audio_t\": float}], \"other_sounds\": [str]}. "
               "spoken_dates: only full calendar dates (with year) that the speaker says. partial_dates: dates spoken with a day and month but NO year "
               "(e.g. 'August 26'). Place names include countries and borders (e.g. 'Nepal', 'Nepal-China border'). audio_t = seconds from the start of the audio. "
-              "If it is only music or noise, has_speech=false. Never invent words.")
+              "transcript_summary must mention every date and place the speaker names. If it is only music or noise, has_speech=false. Never invent words.")
     strict = ("Reply with ONE JSON object and nothing else: no prose, no markdown, no thinking. Keep transcript_summary under 60 words. "
               "Keys: has_speech, language, transcript_summary, spoken_place_names [{name, audio_t}], spoken_dates [{date, text, audio_t}], partial_dates [{month, day, text, audio_t}], other_sounds. "
               "Every place and date MUST have audio_t, a number of seconds from the start; omit any you cannot time. ")

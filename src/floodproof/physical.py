@@ -477,12 +477,16 @@ def check(place: str | None = None, lat: float | None = None, lon: float | None 
         reasons.append("location could not be resolved")
         return res
     la, lo = loc["lat"], loc["lon"]
-    ev = official_event(la, lo, day, window_days)
-    hy = hydrology(la, lo, day, window_days)
+    from concurrent.futures import ThreadPoolExecutor      # four independent network look-ups: run them at once
+    with ThreadPoolExecutor(4) as ex:
+        f_ev = ex.submit(official_event, la, lo, day, window_days)
+        f_hy = ex.submit(hydrology, la, lo, day, window_days)
+        f_rw = ex.submit(reliefweb, country, day, 7, event_type)
+        f_nw = ex.submit(news_coverage, place or loc.get("query"), day, window_days, event_type)
+        ev, hy, rw, nw = f_ev.result(), f_hy.result(), f_rw.result(), f_nw.result()
     res["official_event"], res["hydrology"] = ev, hy
-    rw = reliefweb(country, day, 7, event_type)
     ev["reliefweb"] = rw
-    res["news_coverage"] = news_coverage(place or loc.get("query"), day, window_days, event_type)
+    res["news_coverage"] = nw
     links.append("https://mapping.emergency.copernicus.eu/activations/")
     links.append(f"https://flood-api.open-meteo.com/v1/flood?latitude={la}&longitude={lo}"
                  f"&daily=river_discharge&start_date={day - timedelta(days=window_days)}"

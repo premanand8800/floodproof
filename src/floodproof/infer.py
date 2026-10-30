@@ -190,8 +190,11 @@ def _infer_place(out, src, cp, title, desc, screen, spoken_places, aud):
     spoken = [x.get("name") for x in spoken_places] + [aud.get("transcript_summary")]
     for part in re.split(r"[,;()]", cp.get("place") or ""):
         part = re.sub(r"^\s*(?:near|in|at|the|around|close to)\s+", "", part, flags=re.I).strip()
-        if len(part) >= 4 and place_in_text(part, *post_texts):
-            out["place"], src["place"], out["place_basis"] = part, "inferred_from_post", f"part of the claimed place stated in the post ({part!r})"
+        if re.search(r"\bborder\b", part, re.I):      # "Nepal-China border" names two countries: not one place, fall through to a country
+            continue
+        core = re.sub(r"\s+(?:district|valley|region|province|area|city|village|border|municipality|gorge)$", "", part, flags=re.I).strip()
+        if len(core) >= 4 and place_in_text(core, *post_texts):
+            out["place"], src["place"], out["place_basis"] = part, "inferred_from_post", f"part of the claimed place stated in the post ({core!r})"
             return
     iso = find_country(cp.get("country_iso2"), *post_texts)
     if iso:

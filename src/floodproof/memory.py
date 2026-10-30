@@ -204,8 +204,14 @@ class Memory:
             ids = [e for e, _, _ in self.shortlist(q, top_k, exclude)]
             mode = f"hash-shortlist(top_{top_k})+match"
         hits = []
-        for eid in ids:
-            m = match(q, self.features(eid), coarse=coarse)
+        feats = [(eid, self.features(eid)) for eid in ids]        # sqlite reads stay on this thread
+        if len(feats) > 1:                                          # matcher is CPU-bound but releases the GIL in OpenCV
+            from concurrent.futures import ThreadPoolExecutor
+            with ThreadPoolExecutor(min(3, len(feats))) as ex:
+                results = list(ex.map(lambda ef: match(q, ef[1], coarse=coarse), feats))
+        else:
+            results = [match(q, f, coarse=coarse) for _, f in feats]
+        for (eid, _), m in zip(feats, results):
             if m.decision:
                 ent = self.get(eid)
                 if evidence_dir:
