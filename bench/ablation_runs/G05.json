@@ -1,0 +1,1078 @@
+{
+ "schema_version": "1.2",
+ "investigation_id": "ad38a1f5a4",
+ "created_at": "2026-10-30T10:48:22+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a86ed53237bbce27c/data/global/G05.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/G05.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "G05.mp4",
+  "duration": 60.0,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   8.0,
+   11.84,
+   13.76,
+   16.0,
+   16.96,
+   17.92,
+   18.88,
+   19.84,
+   20.8,
+   21.44,
+   22.4,
+   23.36,
+   24.32,
+   25.28,
+   26.24,
+   27.2,
+   28.16,
+   29.12,
+   30.08,
+   31.04,
+   32.0,
+   32.96,
+   33.92,
+   34.88,
+   35.84,
+   36.8,
+   37.76,
+   38.72,
+   39.36,
+   40.32,
+   41.6,
+   42.88,
+   44.16,
+   45.44,
+   46.4,
+   47.36,
+   48.32,
+   48.96,
+   49.92,
+   50.88,
+   51.84,
+   52.8,
+   53.76,
+   55.04,
+   56.96,
+   58.24,
+   59.84
+  ]
+ },
+ "claim": {
+  "text": "CCTV footage of the February 2023 Turkey earthquake",
+  "event_date": "2023-02-06",
+  "place": "Turkey",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": null,
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 9.6,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/watch?v=mZSLSfafvyE",
+    "title": "Turkey earthquake 2020 CCTV viral footage ll earthquake in Turkey 2020 ll earthquake Greece 2020 - YouTube",
+    "uploader": "Jai jawan News",
+    "upload_date": "2020-10-31",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:46:19+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 0",
+    "match": {
+     "decision": true,
+     "consistent_frames": 40,
+     "max_inliers": 259,
+     "mirrored": false,
+     "temporal_offset": 0.0,
+     "n_pairs": 1423,
+     "score": 41.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 0,
+       "b_frame": 0,
+       "a_t": 0.0,
+       "b_t": 0.0,
+       "inliers": 259,
+       "flip": false
+      },
+      {
+       "a_frame": 21,
+       "b_frame": 17,
+       "a_t": 32.0,
+       "b_t": 31.628242704955998,
+       "inliers": 126,
+       "flip": false
+      },
+      {
+       "a_frame": 42,
+       "b_frame": 35,
+       "a_t": 52.8,
+       "b_t": 52.38427698008337,
+       "inliers": 114,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_77ab6352.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2020-10-31",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=-6YruoXMUM8",
+    "title": "\u0644\u062d\u0638\u0627\u062a \u0645\u0631\u0639\u0628\u0629 \u0644\u0644\u0632\u0644\u0632\u0627\u0644 \u0627\u0644\u0630\u064a \u0636\u0631\u0628 \u0648\u0644\u0627\u064a\u0629 \u0625\u0632\u0645\u064a\u0631 - YouTube",
+    "uploader": "\u0627\u0644\u062b\u0627\u0646\u064a\u0629 - Althania",
+    "upload_date": "2020-10-31",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:46:20+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 0",
+    "match": {
+     "decision": true,
+     "consistent_frames": 36,
+     "max_inliers": 102,
+     "mirrored": false,
+     "temporal_offset": 3.2560523854069245,
+     "n_pairs": 961,
+     "score": 37.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 42,
+       "b_frame": 29,
+       "a_t": 52.8,
+       "b_t": 56.05605238540692,
+       "inliers": 102,
+       "flip": false
+      },
+      {
+       "a_frame": 34,
+       "b_frame": 24,
+       "a_t": 45.44,
+       "b_t": 48.71537885874649,
+       "inliers": 94,
+       "flip": false
+      },
+      {
+       "a_frame": 21,
+       "b_frame": 14,
+       "a_t": 32.0,
+       "b_t": 35.36869971936389,
+       "inliers": 86,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_ab9167a3.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2020-10-31",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs",
+    "title": "Live Turkey Earthquake - YouTube",
+    "uploader": "LIVE TRADING",
+    "upload_date": "2020-10-30",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:46:20+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 0",
+    "match": {
+     "decision": true,
+     "consistent_frames": 40,
+     "max_inliers": 346,
+     "mirrored": false,
+     "temporal_offset": 16.96,
+     "n_pairs": 1388,
+     "score": 41.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 1,
+       "b_frame": 2,
+       "a_t": 8.0,
+       "b_t": 24.96,
+       "inliers": 346,
+       "flip": false
+      },
+      {
+       "a_frame": 45,
+       "b_frame": 31,
+       "a_t": 56.96,
+       "b_t": 75.2,
+       "inliers": 200,
+       "flip": false
+      },
+      {
+       "a_frame": 21,
+       "b_frame": 15,
+       "a_t": 32.0,
+       "b_t": 48.64,
+       "inliers": 194,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_b98db001.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2020-10-30",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?app=desktop&v=IM031BBdJJA",
+    "title": "\u0130zmir Deprem An\u0131 - 19 (2020) (Sallanma ve \u00c7\u0131\u011fl\u0131klar) #izmir #deprem #izmirdepremi #depremizmir - YouTube",
+    "uploader": "HaberiniAl",
+    "upload_date": "2020-10-31",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:46:31+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 0",
+    "match": {
+     "decision": true,
+     "consistent_frames": 40,
+     "max_inliers": 339,
+     "mirrored": false,
+     "temporal_offset": 16.96,
+     "n_pairs": 1422,
+     "score": 41.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 1,
+       "b_frame": 2,
+       "a_t": 8.0,
+       "b_t": 24.96,
+       "inliers": 339,
+       "flip": false
+      },
+      {
+       "a_frame": 45,
+       "b_frame": 31,
+       "a_t": 56.96,
+       "b_t": 73.6,
+       "inliers": 262,
+       "flip": false
+      },
+      {
+       "a_frame": 21,
+       "b_frame": 15,
+       "a_t": 32.0,
+       "b_t": 48.64,
+       "inliers": 209,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_958a18c4.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2020-10-31",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=npFx1QG9kCs",
+    "title": "\u0130zmir Deprem An\u0131ndan En Net G\u00f6r\u00fcnt\u00fcler - YouTube",
+    "uploader": "G\u00fcncel Haberler",
+    "upload_date": "2020-10-30",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:46:44+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 0",
+    "match": {
+     "decision": true,
+     "consistent_frames": 41,
+     "max_inliers": 324,
+     "mirrored": false,
+     "temporal_offset": 16.32,
+     "n_pairs": 1420,
+     "score": 42.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 1,
+       "b_frame": 2,
+       "a_t": 8.0,
+       "b_t": 24.32,
+       "inliers": 324,
+       "flip": false
+      },
+      {
+       "a_frame": 29,
+       "b_frame": 21,
+       "a_t": 39.36,
+       "b_t": 56.0,
+       "inliers": 168,
+       "flip": false
+      },
+      {
+       "a_frame": 34,
+       "b_frame": 24,
+       "a_t": 45.44,
+       "b_t": 62.08,
+       "inliers": 166,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_9edc1514.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2020-10-30",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=J4NDayfAqeE",
+    "title": "izmirdepremi\u00a0en iyi \u015fiddeti anlatan video - YouTube",
+    "uploader": "Gokhan Soylu",
+    "upload_date": "2020-10-31",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:46:45+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 0",
+    "match": {
+     "decision": true,
+     "consistent_frames": 22,
+     "max_inliers": 200,
+     "mirrored": false,
+     "temporal_offset": 16.333197997775304,
+     "n_pairs": 446,
+     "score": 23.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 1,
+       "b_frame": 5,
+       "a_t": 8.0,
+       "b_t": 24.333197997775304,
+       "inliers": 200,
+       "flip": false
+      },
+      {
+       "a_frame": 1,
+       "b_frame": 6,
+       "a_t": 8.0,
+       "b_t": 24.999860956618463,
+       "inliers": 157,
+       "flip": false
+      },
+      {
+       "a_frame": 1,
+       "b_frame": 7,
+       "a_t": 8.0,
+       "b_t": 25.666523915461624,
+       "inliers": 125,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_a3207987.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2020-10-31",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?app=desktop&v=MT7caLD9SDs",
+    "title": "CCTV Captures Moment 7.4 Magnitude Earthquake Rocks Turkey - YouTube",
+    "uploader": "JK Creative AI Studio",
+    "upload_date": "2023-02-06",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:46:52+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 46",
+    "match": {
+     "decision": true,
+     "consistent_frames": 41,
+     "max_inliers": 325,
+     "mirrored": false,
+     "temporal_offset": -1.5731158864159624,
+     "n_pairs": 1563,
+     "score": 42.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 46,
+       "b_frame": 33,
+       "a_t": 58.24,
+       "b_t": 56.66688411358404,
+       "inliers": 325,
+       "flip": false
+      },
+      {
+       "a_frame": 1,
+       "b_frame": 1,
+       "a_t": 8.0,
+       "b_t": 7.000026861089793,
+       "inliers": 314,
+       "flip": false
+      },
+      {
+       "a_frame": 0,
+       "b_frame": 0,
+       "a_t": 0.0,
+       "b_t": 0.0,
+       "inliers": 295,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_840dc648.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2023-02-06",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=J-X6X23LnYE",
+    "title": "\u0644\u062d\u0638\u0627\u062a \u0645\u0631\u0639\u0628\u0629 \u0645\u0646 \u0632\u0644\u0632\u0627\u0644 \u062a\u0631\u0643\u064a\u0627 \u0627\u0644\u0645\u062f\u0645\u0631 - YouTube",
+    "uploader": "Roman010",
+    "upload_date": "2023-02-08",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:47:01+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 46",
+    "match": {
+     "decision": true,
+     "consistent_frames": 44,
+     "max_inliers": 414,
+     "mirrored": false,
+     "temporal_offset": 0.0,
+     "n_pairs": 1566,
+     "score": 45.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 0,
+       "b_frame": 0,
+       "a_t": 0.0,
+       "b_t": 0.0,
+       "inliers": 414,
+       "flip": false
+      },
+      {
+       "a_frame": 45,
+       "b_frame": 33,
+       "a_t": 56.96,
+       "b_t": 56.96,
+       "inliers": 353,
+       "flip": false
+      },
+      {
+       "a_frame": 1,
+       "b_frame": 1,
+       "a_t": 8.0,
+       "b_t": 8.64,
+       "inliers": 306,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_f394d572.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2023-02-08",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=mScTDQ8S42c",
+    "title": "Zem\u011bt\u0159esen\u00ed v Turecku. 7.2.2023 - YouTube",
+    "uploader": "MaximusPrime",
+    "upload_date": "2023-02-07",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:47:02+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 46",
+    "match": {
+     "decision": true,
+     "consistent_frames": 41,
+     "max_inliers": 354,
+     "mirrored": false,
+     "temporal_offset": 0.0,
+     "n_pairs": 1279,
+     "score": 42.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 0,
+       "b_frame": 0,
+       "a_t": 0.0,
+       "b_t": 0.0,
+       "inliers": 354,
+       "flip": false
+      },
+      {
+       "a_frame": 1,
+       "b_frame": 1,
+       "a_t": 8.0,
+       "b_t": 8.5,
+       "inliers": 305,
+       "flip": false
+      },
+      {
+       "a_frame": 45,
+       "b_frame": 29,
+       "a_t": 56.96,
+       "b_t": 57.0,
+       "inliers": 262,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_36dee371.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2023-02-07",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?app=desktop&v=xmNyWhJant0",
+    "title": "Earthquake in Turkey - camera footage in a hotel - YouTube",
+    "uploader": "Teknonel",
+    "upload_date": "2023-02-06",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:47:09+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 46",
+    "match": {
+     "decision": true,
+     "consistent_frames": 43,
+     "max_inliers": 406,
+     "mirrored": false,
+     "temporal_offset": 0.0,
+     "n_pairs": 1581,
+     "score": 44.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 0,
+       "b_frame": 0,
+       "a_t": 0.0,
+       "b_t": 0.0,
+       "inliers": 406,
+       "flip": false
+      },
+      {
+       "a_frame": 1,
+       "b_frame": 1,
+       "a_t": 8.0,
+       "b_t": 8.96,
+       "inliers": 292,
+       "flip": false
+      },
+      {
+       "a_frame": 29,
+       "b_frame": 20,
+       "a_t": 39.36,
+       "b_t": 39.36,
+       "inliers": 251,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_e959ec5b.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2023-02-06",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?app=desktop&v=kvWGHW0ZsW8",
+    "title": "Horrible Turkey Earthquake Caught On Restaurant Camera - YouTube",
+    "uploader": "Mansoor Bhatti",
+    "upload_date": "2023-02-07",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:47:18+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 46",
+    "match": {
+     "decision": true,
+     "consistent_frames": 42,
+     "max_inliers": 409,
+     "mirrored": false,
+     "temporal_offset": 0.0,
+     "n_pairs": 1537,
+     "score": 43.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 0,
+       "b_frame": 0,
+       "a_t": 0.0,
+       "b_t": 0.0,
+       "inliers": 409,
+       "flip": false
+      },
+      {
+       "a_frame": 1,
+       "b_frame": 1,
+       "a_t": 8.0,
+       "b_t": 8.64,
+       "inliers": 326,
+       "flip": false
+      },
+      {
+       "a_frame": 21,
+       "b_frame": 15,
+       "a_t": 32.0,
+       "b_t": 32.0,
+       "inliers": 200,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_fca1610f.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2023-02-07",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=IA-TzjAb4Ns",
+    "title": "Live View Of Earthquake Turkey From restaurant CCTV #earthquake #live #turkey - YouTube",
+    "uploader": "Dubaitoeuro",
+    "upload_date": "2023-02-06",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:47:19+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 46",
+    "match": {
+     "decision": true,
+     "consistent_frames": 44,
+     "max_inliers": 414,
+     "mirrored": false,
+     "temporal_offset": 0.0,
+     "n_pairs": 1566,
+     "score": 45.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 0,
+       "b_frame": 0,
+       "a_t": 0.0,
+       "b_t": 0.0,
+       "inliers": 414,
+       "flip": false
+      },
+      {
+       "a_frame": 45,
+       "b_frame": 33,
+       "a_t": 56.96,
+       "b_t": 56.96,
+       "inliers": 353,
+       "flip": false
+      },
+      {
+       "a_frame": 1,
+       "b_frame": 1,
+       "a_t": 8.0,
+       "b_t": 8.64,
+       "inliers": 306,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_18f9dce4.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2023-02-06",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=sSOjbDZfl-0",
+    "title": "Inside visuals of Turkey Famous Hotel - YouTube",
+    "uploader": "Info Tech",
+    "upload_date": "2023-02-07",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:47:26+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 46",
+    "match": {
+     "decision": true,
+     "consistent_frames": 41,
+     "max_inliers": 420,
+     "mirrored": false,
+     "temporal_offset": 0.0,
+     "n_pairs": 1427,
+     "score": 42.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 0,
+       "b_frame": 0,
+       "a_t": 0.0,
+       "b_t": 0.0,
+       "inliers": 420,
+       "flip": false
+      },
+      {
+       "a_frame": 46,
+       "b_frame": 34,
+       "a_t": 58.24,
+       "b_t": 58.24,
+       "inliers": 338,
+       "flip": false
+      },
+      {
+       "a_frame": 1,
+       "b_frame": 1,
+       "a_t": 8.0,
+       "b_t": 8.64,
+       "inliers": 297,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_8545fccc.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2023-02-07",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs",
+   "title": "Live Turkey Earthquake - YouTube",
+   "uploader": "LIVE TRADING",
+   "upload_date": "2020-10-30",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T10:46:20+00:00",
+   "adapter": "yandex",
+   "found_via": "frame 0",
+   "match": {
+    "decision": true,
+    "consistent_frames": 40,
+    "max_inliers": 346,
+    "mirrored": false,
+    "temporal_offset": 16.96,
+    "n_pairs": 1388,
+    "score": 41.0,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 1,
+      "b_frame": 2,
+      "a_t": 8.0,
+      "b_t": 24.96,
+      "inliers": 346,
+      "flip": false
+     },
+     {
+      "a_frame": 45,
+      "b_frame": 31,
+      "a_t": 56.96,
+      "b_t": 75.2,
+      "inliers": 200,
+      "flip": false
+     },
+     {
+      "a_frame": 21,
+      "b_frame": 15,
+      "a_t": 32.0,
+      "b_t": 48.64,
+      "inliers": 194,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/yandex_b98db001.png",
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2020-10-30",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 40,
+  "candidate_status_counts": {
+   "proven": 13,
+   "pending": 26,
+   "unavailable": 1
+  },
+  "adapters": {
+   "yandex": {
+    "frames": [
+     0,
+     46,
+     34
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 40,
+    "checked": 14,
+    "proven": 13
+   }
+  }
+ },
+ "clues": {
+  "status": "not_run"
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Turkey",
+   "name": "Turkey",
+   "lat": 39.294076,
+   "lon": 35.2316631,
+   "source": "nominatim",
+   "confidence": "low",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": true,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2023-02-03",
+      "m3s": 0.3
+     },
+     {
+      "date": "2023-02-04",
+      "m3s": 0.25
+     },
+     {
+      "date": "2023-02-05",
+      "m3s": 0.22
+     },
+     {
+      "date": "2023-02-06",
+      "m3s": 0.37
+     },
+     {
+      "date": "2023-02-07",
+      "m3s": 0.34
+     },
+     {
+      "date": "2023-02-08",
+      "m3s": 0.26
+     },
+     {
+      "date": "2023-02-09",
+      "m3s": 0.2
+     }
+    ],
+    "baseline": 0.14,
+    "peak": 0.37,
+    "ratio": 2.64,
+    "cell": [
+     39.175003,
+     35.125015
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2023-02-03",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-02-04",
+      "mm": 0.5
+     },
+     {
+      "date": "2023-02-05",
+      "mm": 1.0
+     },
+     {
+      "date": "2023-02-06",
+      "mm": 13.7
+     },
+     {
+      "date": "2023-02-07",
+      "mm": 1.1
+     },
+     {
+      "date": "2023-02-08",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-02-09",
+      "mm": 0.4
+     }
+    ],
+    "max_mm": 13.7
+   },
+   "status": "UNKNOWN"
+  },
+  "verdict": "UNKNOWN",
+  "reasons": [
+   "location resolved only to a whole country; too coarse to corroborate a local event"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=39.294076&longitude=35.2316631&daily=river_discharge&start_date=2023-02-03&end_date=2023-02-09",
+   "https://www.openstreetmap.org/?mlat=39.294076&mlon=35.2316631#map=10/39.294076/35.2316631"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Turkey flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Turkey+flood&mode=artlis"
+  }
+ },
+ "media_nature": {
+  "value": "unknown",
+  "confidence": 0.0,
+  "cited_frames": [],
+  "cited_timestamps_s": [],
+  "reasons": [],
+  "status": "NOT_RUN",
+  "note": "Muse clues were not available, so the media nature was not assessed."
+ },
+ "contradictions": [
+  {
+   "kind": "independently_dated_earlier_copy",
+   "text": "Footage was already published on 2020-10-30 (earliest copy found), before the claimed event date 2023-02-06.",
+   "evidence": [
+    "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs"
+   ],
+   "date_source": "yt-dlp metadata"
+  }
+ ],
+ "final_verdict": {
+  "label": "RECYCLED_FOOTAGE",
+  "summary": "The footage matches the earliest copy found, published on 2020-10-30 (https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs, date independently fetched per yt-dlp metadata), before the claimed event date 2023-02-06. Matcher evidence: 40 temporally consistent frame(s), up to 346 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 6,
+   "proven_copies": 13,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "unknown",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 205.5,
+ "_wall_s": 205.5
+}

@@ -1,0 +1,459 @@
+{
+  "schema_version": "1.2",
+  "investigation_id": "0d27fe5545",
+  "created_at": "2026-10-30T11:05:47+00:00",
+  "input": {
+    "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a86ed53237bbce27c/.cache/reshare/variant.mp4",
+    "path": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a86ed53237bbce27c/.cache/reshare/variant.mp4",
+    "url": null,
+    "uploader": null,
+    "upload_date": null,
+    "title": "variant.mp4",
+    "duration": 75.0,
+    "has_audio": true,
+    "truncated": false,
+    "description": null,
+    "n_keyframes": 48,
+    "keyframe_times_s": [
+      0.0,
+      1.33,
+      3.67,
+      5.0,
+      6.67,
+      8.0,
+      9.0,
+      11.0,
+      12.33,
+      13.67,
+      15.0,
+      16.33,
+      18.33,
+      20.33,
+      21.67,
+      23.0,
+      24.33,
+      25.67,
+      27.67,
+      29.0,
+      31.0,
+      32.67,
+      34.67,
+      36.33,
+      37.67,
+      39.33,
+      41.0,
+      43.0,
+      44.33,
+      46.33,
+      47.33,
+      49.0,
+      51.67,
+      53.67,
+      55.0,
+      56.67,
+      57.67,
+      59.0,
+      60.33,
+      61.67,
+      63.0,
+      64.33,
+      65.33,
+      66.67,
+      68.0,
+      70.67,
+      73.33,
+      74.67
+    ]
+  },
+  "claim": {
+    "text": "Nepal glacier lake outburst flood, August 2026",
+    "event_date": "2026-08-26",
+    "place": "Nepal",
+    "source": {
+      "text": "user",
+      "event_date": "user",
+      "place": "user"
+    },
+    "event_date_basis": "user",
+    "event_date_basis_detail": null,
+    "inferred_note": null,
+    "country_iso2": null,
+    "event_type": "unknown"
+  },
+  "memory": {
+    "status": "HIT",
+    "mode": "hash-shortlist(top_6)+match",
+    "entries_searched": 6,
+    "entries_total": 37,
+    "seconds": 32.86,
+    "hits": [
+      {
+        "url": "https://www.instagram.com/reel/DcUFQZhvGzS/",
+        "stored_date": "2026-08-21",
+        "stored_date_source": "memory entry (inherited)",
+        "origin": "seed:benchmark",
+        "context": {
+          "source": "benchmark fact-check",
+          "claimed_events": [
+            "Nepal GLOF Aug 2026 (helicopter glacier burst)",
+            "Nepal flash flood Aug 2026 (glacier burst)"
+          ],
+          "original_desc": "Leigh Coates, Columbia Glacier Alaska",
+          "fact_check_urls": [
+            "https://www.altnews.in/glacier-burst-video-from-alaska-falsely-viral-as-nepal-flash-flood-trigger",
+            "https://www.boomlive.in/fact-check/viral-nepal-flash-flood-videos-claim-fact-check-old-unrelated-videos-32124"
+          ],
+          "fact_check_verdicts": [
+            "old/unrelated video falsely linked to claimed event"
+          ],
+          "note": "original as cited by fact-checkers; not independently verified as the first upload"
+        },
+        "independent_date": "2026-08-21",
+        "independent_date_source": "yt-dlp live metadata",
+        "date_independent": true
+      }
+    ],
+    "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+  },
+  "visual_matching": {
+    "status": "FOUND",
+    "proven_matches": [
+      {
+        "url": "https://www.instagram.com/reel/DcUFQZhvGzS/",
+        "title": "",
+        "uploader": "Leigh Coates",
+        "upload_date": "2026-08-21",
+        "date_source": "yt-dlp live metadata",
+        "retrieved_at": "2026-10-30T11:03:17+00:00",
+        "adapter": "memory",
+        "found_via": "entry 3",
+        "match": {
+          "decision": true,
+          "consistent_frames": 32,
+          "max_inliers": 166,
+          "mirrored": true,
+          "temporal_offset": 0.3333333333333286,
+          "n_pairs": 148,
+          "score": 33.0,
+          "stage": "full",
+          "best_pairs": [
+            {
+              "a_frame": 23,
+              "b_frame": 24,
+              "a_t": 36.333333333333336,
+              "b_t": 36.666666666666664,
+              "inliers": 166,
+              "flip": true
+            },
+            {
+              "a_frame": 36,
+              "b_frame": 36,
+              "a_t": 57.666666666666664,
+              "b_t": 57.666666666666664,
+              "inliers": 164,
+              "flip": true
+            },
+            {
+              "a_frame": 32,
+              "b_frame": 33,
+              "a_t": 51.666666666666664,
+              "b_t": 52.0,
+              "inliers": 161,
+              "flip": true
+            }
+          ]
+        },
+        "evidence_png": "evidence/memory_3.png",
+        "stored_date": "2026-08-21",
+        "stored_date_source": "memory entry (inherited)",
+        "independent_date": "2026-08-21",
+        "independent_date_source": "yt-dlp live metadata",
+        "date_independent": true,
+        "date_note": null,
+        "date_alternatives": [],
+        "memory_origin": "seed:benchmark",
+        "memory_context": {
+          "source": "benchmark fact-check",
+          "claimed_events": [
+            "Nepal GLOF Aug 2026 (helicopter glacier burst)",
+            "Nepal flash flood Aug 2026 (glacier burst)"
+          ],
+          "original_desc": "Leigh Coates, Columbia Glacier Alaska",
+          "fact_check_urls": [
+            "https://www.altnews.in/glacier-burst-video-from-alaska-falsely-viral-as-nepal-flash-flood-trigger",
+            "https://www.boomlive.in/fact-check/viral-nepal-flash-flood-videos-claim-fact-check-old-unrelated-videos-32124"
+          ],
+          "fact_check_verdicts": [
+            "old/unrelated video falsely linked to claimed event"
+          ],
+          "note": "original as cited by fact-checkers; not independently verified as the first upload"
+        }
+      }
+    ],
+    "earliest_proven_copy": {
+      "url": "https://www.instagram.com/reel/DcUFQZhvGzS/",
+      "title": "",
+      "uploader": "Leigh Coates",
+      "upload_date": "2026-08-21",
+      "date_source": "yt-dlp live metadata",
+      "retrieved_at": "2026-10-30T11:03:17+00:00",
+      "adapter": "memory",
+      "found_via": "entry 3",
+      "match": {
+        "decision": true,
+        "consistent_frames": 32,
+        "max_inliers": 166,
+        "mirrored": true,
+        "temporal_offset": 0.3333333333333286,
+        "n_pairs": 148,
+        "score": 33.0,
+        "stage": "full",
+        "best_pairs": [
+          {
+            "a_frame": 23,
+            "b_frame": 24,
+            "a_t": 36.333333333333336,
+            "b_t": 36.666666666666664,
+            "inliers": 166,
+            "flip": true
+          },
+          {
+            "a_frame": 36,
+            "b_frame": 36,
+            "a_t": 57.666666666666664,
+            "b_t": 57.666666666666664,
+            "inliers": 164,
+            "flip": true
+          },
+          {
+            "a_frame": 32,
+            "b_frame": 33,
+            "a_t": 51.666666666666664,
+            "b_t": 52.0,
+            "inliers": 161,
+            "flip": true
+          }
+        ]
+      },
+      "evidence_png": "evidence/memory_3.png",
+      "stored_date": "2026-08-21",
+      "stored_date_source": "memory entry (inherited)",
+      "independent_date": "2026-08-21",
+      "independent_date_source": "yt-dlp live metadata",
+      "date_independent": true,
+      "date_note": null,
+      "date_alternatives": [],
+      "memory_origin": "seed:benchmark",
+      "memory_context": {
+        "source": "benchmark fact-check",
+        "claimed_events": [
+          "Nepal GLOF Aug 2026 (helicopter glacier burst)",
+          "Nepal flash flood Aug 2026 (glacier burst)"
+        ],
+        "original_desc": "Leigh Coates, Columbia Glacier Alaska",
+        "fact_check_urls": [
+          "https://www.altnews.in/glacier-burst-video-from-alaska-falsely-viral-as-nepal-flash-flood-trigger",
+          "https://www.boomlive.in/fact-check/viral-nepal-flash-flood-videos-claim-fact-check-old-unrelated-videos-32124"
+        ],
+        "fact_check_verdicts": [
+          "old/unrelated video falsely linked to claimed event"
+        ],
+        "note": "original as cited by fact-checkers; not independently verified as the first upload"
+      }
+    },
+    "claimed_original": null,
+    "input_publication": null,
+    "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+    "candidates_checked": 1,
+    "candidates_total": 1,
+    "candidate_status_counts": {
+      "proven": 1
+    },
+    "adapters": {},
+    "source_stats": {
+      "memory": {
+        "candidates": 1,
+        "checked": 1,
+        "proven": 1
+      }
+    }
+  },
+  "clues": {
+    "status": "not_run"
+  },
+  "physical_world_check": {
+    "location": {
+      "query": "Nepal",
+      "name": "Nepal",
+      "lat": 28.3780464,
+      "lon": 83.9999901,
+      "source": "nominatim",
+      "confidence": "low",
+      "class": "boundary",
+      "type": "administrative",
+      "country_level": true,
+      "alternatives": []
+    },
+    "official_event": {
+      "source": "copernicus_ems",
+      "status": "CONFIRMED_EVENT",
+      "activations": [
+        {
+          "code": "EMSR927",
+          "title": "Flood in Nepal",
+          "event_time": "2026-08-25T22:00:00",
+          "activation_time": "2026-08-26T09:53:00",
+          "country": "Nepal",
+          "distance_km": 133.8,
+          "reason": "On the 26 August 2026, a flash flood reportedly triggered by a Glacial Lake Outburst Flood (GLOF) in Nepal has caused significant damage in Rasuwa District. Copernicus EMS Rapid Mapping was requested to provide flood extent and damage assessment emergency mapping.",
+          "url": "https://rapidmapping.emergency.copernicus.eu/EMSR927"
+        }
+      ],
+      "reliefweb": {
+        "source": "reliefweb",
+        "status": "SKIPPED",
+        "disasters": [],
+        "window_days": 7,
+        "reason": "country unknown or not mapped; ReliefWeb needs a country"
+      }
+    },
+    "hydrology": {
+      "source": "open-meteo glofas v4",
+      "river_discharge": {
+        "series": [
+          {
+            "date": "2026-08-23",
+            "m3s": 130.22
+          },
+          {
+            "date": "2026-08-24",
+            "m3s": 124.31
+          },
+          {
+            "date": "2026-08-25",
+            "m3s": 117.85
+          },
+          {
+            "date": "2026-08-26",
+            "m3s": 113.55
+          },
+          {
+            "date": "2026-08-27",
+            "m3s": 117.58
+          },
+          {
+            "date": "2026-08-28",
+            "m3s": 112.24
+          },
+          {
+            "date": "2026-08-29",
+            "m3s": 105.91
+          }
+        ],
+        "baseline": 123.74,
+        "peak": 130.22,
+        "ratio": 1.05,
+        "cell": [
+          28.275002,
+          83.875
+        ]
+      },
+      "rain": {
+        "series": [
+          {
+            "date": "2026-08-23",
+            "mm": 22.9
+          },
+          {
+            "date": "2026-08-24",
+            "mm": 20.4
+          },
+          {
+            "date": "2026-08-25",
+            "mm": 14.9
+          },
+          {
+            "date": "2026-08-26",
+            "mm": 8.7
+          },
+          {
+            "date": "2026-08-27",
+            "mm": 4.9
+          },
+          {
+            "date": "2026-08-28",
+            "mm": 18.1
+          },
+          {
+            "date": "2026-08-29",
+            "mm": 43.1
+          }
+        ],
+        "max_mm": 43.1
+      },
+      "status": "UNKNOWN"
+    },
+    "verdict": "UNKNOWN",
+    "reasons": [
+      "location resolved only to a whole country; too coarse to corroborate a local event"
+    ],
+    "limits": [
+      "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+    ],
+    "links": [
+      "https://mapping.emergency.copernicus.eu/activations/",
+      "https://flood-api.open-meteo.com/v1/flood?latitude=28.3780464&longitude=83.9999901&daily=river_discharge&start_date=2026-08-23&end_date=2026-08-29",
+      "https://www.openstreetmap.org/?mlat=28.3780464&mlon=83.9999901#map=10/28.3780464/83.9999901"
+    ],
+    "news_coverage": {
+      "source": "gdelt",
+      "label": "news coverage",
+      "status": "UNAVAILABLE",
+      "articles_in_window": null,
+      "articles_baseline_30d": null,
+      "sample_links": [],
+      "context_only": true,
+      "query": "Nepal flood",
+      "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Nepal+flood&mode=artlist"
+    }
+  },
+  "media_nature": {
+    "value": "unknown",
+    "confidence": 0.0,
+    "cited_frames": [],
+    "cited_timestamps_s": [],
+    "reasons": [],
+    "status": "NOT_RUN",
+    "note": "Muse clues were not available, so the media nature was not assessed."
+  },
+  "contradictions": [
+    {
+      "kind": "independently_dated_earlier_copy",
+      "text": "Footage was already published on 2026-08-21 (earliest copy found), before the claimed event date 2026-08-26.",
+      "evidence": [
+        "https://www.instagram.com/reel/DcUFQZhvGzS/"
+      ],
+      "date_source": "yt-dlp live metadata"
+    }
+  ],
+  "final_verdict": {
+    "label": "RECYCLED_FOOTAGE",
+    "summary": "The footage matches the earliest copy found, published on 2026-08-21 (https://www.instagram.com/reel/DcUFQZhvGzS/, date independently fetched per yt-dlp live metadata), before the claimed event date 2026-08-26. Matcher evidence: 32 temporally consistent frame(s), up to 166 inliers, mirrored. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen.",
+    "limits": [
+      "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+      "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+      "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+      "'Not found' means not found by these adapters, not that no earlier copy exists."
+    ],
+    "basis": {
+      "earlier_proven_copies": 1,
+      "proven_copies": 1,
+      "physical_supports": null,
+      "unverified_model_observations": 0,
+      "date_conflicts": 0,
+      "media_nature": "unknown",
+      "claim_date_basis": "user"
+    }
+  },
+  "timing_s": 75.7
+}

@@ -1,0 +1,1588 @@
+{
+ "rows": [
+  {
+   "id": "H01",
+   "kind": "debunked",
+   "on": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 1,
+    "proven_urls": [
+     "https://www.youtube.com/watch?v=_Y_ojyXcH2s"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 1
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "error",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "UNKNOWN",
+    "sec": 240.2,
+    "muse_cost": 0.01526
+   },
+   "off": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 1,
+    "proven_urls": [
+     "https://www.youtube.com/watch?v=_Y_ojyXcH2s"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 1
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 1
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "UNKNOWN",
+    "sec": 320.4,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "H02",
+   "kind": "debunked",
+   "on": {
+    "label": "UNVERIFIED",
+    "n_proven": 1,
+    "proven_urls": [
+     "https://www.youtube.com/watch?v=eJ0psLySJYY"
+    ],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 1
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [
+     "Muguk (likely Mugum)",
+     "Kamakar (likely Karmarong)"
+    ],
+    "narration_status": "ok",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 213.2,
+    "muse_cost": 0.034199999999999994
+   },
+   "off": {
+    "label": "UNVERIFIED",
+    "n_proven": 2,
+    "proven_urls": [
+     "https://www.youtube.com/shorts/VuxYKmGyk40",
+     "https://www.youtube.com/watch?v=eJ0psLySJYY"
+    ],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 2
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 2
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 261.7,
+    "muse_cost": 0
+   },
+   "same_proven_set": false,
+   "on_only_proven": [],
+   "off_only_proven": [
+    "https://www.youtube.com/shorts/VuxYKmGyk40"
+   ]
+  },
+  {
+   "id": "H03",
+   "kind": "debunked",
+   "on": {
+    "label": "UNVERIFIED",
+    "n_proven": 0,
+    "proven_urls": [],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 54,
+    "candidates_checked": 14,
+    "proven_by_adapter": {},
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "error",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 181.2,
+    "muse_cost": 0.013
+   },
+   "off": {
+    "label": "UNVERIFIED",
+    "n_proven": 0,
+    "proven_urls": [],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 24,
+    "candidates_checked": 14,
+    "proven_by_adapter": {},
+    "source_stats": {
+     "yandex": {
+      "candidates": 24,
+      "checked": 14,
+      "proven": 0
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 132.3,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "H04",
+   "kind": "debunked",
+   "on": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 2,
+    "proven_urls": [
+     "https://www.youtube.com/watch?v=5eJJpmYmJQU",
+     "https://www.youtube.com/watch?v=mtltACZUtGw"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 2
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "ok",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 208.0,
+    "muse_cost": 0.02416
+   },
+   "off": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 2,
+    "proven_urls": [
+     "https://www.youtube.com/watch?v=5eJJpmYmJQU",
+     "https://www.youtube.com/watch?v=mtltACZUtGw"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 2
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 2
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "UNKNOWN",
+    "sec": 208.0,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "H05",
+   "kind": "debunked",
+   "on": {
+    "label": "UNVERIFIED",
+    "n_proven": 1,
+    "proven_urls": [
+     "https://www.youtube.com/watch?v=95pUW7cTazE"
+    ],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 1
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "error",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": null,
+    "sec": 343.2,
+    "muse_cost": 0.01187
+   },
+   "off": {
+    "label": "UNVERIFIED",
+    "n_proven": 1,
+    "proven_urls": [
+     "https://www.youtube.com/watch?v=95pUW7cTazE"
+    ],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 1
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 1
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": null,
+    "sec": 254.7,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "H06",
+   "kind": "debunked",
+   "on": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 3,
+    "proven_urls": [
+     "https://vkvideo.ru/video-125235428_456247348",
+     "https://vkvideo.ru/video-219999929_456239113",
+     "https://www.youtube.com/watch?v=Rl-kNCjWLgI"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 3
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "error",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "SUPPORTS",
+    "sec": 209.6,
+    "muse_cost": 0.01362
+   },
+   "off": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 3,
+    "proven_urls": [
+     "https://vkvideo.ru/video-125235428_456247348",
+     "https://vkvideo.ru/video-219999929_456239113",
+     "https://www.youtube.com/watch?v=Rl-kNCjWLgI"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 3
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 3
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "SUPPORTS",
+    "sec": 171.4,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "H07",
+   "kind": "debunked",
+   "on": {
+    "label": "UNVERIFIED",
+    "n_proven": 0,
+    "proven_urls": [],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {},
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "ok",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "SUPPORTS",
+    "sec": 246.2,
+    "muse_cost": 0.028900000000000002
+   },
+   "off": {
+    "label": "UNVERIFIED",
+    "n_proven": 0,
+    "proven_urls": [],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {},
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 0
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "UNKNOWN",
+    "sec": 212.5,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "H08",
+   "kind": "debunked",
+   "on": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 4,
+    "proven_urls": [
+     "https://rutube.ru/video/6435b0fa7ea72aacd78a5fb6278bd6fb/",
+     "https://www.youtube.com/shorts/-w4PmbwAUQ8",
+     "https://www.youtube.com/shorts/L0sTp44eY7w",
+     "https://www.youtube.com/shorts/YBaJUioP1mc"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 4
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "error",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "SUPPORTS",
+    "sec": 219.6,
+    "muse_cost": 0.0147
+   },
+   "off": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 4,
+    "proven_urls": [
+     "https://rutube.ru/video/6435b0fa7ea72aacd78a5fb6278bd6fb/",
+     "https://www.youtube.com/shorts/-w4PmbwAUQ8",
+     "https://www.youtube.com/shorts/L0sTp44eY7w",
+     "https://www.youtube.com/shorts/YBaJUioP1mc"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 38,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 4
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 38,
+      "checked": 14,
+      "proven": 4
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "SUPPORTS",
+    "sec": 179.5,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "H09",
+   "kind": "debunked",
+   "on": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 3,
+    "proven_urls": [
+     "https://vkvideo.ru/video11281619_168741016",
+     "https://vkvideo.ru/video209204989_170219171",
+     "https://www.youtube.com/watch?app=desktop&v=YERhB_QQH08"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 3
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [
+     "Canada"
+    ],
+    "narration_status": "ok",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 259.3,
+    "muse_cost": 0.024779999999999996
+   },
+   "off": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 3,
+    "proven_urls": [
+     "https://vkvideo.ru/video11281619_168741016",
+     "https://vkvideo.ru/video209204989_170219171",
+     "https://www.youtube.com/watch?app=desktop&v=YERhB_QQH08"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 3
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 3
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "UNKNOWN",
+    "sec": 235.7,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "G02",
+   "kind": "debunked",
+   "on": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 5,
+    "proven_urls": [
+     "https://www.youtube.com/watch?app=desktop&v=pjR9b6cKQDM",
+     "https://www.youtube.com/watch?v=DYUvH5ge8c0",
+     "https://www.youtube.com/watch?v=GHYolJVWcUM",
+     "https://www.youtube.com/watch?v=WIDQbDai2jQ",
+     "https://www.youtube.com/watch?v=pjR9b6cKQDM"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 58,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 5
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": "camera_footage",
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "no_audio_track",
+    "claim_inferred": false,
+    "observations_against_claim": 2,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 230.6,
+    "muse_cost": 0.01317
+   },
+   "off": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 5,
+    "proven_urls": [
+     "https://www.youtube.com/watch?app=desktop&v=pjR9b6cKQDM",
+     "https://www.youtube.com/watch?v=DYUvH5ge8c0",
+     "https://www.youtube.com/watch?v=GHYolJVWcUM",
+     "https://www.youtube.com/watch?v=WIDQbDai2jQ",
+     "https://www.youtube.com/watch?v=pjR9b6cKQDM"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 29,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 5
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 29,
+      "checked": 14,
+      "proven": 5
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 253.1,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "G03",
+   "kind": "debunked",
+   "on": {
+    "label": "UNVERIFIED",
+    "n_proven": 0,
+    "proven_urls": [],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {},
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": "likely_ai_generated",
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "no_audio_track",
+    "claim_inferred": false,
+    "observations_against_claim": 3,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 206.2,
+    "muse_cost": 0.01559
+   },
+   "off": {
+    "label": "UNVERIFIED",
+    "n_proven": 0,
+    "proven_urls": [],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {},
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 0
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 147.2,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "G05",
+   "kind": "debunked",
+   "on": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 13,
+    "proven_urls": [
+     "https://www.youtube.com/watch?app=desktop&v=IM031BBdJJA",
+     "https://www.youtube.com/watch?app=desktop&v=MT7caLD9SDs",
+     "https://www.youtube.com/watch?app=desktop&v=kvWGHW0ZsW8",
+     "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs",
+     "https://www.youtube.com/watch?app=desktop&v=xmNyWhJant0",
+     "https://www.youtube.com/watch?v=-6YruoXMUM8",
+     "https://www.youtube.com/watch?v=IA-TzjAb4Ns",
+     "https://www.youtube.com/watch?v=J-X6X23LnYE",
+     "https://www.youtube.com/watch?v=J4NDayfAqeE",
+     "https://www.youtube.com/watch?v=mScTDQ8S42c",
+     "https://www.youtube.com/watch?v=mZSLSfafvyE",
+     "https://www.youtube.com/watch?v=npFx1QG9kCs",
+     "https://www.youtube.com/watch?v=sSOjbDZfl-0"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 13
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": "camera_footage",
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "no_audio_track",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "UNKNOWN",
+    "sec": 237.8,
+    "muse_cost": 0.01268
+   },
+   "off": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 13,
+    "proven_urls": [
+     "https://www.youtube.com/watch?app=desktop&v=IM031BBdJJA",
+     "https://www.youtube.com/watch?app=desktop&v=MT7caLD9SDs",
+     "https://www.youtube.com/watch?app=desktop&v=kvWGHW0ZsW8",
+     "https://www.youtube.com/watch?app=desktop&v=qbt6lHkgPEs",
+     "https://www.youtube.com/watch?app=desktop&v=xmNyWhJant0",
+     "https://www.youtube.com/watch?v=-6YruoXMUM8",
+     "https://www.youtube.com/watch?v=IA-TzjAb4Ns",
+     "https://www.youtube.com/watch?v=J-X6X23LnYE",
+     "https://www.youtube.com/watch?v=J4NDayfAqeE",
+     "https://www.youtube.com/watch?v=mScTDQ8S42c",
+     "https://www.youtube.com/watch?v=mZSLSfafvyE",
+     "https://www.youtube.com/watch?v=npFx1QG9kCs",
+     "https://www.youtube.com/watch?v=sSOjbDZfl-0"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 13
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 13
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "UNKNOWN",
+    "sec": 205.5,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "G06",
+   "kind": "debunked",
+   "on": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 5,
+    "proven_urls": [
+     "https://www.youtube.com/watch?v=0-ToNGdOUrs",
+     "https://www.youtube.com/watch?v=A4UYLML07NU",
+     "https://www.youtube.com/watch?v=Azyts3pG4Ys",
+     "https://www.youtube.com/watch?v=Jq0UOluD9HY",
+     "https://www.youtube.com/watch?v=mFz7F0AER10"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 5
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": "camera_footage",
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "no_audio_track",
+    "claim_inferred": false,
+    "observations_against_claim": 2,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 173.2,
+    "muse_cost": 0.01058
+   },
+   "off": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 4,
+    "proven_urls": [
+     "https://www.youtube.com/watch?v=0-ToNGdOUrs",
+     "https://www.youtube.com/watch?v=A4UYLML07NU",
+     "https://www.youtube.com/watch?v=Azyts3pG4Ys",
+     "https://www.youtube.com/watch?v=Jq0UOluD9HY"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 4
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 4
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 137.1,
+    "muse_cost": 0
+   },
+   "same_proven_set": false,
+   "on_only_proven": [
+    "https://www.youtube.com/watch?v=mFz7F0AER10"
+   ],
+   "off_only_proven": []
+  },
+  {
+   "id": "G07",
+   "kind": "debunked",
+   "on": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 2,
+    "proven_urls": [
+     "https://ok.ru/video/16520302299840",
+     "https://www.youtube.com/shorts/_fuECgS8S3U"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 2
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": "camera_footage",
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "no_audio_track",
+    "claim_inferred": false,
+    "observations_against_claim": 3,
+    "physical_verdict": "UNKNOWN",
+    "sec": 232.0,
+    "muse_cost": 0.01867
+   },
+   "off": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 2,
+    "proven_urls": [
+     "https://ok.ru/video/16520302299840",
+     "https://www.youtube.com/shorts/_fuECgS8S3U"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 2
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 2
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "UNKNOWN",
+    "sec": 226.8,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "G08",
+   "kind": "debunked",
+   "on": {
+    "label": "UNVERIFIED",
+    "n_proven": 0,
+    "proven_urls": [],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {},
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": "camera_footage",
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "no_audio_track",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "SUPPORTS",
+    "sec": 244.1,
+    "muse_cost": 0.01201
+   },
+   "off": {
+    "label": "UNVERIFIED",
+    "n_proven": 0,
+    "proven_urls": [],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {},
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 0
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "SUPPORTS",
+    "sec": 239.1,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "G09",
+   "kind": "debunked",
+   "on": {
+    "label": "UNVERIFIED",
+    "n_proven": 0,
+    "proven_urls": [],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {},
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": "likely_ai_generated",
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "no_audio_track",
+    "claim_inferred": false,
+    "observations_against_claim": 4,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 246.2,
+    "muse_cost": 0.01694
+   },
+   "off": {
+    "label": "UNVERIFIED",
+    "n_proven": 0,
+    "proven_urls": [],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {},
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 0
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 218.3,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "G10",
+   "kind": "debunked",
+   "on": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 11,
+    "proven_urls": [
+     "https://www.youtube.com/shorts/B8AITkdutYk",
+     "https://www.youtube.com/shorts/EVsV6_nIHzI",
+     "https://www.youtube.com/shorts/FV4Rjfyp0NU",
+     "https://www.youtube.com/shorts/J73_BroiAEE",
+     "https://www.youtube.com/shorts/J73_BroiAEE?si=k4-50Le6XzKSXwJh",
+     "https://www.youtube.com/shorts/MP02b0HEFKg",
+     "https://www.youtube.com/shorts/RZd1_qcdl1w",
+     "https://www.youtube.com/shorts/_VqTlwqg9UA",
+     "https://www.youtube.com/shorts/bKn06_J4Ep8",
+     "https://www.youtube.com/shorts/opy0DLYEDtw",
+     "https://www.youtube.com/shorts/rirfYISH6oM"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 11
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": "camera_footage",
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "no_audio_track",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "UNKNOWN",
+    "sec": 178.6,
+    "muse_cost": 0.01598
+   },
+   "off": {
+    "label": "RECYCLED_FOOTAGE",
+    "n_proven": 11,
+    "proven_urls": [
+     "https://www.youtube.com/shorts/B8AITkdutYk",
+     "https://www.youtube.com/shorts/EVsV6_nIHzI",
+     "https://www.youtube.com/shorts/FV4Rjfyp0NU",
+     "https://www.youtube.com/shorts/J73_BroiAEE",
+     "https://www.youtube.com/shorts/J73_BroiAEE?si=k4-50Le6XzKSXwJh",
+     "https://www.youtube.com/shorts/MP02b0HEFKg",
+     "https://www.youtube.com/shorts/RZd1_qcdl1w",
+     "https://www.youtube.com/shorts/_VqTlwqg9UA",
+     "https://www.youtube.com/shorts/bKn06_J4Ep8",
+     "https://www.youtube.com/shorts/opy0DLYEDtw",
+     "https://www.youtube.com/shorts/rirfYISH6oM"
+    ],
+    "earlier_copy": true,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 11
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 11
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "UNKNOWN",
+    "sec": 133.9,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "N01",
+   "kind": "genuine",
+   "on": {
+    "label": "CONSISTENT_WITH_CLAIM",
+    "n_proven": 2,
+    "proven_urls": [
+     "https://www.youtube.com/watch?v=Tntucl9uW4c",
+     "https://www.youtube.com/watch?v=b3IDvWWwmS4"
+    ],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 2
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": "news_compilation",
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "no_audio_track",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 181.8,
+    "muse_cost": 0.01541
+   },
+   "off": {
+    "label": "CONSISTENT_WITH_CLAIM",
+    "n_proven": 2,
+    "proven_urls": [
+     "https://www.youtube.com/watch?v=Tntucl9uW4c",
+     "https://www.youtube.com/watch?v=b3IDvWWwmS4"
+    ],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 2
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 2
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "NO_EVIDENCE",
+    "sec": 136.7,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "N02",
+   "kind": "genuine",
+   "on": {
+    "label": "CONSISTENT_WITH_CLAIM",
+    "n_proven": 1,
+    "proven_urls": [
+     "https://www.youtube.com/watch?v=N7ce0TUdiGc"
+    ],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 1
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": "camera_footage",
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "no_audio_track",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "UNKNOWN",
+    "sec": 238.2,
+    "muse_cost": 0.01447
+   },
+   "off": {
+    "label": "CONSISTENT_WITH_CLAIM",
+    "n_proven": 1,
+    "proven_urls": [
+     "https://www.youtube.com/watch?v=N7ce0TUdiGc"
+    ],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": false,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 1
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 1
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "UNKNOWN",
+    "sec": 141.8,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  },
+  {
+   "id": "N03",
+   "kind": "genuine",
+   "on": {
+    "label": "UNVERIFIED",
+    "n_proven": 13,
+    "proven_urls": [
+     "https://www.youtube.com/watch?app=desktop&v=2xvPoRqxzEA",
+     "https://www.youtube.com/watch?app=desktop&v=42hhQwSgQ_A",
+     "https://www.youtube.com/watch?app=desktop&v=F89VC-0Tcms",
+     "https://www.youtube.com/watch?app=desktop&v=x14ru6QqZQM",
+     "https://www.youtube.com/watch?v=2itzrExPKQs",
+     "https://www.youtube.com/watch?v=7Wu7OWtLz04",
+     "https://www.youtube.com/watch?v=InsrGmYLAvo",
+     "https://www.youtube.com/watch?v=JPMOgbnfg04",
+     "https://www.youtube.com/watch?v=TJbi3cApqmk",
+     "https://www.youtube.com/watch?v=iIBLi3fVI1Q",
+     "https://www.youtube.com/watch?v=mnViNcnYies",
+     "https://www.youtube.com/watch?v=uGi3Q3LTbiE",
+     "https://www.youtube.com/watch?v=vBkbkIovE8A"
+    ],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 70,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 13
+    },
+    "source_stats": null,
+    "tavily_queries": 18,
+    "muse_queries": 8,
+    "media_nature": "camera_footage",
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": "no_audio_track",
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "SUPPORTS",
+    "sec": 233.7,
+    "muse_cost": 0.0108
+   },
+   "off": {
+    "label": "UNVERIFIED",
+    "n_proven": 13,
+    "proven_urls": [
+     "https://www.youtube.com/watch?app=desktop&v=2xvPoRqxzEA",
+     "https://www.youtube.com/watch?app=desktop&v=42hhQwSgQ_A",
+     "https://www.youtube.com/watch?app=desktop&v=F89VC-0Tcms",
+     "https://www.youtube.com/watch?app=desktop&v=x14ru6QqZQM",
+     "https://www.youtube.com/watch?v=2itzrExPKQs",
+     "https://www.youtube.com/watch?v=7Wu7OWtLz04",
+     "https://www.youtube.com/watch?v=InsrGmYLAvo",
+     "https://www.youtube.com/watch?v=JPMOgbnfg04",
+     "https://www.youtube.com/watch?v=TJbi3cApqmk",
+     "https://www.youtube.com/watch?v=iIBLi3fVI1Q",
+     "https://www.youtube.com/watch?v=mnViNcnYies",
+     "https://www.youtube.com/watch?v=uGi3Q3LTbiE",
+     "https://www.youtube.com/watch?v=vBkbkIovE8A"
+    ],
+    "earlier_copy": false,
+    "found_original": false,
+    "false_attribution": false,
+    "wrong_verdict": false,
+    "genuine_false_positive": false,
+    "abstained": true,
+    "candidates_total": 40,
+    "candidates_checked": 14,
+    "proven_by_adapter": {
+     "yandex": 13
+    },
+    "source_stats": {
+     "yandex": {
+      "candidates": 40,
+      "checked": 14,
+      "proven": 13
+     }
+    },
+    "tavily_queries": null,
+    "muse_queries": 0,
+    "media_nature": null,
+    "on_screen_dates": 0,
+    "narration_places": [],
+    "narration_status": null,
+    "claim_inferred": false,
+    "observations_against_claim": 0,
+    "physical_verdict": "SUPPORTS",
+    "sec": 221.4,
+    "muse_cost": 0
+   },
+   "same_proven_set": true,
+   "on_only_proven": [],
+   "off_only_proven": []
+  }
+ ],
+ "summary": {
+  "on": {
+   "n_debunked": 17,
+   "n_genuine": 3,
+   "earlier_copy_found": 10,
+   "original_found": 0,
+   "false_attribution": 0,
+   "wrong_verdict": 0,
+   "abstention": 7,
+   "genuine_false_positive": 0,
+   "genuine_abstention": 1,
+   "mean_candidates_total": 68.6,
+   "mean_candidates_checked": 14.0,
+   "total_proven_urls": 67,
+   "cases_with_media_nature": 11,
+   "cases_with_on_screen_dates": 0,
+   "cases_with_narration_places": 2,
+   "cases_with_observations_against": 5,
+   "muse_cost_usd": 0.3368,
+   "mean_sec": 226.1
+  },
+  "off": {
+   "n_debunked": 17,
+   "n_genuine": 3,
+   "earlier_copy_found": 10,
+   "original_found": 0,
+   "false_attribution": 0,
+   "wrong_verdict": 0,
+   "abstention": 7,
+   "genuine_false_positive": 0,
+   "genuine_abstention": 1,
+   "mean_candidates_total": 38.5,
+   "mean_candidates_checked": 14.0,
+   "total_proven_urls": 67,
+   "cases_with_media_nature": 0,
+   "cases_with_on_screen_dates": 0,
+   "cases_with_narration_places": 0,
+   "cases_with_observations_against": 0,
+   "muse_cost_usd": 0,
+   "mean_sec": 201.9
+  },
+  "identical_proven_sets": "18/20",
+  "identical_labels": "20/20",
+  "on_proven_by_adapter": {
+   "yandex": 67
+  }
+ },
+ "method": {
+  "muse_off": "pipeline.investigate(use_muse=False, use_gvision=False, use_youtube=False, use_lens=False), Yandex ON, memory 37 entries read-only, max_verify=14",
+  "muse_on": "saved reports of the original B runs (Yandex + Tavily + Muse, no new sources, same memory)"
+ }
+}

@@ -1,0 +1,428 @@
+{
+ "schema_version": "1.2",
+ "investigation_id": "ecd1800115",
+ "created_at": "2026-10-30T10:52:08+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a86ed53237bbce27c/data/global/G07.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/G07.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "G07.mp4",
+  "duration": 60.0,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   1.33,
+   3.0,
+   4.67,
+   5.67,
+   7.0,
+   8.33,
+   9.67,
+   10.67,
+   12.0,
+   13.33,
+   14.33,
+   15.67,
+   17.0,
+   18.33,
+   19.33,
+   20.67,
+   22.0,
+   23.33,
+   24.33,
+   25.67,
+   27.0,
+   28.0,
+   29.33,
+   30.67,
+   32.0,
+   33.0,
+   34.33,
+   35.67,
+   36.67,
+   38.33,
+   39.67,
+   41.0,
+   42.0,
+   43.33,
+   44.67,
+   46.0,
+   47.0,
+   48.33,
+   49.67,
+   50.67,
+   52.0,
+   53.33,
+   54.67,
+   55.67,
+   57.0,
+   58.33,
+   59.67
+  ]
+ },
+ "claim": {
+  "text": "Compilation showing damage from the 15 Aug 2026 M7.7 Indonesia earthquake",
+  "event_date": "2026-08-15",
+  "place": "Indonesia",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": null,
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 9.43,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/shorts/_fuECgS8S3U",
+    "title": "Silne trz\u0119sienie ziemi na Filipinach. 32 ofiary, ponad 130 wstrz\u0105s\u00f3w wt\u00f3rnych i 200 rannych - YouTube",
+    "uploader": "Telewizja Republika",
+    "upload_date": "2026-06-09",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:49:41+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 20",
+    "match": {
+     "decision": true,
+     "consistent_frames": 11,
+     "max_inliers": 104,
+     "mirrored": false,
+     "temporal_offset": -24.666666666666668,
+     "n_pairs": 51,
+     "score": 12.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 20,
+       "b_frame": 3,
+       "a_t": 25.666666666666668,
+       "b_t": 1.0,
+       "inliers": 104,
+       "flip": false
+      },
+      {
+       "a_frame": 20,
+       "b_frame": 4,
+       "a_t": 25.666666666666668,
+       "b_t": 1.3333333333333333,
+       "inliers": 91,
+       "flip": false
+      },
+      {
+       "a_frame": 28,
+       "b_frame": 29,
+       "a_t": 35.666666666666664,
+       "b_t": 11.333333333333334,
+       "inliers": 90,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_f64b394d.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2026-06-09",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://ok.ru/video/16520302299840",
+    "title": "\u041c\u043e\u0449\u043d\u043e\u0435 \u0437\u0435\u043c\u043b\u0435\u0442\u0440\u044f\u0441\u0435\u043d\u0438\u0435 \u043c\u0430\u0433\u043d\u0438\u0442\u0443\u0434\u043e\u0439 7, 7 \u0432 \u0418\u043d\u0434\u043e\u043d\u0435\u0437\u0438\u0438",
+    "uploader": null,
+    "upload_date": "2026-08-15",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:49:48+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 0",
+    "match": {
+     "decision": true,
+     "consistent_frames": 7,
+     "max_inliers": 28,
+     "mirrored": false,
+     "temporal_offset": 16.92,
+     "n_pairs": 29,
+     "score": 7.28,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 13,
+       "b_frame": 36,
+       "a_t": 17.0,
+       "b_t": 33.92,
+       "inliers": 28,
+       "flip": false
+      },
+      {
+       "a_frame": 13,
+       "b_frame": 35,
+       "a_t": 17.0,
+       "b_t": 33.28,
+       "inliers": 27,
+       "flip": false
+      },
+      {
+       "a_frame": 15,
+       "b_frame": 37,
+       "a_t": 19.333333333333332,
+       "b_t": 34.88,
+       "inliers": 25,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_b3109504.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2026-08-15",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/shorts/_fuECgS8S3U",
+   "title": "Silne trz\u0119sienie ziemi na Filipinach. 32 ofiary, ponad 130 wstrz\u0105s\u00f3w wt\u00f3rnych i 200 rannych - YouTube",
+   "uploader": "Telewizja Republika",
+   "upload_date": "2026-06-09",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T10:49:41+00:00",
+   "adapter": "yandex",
+   "found_via": "frame 20",
+   "match": {
+    "decision": true,
+    "consistent_frames": 11,
+    "max_inliers": 104,
+    "mirrored": false,
+    "temporal_offset": -24.666666666666668,
+    "n_pairs": 51,
+    "score": 12.0,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 20,
+      "b_frame": 3,
+      "a_t": 25.666666666666668,
+      "b_t": 1.0,
+      "inliers": 104,
+      "flip": false
+     },
+     {
+      "a_frame": 20,
+      "b_frame": 4,
+      "a_t": 25.666666666666668,
+      "b_t": 1.3333333333333333,
+      "inliers": 91,
+      "flip": false
+     },
+     {
+      "a_frame": 28,
+      "b_frame": 29,
+      "a_t": 35.666666666666664,
+      "b_t": 11.333333333333334,
+      "inliers": 90,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/yandex_f64b394d.png",
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2026-06-09",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 40,
+  "candidate_status_counts": {
+   "proven": 2,
+   "pending": 26,
+   "unavailable": 10,
+   "download_failed": 2
+  },
+  "adapters": {
+   "yandex": {
+    "frames": [
+     0,
+     20,
+     39
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 40,
+    "checked": 14,
+    "proven": 2
+   }
+  }
+ },
+ "clues": {
+  "status": "not_run"
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Indonesia",
+   "name": "Indonesia",
+   "lat": -2.4833826,
+   "lon": 117.8902853,
+   "source": "nominatim",
+   "confidence": "low",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": true,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": null,
+   "rain": {
+    "series": [
+     {
+      "date": "2026-08-12",
+      "mm": 0.0
+     },
+     {
+      "date": "2026-08-13",
+      "mm": 0.0
+     },
+     {
+      "date": "2026-08-14",
+      "mm": 0.0
+     },
+     {
+      "date": "2026-08-15",
+      "mm": 0.0
+     },
+     {
+      "date": "2026-08-16",
+      "mm": 0.0
+     },
+     {
+      "date": "2026-08-17",
+      "mm": 0.0
+     },
+     {
+      "date": "2026-08-18",
+      "mm": 0.0
+     }
+    ],
+    "max_mm": 0.0
+   },
+   "status": "UNKNOWN",
+   "errors": [
+    "discharge: no discharge data"
+   ]
+  },
+  "verdict": "UNKNOWN",
+  "reasons": [
+   "location resolved only to a whole country; too coarse to corroborate a local event"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=-2.4833826&longitude=117.8902853&daily=river_discharge&start_date=2026-08-12&end_date=2026-08-18",
+   "https://www.openstreetmap.org/?mlat=-2.4833826&mlon=117.8902853#map=10/-2.4833826/117.8902853"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Indonesia flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Indonesia+flood&mode=art"
+  }
+ },
+ "media_nature": {
+  "value": "unknown",
+  "confidence": 0.0,
+  "cited_frames": [],
+  "cited_timestamps_s": [],
+  "reasons": [],
+  "status": "NOT_RUN",
+  "note": "Muse clues were not available, so the media nature was not assessed."
+ },
+ "contradictions": [
+  {
+   "kind": "independently_dated_earlier_copy",
+   "text": "Footage was already published on 2026-06-09 (earliest copy found), before the claimed event date 2026-08-15.",
+   "evidence": [
+    "https://www.youtube.com/shorts/_fuECgS8S3U"
+   ],
+   "date_source": "yt-dlp metadata"
+  }
+ ],
+ "final_verdict": {
+  "label": "RECYCLED_FOOTAGE",
+  "summary": "The footage matches the earliest copy found, published on 2026-06-09 (https://www.youtube.com/shorts/_fuECgS8S3U, date independently fetched per yt-dlp metadata), before the claimed event date 2026-08-15. Matcher evidence: 11 temporally consistent frame(s), up to 104 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 1,
+   "proven_copies": 2,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "unknown",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 226.8,
+ "_wall_s": 226.8
+}
