@@ -1,0 +1,1766 @@
+{
+ "schema_version": "1.5",
+ "investigation_id": "476cec8bfb",
+ "created_at": "2026-10-30T16:56:23+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/global/G08.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/G08.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "G08.mp4",
+  "duration": 7.5,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 23,
+  "keyframe_times_s": [
+   0.0,
+   0.33,
+   0.67,
+   1.0,
+   1.33,
+   1.67,
+   2.0,
+   2.33,
+   2.67,
+   3.0,
+   3.33,
+   3.67,
+   4.0,
+   4.33,
+   4.67,
+   5.0,
+   5.33,
+   5.67,
+   6.0,
+   6.33,
+   6.67,
+   7.0,
+   7.33
+  ]
+ },
+ "claim": {
+  "text": "Flooded supermarket in New York (recent NYC flooding)",
+  "event_date": "2023-09-29",
+  "place": "New York City, USA",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "US",
+  "event_type": "flood"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 15.21,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.tiktok.com/@cyber.gaming.studios/video/7194464147373821226",
+    "title": "Loot lake in real life \ud83d\ude02 #fortnite #fyp #foryou #foryo ...",
+    "uploader": "cyber.gaming.studios",
+    "upload_date": "2023-01-30",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T16:55:03+00:00",
+    "adapter": "lens",
+    "found_via": "google lens best keyframe",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 18,
+     "max_inliers": 92,
+     "mirrored": false,
+     "temporal_offset": -0.3333333333333333,
+     "n_pairs": 31,
+     "score": 18.92,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 1,
+       "b_frame": 0,
+       "a_t": 0.3333333333333333,
+       "b_t": 0.0,
+       "inliers": 92,
+       "flip": false
+      },
+      {
+       "a_frame": 18,
+       "b_frame": 17,
+       "a_t": 6.0,
+       "b_t": 5.666666666666667,
+       "inliers": 85,
+       "flip": false
+      },
+      {
+       "a_frame": 18,
+       "b_frame": 16,
+       "a_t": 6.0,
+       "b_t": 5.333333333333333,
+       "inliers": 84,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/lens_d39e32bc.png",
+    "proof": {
+     "viral_frame": "evidence/proof_lens_d39e32bc_viral.jpg",
+     "copy_frame": "evidence/proof_lens_d39e32bc_copy.jpg",
+     "viral_t": 0.33,
+     "copy_t": 0.0,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.4057,
+       0.1494,
+       0.5097,
+       0.2999
+      ],
+      [
+       0.8572,
+       0.3285,
+       0.9234,
+       0.4537
+      ],
+      [
+       0.8071,
+       0.2339,
+       0.8692,
+       0.375
+      ],
+      [
+       0.7126,
+       0.1264,
+       0.7942,
+       0.2809
+      ],
+      [
+       0.3434,
+       0.1394,
+       0.4549,
+       0.2904
+      ],
+      [
+       0.242,
+       0.1994,
+       0.3659,
+       0.3402
+      ],
+      [
+       0.1649,
+       0.2043,
+       0.2917,
+       0.3434
+      ],
+      [
+       0.3399,
+       0.1222,
+       0.4529,
+       0.277
+      ],
+      [
+       0.5463,
+       0.2541,
+       0.6351,
+       0.3889
+      ],
+      [
+       0.2629,
+       0.2088,
+       0.3792,
+       0.3473
+      ],
+      [
+       0.8307,
+       0.2748,
+       0.8952,
+       0.4105
+      ],
+      [
+       0.3185,
+       0.1819,
+       0.4311,
+       0.3266
+      ],
+      [
+       0.6741,
+       0.1674,
+       0.7538,
+       0.3157
+      ],
+      [
+       0.1217,
+       0.2103,
+       0.2544,
+       0.3485
+      ],
+      [
+       0.0978,
+       0.1101,
+       0.2368,
+       0.2661
+      ],
+      [
+       0.2231,
+       0.2579,
+       0.3399,
+       0.3902
+      ],
+      [
+       0.6899,
+       0.0355,
+       0.7765,
+       0.2017
+      ],
+      [
+       0.8162,
+       0.2571,
+       0.8841,
+       0.3935
+      ],
+      [
+       0.3748,
+       0.1889,
+       0.4882,
+       0.3324
+      ],
+      [
+       0.398,
+       0.1626,
+       0.5022,
+       0.3101
+      ],
+      [
+       0.5086,
+       0.1928,
+       0.603,
+       0.3348
+      ],
+      [
+       0.3798,
+       0.1604,
+       0.4883,
+       0.3085
+      ],
+      [
+       0.7665,
+       0.1437,
+       0.8431,
+       0.2963
+      ],
+      [
+       0.1065,
+       0.2434,
+       0.2364,
+       0.3759
+      ],
+      [
+       0.1065,
+       0.2434,
+       0.2364,
+       0.3759
+      ],
+      [
+       0.8641,
+       0.2486,
+       0.9348,
+       0.388
+      ],
+      [
+       0.1626,
+       0.2155,
+       0.289,
+       0.3538
+      ],
+      [
+       0.5015,
+       0.278,
+       0.593,
+       0.4077
+      ],
+      [
+       0.5015,
+       0.278,
+       0.593,
+       0.4077
+      ],
+      [
+       0.3743,
+       0.2209,
+       0.4781,
+       0.3578
+      ],
+      [
+       0.5736,
+       0.2141,
+       0.661,
+       0.3526
+      ],
+      [
+       0.5736,
+       0.2141,
+       0.661,
+       0.3526
+      ],
+      [
+       0.7711,
+       0.2631,
+       0.8419,
+       0.3981
+      ],
+      [
+       0.1809,
+       0.3095,
+       0.2997,
+       0.4318
+      ],
+      [
+       0.1809,
+       0.3095,
+       0.2997,
+       0.4318
+      ],
+      [
+       0.3036,
+       0.2467,
+       0.4163,
+       0.3799
+      ],
+      [
+       0.6462,
+       0.2055,
+       0.7303,
+       0.3468
+      ],
+      [
+       0.6071,
+       0.1597,
+       0.6927,
+       0.3093
+      ],
+      [
+       0.7589,
+       0.2305,
+       0.834,
+       0.37
+      ],
+      [
+       0.7589,
+       0.2305,
+       0.834,
+       0.37
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2023-01-30",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/shorts/-TsK8Q0afIU",
+    "title": "YouTube",
+    "uploader": "news.com.au",
+    "upload_date": "2023-01-28",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T16:55:03+00:00",
+    "adapter": "lens",
+    "found_via": "google lens best keyframe",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 21,
+     "max_inliers": 127,
+     "mirrored": false,
+     "temporal_offset": 0.0,
+     "n_pairs": 71,
+     "score": 22.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 0,
+       "b_frame": 0,
+       "a_t": 0.0,
+       "b_t": 0.0,
+       "inliers": 127,
+       "flip": false
+      },
+      {
+       "a_frame": 11,
+       "b_frame": 12,
+       "a_t": 3.6666666666666665,
+       "b_t": 3.84,
+       "inliers": 118,
+       "flip": false
+      },
+      {
+       "a_frame": 1,
+       "b_frame": 1,
+       "a_t": 0.3333333333333333,
+       "b_t": 0.32,
+       "inliers": 93,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/lens_45143e63.png",
+    "proof": {
+     "viral_frame": "evidence/proof_lens_45143e63_viral.jpg",
+     "copy_frame": "evidence/proof_lens_45143e63_copy.jpg",
+     "viral_t": 0.0,
+     "copy_t": 0.0,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.6005,
+       0.3754,
+       0.5755,
+       0.5036
+      ],
+      [
+       0.6005,
+       0.3754,
+       0.5755,
+       0.5036
+      ],
+      [
+       0.5994,
+       0.3763,
+       0.5755,
+       0.5036
+      ],
+      [
+       0.5994,
+       0.3763,
+       0.5755,
+       0.5036
+      ],
+      [
+       0.8496,
+       0.3608,
+       0.7882,
+       0.491
+      ],
+      [
+       0.7131,
+       0.3583,
+       0.6701,
+       0.4886
+      ],
+      [
+       0.6035,
+       0.1454,
+       0.5793,
+       0.3193
+      ],
+      [
+       0.636,
+       0.4091,
+       0.6071,
+       0.5283
+      ],
+      [
+       0.7679,
+       0.2501,
+       0.7208,
+       0.4025
+      ],
+      [
+       0.7679,
+       0.2501,
+       0.7208,
+       0.4025
+      ],
+      [
+       0.5788,
+       0.349,
+       0.5584,
+       0.4819
+      ],
+      [
+       0.9027,
+       0.0597,
+       0.8313,
+       0.2504
+      ],
+      [
+       0.7133,
+       0.3399,
+       0.6743,
+       0.474
+      ],
+      [
+       0.7133,
+       0.3399,
+       0.6743,
+       0.474
+      ],
+      [
+       0.833,
+       0.2544,
+       0.7745,
+       0.4053
+      ],
+      [
+       0.5788,
+       0.3651,
+       0.5599,
+       0.4924
+      ],
+      [
+       0.5188,
+       0.2849,
+       0.5079,
+       0.4291
+      ],
+      [
+       0.5789,
+       0.3638,
+       0.5599,
+       0.4924
+      ],
+      [
+       0.7503,
+       0.4053,
+       0.7017,
+       0.5254
+      ],
+      [
+       0.2609,
+       0.3026,
+       0.2911,
+       0.4447
+      ],
+      [
+       0.3666,
+       0.2826,
+       0.3793,
+       0.4282
+      ],
+      [
+       0.0398,
+       0.1843,
+       0.1011,
+       0.3504
+      ],
+      [
+       0.3904,
+       0.2181,
+       0.399,
+       0.3765
+      ],
+      [
+       0.3908,
+       0.2181,
+       0.399,
+       0.3765
+      ],
+      [
+       0.0688,
+       0.2022,
+       0.1278,
+       0.3644
+      ],
+      [
+       0.3054,
+       0.6573,
+       0.3283,
+       0.7261
+      ],
+      [
+       0.1342,
+       0.1749,
+       0.1804,
+       0.3431
+      ],
+      [
+       0.8246,
+       0.4336,
+       0.762,
+       0.5474
+      ],
+      [
+       0.8296,
+       0.2192,
+       0.7707,
+       0.3779
+      ],
+      [
+       0.627,
+       0.3847,
+       0.5995,
+       0.5115
+      ],
+      [
+       0.386,
+       0.1902,
+       0.3961,
+       0.355
+      ],
+      [
+       0.7161,
+       0.2446,
+       0.671,
+       0.3995
+      ],
+      [
+       0.9151,
+       0.0494,
+       0.8424,
+       0.2433
+      ],
+      [
+       0.0705,
+       0.2681,
+       0.1296,
+       0.417
+      ],
+      [
+       0.4945,
+       0.3647,
+       0.4857,
+       0.4999
+      ],
+      [
+       0.8334,
+       0.2672,
+       0.7697,
+       0.4165
+      ],
+      [
+       0.4738,
+       0.133,
+       0.4702,
+       0.3097
+      ],
+      [
+       0.52,
+       0.4899,
+       0.5082,
+       0.5927
+      ],
+      [
+       0.5311,
+       0.3037,
+       0.515,
+       0.4452
+      ],
+      [
+       0.2817,
+       0.7516,
+       0.3075,
+       0.801
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2023-01-28",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/shorts/-TsK8Q0afIU",
+   "title": "YouTube",
+   "uploader": "news.com.au",
+   "upload_date": "2023-01-28",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T16:55:03+00:00",
+   "adapter": "lens",
+   "found_via": "google lens best keyframe",
+   "also_found_by": [],
+   "match": {
+    "decision": true,
+    "consistent_frames": 21,
+    "max_inliers": 127,
+    "mirrored": false,
+    "temporal_offset": 0.0,
+    "n_pairs": 71,
+    "score": 22.0,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 0,
+      "b_frame": 0,
+      "a_t": 0.0,
+      "b_t": 0.0,
+      "inliers": 127,
+      "flip": false
+     },
+     {
+      "a_frame": 11,
+      "b_frame": 12,
+      "a_t": 3.6666666666666665,
+      "b_t": 3.84,
+      "inliers": 118,
+      "flip": false
+     },
+     {
+      "a_frame": 1,
+      "b_frame": 1,
+      "a_t": 0.3333333333333333,
+      "b_t": 0.32,
+      "inliers": 93,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/lens_45143e63.png",
+   "proof": {
+    "viral_frame": "evidence/proof_lens_45143e63_viral.jpg",
+    "copy_frame": "evidence/proof_lens_45143e63_copy.jpg",
+    "viral_t": 0.0,
+    "copy_t": 0.0,
+    "mirrored": false,
+    "inliers": [
+     [
+      0.6005,
+      0.3754,
+      0.5755,
+      0.5036
+     ],
+     [
+      0.6005,
+      0.3754,
+      0.5755,
+      0.5036
+     ],
+     [
+      0.5994,
+      0.3763,
+      0.5755,
+      0.5036
+     ],
+     [
+      0.5994,
+      0.3763,
+      0.5755,
+      0.5036
+     ],
+     [
+      0.8496,
+      0.3608,
+      0.7882,
+      0.491
+     ],
+     [
+      0.7131,
+      0.3583,
+      0.6701,
+      0.4886
+     ],
+     [
+      0.6035,
+      0.1454,
+      0.5793,
+      0.3193
+     ],
+     [
+      0.636,
+      0.4091,
+      0.6071,
+      0.5283
+     ],
+     [
+      0.7679,
+      0.2501,
+      0.7208,
+      0.4025
+     ],
+     [
+      0.7679,
+      0.2501,
+      0.7208,
+      0.4025
+     ],
+     [
+      0.5788,
+      0.349,
+      0.5584,
+      0.4819
+     ],
+     [
+      0.9027,
+      0.0597,
+      0.8313,
+      0.2504
+     ],
+     [
+      0.7133,
+      0.3399,
+      0.6743,
+      0.474
+     ],
+     [
+      0.7133,
+      0.3399,
+      0.6743,
+      0.474
+     ],
+     [
+      0.833,
+      0.2544,
+      0.7745,
+      0.4053
+     ],
+     [
+      0.5788,
+      0.3651,
+      0.5599,
+      0.4924
+     ],
+     [
+      0.5188,
+      0.2849,
+      0.5079,
+      0.4291
+     ],
+     [
+      0.5789,
+      0.3638,
+      0.5599,
+      0.4924
+     ],
+     [
+      0.7503,
+      0.4053,
+      0.7017,
+      0.5254
+     ],
+     [
+      0.2609,
+      0.3026,
+      0.2911,
+      0.4447
+     ],
+     [
+      0.3666,
+      0.2826,
+      0.3793,
+      0.4282
+     ],
+     [
+      0.0398,
+      0.1843,
+      0.1011,
+      0.3504
+     ],
+     [
+      0.3904,
+      0.2181,
+      0.399,
+      0.3765
+     ],
+     [
+      0.3908,
+      0.2181,
+      0.399,
+      0.3765
+     ],
+     [
+      0.0688,
+      0.2022,
+      0.1278,
+      0.3644
+     ],
+     [
+      0.3054,
+      0.6573,
+      0.3283,
+      0.7261
+     ],
+     [
+      0.1342,
+      0.1749,
+      0.1804,
+      0.3431
+     ],
+     [
+      0.8246,
+      0.4336,
+      0.762,
+      0.5474
+     ],
+     [
+      0.8296,
+      0.2192,
+      0.7707,
+      0.3779
+     ],
+     [
+      0.627,
+      0.3847,
+      0.5995,
+      0.5115
+     ],
+     [
+      0.386,
+      0.1902,
+      0.3961,
+      0.355
+     ],
+     [
+      0.7161,
+      0.2446,
+      0.671,
+      0.3995
+     ],
+     [
+      0.9151,
+      0.0494,
+      0.8424,
+      0.2433
+     ],
+     [
+      0.0705,
+      0.2681,
+      0.1296,
+      0.417
+     ],
+     [
+      0.4945,
+      0.3647,
+      0.4857,
+      0.4999
+     ],
+     [
+      0.8334,
+      0.2672,
+      0.7697,
+      0.4165
+     ],
+     [
+      0.4738,
+      0.133,
+      0.4702,
+      0.3097
+     ],
+     [
+      0.52,
+      0.4899,
+      0.5082,
+      0.5927
+     ],
+     [
+      0.5311,
+      0.3037,
+      0.515,
+      0.4452
+     ],
+     [
+      0.2817,
+      0.7516,
+      0.3075,
+      0.801
+     ]
+    ]
+   },
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2023-01-28",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 53,
+  "candidate_status_counts": {
+   "not_proven": 3,
+   "proven": 2,
+   "pending": 39,
+   "download_failed": 5,
+   "unavailable": 4
+  },
+  "adapters": {
+   "lens": {
+    "source": "lens",
+    "calls": 1,
+    "errors": []
+   },
+   "youtube_api": {
+    "source": "youtube_api",
+    "queries": 0,
+    "errors": [
+     "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp",
+     "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp",
+     "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp"
+    ]
+   },
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     0,
+     9,
+     4
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "lens": {
+    "candidates": 13,
+    "checked": 10,
+    "proven": 2
+   },
+   "yandex": {
+    "candidates": 40,
+    "checked": 4,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {
+   "lens": [
+    "https://www.tiktok.com/@cyber.gaming.studios/video/7194464147373821226",
+    "https://www.youtube.com/shorts/-TsK8Q0afIU"
+   ]
+  },
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": "camera_footage",
+   "note": "23 of 23 keyframes are near frames labelled camera_footage"
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "interior of a large supermarket flooded with knee-deep murky brown water, shoppers wading through aisles beside refrigerated shelves, floating red shopping baskets/crates, one man pushing a girl sitting in a shopping cart",
+    "refs": [
+     0,
+     3,
+     6,
+     9,
+     13,
+     16,
+     19,
+     22
+    ],
+    "timestamps_s": [
+     0.0,
+     1.0,
+     2.0,
+     3.0,
+     4.33,
+     5.33,
+     6.33,
+     7.33
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "flooded indoor supermarket",
+   "refs": [
+    0,
+    3,
+    6,
+    16
+   ],
+   "timestamps_s": [
+    0.0,
+    1.0,
+    2.0,
+    5.33
+   ]
+  },
+  "visible_text": [],
+  "likely_location": {
+   "place": "Unknown",
+   "country": "Unknown",
+   "confidence": 0.1,
+   "lat": null,
+   "lon": null,
+   "reasons": [
+    {
+     "text": "low-resolution blurry frames show no legible signs, logos, language text, or exterior landmarks to identify city or country",
+     "refs": [
+      0,
+      3,
+      6,
+      9
+     ],
+     "timestamps_s": [
+      0.0,
+      1.0,
+      2.0,
+      3.0
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "Unknown",
+    "country": "Unknown",
+    "confidence": 0.1,
+    "lat": null,
+    "lon": null,
+    "cited_frames": [
+     0,
+     3,
+     6,
+     9
+    ],
+    "cited_timestamps_s": [
+     0.0,
+     1.0,
+     2.0,
+     3.0
+    ],
+    "reasons": [
+     {
+      "text": "low-resolution blurry frames show no legible signs, logos, language text, or exterior landmarks to identify city or country",
+      "refs": [
+       0,
+       3,
+       6,
+       9
+      ],
+      "timestamps_s": [
+       0.0,
+       1.0,
+       2.0,
+       3.0
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [],
+  "media_nature": {
+   "value": "camera_footage",
+   "confidence": 0.79,
+   "cited_frames": [
+    0,
+    3,
+    6,
+    9,
+    13,
+    16,
+    19,
+    22
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    1.0,
+    2.0,
+    3.0,
+    4.33,
+    5.33,
+    6.33,
+    7.33
+   ],
+   "reasons": [
+    {
+     "text": "shaky blurry phone view of flooded aisle with person wading, natural noise and blur",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "shaky phone view of flooded interior with people wading, motion blur",
+     "refs": [
+      3
+     ],
+     "timestamps_s": [
+      1.0
+     ]
+    },
+    {
+     "text": "close handheld view of man pushing girl in cart in floodwater, natural detail",
+     "refs": [
+      6
+     ],
+     "timestamps_s": [
+      2.0
+     ]
+    },
+    {
+     "text": "blurry handheld pan of flooded refrigerated shelves, no synthetic look",
+     "refs": [
+      9
+     ],
+     "timestamps_s": [
+      3.0
+     ]
+    },
+    {
+     "text": "blurry handheld view of floating red object in brown water",
+     "refs": [
+      13
+     ],
+     "timestamps_s": [
+      4.33
+     ]
+    },
+    {
+     "text": "shaky wide view of flooded store with floating red basket, natural artefacts",
+     "refs": [
+      16
+     ],
+     "timestamps_s": [
+      5.33
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "shaky blurry phone view of flooded aisle with person wading, natural noise and blur"
+    },
+    {
+     "frame": 3,
+     "t": 1.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "shaky phone view of flooded interior with people wading, motion blur"
+    },
+    {
+     "frame": 6,
+     "t": 2.0,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "close handheld view of man pushing girl in cart in floodwater, natural detail"
+    },
+    {
+     "frame": 9,
+     "t": 3.0,
+     "label": "camera_footage",
+     "confidence": 0.75,
+     "reason": "blurry handheld pan of flooded refrigerated shelves, no synthetic look"
+    },
+    {
+     "frame": 13,
+     "t": 4.33,
+     "label": "camera_footage",
+     "confidence": 0.75,
+     "reason": "blurry handheld view of floating red object in brown water"
+    },
+    {
+     "frame": 16,
+     "t": 5.33,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "shaky wide view of flooded store with floating red basket, natural artefacts"
+    },
+    {
+     "frame": 19,
+     "t": 6.33,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "handheld view of floating red baskets and wading shopper"
+    },
+    {
+     "frame": 22,
+     "t": 7.33,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "shaky phone view of flooded aisle with floating debris and shopper"
+    }
+   ],
+   "by_class": {
+    "camera_footage": [
+     0,
+     3,
+     6,
+     9,
+     13,
+     16,
+     19,
+     22
+    ]
+   },
+   "summary": "camera footage (frames 0,3,6,9,13,16,19,22) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "place": "New York",
+   "country_iso2": "US",
+   "event_type": "flood"
+  },
+  "queries": [
+   {
+    "q": "flooded supermarket interior shoppers wading water video",
+    "language": "en",
+    "why": "neutral description to find earliest upload of this clip"
+   },
+   {
+    "q": "supermarket flood shopping cart girl man orange shirt",
+    "language": "en",
+    "why": "distinct visual detail to match source"
+   },
+   {
+    "q": "supermercado inundado agua hasta las rodillas clientes video",
+    "language": "es",
+    "why": "likely local language if clip is from Latin America, to find original"
+   },
+   {
+    "q": "supermercado alagado clientes andando na agua video",
+    "language": "pt",
+    "why": "alternative local language to find recycled flood video"
+   },
+   {
+    "q": "supermarch\u00e9 inond\u00e9 clients pataugent rayons video",
+    "language": "fr",
+    "why": "broad search to catch non-US source"
+   },
+   {
+    "q": "flood inside grocery store floating baskets viral video",
+    "language": "en",
+    "why": "floating red baskets are distinctive, avoid claimed place name"
+   },
+   {
+    "q": "New York supermarket flooded September 29 2023 fact check",
+    "language": "en",
+    "why": "check debunks linking this video to claimed NYC date"
+   },
+   {
+    "q": "supermercado inundacion 2023 agua adentro tienda video viral",
+    "language": "es",
+    "why": "search for earlier flood event using same footage without NYC claim"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.01357,
+  "frames_shown": [
+   0,
+   3,
+   6,
+   9,
+   13,
+   16,
+   19,
+   22
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "3": 1.0,
+   "6": 2.0,
+   "9": 3.0,
+   "13": 4.33,
+   "16": 5.33,
+   "19": 6.33,
+   "22": 7.33
+  },
+  "audio": {
+   "status": "no_audio_track"
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_03_t1.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_06_t2.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_09_t3.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_13_t4.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_16_t5.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_19_t6.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_22_t7.3.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "New York City, USA",
+   "name": "New York, United States",
+   "lat": 40.7127281,
+   "lon": -74.0060152,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "UNAVAILABLE",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2023-09-26",
+      "m3s": 296.17
+     },
+     {
+      "date": "2023-09-27",
+      "m3s": 262.63
+     },
+     {
+      "date": "2023-09-28",
+      "m3s": 217.27
+     },
+     {
+      "date": "2023-09-29",
+      "m3s": 137.04
+     },
+     {
+      "date": "2023-09-30",
+      "m3s": 208.89
+     },
+     {
+      "date": "2023-10-01",
+      "m3s": 275.06
+     },
+     {
+      "date": "2023-10-02",
+      "m3s": 241.66
+     }
+    ],
+    "baseline": 59.48,
+    "peak": 296.17,
+    "ratio": 4.98,
+    "cell": [
+     40.625,
+     -74.12499
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2023-09-26",
+      "mm": 8.6
+     },
+     {
+      "date": "2023-09-27",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-09-28",
+      "mm": 0.1
+     },
+     {
+      "date": "2023-09-29",
+      "mm": 69.1
+     },
+     {
+      "date": "2023-09-30",
+      "mm": 1.8
+     },
+     {
+      "date": "2023-10-01",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-10-02",
+      "mm": 0.0
+     }
+    ],
+    "max_mm": 69.1
+   },
+   "status": "ANOMALOUS"
+  },
+  "verdict": "SUPPORTS",
+  "reasons": [
+   "river discharge peak 296.2 m3/s is 4.98x the 30-day baseline 59.5 m3/s"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=40.7127281&longitude=-74.0060152&daily=river_discharge&start_date=2023-09-26&end_date=2023-10-02",
+   "https://www.openstreetmap.org/?mlat=40.7127281&mlon=-74.0060152#map=10/40.7127281/-74.0060152"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "OK",
+   "articles_in_window": 250,
+   "articles_baseline_30d": 250,
+   "sample_links": [
+    {
+     "url": "https://www.nydailynews.com/2023/10/02/mayor-adams-didnt-heed-de-blasio-era-nyc-storm-protocols-before-crippling-flash-floods/",
+     "title": "Mayor Adams didnt heed de Blasio - era NYC storm protocols before crippling flash floods",
+     "domain": "nydailynews.com",
+     "seen": "20231003T003000Z"
+    },
+    {
+     "url": "https://hotair.com/karen-townsend/2023/10/02/oh-so-now-they-want-to-close-the-southern-border-n581848",
+     "title": "Oh , so NOW they want to close the southern border",
+     "domain": "hotair.com",
+     "seen": "20231003T001500Z"
+    },
+    {
+     "url": "https://www.thecentersquare.com/national/article_e10218c8-6162-11ee-b403-631e39991f33.html",
+     "title": "Democratic governors to Biden : Migrant crisis is  untenable , border  too open  ",
+     "domain": "thecentersquare.com",
+     "seen": "20231002T231500Z"
+    },
+    {
+     "url": "https://www.northcountrypublicradio.org/news/story/48562/20231002/supporters-of-ny-heat-act-ask-hochul-to-make-the-measure-part-of-her-budget",
+     "title": "Supporters of NY HEAT Act ask Hochul to make the measure part of her budget",
+     "domain": "northcountrypublicradio.org",
+     "seen": "20231002T231500Z"
+    },
+    {
+     "url": "https://www.youralaskalink.com/news/national/democratic-governors-to-biden-migrant-crisis-is-untenable-border-too-open/article_6c857628-dedd-5a6d-bb3f-f2a82cc7f138.html",
+     "title": "Democratic governors to Biden : Migrant crisis is  untenable , border  too open  ",
+     "domain": "youralaskalink.com",
+     "seen": "20231002T224500Z"
+    }
+   ],
+   "context_only": true,
+   "query": "\"New York City\" flood",
+   "capped_at": 250,
+   "note": "news coverage is context only; it counts articles that mention the place and event words and never proves a specific video is real"
+  }
+ },
+ "media_nature": {
+  "value": "camera_footage",
+  "confidence": 0.79,
+  "cited_frames": [
+   0,
+   3,
+   6,
+   9,
+   13,
+   16,
+   19,
+   22
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   1.0,
+   2.0,
+   3.0,
+   4.33,
+   5.33,
+   6.33,
+   7.33
+  ],
+  "reasons": [
+   {
+    "text": "shaky blurry phone view of flooded aisle with person wading, natural noise and blur",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "shaky phone view of flooded interior with people wading, motion blur",
+    "refs": [
+     3
+    ],
+    "timestamps_s": [
+     1.0
+    ]
+   },
+   {
+    "text": "close handheld view of man pushing girl in cart in floodwater, natural detail",
+    "refs": [
+     6
+    ],
+    "timestamps_s": [
+     2.0
+    ]
+   },
+   {
+    "text": "blurry handheld pan of flooded refrigerated shelves, no synthetic look",
+    "refs": [
+     9
+    ],
+    "timestamps_s": [
+     3.0
+    ]
+   },
+   {
+    "text": "blurry handheld view of floating red object in brown water",
+    "refs": [
+     13
+    ],
+    "timestamps_s": [
+     4.33
+    ]
+   },
+   {
+    "text": "shaky wide view of flooded store with floating red basket, natural artefacts",
+    "refs": [
+     16
+    ],
+    "timestamps_s": [
+     5.33
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "shaky blurry phone view of flooded aisle with person wading, natural noise and blur"
+   },
+   {
+    "frame": 3,
+    "t": 1.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "shaky phone view of flooded interior with people wading, motion blur"
+   },
+   {
+    "frame": 6,
+    "t": 2.0,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "close handheld view of man pushing girl in cart in floodwater, natural detail"
+   },
+   {
+    "frame": 9,
+    "t": 3.0,
+    "label": "camera_footage",
+    "confidence": 0.75,
+    "reason": "blurry handheld pan of flooded refrigerated shelves, no synthetic look"
+   },
+   {
+    "frame": 13,
+    "t": 4.33,
+    "label": "camera_footage",
+    "confidence": 0.75,
+    "reason": "blurry handheld view of floating red object in brown water"
+   },
+   {
+    "frame": 16,
+    "t": 5.33,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "shaky wide view of flooded store with floating red basket, natural artefacts"
+   },
+   {
+    "frame": 19,
+    "t": 6.33,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "handheld view of floating red baskets and wading shopper"
+   },
+   {
+    "frame": 22,
+    "t": 7.33,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "shaky phone view of flooded aisle with floating debris and shopper"
+   }
+  ],
+  "by_class": {
+   "camera_footage": [
+    0,
+    3,
+    6,
+    9,
+    13,
+    16,
+    19,
+    22
+   ]
+  },
+  "summary": "camera footage (frames 0,3,6,9,13,16,19,22) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [
+  {
+   "kind": "independently_dated_earlier_copy",
+   "text": "Footage was already published on 2023-01-28 (earliest copy found), before the claimed event date 2023-09-29.",
+   "evidence": [
+    "https://www.youtube.com/shorts/-TsK8Q0afIU"
+   ],
+   "date_source": "yt-dlp metadata"
+  }
+ ],
+ "final_verdict": {
+  "label": "RECYCLED_FOOTAGE",
+  "summary": "The footage matches the earliest copy found, published on 2023-01-28 (https://www.youtube.com/shorts/-TsK8Q0afIU, date independently fetched per yt-dlp metadata), before the claimed event date 2023-09-29. Matcher evidence: 21 temporally consistent frame(s), up to 127 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 2,
+   "proven_copies": 2,
+   "physical_supports": true,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "camera_footage",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 106.6,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 4.2,
+  "muse": 0.0,
+  "memory": 15.2,
+  "memory_muse_wait_claim": 15.2,
+  "discovery": 69.0,
+  "discovery_by_source": {
+   "lens": 5.4,
+   "youtube_api": 0.5,
+   "tavily": 2.9,
+   "yandex": 69.0
+  },
+  "verify_total_incl_overlap": 18.2,
+  "dates_physical_report_wait": 18.2,
+  "verify_workers": 3,
+  "verify_seconds": 51.9,
+  "verify_checked": 14
+ },
+ "_wall_s": 106.7,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 14
+}

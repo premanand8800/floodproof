@@ -1,0 +1,1076 @@
+{
+ "schema_version": "1.5",
+ "investigation_id": "b64e409b28",
+ "created_at": "2026-10-30T16:30:45+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/heldout/H09.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/heldout/H09.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "H09.mp4",
+  "duration": 53.08,
+  "has_audio": true,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   0.64,
+   1.28,
+   2.56,
+   3.84,
+   5.44,
+   7.68,
+   9.28,
+   11.2,
+   12.16,
+   12.8,
+   13.76,
+   14.72,
+   15.36,
+   16.32,
+   17.6,
+   18.24,
+   20.16,
+   21.12,
+   22.4,
+   23.36,
+   24.0,
+   24.64,
+   26.24,
+   26.88,
+   29.76,
+   30.4,
+   31.36,
+   32.32,
+   32.96,
+   33.6,
+   34.56,
+   35.2,
+   35.84,
+   37.44,
+   38.08,
+   39.36,
+   40.32,
+   42.56,
+   44.48,
+   45.44,
+   46.08,
+   48.0,
+   48.64,
+   49.6,
+   50.88,
+   51.52,
+   52.48
+  ]
+ },
+ "claim": {
+  "text": "Powerful wind in Canada (Dec 2023)",
+  "event_date": "2023-12-28",
+  "place": "Canada",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "CA",
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 18.66,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "NOT_FOUND",
+  "proven_matches": [],
+  "earliest_proven_copy": null,
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 78,
+  "candidate_status_counts": {
+   "not_proven": 12,
+   "download_failed": 1,
+   "pending": 64,
+   "unavailable": 1
+  },
+  "adapters": {
+   "lens": {
+    "source": "lens",
+    "calls": 1,
+    "errors": []
+   },
+   "youtube_api": {
+    "source": "youtube_api",
+    "queries": 2,
+    "errors": [
+     "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp"
+    ]
+   },
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     19,
+     26,
+     11
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 40,
+    "checked": 3,
+    "proven": 0
+   },
+   "lens": {
+    "candidates": 8,
+    "checked": 6,
+    "proven": 0
+   },
+   "tavily": {
+    "candidates": 30,
+    "checked": 5,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {},
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": "camera_footage",
+   "note": "48 of 48 keyframes are near frames labelled camera_footage"
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "pedestrians leaning and bracing against very strong wind while crossing an urban street and sidewalk",
+    "refs": [
+     0,
+     7,
+     27,
+     40
+    ],
+    "timestamps_s": [
+     0.0,
+     9.28,
+     31.36,
+     45.44
+    ]
+   },
+   {
+    "text": "individuals struggling to walk near a metal fence, ramp and street trash bin in windy conditions",
+    "refs": [
+     13,
+     20,
+     34,
+     47
+    ],
+    "timestamps_s": [
+     15.36,
+     23.36,
+     37.44,
+     52.48
+    ]
+   },
+   {
+    "text": "wide urban intersection with shops, crosswalks and buildings with no snow visible",
+    "refs": [
+     7,
+     40
+    ],
+    "timestamps_s": [
+     9.28,
+     45.44
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "dense urban street",
+   "refs": [
+    0,
+    7,
+    40
+   ],
+   "timestamps_s": [
+    0.0,
+    9.28,
+    45.44
+   ]
+  },
+  "visible_text": [
+   {
+    "text": "Canada weather today no snow but very bad weather",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ],
+    "timestamps_s": [
+     0.0,
+     9.28,
+     15.36,
+     23.36,
+     31.36,
+     37.44,
+     45.44,
+     52.48
+    ]
+   },
+   {
+    "text": "TikTok",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ],
+    "timestamps_s": [
+     0.0,
+     9.28,
+     15.36,
+     23.36,
+     31.36,
+     37.44,
+     45.44,
+     52.48
+    ]
+   },
+   {
+    "text": "@youngeuro_boss",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ],
+    "timestamps_s": [
+     0.0,
+     9.28,
+     15.36,
+     23.36,
+     31.36,
+     37.44,
+     45.44,
+     52.48
+    ]
+   }
+  ],
+  "likely_location": {
+   "place": "Unknown urban street",
+   "country": "Unknown",
+   "confidence": 0.2,
+   "lat": null,
+   "lon": null,
+   "reasons": [
+    {
+     "text": "No identifiable landmarks, street signs, license plates or other geographic identifiers visible, only generic shops, crosswalks and street furniture",
+     "refs": [
+      0,
+      7,
+      40
+     ],
+     "timestamps_s": [
+      0.0,
+      9.28,
+      45.44
+     ]
+    },
+    {
+     "text": "Architecture, crosswalk markings, metal fence, bollards and trash bin look generic European-style urban, not distinctively Canadian",
+     "refs": [
+      7,
+      13,
+      20,
+      27
+     ],
+     "timestamps_s": [
+      9.28,
+      15.36,
+      23.36,
+      31.36
+     ]
+    },
+    {
+     "text": "Only location indication is added text overlay and spoken word Canada, plus TikTok handle suggesting European source",
+     "refs": [
+      0,
+      7,
+      13,
+      20,
+      27,
+      34,
+      40,
+      47,
+      "audio@0.0"
+     ],
+     "timestamps_s": [
+      0.0,
+      9.28,
+      15.36,
+      23.36,
+      31.36,
+      37.44,
+      45.44,
+      52.48,
+      0.0
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "Unknown urban street",
+    "country": "Unknown",
+    "confidence": 0.2,
+    "lat": null,
+    "lon": null,
+    "cited_frames": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ],
+    "cited_timestamps_s": [
+     0.0,
+     9.28,
+     15.36,
+     23.36,
+     31.36,
+     37.44,
+     45.44,
+     52.48
+    ],
+    "reasons": [
+     {
+      "text": "No identifiable landmarks, street signs, license plates or other geographic identifiers visible, only generic shops, crosswalks and street furniture",
+      "refs": [
+       0,
+       7,
+       40
+      ],
+      "timestamps_s": [
+       0.0,
+       9.28,
+       45.44
+      ]
+     },
+     {
+      "text": "Architecture, crosswalk markings, metal fence, bollards and trash bin look generic European-style urban, not distinctively Canadian",
+      "refs": [
+       7,
+       13,
+       20,
+       27
+      ],
+      "timestamps_s": [
+       9.28,
+       15.36,
+       23.36,
+       31.36
+      ]
+     },
+     {
+      "text": "Only location indication is added text overlay and spoken word Canada, plus TikTok handle suggesting European source",
+      "refs": [
+       0,
+       7,
+       13,
+       20,
+       27,
+       34,
+       40,
+       47,
+       "audio@0.0"
+      ],
+      "timestamps_s": [
+       0.0,
+       9.28,
+       15.36,
+       23.36,
+       31.36,
+       37.44,
+       45.44,
+       52.48,
+       0.0
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [
+   {
+    "text": "No Canadian landmarks, signs, or identifiers visible; location Canada appears only as added text overlay and spoken audio, not as in-scene evidence",
+    "refs": [
+     0,
+     7,
+     40,
+     "audio@0.0"
+    ],
+    "timestamps_s": [
+     0.0,
+     9.28,
+     45.44,
+     0.0
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   },
+   {
+    "text": "On-screen TikTok handle @youngeuro_boss suggests European source rather than Canada",
+    "refs": [
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ],
+    "timestamps_s": [
+     9.28,
+     15.36,
+     23.36,
+     31.36,
+     37.44,
+     45.44,
+     52.48
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   },
+   {
+    "text": "No snow or winter Canadian conditions visible, caption itself says 'no snow' despite claimed late-December date in Canada",
+    "refs": [
+     7,
+     27,
+     40
+    ],
+    "timestamps_s": [
+     9.28,
+     31.36,
+     45.44
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   }
+  ],
+  "media_nature": {
+   "value": "camera_footage",
+   "confidence": 0.82,
+   "cited_frames": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    9.28,
+    15.36,
+    23.36,
+    31.36,
+    37.44,
+    45.44,
+    52.48
+   ],
+   "reasons": [
+    {
+     "text": "real pedestrians with motion blur and natural street detail, low-res phone video look",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "real people bracing in wind on crosswalk, natural posture and compression artefacts",
+     "refs": [
+      7
+     ],
+     "timestamps_s": [
+      9.28
+     ]
+    },
+    {
+     "text": "real person leaning into wind by fence, natural lighting and blur, no AI tells",
+     "refs": [
+      13
+     ],
+     "timestamps_s": [
+      15.36
+     ]
+    },
+    {
+     "text": "real street scene with person and trash bin, natural textures and noise",
+     "refs": [
+      20
+     ],
+     "timestamps_s": [
+      23.36
+     ]
+    },
+    {
+     "text": "real person on crosswalk, natural urban background detail",
+     "refs": [
+      27
+     ],
+     "timestamps_s": [
+      31.36
+     ]
+    },
+    {
+     "text": "real person walking by ramp and bin, consistent perspective and lighting",
+     "refs": [
+      34
+     ],
+     "timestamps_s": [
+      37.44
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "real pedestrians with motion blur and natural street detail, low-res phone video look"
+    },
+    {
+     "frame": 7,
+     "t": 9.28,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "real people bracing in wind on crosswalk, natural posture and compression artefacts"
+    },
+    {
+     "frame": 13,
+     "t": 15.36,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "real person leaning into wind by fence, natural lighting and blur, no AI tells"
+    },
+    {
+     "frame": 20,
+     "t": 23.36,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "real street scene with person and trash bin, natural textures and noise"
+    },
+    {
+     "frame": 27,
+     "t": 31.36,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "real person on crosswalk, natural urban background detail"
+    },
+    {
+     "frame": 34,
+     "t": 37.44,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "real person walking by ramp and bin, consistent perspective and lighting"
+    },
+    {
+     "frame": 40,
+     "t": 45.44,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "wide real intersection with shops and crosswalk, natural detail"
+    },
+    {
+     "frame": 47,
+     "t": 52.48,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "two real men struggling with wind and bin, natural motion and clothing deformation"
+    }
+   ],
+   "by_class": {
+    "camera_footage": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ]
+   },
+   "summary": "camera footage (frames 0,7,13,20,27,34,40,47) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "place": "Canada",
+   "country_iso2": "CA",
+   "event_type": "unknown"
+  },
+  "queries": [
+   {
+    "q": "pedestrians struggling strong wind crosswalk street viral video original",
+    "language": "en",
+    "why": "find earliest upload of wind-blown pedestrians clip without Canada claim"
+   },
+   {
+    "q": "man blown by wind trash bin ramp street video",
+    "language": "en",
+    "why": "match distinctive ramp and bin scenes to original source"
+   },
+   {
+    "q": "youngeuro_boss Canada weather today no snow but very bad weather",
+    "language": "en",
+    "why": "trace TikTok re-upload account and date"
+   },
+   {
+    "q": "people cannot walk strong wind holding each other city street video",
+    "language": "en",
+    "why": "neutral description to find recycled storm wind compilations"
+   },
+   {
+    "q": "temp\u00eate vent pi\u00e9tons n'arrivent pas \u00e0 traverser rue vid\u00e9o",
+    "language": "fr",
+    "why": "French query for Canada / francophone search for same footage"
+   },
+   {
+    "q": "storm wind pedestrians falling sidewalk filmed",
+    "language": "en",
+    "why": "find news reports of same wind event in true location"
+   },
+   {
+    "q": "strong wind no snow bad weather pedestrians TikTok",
+    "language": "en",
+    "why": "search exact caption text to locate copies"
+   },
+   {
+    "q": "windstorm Europe people blown over street video 2023",
+    "language": "en",
+    "why": "test alternative European origin suggested by username and streetscape"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.03428,
+  "frames_shown": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "7": 9.28,
+   "13": 15.36,
+   "20": 23.36,
+   "27": 31.36,
+   "34": 37.44,
+   "40": 45.44,
+   "47": 52.48
+  },
+  "audio": {
+   "has_speech": true,
+   "language": "en",
+   "transcript_summary": "Based on provided text description only (no audio file available): Speaker repeatedly says 'Canada' and states 'We are right here now in Canada. One love. God bless Canada.' No full calendar dates or month-day dates are spoken. Place named is Canada.",
+   "spoken_place_names": [
+    {
+     "name": "Canada",
+     "audio_t": 0.0
+    }
+   ],
+   "spoken_dates": [],
+   "partial_dates": [],
+   "other_sounds": [],
+   "dropped_untimed": 0,
+   "status": "ok",
+   "model": "meta/muse-spark-open",
+   "cost_usd": 0.01142,
+   "truncated": false,
+   "analyzed_seconds": 53.08,
+   "attempts": 1
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H09/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H09/frames/frame_07_t9.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H09/frames/frame_13_t15.4.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H09/frames/frame_20_t23.4.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H09/frames/frame_27_t31.4.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H09/frames/frame_34_t37.4.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H09/frames/frame_40_t45.4.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H09/frames/frame_47_t52.5.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Canada",
+   "name": "Canada",
+   "lat": 61.0666922,
+   "lon": -107.991707,
+   "source": "nominatim",
+   "confidence": "low",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": true,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "UNAVAILABLE",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2023-12-25",
+      "m3s": 1.38
+     },
+     {
+      "date": "2023-12-26",
+      "m3s": 1.36
+     },
+     {
+      "date": "2023-12-27",
+      "m3s": 1.33
+     },
+     {
+      "date": "2023-12-28",
+      "m3s": 1.28
+     },
+     {
+      "date": "2023-12-29",
+      "m3s": 1.25
+     },
+     {
+      "date": "2023-12-30",
+      "m3s": 1.32
+     },
+     {
+      "date": "2023-12-31",
+      "m3s": 1.31
+     }
+    ],
+    "baseline": 1.48,
+    "peak": 1.38,
+    "ratio": 0.93,
+    "cell": [
+     61.075005,
+     -108.07499
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2023-12-25",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-12-26",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-12-27",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-12-28",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-12-29",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-12-30",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-12-31",
+      "mm": 0.0
+     }
+    ],
+    "max_mm": 0.0
+   },
+   "status": "NORMAL"
+  },
+  "verdict": "UNKNOWN",
+  "reasons": [
+   "location resolved only to a whole country; too coarse to corroborate a local event"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=61.0666922&longitude=-107.991707&daily=river_discharge&start_date=2023-12-25&end_date=2023-12-31",
+   "https://www.openstreetmap.org/?mlat=61.0666922&mlon=-107.991707#map=10/61.0666922/-107.991707"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Canada flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Canada+flood&mode=artlis"
+  }
+ },
+ "media_nature": {
+  "value": "camera_footage",
+  "confidence": 0.82,
+  "cited_frames": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   9.28,
+   15.36,
+   23.36,
+   31.36,
+   37.44,
+   45.44,
+   52.48
+  ],
+  "reasons": [
+   {
+    "text": "real pedestrians with motion blur and natural street detail, low-res phone video look",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "real people bracing in wind on crosswalk, natural posture and compression artefacts",
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     9.28
+    ]
+   },
+   {
+    "text": "real person leaning into wind by fence, natural lighting and blur, no AI tells",
+    "refs": [
+     13
+    ],
+    "timestamps_s": [
+     15.36
+    ]
+   },
+   {
+    "text": "real street scene with person and trash bin, natural textures and noise",
+    "refs": [
+     20
+    ],
+    "timestamps_s": [
+     23.36
+    ]
+   },
+   {
+    "text": "real person on crosswalk, natural urban background detail",
+    "refs": [
+     27
+    ],
+    "timestamps_s": [
+     31.36
+    ]
+   },
+   {
+    "text": "real person walking by ramp and bin, consistent perspective and lighting",
+    "refs": [
+     34
+    ],
+    "timestamps_s": [
+     37.44
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "real pedestrians with motion blur and natural street detail, low-res phone video look"
+   },
+   {
+    "frame": 7,
+    "t": 9.28,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "real people bracing in wind on crosswalk, natural posture and compression artefacts"
+   },
+   {
+    "frame": 13,
+    "t": 15.36,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "real person leaning into wind by fence, natural lighting and blur, no AI tells"
+   },
+   {
+    "frame": 20,
+    "t": 23.36,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "real street scene with person and trash bin, natural textures and noise"
+   },
+   {
+    "frame": 27,
+    "t": 31.36,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "real person on crosswalk, natural urban background detail"
+   },
+   {
+    "frame": 34,
+    "t": 37.44,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "real person walking by ramp and bin, consistent perspective and lighting"
+   },
+   {
+    "frame": 40,
+    "t": 45.44,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "wide real intersection with shops and crosswalk, natural detail"
+   },
+   {
+    "frame": 47,
+    "t": 52.48,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "two real men struggling with wind and bin, natural motion and clothing deformation"
+   }
+  ],
+  "by_class": {
+   "camera_footage": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ]
+  },
+  "summary": "camera footage (frames 0,7,13,20,27,34,40,47) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "UNVERIFIED",
+  "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. The physical-world check was not available or inconclusive. The claim could not be verified from the available evidence. Separately, the AI visual clues report 3 unverified observation(s) that clash with the claim (e.g. \"No Canadian landmarks, signs, or identifiers visible; location Canada appears only as added text overlay and spoken audio, not as in-scene e\", frame ref [0, 7, 40, 'audio@0.0']); these are model observations, not independent evidence and not part of the visual-match proof.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 0,
+   "physical_supports": null,
+   "unverified_model_observations": 3,
+   "date_conflicts": 0,
+   "media_nature": "camera_footage",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 119.1,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 3.1,
+  "muse": 0.0,
+  "memory": 18.7,
+  "memory_muse_wait_claim": 18.7,
+  "discovery": 67.2,
+  "discovery_by_source": {
+   "lens": 4.6,
+   "youtube_api": 0.9,
+   "tavily": 14.0,
+   "yandex": 67.2
+  },
+  "verify_total_incl_overlap": 30.1,
+  "dates_physical_report_wait": 30.1,
+  "verify_workers": 3,
+  "verify_seconds": 63.3,
+  "verify_checked": 14
+ },
+ "_wall_s": 119.1,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 8
+}

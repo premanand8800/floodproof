@@ -39,6 +39,7 @@ def _capped_lens(url, *a, **k):
 
 def run(mode, ids):
     sources.lens_candidates = _capped_lens
+    pipeline.attach_explanation = lambda *a, **k: None   # explain.py adds a Muse call per run: off in every mode (cost/fairness)
     out_d = B / "ablation_v2_runs" / mode; out_d.mkdir(parents=True, exist_ok=True)
     mem = Memory(os.environ.get("ABL_MEMORY", str(ROOT / ".cache" / "mem_copy")))
     cur = [None]; orig_inv = investigator.investigate_clip
@@ -66,7 +67,7 @@ def run(mode, ids):
         p = out_d / f"{i}.json"
         if p.exists():
             continue
-        c = CASES[i]; cur[0] = i; d = ROOT / ".cache" / "ablation_v2" / mode / i; shutil.rmtree(d, ignore_errors=True)
+        c = CASES[i]; cur[0] = i; d = (ROOT / "runs" / f"ablv2_{i}") if mode == "all_on" else (ROOT / ".cache" / "ablation_v2" / mode / i); shutil.rmtree(d, ignore_errors=True)
         t = time.time()
         try:
             rep = pipeline.investigate(str(ROOT / c["viral_clip"]), claim=c["claimed_event"], date=c.get("claimed_date"),

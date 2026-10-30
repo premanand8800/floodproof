@@ -1,0 +1,2889 @@
+{
+ "schema_version": "1.5",
+ "investigation_id": "8725f476ab",
+ "created_at": "2026-10-30T16:22:18+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/heldout/H03.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/heldout/H03.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "H03.mp4",
+  "duration": 60.0,
+  "has_audio": true,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   1.0,
+   1.67,
+   4.33,
+   5.67,
+   7.0,
+   8.33,
+   9.33,
+   11.0,
+   13.0,
+   13.67,
+   15.0,
+   16.0,
+   16.67,
+   17.67,
+   18.33,
+   19.0,
+   20.33,
+   21.0,
+   21.67,
+   24.67,
+   26.67,
+   28.67,
+   29.67,
+   30.67,
+   33.33,
+   35.0,
+   37.67,
+   38.67,
+   40.0,
+   42.67,
+   45.0,
+   46.33,
+   47.0,
+   48.0,
+   48.67,
+   49.67,
+   50.33,
+   51.0,
+   52.0,
+   52.67,
+   53.33,
+   54.33,
+   55.0,
+   56.33,
+   57.33,
+   58.0,
+   59.33
+  ]
+ },
+ "claim": {
+  "text": "Flash flood / landslide in Sikkim (Oct 2023)",
+  "event_date": "2023-10-06",
+  "place": "Sikkim, India",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "IN",
+  "event_type": "flash_flood"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 15.19,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/shorts/hS-bu7XQ89o",
+    "title": "prayfornepal #viral #nepalisong #viral #trending #nepalflood ...",
+    "uploader": "Laxmi musician (\u0932\u0915\u094d\u0937\u094d\u092e\u0940 \u092e\u094d\u092f\u0942\u091c\u093f\u0936\u093f\u092f\u0928)",
+    "upload_date": "2026-09-21",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T16:20:07+00:00",
+    "adapter": "lens",
+    "found_via": "google lens best keyframe",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 5,
+     "max_inliers": 34,
+     "mirrored": true,
+     "temporal_offset": -47.332,
+     "n_pairs": 40,
+     "score": 5.34,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 35,
+       "b_frame": 4,
+       "a_t": 48.666666666666664,
+       "b_t": 1.3346666666666667,
+       "inliers": 34,
+       "flip": true
+      },
+      {
+       "a_frame": 36,
+       "b_frame": 4,
+       "a_t": 49.666666666666664,
+       "b_t": 1.3346666666666667,
+       "inliers": 34,
+       "flip": true
+      },
+      {
+       "a_frame": 32,
+       "b_frame": 0,
+       "a_t": 46.333333333333336,
+       "b_t": 0.0,
+       "inliers": 30,
+       "flip": true
+      }
+     ]
+    },
+    "evidence_png": "evidence/lens_219ac026.png",
+    "proof": {
+     "viral_frame": "evidence/proof_lens_219ac026_viral.jpg",
+     "copy_frame": "evidence/proof_lens_219ac026_copy.jpg",
+     "viral_t": 48.67,
+     "copy_t": 1.33,
+     "mirrored": true,
+     "inliers": [
+      [
+       0.854,
+       0.574,
+       0.1007,
+       0.5778
+      ],
+      [
+       0.1451,
+       0.3906,
+       0.8406,
+       0.3903
+      ],
+      [
+       0.7801,
+       0.5089,
+       0.179,
+       0.5115
+      ],
+      [
+       0.7801,
+       0.5089,
+       0.179,
+       0.5115
+      ],
+      [
+       0.8216,
+       0.4739,
+       0.1376,
+       0.4744
+      ],
+      [
+       0.1598,
+       0.3873,
+       0.8253,
+       0.3864
+      ],
+      [
+       0.7524,
+       0.5758,
+       0.1992,
+       0.5783
+      ],
+      [
+       0.2261,
+       0.3888,
+       0.7567,
+       0.3871
+      ],
+      [
+       0.1707,
+       0.3778,
+       0.8118,
+       0.3763
+      ],
+      [
+       0.1707,
+       0.3778,
+       0.8118,
+       0.3763
+      ],
+      [
+       0.8421,
+       0.4899,
+       0.1174,
+       0.4886
+      ],
+      [
+       0.1944,
+       0.3886,
+       0.7912,
+       0.3871
+      ],
+      [
+       0.8088,
+       0.5271,
+       0.1487,
+       0.5253
+      ],
+      [
+       0.9072,
+       0.5358,
+       0.0432,
+       0.5379
+      ],
+      [
+       0.6347,
+       0.4043,
+       0.3309,
+       0.4014
+      ],
+      [
+       0.8654,
+       0.5846,
+       0.0883,
+       0.5891
+      ],
+      [
+       0.7538,
+       0.4828,
+       0.2068,
+       0.483
+      ],
+      [
+       0.7623,
+       0.4974,
+       0.2007,
+       0.4981
+      ],
+      [
+       0.904,
+       0.5486,
+       0.0499,
+       0.5509
+      ],
+      [
+       0.5045,
+       0.8272,
+       0.4636,
+       0.8433
+      ],
+      [
+       0.8656,
+       0.5146,
+       0.0852,
+       0.5106
+      ],
+      [
+       0.7783,
+       0.5372,
+       0.1788,
+       0.5408
+      ],
+      [
+       0.3158,
+       0.4046,
+       0.6622,
+       0.4037
+      ],
+      [
+       0.3158,
+       0.4046,
+       0.6622,
+       0.4037
+      ],
+      [
+       0.7619,
+       0.5553,
+       0.1993,
+       0.5556
+      ],
+      [
+       0.6622,
+       0.3786,
+       0.2986,
+       0.376
+      ],
+      [
+       0.7911,
+       0.5199,
+       0.168,
+       0.5202
+      ],
+      [
+       0.7084,
+       0.2281,
+       0.2558,
+       0.2187
+      ],
+      [
+       0.8079,
+       0.5618,
+       0.149,
+       0.5661
+      ],
+      [
+       0.3871,
+       0.4256,
+       0.59,
+       0.425
+      ],
+      [
+       0.625,
+       0.3031,
+       0.3381,
+       0.297
+      ],
+      [
+       0.3198,
+       0.415,
+       0.6574,
+       0.4168
+      ],
+      [
+       0.6391,
+       0.3757,
+       0.3264,
+       0.3728
+      ],
+      [
+       0.1827,
+       0.7547,
+       0.7999,
+       0.769
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2026-09-21",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.tiktok.com/@samiclick1/video/7678926938685148424",
+    "title": "Nepal Flood Relief: Latest Situations and Affected Areas ...",
+    "uploader": "samiclick1",
+    "upload_date": "2026-08-28",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T16:20:04+00:00",
+    "adapter": "lens",
+    "found_via": "google lens best keyframe",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 6,
+     "max_inliers": 51,
+     "mirrored": true,
+     "temporal_offset": -46.33333333333333,
+     "n_pairs": 79,
+     "score": 6.51,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 35,
+       "b_frame": 4,
+       "a_t": 48.666666666666664,
+       "b_t": 2.3333333333333335,
+       "inliers": 51,
+       "flip": true
+      },
+      {
+       "a_frame": 36,
+       "b_frame": 4,
+       "a_t": 49.666666666666664,
+       "b_t": 2.3333333333333335,
+       "inliers": 46,
+       "flip": true
+      },
+      {
+       "a_frame": 34,
+       "b_frame": 3,
+       "a_t": 48.0,
+       "b_t": 2.0,
+       "inliers": 42,
+       "flip": true
+      }
+     ]
+    },
+    "evidence_png": "evidence/lens_96821542.png",
+    "proof": {
+     "viral_frame": "evidence/proof_lens_96821542_viral.jpg",
+     "copy_frame": "evidence/proof_lens_96821542_copy.jpg",
+     "viral_t": 48.67,
+     "copy_t": 2.33,
+     "mirrored": true,
+     "inliers": [
+      [
+       0.854,
+       0.574,
+       0.1374,
+       0.5684
+      ],
+      [
+       0.7801,
+       0.5089,
+       0.2073,
+       0.5105
+      ],
+      [
+       0.8216,
+       0.4739,
+       0.1655,
+       0.4779
+      ],
+      [
+       0.1598,
+       0.3873,
+       0.7734,
+       0.4007
+      ],
+      [
+       0.9363,
+       0.532,
+       0.0592,
+       0.528
+      ],
+      [
+       0.7524,
+       0.5758,
+       0.2285,
+       0.57
+      ],
+      [
+       0.9199,
+       0.5649,
+       0.0772,
+       0.5602
+      ],
+      [
+       0.2261,
+       0.3888,
+       0.7129,
+       0.4024
+      ],
+      [
+       0.2044,
+       0.3781,
+       0.7308,
+       0.3926
+      ],
+      [
+       0.9254,
+       0.4955,
+       0.0717,
+       0.4967
+      ],
+      [
+       0.8445,
+       0.4597,
+       0.1467,
+       0.464
+      ],
+      [
+       0.5921,
+       0.3943,
+       0.3787,
+       0.4066
+      ],
+      [
+       0.1707,
+       0.3778,
+       0.7628,
+       0.3921
+      ],
+      [
+       0.1707,
+       0.3778,
+       0.7628,
+       0.3921
+      ],
+      [
+       0.8421,
+       0.4899,
+       0.1471,
+       0.4921
+      ],
+      [
+       0.1944,
+       0.3886,
+       0.7439,
+       0.4017
+      ],
+      [
+       0.8763,
+       0.5752,
+       0.1162,
+       0.5697
+      ],
+      [
+       0.8763,
+       0.5752,
+       0.1162,
+       0.5697
+      ],
+      [
+       0.901,
+       0.5623,
+       0.0922,
+       0.5581
+      ],
+      [
+       0.901,
+       0.5623,
+       0.0922,
+       0.5581
+      ],
+      [
+       0.901,
+       0.5623,
+       0.0922,
+       0.5581
+      ],
+      [
+       0.6347,
+       0.4043,
+       0.3392,
+       0.4139
+      ],
+      [
+       0.8654,
+       0.5846,
+       0.1254,
+       0.5785
+      ],
+      [
+       0.7538,
+       0.4828,
+       0.2312,
+       0.4854
+      ],
+      [
+       0.7623,
+       0.4974,
+       0.225,
+       0.4995
+      ],
+      [
+       0.904,
+       0.5486,
+       0.0961,
+       0.5462
+      ],
+      [
+       0.5045,
+       0.8272,
+       0.4521,
+       0.8003
+      ],
+      [
+       0.9041,
+       0.542,
+       0.0927,
+       0.5392
+      ],
+      [
+       0.9041,
+       0.542,
+       0.0927,
+       0.5392
+      ],
+      [
+       0.7259,
+       0.596,
+       0.2541,
+       0.5896
+      ],
+      [
+       0.8656,
+       0.5146,
+       0.1255,
+       0.5108
+      ],
+      [
+       0.7306,
+       0.5887,
+       0.2511,
+       0.5836
+      ],
+      [
+       0.2111,
+       0.3908,
+       0.7272,
+       0.4042
+      ],
+      [
+       0.2111,
+       0.3908,
+       0.7272,
+       0.4042
+      ],
+      [
+       0.9399,
+       0.188,
+       0.0599,
+       0.2166
+      ],
+      [
+       0.6087,
+       0.2963,
+       0.3643,
+       0.316
+      ],
+      [
+       0.7783,
+       0.5372,
+       0.2067,
+       0.5363
+      ],
+      [
+       0.3158,
+       0.4046,
+       0.6316,
+       0.4161
+      ],
+      [
+       0.3158,
+       0.4046,
+       0.6316,
+       0.4161
+      ],
+      [
+       0.7619,
+       0.5553,
+       0.22,
+       0.5531
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2026-08-28",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=TeH24yaQNYI",
+    "title": "A Man Running for His Life! Tremendous Landslide in Atami Shizuoka Japan! - YouTube",
+    "uploader": "HMV Tube",
+    "upload_date": "2021-07-04",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T16:21:03+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 6",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 16,
+     "max_inliers": 76,
+     "mirrored": false,
+     "temporal_offset": 4.000070869990226,
+     "n_pairs": 420,
+     "score": 16.76,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 4,
+       "b_frame": 9,
+       "a_t": 5.666666666666667,
+       "b_t": 9.666737536656893,
+       "inliers": 76,
+       "flip": false
+      },
+      {
+       "a_frame": 3,
+       "b_frame": 8,
+       "a_t": 4.333333333333333,
+       "b_t": 8.666730205278594,
+       "inliers": 72,
+       "flip": false
+      },
+      {
+       "a_frame": 3,
+       "b_frame": 7,
+       "a_t": 4.333333333333333,
+       "b_t": 8.000058651026393,
+       "inliers": 71,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_320b839d.png",
+    "proof": {
+     "viral_frame": "evidence/proof_yandex_320b839d_viral.jpg",
+     "copy_frame": "evidence/proof_yandex_320b839d_copy.jpg",
+     "viral_t": 5.67,
+     "copy_t": 9.67,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.8763,
+       0.2902,
+       0.6799,
+       0.1056
+      ],
+      [
+       0.8763,
+       0.2902,
+       0.6799,
+       0.1056
+      ],
+      [
+       0.4914,
+       0.6103,
+       0.493,
+       0.7074
+      ],
+      [
+       0.5671,
+       0.6436,
+       0.5298,
+       0.7694
+      ],
+      [
+       0.217,
+       0.5999,
+       0.3594,
+       0.6879
+      ],
+      [
+       0.6203,
+       0.6528,
+       0.5558,
+       0.7867
+      ],
+      [
+       0.6203,
+       0.6528,
+       0.5558,
+       0.7867
+      ],
+      [
+       0.185,
+       0.5121,
+       0.3447,
+       0.5226
+      ],
+      [
+       0.185,
+       0.5121,
+       0.3447,
+       0.5226
+      ],
+      [
+       0.1734,
+       0.6017,
+       0.3386,
+       0.6914
+      ],
+      [
+       0.7532,
+       0.6523,
+       0.6203,
+       0.7876
+      ],
+      [
+       0.8233,
+       0.6513,
+       0.6545,
+       0.7857
+      ],
+      [
+       0.6709,
+       0.6576,
+       0.5806,
+       0.7954
+      ],
+      [
+       0.8332,
+       0.6617,
+       0.6596,
+       0.8045
+      ],
+      [
+       0.806,
+       0.2887,
+       0.6464,
+       0.1054
+      ],
+      [
+       0.568,
+       0.3815,
+       0.5305,
+       0.2782
+      ],
+      [
+       0.568,
+       0.3815,
+       0.5305,
+       0.2782
+      ],
+      [
+       0.5621,
+       0.5996,
+       0.5277,
+       0.684
+      ],
+      [
+       0.4425,
+       0.6115,
+       0.4698,
+       0.7095
+      ],
+      [
+       0.5558,
+       0.6282,
+       0.5247,
+       0.7411
+      ],
+      [
+       0.6941,
+       0.6467,
+       0.5921,
+       0.7766
+      ],
+      [
+       0.5952,
+       0.3543,
+       0.543,
+       0.227
+      ],
+      [
+       0.5952,
+       0.3543,
+       0.543,
+       0.227
+      ],
+      [
+       0.5952,
+       0.3543,
+       0.543,
+       0.227
+      ],
+      [
+       0.2815,
+       0.4799,
+       0.392,
+       0.4623
+      ],
+      [
+       0.8663,
+       0.3276,
+       0.6742,
+       0.1762
+      ],
+      [
+       0.8327,
+       0.567,
+       0.6596,
+       0.6259
+      ],
+      [
+       0.4372,
+       0.6465,
+       0.467,
+       0.7758
+      ],
+      [
+       0.4372,
+       0.6465,
+       0.467,
+       0.7758
+      ],
+      [
+       0.7238,
+       0.6627,
+       0.6065,
+       0.8042
+      ],
+      [
+       0.9791,
+       0.3115,
+       0.7297,
+       0.1467
+      ],
+      [
+       0.8229,
+       0.4461,
+       0.6549,
+       0.3971
+      ],
+      [
+       0.8351,
+       0.5355,
+       0.6595,
+       0.5669
+      ],
+      [
+       0.8351,
+       0.5355,
+       0.6595,
+       0.5669
+      ],
+      [
+       0.6442,
+       0.6467,
+       0.5666,
+       0.7707
+      ],
+      [
+       0.8272,
+       0.5244,
+       0.6569,
+       0.5449
+      ],
+      [
+       0.5892,
+       0.6382,
+       0.5409,
+       0.7604
+      ],
+      [
+       0.6653,
+       0.2984,
+       0.5774,
+       0.121
+      ],
+      [
+       0.8568,
+       0.3067,
+       0.6702,
+       0.136
+      ],
+      [
+       0.7164,
+       0.68,
+       0.6027,
+       0.837
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2021-07-04",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=W0xvQCfDZOY",
+    "title": "Japonya'y\u0131 sel ve heyelan vurdu! - YouTube",
+    "uploader": "SonKale \u0130zmir",
+    "upload_date": "2021-07-03",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T16:21:03+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 6",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 16,
+     "max_inliers": 97,
+     "mirrored": false,
+     "temporal_offset": 4.673080168776371,
+     "n_pairs": 512,
+     "score": 16.97,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 2,
+       "b_frame": 11,
+       "a_t": 1.6666666666666667,
+       "b_t": 6.339746835443038,
+       "inliers": 97,
+       "flip": false
+      },
+      {
+       "a_frame": 3,
+       "b_frame": 15,
+       "a_t": 4.333333333333333,
+       "b_t": 8.675443037974683,
+       "inliers": 97,
+       "flip": false
+      },
+      {
+       "a_frame": 3,
+       "b_frame": 16,
+       "a_t": 4.333333333333333,
+       "b_t": 9.009113924050633,
+       "inliers": 95,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_1bc63833.png",
+    "proof": {
+     "viral_frame": "evidence/proof_yandex_1bc63833_viral.jpg",
+     "copy_frame": "evidence/proof_yandex_1bc63833_copy.jpg",
+     "viral_t": 1.67,
+     "copy_t": 6.34,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.3358,
+       0.5925,
+       0.3934,
+       0.6859
+      ],
+      [
+       0.7181,
+       0.2777,
+       0.62,
+       0.0945
+      ],
+      [
+       0.4088,
+       0.6242,
+       0.4361,
+       0.7476
+      ],
+      [
+       0.0637,
+       0.5818,
+       0.2305,
+       0.6679
+      ],
+      [
+       0.8136,
+       0.5406,
+       0.6765,
+       0.5885
+      ],
+      [
+       0.8169,
+       0.615,
+       0.6793,
+       0.7326
+      ],
+      [
+       0.8169,
+       0.615,
+       0.6793,
+       0.7326
+      ],
+      [
+       0.034,
+       0.4917,
+       0.2121,
+       0.4994
+      ],
+      [
+       0.51,
+       0.6379,
+       0.4967,
+       0.7726
+      ],
+      [
+       0.2853,
+       0.5936,
+       0.3622,
+       0.6887
+      ],
+      [
+       0.7077,
+       0.3155,
+       0.6134,
+       0.1649
+      ],
+      [
+       0.8953,
+       0.5039,
+       0.7219,
+       0.5264
+      ],
+      [
+       0.1365,
+       0.4605,
+       0.2732,
+       0.4384
+      ],
+      [
+       0.4167,
+       0.3649,
+       0.4417,
+       0.2585
+      ],
+      [
+       0.4167,
+       0.3649,
+       0.4417,
+       0.2585
+      ],
+      [
+       0.4604,
+       0.6338,
+       0.4672,
+       0.764
+      ],
+      [
+       0.6596,
+       0.6325,
+       0.5859,
+       0.7621
+      ],
+      [
+       0.4784,
+       0.5048,
+       0.4781,
+       0.5224
+      ],
+      [
+       0.5322,
+       0.6246,
+       0.51,
+       0.7485
+      ],
+      [
+       0.175,
+       0.614,
+       0.2956,
+       0.7288
+      ],
+      [
+       0.175,
+       0.614,
+       0.2956,
+       0.7288
+      ],
+      [
+       0.1762,
+       0.4621,
+       0.2974,
+       0.442
+      ],
+      [
+       0.404,
+       0.6051,
+       0.4333,
+       0.7128
+      ],
+      [
+       0.5896,
+       0.6337,
+       0.5439,
+       0.7624
+      ],
+      [
+       0.6711,
+       0.6441,
+       0.5927,
+       0.7806
+      ],
+      [
+       0.7833,
+       0.6478,
+       0.6592,
+       0.7875
+      ],
+      [
+       0.4562,
+       0.3599,
+       0.4649,
+       0.2494
+      ],
+      [
+       0.4562,
+       0.3599,
+       0.4649,
+       0.2494
+      ],
+      [
+       0.4562,
+       0.3599,
+       0.4649,
+       0.2494
+      ],
+      [
+       0.4814,
+       0.6216,
+       0.4792,
+       0.7437
+      ],
+      [
+       0.5156,
+       0.2817,
+       0.5001,
+       0.1044
+      ],
+      [
+       0.4431,
+       0.3374,
+       0.4572,
+       0.206
+      ],
+      [
+       0.4431,
+       0.3374,
+       0.4572,
+       0.206
+      ],
+      [
+       0.4062,
+       0.5797,
+       0.4349,
+       0.6639
+      ],
+      [
+       0.6714,
+       0.5494,
+       0.5923,
+       0.6049
+      ],
+      [
+       0.3893,
+       0.4023,
+       0.4248,
+       0.3295
+      ],
+      [
+       0.3631,
+       0.684,
+       0.4093,
+       0.8611
+      ],
+      [
+       0.3631,
+       0.684,
+       0.4093,
+       0.8611
+      ],
+      [
+       0.6912,
+       0.5196,
+       0.6041,
+       0.5486
+      ],
+      [
+       0.4448,
+       0.3187,
+       0.4576,
+       0.1726
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2021-07-03",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=jlZ8ZnwZP90",
+    "title": "japan faces huge landslide in atami city #japanlandslide - YouTube",
+    "uploader": "saisribalaji",
+    "upload_date": "2021-07-03",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T16:21:49+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 6",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 16,
+     "max_inliers": 57,
+     "mirrored": false,
+     "temporal_offset": 28.332734658969425,
+     "n_pairs": 423,
+     "score": 16.57,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 15,
+       "b_frame": 45,
+       "a_t": 18.333333333333332,
+       "b_t": 46.66606799230276,
+       "inliers": 57,
+       "flip": false
+      },
+      {
+       "a_frame": 4,
+       "b_frame": 27,
+       "a_t": 5.666666666666667,
+       "b_t": 33.332905708787685,
+       "inliers": 56,
+       "flip": false
+      },
+      {
+       "a_frame": 4,
+       "b_frame": 28,
+       "a_t": 5.666666666666667,
+       "b_t": 33.99956382296344,
+       "inliers": 51,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_b94969bd.png",
+    "proof": {
+     "viral_frame": "evidence/proof_yandex_b94969bd_viral.jpg",
+     "copy_frame": "evidence/proof_yandex_b94969bd_copy.jpg",
+     "viral_t": 18.33,
+     "copy_t": 46.67,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.0897,
+       0.608,
+       0.2724,
+       0.7646
+      ],
+      [
+       0.0897,
+       0.608,
+       0.2724,
+       0.7646
+      ],
+      [
+       0.047,
+       0.629,
+       0.2483,
+       0.8052
+      ],
+      [
+       0.047,
+       0.629,
+       0.2483,
+       0.8052
+      ],
+      [
+       0.5454,
+       0.4034,
+       0.5308,
+       0.3672
+      ],
+      [
+       0.8369,
+       0.4941,
+       0.7078,
+       0.5239
+      ],
+      [
+       0.8793,
+       0.3227,
+       0.7235,
+       0.2067
+      ],
+      [
+       0.7931,
+       0.5157,
+       0.6778,
+       0.5636
+      ],
+      [
+       0.8587,
+       0.4704,
+       0.7179,
+       0.4778
+      ],
+      [
+       0.3722,
+       0.6762,
+       0.4399,
+       0.8793
+      ],
+      [
+       0.2738,
+       0.6805,
+       0.3823,
+       0.8935
+      ],
+      [
+       0.9075,
+       0.3436,
+       0.7404,
+       0.2439
+      ],
+      [
+       0.903,
+       0.4516,
+       0.7442,
+       0.4439
+      ],
+      [
+       0.903,
+       0.4516,
+       0.7442,
+       0.4439
+      ],
+      [
+       0.3302,
+       0.4632,
+       0.4087,
+       0.4859
+      ],
+      [
+       0.3302,
+       0.4632,
+       0.4087,
+       0.4859
+      ],
+      [
+       0.7446,
+       0.5157,
+       0.6543,
+       0.5671
+      ],
+      [
+       0.8196,
+       0.4739,
+       0.6962,
+       0.4861
+      ],
+      [
+       0.8196,
+       0.4739,
+       0.6962,
+       0.4861
+      ],
+      [
+       0.0214,
+       0.6129,
+       0.2328,
+       0.7765
+      ],
+      [
+       0.6676,
+       0.4096,
+       0.6025,
+       0.3718
+      ],
+      [
+       0.834,
+       0.4818,
+       0.7054,
+       0.5018
+      ],
+      [
+       0.5392,
+       0.4164,
+       0.5283,
+       0.3915
+      ],
+      [
+       0.5392,
+       0.4164,
+       0.5283,
+       0.3915
+      ],
+      [
+       0.7173,
+       0.5322,
+       0.6372,
+       0.5992
+      ],
+      [
+       0.8862,
+       0.6103,
+       0.7365,
+       0.7444
+      ],
+      [
+       0.4738,
+       0.6638,
+       0.5005,
+       0.8534
+      ],
+      [
+       0.4743,
+       0.4606,
+       0.4922,
+       0.4746
+      ],
+      [
+       0.4743,
+       0.4606,
+       0.4922,
+       0.4746
+      ],
+      [
+       0.4474,
+       0.4856,
+       0.4769,
+       0.5218
+      ],
+      [
+       0.6421,
+       0.4214,
+       0.5882,
+       0.3958
+      ],
+      [
+       0.0479,
+       0.3566,
+       0.2406,
+       0.3011
+      ],
+      [
+       0.9132,
+       0.4718,
+       0.7536,
+       0.4805
+      ],
+      [
+       0.629,
+       0.4324,
+       0.5801,
+       0.4159
+      ],
+      [
+       0.9394,
+       0.4562,
+       0.7665,
+       0.4533
+      ],
+      [
+       0.1547,
+       0.5726,
+       0.3093,
+       0.6964
+      ],
+      [
+       0.4187,
+       0.4949,
+       0.4588,
+       0.5419
+      ],
+      [
+       0.3424,
+       0.6768,
+       0.4225,
+       0.8825
+      ],
+      [
+       0.9366,
+       0.3714,
+       0.7596,
+       0.2945
+      ],
+      [
+       0.2257,
+       0.6804,
+       0.3546,
+       0.8975
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2021-07-03",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/watch?v=W0xvQCfDZOY",
+   "title": "Japonya'y\u0131 sel ve heyelan vurdu! - YouTube",
+   "uploader": "SonKale \u0130zmir",
+   "upload_date": "2021-07-03",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T16:21:03+00:00",
+   "adapter": "yandex",
+   "found_via": "frame 6",
+   "also_found_by": [],
+   "match": {
+    "decision": true,
+    "consistent_frames": 16,
+    "max_inliers": 97,
+    "mirrored": false,
+    "temporal_offset": 4.673080168776371,
+    "n_pairs": 512,
+    "score": 16.97,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 2,
+      "b_frame": 11,
+      "a_t": 1.6666666666666667,
+      "b_t": 6.339746835443038,
+      "inliers": 97,
+      "flip": false
+     },
+     {
+      "a_frame": 3,
+      "b_frame": 15,
+      "a_t": 4.333333333333333,
+      "b_t": 8.675443037974683,
+      "inliers": 97,
+      "flip": false
+     },
+     {
+      "a_frame": 3,
+      "b_frame": 16,
+      "a_t": 4.333333333333333,
+      "b_t": 9.009113924050633,
+      "inliers": 95,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/yandex_1bc63833.png",
+   "proof": {
+    "viral_frame": "evidence/proof_yandex_1bc63833_viral.jpg",
+    "copy_frame": "evidence/proof_yandex_1bc63833_copy.jpg",
+    "viral_t": 1.67,
+    "copy_t": 6.34,
+    "mirrored": false,
+    "inliers": [
+     [
+      0.3358,
+      0.5925,
+      0.3934,
+      0.6859
+     ],
+     [
+      0.7181,
+      0.2777,
+      0.62,
+      0.0945
+     ],
+     [
+      0.4088,
+      0.6242,
+      0.4361,
+      0.7476
+     ],
+     [
+      0.0637,
+      0.5818,
+      0.2305,
+      0.6679
+     ],
+     [
+      0.8136,
+      0.5406,
+      0.6765,
+      0.5885
+     ],
+     [
+      0.8169,
+      0.615,
+      0.6793,
+      0.7326
+     ],
+     [
+      0.8169,
+      0.615,
+      0.6793,
+      0.7326
+     ],
+     [
+      0.034,
+      0.4917,
+      0.2121,
+      0.4994
+     ],
+     [
+      0.51,
+      0.6379,
+      0.4967,
+      0.7726
+     ],
+     [
+      0.2853,
+      0.5936,
+      0.3622,
+      0.6887
+     ],
+     [
+      0.7077,
+      0.3155,
+      0.6134,
+      0.1649
+     ],
+     [
+      0.8953,
+      0.5039,
+      0.7219,
+      0.5264
+     ],
+     [
+      0.1365,
+      0.4605,
+      0.2732,
+      0.4384
+     ],
+     [
+      0.4167,
+      0.3649,
+      0.4417,
+      0.2585
+     ],
+     [
+      0.4167,
+      0.3649,
+      0.4417,
+      0.2585
+     ],
+     [
+      0.4604,
+      0.6338,
+      0.4672,
+      0.764
+     ],
+     [
+      0.6596,
+      0.6325,
+      0.5859,
+      0.7621
+     ],
+     [
+      0.4784,
+      0.5048,
+      0.4781,
+      0.5224
+     ],
+     [
+      0.5322,
+      0.6246,
+      0.51,
+      0.7485
+     ],
+     [
+      0.175,
+      0.614,
+      0.2956,
+      0.7288
+     ],
+     [
+      0.175,
+      0.614,
+      0.2956,
+      0.7288
+     ],
+     [
+      0.1762,
+      0.4621,
+      0.2974,
+      0.442
+     ],
+     [
+      0.404,
+      0.6051,
+      0.4333,
+      0.7128
+     ],
+     [
+      0.5896,
+      0.6337,
+      0.5439,
+      0.7624
+     ],
+     [
+      0.6711,
+      0.6441,
+      0.5927,
+      0.7806
+     ],
+     [
+      0.7833,
+      0.6478,
+      0.6592,
+      0.7875
+     ],
+     [
+      0.4562,
+      0.3599,
+      0.4649,
+      0.2494
+     ],
+     [
+      0.4562,
+      0.3599,
+      0.4649,
+      0.2494
+     ],
+     [
+      0.4562,
+      0.3599,
+      0.4649,
+      0.2494
+     ],
+     [
+      0.4814,
+      0.6216,
+      0.4792,
+      0.7437
+     ],
+     [
+      0.5156,
+      0.2817,
+      0.5001,
+      0.1044
+     ],
+     [
+      0.4431,
+      0.3374,
+      0.4572,
+      0.206
+     ],
+     [
+      0.4431,
+      0.3374,
+      0.4572,
+      0.206
+     ],
+     [
+      0.4062,
+      0.5797,
+      0.4349,
+      0.6639
+     ],
+     [
+      0.6714,
+      0.5494,
+      0.5923,
+      0.6049
+     ],
+     [
+      0.3893,
+      0.4023,
+      0.4248,
+      0.3295
+     ],
+     [
+      0.3631,
+      0.684,
+      0.4093,
+      0.8611
+     ],
+     [
+      0.3631,
+      0.684,
+      0.4093,
+      0.8611
+     ],
+     [
+      0.6912,
+      0.5196,
+      0.6041,
+      0.5486
+     ],
+     [
+      0.4448,
+      0.3187,
+      0.4576,
+      0.1726
+     ]
+    ]
+   },
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2021-07-03",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 79,
+  "candidate_status_counts": {
+   "not_proven": 6,
+   "proven": 5,
+   "pending": 65,
+   "too_long": 2,
+   "unavailable": 1
+  },
+  "adapters": {
+   "lens": {
+    "source": "lens",
+    "calls": 1,
+    "errors": []
+   },
+   "youtube_api": {
+    "source": "youtube_api",
+    "queries": 3,
+    "errors": []
+   },
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     25,
+     0,
+     6
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "lens": {
+    "candidates": 10,
+    "checked": 6,
+    "proven": 2
+   },
+   "yandex": {
+    "candidates": 39,
+    "checked": 3,
+    "proven": 3
+   },
+   "tavily": {
+    "candidates": 30,
+    "checked": 5,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {
+   "lens": [
+    "https://www.youtube.com/shorts/hS-bu7XQ89o",
+    "https://www.tiktok.com/@samiclick1/video/7678926938685148424"
+   ],
+   "yandex": [
+    "https://www.youtube.com/watch?v=TeH24yaQNYI",
+    "https://www.youtube.com/watch?v=W0xvQCfDZOY",
+    "https://www.youtube.com/watch?v=jlZ8ZnwZP90"
+   ]
+  },
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": "camera_footage",
+   "note": "48 of 48 keyframes are near frames labelled camera_footage"
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "Elevated view of hillside town with utility pole and transformer in foreground under overcast rainy weather",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "Muddy floodwater and debris torrent surging through town street around a red multi-story building, sweeping cars and wreckage",
+    "refs": [
+     7,
+     13
+    ],
+    "timestamps_s": [
+     9.33,
+     16.67
+    ]
+   },
+   {
+    "text": "Street and houses buried in thick mud, wood and building debris with damaged white vans after debris flow",
+    "refs": [
+     20,
+     27,
+     34
+    ],
+    "timestamps_s": [
+     24.67,
+     37.67,
+     48.0
+    ]
+   },
+   {
+    "text": "Continued muddy debris flow destroying structures and covering ground with mud and wreckage viewed from rooftop",
+    "refs": [
+     40,
+     47
+    ],
+    "timestamps_s": [
+     52.67,
+     59.33
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "hillside town street hit by flash flood/debris flow",
+   "refs": [
+    7,
+    13,
+    20,
+    27
+   ],
+   "timestamps_s": [
+    9.33,
+    16.67,
+    24.67,
+    37.67
+   ]
+  },
+  "visible_text": [
+   {
+    "text": "\u0938\u093f\u0915\u094d\u0915\u093f\u092e\u092e\u093e \u092c\u093e\u0922\u0940\u092a\u0939\u093f\u0930\u094b\u0932\u0947 \u0917\u0930\u0947\u0915\u094b \u092e\u0928\u0948 \u0925\u093e\u092e\u094d\u0928 \u0928\u0938\u0915\u093f\u0928\u0947 \u0915\u094d\u0937\u0924\u0935\u093f\u0915\u094d\u0937\u0924 \u0915\u093e\u0930\u0941\u0923\u093f\u0915 \u0926\u0943\u0936\u094d\u092f\u0964",
+    "language": "ne",
+    "is_place": false,
+    "refs": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ],
+    "timestamps_s": [
+     0.0,
+     9.33,
+     16.67,
+     24.67,
+     37.67,
+     48.0,
+     52.67,
+     59.33
+    ]
+   },
+   {
+    "text": "\ud83d\ude4f \u0924\u0947\u0924\u094d\u0924\u0940\u0938 \u0915\u094b\u091f\u0940 \u0926\u0947\u0935\u0940 \u0926\u0947\u0935\u0924\u093e\u0932\u0947 \u0930\u0915\u094d\u0937\u093e \u0917\u0930\u0942\u0928\u094d\u0964 \ud83d\ude4f",
+    "language": "ne",
+    "is_place": false,
+    "refs": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ],
+    "timestamps_s": [
+     0.0,
+     9.33,
+     16.67,
+     24.67,
+     37.67,
+     48.0,
+     52.67,
+     59.33
+    ]
+   },
+   {
+    "text": "Vertical white signs with Japanese-like characters on buildings, illegible due to resolution",
+    "language": "ja",
+    "is_place": false,
+    "refs": [
+     20,
+     27,
+     34
+    ],
+    "timestamps_s": [
+     24.67,
+     37.67,
+     48.0
+    ]
+   }
+  ],
+  "likely_location": {
+   "place": "Japan",
+   "country": "Japan",
+   "confidence": 0.85,
+   "lat": null,
+   "lon": null,
+   "reasons": [
+    {
+     "text": "Wooden Japanese-style houses with tiled/slate roofs and hillside townscape",
+     "refs": [
+      20,
+      27,
+      34
+     ],
+     "timestamps_s": [
+      24.67,
+      37.67,
+      48.0
+     ]
+    },
+    {
+     "text": "Vertical kanji signboards on buildings typical of Japan",
+     "refs": [
+      20,
+      27,
+      34
+     ],
+     "timestamps_s": [
+      24.67,
+      37.67,
+      48.0
+     ]
+    },
+    {
+     "text": "White kei-vans and small cars typical of Japan",
+     "refs": [
+      7,
+      13,
+      20,
+      27
+     ],
+     "timestamps_s": [
+      9.33,
+      16.67,
+      24.67,
+      37.67
+     ]
+    },
+    {
+     "text": "Utility pole, transformer and dense overhead wiring and street layout unlike Sikkim",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "Japan",
+    "country": "Japan",
+    "confidence": 0.85,
+    "lat": null,
+    "lon": null,
+    "cited_frames": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34
+    ],
+    "cited_timestamps_s": [
+     0.0,
+     9.33,
+     16.67,
+     24.67,
+     37.67,
+     48.0
+    ],
+    "reasons": [
+     {
+      "text": "Wooden Japanese-style houses with tiled/slate roofs and hillside townscape",
+      "refs": [
+       20,
+       27,
+       34
+      ],
+      "timestamps_s": [
+       24.67,
+       37.67,
+       48.0
+      ]
+     },
+     {
+      "text": "Vertical kanji signboards on buildings typical of Japan",
+      "refs": [
+       20,
+       27,
+       34
+      ],
+      "timestamps_s": [
+       24.67,
+       37.67,
+       48.0
+      ]
+     },
+     {
+      "text": "White kei-vans and small cars typical of Japan",
+      "refs": [
+       7,
+       13,
+       20,
+       27
+      ],
+      "timestamps_s": [
+       9.33,
+       16.67,
+       24.67,
+       37.67
+      ]
+     },
+     {
+      "text": "Utility pole, transformer and dense overhead wiring and street layout unlike Sikkim",
+      "refs": [
+       0
+      ],
+      "timestamps_s": [
+       0.0
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [
+   {
+    "text": "Architecture, vertical Japanese signage and Japanese-type vehicles point to Japan, not Sikkim, India",
+    "refs": [
+     20,
+     27,
+     34
+    ],
+    "timestamps_s": [
+     24.67,
+     37.67,
+     48.0
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   },
+   {
+    "text": "No visible Sikkim landmarks, Indian signage, or identifiers; only added Nepali caption claims Sikkim",
+    "refs": [
+     0,
+     7,
+     13,
+     20
+    ],
+    "timestamps_s": [
+     0.0,
+     9.33,
+     16.67,
+     24.67
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   }
+  ],
+  "media_nature": {
+   "value": "camera_footage",
+   "confidence": 0.89,
+   "cited_frames": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    9.33,
+    16.67,
+    24.67,
+    37.67,
+    48.0,
+    52.67,
+    59.33
+   ],
+   "reasons": [
+    {
+     "text": "real handheld view of pole and town with natural noise and blur",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "real flood surge with natural water motion and blur",
+     "refs": [
+      7
+     ],
+     "timestamps_s": [
+      9.33
+     ]
+    },
+    {
+     "text": "real debris-filled flood around building, natural detail",
+     "refs": [
+      13
+     ],
+     "timestamps_s": [
+      16.67
+     ]
+    },
+    {
+     "text": "real post-flow debris field with cars and houses, natural texture",
+     "refs": [
+      20
+     ],
+     "timestamps_s": [
+      24.67
+     ]
+    },
+    {
+     "text": "real static view of mud and wreckage, natural detail",
+     "refs": [
+      27
+     ],
+     "timestamps_s": [
+      37.67
+     ]
+    },
+    {
+     "text": "real moving debris flow with motion blur",
+     "refs": [
+      34
+     ],
+     "timestamps_s": [
+      48.0
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "real handheld view of pole and town with natural noise and blur"
+    },
+    {
+     "frame": 7,
+     "t": 9.33,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "real flood surge with natural water motion and blur"
+    },
+    {
+     "frame": 13,
+     "t": 16.67,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "real debris-filled flood around building, natural detail"
+    },
+    {
+     "frame": 20,
+     "t": 24.67,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "real post-flow debris field with cars and houses, natural texture"
+    },
+    {
+     "frame": 27,
+     "t": 37.67,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "real static view of mud and wreckage, natural detail"
+    },
+    {
+     "frame": 34,
+     "t": 48.0,
+     "label": "camera_footage",
+     "confidence": 0.88,
+     "reason": "real moving debris flow with motion blur"
+    },
+    {
+     "frame": 40,
+     "t": 52.67,
+     "label": "camera_footage",
+     "confidence": 0.88,
+     "reason": "real muddy flow covering structures, natural motion"
+    },
+    {
+     "frame": 47,
+     "t": 59.33,
+     "label": "camera_footage",
+     "confidence": 0.88,
+     "reason": "real mud-covered ground and debris from rooftop, natural texture"
+    }
+   ],
+   "by_class": {
+    "camera_footage": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ]
+   },
+   "summary": "camera footage (frames 0,7,13,20,27,34,40,47) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "place": "Sikkim",
+   "country_iso2": "IN",
+   "event_type": "flash_flood"
+  },
+  "queries": [
+   {
+    "q": "Japan town debris flow red building white van video",
+    "language": "en",
+    "why": "match distinctive red building and vehicles without using claim name"
+   },
+   {
+    "q": "Japan flash flood mudslide hillside town houses buried video",
+    "language": "en",
+    "why": "neutral description of debris-flow scene to find original"
+   },
+   {
+    "q": "\u571f\u77f3\u6d41 \u8d64\u3044\u5efa\u7269 \u753a \u6d2a\u6c34 \u52d5\u753b",
+    "language": "ja",
+    "why": "Japanese for debris flow red building town flood video"
+   },
+   {
+    "q": "\u571f\u7802\u707d\u5bb3 \u767d\u3044\u30ef\u30b4\u30f3 \u8eca \u6d41\u3055\u308c\u308b \u6620\u50cf",
+    "language": "ja",
+    "why": "Japanese for landslide white van swept away footage"
+   },
+   {
+    "q": "\u8c6a\u96e8 \u571f\u77f3\u6d41 \u4f4f\u5b85 \u57cb\u307e\u308b \u52d5\u753b",
+    "language": "ja",
+    "why": "Japanese for heavy rain debris flow houses buried"
+   },
+   {
+    "q": "Japan landslide debris flow street mud wood wreckage footage",
+    "language": "en",
+    "why": "describe post-flow debris field"
+   },
+   {
+    "q": "\u571f\u77f3\u6d41 \u5e02\u8857\u5730 \u6c3e\u6feb \u64ae\u5f71 \u52d5\u753b",
+    "language": "ja",
+    "why": "Japanese for debris flow urban flooding filmed"
+   },
+   {
+    "q": "Sikkim flood video actually Japan debunked",
+    "language": "en",
+    "why": "find fact-checks about recycled Sikkim claim"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.02135,
+  "frames_shown": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "7": 9.33,
+   "13": 16.67,
+   "20": 24.67,
+   "27": 37.67,
+   "34": 48.0,
+   "40": 52.67,
+   "47": 59.33
+  },
+  "audio": {
+   "has_speech": false,
+   "language": null,
+   "transcript_summary": "No audio file was provided in this conversation, so no speech can be verified and no dates or place names can be confirmed. No transcript can be produced without audio access.",
+   "spoken_place_names": [],
+   "spoken_dates": [],
+   "partial_dates": [],
+   "other_sounds": [],
+   "dropped_untimed": 0,
+   "status": "ok",
+   "model": "meta/muse-spark-open",
+   "cost_usd": 0.00544,
+   "truncated": false,
+   "analyzed_seconds": 60.0,
+   "attempts": 1
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H03/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H03/frames/frame_07_t9.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H03/frames/frame_13_t16.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H03/frames/frame_20_t24.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H03/frames/frame_27_t37.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H03/frames/frame_34_t48.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H03/frames/frame_40_t52.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H03/frames/frame_47_t59.3.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Sikkim, India",
+   "name": "Sikkim, India",
+   "lat": 27.6015413,
+   "lon": 88.4545973,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "UNAVAILABLE",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2023-10-03",
+      "m3s": 139.28
+     },
+     {
+      "date": "2023-10-04",
+      "m3s": 142.55
+     },
+     {
+      "date": "2023-10-05",
+      "m3s": 144.55
+     },
+     {
+      "date": "2023-10-06",
+      "m3s": 150.36
+     },
+     {
+      "date": "2023-10-07",
+      "m3s": 142.22
+     },
+     {
+      "date": "2023-10-08",
+      "m3s": 132.97
+     },
+     {
+      "date": "2023-10-09",
+      "m3s": 133.28
+     }
+    ],
+    "baseline": 231.815,
+    "peak": 150.36,
+    "ratio": 0.65,
+    "cell": [
+     27.525002,
+     88.475006
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2023-10-03",
+      "mm": 2.9
+     },
+     {
+      "date": "2023-10-04",
+      "mm": 16.5
+     },
+     {
+      "date": "2023-10-05",
+      "mm": 0.4
+     },
+     {
+      "date": "2023-10-06",
+      "mm": 0.5
+     },
+     {
+      "date": "2023-10-07",
+      "mm": 45.5
+     },
+     {
+      "date": "2023-10-08",
+      "mm": 42.6
+     },
+     {
+      "date": "2023-10-09",
+      "mm": 1.8
+     }
+    ],
+    "max_mm": 45.5
+   },
+   "status": "UNKNOWN"
+  },
+  "verdict": "NO_EVIDENCE",
+  "reasons": [
+   "no Copernicus flood activation within 150 km / +-3 d",
+   "discharge ratio 0.65 (peak 150.4 vs baseline 231.8 m3/s), max rain 45.5 mm/day"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened",
+   "event_type=flash_flood: flash floods are too small and fast for GloFAS river discharge; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen (public hydrology/activation data cannot resolve flash floods, GLOFs or landslides)."
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=27.6015413&longitude=88.4545973&daily=river_discharge&start_date=2023-10-03&end_date=2023-10-09",
+   "https://www.openstreetmap.org/?mlat=27.6015413&mlon=88.4545973#map=10/27.6015413/88.4545973"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "OK",
+   "articles_in_window": 250,
+   "articles_baseline_30d": 0,
+   "sample_links": [
+    {
+     "url": "https://news.yahoo.com/sikkim-deadly-indian-glacial-lake-235326660.html",
+     "title": "Sikkim : Deadly Indian glacial lake flash flood exposes lack of warning system",
+     "domain": "news.yahoo.com",
+     "seen": "20231010T003000Z"
+    },
+    {
+     "url": "https://www.news18.com/india/nearly-400-tourists-rescued-from-north-sikkim-by-army-iaf-on-helicopters-8609939.html",
+     "title": "Nearly 400 Tourists Rescued from North Sikkim by Army , IAF on Helicopters",
+     "domain": "news18.com",
+     "seen": "20231009T153000Z"
+    },
+    {
+     "url": "https://www.orissapost.com/devastation-loss-of-lives-due-to-flash-flood-in-sikkim-distressing-president-droupadi-murmu/",
+     "title": "Devastation , loss of lives due to flash flood in Sikkim distressing : President Droupadi Murmu",
+     "domain": "orissapost.com",
+     "seen": "20231009T153000Z"
+    },
+    {
+     "url": "https://www.thehindu.com/news/national/other-states/nearly-400-tourists-rescued-from-north-sikkim-by-army-iaf-on-helicopters/article67399784.ece",
+     "title": "Nearly 400 tourists rescued from North Sikkim by Army , IAF on helicopters",
+     "domain": "thehindu.com",
+     "seen": "20231009T140000Z"
+    },
+    {
+     "url": "https://www.cnn.com/2023/10/09/asia/india-flood-sikkim-glacier-climate-intl/",
+     "title": "India floods : Death toll from glacial lake burst in Himalayas climbs to 74 , at least 100 still missing",
+     "domain": "cnn.com",
+     "seen": "20231009T130000Z"
+    }
+   ],
+   "context_only": true,
+   "query": "Sikkim flash flood",
+   "capped_at": 250,
+   "note": "news coverage is context only; it counts articles that mention the place and event words and never proves a specific video is real"
+  },
+  "verdict_display": "Insufficient corroboration \u2014 this does not show the event didn't happen"
+ },
+ "media_nature": {
+  "value": "camera_footage",
+  "confidence": 0.89,
+  "cited_frames": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   9.33,
+   16.67,
+   24.67,
+   37.67,
+   48.0,
+   52.67,
+   59.33
+  ],
+  "reasons": [
+   {
+    "text": "real handheld view of pole and town with natural noise and blur",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "real flood surge with natural water motion and blur",
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     9.33
+    ]
+   },
+   {
+    "text": "real debris-filled flood around building, natural detail",
+    "refs": [
+     13
+    ],
+    "timestamps_s": [
+     16.67
+    ]
+   },
+   {
+    "text": "real post-flow debris field with cars and houses, natural texture",
+    "refs": [
+     20
+    ],
+    "timestamps_s": [
+     24.67
+    ]
+   },
+   {
+    "text": "real static view of mud and wreckage, natural detail",
+    "refs": [
+     27
+    ],
+    "timestamps_s": [
+     37.67
+    ]
+   },
+   {
+    "text": "real moving debris flow with motion blur",
+    "refs": [
+     34
+    ],
+    "timestamps_s": [
+     48.0
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "real handheld view of pole and town with natural noise and blur"
+   },
+   {
+    "frame": 7,
+    "t": 9.33,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "real flood surge with natural water motion and blur"
+   },
+   {
+    "frame": 13,
+    "t": 16.67,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "real debris-filled flood around building, natural detail"
+   },
+   {
+    "frame": 20,
+    "t": 24.67,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "real post-flow debris field with cars and houses, natural texture"
+   },
+   {
+    "frame": 27,
+    "t": 37.67,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "real static view of mud and wreckage, natural detail"
+   },
+   {
+    "frame": 34,
+    "t": 48.0,
+    "label": "camera_footage",
+    "confidence": 0.88,
+    "reason": "real moving debris flow with motion blur"
+   },
+   {
+    "frame": 40,
+    "t": 52.67,
+    "label": "camera_footage",
+    "confidence": 0.88,
+    "reason": "real muddy flow covering structures, natural motion"
+   },
+   {
+    "frame": 47,
+    "t": 59.33,
+    "label": "camera_footage",
+    "confidence": 0.88,
+    "reason": "real mud-covered ground and debris from rooftop, natural texture"
+   }
+  ],
+  "by_class": {
+   "camera_footage": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ]
+  },
+  "summary": "camera footage (frames 0,7,13,20,27,34,40,47) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [
+  {
+   "kind": "independently_dated_earlier_copy",
+   "text": "Footage was already published on 2021-07-03 (earliest copy found), before the claimed event date 2023-10-06.",
+   "evidence": [
+    "https://www.youtube.com/watch?v=W0xvQCfDZOY"
+   ],
+   "date_source": "yt-dlp metadata"
+  }
+ ],
+ "final_verdict": {
+  "label": "RECYCLED_FOOTAGE",
+  "summary": "The footage matches the earliest copy found, published on 2021-07-03 (https://www.youtube.com/watch?v=W0xvQCfDZOY, date independently fetched per yt-dlp metadata), before the claimed event date 2023-10-06. Matcher evidence: 16 temporally consistent frame(s), up to 97 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen. Separately, the AI visual clues report 2 unverified observation(s) that clash with the claim (e.g. \"Architecture, vertical Japanese signage and Japanese-type vehicles point to Japan, not Sikkim, India\", frame ref [20, 27, 34]); these are model observations, not independent evidence and not part of the visual-match proof.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists.",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen."
+  ],
+  "basis": {
+   "earlier_proven_copies": 3,
+   "proven_copies": 5,
+   "physical_supports": null,
+   "unverified_model_observations": 2,
+   "date_conflicts": 0,
+   "media_nature": "camera_footage",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 165.8,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 4.8,
+  "muse": 0.0,
+  "memory": 15.2,
+  "memory_muse_wait_claim": 15.2,
+  "discovery": 68.6,
+  "discovery_by_source": {
+   "lens": 6.1,
+   "youtube_api": 1.1,
+   "tavily": 10.9,
+   "yandex": 68.6
+  },
+  "verify_total_incl_overlap": 77.2,
+  "dates_physical_report_wait": 77.2,
+  "verify_workers": 3,
+  "verify_seconds": 131.2,
+  "verify_checked": 14
+ },
+ "_wall_s": 165.8,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 2
+}

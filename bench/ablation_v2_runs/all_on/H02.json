@@ -1,7 +1,7 @@
 {
- "schema_version": "1.4",
- "investigation_id": "2c29c8439c",
- "created_at": "2026-10-30T13:14:17+00:00",
+ "schema_version": "1.5",
+ "investigation_id": "b12b01fc72",
+ "created_at": "2026-10-30T16:19:32+00:00",
  "input": {
   "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/heldout/H02.mp4",
   "path": "/home/samir-kumal/hackethon/floodproof/data/heldout/H02.mp4",
@@ -66,7 +66,7 @@
   "mode": "hash-shortlist(top_6)+match",
   "entries_searched": 6,
   "entries_total": 37,
-  "seconds": 20.75,
+  "seconds": 26.17,
   "hits": [],
   "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
  },
@@ -79,7 +79,7 @@
     "uploader": "Himachal Abhi Abhi",
     "upload_date": "2025-07-09",
     "date_source": "yt-dlp metadata",
-    "retrieved_at": "2026-10-30T13:13:30+00:00",
+    "retrieved_at": "2026-10-30T16:18:38+00:00",
     "adapter": "yandex",
     "found_via": "frame 10",
     "also_found_by": [],
@@ -112,6 +112,135 @@
      ]
     },
     "evidence_png": "evidence/yandex_29fba16f.png",
+    "proof": {
+     "viral_frame": "evidence/proof_yandex_29fba16f_viral.jpg",
+     "copy_frame": "evidence/proof_yandex_29fba16f_copy.jpg",
+     "viral_t": 11.0,
+     "copy_t": 38.5,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.2949,
+       0.2296,
+       0.664,
+       0.1377
+      ],
+      [
+       0.5951,
+       0.247,
+       0.2073,
+       0.0855
+      ],
+      [
+       0.4945,
+       0.2415,
+       0.3474,
+       0.1559
+      ],
+      [
+       0.6088,
+       0.65,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.6627,
+       0.6277,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.8104,
+       0.6431,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.1198,
+       0.6501,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.9158,
+       0.6472,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.4567,
+       0.6471,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.8585,
+       0.6511,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.6967,
+       0.6453,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.3667,
+       0.6506,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.2552,
+       0.6476,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.3253,
+       0.6478,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.2192,
+       0.6488,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.0904,
+       0.6502,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.4116,
+       0.6495,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.1564,
+       0.6503,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.2942,
+       0.6486,
+       0.2171,
+       0.9112
+      ],
+      [
+       0.1692,
+       0.6466,
+       0.2171,
+       0.9112
+      ]
+     ]
+    },
     "stored_date": null,
     "stored_date_source": null,
     "independent_date": "2025-07-09",
@@ -128,7 +257,7 @@
     "uploader": "InKhabar Official",
     "upload_date": "2025-04-20",
     "date_source": "yt-dlp metadata",
-    "retrieved_at": "2026-10-30T13:13:50+00:00",
+    "retrieved_at": "2026-10-30T16:19:13+00:00",
     "adapter": "yandex",
     "found_via": "frame 10",
     "also_found_by": [],
@@ -161,6 +290,117 @@
      ]
     },
     "evidence_png": "evidence/yandex_452ce64f.png",
+    "proof": {
+     "viral_frame": "evidence/proof_yandex_452ce64f_viral.jpg",
+     "copy_frame": "evidence/proof_yandex_452ce64f_copy.jpg",
+     "viral_t": 18.33,
+     "copy_t": 10.0,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.1222,
+       0.2387,
+       0.0666,
+       0.0582
+      ],
+      [
+       0.7934,
+       0.2361,
+       0.9221,
+       0.0583
+      ],
+      [
+       0.7934,
+       0.2361,
+       0.9221,
+       0.0583
+      ],
+      [
+       0.2585,
+       0.239,
+       0.3549,
+       0.1242
+      ],
+      [
+       0.677,
+       0.6455,
+       0.5605,
+       0.5797
+      ],
+      [
+       0.5806,
+       0.6419,
+       0.5605,
+       0.5797
+      ],
+      [
+       0.6448,
+       0.6488,
+       0.5605,
+       0.5797
+      ],
+      [
+       0.2053,
+       0.6435,
+       0.5605,
+       0.5797
+      ],
+      [
+       0.3237,
+       0.6446,
+       0.5605,
+       0.5797
+      ],
+      [
+       0.3875,
+       0.622,
+       0.5605,
+       0.5797
+      ],
+      [
+       0.3448,
+       0.6493,
+       0.5605,
+       0.5797
+      ],
+      [
+       0.2805,
+       0.6445,
+       0.5605,
+       0.5797
+      ],
+      [
+       0.3865,
+       0.6495,
+       0.5605,
+       0.5797
+      ],
+      [
+       0.4179,
+       0.6473,
+       0.5605,
+       0.5797
+      ],
+      [
+       0.4964,
+       0.6492,
+       0.5605,
+       0.5797
+      ],
+      [
+       0.1415,
+       0.6439,
+       0.5605,
+       0.5797
+      ],
+      [
+       0.4622,
+       0.6497,
+       0.5605,
+       0.5797
+      ]
+     ]
+    },
     "stored_date": null,
     "stored_date_source": null,
     "independent_date": "2025-04-20",
@@ -178,7 +418,7 @@
    "uploader": "InKhabar Official",
    "upload_date": "2025-04-20",
    "date_source": "yt-dlp metadata",
-   "retrieved_at": "2026-10-30T13:13:50+00:00",
+   "retrieved_at": "2026-10-30T16:19:13+00:00",
    "adapter": "yandex",
    "found_via": "frame 10",
    "also_found_by": [],
@@ -211,6 +451,117 @@
     ]
    },
    "evidence_png": "evidence/yandex_452ce64f.png",
+   "proof": {
+    "viral_frame": "evidence/proof_yandex_452ce64f_viral.jpg",
+    "copy_frame": "evidence/proof_yandex_452ce64f_copy.jpg",
+    "viral_t": 18.33,
+    "copy_t": 10.0,
+    "mirrored": false,
+    "inliers": [
+     [
+      0.1222,
+      0.2387,
+      0.0666,
+      0.0582
+     ],
+     [
+      0.7934,
+      0.2361,
+      0.9221,
+      0.0583
+     ],
+     [
+      0.7934,
+      0.2361,
+      0.9221,
+      0.0583
+     ],
+     [
+      0.2585,
+      0.239,
+      0.3549,
+      0.1242
+     ],
+     [
+      0.677,
+      0.6455,
+      0.5605,
+      0.5797
+     ],
+     [
+      0.5806,
+      0.6419,
+      0.5605,
+      0.5797
+     ],
+     [
+      0.6448,
+      0.6488,
+      0.5605,
+      0.5797
+     ],
+     [
+      0.2053,
+      0.6435,
+      0.5605,
+      0.5797
+     ],
+     [
+      0.3237,
+      0.6446,
+      0.5605,
+      0.5797
+     ],
+     [
+      0.3875,
+      0.622,
+      0.5605,
+      0.5797
+     ],
+     [
+      0.3448,
+      0.6493,
+      0.5605,
+      0.5797
+     ],
+     [
+      0.2805,
+      0.6445,
+      0.5605,
+      0.5797
+     ],
+     [
+      0.3865,
+      0.6495,
+      0.5605,
+      0.5797
+     ],
+     [
+      0.4179,
+      0.6473,
+      0.5605,
+      0.5797
+     ],
+     [
+      0.4964,
+      0.6492,
+      0.5605,
+      0.5797
+     ],
+     [
+      0.1415,
+      0.6439,
+      0.5605,
+      0.5797
+     ],
+     [
+      0.4622,
+      0.6497,
+      0.5605,
+      0.5797
+     ]
+    ]
+   },
    "stored_date": null,
    "stored_date_source": null,
    "independent_date": "2025-04-20",
@@ -225,20 +576,19 @@
   "input_publication": null,
   "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
   "candidates_checked": 14,
-  "candidates_total": 70,
+  "candidates_total": 83,
   "candidate_status_counts": {
-   "pending": 56,
+   "not_proven": 8,
    "proven": 2,
-   "download_failed": 1,
-   "too_long": 4,
-   "not_proven": 7
+   "pending": 69,
+   "download_failed": 2,
+   "too_long": 2
   },
   "adapters": {
    "lens": {
     "source": "lens",
-    "calls": 0,
-    "errors": [],
-    "skipped": "no public image URL"
+    "calls": 1,
+    "errors": []
    },
    "youtube_api": {
     "source": "youtube_api",
@@ -264,12 +614,17 @@
   "source_stats": {
    "yandex": {
     "candidates": 40,
-    "checked": 4,
+    "checked": 3,
     "proven": 2
+   },
+   "lens": {
+    "candidates": 13,
+    "checked": 6,
+    "proven": 0
    },
    "tavily": {
     "candidates": 30,
-    "checked": 10,
+    "checked": 5,
     "proven": 0
    }
   },
@@ -1086,26 +1441,26 @@
    "claim_date_basis": "user"
   }
  },
- "timing_s": 139.5,
+ "timing_s": 153.5,
  "stage_timings_s": {
-  "fetch_and_keyframes": 2.2,
+  "fetch_and_keyframes": 2.5,
   "muse": 0.0,
-  "memory": 20.8,
-  "memory_muse_wait_claim": 20.8,
-  "discovery": 66.8,
+  "memory": 26.2,
+  "memory_muse_wait_claim": 26.2,
+  "discovery": 68.4,
   "discovery_by_source": {
-   "lens": 0.1,
-   "youtube_api": 2.3,
-   "tavily": 14.7,
-   "yandex": 66.8
+   "lens": 8.8,
+   "youtube_api": 0.8,
+   "tavily": 7.8,
+   "yandex": 68.4
   },
-  "verify_total_incl_overlap": 49.7,
-  "dates_physical_report_wait": 49.7,
+  "verify_total_incl_overlap": 56.4,
+  "dates_physical_report_wait": 56.4,
   "verify_workers": 3,
-  "verify_seconds": 76.2,
+  "verify_seconds": 85.6,
   "verify_checked": 14
  },
- "_wall_s": 139.5,
+ "_wall_s": 153.5,
  "_clues_source": "live",
- "_lens_calls_so_far": 0
+ "_lens_calls_so_far": 1
 }

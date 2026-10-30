@@ -1,0 +1,1461 @@
+{
+ "schema_version": "1.5",
+ "investigation_id": "195cdbf860",
+ "created_at": "2026-10-30T17:04:05+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/global/N02.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/N02.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "N02.mp4",
+  "duration": 59.99326666666667,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   1.33,
+   3.67,
+   4.67,
+   5.34,
+   6.01,
+   6.67,
+   7.34,
+   8.01,
+   8.68,
+   9.34,
+   10.01,
+   11.01,
+   12.01,
+   14.35,
+   15.02,
+   16.02,
+   16.68,
+   17.35,
+   19.35,
+   20.69,
+   21.69,
+   23.02,
+   24.02,
+   24.69,
+   25.69,
+   26.36,
+   27.36,
+   28.36,
+   29.36,
+   30.36,
+   31.36,
+   33.03,
+   34.03,
+   35.7,
+   36.37,
+   38.04,
+   39.04,
+   40.37,
+   41.37,
+   42.04,
+   43.71,
+   45.05,
+   47.38,
+   48.05,
+   49.05,
+   51.05,
+   54.05
+  ]
+ },
+ "claim": {
+  "text": "Hurricane Beryl landfall, Carriacou, Grenada",
+  "event_date": "2024-07-01",
+  "place": "Carriacou, Grenada",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "GD",
+  "event_type": "cyclone"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 9.32,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/watch?v=IO2jch9C53k",
+    "title": "YouTube",
+    "uploader": "ABC News",
+    "upload_date": "2024-07-03",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T17:02:36+00:00",
+    "adapter": "lens",
+    "found_via": "google lens best keyframe",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 2,
+     "max_inliers": 54,
+     "mirrored": false,
+     "temporal_offset": 9.342666666666666,
+     "n_pairs": 13,
+     "score": 2.54,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 34,
+       "b_frame": 11,
+       "a_t": 35.702333333333335,
+       "b_t": 45.045,
+       "inliers": 54,
+       "flip": false
+      },
+      {
+       "a_frame": 35,
+       "b_frame": 11,
+       "a_t": 36.36966666666667,
+       "b_t": 45.045,
+       "inliers": 27,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/lens_2323a0f3.png",
+    "proof": {
+     "viral_frame": "evidence/proof_lens_2323a0f3_viral.jpg",
+     "copy_frame": "evidence/proof_lens_2323a0f3_copy.jpg",
+     "viral_t": 35.7,
+     "copy_t": 45.05,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.6568,
+       0.4439,
+       0.6555,
+       0.4498
+      ],
+      [
+       0.2577,
+       0.4412,
+       0.2599,
+       0.4474
+      ],
+      [
+       0.0439,
+       0.1635,
+       0.0435,
+       0.1795
+      ],
+      [
+       0.0435,
+       0.0567,
+       0.0436,
+       0.0649
+      ],
+      [
+       0.6647,
+       0.391,
+       0.6666,
+       0.4026
+      ],
+      [
+       0.631,
+       0.4026,
+       0.6377,
+       0.4186
+      ],
+      [
+       0.3536,
+       0.4129,
+       0.351,
+       0.4169
+      ],
+      [
+       0.3182,
+       0.422,
+       0.3222,
+       0.4257
+      ],
+      [
+       0.9558,
+       0.3217,
+       0.9488,
+       0.3384
+      ],
+      [
+       0.5447,
+       0.748,
+       0.5449,
+       0.7529
+      ],
+      [
+       0.4588,
+       0.7871,
+       0.4585,
+       0.7904
+      ],
+      [
+       0.6604,
+       0.6089,
+       0.6684,
+       0.6141
+      ],
+      [
+       0.3182,
+       0.4574,
+       0.3178,
+       0.4614
+      ],
+      [
+       0.8271,
+       0.3791,
+       0.8275,
+       0.3896
+      ],
+      [
+       0.5886,
+       0.395,
+       0.5898,
+       0.4038
+      ],
+      [
+       0.3503,
+       0.3843,
+       0.3509,
+       0.3789
+      ],
+      [
+       0.3503,
+       0.3843,
+       0.3509,
+       0.3789
+      ],
+      [
+       0.4591,
+       0.6926,
+       0.4589,
+       0.6923
+      ],
+      [
+       0.058,
+       0.1415,
+       0.0606,
+       0.1487
+      ],
+      [
+       0.0306,
+       0.4006,
+       0.0295,
+       0.4016
+      ],
+      [
+       0.4973,
+       0.4411,
+       0.5029,
+       0.4506
+      ],
+      [
+       0.4973,
+       0.4411,
+       0.5029,
+       0.4506
+      ],
+      [
+       0.3614,
+       0.1427,
+       0.3641,
+       0.143
+      ],
+      [
+       0.3295,
+       0.5259,
+       0.324,
+       0.5326
+      ],
+      [
+       0.3326,
+       0.1745,
+       0.3389,
+       0.172
+      ],
+      [
+       0.2723,
+       0.7292,
+       0.2708,
+       0.7319
+      ],
+      [
+       0.1072,
+       0.8041,
+       0.1105,
+       0.8084
+      ],
+      [
+       0.9153,
+       0.7788,
+       0.9159,
+       0.7994
+      ],
+      [
+       0.1884,
+       0.8039,
+       0.1926,
+       0.809
+      ],
+      [
+       0.0586,
+       0.4701,
+       0.0552,
+       0.471
+      ],
+      [
+       0.9068,
+       0.6978,
+       0.907,
+       0.7238
+      ],
+      [
+       0.531,
+       0.6731,
+       0.532,
+       0.678
+      ],
+      [
+       0.2222,
+       0.4503,
+       0.2218,
+       0.4524
+      ],
+      [
+       0.5748,
+       0.8746,
+       0.5749,
+       0.8792
+      ],
+      [
+       0.6138,
+       0.4976,
+       0.6087,
+       0.5061
+      ],
+      [
+       0.4982,
+       0.9172,
+       0.5039,
+       0.9225
+      ],
+      [
+       0.4892,
+       0.9416,
+       0.4858,
+       0.9479
+      ],
+      [
+       0.9235,
+       0.4636,
+       0.9234,
+       0.4755
+      ],
+      [
+       0.4992,
+       0.7429,
+       0.4996,
+       0.7501
+      ],
+      [
+       0.4992,
+       0.7429,
+       0.4996,
+       0.7501
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2024-07-03",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/watch?v=IO2jch9C53k",
+   "title": "YouTube",
+   "uploader": "ABC News",
+   "upload_date": "2024-07-03",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T17:02:36+00:00",
+   "adapter": "lens",
+   "found_via": "google lens best keyframe",
+   "also_found_by": [],
+   "match": {
+    "decision": true,
+    "consistent_frames": 2,
+    "max_inliers": 54,
+    "mirrored": false,
+    "temporal_offset": 9.342666666666666,
+    "n_pairs": 13,
+    "score": 2.54,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 34,
+      "b_frame": 11,
+      "a_t": 35.702333333333335,
+      "b_t": 45.045,
+      "inliers": 54,
+      "flip": false
+     },
+     {
+      "a_frame": 35,
+      "b_frame": 11,
+      "a_t": 36.36966666666667,
+      "b_t": 45.045,
+      "inliers": 27,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/lens_2323a0f3.png",
+   "proof": {
+    "viral_frame": "evidence/proof_lens_2323a0f3_viral.jpg",
+    "copy_frame": "evidence/proof_lens_2323a0f3_copy.jpg",
+    "viral_t": 35.7,
+    "copy_t": 45.05,
+    "mirrored": false,
+    "inliers": [
+     [
+      0.6568,
+      0.4439,
+      0.6555,
+      0.4498
+     ],
+     [
+      0.2577,
+      0.4412,
+      0.2599,
+      0.4474
+     ],
+     [
+      0.0439,
+      0.1635,
+      0.0435,
+      0.1795
+     ],
+     [
+      0.0435,
+      0.0567,
+      0.0436,
+      0.0649
+     ],
+     [
+      0.6647,
+      0.391,
+      0.6666,
+      0.4026
+     ],
+     [
+      0.631,
+      0.4026,
+      0.6377,
+      0.4186
+     ],
+     [
+      0.3536,
+      0.4129,
+      0.351,
+      0.4169
+     ],
+     [
+      0.3182,
+      0.422,
+      0.3222,
+      0.4257
+     ],
+     [
+      0.9558,
+      0.3217,
+      0.9488,
+      0.3384
+     ],
+     [
+      0.5447,
+      0.748,
+      0.5449,
+      0.7529
+     ],
+     [
+      0.4588,
+      0.7871,
+      0.4585,
+      0.7904
+     ],
+     [
+      0.6604,
+      0.6089,
+      0.6684,
+      0.6141
+     ],
+     [
+      0.3182,
+      0.4574,
+      0.3178,
+      0.4614
+     ],
+     [
+      0.8271,
+      0.3791,
+      0.8275,
+      0.3896
+     ],
+     [
+      0.5886,
+      0.395,
+      0.5898,
+      0.4038
+     ],
+     [
+      0.3503,
+      0.3843,
+      0.3509,
+      0.3789
+     ],
+     [
+      0.3503,
+      0.3843,
+      0.3509,
+      0.3789
+     ],
+     [
+      0.4591,
+      0.6926,
+      0.4589,
+      0.6923
+     ],
+     [
+      0.058,
+      0.1415,
+      0.0606,
+      0.1487
+     ],
+     [
+      0.0306,
+      0.4006,
+      0.0295,
+      0.4016
+     ],
+     [
+      0.4973,
+      0.4411,
+      0.5029,
+      0.4506
+     ],
+     [
+      0.4973,
+      0.4411,
+      0.5029,
+      0.4506
+     ],
+     [
+      0.3614,
+      0.1427,
+      0.3641,
+      0.143
+     ],
+     [
+      0.3295,
+      0.5259,
+      0.324,
+      0.5326
+     ],
+     [
+      0.3326,
+      0.1745,
+      0.3389,
+      0.172
+     ],
+     [
+      0.2723,
+      0.7292,
+      0.2708,
+      0.7319
+     ],
+     [
+      0.1072,
+      0.8041,
+      0.1105,
+      0.8084
+     ],
+     [
+      0.9153,
+      0.7788,
+      0.9159,
+      0.7994
+     ],
+     [
+      0.1884,
+      0.8039,
+      0.1926,
+      0.809
+     ],
+     [
+      0.0586,
+      0.4701,
+      0.0552,
+      0.471
+     ],
+     [
+      0.9068,
+      0.6978,
+      0.907,
+      0.7238
+     ],
+     [
+      0.531,
+      0.6731,
+      0.532,
+      0.678
+     ],
+     [
+      0.2222,
+      0.4503,
+      0.2218,
+      0.4524
+     ],
+     [
+      0.5748,
+      0.8746,
+      0.5749,
+      0.8792
+     ],
+     [
+      0.6138,
+      0.4976,
+      0.6087,
+      0.5061
+     ],
+     [
+      0.4982,
+      0.9172,
+      0.5039,
+      0.9225
+     ],
+     [
+      0.4892,
+      0.9416,
+      0.4858,
+      0.9479
+     ],
+     [
+      0.9235,
+      0.4636,
+      0.9234,
+      0.4755
+     ],
+     [
+      0.4992,
+      0.7429,
+      0.4996,
+      0.7501
+     ],
+     [
+      0.4992,
+      0.7429,
+      0.4996,
+      0.7501
+     ]
+    ]
+   },
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2024-07-03",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 48,
+  "candidate_status_counts": {
+   "not_proven": 8,
+   "proven": 1,
+   "pending": 34,
+   "download_failed": 2,
+   "too_long": 2,
+   "unavailable": 1
+  },
+  "adapters": {
+   "lens": {
+    "source": "lens",
+    "calls": 1,
+    "errors": []
+   },
+   "youtube_api": {
+    "source": "youtube_api",
+    "queries": 0,
+    "errors": [
+     "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp",
+     "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp",
+     "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp"
+    ]
+   },
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     38,
+     30,
+     0
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "lens": {
+    "candidates": 8,
+    "checked": 8,
+    "proven": 1
+   },
+   "yandex": {
+    "candidates": 40,
+    "checked": 6,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {
+   "lens": [
+    "https://www.youtube.com/watch?v=IO2jch9C53k"
+   ]
+  },
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": "camera_footage",
+   "note": "48 of 48 keyframes are near frames labelled camera_footage"
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "Residential houses filmed in heavy hurricane wind and rain with very low visibility",
+    "refs": [
+     0,
+     20,
+     40,
+     47
+    ],
+    "timestamps_s": [
+     0.0,
+     20.69,
+     42.04,
+     54.05
+    ]
+   },
+   {
+    "text": "Large section of metal roof being lifted, peeled back and torn off a two-story house by wind",
+    "refs": [
+     7,
+     13,
+     27,
+     34
+    ],
+    "timestamps_s": [
+     7.34,
+     12.01,
+     27.36,
+     35.7
+    ]
+   },
+   {
+    "text": "Power lines and neighboring houses shaking in storm, debris in air during whiteout conditions",
+    "refs": [
+     27,
+     34,
+     20
+    ],
+    "timestamps_s": [
+     27.36,
+     35.7,
+     20.69
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "residential neighborhood",
+   "refs": [
+    0,
+    7,
+    27
+   ],
+   "timestamps_s": [
+    0.0,
+    7.34,
+    27.36
+   ]
+  },
+  "visible_text": [
+   {
+    "text": "WX",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ],
+    "timestamps_s": [
+     0.0,
+     7.34,
+     12.01,
+     20.69,
+     27.36,
+     35.7,
+     42.04,
+     54.05
+    ]
+   }
+  ],
+  "likely_location": {
+   "place": "Unknown",
+   "country": "Unknown",
+   "confidence": 0.25,
+   "lat": null,
+   "lon": null,
+   "reasons": [
+    {
+     "text": "Caribbean-style concrete houses with balconies, metal roofs and overhead power lines, consistent with tropical island but no distinctive landmark visible",
+     "refs": [
+      0,
+      7,
+      27
+     ],
+     "timestamps_s": [
+      0.0,
+      7.34,
+      27.36
+     ]
+    },
+    {
+     "text": "No legible street sign, place name or landmark to confirm specific island or town, visibility obscured by rain",
+     "refs": [
+      0,
+      20,
+      40
+     ],
+     "timestamps_s": [
+      0.0,
+      20.69,
+      42.04
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "Unknown",
+    "country": "Unknown",
+    "confidence": 0.25,
+    "lat": null,
+    "lon": null,
+    "cited_frames": [
+     0,
+     7,
+     20,
+     27,
+     40
+    ],
+    "cited_timestamps_s": [
+     0.0,
+     7.34,
+     20.69,
+     27.36,
+     42.04
+    ],
+    "reasons": [
+     {
+      "text": "Caribbean-style concrete houses with balconies, metal roofs and overhead power lines, consistent with tropical island but no distinctive landmark visible",
+      "refs": [
+       0,
+       7,
+       27
+      ],
+      "timestamps_s": [
+       0.0,
+       7.34,
+       27.36
+      ]
+     },
+     {
+      "text": "No legible street sign, place name or landmark to confirm specific island or town, visibility obscured by rain",
+      "refs": [
+       0,
+       20,
+       40
+      ],
+      "timestamps_s": [
+       0.0,
+       20.69,
+       42.04
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [],
+  "media_nature": {
+   "value": "camera_footage",
+   "confidence": 0.88,
+   "cited_frames": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    7.34,
+    12.01,
+    20.69,
+    27.36,
+    35.7,
+    42.04,
+    54.05
+   ],
+   "reasons": [
+    {
+     "text": "Natural daylight, noise and detail of houses in rain, no AI artifacts",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "Physically plausible roof peel with natural motion blur and weather degradation",
+     "refs": [
+      7
+     ],
+     "timestamps_s": [
+      7.34
+     ]
+    },
+    {
+     "text": "Consistent storm scene with natural grain and incidental detail",
+     "refs": [
+      13
+     ],
+     "timestamps_s": [
+      12.01
+     ]
+    },
+    {
+     "text": "Heavy rain whiteout with natural blur, no synthetic textures",
+     "refs": [
+      20
+     ],
+     "timestamps_s": [
+      20.69
+     ]
+    },
+    {
+     "text": "Power lines, houses and damaged roof show natural detail and compression",
+     "refs": [
+      27
+     ],
+     "timestamps_s": [
+      27.36
+     ]
+    },
+    {
+     "text": "Continuous view of same damaged roof, consistent physics",
+     "refs": [
+      34
+     ],
+     "timestamps_s": [
+      35.7
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "Natural daylight, noise and detail of houses in rain, no AI artifacts"
+    },
+    {
+     "frame": 7,
+     "t": 7.34,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "Physically plausible roof peel with natural motion blur and weather degradation"
+    },
+    {
+     "frame": 13,
+     "t": 12.01,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "Consistent storm scene with natural grain and incidental detail"
+    },
+    {
+     "frame": 20,
+     "t": 20.69,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "Heavy rain whiteout with natural blur, no synthetic textures"
+    },
+    {
+     "frame": 27,
+     "t": 27.36,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "Power lines, houses and damaged roof show natural detail and compression"
+    },
+    {
+     "frame": 34,
+     "t": 35.7,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "Continuous view of same damaged roof, consistent physics"
+    },
+    {
+     "frame": 40,
+     "t": 42.04,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "Low-visibility storm footage with natural noise"
+    },
+    {
+     "frame": 47,
+     "t": 54.05,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "Same whiteout storm view, no AI warping or garbled details"
+    }
+   ],
+   "by_class": {
+    "camera_footage": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ]
+   },
+   "summary": "camera footage (frames 0,7,13,20,27,34,40,47) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "place": "Carriacou, Grenada",
+   "country_iso2": "GD",
+   "event_type": "cyclone"
+  },
+  "queries": [
+   {
+    "q": "hurricane roof torn off house video WX watermark",
+    "language": "en",
+    "why": "Watermark may identify original storm chaser upload"
+   },
+   {
+    "q": "Carriacou Grenada hurricane roof ripped off video July 2024",
+    "language": "en",
+    "why": "To find earliest upload matching claimed location"
+   },
+   {
+    "q": "Grenada hurricane house roof peel viral video",
+    "language": "en",
+    "why": "To find true source without assuming Beryl"
+   },
+   {
+    "q": "Caribbean hurricane metal roof blown off house footage",
+    "language": "en",
+    "why": "Neutral search for recycled storm footage"
+   },
+   {
+    "q": "Hurricane Beryl Carriacou landfall video houses",
+    "language": "en",
+    "why": "To compare claimed event coverage with these frames"
+   },
+   {
+    "q": "WX chasing hurricane Grenada video",
+    "language": "en",
+    "why": "Watermark suggests WX Chasing source"
+   },
+   {
+    "q": "hurricane damage residential street power lines roof damage Grenada",
+    "language": "en",
+    "why": "To locate original event by visual details"
+   },
+   {
+    "q": "strong wind tears roof off house Caribbean storm video",
+    "language": "en",
+    "why": "Generic search to detect earlier use of same clip"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.01152,
+  "frames_shown": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "7": 7.34,
+   "13": 12.01,
+   "20": 20.69,
+   "27": 27.36,
+   "34": 35.7,
+   "40": 42.04,
+   "47": 54.05
+  },
+  "audio": {
+   "status": "no_audio_track"
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N02/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N02/frames/frame_07_t7.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N02/frames/frame_13_t12.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N02/frames/frame_20_t20.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N02/frames/frame_27_t27.4.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N02/frames/frame_34_t35.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N02/frames/frame_40_t42.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N02/frames/frame_47_t54.1.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Carriacou, Grenada",
+   "name": "Carriacou, Six Roads, Carriacou and Petite Martinique, Grenada",
+   "lat": 12.4829985,
+   "lon": -61.4448436,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "place",
+   "type": "island",
+   "country_level": false,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": null,
+   "rain": {
+    "series": [
+     {
+      "date": "2024-06-28",
+      "mm": 0.7
+     },
+     {
+      "date": "2024-06-29",
+      "mm": 7.8
+     },
+     {
+      "date": "2024-06-30",
+      "mm": 2.7
+     },
+     {
+      "date": "2024-07-01",
+      "mm": 88.6
+     },
+     {
+      "date": "2024-07-02",
+      "mm": 0.6
+     },
+     {
+      "date": "2024-07-03",
+      "mm": 47.9
+     },
+     {
+      "date": "2024-07-04",
+      "mm": 0.8
+     }
+    ],
+    "max_mm": 88.6
+   },
+   "status": "UNKNOWN",
+   "errors": [
+    "discharge: no discharge data"
+   ]
+  },
+  "verdict": "UNKNOWN",
+  "reasons": [
+   "a data source failed; cannot assess"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=12.4829985&longitude=-61.4448436&daily=river_discharge&start_date=2024-06-28&end_date=2024-07-04",
+   "https://www.openstreetmap.org/?mlat=12.4829985&mlon=-61.4448436#map=10/12.4829985/-61.4448436"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Carriacou cyclone",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Carriacou+cyclone&mode=a"
+  }
+ },
+ "media_nature": {
+  "value": "camera_footage",
+  "confidence": 0.88,
+  "cited_frames": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   7.34,
+   12.01,
+   20.69,
+   27.36,
+   35.7,
+   42.04,
+   54.05
+  ],
+  "reasons": [
+   {
+    "text": "Natural daylight, noise and detail of houses in rain, no AI artifacts",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "Physically plausible roof peel with natural motion blur and weather degradation",
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     7.34
+    ]
+   },
+   {
+    "text": "Consistent storm scene with natural grain and incidental detail",
+    "refs": [
+     13
+    ],
+    "timestamps_s": [
+     12.01
+    ]
+   },
+   {
+    "text": "Heavy rain whiteout with natural blur, no synthetic textures",
+    "refs": [
+     20
+    ],
+    "timestamps_s": [
+     20.69
+    ]
+   },
+   {
+    "text": "Power lines, houses and damaged roof show natural detail and compression",
+    "refs": [
+     27
+    ],
+    "timestamps_s": [
+     27.36
+    ]
+   },
+   {
+    "text": "Continuous view of same damaged roof, consistent physics",
+    "refs": [
+     34
+    ],
+    "timestamps_s": [
+     35.7
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "Natural daylight, noise and detail of houses in rain, no AI artifacts"
+   },
+   {
+    "frame": 7,
+    "t": 7.34,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "Physically plausible roof peel with natural motion blur and weather degradation"
+   },
+   {
+    "frame": 13,
+    "t": 12.01,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "Consistent storm scene with natural grain and incidental detail"
+   },
+   {
+    "frame": 20,
+    "t": 20.69,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "Heavy rain whiteout with natural blur, no synthetic textures"
+   },
+   {
+    "frame": 27,
+    "t": 27.36,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "Power lines, houses and damaged roof show natural detail and compression"
+   },
+   {
+    "frame": 34,
+    "t": 35.7,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "Continuous view of same damaged roof, consistent physics"
+   },
+   {
+    "frame": 40,
+    "t": 42.04,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "Low-visibility storm footage with natural noise"
+   },
+   {
+    "frame": 47,
+    "t": 54.05,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "Same whiteout storm view, no AI warping or garbled details"
+   }
+  ],
+  "by_class": {
+   "camera_footage": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ]
+  },
+  "summary": "camera footage (frames 0,7,13,20,27,34,40,47) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "CONSISTENT_WITH_CLAIM",
+  "summary": "The footage matches a previously published copy (https://www.youtube.com/watch?v=IO2jch9C53k, uploaded 2024-07-03), but that date is not earlier than the claimed event date, so recycling relative to the claim is not established. The earliest independently dated copy was published within days of the claimed event date, and no earlier copy or cited contradiction was found. This means no contradiction was found in the available evidence; it is not a finding that the footage is authentic.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 1,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "camera_footage",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 113.7,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 5.8,
+  "muse": 0.0,
+  "memory": 9.3,
+  "memory_muse_wait_claim": 9.3,
+  "discovery": 70.4,
+  "discovery_by_source": {
+   "lens": 6.1,
+   "youtube_api": 0.6,
+   "tavily": 3.0,
+   "yandex": 70.4
+  },
+  "verify_total_incl_overlap": 28.2,
+  "dates_physical_report_wait": 28.2,
+  "verify_workers": 3,
+  "verify_seconds": 58.6,
+  "verify_checked": 14
+ },
+ "_wall_s": 113.7,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 18
+}

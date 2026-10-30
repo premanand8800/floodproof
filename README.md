@@ -37,7 +37,7 @@ Live: https://floodproof.aether-soft.tech · Built for the Meta Global AI Develo
 - **Strength:** proving footage was published earlier, with zero false attributions.
 - **Weakness:** finding the true original. Originals mostly live on TikTok, X and Instagram, which search engines rarely index.
 - **Agent vs pipeline:** a pre-registered experiment showed the agent did not beat the fixed pipeline (`bench/heldout_RESULTS.md`), so the pipeline is the default.
-- All raw results, audits and scorers are in `bench/`. One-page summary of every experiment: [`bench/EVALUATION.md`](bench/EVALUATION.md).
+- All raw results, audits and scorers are in `bench/`. One-page summary of every experiment: [`bench/EVALUATION.md`](bench/EVALUATION.md); ablation v2: [`bench/ablation_v2_RESULTS.md`](bench/ablation_v2_RESULTS.md).
 
 ## Run it
 
