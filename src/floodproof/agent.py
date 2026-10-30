@@ -292,7 +292,7 @@ def run_agent(source: str, claim=None, date=None, place=None, out_dir=None, memo
     clip = media.fetch(source)
     feats = ClipFeatures.from_path(clip.path)
     input_meta = dict(source=source, **clip.to_dict(), n_keyframes=len(feats), keyframe_times_s=[round(t, 2) for t in feats.times])
-    input_meta["path"] = clip.path if not clip.url else "(downloaded excerpt removed after run)"
+    input_meta["path"] = clip.path if not clip.url else "(downloaded excerpt cached in .cache/dl)"
     mem = memory if memory is not None else Memory()
     st = AgentState(clip, feats, claim, date, place, mem, ev_dir, out)
     system = "You are an investigator agent for debunking recycled disaster videos. " + TOOLS_DOC % max_calls

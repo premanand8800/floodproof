@@ -6,6 +6,7 @@ import json
 import re
 import shutil
 import subprocess
+import time
 from dataclasses import dataclass, asdict
 from pathlib import Path
 
@@ -13,8 +14,10 @@ import cv2
 
 from . import CACHE
 
-MEDIA_DIR = CACHE / "media"
+MEDIA_DIR = CACHE / "dl"          # downloads cached by URL hash (sha1 of url|max_seconds|max_height) and reused across runs
 MEDIA_DIR.mkdir(exist_ok=True)
+DL_CACHE_MAX_BYTES = 1_500_000_000
+DL_META_TTL_S = 7 * 86400
 MAX_SECONDS = 120
 MAX_HEIGHT = 480
 # AV1 is skipped: OpenCV's ffmpeg build cannot decode it everywhere.
@@ -26,12 +29,13 @@ class Clip:
     path: str
     url: str | None = None          # canonical source URL (None for a local file)
     uploader: str | None = None
-    upload_date: str | None = None  # ISO YYYY-MM-DD when known
+    upload_date: str | None = None  # ISO YYYY-MM-DD when known (UTC calendar date from yt-dlp)
     title: str | None = None
     duration: float | None = None   # seconds of the *source* video (may exceed the downloaded excerpt)
     has_audio: bool = False
     truncated: bool = False         # downloaded excerpt shorter than source
     description: str | None = None  # post caption/description (yt-dlp), used for claim inference
+    upload_timestamp: str | None = None   # exact UTC publication time (ISO, from yt-dlp timestamp/release_timestamp) when the platform gives it
 
     def to_dict(self):
         return asdict(self)
@@ -42,6 +46,19 @@ def iso_date(d):
         return None
     d = str(d)
     return f"{d[:4]}-{d[4:6]}-{d[6:8]}" if re.fullmatch(r"\d{8}", d) else d[:10]
+
+
+def iso_timestamp(info):
+    """Exact UTC publication time from yt-dlp metadata (timestamp, else release_timestamp) as ISO 'YYYY-MM-DDTHH:MM:SSZ', or None."""
+    import datetime
+    for k in ("timestamp", "release_timestamp"):
+        v = (info or {}).get(k)
+        if isinstance(v, (int, float)) and not isinstance(v, bool) and v > 0:
+            try:
+                return datetime.datetime.fromtimestamp(v, datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+            except (OverflowError, OSError, ValueError):
+                continue
+    return None
 
 
 def is_url(s: str) -> bool:
@@ -67,7 +84,7 @@ def probe_url(url: str) -> dict | None:
         return None
     if not i:
         return None
-    return dict(upload_date=iso_date(i.get("upload_date")), uploader=i.get("uploader") or i.get("channel"),
+    return dict(upload_date=iso_date(i.get("upload_date")), upload_timestamp=iso_timestamp(i), uploader=i.get("uploader") or i.get("channel"),
                 duration=i.get("duration"), title=i.get("title"), url=i.get("webpage_url") or url)
 
 
@@ -92,10 +109,11 @@ def fetch(source: str, max_seconds=MAX_SECONDS, max_height=MAX_HEIGHT, workdir: 
     import yt_dlp
     d = (workdir or MEDIA_DIR) / hashlib.sha1(f"{source}|{max_seconds}|{max_height}".encode()).hexdigest()[:12]
     meta_f = d / "meta.json"
-    if meta_f.exists():
+    if meta_f.exists() and time.time() - meta_f.stat().st_mtime < DL_META_TTL_S:     # stale metadata (title, dates) is not reused forever
         m = json.loads(meta_f.read_text())
         if Path(m["path"]).exists():
-            return Clip(**m)
+            d.touch()
+            return Clip(**{k: v for k, v in m.items() if k in Clip.__dataclass_fields__})
     d.mkdir(parents=True, exist_ok=True)
     with yt_dlp.YoutubeDL(_ytdlp_opts(str(d / "clip.%(ext)s"), max_seconds, max_height)) as y:
         info = y.extract_info(source, download=True)
@@ -106,7 +124,8 @@ def fetch(source: str, max_seconds=MAX_SECONDS, max_height=MAX_HEIGHT, workdir: 
     dur = info.get("duration")
     clip = Clip(str(path), info.get("webpage_url") or source, info.get("uploader") or info.get("channel"),
                 iso_date(info.get("upload_date")), info.get("title"), dur, has_audio_stream(path),
-                bool(dur and dur > max_seconds), (info.get("description") or None) and info["description"][:2000])
+                bool(dur and dur > max_seconds), (info.get("description") or None) and info["description"][:2000],
+                upload_timestamp=iso_timestamp(info))
     meta_f.write_text(json.dumps(clip.to_dict()))
     return clip
 
@@ -134,7 +153,27 @@ def extract_audio(path, out_mp3: Path, max_seconds=60) -> Path | None:
     return out_mp3 if r.returncode == 0 and out_mp3.exists() and out_mp3.stat().st_size > 1000 else None
 
 
+def _prune_cache(keep: Path | None = None, max_bytes: int = DL_CACHE_MAX_BYTES):
+    """Least-recently-used eviction so .cache/dl stays bounded. Never raises."""
+    try:
+        dirs = [d for d in MEDIA_DIR.iterdir() if d.is_dir() and d != keep]
+        sizes = {d: sum(f.stat().st_size for f in d.rglob("*") if f.is_file()) for d in dirs}
+        total = sum(sizes.values())
+        for d in sorted(dirs, key=lambda d: d.stat().st_mtime):
+            if total <= max_bytes:
+                break
+            shutil.rmtree(d, ignore_errors=True)
+            total -= sizes[d]
+    except Exception:
+        pass
+
+
 def cleanup(clip: Clip):
-    """Delete a downloaded excerpt (never touches user-supplied local files)."""
+    """Downloads are cached by URL hash in .cache/dl and reused across runs, so this only touches the cache's LRU bound (it never deletes
+    a user-supplied local file)."""
     if clip.url:
-        shutil.rmtree(Path(clip.path).parent, ignore_errors=True)
+        try:
+            Path(clip.path).parent.touch()
+        except OSError:
+            pass
+        _prune_cache(keep=Path(clip.path).parent)

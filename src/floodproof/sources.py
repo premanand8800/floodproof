@@ -57,6 +57,7 @@ class Candidate:
     date_note: str | None = None
     date_alternatives: list = field(default_factory=list)
     also_from: list = field(default_factory=list)   # other adapters that proposed the same URL (merged by dedupe)
+    upload_timestamp: str | None = None   # exact UTC publication time when the platform gave one (else the date is a UTC calendar date only)
     proof: dict | None = None          # clean best-pair frames + RANSAC inlier coordinates (+ optional Muse explanation)
 
     def to_dict(self):
@@ -388,6 +389,24 @@ def source_stats(cands):
 
 
 # ---------------------------------------------------------------- yandex
+YANDEX_DEADLINE_S = float(os.environ.get("FLOODPROOF_YANDEX_DEADLINE", "50"))   # stop starting new frames after this (the search is best effort)
+
+
+def _yandex_wait_results(pg, url0="", max_s=10.0):
+    """Wait for the upload to resolve: the 'Sites' tab (results) or a captcha page, whichever comes first. Returns 'captcha' | 'results' | 'timeout'."""
+    end = time.time() + max_s
+    while time.time() < end:
+        if "captcha" in pg.url:
+            return "captcha"
+        try:
+            if pg.url != url0 and pg.get_by_text("Sites", exact=True).first.is_visible():
+                return "results"
+        except Exception:
+            pass
+        time.sleep(0.3)
+    return "timeout"
+
+
 def yandex_candidates(feats: ClipFeatures, n_frames=3, workdir: Path | None = None, headless=True, max_links=40,
                       frames: list | None = None, crop: tuple | None = None):
     """Scripted Yandex Images reverse search. Returns (candidates, info). A captcha => skipped (never bypassed)."""
@@ -406,9 +425,13 @@ def yandex_candidates(feats: ClipFeatures, n_frames=3, workdir: Path | None = No
             break
     info = dict(frames=pick, captcha=False, searched=0, errors=[])
     seen = {}
+    t_start = time.time()
     with sync_playwright() as p:
         b = p.chromium.launch(headless=headless)
         for i in pick:
+            if info["searched"] and time.time() - t_start > YANDEX_DEADLINE_S:
+                info["errors"].append(f"deadline {YANDEX_DEADLINE_S:.0f}s reached; remaining frames skipped")
+                break
             img = wd / f"{hashlib.sha1(feats.path.encode()).hexdigest()[:8]}_{i}.jpg"
             fr = feats.frames[i]
             if crop:                 # normalized 0-1000 box (x0, y0, x1, y1)
@@ -417,14 +440,24 @@ def yandex_candidates(feats: ClipFeatures, n_frames=3, workdir: Path | None = No
             cv2.imwrite(str(img), fr)
             pg = b.new_context(viewport={"width": 1280, "height": 800}, locale="en-US").new_page()
             try:
-                pg.goto("https://yandex.com/images/", timeout=40000); time.sleep(2)
+                pg.goto("https://yandex.com/images/", timeout=30000); time.sleep(1.2)       # let the page hydrate before the upload handler is used
                 if "captcha" in pg.url:
                     info["captcha"] = True; break
-                pg.locator("input[type=file]").first.set_input_files(str(img)); time.sleep(7)
-                if "captcha" in pg.url or "showcaptcha" in pg.url:
+                pg.locator("input[type=file]").first.wait_for(state="attached", timeout=8000)
+                url0 = pg.url
+                pg.locator("input[type=file]").first.set_input_files(str(img))
+                state = _yandex_wait_results(pg, url0)
+                time.sleep(1.5)                                  # results settle after the tab appears
+                if "captcha" in pg.url or "showcaptcha" in pg.url or state == "captcha":
                     info["captcha"] = True; break          # skip; never bypass
                 try:
-                    pg.get_by_text("Sites", exact=True).first.click(); time.sleep(4)
+                    pg.get_by_text("Sites", exact=True).first.click()
+                    prev, stable, end = -1, 0, time.time() + 7.0       # wait until the Sites list has loaded and stopped growing
+                    while time.time() < end and stable < 2:
+                        time.sleep(0.7)
+                        n_now = pg.evaluate("()=>[...document.querySelectorAll('a[href^=http]')].filter(a=>!a.href.includes('yandex.')).length")
+                        stable = stable + 1 if (n_now == prev and n_now > 0) else 0
+                        prev = n_now
                 except Exception:
                     pass
                 links = pg.evaluate("""()=>[...document.querySelectorAll('a[href^=http]')].map(a=>[a.href,(a.innerText||'').trim().slice(0,120)]).filter(x=>!x[0].includes('yandex.'))""")
@@ -437,9 +470,10 @@ def yandex_candidates(feats: ClipFeatures, n_frames=3, workdir: Path | None = No
                 info["errors"].append(str(e)[:120])
             finally:
                 pg.context.close(); img.unlink(missing_ok=True)
-            time.sleep(2)
+            time.sleep(0.5)
         b.close()
     items = sorted(seen.items(), key=lambda kv: not any(h in kv[0] for h in VIDEO_HOSTS))[:max_links]
+    info["links_seen"] = len(seen); info["seconds"] = round(time.time() - t_start, 1)
     return [Candidate(u, t, "yandex", h) for u, (t, h) in items], info
 
 
@@ -508,6 +542,7 @@ def verify_candidate(c: Candidate, q: ClipFeatures, query_date: str | None = Non
     if not meta:
         c.status = "unavailable"; return c
     c.upload_date, c.uploader = meta["upload_date"], meta["uploader"]
+    c.upload_timestamp = meta.get("upload_timestamp")
     c.date_source = "yt-dlp metadata" if c.upload_date else None
     c.date_independent = bool(c.upload_date); c.independent_date = c.upload_date; c.independent_date_source = c.date_source
     c.retrieved_at = _now()
@@ -602,6 +637,7 @@ def enrich_dates(cands, refetch=None):
             if c.stored_date and c.stored_date != r["date"]:
                 c.date_alternatives = [dict(date=c.stored_date, source="memory entry (inherited)")]
             c.upload_date, c.date_source, c.date_independent = r["date"], r["source"], True
+            c.upload_timestamp = r.get("timestamp") if str(r["source"]).startswith("yt-dlp") else None
             c.retrieved_at = r.get("retrieved_at") or c.retrieved_at
             c.date_note = ("Wayback snapshot date is an upper bound: the page existed by then, it may be older."
                            if str(r["source"]).startswith("wayback") else None)

@@ -15,6 +15,7 @@ from .report import build_report, run_physical, write_report, validate_report
 from . import sources, investigator, infer, gate as gate_mod
 
 
+PHYSICAL_TIMEOUT_S = float(os.environ.get("FLOODPROOF_PHYSICAL_TIMEOUT", "45"))   # the physical check is context only: never let it hold the report
 VERIFY_WORKERS = int(os.environ.get("FLOODPROOF_VERIFY_WORKERS", "3"))   # matcher is CPU-bound and the box also serves the site
 
 
@@ -27,7 +28,7 @@ def _proven_entry(c: sources.Candidate, out_dir: Path):
     ev = rel(c.evidence_png) if c.evidence_png else None
     proof = dict(c.proof, viral_frame=rel(c.proof["viral_frame"]), copy_frame=rel(c.proof["copy_frame"])) if c.proof else None
     return dict(url=c.url, title=c.title, uploader=c.uploader, upload_date=c.upload_date, date_source=c.date_source,
-                retrieved_at=c.retrieved_at, adapter=c.adapter, found_via=c.hint, also_found_by=list(c.also_from), match=c.match, evidence_png=ev, proof=proof,
+                upload_timestamp=c.upload_timestamp, retrieved_at=c.retrieved_at, adapter=c.adapter, found_via=c.hint, also_found_by=list(c.also_from), match=c.match, evidence_png=ev, proof=proof,
                 stored_date=c.stored_date, stored_date_source=("memory entry (inherited)" if c.stored_date else None), independent_date=c.independent_date, independent_date_source=c.independent_date_source,
                 date_independent=bool(c.date_independent), date_note=c.date_note,
                 date_alternatives=list(c.date_alternatives or []),
@@ -102,6 +103,27 @@ def _physical(claim_d, clues, date):
     return res
 
 
+class _Wrapped:
+    """Adapts the early-Yandex future to the (name, result, error, seconds) tuple that absorb() expects."""
+    def __init__(self, fut):
+        self.fut = fut
+
+    def done(self):
+        return self.fut.done()
+
+    def result(self):
+        try:
+            (cands_, info_), secs = self.fut.result()
+            info_["started_early"] = "in parallel with the Muse call; keyframes were chosen before Muse's per-frame labels were available"
+            return "yandex", (cands_, info_), None, secs
+        except Exception as e:
+            return "yandex", None, e, 0.0
+
+
+def cf_wrap(fut):
+    return _Wrapped(fut)
+
+
 def sources_stop_date(claim_d):
     """Claimed date usable as the early-stop reference: never a bare date-posted fallback."""
     return None if claim_d.get("event_date_basis") == "date_posted" else claim_d.get("event_date")
@@ -157,20 +179,27 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
     out = Path(out_dir or ROOT / "runs" / inv_id); out.mkdir(parents=True, exist_ok=True)
     ev_dir = out / "evidence"; ev_dir.mkdir(exist_ok=True)
 
-    gate = None
+    gate, gate_fut = None, None
+    gate_pool = ThreadPoolExecutor(1)
     if use_gate:
-        log("[0/6] relevance gate (does this video show or claim to show a disaster?)")
-        gate = gate_mod.check(source, force=force, log=log)
-        log(f"gate: {gate['decision']} kind={gate.get('kind')} conf={gate.get('confidence')} cost=${gate.get('cost')} {gate.get('seconds')}s")
-        if gate["decision"] == "stop":
-            return _gate_stop_report(source, gate, inv_id, out, t0)
+        log("[0/6] relevance gate (does this video show or claim to show a disaster?), concurrently with the clip fetch")
+        gate_fut = gate_pool.submit(gate_mod.check, source, force=force, log=log)
 
     log("[1/6] fetching clip + keyframes")
     clip = media.fetch(source)
     feats = ClipFeatures.from_path(clip.path)
+    if gate_fut is not None:
+        t_fetched = time.time()
+        gate = gate_fut.result()                 # wait only for what is left of the gate after the fetch
+        stage["fetch_keyframes_only"] = round(t_fetched - t0, 1); stage["gate_total"] = gate.get("seconds")
+        stage["gate_wait_after_fetch"] = round(time.time() - t_fetched, 1)
+        log(f"gate: {gate['decision']} kind={gate.get('kind')} conf={gate.get('confidence')} cost=${gate.get('cost')} {gate.get('seconds')}s")
+        if gate["decision"] == "stop":
+            return _gate_stop_report(source, gate, inv_id, out, t0)
+    gate_pool.shutdown(wait=False)
     self_url = clip.url or (source if media.is_url(source) else None)
     input_meta = dict(source=source, **clip.to_dict(), n_keyframes=len(feats), keyframe_times_s=[round(t, 2) for t in feats.times])
-    input_meta["path"] = clip.path if not clip.url else "(downloaded excerpt removed after run)"
+    input_meta["path"] = clip.path if not clip.url else "(downloaded excerpt cached in .cache/dl)"
 
     mem = memory or (Memory() if use_memory else None)
     stage["fetch_and_keyframes"] = round(time.time() - t0, 1); t_mark[0] = time.time()
@@ -197,6 +226,17 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
         ce = infer.infer_claim(clip, claim, date, place, dict(status="not_run"))
         ce["country_iso2"], ce["event_type"] = ce.get("country_iso2"), "unknown"
         early_phys = pool.submit(_physical, ce, dict(status="not_run"), date)
+    # Yandex (a scripted browser, the slowest source) needs only the keyframes, not Muse: start it now so it overlaps the Muse call.
+    # Trade-off, recorded in the report: its keyframes are the sharpest spread ones, not the ones Muse later labels camera_footage.
+    early_yandex, early_ex = None, None
+    if use_yandex:
+        log("[4/6] Yandex reverse search started early, in parallel with Muse")
+        early_ex = ThreadPoolExecutor(1)
+
+        def _early():
+            t = time.time()
+            return sources.yandex_candidates(feats), round(time.time() - t, 1)
+        early_yandex = early_ex.submit(_early)
     if use_memory and mem is not None:
         log("[2/6] memory lookup")
         mc, res = sources.memory_candidates(mem, feats, evidence_dir=ev_dir)
@@ -253,7 +293,7 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
         web["fast_path"] = dict(skipped="memory hit dated before the claim")
     if use_gvision and not fast_path:
         jobs.append(("gvision", lambda: sources.gvision_candidates(feats, frames=pick(4) if cam else None)))
-    if use_yandex and not fast_path:
+    if use_yandex and not fast_path and early_yandex is None:
         jobs.append(("yandex", lambda: sources.yandex_candidates(feats, frames=pick(3) if cam else None)))
     if fast_path:
         pass
@@ -270,6 +310,9 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
     disc_t = {}
     ex = ThreadPoolExecutor(max(1, len(jobs)))
     futs = {name: ex.submit(_timed, name, fn) for name, fn in jobs}
+    if early_yandex is not None and not fast_path:
+        yfut = cf_wrap(early_yandex)
+        futs["yandex"] = yfut
 
     def absorb(name):
         _, res, err, secs = futs[name].result()
@@ -310,6 +353,8 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
         for name in slow:
             absorb(name)
     ex.shutdown(wait=False)
+    if early_ex is not None:
+        early_ex.shutdown(wait=False)
     stage["discovery"] = round(time.time() - t_mark[0], 1); stage["discovery_by_source"] = disc_t; t_mark[0] = time.time()
     if not vinfo["early_stop"]:
         _verify_pass(max_verify - vinfo["checked"], "final")
@@ -338,7 +383,7 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
     earliest_entry = next((x for x in entries if earliest and x["url"] == earliest.url), None)
     visual = dict(status="FOUND" if proven else "NOT_FOUND", proven_matches=entries,
                   earliest_proven_copy=earliest_entry, claimed_original=claimed_orig,
-                  input_publication=(dict(url=clip.url, upload_date=clip.upload_date, date_source="yt-dlp metadata",
+                  input_publication=(dict(url=clip.url, upload_date=clip.upload_date, upload_timestamp=getattr(clip, 'upload_timestamp', None), date_source="yt-dlp metadata",
                                           retrieved_at=sources._now(), uploader=clip.uploader)
                                      if clip.url and clip.upload_date else None),
                   provenance_note="earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
@@ -352,7 +397,11 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
                   fast_path="memory_hit" if fast_path else None,
                   keyframe_selection=dict(preferred="camera_footage" if cam else None, note=cam_note))
 
-    physical = phys_fut.result()
+    try:
+        physical = phys_fut.result(timeout=PHYSICAL_TIMEOUT_S)
+    except Exception as e:                        # timeout (or crash): context only, so the report goes ahead without it
+        physical = dict(status="ERROR", reason=f"physical check did not finish within {PHYSICAL_TIMEOUT_S:.0f}s ({type(e).__name__}); context only, the verdict does not depend on it")
+        stage["physical_timed_out"] = True
     pool.shutdown(wait=False)
     rep = build_report(input_meta=input_meta, claim=claim_d, memory=memory_layer, visual=visual, clues=clues,
                        physical=physical, investigation_id=inv_id)

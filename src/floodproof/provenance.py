@@ -40,8 +40,8 @@ def _save(d):
 
 def _ytdlp(url):
     from . import media
-    m = media.probe_url(url)
-    return (m or {}).get("upload_date")
+    m = media.probe_url(url) or {}
+    return (m.get("upload_date"), m.get("upload_timestamp")) if m.get("upload_date") else None
 
 
 def _page_meta(url):
@@ -77,8 +77,11 @@ def refetch_date(url: str, methods=None, now=time.time) -> dict:
             d = fn(url)
         except Exception as e:
             errs.append(f"{name}: {type(e).__name__}"); continue
+        stamp = None
+        if isinstance(d, tuple):                     # a method may return (date, exact UTC timestamp)
+            d, stamp = d
         if d:
-            out = dict(date=d, source=name, status="ok", errors=errs, cached=False, ts=now(),
+            out = dict(date=d, source=name, status="ok", errors=errs, cached=False, ts=now(), timestamp=stamp,
                        retrieved_at=time.strftime("%Y-%m-%dT%H:%M:%S+00:00", time.gmtime()))
             cache[url] = out; _save(cache)
             return out

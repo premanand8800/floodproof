@@ -81,13 +81,16 @@ def grab_frames(src: str, duration: float | None, n=N_FRAMES) -> list[bytes]:
             duration = float(r.stdout.strip())
         except ValueError:
             duration = 20.0
-    fr = [(i + 0.5) / n for i in range(n)]
-    out = []
-    for f in fr:
-        b = _grab(src, min(duration * f, max(duration - 1.0, 0)))
-        if b:
-            out.append(b)
-    return out
+    from concurrent.futures import ThreadPoolExecutor
+    ts = [min(duration * (i + 0.5) / n, max(duration - 1.0, 0)) for i in range(n)]
+
+    def one(t):
+        try:
+            return _grab(src, t)
+        except Exception:
+            return None
+    with ThreadPoolExecutor(n) as ex:            # independent ffmpeg stream seeks; time order is kept by map()
+        return [b for b in ex.map(one, ts) if b]
 
 
 def _file_key(path: str) -> str:
