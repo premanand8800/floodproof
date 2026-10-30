@@ -74,6 +74,19 @@ def load_report(kind: str, name: str) -> dict:
     return r
 
 
+def _bright_frame(base: Path, thumb: str, min_mean: float = 40.0) -> str:
+    """First keyframe that is not (near) black, so a demo card never shows a fade-in frame."""
+    try:
+        import cv2
+        for f in sorted((base / "frames").glob("frame_*.jpg")):
+            im = cv2.imread(str(f), cv2.IMREAD_GRAYSCALE)
+            if im is not None and im.mean() >= min_mean:
+                return "frames/" + f.name
+    except Exception:
+        pass
+    return thumb
+
+
 def list_demos() -> list[dict]:
     out = []
     for d in sorted(DEMO_DIR.glob("*/report.json"), key=lambda p: (DEMO_ORDER.index(p.parent.name) if p.parent.name in DEMO_ORDER else 99, p.parent.name)):
@@ -87,7 +100,10 @@ def list_demos() -> list[dict]:
             thumb = "frames/" + thumb.split("/")[-1]
         if not thumb and (d.parent / "frames" / "lens.jpg").is_file():
             thumb = "frames/lens.jpg"
+        if thumb and not ep.get("proof"):           # skip black/fade-in frames for the card picture
+            thumb = _bright_frame(d.parent, thumb)
         out.append(dict(name=d.parent.name, title=DEMO_TITLES.get(d.parent.name, d.parent.name), label=r["final_verdict"]["label"],
+                        tone=(r.get("headline") or {}).get("tone"),
                         claim=r["claim"].get("text"), blurb=DEMO_BLURBS.get(d.parent.name), thumb=thumb))
     return out
 

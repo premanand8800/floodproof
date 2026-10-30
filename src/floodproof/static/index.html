@@ -344,8 +344,9 @@ function verdictOf(rep) {
   if ((rep.headline || {}).tone === "ai_disclosed") return {cls: "v-ai", label: "Labelled AI-generated", enumText: fv.label, notMean: base.notMean + " " + AI_NOT_MEAN};
   return {cls: base.cls, label: base.label, enumText: fv.label, notMean: base.notMean};
 }
-function pillOf(label, tone) {   // for demo cards (list endpoint carries only the label)
-  const v = VERDICT[label] || {cls: "v-unv", label: label || "Unknown"};
+function pillOf(label, tone) {   // for demo cards: an uploader-disclosed AI label leads, as in the report banner
+  const v = tone === "ai_disclosed" ? {cls: "v-ai", label: "Labelled AI-generated"} :
+            tone === "signals_agree" ? {cls: "v-unv", label: "Signals agree, not proven"} : (VERDICT[label] || {cls: "v-unv", label: label || "Unknown"});
   return h("span", {class: "pill " + v.cls}, v.label, " ", h("small", {text: label}));
 }
 
@@ -856,7 +857,7 @@ fetch("/api/demos").then((r) => r.json()).then((ds) => {
   const p = $("#picker");
   ds.map((d, i) => [d, i]).sort((a, b) => rank(a[0]) - rank(b[0]) || a[1] - b[1]).map((x) => x[0]).forEach((d, i) => {
     const th = d.thumb ? h("img", {class: "th", alt: "", loading: "lazy", src: "/files/demo/" + encodeURIComponent(d.name) + "/" + d.thumb.split("/").map(encodeURIComponent).join("/")}) : h("div", {class: "th none", text: "No matched frames to show"});
-    const b = h("button", {type: "button", class: "demo" + (i === 0 ? " feat" : "")}, th, h("span", {class: "bd"}, pillOf(d.label), h("span", {class: "t", text: d.title}), h("span", {class: "s", text: d.blurb || d.claim || ""})));
+    const b = h("button", {type: "button", class: "demo" + (i === 0 ? " feat" : "")}, th, h("span", {class: "bd"}, pillOf(d.label, d.tone), h("span", {class: "t", text: d.title}), h("span", {class: "s", text: d.blurb || d.claim || ""})));
     b.onclick = () => { location.hash = "#/report/demo/" + encodeURIComponent(d.name); }; p.append(b);
   });
 }).catch(() => {});
