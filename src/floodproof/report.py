@@ -20,7 +20,7 @@ import uuid
 from pathlib import Path
 
 LABELS = ("RECYCLED_FOOTAGE", "CONSISTENT_WITH_CLAIM", "UNVERIFIED")
-SCHEMA_VERSION = "1.5"   # 1.5 also carries optional disclosure, claim_presence, signals, headline (none changes the label); 1.5: optional proven_matches[].proof (clean frames, inliers, explanation); 1.4: media_nature.per_frame + value "mixed", claim date bases *_partial_year; 1.3 reports stay valid; 1.3: optional report["debunk"] (see debunk.py); 1.2 reports stay valid
+SCHEMA_VERSION = "1.5"   # 1.5 also carries optional input_publication_before_claim finding and optional upload_timestamp (exact UTC time) on copies, and also carries optional disclosure, claim_presence, signals, headline (none changes the label); 1.5: optional proven_matches[].proof (clean frames, inliers, explanation); 1.4: media_nature.per_frame + value "mixed", claim date bases *_partial_year; 1.3 reports stay valid; 1.3: optional report["debunk"] (see debunk.py); 1.2 reports stay valid
 REQUIRED_KEYS = ("schema_version", "investigation_id", "created_at", "input", "claim", "memory", "visual_matching",
                  "clues", "physical_world_check", "final_verdict")
 
@@ -121,23 +121,91 @@ def mark_weak_blocked(proven, clues):
     return proven
 
 
+MIN_DATE_MARGIN_DAYS = 2      # date-only comparisons: the copy must be at least this many calendar days before the claimed date
+TZ_NOTE = "copy dated within a day of the claimed event; time-zone uncertainty"
+EARLIEST_DAY_START = datetime.timezone(datetime.timedelta(hours=14))   # the calendar day D starts first at UTC+14 (D-1 10:00 UTC)
+
+
+def _day(s):
+    return datetime.date.fromisoformat(str(s)[:10])
+
+
+def date_precedes(date, claim_date, timestamp=None):
+    """True only if a copy published at `date` (a UTC calendar date from yt-dlp upload_date) certainly predates the claimed event day,
+    whatever the time zone of the event (Nepal is UTC+5:45, so a clip uploaded the same UTC day may be hours AFTER the event).
+      - exact UTC timestamp known: it must be before the moment the claimed calendar day first begins anywhere on Earth (UTC+14);
+      - date only: the date must be at least MIN_DATE_MARGIN_DAYS calendar days before the claimed date."""
+    if not date or not claim_date:
+        return False
+    if timestamp:
+        try:
+            t = datetime.datetime.fromisoformat(str(timestamp).replace("Z", "+00:00"))
+            if t.tzinfo is None:
+                t = t.replace(tzinfo=datetime.timezone.utc)
+            return t < datetime.datetime.combine(_day(claim_date), datetime.time(0), tzinfo=EARLIEST_DAY_START)
+        except ValueError:
+            pass
+    try:
+        return (_day(claim_date) - _day(date)).days >= MIN_DATE_MARGIN_DAYS
+    except ValueError:
+        return False
+
+
+def copy_precedes(m, claim_date):
+    """date_precedes for every date reported for one copy (conflicting alternatives are date-only and must ALL predate the claim)."""
+    ds = all_dates(m)
+    if not ds or not claim_date:
+        return False
+    main = m.get("upload_date")
+    return all(date_precedes(d, claim_date, m.get("upload_timestamp") if d == main else None) for d in ds)
+
+
 def proven_before(proven, claim_date, independent_only=False):
-    """Matcher-proven copies strictly earlier than the claimed event date. If sources disagree on a copy's date, ALL
-    reported dates must predate the claim (conservative: a conflict that straddles the claim date does not count)."""
+    """Matcher-proven copies that certainly predate the claimed event date (see date_precedes for the time-zone margin). If sources
+    disagree on a copy's date, ALL reported dates must predate the claim (conservative: a conflict that straddles the claim date
+    does not count)."""
     if not claim_date:
         return []
-    ok = [m for m in proven if all_dates(m) and max(all_dates(m)) < claim_date and (is_independent(m) or not independent_only)
+    ok = [m for m in proven if all_dates(m) and copy_precedes(m, claim_date) and (is_independent(m) or not independent_only)
           and not (m.get("match") or {}).get("weak_blocked")]
     return sorted(ok, key=lambda m: min(all_dates(m)))
 
 
+def proven_within_margin(proven, claim_date):
+    """Independently dated copies that are earlier than the claimed date on the calendar but NOT by the time-zone margin."""
+    if not claim_date:
+        return []
+    return [m for m in proven if all_dates(m) and max(all_dates(m)) < claim_date and is_independent(m)
+            and not copy_precedes(m, claim_date) and not (m.get("match") or {}).get("weak_blocked")]
+
+
 def input_publication(visual):
-    """The input URL's own publication record, usable as 'previously published' evidence (it is the footage itself)."""
+    """The input URL's own publication record. It is the video itself, NEVER an 'earlier copy': it is used only for the separate
+    input_publication_before_claim finding and the (circularity-guarded) timing check of CONSISTENT_WITH_CLAIM."""
     ip = (visual or {}).get("input_publication")
     if ip and ip.get("upload_date"):
-        return dict(ip, adapter="input_url", match=dict(identity=True, consistent_frames=None, max_inliers=None,
-                                                        temporal_offset=0.0, mirrored=False, best_pairs=[]))
+        return dict(ip, adapter="input_url", date_independent=True, match=dict(identity=True, consistent_frames=None, max_inliers=None,
+                                                                              temporal_offset=0.0, mirrored=False, best_pairs=[]))
     return None
+
+
+INPUT_BEFORE_TEXT = "This video was posted before the event it is claimed to show."
+
+
+def input_before_claim(input_pub, claim):
+    """Own finding (not a matcher result): the input video's publication date certainly predates the claimed event date.
+    -> dict(finding, text, input_date, claim_date, ...) or None. Needs a real claimed event date (not a date-posted fallback)."""
+    cd = claim_date_for_logic(claim)
+    if not input_pub or not input_pub.get("upload_date") or not cd:
+        return None
+    if not date_precedes(input_pub["upload_date"], cd, input_pub.get("upload_timestamp")):
+        return None
+    return dict(finding="input_publication_before_claim", text=INPUT_BEFORE_TEXT, input_date=input_pub["upload_date"], claim_date=cd,
+                url=input_pub.get("url"), date_source=input_pub.get("date_source"), upload_timestamp=input_pub.get("upload_timestamp"),
+                precision="timestamp" if input_pub.get("upload_timestamp") else "date",
+                margin_days=(_day(cd) - _day(input_pub["upload_date"])).days,
+                note="This is the video's own publication date, not an earlier copy found by the matcher. A post published before the claimed "
+                     "event cannot show that event; it does not show the claimed event did not happen.")
 
 
 NATURE_CHIP = {
@@ -171,35 +239,44 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
     post_date = (claim or {}).get("event_date") if posted else None
     compilation = (media_nature or {}).get("value") == "news_compilation"
     claim_date = claim_date_for_logic(claim)
-    proven_real = list(proven)           # matcher-proven copies of OTHER uploads
-    if input_pub:
-        proven = proven_real + [input_pub]   # the input's own publication also counts as 'previously published' evidence
+    proven_real = list(proven)           # matcher-proven copies of OTHER uploads; the input's own publication is never one of them
     limits = [
         "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
         "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
         "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
         "'Not found' means not found by these adapters, not that no earlier copy exists.",
+        f"Dates are UTC calendar dates from the platform. Without an exact timestamp a copy must be dated at least {MIN_DATE_MARGIN_DAYS} days before the claimed date to count as earlier (time-zone margin: Nepal is UTC+5:45).",
     ]
-    earlier = proven_before(proven, claim_date, independent_only=True)
-    unverified_earlier = [] if earlier else proven_before(proven, claim_date)    # earlier only on an inherited date
-    conflicts = date_conflicts(proven)
+    earlier = proven_before(proven_real, claim_date, independent_only=True)
+    unverified_earlier = [] if earlier else proven_before(proven_real, claim_date)    # earlier only on an inherited date
+    ibc = input_before_claim(input_pub, claim)
+    within = [] if (earlier or ibc) else proven_within_margin(proven_real + ([input_pub] if input_pub else []), claim_date)
+    conflicts = date_conflicts(proven_real)
     cl_ok = (clues or {}).get("status") == "ok"
     contrad = list((clues or {}).get("observations_against_claim", (clues or {}).get("contradictions_with_claim", []))) if cl_ok else []
     phys = physical_supports(physical)
-    ev = []   # evidence actually present, cited in the summary
+    ibc_s = (f"This video was posted on {ibc['input_date']}, before the claimed event on {ibc['claim_date']} (publication date per {ibc.get('date_source')}"
+             + (", exact timestamp" if ibc["precision"] == "timestamp" else "") + "). ") if ibc else ""
     if earlier:
         e = earlier[0]
         label = "RECYCLED_FOOTAGE"
-        ev_txt = ("The input is itself that publication." if e["match"].get("identity") else
-                  f"Matcher evidence: {e['match']['consistent_frames']} temporally consistent frame(s), up to {e['match']['max_inliers']} inliers"
+        ev_txt = (f"Matcher evidence: {e['match']['consistent_frames']} temporally consistent frame(s), up to {e['match']['max_inliers']} inliers"
                   f"{', mirrored' if e['match'].get('mirrored') else ''}.")
         s = (f"The {'video contains a clip published earlier: it matches' if compilation else 'footage matches'} the earliest copy found, published on {e['upload_date']} ({e['url']}, date independently fetched per {e.get('date_source')}), before the claimed event date {claim_date}. "
              f"{ev_txt} This shows the footage was previously published; it does not "
              "by itself show the footage is fake or that the claimed event did not happen.")
+        if ibc:
+            s += " Separately, " + ibc_s[0].lower() + ibc_s[1:].strip() + " (the input's own publication, not a matcher result.)"
+    elif ibc:
+        label = "RECYCLED_FOOTAGE"
+        s = (ibc_s + "A post published before the claimed event cannot show that event. This is the input video's own publication date, "
+             "not an earlier copy found by the matcher, and it does not show that the claimed event did not happen.")
+        if proven_real:
+            s += f" The frame matcher also proved {len(proven_real)} other copy(ies), none dated before the claim by the required margin."
     else:
         if input_pub and not proven_real:
-            s = (f"The input URL was itself published on {input_pub['upload_date']} (per {input_pub.get('date_source')}), which is not earlier "
-                 "than the claimed event date, so recycling relative to the claim is not established. ")
+            s = (f"The input URL was itself published on {input_pub['upload_date']} (per {input_pub.get('date_source')}), which is not before "
+                 "the claimed event date, so recycling relative to the claim is not established. ")
         elif proven_real:
             e = min([m for m in proven_real if m.get("upload_date")] or proven_real, key=lambda m: m.get("upload_date") or "9999")
             s = (("The video contains a clip published earlier (" if compilation else "The footage matches a previously published copy (") + f"{e['url']}"
@@ -210,6 +287,10 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
                  + ", so recycling relative to the claim is not established. ")
         else:
             s = "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. "
+        if within:
+            w = within[0]
+            s += (f"A copy dated {w['upload_date']} ({w['url']}) is within a day of the claimed event date {claim_date}: " + TZ_NOTE
+                  + f". Upload dates are UTC and the event may be in a time zone such as Nepal (UTC+5:45), so the copy may have been posted after the event; an earlier copy needs to be dated at least {MIN_DATE_MARGIN_DAYS} days before the claim or carry an exact timestamp. ")
         if unverified_earlier:
             u = unverified_earlier[0]
             unverified_reason = "earlier copy found, date not independently verified"
@@ -218,16 +299,19 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
         # Physical-world SUPPORTS is context only and can NEVER raise the verdict (C2 H05 bug: a debunked clip judged consistent).
         # CONSISTENT_WITH_CLAIM needs provenance evidence: an independently dated copy (input publication or proven copy) that
         # falls within a few days of the claimed event date, no earlier independent copy, no observations against the claim.
-        ind = [m for m in proven if is_independent(m) and m.get("upload_date") and not (m.get("match") or {}).get("weak_match")]
+        ind = [m for m in proven_real + ([input_pub] if input_pub else []) if is_independent(m) and m.get("upload_date") and not (m.get("match") or {}).get("weak_match")]
         # Circularity guard: when the claimed date was inferred from the post itself (title/caption/narration/post date),
         # the post's own publication date cannot confirm it; only OTHER independently dated copies count.
         if ((claim or {}).get("source") or {}).get("event_date") == "inferred_from_post":
             ind = [m for m in ind if m.get("adapter") != "input_url"]
-        timing_ok = bool(claim_date and ind and
-                         -1 <= (datetime.date.fromisoformat(min(m["upload_date"] for m in ind)[:10]) - datetime.date.fromisoformat(claim_date[:10])).days <= 3)
+        timing_ok = bool(claim_date and ind and not within and
+                         0 <= (datetime.date.fromisoformat(min(m["upload_date"] for m in ind)[:10]) - datetime.date.fromisoformat(claim_date[:10])).days <= 3)
         if timing_ok and not contrad and not earlier and not unverified_earlier and phys is not False:
             label = "CONSISTENT_WITH_CLAIM"
-            s += ("The earliest independently dated copy was published within days of the claimed event date, and no earlier copy or cited contradiction was found"
+            only_input = all(m.get("adapter") == "input_url" for m in ind)
+            s += (("The input video itself was posted within days of the claimed event date (its own publication date, not independent corroboration of the claim)"
+                   if only_input else "The earliest independently dated copy was published within days of the claimed event date")
+                  + ", and no earlier copy or cited contradiction was found"
                   + (", and the physical-world check adds supporting context (context only; it did not change the verdict)" if phys else "")
                   + ". This means no contradiction was found in the available evidence; it is not a finding that the footage is authentic.")
         else:
@@ -254,17 +338,22 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
         limits.append(INSUFFICIENT + ".")
     basis = dict(earlier_proven_copies=len(earlier), proven_copies=len(proven_real), physical_supports=phys,
                  unverified_model_observations=len(contrad), date_conflicts=len(conflicts),
-                 media_nature=(media_nature or {}).get("value"), claim_date_basis=(claim or {}).get("event_date_basis"))
+                 media_nature=(media_nature or {}).get("value"), claim_date_basis=(claim or {}).get("event_date_basis"),
+                 input_posted_before_claim=bool(ibc))
     if unverified_earlier and label == "UNVERIFIED":
         basis["unverified_reason"] = "earlier copy found, date not independently verified"
+    if within and label == "UNVERIFIED":
+        basis["unverified_reason"] = TZ_NOTE
+        basis["time_zone_margin"] = dict(note=TZ_NOTE, copies=[m.get("url") for m in within], margin_days=MIN_DATE_MARGIN_DAYS)
     return dict(label=label, summary=s, limits=limits, basis=basis)
 
 
 def independent_contradictions(claim, proven, physical, input_pub=None):
+    """input_pub is accepted for compatibility and ignored: the input's own publication is a separate finding, never a contradiction."""
     """Claim-vs-evidence conflicts backed by INDEPENDENT evidence only. Muse observations and location hypotheses never qualify."""
     out = []
     cd = claim_date_for_logic(claim)
-    for m in proven_before(list(proven) + ([input_pub] if input_pub else []), cd, independent_only=True)[:1]:
+    for m in proven_before(list(proven), cd, independent_only=True)[:1]:
         out.append(dict(kind="independently_dated_earlier_copy", text=f"Footage was already published on {m['upload_date']} (earliest copy found), before the claimed event date {cd}.",
                         evidence=[m["url"]], date_source=m.get("date_source")))
     if (physical or {}).get("verdict") == "CONTRADICTS":
@@ -382,12 +471,15 @@ def signals_assessment(claim, clues, physical, proven, input_pub, media_nature, 
         if rec:
             agree.append(dict(key="official_event", label="Official event record", detail=rec, field="physical_world_check.official_event"))
     # 5. no proven earlier copy (independent or inherited-date)
-    allp = list(proven) + ([input_pub] if input_pub else [])
-    if cd and not proven_before(allp, cd):
+    allp = list(proven)          # matcher-proven copies only; the input's own publication is not a matcher signal
+    ibc = input_before_claim(input_pub, c)
+    if cd and not proven_before(allp, cd) and not ibc:
         agree.append(dict(key="no_earlier_copy", label="No earlier copy proven", detail="the frame matcher found no earlier copy (absence of evidence, not proof)", field="visual_matching.status"))
     # contradictions: anything here blocks the signals-agree headline
     if proven_before(allp, cd, independent_only=True):
         against.append("a proven earlier copy exists")
+    if ibc:
+        against.append(f"this video was posted on {ibc['input_date']}, before the claimed event on {ibc['claim_date']}")
     if physical_supports(physical) is False:
         against.append("the physical-world check does not support the claimed place/date")
     if (disclosure or {}).get("type", "none") != "none":
@@ -405,7 +497,7 @@ def _host(u):
 
 
 def build_headline(rep) -> dict:
-    """Deterministic headline: precedence proven earlier copy > uploader self-disclosure > signals agree > consistent > plain.
+    """Deterministic headline: precedence proven earlier copy > uploader self-disclosure > input posted before the claim > consistent > signals agree > plain.
     -> dict(sentence, facts [{text, field}] (<= 3), tone). Never changes the label."""
     fv, claim, vis = rep["final_verdict"], rep.get("claim") or {}, rep.get("visual_matching") or {}
     disc, presence, sig = rep.get("disclosure") or {}, rep.get("claim_presence") or {}, rep.get("signals") or {}
@@ -414,11 +506,12 @@ def build_headline(rep) -> dict:
     proven = vis.get("proven_matches") or []
     ip = input_publication(vis)
     cd = claim_date_for_logic(claim)
-    if label == "RECYCLED_FOOTAGE":
-        e = proven_before(proven + ([ip] if ip else []), cd, independent_only=True)[0]
+    ibc = input_before_claim(ip, claim)
+    earlier = proven_before(proven, cd, independent_only=True)
+    if label == "RECYCLED_FOOTAGE" and earlier:
+        e = earlier[0]
         m = e.get("match") or {}
-        f2 = ("The input URL is itself that earlier publication" if m.get("identity") else
-              f"The frame matcher links the two: {m.get('consistent_frames')} consistent frames, up to {m.get('max_inliers')} inliers")
+        f2 = f"The frame matcher links the two: {m.get('consistent_frames')} consistent frames, up to {m.get('max_inliers')} inliers"
         return dict(tone="recycled",
                     sentence=f"This footage was already published on {e['upload_date']}, before the claimed event date {cd}.",
                     facts=[dict(text=f"Earliest copy found: {_host(e.get('url'))}, dated {e['upload_date']} (date from {e.get('date_source')})", field="visual_matching.earliest_proven_copy"),
@@ -438,12 +531,20 @@ def build_headline(rep) -> dict:
         else:
             facts.append(dict(text=f"No earlier copy was proven among {vis.get('candidates_checked', 0)} candidates checked", field="visual_matching.candidates_checked"))
         return dict(tone="ai_disclosed", sentence=f"The uploader {verb} {what}. It is not documentary footage of {event}.", facts=facts[:3])
+    if label == "RECYCLED_FOOTAGE" and ibc:
+        return dict(tone="recycled",
+                    sentence=f"This video was posted on {ibc['input_date']}, before the claimed event on {ibc['claim_date']}.",
+                    facts=[dict(text=f"Its own publication date: {ibc['input_date']} (from {ibc.get('date_source')}" + (", exact timestamp" if ibc["precision"] == "timestamp" else "") + ")", field="visual_matching.input_publication"),
+                           dict(text=f"Claimed event date: {ibc['claim_date']} ({ibc['margin_days']} days later)", field="input_publication_before_claim.claim_date"),
+                           dict(text="This is the video's own publication date, not an earlier copy found by the matcher; the claimed event itself may be real", field="input_publication_before_claim.note")])
     if label == "CONSISTENT_WITH_CLAIM":
         ind = [m for m in proven + ([ip] if ip else []) if is_independent(m) and m.get("upload_date")]
         d0 = min((m["upload_date"] for m in ind), default="?")
+        only_input = bool(ind) and all(m.get("adapter") == "input_url" for m in ind)
         return dict(tone="consistent",
-                    sentence=f"No contradiction found: the earliest independently dated copy ({d0}) falls within days of the claimed event date {cd}. This is not proof the footage is authentic.",
-                    facts=[dict(text=f"Earliest independently dated copy: {d0}", field="visual_matching.earliest_proven_copy"),
+                    sentence=(f"No contradiction found: this video was posted on {d0}, within days of the claimed event date {cd} (its own publication date, not independent corroboration). This is not proof the footage is authentic." if only_input else
+                              f"No contradiction found: the earliest independently dated copy ({d0}) falls within days of the claimed event date {cd}. This is not proof the footage is authentic."),
+                    facts=[dict(text=(f"The video's own publication date: {d0}" if only_input else f"Earliest independently dated copy: {d0}"), field="visual_matching.input_publication" if only_input else "visual_matching.earliest_proven_copy"),
                            dict(text="No earlier copy and no independent contradiction were found", field="contradictions"),
                            dict(text="Physical-world data is context only and did not change the label", field="physical_world_check.verdict")])
     if sig.get("qualifies"):
@@ -563,6 +664,11 @@ def add_clarity(rep):
     rep["claim_presence"] = claim_presence_layer(rep.get("input"), rep.get("claim"), rep["disclosure"])
     rep["signals"] = signals_assessment(rep.get("claim"), rep.get("clues"), rep.get("physical_world_check"), vis.get("proven_matches", []),
                                         input_publication(vis), rep.get("media_nature"), rep["disclosure"])
+    ibc = input_before_claim(input_publication(vis), rep.get("claim"))
+    if ibc:
+        rep["input_publication_before_claim"] = ibc
+    else:
+        rep.pop("input_publication_before_claim", None)
     rep["headline"] = build_headline(rep)
     rep["source_map"] = build_source_map(rep)
     assert rep["final_verdict"]["label"] == label
@@ -690,14 +796,21 @@ def validate_report(r: dict):
         assert hl["tone"] != "signals_agree" or (r.get("signals") or {}).get("qualifies"), "signals_agree headline needs a qualifying assessment"
     if r.get("source_map") is not None:
         validate_source_map(r)
+    if r.get("input_publication_before_claim") is not None:       # optional finding (schema 1.6): must match the report's own data
+        f = r["input_publication_before_claim"]
+        want = input_before_claim(input_publication(v), r["claim"])
+        assert want and f.get("finding") == "input_publication_before_claim" and f.get("input_date") == want["input_date"] and f.get("claim_date") == want["claim_date"], \
+            "input_publication_before_claim must follow from input_publication and the claimed event date"
+        assert not any(m.get("adapter") == "input_url" for m in v.get("proven_matches", [])) and \
+            (v.get("earliest_proven_copy") or {}).get("adapter") != "input_url", "the input's own publication is never a proven copy"
     if r.get("gate") is not None:          # optional relevance gate (older reports have none)
         validate_gate(r["gate"])
     fv = r["final_verdict"]
     assert fv["label"] in LABELS and fv["summary"] and fv["limits"]
     if fv["label"] == "RECYCLED_FOOTAGE":
         cd = claim_date_for_logic(r["claim"])
-        assert cd and proven_before(v["proven_matches"] + ([ip] if (ip := input_publication(v)) else []), cd, independent_only=True), \
-            "RECYCLED requires a proven copy with an independently re-fetched date predating the claimed date"
+        assert cd and (proven_before(v["proven_matches"], cd, independent_only=True) or input_before_claim(input_publication(v), r["claim"])), \
+            "RECYCLED requires a proven copy with an independently re-fetched date predating the claimed date (by the time-zone margin), or the input video posted before the claimed event"
     return r
 
 

@@ -152,13 +152,15 @@ def test_physical_interface_is_called_with_new_signature(monkeypatch):
     assert out["verdict"] == "SUPPORTS" and seen["event_type"] == "flash_flood" and seen["country"] == "NP"
 
 
-def test_input_url_own_publication_date_counts_as_previously_published():
+def test_input_url_own_publication_is_its_own_finding_not_a_copy():
     visual = dict(status="NOT_FOUND", proven_matches=[], input_publication=dict(
         url="https://youtu.be/in", upload_date="2024-09-28", date_source="yt-dlp metadata", retrieved_at="t"))
     r = build_report(input_meta={}, claim=dict(text="Nepal flood", event_date="2026-08-26"), memory=dict(status="MISS"),
                      visual=visual, clues=dict(status="not_run"), physical=dict(status="NOT_RUN"))
     validate_report(r)
-    assert r["final_verdict"]["label"] == "RECYCLED_FOOTAGE" and "itself that publication" in r["final_verdict"]["summary"]
+    assert r["final_verdict"]["label"] == "RECYCLED_FOOTAGE"
+    assert "posted on 2024-09-28, before the claimed event on 2026-08-26" in r["final_verdict"]["summary"]
+    assert "earlier copy found" not in r["headline"]["sentence"]
     r["claim"]["event_date"] = "2024-09-28"
     r2 = build_report(input_meta={}, claim=r["claim"], memory=dict(status="MISS"), visual=visual,
                       clues=dict(status="not_run"), physical=dict(status="NOT_RUN"))
