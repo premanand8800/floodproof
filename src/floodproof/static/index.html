@@ -3,167 +3,297 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FloodProof</title>
+<title>FloodProof: is this disaster video real?</title>
+<meta name="description" content="FloodProof finds the earlier copy of a viral disaster video and shows you the proof. No fake score. Evidence.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap">
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--ink:#14202b;--mute:#566574;--line:#d9e0e6;--accent:#0b6e8a;
---rec:#b3261e;--recbg:#fdecea;--ok:#1b6e3c;--okbg:#e6f4ea;--unv:#8a5a00;--unvbg:#fff4d6;--hyp:#5b3fa0;--hypbg:#efeafa;
---shadow:0 1px 2px rgba(0,0,0,.06)}
-@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e151b;--card:#16212a;--ink:#e6edf2;--mute:#9fb0be;--line:#2a3945;--accent:#4cc3e0;
---rec:#ff8a80;--recbg:#3a1b19;--ok:#7fd69b;--okbg:#17301f;--unv:#ffcf6b;--unvbg:#35290a;--hyp:#c3b0ff;--hypbg:#2a2342;--shadow:none}}
-:root[data-theme=dark]{--bg:#0e151b;--card:#16212a;--ink:#e6edf2;--mute:#9fb0be;--line:#2a3945;--accent:#4cc3e0;
---rec:#ff8a80;--recbg:#3a1b19;--ok:#7fd69b;--okbg:#17301f;--unv:#ffcf6b;--unvbg:#35290a;--hyp:#c3b0ff;--hypbg:#2a2342;--shadow:none}
+:root{
+  --bg:#f3f6f9;--surface:#fff;--surface2:#eaf0f5;--ink:#0b1b2b;--mute:#475869;--line:#d3dde6;
+  --teal:#0a7a90;--teal-ink:#fff;--teal-soft:#dff3f7;
+  --rec:#b3261e;--recbg:#fdecea;--unv:#855400;--unvbg:#fff3d1;--ok:#17683a;--okbg:#e4f4ea;--ai:#5a3d9f;--aibg:#eee9fa;
+  --hero1:#0a1c30;--hero2:#0d3a4d;--hero-ink:#f2f8fb;--hero-mute:#b4c8d6;
+  --shadow:0 1px 2px rgba(11,27,43,.06),0 8px 24px rgba(11,27,43,.06);
+  --r:16px;--ff-h:"Space Grotesk",system-ui,sans-serif;--ff-b:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--ff-m:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg:#07111b;--surface:#0e1c2a;--surface2:#142638;--ink:#e8f0f6;--mute:#a6b8c7;--line:#223548;
+  --teal:#4fd1e8;--teal-ink:#05222b;--teal-soft:#10303b;
+  --rec:#ff9088;--recbg:#3a1a1a;--unv:#ffd070;--unvbg:#33270a;--ok:#82dc9e;--okbg:#14301f;--ai:#c5b3ff;--aibg:#272041;
+  --hero1:#08182a;--hero2:#0b3140;--shadow:0 1px 2px rgba(0,0,0,.4)}}
+:root[data-theme=dark]{
+  --bg:#07111b;--surface:#0e1c2a;--surface2:#142638;--ink:#e8f0f6;--mute:#a6b8c7;--line:#223548;
+  --teal:#4fd1e8;--teal-ink:#05222b;--teal-soft:#10303b;
+  --rec:#ff9088;--recbg:#3a1a1a;--unv:#ffd070;--unvbg:#33270a;--ok:#82dc9e;--okbg:#14301f;--ai:#c5b3ff;--aibg:#272041;
+  --hero1:#08182a;--hero2:#0b3140;--shadow:0 1px 2px rgba(0,0,0,.4)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-.wrap{max-width:980px;margin:0 auto;padding:0 16px 64px}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 0 8px;flex-wrap:wrap}
-h1{font-size:1.6rem;margin:0;letter-spacing:-.01em}
-h1 small{display:block;font-size:.85rem;font-weight:400;color:var(--mute);margin-top:2px}
-h2{font-size:1.05rem;margin:0}
-button,input,textarea,select{font:inherit;color:inherit}
-.btn{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:10px 16px;cursor:pointer;font-weight:600}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:500;padding:6px 12px}
-.btn[disabled]{opacity:.5;cursor:wait}
-:where(button,a,input,textarea,summary):focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--ff-b);overflow-x:hidden}
+[hidden]{display:none!important}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:var(--ff-h);line-height:1.2;margin:0;letter-spacing:-.01em}
+h2{font-size:1.25rem}h3{font-size:1rem}
+a{color:var(--teal);overflow-wrap:anywhere}
+code,.mono{font-family:var(--ff-m);font-size:.82em}
+button,input,textarea,select,summary{font:inherit;color:inherit}
+:where(button,a,input,textarea,summary,select,label.drop):focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:8px}
+.hero :where(button,a):focus-visible{outline-color:#fff}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.note{color:var(--mute);font-size:.9rem;overflow-wrap:anywhere}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:12px;border:2px solid var(--teal);background:var(--teal);color:var(--teal-ink);font-weight:700;cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.08)}.btn[disabled]{opacity:.55;cursor:wait}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line);font-weight:600}
+.btn.ghost:hover{border-color:var(--teal);filter:none}
+/* top bar */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0}
+.brand{display:inline-flex;align-items:center;gap:10px;font-family:var(--ff-h);font-weight:700;font-size:1.3rem;color:inherit;text-decoration:none;min-height:44px}
+.brand svg{width:30px;height:30px;flex:none}
+.themebtn{min-height:44px;min-width:44px;padding:0 14px;border-radius:12px;border:1px solid currentColor;background:transparent;cursor:pointer;font-weight:600}
+.topnav{background:var(--surface);border-bottom:1px solid var(--line)}
+/* home hero */
+.hero{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:var(--hero-ink);padding-bottom:56px;border-bottom-left-radius:28px;border-bottom-right-radius:28px}
+.hero h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:700;max-width:26ch;margin:14px 0 10px;text-wrap:balance}
+.hero h1 em{font-style:normal;color:#6ee0f2;display:block}
+.hero .lead{color:var(--hero-mute);font-size:1.05rem;max-width:58ch;margin:0 0 22px}
+.brandline{display:inline-block;margin-top:18px;padding:4px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.4);font-weight:600;font-size:.85rem;letter-spacing:.03em}
+.check{background:var(--surface);color:var(--ink);border-radius:20px;padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.28);max-width:860px}
+.urlrow{display:flex;gap:10px}
+.urlrow input{flex:1;min-width:0;font-size:1.05rem;min-height:58px}
+.urlrow .btn{min-height:58px;font-size:1.05rem;padding:0 30px}
+input[type=text],input[type=url],input[type=date],input[type=password],textarea{width:100%;min-height:52px;background:var(--bg);color:var(--ink);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:1rem}
+textarea{min-height:76px;resize:vertical}
+input::placeholder,textarea::placeholder{color:var(--mute);opacity:.9}
+input:focus,textarea:focus{border-color:var(--teal)}
+.or{display:flex;align-items:center;gap:12px;color:var(--mute);font-size:.8rem;margin:12px 0;text-transform:uppercase;letter-spacing:.08em}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.drop-in{position:absolute;opacity:0;width:1px;height:1px}
+label.drop{display:flex;align-items:center;justify-content:center;gap:14px;min-height:88px;padding:14px;border:2px dashed var(--line);border-radius:14px;background:var(--bg);cursor:pointer;text-align:left;color:var(--mute);transition:border-color .15s,background .15s}
+label.drop:hover,label.drop.over{border-color:var(--teal);background:var(--teal-soft);color:var(--ink)}
+label.drop svg{width:30px;height:30px;flex:none;color:var(--teal)}
+label.drop b{color:var(--ink)}
+.drop-in:focus-visible + label.drop{outline:3px solid var(--teal);outline-offset:2px}
+label.drop.has{border-style:solid;border-color:var(--teal);color:var(--ink)}
+.exp{border:1px solid var(--line);border-radius:12px;margin-top:12px;background:var(--surface)}
+.exp>summary{list-style:none;cursor:pointer;min-height:48px;display:flex;align-items:center;gap:10px;padding:8px 14px;font-weight:600;border-radius:12px}
+.exp>summary::-webkit-details-marker{display:none}
+.exp>summary::before,details.layer>summary .lt::before{content:"";width:8px;height:8px;border-right:2px solid var(--teal);border-bottom:2px solid var(--teal);transform:rotate(-45deg);transition:transform .15s;flex:none;margin:0 4px 0 2px}
+.exp[open]>summary::before,details.layer[open]>summary .lt::before{transform:rotate(45deg)}
+.exp .in{padding:4px 14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.exp .full{grid-column:1/-1}
+.exp label.l{display:block;font-size:.85rem;font-weight:600;color:var(--mute);margin-bottom:4px}
+.chk{display:flex;gap:12px;align-items:flex-start}
+.chk input{width:24px;height:24px;margin:2px 0 0;accent-color:var(--teal);flex:none}
+.chk label{font-weight:600;display:block;min-height:28px}
+#status{min-height:1.4em;margin:10px 2px 0;color:var(--rec);font-size:.92rem;font-weight:600}
+/* sections */
+section.blk{margin-top:48px}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.sec-h h2{font-size:clamp(1.4rem,3vw,1.8rem)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:-30px;position:relative}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;box-shadow:var(--shadow)}
+.stat b{display:block;font-family:var(--ff-h);font-size:clamp(2.2rem,4.4vw,3rem);line-height:1;color:var(--teal)}
+.stat span{display:block;margin-top:8px;font-weight:500}
+.statnote{margin:10px 2px 0;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.linkbtn{background:none;border:0;padding:0 4px;min-height:44px;color:var(--teal);text-decoration:underline;cursor:pointer;font-weight:600}
+.demos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.demo{display:flex;flex-direction:column;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:0;cursor:pointer;overflow:hidden;box-shadow:var(--shadow);transition:transform .15s,border-color .15s;min-width:0}
+.demo:hover{border-color:var(--teal);transform:translateY(-2px)}
+.demo .th{width:100%;aspect-ratio:16/9;object-fit:cover;background:#0b1b2b;display:block}
+.demo .th.none{display:flex;align-items:center;justify-content:center;color:#b4c8d6;font-size:.85rem;background:linear-gradient(135deg,var(--hero1),var(--hero2))}
+.demo .bd{padding:14px 16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.demo .t{font-family:var(--ff-h);font-weight:600;font-size:1.05rem}
+.demo .s{color:var(--mute);font-size:.9rem}
+.demo.feat{grid-column:span 2}
+.demo.feat .th{aspect-ratio:21/9}
+@media (max-width:900px){.demos{grid-template-columns:repeat(2,1fr)}.demo.feat{grid-column:span 2}}
+@media (max-width:620px){.demos{grid-template-columns:1fr}.demo.feat{grid-column:auto}.demo.feat .th{aspect-ratio:16/9}}
+.pill{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:4px 12px;border-radius:999px;font-weight:700;font-size:.85rem;border:1px solid currentColor;white-space:nowrap;color:var(--vc);background:var(--vbg)}
+.pill small{font-family:var(--ff-m);font-weight:400;opacity:.85;font-size:.7rem}
+.v-rec{--vc:var(--rec);--vbg:var(--recbg)}.v-unv,.v-gate{--vc:var(--unv);--vbg:var(--unvbg)}.v-ok{--vc:var(--ok);--vbg:var(--okbg)}.v-ai{--vc:var(--ai);--vbg:var(--aibg)}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.78rem;font-weight:700;border:1px solid currentColor;white-space:nowrap}
+.b-rec{color:var(--rec);background:var(--recbg)}.b-ok{color:var(--ok);background:var(--okbg)}.b-unv{color:var(--unv);background:var(--unvbg)}.b-hyp{color:var(--ai);background:var(--aibg)}.b-na{color:var(--mute);background:var(--surface2)}
+footer{color:var(--mute);font-size:.85rem;margin:56px 0 40px;border-top:1px solid var(--line);padding-top:20px}
+dialog{border:0;border-radius:20px;padding:0;max-width:min(620px,calc(100vw - 24px));width:100%;background:var(--surface);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+dialog::backdrop{background:rgba(5,14,24,.65)}
+dialog .in{padding:24px;max-height:85vh;overflow:auto}
+dialog ul{padding-left:20px}dialog li{margin:8px 0}
+/* run view */
+.runcard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;margin-top:24px;box-shadow:var(--shadow)}
+.steps{list-style:none;margin:24px 0;padding:0;display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.steps li{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:.8rem;color:var(--mute);position:relative}
+.steps li i{width:34px;height:34px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-style:normal;font-weight:700;background:var(--bg);position:relative;z-index:1}
+.steps li::before{content:"";position:absolute;top:16px;left:-50%;width:100%;height:2px;background:var(--line)}
+.steps li:first-child::before{display:none}
+.steps li.done i{background:var(--teal);border-color:var(--teal);color:var(--teal-ink)}
+.steps li.done::before,.steps li.cur::before{background:var(--teal)}
+.steps li.cur i{border-color:var(--teal);color:var(--teal);box-shadow:0 0 0 4px var(--teal-soft);animation:pulse 1.4s ease-in-out infinite}
+.steps li.cur,.steps li.done{color:var(--ink);font-weight:600}
+@keyframes pulse{50%{box-shadow:0 0 0 9px transparent}}
+@media (max-width:560px){.steps{grid-template-columns:1fr;gap:0}.steps li{flex-direction:row;text-align:left;padding:6px 0;gap:12px}.steps li::before{top:-17px;left:16px;width:2px;height:34px}.steps li:first-child::before{display:none}}
+.elapsed{font-family:var(--ff-m);font-size:1.4rem;color:var(--teal)}
+pre.log{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;font:.78rem/1.5 var(--ff-m);max-height:240px;white-space:pre-wrap;overflow-wrap:anywhere}
+/* report */
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.vbanner{background:var(--vbg);color:var(--ink);border:2px solid var(--vc);border-left-width:10px;border-radius:var(--r);padding:22px;margin-top:24px}
+.vbanner .lab{font-family:var(--ff-h);font-weight:700;font-size:clamp(1.8rem,4.8vw,2.8rem);line-height:1.1;color:var(--vc)}
+.vbanner .enum{display:block;font-family:var(--ff-m);font-size:.72rem;color:var(--mute);margin-top:4px;font-weight:400}
+.vbanner .hl{font-size:clamp(1.05rem,2.4vw,1.35rem);font-weight:600;margin:12px 0 16px;max-width:62ch}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;list-style:none;padding:0;margin:0 0 12px}
+.facts li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}
+.facts code{display:block;margin-top:6px;color:var(--mute);font-size:.7rem;overflow-wrap:anywhere}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.lim1{font-size:.9rem;color:var(--mute);margin:8px 0 0}
+details.mini{margin-top:4px}details.mini>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600;font-size:.92rem}
+.notmean{margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--surface);border:1px dashed var(--line)}
+ul.plain,ul.limits{margin:6px 0;padding-left:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;margin-top:20px;box-shadow:var(--shadow)}
+.card>h2{margin-bottom:6px}
 .card-h{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px}
-.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.78rem;font-weight:700;letter-spacing:.02em;border:1px solid currentColor;white-space:nowrap}
-.b-rec{color:var(--rec);background:var(--recbg)}.b-ok{color:var(--ok);background:var(--okbg)}.b-unv{color:var(--unv);background:var(--unvbg)}
-.b-hyp{color:var(--hyp);background:var(--hypbg)}.b-na{color:var(--mute)}
-.picker{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
-.picker button{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0;cursor:pointer;overflow:hidden}
-.picker button:hover{border-color:var(--accent)}
-.picker button .th{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000;display:block}
-.picker button .th.none{display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:.8rem;background:var(--bg)}
-.picker button .bd{padding:2px 12px 12px;display:flex;flex-direction:column;gap:4px}
-.picker .t{font-weight:600;display:block}.picker .s{color:var(--mute);font-size:.85rem}
-.phero{border:2px solid var(--rec);border-radius:14px;background:var(--card);padding:14px;margin:14px 0 0}
-.phero h2{margin-bottom:2px}
-.pair{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-.pair figure{margin:0}
-.pair img{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line);background:#000}
-.pair figcaption{font-size:.8rem;color:var(--mute);margin-top:3px}
+.warn{background:var(--unvbg);color:var(--unv);border-radius:10px;padding:8px 12px;font-size:.9rem;margin-top:8px}
+.phero{border:2px solid var(--rec);border-radius:var(--r);background:var(--surface);padding:18px;margin-top:20px;box-shadow:var(--shadow)}
+.pair{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.pair figure{margin:0;min-width:0}
+.pair img{display:block;width:100%;height:auto;max-height:55vh;object-fit:contain;background:#050b12;border-radius:10px;border:1px solid var(--line)}
+.pair figcaption{font-size:.82rem;color:var(--mute);margin-top:4px}
 .pair svg{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-.pair svg line{stroke:#19e36b;stroke-width:1.6;stroke-linecap:round;filter:drop-shadow(0 0 1.5px #000)}
+.pair svg line{stroke:#19e36b;stroke-width:1.8;stroke-linecap:round;filter:drop-shadow(0 0 1.5px #000)}
 .pair svg circle{fill:#19e36b;stroke:#000;stroke-width:.6}
-.stamp{margin:14px 0 4px;padding:12px 14px;border:3px solid var(--rec);color:var(--rec);border-radius:10px;text-align:center;font-weight:800;
-font-size:clamp(1.05rem,4.6vw,1.7rem);letter-spacing:.02em;line-height:1.25;transform:rotate(-1.2deg);transition:opacity .5s,transform .5s}
-.stamp.pending{opacity:0;transform:rotate(-1.2deg) scale(1.15)}
-.stamp.neutral{border-color:var(--line);color:var(--ink)}
-@media (prefers-reduced-motion:reduce){.stamp{transition:none}}
-.expl h3{font-size:.95rem;margin:14px 0 4px}
-.expl ul{margin:4px 0;padding-left:20px}
-.expl .rg{color:var(--mute);font-size:.85rem}
-form.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-form .full{grid-column:1/-1}
-label{display:block;font-size:.85rem;color:var(--mute);margin-bottom:3px}
-input[type=text],input[type=url],input[type=date],textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 10px}
-.chk{display:flex;gap:8px;align-items:flex-start}.chk input{margin-top:5px}
-@media(max-width:600px){form.grid{grid-template-columns:1fr}}
-.banner{border-radius:14px;padding:18px;margin:14px 0 0;border:2px solid currentColor}
-.banner .lab{font-size:1.5rem;font-weight:800;letter-spacing:.01em}
-.banner p{color:var(--ink)}
-.not-mean{margin-top:10px;padding:10px 12px;border-radius:8px;background:var(--card);color:var(--ink);border:1px dashed var(--line);font-size:.95rem}
-.limits{margin:6px 0 0;padding-left:20px;color:var(--ink);font-size:.92rem}
-.limits-h{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);margin-top:12px}
-.note,.card p,.card li,.card dd{overflow-wrap:anywhere}
-.note{color:var(--mute);font-size:.9rem}
+.stamp{margin:16px 0 10px;padding:12px 14px;border:3px solid var(--rec);color:var(--rec);border-radius:12px;text-align:center;font-family:var(--ff-h);font-weight:700;font-size:clamp(1.05rem,3.6vw,1.6rem);line-height:1.25;transition:opacity .5s,transform .5s}
+.stamp.pending{opacity:0;transform:scale(1.06)}.stamp.neutral{border-color:var(--line);color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.stamp,.steps li.cur i,label.drop,.demo,.exp>summary::before{transition:none;animation:none}.demo:hover{transform:none}}
+.heroimg{overflow:hidden;border-radius:10px;border:1px solid var(--line);background:#000;margin-top:10px}.heroimg img{display:block;width:100%;max-height:55vh;object-fit:contain}
+.expl ul{margin:4px 0;padding-left:20px}.expl h3{margin:14px 0 4px}.expl .rg{color:var(--mute);font-size:.85rem}
+.smrow{margin-top:16px}.smrow .cap{font-weight:600;font-size:.92rem;margin-bottom:6px}
+.smbar{display:flex;height:42px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--bg)}
+.seg{border:0;border-right:2px solid var(--surface);padding:0;cursor:pointer;min-width:12px;min-height:42px}
+.seg:last-child{border-right:0}.seg[aria-pressed=true]{outline:3px solid var(--ink);outline-offset:-3px}
+.k-matched_source{background:#c4372d}.k-ai_generated{background:#7050c0}.k-animation{background:#b0529f}.k-graphic{background:#6b7b88}.k-camera_unmatched{background:#1f87a3}
+.k-nosource{background:repeating-linear-gradient(45deg,#9aa6b0,#9aa6b0 4px,#c9d1d8 4px,#c9d1d8 8px)}
+.k-na{background:var(--line)}
+.legend{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:.8rem;color:var(--mute);margin:6px 0 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px;border:1px solid var(--line)}
+.scale{display:flex;justify-content:space-between;font-family:var(--ff-m);font-size:.72rem;color:var(--mute);margin-top:4px}
+.detail{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:.92rem;background:var(--bg);margin-top:16px}
 .src{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
-.src:first-of-type{border-top:0;margin-top:0;padding-top:0}
-.kv{display:grid;grid-template-columns:max-content 1fr;gap:2px 12px;font-size:.92rem}
-.kv dt{color:var(--mute)}.kv dd{margin:0;word-break:break-word}
-.proof{display:block;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin-top:8px;background:#000}
-.frames{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px;margin-top:8px}
-.frames img{width:100%;border-radius:6px;border:1px solid var(--line);display:block}
-.frames figcaption{font-size:.72rem;color:var(--mute)}
-.frames figure{margin:0}
-a{color:var(--accent);word-break:break-word}
-ul.plain{margin:6px 0;padding-left:20px}
-details{margin-top:8px}summary{cursor:pointer;color:var(--mute);padding:4px 0}
-pre.log{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;overflow:auto;font-size:.8rem;max-height:240px;white-space:pre-wrap}
+.src:first-child{border-top:0;margin-top:0;padding-top:0}
+.pair2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.pair2 img{width:100%;max-height:40vh;object-fit:contain;background:#050b12;border-radius:8px;border:1px solid var(--line)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.tabs button{min-height:44px;padding:0 18px;background:var(--bg);border:1px solid var(--line);border-radius:999px;cursor:pointer;font-weight:600}
+.tabs button[aria-selected=true]{background:var(--teal);border-color:var(--teal);color:var(--teal-ink)}
+textarea.dtext{min-height:11em;font-size:1.02rem;line-height:1.55}
+.dactions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.dactions .btn{min-height:52px;padding:0 30px;font-size:1.05rem}
+.nature{margin-top:20px;padding:12px 16px;border-radius:12px;border:1px solid var(--unv);background:var(--unvbg);color:var(--ink)}.nature.n-cam{border-color:var(--teal);background:var(--teal-soft)}
+.layers{margin-top:28px;display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+code{overflow-wrap:anywhere;white-space:normal}
+details.layer>summary{flex-wrap:wrap}
+.layers>h2{margin-bottom:2px}
+details.layer{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+details.layer>summary{list-style:none;cursor:pointer;min-height:58px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 18px;font-family:var(--ff-h);font-weight:600;font-size:1.05rem;border-radius:14px}
+details.layer>summary::-webkit-details-marker{display:none}
+details.layer>summary .lt{display:flex;align-items:center;gap:10px}
+details.layer .lb{padding:0 18px 18px}
+.kv{display:grid;grid-template-columns:max-content 1fr;gap:3px 14px;font-size:.92rem;margin:8px 0}.kv dt{color:var(--mute)}.kv dd{margin:0;overflow-wrap:anywhere}
+@media (max-width:560px){.kv{grid-template-columns:1fr}.kv dd{margin-bottom:6px}}
+.frames{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px;margin-top:10px}.frames figure{margin:0}.frames img{width:100%;border-radius:6px;border:1px solid var(--line);display:block}.frames figcaption{font-size:.72rem;color:var(--mute)}
+.proof{display:block;max-width:100%;max-height:60vh;object-fit:contain;border:1px solid var(--line);border-radius:8px;margin-top:8px;background:#000}
 .trace-step{border-top:1px solid var(--line);padding:8px 0;font-size:.88rem}
-.warn{background:var(--unvbg);color:var(--unv);border-radius:8px;padding:8px 12px;font-size:.9rem;margin-top:8px}
-.err{color:var(--rec)}
-.hide{display:none}
-footer{color:var(--mute);font-size:.82rem;margin-top:30px}
-.nature{margin:10px 0;padding:10px 14px;border-radius:8px;border:1px solid #c9a227;background:#fff8e1;color:#4a3b00}.nature.n-cam{border-color:#9bb;background:#eef6f6;color:#234}.nature ul{margin:6px 0 0 18px}
-
-.banner .lab{font-size:1.05rem}
-.hl{font-size:clamp(1.15rem,3.6vw,1.5rem);font-weight:800;line-height:1.3;margin:10px 0 6px;color:var(--ink)}
-ul.facts{margin:4px 0 8px;padding-left:20px;font-size:1rem}
-ul.facts li{margin:3px 0}
-code.cite{font-size:.72rem;color:var(--mute)}
-.lim1{font-size:.88rem;color:var(--mute);margin:8px 0 2px}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 0}
 .sig-ok::marker{content:"\2713  "}.sig-no::marker{content:"\2717  "}
-.smap{margin:12px 0 0}
-.smap .bar{display:flex;height:34px;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--bg)}
-.smap .seg{border:0;border-right:1px solid var(--card);padding:0;cursor:pointer;min-width:6px}
-.smap .seg:last-child{border-right:0}
-.smap .seg[aria-pressed=true]{outline:3px solid var(--accent);outline-offset:-3px}
-.k-matched_source{background:#b3261e}.k-ai_generated{background:#5b3fa0}.k-animation{background:#a8559a}.k-graphic{background:#6b7b88}.k-camera_unmatched{background:#2a7f9a}.k-unknown{background:repeating-linear-gradient(45deg,#9aa6b0,#9aa6b0 4px,#c9d1d8 4px,#c9d1d8 8px)}
-.smap .legend{display:flex;gap:10px;flex-wrap:wrap;font-size:.78rem;color:var(--mute);margin:6px 0}
-.smap .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:4px;vertical-align:-1px}
-.smap .detail{border:1px solid var(--line);border-radius:8px;padding:10px;font-size:.9rem;background:var(--card);margin-top:6px}
-.smap .scale{display:flex;justify-content:space-between;font-size:.72rem;color:var(--mute)}
-.smap .pair2{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
-.smap .pair2 img{width:100%;border-radius:6px;border:1px solid var(--line)}
-code{white-space:normal;word-break:break-word}
-.tagline{display:inline-block;margin:6px 0 0;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;font-size:.85rem;letter-spacing:.02em}
-.strip{margin:10px 0;padding:12px 14px;border-radius:12px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);font-size:1.02rem}
-.strip b{font-size:1.25rem}.strip .note{display:block;margin-top:4px}
-.hero{margin:14px 0 0;padding:16px;border-radius:14px;background:var(--card);border:2px solid var(--rec);box-shadow:var(--shadow)}
-.hero .kick{font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:var(--mute)}
-.hero .big{font-size:clamp(1.5rem,5vw,2.3rem);font-weight:800;line-height:1.15;margin:4px 0;color:var(--rec)}
-.hero .sub{font-size:1.05rem;margin:2px 0 10px}
-.hero .stats{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
-.hero .stat{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:6px 12px}
-.hero .stat b{display:block;font-size:1.3rem}
-.sbslabels{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:.9rem;color:var(--mute)}
-.sbslabels strong{color:var(--ink)}
-.hero .crop{overflow:hidden;border-radius:8px;border:1px solid var(--line);background:#000;aspect-ratio:720/640;margin-top:4px}
-.hero .crop img{display:block;width:100%;height:auto}
-.dcard textarea.dtext{width:100%;min-height:9em;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;font-size:1rem;line-height:1.5;resize:vertical}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
-.tabs button{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:5px 14px;cursor:pointer}
-.tabs button[aria-selected=true]{background:var(--accent);border-color:var(--accent);color:#fff}
+.err{color:var(--rec)}
+.lim-visible{margin-top:20px;padding:12px 16px;border-radius:12px;background:var(--surface2);font-size:.92rem}
+.endbar{margin:28px 0 8px;padding-top:20px;border-top:1px solid var(--line)}
+@media (max-width:760px){
+  .stats{grid-template-columns:1fr;margin-top:-26px}.stat{padding:16px 18px}
+  .urlrow{flex-direction:column}.urlrow .btn{width:100%}
+  .exp .in{grid-template-columns:1fr}
+  .check{padding:14px;border-radius:16px}
+  .pair{gap:6px}.phero{padding:12px}.vbanner{padding:16px}
+}
+@media (max-width:420px){.pair2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <h1>FloodProof<small>FloodProof doesn't guess if a disaster video is fake. It finds the earlier copy and shows you the proof, in the language the rumour is spreading in.</small>
-    <span class="tagline">No fake score. Evidence.</span></h1>
-  <button class="btn ghost" id="theme" type="button" aria-label="Toggle dark or light theme">Theme</button>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="logo" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#0d6f86"/><path d="M5 19c3-4 5-4 8 0s5 4 8 0 4-3 6-1" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><path d="M5 12c3-4 5-4 8 0s5 4 8 0 4-3 6-1" fill="none" stroke="#7ee7f7" stroke-width="2.4" stroke-linecap="round"/><circle cx="23" cy="24" r="2.4" fill="#7ee7f7"/></symbol>
+  <symbol id="upload" viewBox="0 0 24 24"><path d="M12 16V4m0 0l-4 4m4-4l4 4M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="hero" id="v-home-hero">
+ <div class="wrap">
+  <div class="bar">
+    <a class="brand" href="#/" aria-label="FloodProof home"><svg aria-hidden="true"><use href="#logo"/></svg><span>FloodProof</span></a>
+    <button class="themebtn" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
+  </div>
+  <h1>Is this disaster video real? <em>FloodProof finds the earlier copy and shows you the proof.</em></h1>
+  <p class="lead">Paste a link or drop a clip. If the footage was posted before, you get the matching frames, the date and a shareable debunk in plain language.</p>
+  <form id="form" class="check" aria-label="Check a video" novalidate>
+    <label class="sr" for="url">Video link</label>
+    <div class="urlrow">
+      <input type="url" id="url" name="url" placeholder="Paste a video link" autocomplete="off" inputmode="url">
+      <button class="btn" id="go" type="submit">Check video</button>
+    </div>
+    <div class="or">or</div>
+    <input class="drop-in" type="file" id="file" name="file" accept="video/*">
+    <label class="drop" id="drop" for="file"><svg aria-hidden="true"><use href="#upload"/></svg><span id="dropt"><b>Drop a video file here</b> or choose one<br><span class="note">MP4, MOV or WebM, up to 80 MB.</span></span></label>
+    <details class="exp">
+      <summary>Add the claim (optional)</summary>
+      <div class="in">
+        <div class="full"><label class="l" for="claim">What is being claimed?</label><textarea id="claim" name="claim" rows="2" placeholder="e.g. Flood in Kathmandu, September 2024"></textarea></div>
+        <div><label class="l" for="date">Claimed date</label><input type="date" id="date" name="date"></div>
+        <div><label class="l" for="place">Claimed place</label><input type="text" id="place" name="place" placeholder="City or region"></div>
+      </div>
+    </details>
+    <details class="exp">
+      <summary>Advanced</summary>
+      <div class="in">
+        <div class="full chk"><input type="checkbox" id="deep" name="deep" value="1">
+          <div><label for="deep">Deep investigate (experimental)</label>
+          <div class="note">Runs a tool-calling agent and shows its full trace. Extra investigation does not guarantee a better verdict.</div></div></div>
+        <div class="full"><label class="l" for="passcode">Judge passcode</label><input type="password" id="passcode" name="passcode" placeholder="Needed for Deep investigate" autocomplete="off"></div>
+      </div>
+    </details>
+    <div id="status" role="status" aria-live="polite"></div>
+  </form>
+  <span class="brandline">No fake score. Evidence.</span>
+ </div>
 </header>
 
-<div class="strip hide" id="strip" role="note" aria-label="Benchmark headline"></div>
-
-<section class="card" aria-labelledby="demo-h">
-  <div class="card-h"><h2 id="demo-h">Open a saved example (instant, nothing is run)</h2></div>
-  <div class="picker" id="picker"></div>
-</section>
-
-<section class="card" aria-labelledby="run-h">
-  <div class="card-h"><h2 id="run-h">Investigate a video</h2></div>
-  <form id="form" class="grid">
-    <div><label for="file">Video file</label><input type="file" id="file" name="file" accept="video/*"></div>
-    <div><label for="url">...or video URL</label><input type="url" id="url" name="url" placeholder="https://..."></div>
-    <div class="full"><label for="claim">Claim shared with the video</label><textarea id="claim" name="claim" rows="2" placeholder="e.g. Flood in Kathmandu, September 2024"></textarea></div>
-    <div><label for="date">Claimed event date</label><input type="date" id="date" name="date"></div>
-    <div><label for="place">Claimed place</label><input type="text" id="place" name="place" placeholder="optional"></div>
-    <div class="full chk"><input type="checkbox" id="deep" name="deep" value="1">
-      <div><label for="deep" style="margin:0;color:var(--ink)">Deep investigate (experimental)</label>
-      <span class="note">Runs a tool-calling agent and shows its full trace. Extra investigation does not guarantee a better verdict.</span></div></div>
-    <div><label for="passcode">Judge passcode</label><input type="password" id="passcode" name="passcode" placeholder="optional; needed for Deep investigate" autocomplete="off"></div>
-    <div class="full"><button class="btn" id="go" type="submit">Run investigation</button>
-      <span class="note" id="status" role="status" aria-live="polite"></span></div>
-  </form>
-  <pre class="log hide" id="log"></pre>
-</section>
-
-<main id="out" aria-live="polite"></main>
-<footer>Everything on this page is rendered from a validated report.json. The video-match proof is separate from AI clues, the physical-world check and memory; layers are never merged into one score.</footer>
+<main id="main">
+<div class="wrap" id="v-home">
+  <div class="stats" id="stats" hidden></div>
+  <div class="statnote note" id="statnote" hidden>Measured on real viral clips already debunked by fact-checkers. <button class="linkbtn" type="button" id="howbtn">How we measured</button></div>
+  <section class="blk" aria-labelledby="demo-h">
+    <div class="sec-h"><h2 id="demo-h">See it work</h2><span class="note">Saved examples open instantly. Nothing is run.</span></div>
+    <div class="demos" id="picker"></div>
+  </section>
+  <footer>Everything on this page is rendered from a validated report.json. The video-match proof is separate from AI clues, the physical-world check and memory; layers are never merged into one score.</footer>
 </div>
+
+<div id="v-run" hidden>
+ <div class="topnav"><div class="wrap"><div class="bar"><a class="brand" href="#/" aria-label="FloodProof home"><svg aria-hidden="true"><use href="#logo"/></svg><span>FloodProof</span></a><button class="themebtn" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button></div></div></div>
+ <div class="wrap">
+  <div class="runcard">
+    <div class="card-h"><h2 id="run-title">Checking your video</h2><span class="elapsed" id="elapsed" role="timer" aria-label="Elapsed time">0:00</span></div>
+    <ol class="steps" id="steps" aria-label="Progress"></ol>
+    <p class="note" id="run-note" role="status" aria-live="polite">This usually takes one to three minutes. You can leave this tab open.</p>
+    <details class="mini"><summary>Show raw log</summary><pre class="log" id="log"></pre></details>
+    <div class="actions" id="run-actions" hidden style="margin-top:14px"><a class="btn" href="#/">Back to home</a></div>
+  </div>
+ </div>
+</div>
+
+<div id="v-report" hidden>
+ <div class="topnav"><div class="wrap"><div class="bar"><a class="brand" href="#/" aria-label="FloodProof home"><svg aria-hidden="true"><use href="#logo"/></svg><span>FloodProof</span></a><button class="themebtn" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button></div></div></div>
+ <div class="wrap" id="out"></div>
+</div>
+</main>
+
+<dialog id="how" aria-labelledby="how-h"><div class="in">
+  <h2 id="how-h">How we measured</h2>
+  <p id="how-body" style="margin-top:10px"></p>
+  <ul id="how-list"></ul>
+  <form method="dialog"><button class="btn" autofocus>Close</button></form>
+</div></dialog>
 
 <script>
 "use strict";
@@ -180,20 +310,45 @@ function h(tag, attrs, ...kids) {
 const badge = (txt, cls) => h("span", {class: "badge " + cls, text: txt});
 const safeHref = (u) => /^https?:\/\//i.test(u || "") ? u : null;
 const link = (u, text) => safeHref(u) ? h("a", {href: u, target: "_blank", rel: "noopener noreferrer", text: text || u}) : h("span", {text: text || String(u)});
+const REDUCED = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// theme
+// ---------- theme
 (() => { try { const t = localStorage.getItem("fp-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {} })();
-$("#theme").onclick = () => {
-  const cur = document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : "light");
-  const nx = cur === "dark" ? "light" : "dark"; document.documentElement.dataset.theme = nx;
+const curTheme = () => document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : "light");
+function paintTheme() { document.querySelectorAll("[data-theme-toggle]").forEach((b) => { b.textContent = curTheme() === "dark" ? "Light mode" : "Dark mode"; }); }
+document.querySelectorAll("[data-theme-toggle]").forEach((b) => { b.onclick = () => {
+  const nx = curTheme() === "dark" ? "light" : "dark"; document.documentElement.dataset.theme = nx;
   try { localStorage.setItem("fp-theme", nx); } catch (e) {}
-};
+  paintTheme();
+}; });
+paintTheme();
 
+// ---------- views
+const VIEWS = {home: ["#v-home-hero", "#v-home"], run: ["#v-run"], report: ["#v-report"]};
+function show(view) {
+  Object.entries(VIEWS).forEach(([k, sels]) => sels.forEach((s) => { $(s).hidden = k !== view; }));
+  window.scrollTo(0, 0);
+}
+
+// ---------- plain-language verdicts
 const VERDICT = {
-  RECYCLED_FOOTAGE: {cls: "b-rec", title: "Recycled footage", notMean: "Recycled does not mean fake, and it does not mean the claimed event did not happen. It means this footage was already published before the date in the claim."},
-  CONSISTENT_WITH_CLAIM: {cls: "b-ok", title: "Consistent with claim", notMean: "Consistent does not mean confirmed or authentic. It means no contradiction was found in the evidence available to this tool."},
-  UNVERIFIED: {cls: "b-unv", title: "Unverified", notMean: "Unverified does not mean fake or false. It means the available evidence could not establish either way. Not finding an earlier copy is a normal outcome."},
+  RECYCLED_FOOTAGE: {cls: "v-rec", label: "Old footage, reposted", notMean: "Recycled does not mean fake, and it does not mean the claimed event did not happen. It means this footage was already published before the date in the claim."},
+  CONSISTENT_WITH_CLAIM: {cls: "v-ok", label: "No contradiction found", notMean: "Consistent does not mean confirmed or authentic. It means no contradiction was found in the evidence available to this tool."},
+  UNVERIFIED: {cls: "v-unv", label: "Not enough evidence", notMean: "Unverified does not mean fake or false. It means the available evidence could not establish either way. Not finding an earlier copy is a normal outcome."},
 };
+const AI_NOT_MEAN = "A label from the uploader is context, not proof. This tool does not judge whether the label is honest; it only reports it next to the evidence.";
+function verdictOf(rep) {
+  const fv = rep.final_verdict || {}, gate = rep.gate;
+  if (gate && gate.decision === "stop") return {cls: "v-gate", label: "Not disaster footage", enumText: "GATE_STOP", notMean: "This is not a verdict on the video. The relevance gate only decided it does not show or claim to show a disaster, so nothing else was run."};
+  const base = VERDICT[fv.label] || VERDICT.UNVERIFIED;
+  if ((rep.headline || {}).tone === "ai_disclosed") return {cls: "v-ai", label: "Labelled AI-generated", enumText: fv.label, notMean: base.notMean + " " + AI_NOT_MEAN};
+  return {cls: base.cls, label: base.label, enumText: fv.label, notMean: base.notMean};
+}
+function pillOf(label, tone) {   // for demo cards (list endpoint carries only the label)
+  const v = VERDICT[label] || {cls: "v-unv", label: label || "Unknown"};
+  return h("span", {class: "pill " + v.cls}, v.label, " ", h("small", {text: label}));
+}
+
 const STATUS = {
   FOUND: ["Match found", "b-rec"], NOT_FOUND: ["No match found", "b-unv"], HIT: ["Memory hit", "b-rec"], MISS: ["No memory match", "b-na"], NOT_RUN: ["Not run", "b-na"],
   ok: ["Clues extracted", "b-ok"], error: ["Error", "b-unv"], not_run: ["Not run", "b-na"],
@@ -204,10 +359,12 @@ function baseOf(ref) { return ref.kind + "/" + ref.name; }
 function img(ref, rel, alt, cls) {
   return h("img", {class: cls, loading: "lazy", alt, src: "/files/" + baseOf(ref) + "/" + String(rel).split("/").map(encodeURIComponent).join("/")});
 }
-const limitsBox = (items) => h("details", {class: "layer-limits"}, h("summary", {text: "Limits of this layer"}), h("ul", {class: "limits"}, (items || []).map((x) => h("li", {text: x}))));
-const GENERIC_FAIL = "This check could not be completed right now.";
+const limitsBox = (items) => h("details", {class: "mini"}, h("summary", {text: "Limits of this layer"}), h("ul", {class: "limits"}, (items || []).map((x) => h("li", {text: x}))));
 function card(title, statusBadge, ...kids) {
   return h("section", {class: "card"}, h("div", {class: "card-h"}, h("h2", {text: title}), statusBadge), ...kids);
+}
+function layer(title, statusBadge, ...kids) {
+  return h("details", {class: "layer"}, h("summary", {}, h("span", {class: "lt", text: title}), statusBadge), h("div", {class: "lb"}, ...kids));
 }
 function dates(m) {
   const dl = h("dl", {class: "kv"});
@@ -218,13 +375,13 @@ function dates(m) {
   return dl;
 }
 
-
+// ---------- date stamp
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 function stampFmt(iso) {
   const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || ""); if (!m) return null;
   return Number(m[3]) + " " + MONTHS[Number(m[2]) - 1] + " " + m[1];
 }
-function stampDays(a, b) {   // b - a in whole days, from ISO dates
+function stampDays(a, b) {
   const pa = /^(\d{4})-(\d{2})-(\d{2})/.exec(a || ""), pb = /^(\d{4})-(\d{2})-(\d{2})/.exec(b || "");
   if (!pa || !pb) return null;
   return Math.round((Date.UTC(+pb[1], +pb[2] - 1, +pb[3]) - Date.UTC(+pa[1], +pa[2] - 1, +pa[3])) / 86400000);
@@ -239,31 +396,35 @@ function stampText(posted, claimed) {
   if (n === 0) return {text: base + " · same day", earlier: false};
   return {text: base + " · " + (-n) + " day" + (n === -1 ? "" : "s") + " later", earlier: false};
 }
-const REDUCED = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const SVGNS = "http://www.w3.org/2000/svg";
+// the rendered picture box inside an object-fit:contain <img>, in client coordinates
+function pictureBox(im) {
+  const r = im.getBoundingClientRect(), nw = im.naturalWidth, nh = im.naturalHeight;
+  const s = Math.min(r.width / nw, r.height / nh), w = nw * s, hh = nh * s;
+  return {left: r.left + (r.width - w) / 2, top: r.top + (r.height - hh) / 2, width: w, height: hh};
+}
 
-// Proof hero: the two CLEAN stored frames side by side, RANSAC inlier lines drawn from stored coordinates (animated ~1.5 s),
-// then the date stamp. Everything comes from the validated report; older reports fall back to the evidence PNG.
+// ---------- proof hero
 function proofHero(rep, ref) {
   const v = rep.visual_matching || {}, ep = v.earliest_proven_copy;
   if (!ep || (rep.final_verdict || {}).label !== "RECYCLED_FOOTAGE") return null;
   const m = (v.proven_matches || []).find((x) => x.url === ep.url) || ep, p = m.proof || ep.proof;
+  if (!p) return null;
   const st = stampText(m.upload_date, (rep.claim || {}).event_date);
   const hero = h("section", {class: "phero", "aria-label": "Proof: the earliest matched copy"},
     h("h2", {text: "Proof: the same footage, published earlier"}),
     h("div", {class: "note"}, link(m.url), " ", badge(m.date_independent ? "date independently verified" : "date NOT independently verified", m.date_independent ? "b-ok" : "b-unv")));
   const stamp = st ? h("div", {class: "stamp pending" + (st.earlier ? "" : " neutral"), role: "status", text: st.text}) : null;
-  if (!p) return null;                        // older report: the existing evidence-image hero (heroFor) is used instead
   const pair = h("div", {class: "pair"});
   const ia = img(ref, p.viral_frame, "Frame from the viral video (A)", ""), ib = img(ref, p.copy_frame, "Frame from the earlier copy (B)", "");
   ia.loading = "eager"; ib.loading = "eager";
-  pair.append(h("figure", {}, ia, h("figcaption", {text: "A: viral video, t=" + p.viral_t + " s"})),
-              h("figure", {}, ib, h("figcaption", {text: "B: earlier copy, t=" + p.copy_t + " s"})));
+  pair.append(h("figure", {}, ia, h("figcaption", {text: "A: the viral video, at " + p.viral_t + " s"})),
+              h("figure", {}, ib, h("figcaption", {text: "B: the earlier copy, at " + p.copy_t + " s"})));
   const svg = document.createElementNS(SVGNS, "svg"); svg.setAttribute("aria-hidden", "true"); pair.append(svg);
   hero.append(pair);
   let raf = 0, run = 0;
   const geom = () => {
-    const c = pair.getBoundingClientRect(), a = ia.getBoundingClientRect(), b = ib.getBoundingClientRect();
+    const c = pair.getBoundingClientRect(), a = pictureBox(ia), b = pictureBox(ib);
     svg.setAttribute("viewBox", "0 0 " + c.width + " " + c.height);
     return (q) => [a.left - c.left + q[0] * a.width, a.top - c.top + q[1] * a.height, b.left - c.left + q[2] * b.width, b.top - c.top + q[3] * b.height];
   };
@@ -275,7 +436,7 @@ function proofHero(rep, ref) {
     const lines = pts.map((q) => {
       const l = document.createElementNS(SVGNS, "line"), d = document.createElementNS(SVGNS, "circle");
       l.setAttribute("x1", q[0]); l.setAttribute("y1", q[1]); l.setAttribute("x2", q[0]); l.setAttribute("y2", q[1]);
-      d.setAttribute("r", 2.4); d.setAttribute("cx", q[0]); d.setAttribute("cy", q[1]); d.style.opacity = 0; l.style.opacity = 0;
+      d.setAttribute("r", 2.6); d.setAttribute("cx", q[0]); d.setAttribute("cy", q[1]); d.style.opacity = 0; l.style.opacity = 0;
       svg.append(l, d); return [l, d]; });
     const set = (k, f) => { const [l, d] = lines[k], q = pts[k]; l.style.opacity = f > 0 ? .85 : 0; d.style.opacity = f > 0 ? 1 : 0;
       l.setAttribute("x2", q[0] + (q[2] - q[0]) * f); l.setAttribute("y2", q[1] + (q[3] - q[1]) * f); };
@@ -295,18 +456,25 @@ function proofHero(rep, ref) {
   ia.addEventListener("load", ready); ib.addEventListener("load", ready);
   if (window.ResizeObserver) new ResizeObserver(() => { if (ia.complete && ib.complete) draw(false); }).observe(pair);
   if (stamp) hero.append(stamp);
-  if (!REDUCED()) { const rb = h("button", {class: "btn ghost", type: "button", text: "Replay proof"}); rb.onclick = () => draw(true); hero.append(rb); }
-  hero.append(h("p", {class: "note", text: "The green lines are the " + (p.inliers || []).length + " strongest RANSAC-verified keypoint matches between these two frames" + (p.mirrored ? " (the copy is mirrored)" : "") + ". The proof is this geometric match."}));
-  const ex = p.explanation;
-  if (ex && (ex.items || []).length) {
-    hero.append(h("div", {class: "expl"},
-      h("div", {class: "warn", text: ex.label || "AI explanation of a matcher-proven match: the proof is the geometric match, not this text"}),
-      h("h3", {text: "What is shared between A and B"}),
-      h("ul", {}, ex.items.map((it) => h("li", {}, it.what, " ", h("span", {class: "rg", text: "(A: " + (it.region_a || "?") + "; B: " + (it.region_b || "?") + ")"})))),
-      (ex.differences || []).length ? [h("h3", {text: "Differences"}), h("ul", {}, ex.differences.map((d) => h("li", {text: d})))] : null,
-      h("div", {class: "note", text: "Described by " + ex.model + " from the two frames above; only what is visible."})));
-  }
+  const row = h("div", {class: "actions"});
+  if (!REDUCED()) { const rb = h("button", {class: "btn ghost", type: "button", text: "Replay proof"}); rb.onclick = () => draw(true); row.append(rb); }
+  hero.append(row);
+  hero.append(h("p", {class: "note", text: "The green lines join the " + (p.inliers || []).length + " strongest keypoint matches between these two frames" + (p.mirrored ? " (the copy is mirrored)" : "") + ". The proof is this geometric match."}));
   return hero;
+}
+function explanationCard(rep) {
+  const v = rep.visual_matching || {}, ep = v.earliest_proven_copy;
+  if (!ep || (rep.final_verdict || {}).label !== "RECYCLED_FOOTAGE") return null;
+  const m = (v.proven_matches || []).find((x) => x.url === ep.url) || ep, p = m.proof || ep.proof;
+  const ex = p && p.explanation;
+  if (!ex || !(ex.items || []).length) return null;
+  return h("section", {class: "card expl", "aria-label": "Muse explanation"},
+    h("div", {class: "card-h"}, h("h2", {text: "What Muse sees in both frames"}), badge("AI explanation", "b-hyp")),
+    h("div", {class: "warn", text: ex.label || "AI explanation of a matcher-proven match: the proof is the geometric match, not this text"}),
+    h("h3", {text: "What is shared between A and B"}),
+    h("ul", {}, ex.items.map((it) => h("li", {}, it.what, " ", h("span", {class: "rg", text: "(A: " + (it.region_a || "?") + "; B: " + (it.region_b || "?") + ")"})))),
+    (ex.differences || []).length ? [h("h3", {text: "Differences"}), h("ul", {}, ex.differences.map((d) => h("li", {text: d})))] : null,
+    h("div", {class: "note", style: "margin-top:8px", text: "Described by " + ex.model + " from the two frames above; only what is visible."}));
 }
 const fmtDate = (d) => { try { return new Date(d + "T00:00:00Z").toLocaleDateString("en-GB", {day: "numeric", month: "short", year: "numeric", timeZone: "UTC"}); } catch (e) { return d; } };
 const daysBetween = (a, b) => Math.round((Date.parse(b + "T00:00:00Z") - Date.parse(a + "T00:00:00Z")) / 864e5);
@@ -314,7 +482,7 @@ const hostOf = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); 
 const PLATFORM = {"instagram.com": "Instagram", "youtube.com": "YouTube", "youtu.be": "YouTube", "facebook.com": "Facebook", "x.com": "X", "twitter.com": "X", "tiktok.com": "TikTok"};
 const platformOf = (u) => PLATFORM[hostOf(u)] || hostOf(u) || "unknown platform";
 
-// proof-first hero: only when the verdict is RECYCLED and a matcher-proven copy with an evidence image exists
+// older reports without clean frames: the stored side-by-side evidence image
 function heroFor(rep, ref) {
   const v = rep.visual_matching, fv = rep.final_verdict, cm = rep.claim || {};
   if (fv.label !== "RECYCLED_FOOTAGE") return null;
@@ -324,34 +492,24 @@ function heroFor(rep, ref) {
   const n = cm.event_date ? daysBetween(m.upload_date, cm.event_date) : null;
   const before = n != null && n > 0 ? " — " + n + " day" + (n === 1 ? "" : "s") + " before the claimed event" : "";
   const pair = (m.match.best_pairs || [])[0];
-  return h("section", {class: "hero", "aria-label": "Proof: earlier copy"},
-    h("div", {class: "kick", text: "Proof: earliest copy found"}),
-    h("div", {class: "big", text: "Published earlier: " + fmtDate(m.upload_date) + before}),
-    h("div", {class: "sub"}, platformOf(m.url) + (m.uploader ? " · " + m.uploader : "") + " · ", link(m.url),
-      m.date_independent ? "" : " (date not independently verified)",
-      cm.event_date ? " · claimed event date " + fmtDate(cm.event_date) : ""),
-    h("div", {class: "sbslabels"}, h("span", {}, h("strong", {text: "Viral clip"}), " (the video you checked)"),
-      h("span", {}, h("strong", {text: "Earlier copy"}), " (" + fmtDate(m.upload_date) + ")")),
-    h("div", {class: "crop"}, img(ref, m.evidence_png, "Side by side: viral clip frame on the left, earlier copy frame on the right; green lines join the same keypoints")),
-    h("div", {class: "note", text: "Best matched frame pair" + (pair ? " (viral frame " + pair.a_frame + " = copy frame " + pair.b_frame + ", " + pair.inliers + " inliers)" : "") + ". Green lines join the same keypoints in both frames."}),
-    h("details", {}, h("summary", {text: "Full evidence image (all matched frame pairs)"}),
-      img(ref, m.evidence_png, "Matched keypoints between the viral clip (left) and the earlier copy (right)", "proof")),
-    h("div", {class: "stats"},
-      h("div", {class: "stat"}, h("b", {text: m.match.max_inliers}), "inliers (best frame pair)"),
-      h("div", {class: "stat"}, h("b", {text: m.match.consistent_frames}), "temporally consistent frames"),
-      h("div", {class: "stat"}, h("b", {text: platformOf(m.url)}), m.uploader || "uploader unknown")),
-    h("div", {class: "note", text: "This is the earliest copy found, not asserted to be the original source. It shows the footage was published earlier; it does not show the claimed event did not happen."}));
+  return h("section", {class: "phero", "aria-label": "Proof: earlier copy"},
+    h("h2", {text: "Proof: the same footage, published earlier"}),
+    h("div", {class: "note"}, platformOf(m.url) + (m.uploader ? " · " + m.uploader : "") + " · ", link(m.url), m.date_independent ? "" : " (date not independently verified)"),
+    h("div", {class: "heroimg"}, img(ref, m.evidence_png, "Side by side: viral clip frame on the left, earlier copy frame on the right; green lines join the same keypoints")),
+    h("div", {class: "stamp"}, "Published " + fmtDate(m.upload_date) + before),
+    h("div", {class: "note", text: "Best matched frame pair" + (pair ? " (viral frame " + pair.a_frame + " = copy frame " + pair.b_frame + ", " + pair.inliers + " inliers)" : "") + ". Green lines join the same keypoints. This is the earliest copy found, not asserted to be the original source."}),
+    h("details", {class: "mini"}, h("summary", {text: "Full evidence image (all matched frame pairs)"}),
+      img(ref, m.evidence_png, "Matched keypoints between the viral clip (left) and the earlier copy (right)", "proof")));
 }
 
+// ---------- debunk card
 const LANGNAME = {en: "English", ne: "नेपाली (Nepali)", hi: "हिन्दी (Hindi)"};
-// One bullet per sentence, never an empty one: accepts {sentence, ref} (current), {text, ref} (older writers) or a bare string, and
-// falls back to the card text itself when a language has no usable per-sentence refs.
 function refItems(d, lg) {
   const raw = (d.field_refs || {})[lg];
   const items = (Array.isArray(raw) ? raw : []).map((x) => typeof x === "string" ? {sentence: x, ref: ""} :
     {sentence: String((x && (x.sentence || x.text || x.s)) || "").trim(), ref: (x && x.ref) || ""}).filter((x) => x.sentence);
   if (items.length) return items;
-  return String((d.texts || {})[lg] || "").split(/(?<=[.!?\u0964])\s+/).map((t) => t.trim()).filter(Boolean).map((t) => ({sentence: t, ref: ""}));
+  return String((d.texts || {})[lg] || "").split(/(?<=[.!?।])\s+/).map((t) => t.trim()).filter(Boolean).map((t) => ({sentence: t, ref: ""}));
 }
 function debunkCard(rep) {
   const d = rep.debunk;
@@ -359,42 +517,43 @@ function debunkCard(rep) {
   const langs = Object.keys(d.texts);
   const ta = h("textarea", {class: "dtext", readonly: true, "aria-label": "Shareable debunk text"});
   const refsBox = h("ul", {class: "plain"});
-  const refsDet = h("details", {}, h("summary", {text: "Where each sentence comes from"}), refsBox);
-  const tabs = h("div", {class: "tabs", role: "tablist"});
+  const refsDet = h("details", {class: "mini"}, h("summary", {text: "Where each sentence comes from"}), refsBox);
+  const tabs = h("div", {class: "tabs", role: "tablist", "aria-label": "Language"});
   const status = h("span", {class: "note", role: "status"});
-  const show = (lg) => {
-    ta.value = d.texts[lg]; ta.lang = lg;
+  const showLang = (lg) => {
+    ta.value = d.texts[lg]; ta.lang = lg; status.textContent = "";
     [...tabs.children].forEach((b) => b.setAttribute("aria-selected", b.dataset.lg === lg ? "true" : "false"));
     refsBox.replaceChildren(...refItems(d, lg).map((x) => h("li", {}, x.sentence, " ", x.ref ? h("code", {text: "[" + x.ref + "]"}) : null)));
-    refsDet.classList.toggle("hide", !refsBox.children.length);
+    refsDet.hidden = !refsBox.children.length;
   };
   langs.forEach((lg) => tabs.append(h("button", {type: "button", role: "tab", "data-lg": lg, text: LANGNAME[lg] || lg})));
-  [...tabs.children].forEach((b) => { b.onclick = () => show(b.dataset.lg); });
+  [...tabs.children].forEach((b) => { b.onclick = () => showLang(b.dataset.lg); });
   const copy = h("button", {class: "btn", type: "button", text: "Copy text"});
   copy.onclick = async () => {
     try { await navigator.clipboard.writeText(ta.value); } catch (e) { ta.removeAttribute("readonly"); ta.select(); document.execCommand("copy"); ta.setAttribute("readonly", ""); }
-    status.textContent = " Copied.";
+    status.textContent = "Copied to clipboard.";
   };
   const c = card("Shareable debunk card", badge(d.grounded ? "checked against the report" : "template (model text rejected)", d.grounded ? "b-ok" : "b-unv"),
-    tabs, ta, h("div", {style: "margin-top:8px"}, copy, status),
-    h("div", {class: "note", text: "Written from this report only; every date, link and number was checked against report.json. Model: " + d.model + "."}),
+    h("p", {class: "note", text: "Ready to post. Pick a language, then copy."}), tabs, ta, h("div", {class: "dactions"}, copy, status),
+    h("div", {class: "note", style: "margin-top:10px", text: "Written from this report only; every date, link and number was checked against report.json. Model: " + d.model + "."}),
     refsDet);
-  c.classList.add("dcard");
-  show(langs[0]);
+  showLang(langs[0]);
   return c;
 }
 
-
+// ---------- source map: two rows over the same timeline
+const WHERE = {matched: ["k-matched_source", "Earlier copy found (matcher proof)"], none: ["k-nosource", "No source found (not proof none exists)"]};
+const LOOK = {ai_generated: "AI-generated look", animation: "Animation", graphic: "Graphic or screen", camera_unmatched: "Camera footage", na: "Not assessed by AI"};
 const SEGKIND = {matched_source: "Matched to a source (matcher proof)", ai_generated: "AI-generated look", animation: "Animation", graphic: "Graphic / screen", camera_unmatched: "Camera footage, no source found", unknown: "No source found"};
 function sourceMap(rep, ref) {
   const sm = rep.source_map;
   if (!Array.isArray(sm) || !sm.length) return null;
-  const total = Math.max(0.1, sm[sm.length - 1].end_s - sm[0].start_s), t0 = sm[0].start_s;
-  const detail = h("div", {class: "detail", "aria-live": "polite"}, "Select a segment to see its range, source and date.");
-  const bar = h("div", {class: "bar", role: "group", "aria-label": "Source map of the video timeline"});
+  const t0 = sm[0].start_s, total = Math.max(0.1, sm[sm.length - 1].end_s - t0);
   const fmt = (x) => Number(x).toFixed(1) + " s";
-  const show = (sg, btn) => {
-    [...bar.children].forEach((b) => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
+  const detail = h("div", {class: "detail", "aria-live": "polite"}, "Select a segment to see its time range, source and date.");
+  const bars = [];
+  const showSeg = (sg, btn) => {
+    bars.forEach((b) => b.setAttribute("aria-pressed", b.__sg === sg ? "true" : "false"));
     detail.replaceChildren(...[h("strong", {text: fmt(sg.start_s) + " to " + fmt(sg.end_s) + ": " + (SEGKIND[sg.kind] || sg.kind)}),
       (sg.sources || []).map((so) => h("div", {class: "src"},
         h("div", {}, link(so.url, so.platform + ": " + so.url.replace(/^https?:\/\/(www\.)?/, "").slice(0, 50))),
@@ -403,20 +562,177 @@ function sourceMap(rep, ref) {
           (so.evidence_png ? img(ref, so.evidence_png, "Side-by-side matched frames", "proof") : null))),
       sg.kind === "matched_source" ? null : h("div", {class: "note", text: sg.kind === "unknown" || sg.kind === "camera_unmatched" ? "No source found: this does not mean none exists." : "AI observation (Muse per-frame label): a hypothesis, not proof."})].flat().filter(Boolean));
   };
-  sm.forEach((sg) => {
-    const b = h("button", {type: "button", class: "seg k-" + sg.kind, "aria-pressed": "false", style: "flex:" + Math.max(0.5, (sg.end_s - sg.start_s) / total * 100) + " 1 0",
-      "aria-label": fmt(sg.start_s) + " to " + fmt(sg.end_s) + ": " + (SEGKIND[sg.kind] || sg.kind), title: fmt(sg.start_s) + " to " + fmt(sg.end_s) + ": " + (SEGKIND[sg.kind] || sg.kind)});
-    b.onclick = () => show(sg, b); bar.append(b);
-  });
-  const kinds = [...new Set(sm.map((x) => x.kind))];
-  return h("section", {class: "smap card", "aria-label": "Source map"}, h("h2", {text: "Source map: where each part of this video comes from"}),
-    h("div", {class: "note", text: "A segment gets a source only when the frame matcher proved it. Colours for AI / animation / graphic are Muse observations."}),
-    bar, h("div", {class: "scale"}, h("span", {text: fmt(t0)}), h("span", {text: fmt(sm[sm.length - 1].end_s)})),
-    h("div", {class: "legend"}, kinds.map((k) => h("span", {}, h("i", {class: "k-" + k}), SEGKIND[k] || k))), detail);
+  const mkRow = (cap, cls, labelOf) => {
+    const bar = h("div", {class: "smbar", role: "group", "aria-label": cap});
+    sm.forEach((sg) => {
+      const [k, lab] = labelOf(sg);
+      const b = h("button", {type: "button", class: "seg " + k, "aria-pressed": "false", style: "flex:" + Math.max(0.5, (sg.end_s - sg.start_s) / total * 100) + " 1 0",
+        "aria-label": cap + ", " + fmt(sg.start_s) + " to " + fmt(sg.end_s) + ": " + lab, title: fmt(sg.start_s) + " to " + fmt(sg.end_s) + ": " + lab});
+      b.__sg = sg; b.onclick = () => showSeg(sg, b); bar.append(b); bars.push(b);
+    });
+    const seen = new Map(); sm.forEach((sg) => { const [k, lab] = labelOf(sg); seen.set(k, lab); });
+    return h("div", {class: "smrow"}, h("div", {class: "cap", text: cap}), bar,
+      h("div", {class: "legend"}, [...seen].map(([k, lab]) => h("span", {}, h("i", {class: k}), lab))));
+  };
+  const whereOf = (sg) => sg.kind === "matched_source" ? WHERE.matched : WHERE.none;
+  const lookOf = (sg) => LOOK[sg.kind] ? ["k-" + sg.kind, LOOK[sg.kind]] : ["k-na", LOOK.na];
+  return h("section", {class: "card", "aria-label": "Source map"}, h("h2", {text: "Source map: which part of the video comes from where"}),
+    h("div", {class: "note", text: "A segment gets a source only when the frame matcher proved it. The second row is Muse's per-frame observation: a hypothesis, not proof."}),
+    mkRow("Where it comes from", "", whereOf), mkRow("What it looks like", "", lookOf),
+    h("div", {class: "scale"}, h("span", {text: fmt(t0)}), h("span", {text: fmt(sm[sm.length - 1].end_s)})), detail);
 }
 
+// ---------- layers
+const NATURE = {
+  animation_or_cgi: "Not camera footage: animated / reenactment",
+  likely_ai_generated: "Not camera footage: likely AI-generated",
+  screen_recording: "Screen recording, not original camera footage",
+  news_compilation: "Edited news report containing third-party clips — earlier copies of individual clips are expected and do not by themselves mean recycling.",
+  camera_footage: "Looks like camera footage",
+  mixed: "Mixed: AI-generated shots + real footage clips"};
+function natureBox(rep) {
+  const mn = rep.media_nature || {};
+  if (!NATURE[mn.value]) return null;
+  const fr = (mn.cited_frames || []).join(",");
+  return h("section", {class: "nature " + (mn.value === "camera_footage" ? "n-cam" : "n-warn"), "aria-label": "Media nature (AI observation)"},
+    h("div", {}, h("strong", {text: NATURE[mn.value]}), " ", h("span", {class: "note", text: "(AI observation" + (fr ? ", frames " + fr : "") + (mn.confidence ? ", confidence " + Number(mn.confidence).toFixed(2) : "") + "; a hypothesis, not proof; does not change the verdict)"})),
+    mn.value === "mixed" && mn.by_class ? h("ul", {class: "plain"}, Object.entries(mn.by_class).map(([k, fr2]) => h("li", {text: k.replaceAll("_", " ") + ": frames " + fr2.join(", ")}))) : null,
+    (mn.reasons || []).length ? h("ul", {class: "plain"}, mn.reasons.slice(0, 3).map((x) => h("li", {text: x.text + " (frames " + (x.refs || []).join(",") + ")"}))) : null);
+}
+function claimLayer(rep) {
+  const cm = rep.claim || {}, contra = rep.contradictions || [];
+  const claimDl = h("dl", {class: "kv"});
+  const csrc = cm.source || {};
+  const SRC = {inferred_from_post: " [inferred from the post]", user_claim_text: " [from your claim text]", inferred_from_narration: " [" + (cm.place_basis || "spoken in narration") + "]"};
+  const BASIS = {title: "explicit date in the post title", description: "explicit date in the post description", on_screen_text: "date read from on-screen text", spoken_in_narration: "date spoken in the narration (AI transcription, may contain errors)", date_posted: "no explicit date found: claimed date = date posted"};
+  [["Claim", cm.text, csrc.text], ["Claimed date", cm.event_date, csrc.event_date], ["Place", cm.place, csrc.place], ["Event type", cm.event_type, null]].forEach(([k, val, s]) => claimDl.append(h("dt", {text: k}), h("dd", {text: (val || "not given") + (val ? (SRC[s] || "") : "")})));
+  if (cm.event_date && csrc.event_date === "inferred_from_post") claimDl.append(h("dt", {text: "Date basis"}), h("dd", {text: BASIS[cm.event_date_basis] || cm.event_date_basis_detail || cm.event_date_basis || ""}));
+  if (cm.place_basis && csrc.place && csrc.place !== "user") claimDl.append(h("dt", {text: "Place basis"}), h("dd", {text: cm.place_basis}));
+  return layer("Claim", badge(contra.length ? contra.length + " contradiction(s)" : "No evidenced contradiction", contra.length ? "b-rec" : "b-na"),
+    cm.inferred_note ? h("div", {class: "warn", text: cm.inferred_note}) : null, claimDl,
+    contra.map((c) => h("div", {class: "src"}, h("strong", {text: c.kind.replaceAll("_", " ") + ": "}), c.text, h("div", {class: "note"}, "Evidence: ", (c.evidence || []).map((u, i) => [i ? ", " : "", link(u)])), c.note ? h("div", {class: "note", text: c.note}) : null)),
+    limitsBox(["Only conflicts backed by independent evidence are listed here. AI observations and location guesses are shown under 'Muse clues' and are never counted as contradictions."]));
+}
+function visualLayer(rep, ref) {
+  const v = rep.visual_matching, pm = v.proven_matches || [];
+  const vm = layer("Visual matching (the proof)", badge(...STATUS[v.status] || [v.status, "b-na"]));
+  const lb = vm.querySelector(".lb");
+  if (!pm.length) lb.append(h("p", {text: "No copy of this footage was proven by the frame matcher. This is a normal outcome and does not mean no earlier copy exists."}));
+  pm.forEach((m) => {
+    const ok = m.date_independent;
+    lb.append(h("div", {class: "src"},
+      h("div", {}, link(m.url), " ", badge(ok ? "date independently verified" : "date NOT independently verified", ok ? "b-ok" : "b-unv")),
+      h("div", {class: "note", text: "Found via " + (m.adapter || "?") + (m.uploader ? "; uploader " + m.uploader : "")}),
+      dates(m),
+      m.date_alternatives && m.date_alternatives.length ? h("div", {class: "note", text: "Dates disagree: " + m.date_alternatives.map((a) => a.date + " per " + a.source).join("; ") + ". The later one is used."}) : null,
+      m.date_note ? h("div", {class: "warn", text: m.date_note}) : null,
+      h("div", {class: "note", text: m.match.consistent_frames + " temporally consistent frame(s); up to " + m.match.max_inliers + " inliers" + (m.match.mirrored ? "; mirrored" : "") + (m.match.weak_match ? ". WEAK MATCH: only one frame pair matched (no temporal consistency), so this alone cannot establish recycling" + (m.match.weak_blocked ? " (" + m.match.weak_blocked + ")" : "") : ".")}),
+      m.evidence_png ? img(ref, m.evidence_png, "Side-by-side matched frames: input clip on the left, copy on the right, with matched keypoints", "proof") : null,
+      (m.match.best_pairs || []).length ? h("details", {class: "mini"}, h("summary", {text: "Matched frame pairs (" + m.match.best_pairs.length + ")"}),
+        h("ul", {class: "plain"}, m.match.best_pairs.map((p) => h("li", {text: "input frame " + p.a_frame + " = copy frame " + p.b_frame + ": " + p.inliers + " inliers" + (p.flip ? " (mirrored)" : "")})))) : null));
+  });
+  const ep = v.earliest_proven_copy;
+  lb.append(h("p", {class: "note", text: ep ? "Earliest copy found: " + ep.url + " (" + ep.upload_date + "). This is the earliest copy this tool found, not asserted to be the original source." : "No dated copy found."}));
+  if (v.input_publication) lb.append(h("p", {class: "note"}, "The input URL itself was published " + v.input_publication.upload_date + " (" + v.input_publication.date_source + ")."));
+  const ss = v.source_stats || {}, ad = v.adapters || {};
+  if (Object.keys(ss).length || Object.keys(ad).length) {
+    const rows = ["memory", "gvision", "youtube_api", "yandex", "lens", "tavily"].filter((n) => (ss[n] || ad[n]) && !(ad[n] && (ad[n].status === "not_configured" || ad[n].unavailable)));
+    lb.append(h("div", {class: "note"}, h("strong", {text: "Discovery sources (candidates found / proven by the matcher)"}),
+      h("ul", {class: "plain"}, rows.map((n) => { const st = ss[n], a = ad[n] || {};
+        if (a.unavailable) return h("li", {text: n + ": unavailable (" + a.unavailable + ")"});
+        return h("li", {text: n + ": " + (st ? st.candidates + " found, " + st.proven + " proven" : "0 found") + (a.skipped ? " — " + a.skipped : "") + ((a.errors || []).length ? " (error)" : "")}); }))));
+  }
+  lb.append(limitsBox([v.provenance_note, "Checked " + v.candidates_checked + " of " + v.candidates_total + " candidate sources; search is not exhaustive.", "A visual match shows shared footage, not that a claim is false or the footage fake."].filter(Boolean)));
+  return vm;
+}
+function museLayer(rep, ref) {
+  const cl = rep.clues || {};
+  const mc = layer("Muse clues and narration (AI observations)", badge(...STATUS[cl.status] || [cl.status || "?", "b-na"]));
+  const lb = mc.querySelector(".lb");
+  if (cl.status === "ok") {
+    (cl.location_hypotheses || []).forEach((hy) => lb.append(h("div", {class: "src"},
+      badge("Hypothesis (unverified)", "b-hyp"), " ", h("strong", {text: [hy.place, hy.country].filter(Boolean).join(", ")}),
+      h("div", {class: "note", text: "Model confidence " + hy.confidence + " (self-reported, not calibrated). Cited frames: " + (hy.cited_frames || []).join(", ")}),
+      h("ul", {class: "plain"}, (hy.reasons || []).map((r) => h("li", {text: r.text + " [frames " + r.refs.join(", ") + "]"}))))));
+    if (!(cl.location_hypotheses || []).length) lb.append(h("p", {class: "note", text: "No cited location hypothesis (an uncited guess is rejected)."}));
+    const obs = cl.observations_against_claim || [];
+    if (obs.length) lb.append(h("div", {class: "src"}, badge("Unverified model observation", "b-hyp"), " clashes with the claim:",
+      h("ul", {class: "plain"}, obs.map((o) => h("li", {text: o.text + " [frames " + o.refs.join(", ") + "]"})))));
+    if ((cl.shows || []).length) lb.append(h("div", {class: "src"}, h("strong", {text: "What the model says the footage shows"}), h("ul", {class: "plain"}, cl.shows.map((s) => h("li", {text: s.text + " [frames " + s.refs.join(", ") + "]"})))));
+    if ((cl.visible_text || []).length) lb.append(h("p", {class: "note", text: "Visible text: " + cl.visible_text.map((t) => t.text).join(" | ")}));
+    const au = cl.audio || {};
+    if (au.status === "ok" && au.has_speech !== false) {
+      const T = (x) => " (audio@" + x.audio_t + "s)";
+      lb.append(h("div", {class: "src"}, h("strong", {text: "Narration (Muse Spark Open)"}), " ", badge("AI transcript", "b-hyp"),
+        h("div", {class: "note", text: "Language: " + (au.language || "unknown") + (au.truncated ? "; only the first " + au.analyzed_seconds + " s were analysed" : "")}),
+        au.transcript_summary ? h("p", {text: au.transcript_summary}) : null,
+        (au.spoken_place_names || []).length ? h("div", {class: "note", text: "Spoken places: " + au.spoken_place_names.map((x) => x.name + T(x)).join("; ")}) : null,
+        (au.spoken_dates || []).length ? h("div", {class: "note", text: "Spoken dates: " + au.spoken_dates.map((x) => x.date + (x.text ? " “" + x.text + "”" : "") + T(x)).join("; ")}) : null,
+        h("div", {class: "note", text: "AI transcription, may contain errors. Hypothesis only, not evidence."})));
+    } else if (au.status === "error") lb.append(h("p", {class: "note", text: "Narration analysis was not available for this run."}));
+    if ((cl.frame_images || []).length) {
+      const fr = h("div", {class: "frames"});
+      cl.frame_images.forEach((p) => { const b = p.split("/").pop(); fr.append(h("figure", {}, img(ref, "frames/" + b, "Keyframe " + b), h("figcaption", {text: b.replace(".jpg", "")}))); });
+      lb.append(fr);
+    }
+  } else lb.append(h("p", {class: "note", text: cl.status === "not_run" ? "AI clues were not run." : "AI clues were not available for this run."}));
+  lb.append(limitsBox(["These are model inferences from a few keyframes. They are hypotheses to check, not evidence, and are never counted as contradictions.", "Model location guesses can be confidently wrong (look-alike terrain)."]));
+  return mc;
+}
+function physicalLayer(rep) {
+  const ph = rep.physical_world_check || {};
+  const pv = ph.verdict, pdisp = pv === "NO_EVIDENCE" ? ["Insufficient corroboration", "b-na"] : (PHYS[pv] || STATUS[ph.status] || [ph.status || pv || "Not run", "b-na"]);
+  const pc = layer("Physical-world check", badge(...pdisp));
+  const lb = pc.querySelector(".lb");
+  if (pv === "NO_EVIDENCE") lb.append(h("p", {text: ph.verdict_display || "Insufficient corroboration — this does not show the event didn't happen"}));
+  const pl = ph.location || {};
+  if (pl.source && pl.lat != null) lb.append(h("p", {class: "note", text: "Location: " + (pl.name || pl.query) + " (source: " + pl.source + ")" + (pl.fallback_from ? "; the claimed place “" + pl.fallback_from + "” could not be resolved" : "")}));
+  if (ph.reason) lb.append(h("p", {text: ph.status === "ERROR" ? "The physical-world check could not be completed right now." : ph.reason}));
+  if ((ph.reasons || []).length) lb.append(h("ul", {class: "plain"}, ph.reasons.map((r) => h("li", {text: r}))));
+  const oe = ph.official_event || {}, rw = oe.reliefweb, nc = ph.news_coverage;
+  const rwShown = rw && rw.status !== "not_configured" && !(rw.status === "UNAVAILABLE" && /appname/i.test(rw.reason || ""));
+  if (rwShown) lb.append(h("div", {class: "note"}, h("strong", {text: "Official event (ReliefWeb): "}),
+    rw.status === "MATCH" ? (rw.disasters || []).slice(0, 3).map((d, i) => [i ? "; " : "", link(d.url, d.name + " (" + d.date + ")")]) : (rw.status === "NO_MATCH" ? "no matching official entry within ±" + rw.window_days + " days" : "official disaster entries unavailable right now")));
+  if (nc) lb.append(h("div", {class: "note"}, h("strong", {text: "News coverage (GDELT, context only): "}),
+    nc.status === "OK" ? nc.articles_in_window + " articles in the claim window vs " + nc.articles_baseline_30d + " in the 30 days before (capped at 250 each)" : (nc.status === "SKIPPED" ? "not checked (no place to query)" : "news coverage unavailable right now"),
+    (nc.sample_links || []).length ? h("div", {}, nc.sample_links.slice(0, 3).map((l, i) => [i ? " | " : "", link(l.url, (l.domain || l.title || l.url).slice(0, 40))])) : null));
+  if ((ph.links || []).length) lb.append(h("p", {class: "note"}, "Sources: ", ph.links.map((u, i) => [i ? " | " : "", link(u, u.replace(/^https?:\/\//, "").slice(0, 48))])));
+  lb.append(limitsBox((ph.limits || []).concat(["Physical support is context only; it never changes the verdict on its own."])));
+  return pc;
+}
+function memoryLayer(rep) {
+  const mem = rep.memory || {};
+  const mm = layer("Investigation memory", badge(...STATUS[mem.status] || [mem.status, "b-na"]));
+  const lb = mm.querySelector(".lb");
+  (mem.hits || []).forEach((hit) => lb.append(h("div", {class: "src"}, link(hit.url),
+    h("dl", {class: "kv"}, h("dt", {text: "Stored date"}), h("dd", {text: (hit.stored_date || "none") + " (memory entry, inherited)"}),
+      h("dt", {text: "Independent date"}), h("dd", {text: hit.independent_date ? hit.independent_date + " (" + hit.independent_date_source + ")" : "none: could not be fetched live"})),
+    hit.context && hit.context.original_desc ? h("div", {class: "note", text: "Memory note: " + hit.context.original_desc + (hit.context.note ? " (" + hit.context.note + ")" : "")}) : null)));
+  if (!(mem.hits || []).length) lb.append(h("p", {class: "note", text: mem.status === "NOT_RUN" ? "Memory lookup was not run." : "No previously stored clip matched."}));
+  lb.append(limitsBox([mem.note || "Memory covers only clips indexed so far; a stored date is inherited and is re-fetched independently before it can support a verdict."]));
+  return mm;
+}
+function gateLayer(rep) {
+  const g = rep.gate;
+  if (!g) return layer("Relevance gate", badge("Not run", "b-na"), h("p", {class: "note", text: "This report was made before the relevance gate existed, or the gate was skipped."}));
+  const stop = g.decision === "stop";
+  const gl = layer("Relevance gate", badge(stop ? "Stopped: not disaster footage" : "Passed", stop ? "b-unv" : "b-ok"));
+  const dl = h("dl", {class: "kv"});
+  [["Decision", g.decision], ["Kind", g.kind], ["Confidence", g.confidence != null ? Number(g.confidence).toFixed(2) : null], ["Reason", g.reason], ["Cited frames", (g.refs || []).join(", ")], ["Cost", "$" + Number(g.cost || 0).toFixed(4)]]
+    .forEach(([k, val]) => { if (val) dl.append(h("dt", {text: k}), h("dd", {text: String(val)})); });
+  gl.querySelector(".lb").append(dl, limitsBox(["The gate is an AI judgement from a few frames. It only decides whether to spend money on a full check; it is never a verdict on the video."]));
+  return gl;
+}
+
+// ---------- report page
+function actionsBar(rep) {
+  return h("div", {class: "actions endbar"}, h("a", {class: "btn ghost", href: "#/", text: "Back to home"}),
+    h("a", {class: "btn", href: "#/check", text: "Check another video", onclick: "event.preventDefault();goCheck()"}));
+}
+function goCheck() { location.hash = "#/"; setTimeout(() => { $("#url").focus(); $("#v-home-hero").scrollIntoView(); }, 30); }
+
 function runAnyBtn(rep) {
-  const b = h("button", {class: "btn", type: "button", id: "runany", text: "Run anyway"});
+  const b = h("button", {class: "btn", type: "button", id: "runany", text: "Run the full check anyway"});
   b.onclick = () => {
     const src = (rep.input || {}).source || "";
     if (/^https?:\/\//i.test(src) && !$("#url").value && !$("#file").files.length) $("#url").value = src;
@@ -426,230 +742,211 @@ function runAnyBtn(rep) {
 }
 
 function render(rep, ref) {
-  const out = $("#out"); out.replaceChildren();
-  const v = rep.visual_matching, fv = rep.final_verdict, cl = rep.clues || {}, ph = rep.physical_world_check || {}, mem = rep.memory || {}, cm = rep.claim || {};
-  const V = VERDICT[fv.label] || VERDICT.UNVERIFIED;
+  const out = $("#out"); out.replaceChildren(); show("report");
+  const v = rep.visual_matching, fv = rep.final_verdict, ph = rep.physical_world_check || {};
+  const V = verdictOf(rep);
+  const head = h("div", {class: "actions", style: "margin-top:16px"}, h("a", {class: "btn ghost", href: "#/", text: "← Back to home"}));
+  out.append(head);
 
-  if (rep.gate && rep.gate.decision === "stop") {       // relevance gate stopped the run: say why, offer to run anyway
+  if (rep.gate && rep.gate.decision === "stop") {       // relevance gate stopped the run
     const g = rep.gate;
-    out.append(h("section", {class: "banner b-unv", "aria-label": "Relevance gate"},
-      h("div", {class: "lab", text: "Not disaster footage? (relevance gate)"}),
+    out.append(h("section", {class: "vbanner " + V.cls, "aria-label": "Relevance gate"},
+      h("div", {class: "lab", text: V.label}), h("span", {class: "enum", text: V.enumText + " (relevance gate)"}),
       h("p", {class: "hl", text: (rep.headline || {}).sentence || fv.summary}),
       h("p", {class: "note", text: "AI judgement from " + (g.refs || []).length + " cited frames, confidence " + Number(g.confidence).toFixed(2) + ". Nothing else was run, and this is not a verdict on the video. Gate cost $" + Number(g.cost || 0).toFixed(4) + "."}),
-      runAnyBtn(rep),
-      h("ul", {class: "limits"}, (fv.limits || []).map((x) => h("li", {text: x})))));
-    out.scrollIntoView({behavior: "smooth", block: "start"});
+      h("div", {class: "actions"}, runAnyBtn(rep)),
+      h("details", {class: "mini"}, h("summary", {text: "Limitations (" + (fv.limits || []).length + ")"}), h("ul", {class: "limits"}, (fv.limits || []).map((x) => h("li", {text: x}))))));
+    out.append(gateLayerWrap(rep), actionsBar(rep));
     return;
   }
-  const hero = proofHero(rep, ref) || heroFor(rep, ref); if (hero) out.append(hero);
-  // verdict banner: the label chip, then the headline sentence + facts; everything long is one click away
+
   const hl = rep.headline, dsc = rep.disclosure || {}, cpr = rep.claim_presence || {}, sg = rep.signals || {};
-  const banner = h("section", {class: "banner " + V.cls, "aria-label": "Verdict"}, h("div", {class: "lab", text: V.title + " (" + fv.label + ")"}));
+  const banner = h("section", {class: "vbanner " + V.cls, "aria-label": "Verdict"}, h("div", {class: "lab", text: V.label}), h("span", {class: "enum", text: V.enumText}));
   if (hl) {
     banner.append(h("p", {class: "hl", text: hl.sentence}),
-      h("ul", {class: "facts"}, (hl.facts || []).slice(0, 3).map((f) => h("li", {}, f.text, " ", h("code", {class: "cite", text: "[" + f.field + "]"})))));
-  } else banner.append(h("p", {text: fv.summary}));
+      h("ul", {class: "facts"}, (hl.facts || []).slice(0, 3).map((f) => h("li", {}, f.text, h("code", {text: "[" + f.field + "]"})))));
+  } else banner.append(h("p", {class: "hl", text: fv.summary}));
   const chips = h("div", {class: "chips"});
   if (dsc.type && dsc.type !== "none") chips.append(badge("Uploader's own label: " + dsc.type.replaceAll("_", " "), "b-hyp"));
   if (cpr.value === "tribute_or_explainer") chips.append(badge("Presented as a tribute / explainer", "b-na"));
   if (cpr.value === "no_claim") chips.append(badge("No event claim in the post", "b-na"));
   if (chips.children.length) banner.append(chips);
-  banner.append(h("p", {class: "lim1", text: "Not proof either way: a visual match shows shared footage, and \u201cnot found\u201d does not mean no earlier copy exists. Full limitations are one click away."}));
-  banner.append(h("details", {}, h("summary", {text: "Full summary and what this does NOT mean"}),
+  banner.append(h("p", {class: "lim1", text: "Not proof either way: a visual match shows shared footage, and “not found” does not mean no earlier copy exists."}));
+  banner.append(h("details", {class: "mini"}, h("summary", {text: "Full summary and what this does NOT mean"}),
     hl ? h("p", {text: fv.summary}) : null,
-    h("div", {class: "not-mean"}, h("strong", {text: "What this does NOT mean: "}), V.notMean),
+    h("div", {class: "notmean"}, h("strong", {text: "What this does NOT mean: "}), V.notMean),
     (fv.basis && fv.basis.unverified_reason) ? h("div", {class: "warn", text: "Reason: " + fv.basis.unverified_reason}) : null));
-  banner.append(h("details", {}, h("summary", {text: "Limitations (" + (fv.limits || []).length + ")"}), h("ul", {class: "limits"}, (fv.limits || []).map((x) => h("li", {text: x})))));
+  banner.append(h("details", {class: "mini"}, h("summary", {text: "Limitations (" + (fv.limits || []).length + ")"}), h("ul", {class: "limits"}, (fv.limits || []).map((x) => h("li", {text: x})))));
   if ((sg.agree || []).length || (sg.against || []).length) {
-    banner.append(h("details", {}, h("summary", {text: "Signals checked (" + (sg.agree || []).length + " agree" + ((sg.against || []).length ? ", " + sg.against.length + " against" : "") + "; context only)"}),
+    banner.append(h("details", {class: "mini"}, h("summary", {text: "Signals checked (" + (sg.agree || []).length + " agree" + ((sg.against || []).length ? ", " + sg.against.length + " against" : "") + "; context only)"}),
       h("ul", {class: "plain"}, (sg.agree || []).map((x) => h("li", {class: "sig-ok"}, h("strong", {text: x.label + ": "}), x.detail)),
         (sg.against || []).map((x) => h("li", {class: "sig-no", text: "Against: " + x}))),
       h("div", {class: "note", text: sg.note || "Signals never change the label."})));
   }
   out.append(banner);
 
+  const hero = proofHero(rep, ref) || heroFor(rep, ref); if (hero) out.append(hero);
+  const ex = explanationCard(rep); if (ex) out.append(ex);
+  const nb = natureBox(rep); if (nb) out.append(nb);
   const smp = sourceMap(rep, ref); if (smp) out.append(smp);
   const dc = debunkCard(rep); if (dc) out.append(dc);
 
-  // media nature: AI observation chip right under the verdict (never changes the label)
-  const mn = rep.media_nature || {};
-  const NATURE = {
-    animation_or_cgi: "Not camera footage: animated / reenactment",
-    likely_ai_generated: "Not camera footage: likely AI-generated",
-    screen_recording: "Screen recording, not original camera footage",
-    news_compilation: "Edited news report containing third-party clips \u2014 earlier copies of individual clips are expected and do not by themselves mean recycling.",
-    camera_footage: "Looks like camera footage",
-    mixed: "Mixed: AI-generated shots + real footage clips"};
-  if (NATURE[mn.value]) {
-    const fr = (mn.cited_frames || []).join(",");
-    out.append(h("section", {class: "nature " + (mn.value === "camera_footage" ? "n-cam" : "n-warn"), "aria-label": "Media nature (AI observation)"},
-      h("div", {}, h("strong", {text: NATURE[mn.value]}), " ", h("span", {class: "note", text: "(AI observation" + (fr ? ", frames " + fr : "") + (mn.confidence ? ", confidence " + Number(mn.confidence).toFixed(2) : "") + "; a hypothesis, not proof; does not change the verdict)"})),
-      mn.value === "mixed" && mn.by_class ? h("ul", {class: "plain"}, Object.entries(mn.by_class).map(([k, fr2]) => h("li", {text: k.replaceAll("_", " ") + ": frames " + fr2.join(", ")}))) : null,
-      (mn.reasons || []).length ? h("ul", {class: "plain"}, mn.reasons.slice(0, 3).map((x) => h("li", {text: x.text + " (frames " + (x.refs || []).join(",") + ")"}))) : null));
-  }
+  const layers = h("section", {class: "layers", "aria-label": "Evidence layers"}, h("h2", {text: "Evidence layers"}),
+    h("p", {class: "note", text: "Each layer stands on its own and is never merged into a score. Open one to see what it found and where it stops."}),
+    claimLayer(rep), visualLayer(rep, ref), museLayer(rep, ref), physicalLayer(rep), memoryLayer(rep), gateLayer(rep));
+  out.append(layers);
 
-  // claim
-  const claimDl = h("dl", {class: "kv"});
-  const csrc = cm.source || {};
-  const SRC = {inferred_from_post: " [inferred from the post]", user_claim_text: " [from your claim text]", inferred_from_narration: " [" + (cm.place_basis || "spoken in narration") + "]"};
-  const BASIS = {title: "explicit date in the post title", description: "explicit date in the post description", on_screen_text: "date read from on-screen text", spoken_in_narration: "date spoken in the narration (AI transcription, may contain errors)", date_posted: "no explicit date found: claimed date = date posted"};
-  [["Claim", cm.text, csrc.text], ["Claimed date", cm.event_date, csrc.event_date], ["Place", cm.place, csrc.place], ["Event type", cm.event_type, null]].forEach(([k, val, s]) => claimDl.append(h("dt", {text: k}), h("dd", {text: (val || "not given") + (val ? (SRC[s] || "") : "")})));
-  if (cm.event_date && csrc.event_date === "inferred_from_post") claimDl.append(h("dt", {text: "Date basis"}), h("dd", {text: BASIS[cm.event_date_basis] || cm.event_date_basis_detail || cm.event_date_basis || ""}));
-  if (cm.place_basis && csrc.place && csrc.place !== "user") claimDl.append(h("dt", {text: "Place basis"}), h("dd", {text: cm.place_basis}));
-  const contra = rep.contradictions || [];
-  out.append(card("Claim", (cm.inferred_note ? h("div", {class: "warn", text: cm.inferred_note}) : null), badge(contra.length ? contra.length + " contradiction(s) backed by independent evidence" : "No independently evidenced contradiction", contra.length ? "b-rec" : "b-na"),
-    claimDl,
-    contra.map((c) => h("div", {class: "src"}, h("strong", {text: c.kind.replaceAll("_", " ") + ": "}), c.text, h("div", {class: "note"}, "Evidence: ", (c.evidence || []).map((u, i) => [i ? ", " : "", link(u)])), c.note ? h("div", {class: "note", text: c.note}) : null)),
-    limitsBox(["Only conflicts backed by independent evidence are listed here. AI observations and location guesses are shown under 'Muse clues' and are never counted as contradictions."])));
-
-  // visual matching
-  const pm = v.proven_matches || [];
-  const vm = card("Visual matching (proof layer)", badge(...STATUS[v.status] || [v.status, "b-na"]));
-  if (!pm.length) vm.append(h("p", {text: "No copy of this footage was proven by the frame matcher. This is a normal outcome and does not mean no earlier copy exists."}));
-  pm.forEach((m) => {
-    const ok = m.date_independent;
-    const d = h("div", {class: "src"},
-      h("div", {}, link(m.url), " ", badge(ok ? "date independently verified" : "date NOT independently verified", ok ? "b-ok" : "b-unv")),
-      h("div", {class: "note", text: "Found via " + (m.adapter || "?") + (m.uploader ? "; uploader " + m.uploader : "")}),
-      dates(m),
-      m.date_alternatives && m.date_alternatives.length ? h("div", {class: "note", text: "Dates disagree: " + m.date_alternatives.map((a) => a.date + " per " + a.source).join("; ") + ". The later one is used."}) : null,
-      m.date_note ? h("div", {class: "warn", text: m.date_note}) : null,
-      h("div", {class: "note", text: m.match.consistent_frames + " temporally consistent frame(s); up to " + m.match.max_inliers + " inliers" + (m.match.mirrored ? "; mirrored" : "") + (m.match.weak_match ? ". WEAK MATCH: only one frame pair matched (no temporal consistency), so this alone cannot establish recycling" + (m.match.weak_blocked ? " (" + m.match.weak_blocked + ")" : "") : ".")}),
-      m.evidence_png ? img(ref, m.evidence_png, "Side-by-side matched frames: input clip on the left, copy on the right, with matched keypoints", "proof") : null,
-      (m.match.best_pairs || []).length ? h("details", {}, h("summary", {text: "Matched frame pairs (" + m.match.best_pairs.length + ")"}),
-        h("ul", {class: "plain"}, m.match.best_pairs.map((p) => h("li", {text: "input frame " + p.a_frame + " = copy frame " + p.b_frame + ": " + p.inliers + " inliers" + (p.flip ? " (mirrored)" : "")})))) : null);
-    vm.append(d);
-  });
-  const ep = v.earliest_proven_copy;
-  vm.append(h("p", {class: "note", text: ep ? "Earliest copy found: " + ep.url + " (" + ep.upload_date + "). This is the earliest copy this tool found, not asserted to be the original source." : "No dated copy found."}));
-  if (v.input_publication) vm.append(h("p", {class: "note"}, "The input URL itself was published " + v.input_publication.upload_date + " (" + v.input_publication.date_source + ")."));
-  const ss = v.source_stats || {}, ad = v.adapters || {};
-  const names = Object.keys(ss);
-  if (names.length || Object.keys(ad).length) {
-    const rows = ["memory", "gvision", "youtube_api", "yandex", "lens", "tavily"].filter((n) => (ss[n] || ad[n]) && !(ad[n] && (ad[n].status === "not_configured" || ad[n].unavailable)));
-    vm.append(h("div", {class: "note"}, h("strong", {text: "Discovery sources (candidates found / proven by the matcher)"}),
-      h("ul", {class: "plain"}, rows.map((n) => { const st = ss[n], a = ad[n] || {};
-        if (a.unavailable) return h("li", {text: n + ": unavailable (" + a.unavailable + ")"});
-        return h("li", {text: n + ": " + (st ? st.candidates + " found, " + st.proven + " proven" : "0 found") + (a.skipped ? " \u2014 " + a.skipped : "") + ((a.errors || []).length ? " (error)" : "")}); }))));
-  }
-  vm.append(limitsBox([v.provenance_note, "Checked " + v.candidates_checked + " of " + v.candidates_total + " candidate sources; search is not exhaustive.", "A visual match shows shared footage, not that a claim is false or the footage fake."].filter(Boolean)));
-  out.append(vm);
-
-  // muse clues
-  const mc = card("Muse clues and location hypotheses (AI observations)", badge(...STATUS[cl.status] || [cl.status || "?", "b-na"]));
-  if (cl.status === "ok") {
-    (cl.location_hypotheses || []).forEach((hy) => mc.append(h("div", {class: "src"},
-      badge("Hypothesis (unverified)", "b-hyp"), " ", h("strong", {text: [hy.place, hy.country].filter(Boolean).join(", ")}),
-      h("div", {class: "note", text: "Model confidence " + hy.confidence + " (self-reported, not calibrated). Cited frames: " + (hy.cited_frames || []).join(", ")}),
-      h("ul", {class: "plain"}, (hy.reasons || []).map((r) => h("li", {text: r.text + " [frames " + r.refs.join(", ") + "]"}))))));
-    if (!(cl.location_hypotheses || []).length) mc.append(h("p", {class: "note", text: "No cited location hypothesis (an uncited guess is rejected)."}));
-    const obs = cl.observations_against_claim || [];
-    if (obs.length) mc.append(h("div", {class: "src"}, badge("Unverified model observation", "b-hyp"), " clashes with the claim:",
-      h("ul", {class: "plain"}, obs.map((o) => h("li", {text: o.text + " [frames " + o.refs.join(", ") + "]"})))));
-    if ((cl.shows || []).length) mc.append(h("div", {class: "src"}, h("strong", {text: "What the model says the footage shows"}), h("ul", {class: "plain"}, cl.shows.map((s) => h("li", {text: s.text + " [frames " + s.refs.join(", ") + "]"})))));
-    if ((cl.visible_text || []).length) mc.append(h("p", {class: "note", text: "Visible text: " + cl.visible_text.map((t) => t.text).join(" | ")}));
-    const au = cl.audio || {};
-    if (au.status === "ok" && au.has_speech !== false) {
-      const T = (x) => " (audio@" + x.audio_t + "s)";
-      mc.append(h("div", {class: "src"}, h("strong", {text: "Narration (Muse Spark Open)"}), " ", badge("AI transcript", "b-hyp"),
-        h("div", {class: "note", text: "Language: " + (au.language || "unknown") + (au.truncated ? "; only the first " + au.analyzed_seconds + " s were analysed" : "")}),
-        au.transcript_summary ? h("p", {text: au.transcript_summary}) : null,
-        (au.spoken_place_names || []).length ? h("div", {class: "note", text: "Spoken places: " + au.spoken_place_names.map((x) => x.name + T(x)).join("; ")}) : null,
-        (au.spoken_dates || []).length ? h("div", {class: "note", text: "Spoken dates: " + au.spoken_dates.map((x) => x.date + (x.text ? " \u201c" + x.text + "\u201d" : "") + T(x)).join("; ")}) : null,
-        h("div", {class: "note", text: "AI transcription, may contain errors. Hypothesis only, not evidence."})));
-    } else if (au.status === "error") mc.append(h("p", {class: "note", text: "Narration analysis was not available for this run."}));
-    if ((cl.frame_images || []).length) {
-      const fr = h("div", {class: "frames"});
-      cl.frame_images.forEach((p) => { const b = p.split("/").pop(); fr.append(h("figure", {}, img(ref, "frames/" + b, "Keyframe " + b), h("figcaption", {text: b.replace(".jpg", "")}))); });
-      mc.append(fr);
-    }
-  } else mc.append(h("p", {class: "note", text: cl.status === "not_run" ? "AI clues were not run." : "AI clues were not available for this run."}));
-  mc.append(limitsBox(["These are model inferences from a few keyframes. They are hypotheses to check, not evidence, and are never counted as contradictions.", "Model location guesses can be confidently wrong (look-alike terrain)."]));
-  out.append(mc);
-
-  // physical
-  const pv = ph.verdict, pdisp = pv === "NO_EVIDENCE" ? ["Insufficient corroboration", "b-na"] : (PHYS[pv] || STATUS[ph.status] || [ph.status || pv || "Not run", "b-na"]);
-  const pc = card("Physical-world check", badge(...pdisp));
-  if (pv === "NO_EVIDENCE") pc.append(h("p", {text: ph.verdict_display || "Insufficient corroboration — this does not show the event didn't happen"}));
-  const pl = ph.location || {};
-  if (pl.source && pl.lat != null) pc.append(h("p", {class: "note", text: "Location: " + (pl.name || pl.query) + " (source: " + pl.source + ")" + (pl.fallback_from ? "; the claimed place \u201c" + pl.fallback_from + "\u201d could not be resolved" : "")}));
-  if (ph.reason) pc.append(h("p", {text: ph.status === "ERROR" ? "The physical-world check could not be completed right now." : ph.reason}));
-  if ((ph.reasons || []).length) pc.append(h("ul", {class: "plain"}, ph.reasons.map((r) => h("li", {text: r}))));
-  const oe = ph.official_event || {}, rw = oe.reliefweb, nc = ph.news_coverage;
-  const rwShown = rw && rw.status !== "not_configured" && !(rw.status === "UNAVAILABLE" && /appname/i.test(rw.reason || ""));
-  if (rwShown) pc.append(h("div", {class: "note"}, h("strong", {text: "Official event (ReliefWeb): "}),
-    rw.status === "MATCH" ? (rw.disasters || []).slice(0, 3).map((d, i) => [i ? "; " : "", link(d.url, d.name + " (" + d.date + ")")]) : (rw.status === "NO_MATCH" ? "no matching official entry within \u00b1" + rw.window_days + " days" : "official disaster entries unavailable right now")));
-  if (nc) pc.append(h("div", {class: "note"}, h("strong", {text: "News coverage (GDELT, context only): "}),
-    nc.status === "OK" ? nc.articles_in_window + " articles in the claim window vs " + nc.articles_baseline_30d + " in the 30 days before (capped at 250 each)" : (nc.status === "SKIPPED" ? "not checked (no place to query)" : "news coverage unavailable right now"),
-    (nc.sample_links || []).length ? h("div", {}, nc.sample_links.slice(0, 3).map((l, i) => [i ? " | " : "", link(l.url, (l.domain || l.title || l.url).slice(0, 40))])) : null));
-  if ((ph.links || []).length) pc.append(h("p", {class: "note"}, "Sources: ", ph.links.map((u, i) => [i ? " | " : "", link(u, u.replace(/^https?:\/\//, "").slice(0, 48))])));
-  pc.append(limitsBox((ph.limits || []).concat(["Physical support is context only; it never changes the verdict on its own."])));
-  out.append(pc);
-
-  // memory
-  const mm = card("Investigation memory", badge(...STATUS[mem.status] || [mem.status, "b-na"]));
-  (mem.hits || []).forEach((hit) => mm.append(h("div", {class: "src"}, link(hit.url),
-    h("dl", {class: "kv"}, h("dt", {text: "Stored date"}), h("dd", {text: (hit.stored_date || "none") + " (memory entry, inherited)"}),
-      h("dt", {text: "Independent date"}), h("dd", {text: hit.independent_date ? hit.independent_date + " (" + hit.independent_date_source + ")" : "none: could not be fetched live"})),
-    hit.context && hit.context.original_desc ? h("div", {class: "note", text: "Memory note: " + hit.context.original_desc + (hit.context.note ? " (" + hit.context.note + ")" : "")}) : null)));
-  if (!(mem.hits || []).length) mm.append(h("p", {class: "note", text: mem.status === "NOT_RUN" ? "Memory lookup was not run." : "No previously stored clip matched."}));
-  mm.append(limitsBox([mem.note || "Memory covers only clips indexed so far; a stored date is inherited and is re-fetched independently before it can support a verdict."]));
-  out.append(mm);
-
-  // agent trace (collapsed)
   const at = rep.agent_trace;
   if (at) {
     out.append(h("section", {class: "card"}, h("div", {class: "card-h"}, h("h2", {text: "Deep investigation trace"}), badge("experimental", "b-hyp")),
       h("div", {class: "warn", text: "Extra investigation does not guarantee a better verdict. The trace is shown, not trusted: it never feeds the verdict."}),
       h("p", {class: "note", text: at.tool_calls + " tool calls, stop reason " + at.stop_reason + ", cost $" + at.cost_usd}),
-      h("details", {}, h("summary", {text: "Show full trace (" + at.steps.length + " steps)"}),
+      h("details", {class: "mini"}, h("summary", {text: "Show full trace (" + at.steps.length + " steps)"}),
         at.agent_summary ? h("p", {}, h("strong", {text: "Agent's own summary (unverified): "}), at.agent_summary) : null,
         at.steps.map((s) => h("div", {class: "trace-step"}, h("strong", {text: "#" + s.step + " " + s.tool}), s.args ? " " + JSON.stringify(s.args).slice(0, 200) : "", s.reason ? h("div", {class: "note", text: "Why: " + s.reason}) : null, s.result ? h("div", {class: "note", text: "Result: " + s.result}) : null)))));
   }
-  out.append(h("p", {class: "note", text: "Report " + rep.investigation_id + ", created " + rep.created_at}));
-  out.scrollIntoView({behavior: "smooth", block: "start"});
+  const lims = (fv.limits || [])[0];
+  out.append(h("p", {class: "lim-visible"}, h("strong", {text: "Limitation: "}), lims || "This tool shows evidence, not certainty. Not finding an earlier copy does not mean none exists."));
+  out.append(actionsBar(rep));
+  out.append(h("p", {class: "note"}, "Report ", h("code", {text: rep.investigation_id}), ", created " + rep.created_at));
 }
+function gateLayerWrap(rep) { return h("section", {class: "layers"}, gateLayer(rep)); }
 
+let CUR = null;
 async function openReport(kind, name) {
   const r = await fetch("/api/report/" + kind + "/" + encodeURIComponent(name));
-  if (!r.ok) { $("#out").replaceChildren(h("p", {class: "err", text: "Could not load this report."})); return; }
+  if (!r.ok) { show("report"); $("#out").replaceChildren(h("p", {class: "err", text: "Could not load this report."}), h("a", {class: "btn", href: "#/", text: "Back to home"})); return; }
+  CUR = {kind, name};
   render(await r.json(), {kind, name});
 }
 
+// ---------- home: stats + demos
+let HEAD = null;
 fetch("/api/headline").then((r) => r.ok ? r.json() : null).then((x) => {
-  if (!x) return;
-  const el = $("#strip");
-  el.append(document.createTextNode("Across "), h("b", {text: x.clips + " real debunked viral clips"}), ": earlier copy proven in ", h("b", {text: x.earlier_copy_proven}),
-    ", ", h("b", {text: x.false_accusations + " false accusations"}), ", ~", h("b", {text: x.cents_per_check + "¢ per check"}), ".",
-    h("span", {class: "note", text: "Pipeline B on frozen benchmarks (" + x.sources.slice(0, 2).join(", ") + "). These are earliest copies, not originals (0 originals found). " + x.genuine_clips + " genuine clips: " + x.genuine_false_positives + " false positives. Small sample, fact-checks with downloadable posts only; cost averaged over " + x.checks_costed + " checks."}));
-  el.classList.remove("hide");
+  if (!x) return; HEAD = x;
+  const el = $("#stats");
+  [[x.earlier_copy_proven + "/" + x.clips, "viral fakes traced to an earlier copy"], [String(x.false_accusations), "false accusations"], ["~" + x.cents_per_check + "¢", "per check"]]
+    .forEach(([big, lab]) => el.append(h("div", {class: "stat"}, h("b", {text: big}), h("span", {text: lab}))));
+  el.hidden = false; $("#statnote").hidden = false;
 }).catch(() => {});
+$("#howbtn").onclick = () => {
+  const x = HEAD || {};
+  $("#how-body").textContent = "These numbers come from frozen benchmark runs of the pipeline on real viral clips that fact-checkers had already debunked.";
+  const li = [
+    "Traced to an earlier copy: " + (x.earlier_copy_proven ?? "?") + " of " + (x.clips ?? "?") + " debunked clips. In each case FloodProof found and proved an earlier copy with the frame matcher.",
+    "False accusations: " + (x.false_accusations ?? "?") + ". Genuine clips were also checked: " + (x.genuine_false_positives ?? "?") + " false positives across " + (x.genuine_clips ?? "?") + " genuine clips.",
+    "Cost: about " + (x.cents_per_check ?? "?") + " cents per check, averaged over " + (x.checks_costed ?? "?") + " costed checks.",
+    "These are earliest copies found, not originals. FloodProof never claims to have found the original source.",
+    "Small sample, and only fact-checks whose posts could be downloaded. Treat it as evidence the method works, not as a general accuracy rate.",
+    "Sources: " + ((x.sources || []).join("; ") || "bench/ folder") + "."];
+  $("#how-list").replaceChildren(...li.map((t) => h("li", {text: t})));
+  $("#how").showModal();
+};
 
+const FEATURE_FIRST = ["success_recycled"];
+function rank(d) {
+  if (FEATURE_FIRST.includes(d.name)) return 0;
+  if (/(^|_)ai(_|$)|generated/i.test(d.name)) return 1;
+  if (/^genuine/.test(d.name)) return 2;
+  return 3;
+}
 fetch("/api/demos").then((r) => r.json()).then((ds) => {
   const p = $("#picker");
-  ds.forEach((d) => {
-    const th = d.thumb ? h("img", {class: "th", alt: "", src: "/files/demo/" + encodeURIComponent(d.name) + "/" + d.thumb.split("/").map(encodeURIComponent).join("/")}) : h("div", {class: "th none", text: "no matched frames"});
-    const b = h("button", {type: "button"}, th, h("span", {class: "bd"}, h("span", {class: "t", text: d.title}), h("span", {class: "s", text: d.blurb || d.claim || ""}), h("span", {}, badge(d.label, (VERDICT[d.label] || {cls: "b-na"}).cls))));
-    b.onclick = () => openReport("demo", d.name); p.append(b);
+  ds.map((d, i) => [d, i]).sort((a, b) => rank(a[0]) - rank(b[0]) || a[1] - b[1]).map((x) => x[0]).forEach((d, i) => {
+    const th = d.thumb ? h("img", {class: "th", alt: "", loading: "lazy", src: "/files/demo/" + encodeURIComponent(d.name) + "/" + d.thumb.split("/").map(encodeURIComponent).join("/")}) : h("div", {class: "th none", text: "No matched frames to show"});
+    const b = h("button", {type: "button", class: "demo" + (i === 0 ? " feat" : "")}, th, h("span", {class: "bd"}, pillOf(d.label), h("span", {class: "t", text: d.title}), h("span", {class: "s", text: d.blurb || d.claim || ""})));
+    b.onclick = () => { location.hash = "#/report/demo/" + encodeURIComponent(d.name); }; p.append(b);
   });
+}).catch(() => {});
+
+// ---------- file drop
+const fileIn = $("#file"), drop = $("#drop");
+function paintFile() {
+  const f = fileIn.files[0];
+  drop.classList.toggle("has", !!f);
+  $("#dropt").replaceChildren(...(f ? [h("b", {text: f.name}), h("br"), h("span", {class: "note", text: Math.max(1, Math.round(f.size / 1048576)) + " MB. Choose another to replace it."})] :
+    [h("b", {text: "Drop a video file here"}), " or choose one", h("br"), h("span", {class: "note", text: "MP4, MOV or WebM, up to 80 MB."})]));
+}
+fileIn.onchange = paintFile;
+["dragenter", "dragover"].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.add("over"); }));
+["dragleave", "drop"].forEach((t) => drop.addEventListener(t, (e) => { e.preventDefault(); drop.classList.remove("over"); }));
+drop.addEventListener("drop", (e) => {
+  const f = e.dataTransfer && e.dataTransfer.files[0]; if (!f) return;
+  try { const dt = new DataTransfer(); dt.items.add(f); fileIn.files = dt.files; paintFile(); } catch (err) { $("#status").textContent = "Drop did not work here. Use the choose option instead."; }
 });
 
-$("#form").onsubmit = (ev) => { ev.preventDefault(); submitForm(false); };
+// ---------- run progress
+const STEPS = ["Gate", "Fetch", "Memory", "Muse", "Search", "Verify", "Physical", "Report"];
+const STEP_RX = [/\[0\/6\]|^gate:/, /\[1\/6\]|fetching/, /\[2\/6\]|memory lookup/, /\[3\/6\]|Muse Spark clues/, /\[4\/6\]|discovery|fast path/, /verifying up to|checked \d+ of|re-fetching/, /\[5\/6\]|physical/i, /debunk|\[6\/6\]/];
+function stepIndex(lines) {
+  let k = -1;
+  lines.forEach((ln) => STEP_RX.forEach((rx, i) => { if (rx.test(ln) && i > k) k = i; }));
+  return k;
+}
+function paintSteps(k, finished) {
+  $("#steps").replaceChildren(...STEPS.map((s, i) => {
+    const st = finished || i < k ? "done" : (i === k ? "cur" : "");
+    return h("li", {class: st, "aria-current": st === "cur" ? "step" : null}, h("i", {text: st === "done" ? "✓" : String(i + 1), "aria-hidden": "true"}), h("span", {}, s, h("span", {class: "sr", text: st === "done" ? " (done)" : st === "cur" ? " (in progress)" : " (waiting)"})));
+  }));
+}
+const mmss = (s) => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+let POLL = null, CLOCK = null;
+function stopRun() { clearTimeout(POLL); clearInterval(CLOCK); POLL = CLOCK = null; }
 async function submitForm(force) {
-  const fd = new FormData($("#form")); if (!$("#deep").checked) fd.delete("deep"); if (force) fd.set("force", "1");
-  $("#go").disabled = true; $("#status").textContent = " Running..."; const log = $("#log"); log.classList.remove("hide"); log.textContent = "";
-  const r = await fetch("/api/investigate", {method: "POST", body: fd});
-  if (!r.ok) { $("#status").textContent = r.status === 429 ? " Daily limit reached. Open a saved example instead." : " The request could not be started."; $("#go").disabled = false; return; }
+  const status = $("#status");
+  const fd = new FormData($("#form"));
+  const hasFile = fileIn.files.length > 0, url = ($("#url").value || "").trim();
+  if (!hasFile && !/^https?:\/\//i.test(url)) { status.textContent = "Paste a video link that starts with http, or choose a video file."; $("#url").focus(); show("home"); return; }
+  if (!$("#deep").checked) fd.delete("deep"); if (force) fd.set("force", "1");
+  status.textContent = ""; $("#go").disabled = true;
+  let r;
+  try { r = await fetch("/api/investigate", {method: "POST", body: fd}); } catch (e) { status.textContent = "Could not reach the server. Try again."; $("#go").disabled = false; return; }
+  if (!r.ok) {
+    let msg = "The request could not be started.";
+    try { const j = await r.json(); if (j.detail) msg = String(j.detail); } catch (e) {}
+    if (r.status === 429) msg = msg || "Daily limit reached. Open a saved example instead.";
+    status.textContent = msg; $("#go").disabled = false; show("home"); return;
+  }
   const {job} = await r.json();
+  startRun(job);
+}
+function startRun(job) {
+  stopRun(); show("run");
+  const t0 = Date.now(); let server = 0;
+  $("#run-title").textContent = "Checking your video"; $("#run-note").textContent = "This usually takes one to three minutes. You can leave this tab open.";
+  $("#run-actions").hidden = true; $("#log").textContent = ""; paintSteps(-1, false);
+  const clock = () => { $("#elapsed").textContent = mmss(Math.max(server, Math.round((Date.now() - t0) / 1000))); };
+  clock(); CLOCK = setInterval(clock, 1000);
   const tick = async () => {
-    const j = await (await fetch("/api/job/" + job)).json();
-    log.textContent = j.log.join("\n"); $("#status").textContent = " " + j.status + " (" + j.seconds + " s)";
-    if (j.status === "running") return setTimeout(tick, 2500);
-    $("#go").disabled = false;
-    if (j.status === "done") openReport("run", j.report); else $("#status").textContent = " The investigation could not be completed. Please try again.";
+    let j;
+    try { j = await (await fetch("/api/job/" + job)).json(); } catch (e) { POLL = setTimeout(tick, 3000); return; }
+    server = j.seconds || 0; clock();
+    $("#log").textContent = (j.log || []).join("\n");
+    if (j.status === "running") { paintSteps(Math.max(0, stepIndex(j.log || [])), false); POLL = setTimeout(tick, 2000); return; }
+    stopRun(); $("#go").disabled = false; clock();
+    if (j.status === "done") { paintSteps(7, true); location.hash = "#/report/run/" + encodeURIComponent(j.report); }
+    else {
+      $("#run-title").textContent = "The check could not be completed"; $("#run-note").textContent = "Something went wrong on our side. Please try again, or open a saved example.";
+      $("#run-actions").hidden = false;
+    }
   };
   tick();
 }
+$("#form").onsubmit = (ev) => { ev.preventDefault(); submitForm(false); };
+
+// ---------- routing
+function route() {
+  const m = /^#\/report\/(demo|run)\/([^/]+)$/.exec(location.hash);
+  if (m) { openReport(m[1], decodeURIComponent(m[2])); return; }
+  if (POLL) return;               // a run is in progress: stay on its view unless the user goes home
+  show("home");
+}
+window.addEventListener("hashchange", () => {
+  const m = /^#\/report\//.test(location.hash);
+  if (!m) stopRun();
+  route();
+});
+route();
 </script>
 </body>
 </html>
