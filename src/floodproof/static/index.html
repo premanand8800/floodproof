@@ -29,10 +29,30 @@ button,input,textarea,select{font:inherit;color:inherit}
 .badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.78rem;font-weight:700;letter-spacing:.02em;border:1px solid currentColor;white-space:nowrap}
 .b-rec{color:var(--rec);background:var(--recbg)}.b-ok{color:var(--ok);background:var(--okbg)}.b-unv{color:var(--unv);background:var(--unvbg)}
 .b-hyp{color:var(--hyp);background:var(--hypbg)}.b-na{color:var(--mute)}
-.picker{display:flex;gap:8px;flex-wrap:wrap}
-.picker button{flex:1 1 220px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}
+.picker{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.picker button{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0;cursor:pointer;overflow:hidden}
 .picker button:hover{border-color:var(--accent)}
+.picker button .th{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000;display:block}
+.picker button .th.none{display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:.8rem;background:var(--bg)}
+.picker button .bd{padding:2px 12px 12px;display:flex;flex-direction:column;gap:4px}
 .picker .t{font-weight:600;display:block}.picker .s{color:var(--mute);font-size:.85rem}
+.hero{border:2px solid var(--line);border-radius:14px;background:var(--card);padding:14px;margin:14px 0 0}
+.hero h2{margin-bottom:2px}
+.pair{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.pair figure{margin:0}
+.pair img{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line);background:#000}
+.pair figcaption{font-size:.8rem;color:var(--mute);margin-top:3px}
+.pair svg{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.pair svg line{stroke:#19e36b;stroke-width:1.6;stroke-linecap:round;filter:drop-shadow(0 0 1.5px #000)}
+.pair svg circle{fill:#19e36b;stroke:#000;stroke-width:.6}
+.stamp{margin:14px 0 4px;padding:12px 14px;border:3px solid var(--rec);color:var(--rec);border-radius:10px;text-align:center;font-weight:800;
+font-size:clamp(1.05rem,4.6vw,1.7rem);letter-spacing:.02em;line-height:1.25;transform:rotate(-1.2deg);transition:opacity .5s,transform .5s}
+.stamp.pending{opacity:0;transform:rotate(-1.2deg) scale(1.15)}
+.stamp.neutral{border-color:var(--line);color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.stamp{transition:none}}
+.expl h3{font-size:.95rem;margin:14px 0 4px}
+.expl ul{margin:4px 0;padding-left:20px}
+.expl .rg{color:var(--mute);font-size:.85rem}
 form.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 form .full{grid-column:1/-1}
 label{display:block;font-size:.85rem;color:var(--mute);margin-bottom:3px}
@@ -153,6 +173,102 @@ function dates(m) {
   return dl;
 }
 
+
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function fmtDate(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || ""); if (!m) return null;
+  return Number(m[3]) + " " + MONTHS[Number(m[2]) - 1] + " " + m[1];
+}
+function daysBetween(a, b) {   // b - a in whole days, from ISO dates
+  const pa = /^(\d{4})-(\d{2})-(\d{2})/.exec(a || ""), pb = /^(\d{4})-(\d{2})-(\d{2})/.exec(b || "");
+  if (!pa || !pb) return null;
+  return Math.round((Date.UTC(+pb[1], +pb[2] - 1, +pb[3]) - Date.UTC(+pa[1], +pa[2] - 1, +pa[3])) / 86400000);
+}
+function stampText(posted, claimed) {
+  const P = fmtDate(posted), C = fmtDate(claimed); if (!P) return null;
+  const n = daysBetween(posted, claimed);
+  if (!C) return {text: "Posted " + P, earlier: false};
+  const base = "Posted " + P + " · Claimed " + C;
+  if (n == null) return {text: base, earlier: false};
+  if (n > 0) return {text: base + " · " + n + " day" + (n === 1 ? "" : "s") + " earlier", earlier: true};
+  if (n === 0) return {text: base + " · same day", earlier: false};
+  return {text: base + " · " + (-n) + " day" + (n === -1 ? "" : "s") + " later", earlier: false};
+}
+const REDUCED = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+const SVGNS = "http://www.w3.org/2000/svg";
+
+// Proof hero: the two CLEAN stored frames side by side, RANSAC inlier lines drawn from stored coordinates (animated ~1.5 s),
+// then the date stamp. Everything comes from the validated report; older reports fall back to the evidence PNG.
+function proofHero(rep, ref) {
+  const v = rep.visual_matching || {}, ep = v.earliest_proven_copy;
+  if (!ep) return null;
+  const m = (v.proven_matches || []).find((x) => x.url === ep.url) || ep, p = m.proof || ep.proof;
+  const st = stampText(m.upload_date, (rep.claim || {}).event_date);
+  const hero = h("section", {class: "hero", "aria-label": "Proof: the earliest matched copy"},
+    h("h2", {text: "Proof: the same footage, published earlier"}),
+    h("div", {class: "note"}, link(m.url), " ", badge(m.date_independent ? "date independently verified" : "date NOT independently verified", m.date_independent ? "b-ok" : "b-unv")));
+  const stamp = st ? h("div", {class: "stamp pending" + (st.earlier ? "" : " neutral"), role: "status", text: st.text}) : null;
+  if (!p) {                                   // older report: static evidence image
+    if (!m.evidence_png) return null;
+    hero.append(img(ref, m.evidence_png, "Side-by-side matched frames with matched keypoints", "proof"));
+    if (stamp) { stamp.classList.remove("pending"); hero.append(stamp); }
+    return hero;
+  }
+  const pair = h("div", {class: "pair"});
+  const ia = img(ref, p.viral_frame, "Frame from the viral video (A)", ""), ib = img(ref, p.copy_frame, "Frame from the earlier copy (B)", "");
+  ia.loading = "eager"; ib.loading = "eager";
+  pair.append(h("figure", {}, ia, h("figcaption", {text: "A: viral video, t=" + p.viral_t + " s"})),
+              h("figure", {}, ib, h("figcaption", {text: "B: earlier copy, t=" + p.copy_t + " s"})));
+  const svg = document.createElementNS(SVGNS, "svg"); svg.setAttribute("aria-hidden", "true"); pair.append(svg);
+  hero.append(pair);
+  let raf = 0, run = 0;
+  const geom = () => {
+    const c = pair.getBoundingClientRect(), a = ia.getBoundingClientRect(), b = ib.getBoundingClientRect();
+    svg.setAttribute("viewBox", "0 0 " + c.width + " " + c.height);
+    return (q) => [a.left - c.left + q[0] * a.width, a.top - c.top + q[1] * a.height, b.left - c.left + q[2] * b.width, b.top - c.top + q[3] * b.height];
+  };
+  const draw = (animate) => {
+    cancelAnimationFrame(raf); const my = ++run;
+    svg.replaceChildren();
+    if (!ia.complete || !ib.complete || !ia.naturalWidth || !ib.naturalWidth) return;
+    const G = geom(), pts = (p.inliers || []).map(G), n = pts.length;
+    const lines = pts.map((q) => {
+      const l = document.createElementNS(SVGNS, "line"), d = document.createElementNS(SVGNS, "circle");
+      l.setAttribute("x1", q[0]); l.setAttribute("y1", q[1]); l.setAttribute("x2", q[0]); l.setAttribute("y2", q[1]);
+      d.setAttribute("r", 2.4); d.setAttribute("cx", q[0]); d.setAttribute("cy", q[1]); d.style.opacity = 0; l.style.opacity = 0;
+      svg.append(l, d); return [l, d]; });
+    const set = (k, f) => { const [l, d] = lines[k], q = pts[k]; l.style.opacity = f > 0 ? .85 : 0; d.style.opacity = f > 0 ? 1 : 0;
+      l.setAttribute("x2", q[0] + (q[2] - q[0]) * f); l.setAttribute("y2", q[1] + (q[3] - q[1]) * f); };
+    const showStamp = () => stamp && stamp.classList.remove("pending");
+    if (!animate || REDUCED() || !n) { lines.forEach((_, k) => set(k, 1)); showStamp(); return; }
+    if (stamp) stamp.classList.add("pending");
+    const T = 1500, each = 600, t0 = performance.now();
+    const step = (now) => {
+      if (my !== run) return;
+      const t = now - t0;
+      lines.forEach((_, k) => { const s0 = n > 1 ? (T - each) * k / (n - 1) : 0; const f = Math.min(1, Math.max(0, (t - s0) / each)); set(k, 1 - Math.pow(1 - f, 3)); });
+      if (t < T) raf = requestAnimationFrame(step); else setTimeout(() => { if (my === run) showStamp(); }, 150);
+    };
+    raf = requestAnimationFrame(step);
+  };
+  const ready = () => { if (ia.complete && ib.complete) draw(true); };
+  ia.addEventListener("load", ready); ib.addEventListener("load", ready);
+  if (window.ResizeObserver) new ResizeObserver(() => { if (ia.complete && ib.complete) draw(false); }).observe(pair);
+  if (stamp) hero.append(stamp);
+  if (!REDUCED()) { const rb = h("button", {class: "btn ghost", type: "button", text: "Replay proof"}); rb.onclick = () => draw(true); hero.append(rb); }
+  hero.append(h("p", {class: "note", text: "The green lines are the " + (p.inliers || []).length + " strongest RANSAC-verified keypoint matches between these two frames" + (p.mirrored ? " (the copy is mirrored)" : "") + ". The proof is this geometric match."}));
+  const ex = p.explanation;
+  if (ex && (ex.items || []).length) {
+    hero.append(h("div", {class: "expl"},
+      h("div", {class: "warn", text: ex.label || "AI explanation of a matcher-proven match: the proof is the geometric match, not this text"}),
+      h("h3", {text: "What is shared between A and B"}),
+      h("ul", {}, ex.items.map((it) => h("li", {}, it.what, " ", h("span", {class: "rg", text: "(A: " + (it.region_a || "?") + "; B: " + (it.region_b || "?") + ")"})))),
+      (ex.differences || []).length ? [h("h3", {text: "Differences"}), h("ul", {}, ex.differences.map((d) => h("li", {text: d})))] : null,
+      h("div", {class: "note", text: "Described by " + ex.model + " from the two frames above; only what is visible."})));
+  }
+  return hero;
+}
+
 function render(rep, ref) {
   const out = $("#out"); out.replaceChildren();
   const v = rep.visual_matching, fv = rep.final_verdict, cl = rep.clues || {}, ph = rep.physical_world_check || {}, mem = rep.memory || {}, cm = rep.claim || {};
@@ -166,6 +282,8 @@ function render(rep, ref) {
     (fv.basis && fv.basis.unverified_reason) ? h("div", {class: "warn", text: "Reason: " + fv.basis.unverified_reason}) : null,
     h("div", {class: "limits-h", text: "Limitations (always shown)"}),
     h("ul", {class: "limits"}, (fv.limits || []).map((x) => h("li", {text: x})))));
+
+  const hero = proofHero(rep, ref); if (hero) out.append(hero);
 
   // media nature: AI observation chip right under the verdict (never changes the label)
   const mn = rep.media_nature || {};
@@ -310,7 +428,8 @@ async function openReport(kind, name) {
 fetch("/api/demos").then((r) => r.json()).then((ds) => {
   const p = $("#picker");
   ds.forEach((d) => {
-    const b = h("button", {type: "button"}, h("span", {class: "t", text: d.title}), h("span", {class: "s", text: (d.claim || "") + " "}), badge(d.label, (VERDICT[d.label] || {cls: "b-na"}).cls));
+    const th = d.thumb ? h("img", {class: "th", alt: "", src: "/files/demo/" + encodeURIComponent(d.name) + "/" + d.thumb.split("/").map(encodeURIComponent).join("/")}) : h("div", {class: "th none", text: "no matched frames"});
+    const b = h("button", {type: "button"}, th, h("span", {class: "bd"}, h("span", {class: "t", text: d.title}), h("span", {class: "s", text: d.blurb || d.claim || ""}), h("span", {}, badge(d.label, (VERDICT[d.label] || {cls: "b-na"}).cls))));
     b.onclick = () => openReport("demo", d.name); p.append(b);
   });
 });

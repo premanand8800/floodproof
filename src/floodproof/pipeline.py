@@ -13,19 +13,34 @@ from . import sources, investigator, infer
 
 
 def _proven_entry(c: sources.Candidate, out_dir: Path):
-    ev = c.evidence_png
-    if ev:
+    def rel(p):
         try:
-            ev = str(Path(ev).resolve().relative_to(out_dir.resolve()))
+            return str(Path(p).resolve().relative_to(out_dir.resolve()))
         except ValueError:
-            pass
+            return p
+    ev = rel(c.evidence_png) if c.evidence_png else None
+    proof = dict(c.proof, viral_frame=rel(c.proof["viral_frame"]), copy_frame=rel(c.proof["copy_frame"])) if c.proof else None
     return dict(url=c.url, title=c.title, uploader=c.uploader, upload_date=c.upload_date, date_source=c.date_source,
-                retrieved_at=c.retrieved_at, adapter=c.adapter, found_via=c.hint, match=c.match, evidence_png=ev,
+                retrieved_at=c.retrieved_at, adapter=c.adapter, found_via=c.hint, match=c.match, evidence_png=ev, proof=proof,
                 stored_date=c.stored_date, stored_date_source=("memory entry (inherited)" if c.stored_date else None), independent_date=c.independent_date, independent_date_source=c.independent_date_source,
                 date_independent=bool(c.date_independent), date_note=c.date_note,
                 date_alternatives=list(c.date_alternatives or []),
                 memory_origin=(c.memory_entry or {}).get("origin"),
                 memory_context=(c.memory_entry or {}).get("event_context"))
+
+
+def attach_explanation(entries, earliest_url, out_dir, explain_fn=None, log=print):
+    """Muse explains the proof for the EARLIEST proven copy only (one call). Mutates that entry's proof; never raises."""
+    from . import explain
+    e = next((x for x in entries if x["url"] == earliest_url and x.get("proof")), None)
+    if not e:
+        return None
+    p = e["proof"]; out_dir = Path(out_dir)
+    log("[5/6] Muse Spark explains the proof (earliest proven copy)")
+    ex = (explain_fn or explain.explain_proof)(out_dir / p["viral_frame"], out_dir / p["copy_frame"])
+    if ex:
+        p["explanation"] = ex
+    return ex
 
 
 def _physical(claim_d, clues, date):
@@ -188,8 +203,12 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
         cs = sources._clean_url(claimed_source)
         claimed_orig = dict(url=cs, matcher_proven=any(c.url == cs for c in proven),
                             note="the original as asserted by the user/claim; only 'matcher_proven' if a candidate with this URL was verified")
-    visual = dict(status="FOUND" if proven else "NOT_FOUND", proven_matches=[_proven_entry(c, out) for c in proven],
-                  earliest_proven_copy=_proven_entry(earliest, out) if earliest else None, claimed_original=claimed_orig,
+    entries = [_proven_entry(c, out) for c in proven]
+    if earliest and use_muse:
+        attach_explanation(entries, earliest.url, out, log=log)
+    earliest_entry = next((x for x in entries if earliest and x["url"] == earliest.url), None)
+    visual = dict(status="FOUND" if proven else "NOT_FOUND", proven_matches=entries,
+                  earliest_proven_copy=earliest_entry, claimed_original=claimed_orig,
                   input_publication=(dict(url=clip.url, upload_date=clip.upload_date, date_source="yt-dlp metadata",
                                           retrieved_at=sources._now(), uploader=clip.uploader)
                                      if clip.url and clip.upload_date else None),

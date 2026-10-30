@@ -22,10 +22,19 @@ UPLOADS = CACHE / "uploads"
 STATIC = Path(__file__).parent / "static"
 DEMO_TITLES = {
     "success_recycled": "Recycled: Alaska glacier shared as Nepal GLOF",
-    "failed_unverified": "Unverified: no earlier copy found",
+    "reshare_memory": "Re-share caught by memory",
     "genuine_correct_claim": "Genuine footage, correct date",
     "genuine_wrong_date": "Genuine footage, wrong date claimed",
+    "failed_unverified": "Unverified: no earlier copy found",
 }
+DEMO_BLURBS = {
+    "success_recycled": "A proven earlier copy, posted 5 days before the claimed event.",
+    "reshare_memory": "A mirrored, re-edited re-share, recognised from a previously verified clip.",
+    "genuine_correct_claim": "The earliest copy is dated at the claimed event: nothing contradicts the claim.",
+    "genuine_wrong_date": "Real footage, but the claimed date is not supported.",
+    "failed_unverified": "No earlier copy found. A normal outcome, not a finding of fakery.",
+}
+DEMO_ORDER = list(DEMO_TITLES)
 JOBS: dict[str, dict] = {}
 # Public-deployment guard: demos are free; live runs cost API money and CPU.
 # FLOODPROOF_PASSCODE (in .env) lifts the daily cap and unlocks Deep investigate.
@@ -61,13 +70,17 @@ def load_report(kind: str, name: str) -> dict:
 
 def list_demos() -> list[dict]:
     out = []
-    for d in sorted(DEMO_DIR.glob("*/report.json")):
+    for d in sorted(DEMO_DIR.glob("*/report.json"), key=lambda p: (DEMO_ORDER.index(p.parent.name) if p.parent.name in DEMO_ORDER else 99, p.parent.name)):
         try:
             r = load_report("demo", d.parent.name)
         except Exception as e:                      # an invalid demo is reported, not rendered
             out.append(dict(name=d.parent.name, title=d.parent.name, label="INVALID", error=str(e)[:120])); continue
+        ep = (r["visual_matching"].get("earliest_proven_copy") or {})
+        thumb = (ep.get("proof") or {}).get("viral_frame") or next(iter((r.get("clues") or {}).get("frame_images") or []), None)
+        if thumb and thumb.startswith("frames/") is False and "/" in thumb and not thumb.startswith("evidence/"):
+            thumb = "frames/" + thumb.split("/")[-1]
         out.append(dict(name=d.parent.name, title=DEMO_TITLES.get(d.parent.name, d.parent.name), label=r["final_verdict"]["label"],
-                        claim=r["claim"].get("text")))
+                        claim=r["claim"].get("text"), blurb=DEMO_BLURBS.get(d.parent.name), thumb=thumb))
     return out
 
 

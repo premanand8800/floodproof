@@ -19,7 +19,7 @@ import uuid
 from pathlib import Path
 
 LABELS = ("RECYCLED_FOOTAGE", "CONSISTENT_WITH_CLAIM", "UNVERIFIED")
-SCHEMA_VERSION = "1.2"
+SCHEMA_VERSION = "1.5"
 REQUIRED_KEYS = ("schema_version", "investigation_id", "created_at", "input", "claim", "memory", "visual_matching",
                  "clues", "physical_world_check", "final_verdict")
 
@@ -263,6 +263,27 @@ def build_report(*, input_meta, claim, memory, visual, clues, physical, investig
     return rep
 
 
+def validate_proof(p):
+    """Schema 1.5 proof block of a proven match (optional; older reports have none)."""
+    assert isinstance(p, dict), "proof must be an object"
+    for k in ("viral_frame", "copy_frame"):
+        assert isinstance(p.get(k), str) and p[k] and not p[k].startswith("/") and ".." not in p[k].split("/"), f"proof.{k} must be a relative path"
+    for k in ("viral_t", "copy_t"):
+        assert isinstance(p.get(k), (int, float)) and not isinstance(p.get(k), bool), f"proof.{k} must be a number"
+    inl = p.get("inliers")
+    assert isinstance(inl, list) and len(inl) <= 40, "proof.inliers must be a list of at most 40 points"
+    for q in inl:
+        assert isinstance(q, (list, tuple)) and len(q) == 4 and all(isinstance(x, (int, float)) and not isinstance(x, bool) and 0 <= x <= 1 for x in q), \
+            "each inlier must be [x1,y1,x2,y2] normalised to 0-1"
+    ex = p.get("explanation")          # optional
+    if ex is not None:
+        assert isinstance(ex, dict) and isinstance(ex.get("items"), list) and ex["items"], "explanation.items must be a non-empty list"
+        for it in ex["items"]:
+            assert isinstance(it, dict) and str(it.get("what") or "").strip(), "explanation item needs 'what'"
+        assert isinstance(ex.get("differences", []), list), "explanation.differences must be a list"
+        assert ex.get("model"), "explanation needs model"
+
+
 def validate_report(r: dict):
     """Raise AssertionError if the report violates the schema/rules; returns r."""
     for k in REQUIRED_KEYS:
@@ -278,6 +299,8 @@ def validate_report(r: dict):
             assert k in m, f"proven match missing {k}"
         for k in ("consistent_frames", "max_inliers", "temporal_offset", "best_pairs"):
             assert k in m["match"], f"match evidence missing {k}"
+        if m.get("proof") is not None:
+            validate_proof(m["proof"])
         assert isinstance(m.get("date_independent"), bool), "proven match missing date_independent"
         if not m["date_independent"]:
             assert str(m["date_source"] or "").startswith("memory") or not m.get("upload_date"), "non-independent date must be labelled as inherited"

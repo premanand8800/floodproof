@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.5",
   "investigation_id": "0d933dc349",
   "created_at": "2026-10-30T05:38:49+00:00",
   "input": {
@@ -178,6 +178,288 @@
             "old/unrelated video falsely linked to claimed event"
           ],
           "note": "original as cited by fact-checkers; not independently verified as the first upload"
+        },
+        "proof": {
+          "viral_frame": "evidence/proof_memory_3_viral.jpg",
+          "copy_frame": "evidence/proof_memory_3_copy.jpg",
+          "viral_t": 0.0,
+          "copy_t": 0.0,
+          "mirrored": false,
+          "inliers": [
+            [
+              0.3004,
+              0.0682,
+              0.2994,
+              0.0677
+            ],
+            [
+              0.4365,
+              0.9086,
+              0.4368,
+              0.9087
+            ],
+            [
+              0.4365,
+              0.9086,
+              0.4368,
+              0.9087
+            ],
+            [
+              0.4365,
+              0.9086,
+              0.4368,
+              0.9087
+            ],
+            [
+              0.6748,
+              0.9099,
+              0.675,
+              0.9103
+            ],
+            [
+              0.1325,
+              0.4819,
+              0.133,
+              0.4822
+            ],
+            [
+              0.6333,
+              0.7231,
+              0.6333,
+              0.7225
+            ],
+            [
+              0.6503,
+              0.7536,
+              0.6504,
+              0.7535
+            ],
+            [
+              0.257,
+              0.7522,
+              0.2572,
+              0.7521
+            ],
+            [
+              0.257,
+              0.7522,
+              0.2572,
+              0.7521
+            ],
+            [
+              0.6932,
+              0.9806,
+              0.6935,
+              0.9805
+            ],
+            [
+              0.7197,
+              0.8852,
+              0.7194,
+              0.8861
+            ],
+            [
+              0.677,
+              0.8395,
+              0.6761,
+              0.8367
+            ],
+            [
+              0.1835,
+              0.737,
+              0.1835,
+              0.7372
+            ],
+            [
+              0.1835,
+              0.737,
+              0.1835,
+              0.7372
+            ],
+            [
+              0.2491,
+              0.744,
+              0.2495,
+              0.7438
+            ],
+            [
+              0.6736,
+              0.8814,
+              0.6723,
+              0.8824
+            ],
+            [
+              0.6755,
+              0.8983,
+              0.6758,
+              0.8978
+            ],
+            [
+              0.4722,
+              0.5617,
+              0.4722,
+              0.5622
+            ],
+            [
+              0.1932,
+              0.7371,
+              0.1929,
+              0.7372
+            ],
+            [
+              0.6524,
+              0.7815,
+              0.6518,
+              0.7806
+            ],
+            [
+              0.707,
+              0.7321,
+              0.7074,
+              0.7323
+            ],
+            [
+              0.3013,
+              0.5062,
+              0.2994,
+              0.5062
+            ],
+            [
+              0.3075,
+              0.5223,
+              0.306,
+              0.5215
+            ],
+            [
+              0.2271,
+              0.1269,
+              0.2262,
+              0.1264
+            ],
+            [
+              0.6252,
+              0.9249,
+              0.6254,
+              0.9252
+            ],
+            [
+              0.6528,
+              0.735,
+              0.6537,
+              0.7353
+            ],
+            [
+              0.6528,
+              0.735,
+              0.6537,
+              0.7353
+            ],
+            [
+              0.5258,
+              0.582,
+              0.5256,
+              0.5819
+            ],
+            [
+              0.1993,
+              0.7418,
+              0.1995,
+              0.7417
+            ],
+            [
+              0.2429,
+              0.7479,
+              0.2443,
+              0.748
+            ],
+            [
+              0.2429,
+              0.7479,
+              0.2443,
+              0.748
+            ],
+            [
+              0.8281,
+              0.3122,
+              0.8284,
+              0.3124
+            ],
+            [
+              0.8648,
+              0.8843,
+              0.8645,
+              0.8839
+            ],
+            [
+              0.8616,
+              0.7348,
+              0.8615,
+              0.7351
+            ],
+            [
+              0.8749,
+              0.704,
+              0.8753,
+              0.704
+            ],
+            [
+              0.2317,
+              0.7443,
+              0.2322,
+              0.7441
+            ],
+            [
+              0.7604,
+              0.6026,
+              0.7611,
+              0.6025
+            ],
+            [
+              0.7604,
+              0.6026,
+              0.7611,
+              0.6025
+            ],
+            [
+              0.9173,
+              0.3088,
+              0.9172,
+              0.3084
+            ]
+          ],
+          "explanation": {
+            "items": [
+              {
+                "what": "the black helicopter door frame and gray interior with circular GelPro cover",
+                "region_a": "bottom-left",
+                "region_b": "bottom-left"
+              },
+              {
+                "what": "the dark blurred rotor blade crossing the top edge",
+                "region_a": "top-left",
+                "region_b": "top-left"
+              },
+              {
+                "what": "the long glacier wall with patches of blue ice and white mist in front of it",
+                "region_a": "top-center",
+                "region_b": "top-center"
+              },
+              {
+                "what": "the dense field of broken white and light-blue ice chunks below the glacier",
+                "region_a": "bottom-right",
+                "region_b": "bottom-right"
+              },
+              {
+                "what": "the overcast cloudy sky with brighter break and distant dark peaks on the horizon",
+                "region_a": "top-right",
+                "region_b": "top-right"
+              }
+            ],
+            "differences": [],
+            "model": "meta/muse-spark-1.3",
+            "label": "AI explanation of a matcher-proven match: the proof is the geometric match, not this text",
+            "cost_usd": 0.00952
+          }
         }
       }
     ],
@@ -250,6 +532,288 @@
           "old/unrelated video falsely linked to claimed event"
         ],
         "note": "original as cited by fact-checkers; not independently verified as the first upload"
+      },
+      "proof": {
+        "viral_frame": "evidence/proof_memory_3_viral.jpg",
+        "copy_frame": "evidence/proof_memory_3_copy.jpg",
+        "viral_t": 0.0,
+        "copy_t": 0.0,
+        "mirrored": false,
+        "inliers": [
+          [
+            0.3004,
+            0.0682,
+            0.2994,
+            0.0677
+          ],
+          [
+            0.4365,
+            0.9086,
+            0.4368,
+            0.9087
+          ],
+          [
+            0.4365,
+            0.9086,
+            0.4368,
+            0.9087
+          ],
+          [
+            0.4365,
+            0.9086,
+            0.4368,
+            0.9087
+          ],
+          [
+            0.6748,
+            0.9099,
+            0.675,
+            0.9103
+          ],
+          [
+            0.1325,
+            0.4819,
+            0.133,
+            0.4822
+          ],
+          [
+            0.6333,
+            0.7231,
+            0.6333,
+            0.7225
+          ],
+          [
+            0.6503,
+            0.7536,
+            0.6504,
+            0.7535
+          ],
+          [
+            0.257,
+            0.7522,
+            0.2572,
+            0.7521
+          ],
+          [
+            0.257,
+            0.7522,
+            0.2572,
+            0.7521
+          ],
+          [
+            0.6932,
+            0.9806,
+            0.6935,
+            0.9805
+          ],
+          [
+            0.7197,
+            0.8852,
+            0.7194,
+            0.8861
+          ],
+          [
+            0.677,
+            0.8395,
+            0.6761,
+            0.8367
+          ],
+          [
+            0.1835,
+            0.737,
+            0.1835,
+            0.7372
+          ],
+          [
+            0.1835,
+            0.737,
+            0.1835,
+            0.7372
+          ],
+          [
+            0.2491,
+            0.744,
+            0.2495,
+            0.7438
+          ],
+          [
+            0.6736,
+            0.8814,
+            0.6723,
+            0.8824
+          ],
+          [
+            0.6755,
+            0.8983,
+            0.6758,
+            0.8978
+          ],
+          [
+            0.4722,
+            0.5617,
+            0.4722,
+            0.5622
+          ],
+          [
+            0.1932,
+            0.7371,
+            0.1929,
+            0.7372
+          ],
+          [
+            0.6524,
+            0.7815,
+            0.6518,
+            0.7806
+          ],
+          [
+            0.707,
+            0.7321,
+            0.7074,
+            0.7323
+          ],
+          [
+            0.3013,
+            0.5062,
+            0.2994,
+            0.5062
+          ],
+          [
+            0.3075,
+            0.5223,
+            0.306,
+            0.5215
+          ],
+          [
+            0.2271,
+            0.1269,
+            0.2262,
+            0.1264
+          ],
+          [
+            0.6252,
+            0.9249,
+            0.6254,
+            0.9252
+          ],
+          [
+            0.6528,
+            0.735,
+            0.6537,
+            0.7353
+          ],
+          [
+            0.6528,
+            0.735,
+            0.6537,
+            0.7353
+          ],
+          [
+            0.5258,
+            0.582,
+            0.5256,
+            0.5819
+          ],
+          [
+            0.1993,
+            0.7418,
+            0.1995,
+            0.7417
+          ],
+          [
+            0.2429,
+            0.7479,
+            0.2443,
+            0.748
+          ],
+          [
+            0.2429,
+            0.7479,
+            0.2443,
+            0.748
+          ],
+          [
+            0.8281,
+            0.3122,
+            0.8284,
+            0.3124
+          ],
+          [
+            0.8648,
+            0.8843,
+            0.8645,
+            0.8839
+          ],
+          [
+            0.8616,
+            0.7348,
+            0.8615,
+            0.7351
+          ],
+          [
+            0.8749,
+            0.704,
+            0.8753,
+            0.704
+          ],
+          [
+            0.2317,
+            0.7443,
+            0.2322,
+            0.7441
+          ],
+          [
+            0.7604,
+            0.6026,
+            0.7611,
+            0.6025
+          ],
+          [
+            0.7604,
+            0.6026,
+            0.7611,
+            0.6025
+          ],
+          [
+            0.9173,
+            0.3088,
+            0.9172,
+            0.3084
+          ]
+        ],
+        "explanation": {
+          "items": [
+            {
+              "what": "the black helicopter door frame and gray interior with circular GelPro cover",
+              "region_a": "bottom-left",
+              "region_b": "bottom-left"
+            },
+            {
+              "what": "the dark blurred rotor blade crossing the top edge",
+              "region_a": "top-left",
+              "region_b": "top-left"
+            },
+            {
+              "what": "the long glacier wall with patches of blue ice and white mist in front of it",
+              "region_a": "top-center",
+              "region_b": "top-center"
+            },
+            {
+              "what": "the dense field of broken white and light-blue ice chunks below the glacier",
+              "region_a": "bottom-right",
+              "region_b": "bottom-right"
+            },
+            {
+              "what": "the overcast cloudy sky with brighter break and distant dark peaks on the horizon",
+              "region_a": "top-right",
+              "region_b": "top-right"
+            }
+          ],
+          "differences": [],
+          "model": "meta/muse-spark-1.3",
+          "label": "AI explanation of a matcher-proven match: the proof is the geometric match, not this text",
+          "cost_usd": 0.00952
+        }
       }
     },
     "claimed_original": null,
@@ -813,5 +1377,14 @@
       "date_conflicts": 0
     }
   },
-  "timing_s": 264.5
+  "timing_s": 264.5,
+  "media_nature": {
+    "value": "unknown",
+    "confidence": 0.0,
+    "cited_frames": [],
+    "cited_timestamps_s": [],
+    "reasons": [],
+    "status": "NOT_RUN",
+    "note": "Muse clues were not available, so the media nature was not assessed."
+  }
 }

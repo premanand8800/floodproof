@@ -22,7 +22,7 @@ import cv2
 import requests
 
 from . import CACHE, load_env
-from .matcher import ClipFeatures, match
+from .matcher import ClipFeatures, match, proof_artifacts
 from . import media
 
 VIDEO_HOSTS = ("youtube.com/watch", "youtube.com/shorts", "youtu.be", "instagram.com/reel", "instagram.com/p/",
@@ -49,6 +49,7 @@ class Candidate:
     proven: bool = False
     match: dict | None = None
     evidence_png: str | None = None
+    proof: dict | None = None          # clean best-pair frames + RANSAC inlier coordinates (+ optional Muse explanation)
     memory_entry: dict | None = None
     stored_date: str | None = None          # date inherited from a memory entry (NOT evidence by itself)
     independent_date: str | None = None       # date independently re-fetched (live metadata / page meta / Wayback)
@@ -80,8 +81,13 @@ def memory_candidates(mem, feats: ClipFeatures, evidence_dir: Path | None = None
         cands.append(Candidate(e["source_url"] or f"memory:{e['id']}", e.get("title") or "", "memory", f"entry {e['id']}",
                                "proven", e.get("upload_date"), "memory entry (inherited)" if e.get("upload_date") else None,
                                _now(), e.get("uploader"), True, h.match.to_dict(),
-                               str(Path(evidence_dir) / f"memory_{e['id']}.png") if evidence_dir else None, e,
+                               str(Path(evidence_dir) / f"memory_{e['id']}.png") if evidence_dir else None, None, e,
                                stored_date=e.get("upload_date"), date_independent=False))
+        if evidence_dir:
+            try:
+                cands[-1].proof = proof_artifacts(h.match, evidence_dir, f"memory_{e['id']}")
+            except Exception:
+                pass
     return cands, res
 
 
@@ -393,6 +399,7 @@ def verify_candidate(c: Candidate, q: ClipFeatures, query_date: str | None = Non
         if m.decision and evidence_dir:
             tag = hashlib.sha1(c.url.encode()).hexdigest()[:8]
             c.evidence_png = m.evidence(Path(evidence_dir) / f"{c.adapter}_{tag}.png", f"{c.adapter} candidate {c.url[-50:]} date={c.upload_date}")
+            c.proof = proof_artifacts(m, evidence_dir, f"{c.adapter}_{tag}")
     except Exception as e:
         c.status = "error"; c.hint += f" ({str(e)[:60]})"
     finally:
