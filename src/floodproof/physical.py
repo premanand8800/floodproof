@@ -140,11 +140,15 @@ def _geocode_once(place: str, countrycodes: str | None = None, must: list[str] |
         conf = "medium"
     else:
         conf = "low"
+    # a whole-country match (e.g. "Nepal") is too coarse: distances from a country centroid mean nothing
+    country_level = top.get("addresstype") == "country" or int(top.get("place_rank", 30) or 30) <= 4
+    if country_level:
+        conf = "low"
     alts = [{"name": r.get("display_name"), "lat": float(r["lat"]), "lon": float(r["lon"]),
              "class": r.get("category", r.get("class")), "type": r.get("type")} for r in ordered[1:]]
     return {"query": place, "name": top.get("display_name"), "lat": float(top["lat"]),
             "lon": float(top["lon"]), "source": "nominatim", "confidence": conf,
-            "class": cls, "type": top.get("type"), "alternatives": alts}
+            "class": cls, "type": top.get("type"), "country_level": country_level, "alternatives": alts}
 
 
 # ---------------------------------------------------------------- Copernicus
@@ -337,6 +341,9 @@ def check(place: str | None = None, lat: float | None = None, lon: float | None 
     rd, rn = hy.get("river_discharge"), hy.get("rain")
     ratio = rd and rd.get("ratio")
     mm = rn and rn.get("max_mm")
+    if loc.get("country_level"):
+        reasons.append("location resolved only to a whole country; too coarse to corroborate a local event")
+        return res
     support = False
     if ev["status"] == "CONFIRMED_EVENT":
         support = True

@@ -177,3 +177,11 @@ def test_ems_list_cached(monkeypatch):
     P.check(place="Kathmandu", date="2024-09-28")
     P.check(place="Kathmandu", date="2024-09-28")
     assert n["c"] == 1
+
+
+def test_country_level_location_never_supports(monkeypatch):
+    geo = [{"lat": "28.4", "lon": "84.0", "display_name": "Nepal", "category": "boundary", "type": "administrative",
+            "addresstype": "country", "place_rank": 4, "importance": 0.9}]
+    r = run(monkeypatch, make_router(geo=geo, ems=EMS_NEAR))
+    assert r["location"]["country_level"] and r["location"]["confidence"] == "low"
+    assert r["verdict"] == "UNKNOWN" and "whole country" in " ".join(r["reasons"])
