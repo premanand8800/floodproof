@@ -226,17 +226,6 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
         ce = infer.infer_claim(clip, claim, date, place, dict(status="not_run"))
         ce["country_iso2"], ce["event_type"] = ce.get("country_iso2"), "unknown"
         early_phys = pool.submit(_physical, ce, dict(status="not_run"), date)
-    # Yandex (a scripted browser, the slowest source) needs only the keyframes, not Muse: start it now so it overlaps the Muse call.
-    # Trade-off, recorded in the report: its keyframes are the sharpest spread ones, not the ones Muse later labels camera_footage.
-    early_yandex, early_ex = None, None
-    if use_yandex:
-        log("[4/6] Yandex reverse search started early, in parallel with Muse")
-        early_ex = ThreadPoolExecutor(1)
-
-        def _early():
-            t = time.time()
-            return sources.yandex_candidates(feats), round(time.time() - t, 1)
-        early_yandex = early_ex.submit(_early)
     if use_memory and mem is not None:
         log("[2/6] memory lookup")
         mc, res = sources.memory_candidates(mem, feats, evidence_dir=ev_dir)
@@ -249,6 +238,17 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
                             note="memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching")
 
     stage["memory"] = round(time.time() - t_mark[0], 1)
+    # Yandex (a scripted browser, the slowest source) needs only the keyframes, not Muse: start it now so it overlaps the Muse call.
+    # Trade-off, recorded in the report: its keyframes are the sharpest spread ones, not the ones Muse later labels camera_footage.
+    early_yandex, early_ex = None, None
+    if use_yandex and not any(c.proven for c in cands):     # a memory-proven copy takes the fast path: no external search at all
+        log("[4/6] Yandex reverse search started early, in parallel with Muse")
+        early_ex = ThreadPoolExecutor(1)
+
+        def _early():
+            t = time.time()
+            return sources.yandex_candidates(feats), round(time.time() - t, 1)
+        early_yandex = early_ex.submit(_early)
     clues = muse_fut.result() if muse_fut else dict(status="not_run")
     cp = (clues.get("claim_parsed") or {}) if clues.get("status") == "ok" else {}
     claim_d = infer.infer_claim(clip, claim, date, place, clues)
