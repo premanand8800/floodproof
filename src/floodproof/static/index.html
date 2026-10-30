@@ -827,7 +827,7 @@ let HEAD = null;
 fetch("/api/headline").then((r) => r.ok ? r.json() : null).then((x) => {
   if (!x) return; HEAD = x;
   const el = $("#stats");
-  [[x.earlier_copy_proven + "/" + x.clips, "viral fakes traced to an earlier copy"], [String(x.false_accusations), "false accusations"], ["~" + x.cents_per_check + "¢", "per check"]]
+  [[x.earlier_copy_proven + "/" + x.clips, "viral fakes caught reposting older footage"], [String(x.false_accusations), "false accusations"], ["~" + x.cents_per_check + "¢", "per check"]]
     .forEach(([big, lab]) => el.append(h("div", {class: "stat"}, h("b", {text: big}), h("span", {text: lab}))));
   el.hidden = false; $("#statnote").hidden = false;
 }).catch(() => {});
@@ -835,7 +835,7 @@ $("#howbtn").onclick = () => {
   const x = HEAD || {};
   $("#how-body").textContent = "These numbers come from frozen benchmark runs of the pipeline on real viral clips that fact-checkers had already debunked.";
   const li = [
-    "Traced to an earlier copy: " + (x.earlier_copy_proven ?? "?") + " of " + (x.clips ?? "?") + " debunked clips. In each case FloodProof found and proved an earlier copy with the frame matcher.",
+    "Caught reposting older footage: " + (x.earlier_copy_proven ?? "?") + " of " + (x.clips ?? "?") + " debunked clips. In each case FloodProof found and proved an earlier dated copy with the frame matcher. This is the earliest copy found, not the original source: originals were found in 0 of these cases.",
     "False accusations: " + (x.false_accusations ?? "?") + ". Genuine clips were also checked: " + (x.genuine_false_positives ?? "?") + " false positives across " + (x.genuine_clips ?? "?") + " genuine clips.",
     "Cost: about " + (x.cents_per_check ?? "?") + " cents per check, averaged over " + (x.checks_costed ?? "?") + " costed checks.",
     "These are earliest copies found, not originals. FloodProof never claims to have found the original source.",

@@ -18,7 +18,7 @@ Numbers as `bench/EVALUATION.md` states them (all scorers make no API calls; not
 - **Originals found: 0/17.** We prove that footage was published earlier; we do not find where it came from.
 - **InVID timing: TBD (manual test).**
 
-**What Muse is for (ablation, `bench/ablation_v2_RESULTS.md`).** Muse's effect on *discovery* is small: 8/17 with Muse versus 7/17 without is within Yandex's run-to-run noise, so do not read it as an effect. Muse's value is elsewhere: the explanation of each proof, the media type (camera footage, animation, likely AI-generated, compilation), narration analysis, claim inference from the post, the multilingual debunk card, and the relevance gate.
+**What Muse is for (ablation, `bench/ablation_v2_RESULTS.md`).** Muse's effect on *discovery* is small: 8/17 with Muse versus 7/17 without is within Yandex's run-to-run noise, so do not read it as an effect. Still, Muse's own search queries found **9 proven copies that no other source found** (5 cases; it changed the verdict in one, H06). Muse's main value is elsewhere: the explanation of each proof, the media type (camera footage, animation, likely AI-generated, compilation), narration analysis, claim inference from the post, the multilingual debunk card, and the relevance gate.
 
 **Relevance gate (`bench/gate_RESULTS.md`, 20 public videos, one run, a smoke test).** 0/10 relevant clips wrongly rejected; 9/10 irrelevant clips stopped (the tenth ran, which is the safe direction); mean $0.0024 per check; median 32 s per check before this sprint. One relevant clip (a tsunami tribute) was saved only by the metadata keyword veto, so that veto is load-bearing.
 
