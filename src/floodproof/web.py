@@ -1,0 +1,143 @@
+"""Local web app. Everything shown is rendered from a validated report.json (the single source of truth).
+
+  uv run floodproof serve [--port 8000]      then open http://127.0.0.1:8000
+Endpoints: GET / | GET /api/demos | GET /api/report/{kind}/{name} (kind = demo|run) | GET /files/{kind}/{name}/{path}
+           POST /api/investigate (multipart: file | url, claim, date, place, deep) -> {job} | GET /api/job/{id}
+"""
+from __future__ import annotations
+
+import json
+import threading
+import time
+import uuid
+from pathlib import Path
+
+from . import CACHE, ROOT
+from .report import validate_report
+
+DEMO_DIR = ROOT / "demo"
+RUNS_DIR = ROOT / "runs"
+UPLOADS = CACHE / "uploads"
+STATIC = Path(__file__).parent / "static"
+DEMO_TITLES = {
+    "success_recycled": "Recycled: Alaska glacier shared as Nepal GLOF",
+    "failed_unverified": "Unverified: no earlier copy found",
+    "genuine_correct_claim": "Genuine footage, correct date",
+    "genuine_wrong_date": "Genuine footage, wrong date claimed",
+}
+JOBS: dict[str, dict] = {}
+
+
+def _safe_name(s: str) -> str:
+    return "".join(ch for ch in s if ch.isalnum() or ch in "_-")
+
+
+def _dir(kind: str, name: str) -> Path:
+    base = {"demo": DEMO_DIR, "run": RUNS_DIR}.get(kind)
+    if base is None or _safe_name(name) != name or not name:
+        raise FileNotFoundError("bad report id")
+    return base / name
+
+
+def load_report(kind: str, name: str) -> dict:
+    """Read and VALIDATE a report. The UI never sees a report that fails validate_report."""
+    p = _dir(kind, name) / "report.json"
+    r = json.loads(p.read_text())
+    validate_report(r)
+    return r
+
+
+def list_demos() -> list[dict]:
+    out = []
+    for d in sorted(DEMO_DIR.glob("*/report.json")):
+        try:
+            r = load_report("demo", d.parent.name)
+        except Exception as e:                      # an invalid demo is reported, not rendered
+            out.append(dict(name=d.parent.name, title=d.parent.name, label="INVALID", error=str(e)[:120])); continue
+        out.append(dict(name=d.parent.name, title=DEMO_TITLES.get(d.parent.name, d.parent.name), label=r["final_verdict"]["label"],
+                        claim=r["claim"].get("text")))
+    return out
+
+
+def _run_job(job_id, source, claim, date, place, deep):
+    job = JOBS[job_id]
+    log = lambda *a: job["log"].append(" ".join(str(x) for x in a)[:300])
+    out = RUNS_DIR / job_id
+    try:
+        if deep:
+            from .agent import run_agent
+            rep = run_agent(source, claim=claim, date=date, place=place, out_dir=out, log=log)
+        else:
+            from .pipeline import investigate
+            rep = investigate(source, claim, date, place, out_dir=out, log=log)
+        validate_report(rep)
+        job.update(status="done", report=job_id)
+    except Exception as e:
+        job.update(status="error", error=f"{type(e).__name__}: {str(e)[:300]}")
+
+
+def create_app():
+    from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+    from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
+
+    app = FastAPI(title="FloodProof")
+
+    @app.get("/", response_class=HTMLResponse)
+    def index():
+        return (STATIC / "index.html").read_text()
+
+    @app.get("/api/demos")
+    def demos():
+        return list_demos()
+
+    @app.get("/api/report/{kind}/{name}")
+    def report(kind: str, name: str):
+        try:
+            return load_report(kind, name)
+        except FileNotFoundError:
+            raise HTTPException(404, "report not found")
+        except AssertionError as e:
+            raise HTTPException(422, f"report failed validation: {e}")
+
+    @app.get("/files/{kind}/{name}/{path:path}")
+    def files(kind: str, name: str, path: str):
+        try:
+            base = _dir(kind, name).resolve()
+        except FileNotFoundError:
+            raise HTTPException(404)
+        p = (base / path).resolve()
+        if base not in p.parents or not p.is_file() or p.suffix.lower() not in (".png", ".jpg", ".jpeg"):
+            raise HTTPException(404)
+        return FileResponse(p)
+
+    @app.post("/api/investigate")
+    async def investigate_(file: UploadFile | None = File(None), url: str = Form(""), claim: str = Form(""), date: str = Form(""),
+                           place: str = Form(""), deep: str = Form("")):
+        if file is not None and file.filename:
+            UPLOADS.mkdir(parents=True, exist_ok=True)
+            src = UPLOADS / (uuid.uuid4().hex[:8] + "_" + _safe_name(Path(file.filename).stem) + Path(file.filename).suffix[:6])
+            src.write_bytes(await file.read()); source = str(src)
+        elif url.strip().startswith(("http://", "https://")):
+            source = url.strip()
+        else:
+            raise HTTPException(400, "give a video file or an http(s) URL")
+        job_id = uuid.uuid4().hex[:10]
+        JOBS[job_id] = dict(status="running", log=[], started=time.time(), deep=deep in ("1", "true", "on"))
+        threading.Thread(target=_run_job, args=(job_id, source, claim or None, date or None, place or None, JOBS[job_id]["deep"]),
+                         daemon=True).start()
+        return dict(job=job_id)
+
+    @app.get("/api/job/{job_id}")
+    def job(job_id: str):
+        j = JOBS.get(job_id)
+        if not j:
+            raise HTTPException(404)
+        return JSONResponse(dict(status=j["status"], log=j["log"][-30:], report=j.get("report"), error=j.get("error"),
+                                 seconds=round(time.time() - j["started"])))
+
+    return app
+
+
+def serve(host="127.0.0.1", port=8000):
+    import uvicorn
+    uvicorn.run(create_app(), host=host, port=port, log_level="info")

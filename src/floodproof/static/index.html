@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FloodProof</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#14202b;--mute:#566574;--line:#d9e0e6;--accent:#0b6e8a;
+--rec:#b3261e;--recbg:#fdecea;--ok:#1b6e3c;--okbg:#e6f4ea;--unv:#8a5a00;--unvbg:#fff4d6;--hyp:#5b3fa0;--hypbg:#efeafa;
+--shadow:0 1px 2px rgba(0,0,0,.06)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e151b;--card:#16212a;--ink:#e6edf2;--mute:#9fb0be;--line:#2a3945;--accent:#4cc3e0;
+--rec:#ff8a80;--recbg:#3a1b19;--ok:#7fd69b;--okbg:#17301f;--unv:#ffcf6b;--unvbg:#35290a;--hyp:#c3b0ff;--hypbg:#2a2342;--shadow:none}}
+:root[data-theme=dark]{--bg:#0e151b;--card:#16212a;--ink:#e6edf2;--mute:#9fb0be;--line:#2a3945;--accent:#4cc3e0;
+--rec:#ff8a80;--recbg:#3a1b19;--ok:#7fd69b;--okbg:#17301f;--unv:#ffcf6b;--unvbg:#35290a;--hyp:#c3b0ff;--hypbg:#2a2342;--shadow:none}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px 64px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 0 8px;flex-wrap:wrap}
+h1{font-size:1.6rem;margin:0;letter-spacing:-.01em}
+h1 small{display:block;font-size:.85rem;font-weight:400;color:var(--mute);margin-top:2px}
+h2{font-size:1.05rem;margin:0}
+button,input,textarea,select{font:inherit;color:inherit}
+.btn{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:10px 16px;cursor:pointer;font-weight:600}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:500;padding:6px 12px}
+.btn[disabled]{opacity:.5;cursor:wait}
+:where(button,a,input,textarea,summary):focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.card-h{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.78rem;font-weight:700;letter-spacing:.02em;border:1px solid currentColor;white-space:nowrap}
+.b-rec{color:var(--rec);background:var(--recbg)}.b-ok{color:var(--ok);background:var(--okbg)}.b-unv{color:var(--unv);background:var(--unvbg)}
+.b-hyp{color:var(--hyp);background:var(--hypbg)}.b-na{color:var(--mute)}
+.picker{display:flex;gap:8px;flex-wrap:wrap}
+.picker button{flex:1 1 220px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}
+.picker button:hover{border-color:var(--accent)}
+.picker .t{font-weight:600;display:block}.picker .s{color:var(--mute);font-size:.85rem}
+form.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+form .full{grid-column:1/-1}
+label{display:block;font-size:.85rem;color:var(--mute);margin-bottom:3px}
+input[type=text],input[type=url],input[type=date],textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 10px}
+.chk{display:flex;gap:8px;align-items:flex-start}.chk input{margin-top:5px}
+@media(max-width:600px){form.grid{grid-template-columns:1fr}}
+.banner{border-radius:14px;padding:18px;margin:14px 0 0;border:2px solid currentColor}
+.banner .lab{font-size:1.5rem;font-weight:800;letter-spacing:.01em}
+.banner p{color:var(--ink)}
+.not-mean{margin-top:10px;padding:10px 12px;border-radius:8px;background:var(--card);color:var(--ink);border:1px dashed var(--line);font-size:.95rem}
+.limits{margin:6px 0 0;padding-left:20px;color:var(--ink);font-size:.92rem}
+.limits-h{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);margin-top:12px}
+.note{color:var(--mute);font-size:.9rem}
+.src{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
+.src:first-of-type{border-top:0;margin-top:0;padding-top:0}
+.kv{display:grid;grid-template-columns:max-content 1fr;gap:2px 12px;font-size:.92rem}
+.kv dt{color:var(--mute)}.kv dd{margin:0;word-break:break-word}
+.proof{display:block;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;margin-top:8px;background:#000}
+.frames{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px;margin-top:8px}
+.frames img{width:100%;border-radius:6px;border:1px solid var(--line);display:block}
+.frames figcaption{font-size:.72rem;color:var(--mute)}
+.frames figure{margin:0}
+a{color:var(--accent);word-break:break-word}
+ul.plain{margin:6px 0;padding-left:20px}
+details{margin-top:8px}summary{cursor:pointer;color:var(--mute);padding:4px 0}
+pre.log{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;overflow:auto;font-size:.8rem;max-height:240px;white-space:pre-wrap}
+.trace-step{border-top:1px solid var(--line);padding:8px 0;font-size:.88rem}
+.warn{background:var(--unvbg);color:var(--unv);border-radius:8px;padding:8px 12px;font-size:.9rem;margin-top:8px}
+.err{color:var(--rec)}
+.hide{display:none}
+footer{color:var(--mute);font-size:.82rem;margin-top:30px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>FloodProof<small>Where has this disaster video been published before? Evidence for fact-checkers, not a verdict on truth.</small></h1>
+  <button class="btn ghost" id="theme" type="button" aria-label="Toggle dark or light theme">Theme</button>
+</header>
+
+<section class="card" aria-labelledby="demo-h">
+  <div class="card-h"><h2 id="demo-h">Open a saved example (instant, nothing is run)</h2></div>
+  <div class="picker" id="picker"></div>
+</section>
+
+<section class="card" aria-labelledby="run-h">
+  <div class="card-h"><h2 id="run-h">Investigate a video</h2></div>
+  <form id="form" class="grid">
+    <div><label for="file">Video file</label><input type="file" id="file" name="file" accept="video/*"></div>
+    <div><label for="url">...or video URL</label><input type="url" id="url" name="url" placeholder="https://..."></div>
+    <div class="full"><label for="claim">Claim shared with the video</label><textarea id="claim" name="claim" rows="2" placeholder="e.g. Flood in Kathmandu, September 2024"></textarea></div>
+    <div><label for="date">Claimed event date</label><input type="date" id="date" name="date"></div>
+    <div><label for="place">Claimed place</label><input type="text" id="place" name="place" placeholder="optional"></div>
+    <div class="full chk"><input type="checkbox" id="deep" name="deep" value="1">
+      <div><label for="deep" style="margin:0;color:var(--ink)">Deep investigate (experimental)</label>
+      <span class="note">Runs a tool-calling agent and shows its full trace. Extra investigation does not guarantee a better verdict.</span></div></div>
+    <div class="full"><button class="btn" id="go" type="submit">Run investigation</button>
+      <span class="note" id="status" role="status" aria-live="polite"></span></div>
+  </form>
+  <pre class="log hide" id="log"></pre>
+</section>
+
+<main id="out" aria-live="polite"></main>
+<footer>Everything on this page is rendered from a validated report.json. The video-match proof is separate from AI clues, the physical-world check and memory; layers are never merged into one score.</footer>
+</div>
+
+<script>
+"use strict";
+const $ = (s) => document.querySelector(s);
+function h(tag, attrs, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k === "class") e.className = v; else if (k === "text") e.textContent = v; else e.setAttribute(k, v === true ? "" : v);
+  }
+  for (const c of kids.flat()) if (c != null && c !== false) e.append(c.nodeType ? c : document.createTextNode(String(c)));
+  return e;
+}
+const badge = (txt, cls) => h("span", {class: "badge " + cls, text: txt});
+const safeHref = (u) => /^https?:\/\//i.test(u || "") ? u : null;
+const link = (u, text) => safeHref(u) ? h("a", {href: u, target: "_blank", rel: "noopener noreferrer", text: text || u}) : h("span", {text: text || String(u)});
+
+// theme
+(() => { try { const t = localStorage.getItem("fp-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {} })();
+$("#theme").onclick = () => {
+  const cur = document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : "light");
+  const nx = cur === "dark" ? "light" : "dark"; document.documentElement.dataset.theme = nx;
+  try { localStorage.setItem("fp-theme", nx); } catch (e) {}
+};
+
+const VERDICT = {
+  RECYCLED_FOOTAGE: {cls: "b-rec", title: "Recycled footage", notMean: "Recycled does not mean fake, and it does not mean the claimed event did not happen. It means this footage was already published before the date in the claim."},
+  CONSISTENT_WITH_CLAIM: {cls: "b-ok", title: "Consistent with claim", notMean: "Consistent does not mean confirmed or authentic. It means no contradiction was found in the evidence available to this tool."},
+  UNVERIFIED: {cls: "b-unv", title: "Unverified", notMean: "Unverified does not mean fake or false. It means the available evidence could not establish either way. Not finding an earlier copy is a normal outcome."},
+};
+const STATUS = {
+  FOUND: ["Match found", "b-rec"], NOT_FOUND: ["No match found", "b-unv"], HIT: ["Memory hit", "b-rec"], MISS: ["No memory match", "b-na"], NOT_RUN: ["Not run", "b-na"],
+  ok: ["Clues extracted", "b-ok"], error: ["Error", "b-unv"], not_run: ["Not run", "b-na"],
+};
+const PHYS = {SUPPORTS: ["Supports place/date (context only)", "b-ok"], CONTRADICTS: ["Weak contradiction", "b-unv"], UNKNOWN: ["Unknown", "b-na"]};
+
+function baseOf(ref) { return ref.kind + "/" + ref.name; }
+function img(ref, rel, alt, cls) {
+  return h("img", {class: cls, loading: "lazy", alt, src: "/files/" + baseOf(ref) + "/" + String(rel).split("/").map(encodeURIComponent).join("/")});
+}
+const limitsBox = (items) => h("div", {}, h("div", {class: "limits-h", text: "Limits of this layer"}), h("ul", {class: "limits"}, (items || []).map((x) => h("li", {text: x}))));
+function card(title, statusBadge, ...kids) {
+  return h("section", {class: "card"}, h("div", {class: "card-h"}, h("h2", {text: title}), statusBadge), ...kids);
+}
+function dates(m) {
+  const dl = h("dl", {class: "kv"});
+  const row = (k, v) => { dl.append(h("dt", {text: k}), h("dd", {}, v)); };
+  row("Stored date", m.stored_date ? m.stored_date + " (" + (m.stored_date_source || "memory entry") + ", inherited, not evidence)" : "none stored");
+  row("Independent date", m.independent_date ? m.independent_date + " (" + (m.independent_date_source || "?") + ")" : "none: could not be fetched live");
+  row("Date used", (m.upload_date || "unknown") + (m.date_source ? " (" + m.date_source + ")" : ""));
+  return dl;
+}
+
+function render(rep, ref) {
+  const out = $("#out"); out.replaceChildren();
+  const v = rep.visual_matching, fv = rep.final_verdict, cl = rep.clues || {}, ph = rep.physical_world_check || {}, mem = rep.memory || {}, cm = rep.claim || {};
+  const V = VERDICT[fv.label] || VERDICT.UNVERIFIED;
+
+  // verdict banner: the label, never a score
+  out.append(h("section", {class: "banner " + V.cls, "aria-label": "Verdict"},
+    h("div", {class: "lab", text: V.title + " (" + fv.label + ")"}),
+    h("p", {text: fv.summary}),
+    h("div", {class: "not-mean"}, h("strong", {text: "What this does NOT mean: "}), V.notMean),
+    (fv.basis && fv.basis.unverified_reason) ? h("div", {class: "warn", text: "Reason: " + fv.basis.unverified_reason}) : null,
+    h("div", {class: "limits-h", text: "Limitations (always shown)"}),
+    h("ul", {class: "limits"}, (fv.limits || []).map((x) => h("li", {text: x})))));
+
+  // claim
+  const claimDl = h("dl", {class: "kv"});
+  [["Claim", cm.text], ["Claimed date", cm.event_date], ["Place", cm.place], ["Event type", cm.event_type]].forEach(([k, val]) => claimDl.append(h("dt", {text: k}), h("dd", {text: val || "not given"})));
+  const contra = rep.contradictions || [];
+  out.append(card("Claim", badge(contra.length ? contra.length + " contradiction(s) backed by independent evidence" : "No independently evidenced contradiction", contra.length ? "b-rec" : "b-na"),
+    claimDl,
+    contra.map((c) => h("div", {class: "src"}, h("strong", {text: c.kind.replaceAll("_", " ") + ": "}), c.text, h("div", {class: "note"}, "Evidence: ", (c.evidence || []).map((u, i) => [i ? ", " : "", link(u)])), c.note ? h("div", {class: "note", text: c.note}) : null)),
+    limitsBox(["Only conflicts backed by independent evidence are listed here. AI observations and location guesses are shown under 'Muse clues' and are never counted as contradictions."])));
+
+  // visual matching
+  const pm = v.proven_matches || [];
+  const vm = card("Visual matching (proof layer)", badge(...STATUS[v.status] || [v.status, "b-na"]));
+  if (!pm.length) vm.append(h("p", {text: "No copy of this footage was proven by the frame matcher. This is a normal outcome and does not mean no earlier copy exists."}));
+  pm.forEach((m) => {
+    const ok = m.date_independent;
+    const d = h("div", {class: "src"},
+      h("div", {}, link(m.url), " ", badge(ok ? "date independently verified" : "date NOT independently verified", ok ? "b-ok" : "b-unv")),
+      h("div", {class: "note", text: "Found via " + (m.adapter || "?") + (m.uploader ? "; uploader " + m.uploader : "")}),
+      dates(m),
+      m.date_alternatives && m.date_alternatives.length ? h("div", {class: "note", text: "Dates disagree: " + m.date_alternatives.map((a) => a.date + " per " + a.source).join("; ") + ". The later one is used."}) : null,
+      m.date_note ? h("div", {class: "warn", text: m.date_note}) : null,
+      h("div", {class: "note", text: m.match.consistent_frames + " temporally consistent frame(s); up to " + m.match.max_inliers + " inliers" + (m.match.mirrored ? "; mirrored" : "") + "."}),
+      m.evidence_png ? img(ref, m.evidence_png, "Side-by-side matched frames: input clip on the left, copy on the right, with matched keypoints", "proof") : null,
+      (m.match.best_pairs || []).length ? h("details", {}, h("summary", {text: "Matched frame pairs (" + m.match.best_pairs.length + ")"}),
+        h("ul", {class: "plain"}, m.match.best_pairs.map((p) => h("li", {text: "input frame " + p.a_frame + " = copy frame " + p.b_frame + ": " + p.inliers + " inliers" + (p.flip ? " (mirrored)" : "")})))) : null);
+    vm.append(d);
+  });
+  const ep = v.earliest_proven_copy;
+  vm.append(h("p", {class: "note", text: ep ? "Earliest copy found: " + ep.url + " (" + ep.upload_date + "). This is the earliest copy this tool found, not asserted to be the original source." : "No dated copy found."}));
+  if (v.input_publication) vm.append(h("p", {class: "note"}, "The input URL itself was published " + v.input_publication.upload_date + " (" + v.input_publication.date_source + ")."));
+  vm.append(limitsBox([v.provenance_note, "Checked " + v.candidates_checked + " of " + v.candidates_total + " candidate sources; search is not exhaustive.", "A visual match shows shared footage, not that a claim is false or the footage fake."].filter(Boolean)));
+  out.append(vm);
+
+  // muse clues
+  const mc = card("Muse clues and location hypotheses (AI observations)", badge(...STATUS[cl.status] || [cl.status || "?", "b-na"]));
+  if (cl.status === "ok") {
+    (cl.location_hypotheses || []).forEach((hy) => mc.append(h("div", {class: "src"},
+      badge("Hypothesis (unverified)", "b-hyp"), " ", h("strong", {text: [hy.place, hy.country].filter(Boolean).join(", ")}),
+      h("div", {class: "note", text: "Model confidence " + hy.confidence + " (self-reported, not calibrated). Cited frames: " + (hy.cited_frames || []).join(", ")}),
+      h("ul", {class: "plain"}, (hy.reasons || []).map((r) => h("li", {text: r.text + " [frames " + r.refs.join(", ") + "]"}))))));
+    if (!(cl.location_hypotheses || []).length) mc.append(h("p", {class: "note", text: "No cited location hypothesis (an uncited guess is rejected)."}));
+    const obs = cl.observations_against_claim || [];
+    if (obs.length) mc.append(h("div", {class: "src"}, badge("Unverified model observation", "b-hyp"), " clashes with the claim:",
+      h("ul", {class: "plain"}, obs.map((o) => h("li", {text: o.text + " [frames " + o.refs.join(", ") + "]"})))));
+    if ((cl.shows || []).length) mc.append(h("div", {class: "src"}, h("strong", {text: "What the model says the footage shows"}), h("ul", {class: "plain"}, cl.shows.map((s) => h("li", {text: s.text + " [frames " + s.refs.join(", ") + "]"})))));
+    if ((cl.visible_text || []).length) mc.append(h("p", {class: "note", text: "Visible text: " + cl.visible_text.map((t) => t.text).join(" | ")}));
+    if ((cl.frame_images || []).length) {
+      const fr = h("div", {class: "frames"});
+      cl.frame_images.forEach((p) => { const b = p.split("/").pop(); fr.append(h("figure", {}, img(ref, "frames/" + b, "Keyframe " + b), h("figcaption", {text: b.replace(".jpg", "")}))); });
+      mc.append(fr);
+    }
+  } else mc.append(h("p", {class: "note", text: "Clues unavailable: " + (cl.error || cl.status)}));
+  mc.append(limitsBox(["These are model inferences from a few keyframes. They are hypotheses to check, not evidence, and are never counted as contradictions.", "Model location guesses can be confidently wrong (look-alike terrain)."]));
+  out.append(mc);
+
+  // physical
+  const pv = ph.verdict, pdisp = pv === "NO_EVIDENCE" ? ["Insufficient corroboration", "b-na"] : (PHYS[pv] || STATUS[ph.status] || [ph.status || pv || "Not run", "b-na"]);
+  const pc = card("Physical-world check", badge(...pdisp));
+  if (pv === "NO_EVIDENCE") pc.append(h("p", {text: ph.verdict_display || "Insufficient corroboration — this does not show the event didn't happen"}));
+  if (ph.reason) pc.append(h("p", {text: ph.reason}));
+  if ((ph.reasons || []).length) pc.append(h("ul", {class: "plain"}, ph.reasons.map((r) => h("li", {text: r}))));
+  if ((ph.links || []).length) pc.append(h("p", {class: "note"}, "Sources: ", ph.links.map((u, i) => [i ? " | " : "", link(u, u.replace(/^https?:\/\//, "").slice(0, 48))])));
+  pc.append(limitsBox((ph.limits || []).concat(["Physical support is context only; it never changes the verdict on its own."])));
+  out.append(pc);
+
+  // memory
+  const mm = card("Investigation memory", badge(...STATUS[mem.status] || [mem.status, "b-na"]));
+  (mem.hits || []).forEach((hit) => mm.append(h("div", {class: "src"}, link(hit.url),
+    h("dl", {class: "kv"}, h("dt", {text: "Stored date"}), h("dd", {text: (hit.stored_date || "none") + " (memory entry, inherited)"}),
+      h("dt", {text: "Independent date"}), h("dd", {text: hit.independent_date ? hit.independent_date + " (" + hit.independent_date_source + ")" : "none: could not be fetched live"})),
+    hit.context && hit.context.original_desc ? h("div", {class: "note", text: "Memory note: " + hit.context.original_desc + (hit.context.note ? " (" + hit.context.note + ")" : "")}) : null)));
+  if (!(mem.hits || []).length) mm.append(h("p", {class: "note", text: mem.status === "NOT_RUN" ? "Memory lookup was not run." : "No previously stored clip matched."}));
+  mm.append(limitsBox([mem.note || "Memory covers only clips indexed so far; a stored date is inherited and is re-fetched independently before it can support a verdict."]));
+  out.append(mm);
+
+  // agent trace (collapsed)
+  const at = rep.agent_trace;
+  if (at) {
+    out.append(h("section", {class: "card"}, h("div", {class: "card-h"}, h("h2", {text: "Deep investigation trace"}), badge("experimental", "b-hyp")),
+      h("div", {class: "warn", text: "Extra investigation does not guarantee a better verdict. The trace is shown, not trusted: it never feeds the verdict."}),
+      h("p", {class: "note", text: at.tool_calls + " tool calls, stop reason " + at.stop_reason + ", cost $" + at.cost_usd}),
+      h("details", {}, h("summary", {text: "Show full trace (" + at.steps.length + " steps)"}),
+        at.agent_summary ? h("p", {}, h("strong", {text: "Agent's own summary (unverified): "}), at.agent_summary) : null,
+        at.steps.map((s) => h("div", {class: "trace-step"}, h("strong", {text: "#" + s.step + " " + s.tool}), s.args ? " " + JSON.stringify(s.args).slice(0, 200) : "", s.reason ? h("div", {class: "note", text: "Why: " + s.reason}) : null, s.result ? h("div", {class: "note", text: "Result: " + s.result}) : null)))));
+  }
+  out.append(h("p", {class: "note", text: "Report " + rep.investigation_id + ", created " + rep.created_at}));
+  out.scrollIntoView({behavior: "smooth", block: "start"});
+}
+
+async function openReport(kind, name) {
+  const r = await fetch("/api/report/" + kind + "/" + encodeURIComponent(name));
+  if (!r.ok) { $("#out").replaceChildren(h("p", {class: "err", text: "Could not load report: " + (await r.text()).slice(0, 200)})); return; }
+  render(await r.json(), {kind, name});
+}
+
+fetch("/api/demos").then((r) => r.json()).then((ds) => {
+  const p = $("#picker");
+  ds.forEach((d) => {
+    const b = h("button", {type: "button"}, h("span", {class: "t", text: d.title}), h("span", {class: "s", text: (d.claim || "") + " "}), badge(d.label, (VERDICT[d.label] || {cls: "b-na"}).cls));
+    b.onclick = () => openReport("demo", d.name); p.append(b);
+  });
+});
+
+$("#form").onsubmit = async (ev) => {
+  ev.preventDefault();
+  const fd = new FormData($("#form")); if (!$("#deep").checked) fd.delete("deep");
+  $("#go").disabled = true; $("#status").textContent = " Running..."; const log = $("#log"); log.classList.remove("hide"); log.textContent = "";
+  const r = await fetch("/api/investigate", {method: "POST", body: fd});
+  if (!r.ok) { $("#status").textContent = " " + (await r.text()).slice(0, 200); $("#go").disabled = false; return; }
+  const {job} = await r.json();
+  const tick = async () => {
+    const j = await (await fetch("/api/job/" + job)).json();
+    log.textContent = j.log.join("\n"); $("#status").textContent = " " + j.status + " (" + j.seconds + " s)";
+    if (j.status === "running") return setTimeout(tick, 2500);
+    $("#go").disabled = false;
+    if (j.status === "done") openReport("run", j.report); else $("#status").textContent = " Failed: " + j.error;
+  };
+  tick();
+};
+</script>
+</body>
+</html>

@@ -18,6 +18,8 @@ def main(argv=None):
     inv.add_argument("--no-muse", action="store_true"); inv.add_argument("--no-memory", action="store_true")
     inv.add_argument("--remember", action="store_true", help="add the input to memory as discovered:<id>")
     inv.add_argument("--json", action="store_true", help="print report.json instead of the text summary")
+    sv = sp.add_parser("serve", help="local web UI (renders from validated report.json)")
+    sv.add_argument("--host", default="127.0.0.1"); sv.add_argument("--port", type=int, default=8000)
     mm = sp.add_parser("memory"); ms = mm.add_subparsers(dest="mcmd", required=True)
     ms.add_parser("seed"); ms.add_parser("stats")
     ad = ms.add_parser("add"); ad.add_argument("source"); ad.add_argument("--url"); ad.add_argument("--date")
@@ -26,6 +28,9 @@ def main(argv=None):
 
     from . import load_env
     load_env()
+    if a.cmd == "serve":
+        from .web import serve
+        return serve(a.host, a.port)
     if a.cmd == "investigate":
         from .pipeline import investigate
         from .report import render_text

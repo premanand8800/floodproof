@@ -1,0 +1,61 @@
+"""Web app: renders only validated reports, serves proof images safely, static page carries the required honesty text."""
+import json
+import pytest
+
+pytest.importorskip("fastapi")
+from fastapi.testclient import TestClient
+from floodproof import web
+from floodproof.report import build_report
+
+
+def good_report():
+    m = dict(url="https://youtu.be/o", upload_date="2024-09-28", date_source="yt-dlp live metadata", retrieved_at="t", adapter="memory",
+             stored_date="2024-09-28", stored_date_source="memory entry (inherited)", independent_date="2024-09-28",
+             independent_date_source="yt-dlp live metadata", date_independent=True, evidence_png="evidence/e.png",
+             match=dict(consistent_frames=9, max_inliers=120, temporal_offset=0.0, mirrored=False, best_pairs=[]))
+    return build_report(input_meta=dict(source="x"), claim=dict(text="Nepal flood", event_date="2026-08-26"), memory=dict(status="MISS"),
+                        visual=dict(status="FOUND", proven_matches=[m]), clues=dict(status="not_run"), physical=dict(status="NOT_RUN"))
+
+
+@pytest.fixture
+def client(tmp_path, monkeypatch):
+    d = tmp_path / "demo"
+    (d / "ok" / "evidence").mkdir(parents=True)
+    (d / "ok" / "report.json").write_text(json.dumps(good_report()))
+    (d / "ok" / "evidence" / "e.png").write_bytes(b"\x89PNG")
+    (d / "ok" / "secret.txt").write_text("nope")
+    bad = good_report(); bad["final_verdict"]["label"] = "FAKE"
+    (d / "bad").mkdir(); (d / "bad" / "report.json").write_text(json.dumps(bad))
+    monkeypatch.setattr(web, "DEMO_DIR", d)
+    return TestClient(web.create_app())
+
+
+def test_demo_list_validates(client):
+    got = {x["name"]: x for x in client.get("/api/demos").json()}
+    assert got["ok"]["label"] == "RECYCLED_FOOTAGE" and got["bad"]["label"] == "INVALID"
+
+
+def test_report_served_only_if_valid(client):
+    assert client.get("/api/report/demo/ok").json()["final_verdict"]["label"] == "RECYCLED_FOOTAGE"
+    assert client.get("/api/report/demo/bad").status_code == 422
+    assert client.get("/api/report/demo/missing").status_code == 404
+    assert client.get("/api/report/demo/..%2f..").status_code == 404
+
+
+def test_files_are_images_only_and_confined(client):
+    assert client.get("/files/demo/ok/evidence/e.png").status_code == 200
+    assert client.get("/files/demo/ok/secret.txt").status_code == 404
+    assert client.get("/files/demo/ok/../ok/report.json").status_code == 404
+
+
+def test_index_has_required_honesty_ui(client):
+    html = client.get("/").text
+    for s in ("What this does NOT mean", "Deep investigate (experimental)", "Extra investigation does not guarantee a better verdict",
+              "Hypothesis (unverified)", "Stored date", "Independent date", "Limitations (always shown)", "Show full trace"):
+        assert s in html
+    import re
+    assert not re.search(r"<script[^>]+src=", html)
+
+
+def test_investigate_requires_input(client):
+    assert client.post("/api/investigate", data={"claim": "x"}).status_code == 400
