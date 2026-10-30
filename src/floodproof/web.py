@@ -13,6 +13,8 @@ import time
 import uuid
 from pathlib import Path
 
+from fastapi import UploadFile  # module level: needed to resolve the postponed "UploadFile | None" annotation
+
 from . import CACHE, ROOT
 from .report import validate_report
 

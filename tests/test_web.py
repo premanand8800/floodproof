@@ -59,3 +59,14 @@ def test_index_has_required_honesty_ui(client):
 
 def test_investigate_requires_input(client):
     assert client.post("/api/investigate", data={"claim": "x"}).status_code == 400
+
+
+def test_file_upload_starts_job(monkeypatch, tmp_path):
+    from fastapi.testclient import TestClient
+    from floodproof import web
+    monkeypatch.setattr(web, "UPLOADS", tmp_path)
+    monkeypatch.setattr(web, "_run_job", lambda *a, **k: None)
+    web.JOBS.clear()
+    r = TestClient(web.create_app()).post("/api/investigate", files={"file": ("clip.mp4", b"\x00" * 100, "video/mp4")})
+    assert r.status_code == 200 and "job" in r.json()
+    web.JOBS.clear()
