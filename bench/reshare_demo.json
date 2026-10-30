@@ -1,0 +1,101 @@
+{
+ "demo": "memory re-share: crop 80% + mirror + Nepali caption bar + low-bitrate re-encode",
+ "original": {
+  "path": "data/videos/x_iambmane.mp4",
+  "width": 320,
+  "height": 568,
+  "bit_rate": 593162,
+  "size_bytes": 6325855
+ },
+ "variant": {
+  "path": ".cache/reshare/variant.mp4",
+  "caption": "\u092c\u093e\u0922\u0940\u0915\u094b \u092d\u093f\u0921\u093f\u092f\u094b: \u0930\u093e\u0938\u0941\u0935\u093e, \u0906\u091c\u0948",
+  "width": 256,
+  "height": 454,
+  "bit_rate": 147461,
+  "size_bytes": 1920704
+ },
+ "memory_mode": "data/memory copy (37 entries, read-only copy; remember=False)",
+ "memory_entries_before": 37,
+ "memory_entries_after": 37,
+ "external_search": "OFF (yandex, tavily, youtube api, lens, vision); Muse OFF (no paid call)",
+ "rerun": {
+  "wall_s": 75.7,
+  "report_timing_s": 75.7,
+  "memory_status": "HIT",
+  "memory_lookup_s": 32.86,
+  "memory_mode": "hash-shortlist(top_6)+match",
+  "verdict": "RECYCLED_FOOTAGE",
+  "n_proven": 1,
+  "proven": [
+   {
+    "url": "https://www.instagram.com/reel/DcUFQZhvGzS/",
+    "adapter": "memory",
+    "independent_date": "2026-08-21",
+    "date_independent": true,
+    "match": {
+     "decision": true,
+     "consistent_frames": 32,
+     "max_inliers": 166,
+     "mirrored": true,
+     "temporal_offset": 0.3333333333333286,
+     "n_pairs": 148,
+     "score": 33.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 23,
+       "b_frame": 24,
+       "a_t": 36.333333333333336,
+       "b_t": 36.666666666666664,
+       "inliers": 166,
+       "flip": true
+      },
+      {
+       "a_frame": 36,
+       "b_frame": 36,
+       "a_t": 57.666666666666664,
+       "b_t": 57.666666666666664,
+       "inliers": 164,
+       "flip": true
+      },
+      {
+       "a_frame": 32,
+       "b_frame": 33,
+       "a_t": 51.666666666666664,
+       "b_t": 52.0,
+       "inliers": 161,
+       "flip": true
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "first_run": {
+  "wall_s": 264.5,
+  "memory_status": "HIT",
+  "verdict": "RECYCLED_FOOTAGE",
+  "note": "full pipeline: memory + Muse + Yandex + Tavily + physical, from demo/success_recycled/report.json"
+ },
+ "phase_log": [
+  [
+   0.0,
+   "[1/6] fetching clip + keyframes"
+  ],
+  [
+   3.5,
+   "[2/6] memory lookup"
+  ],
+  [
+   36.3,
+   "checked 1 of 1 candidates"
+  ],
+  [
+   36.3,
+   "re-fetching dates independently for 1 inherited-date copies"
+  ]
+ ],
+ "speedup": 3.5,
+ "cost_usd": 0.0
+}

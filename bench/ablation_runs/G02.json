@@ -1,0 +1,639 @@
+{
+ "schema_version": "1.2",
+ "investigation_id": "a4cbbcadb9",
+ "created_at": "2026-10-30T10:44:56+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a86ed53237bbce27c/data/global/G02.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/G02.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "G02.mp4",
+  "duration": 27.266666666666666,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 42,
+  "keyframe_times_s": [
+   0.0,
+   5.33,
+   11.67,
+   12.0,
+   13.0,
+   14.67,
+   15.0,
+   15.33,
+   15.67,
+   16.0,
+   16.33,
+   16.67,
+   17.0,
+   17.33,
+   17.67,
+   18.0,
+   18.33,
+   18.67,
+   19.0,
+   19.33,
+   19.67,
+   20.0,
+   20.33,
+   20.67,
+   21.0,
+   21.33,
+   21.67,
+   22.0,
+   22.67,
+   23.0,
+   23.33,
+   23.67,
+   24.0,
+   24.33,
+   24.67,
+   25.0,
+   25.33,
+   25.67,
+   26.0,
+   26.33,
+   26.67,
+   27.0
+  ]
+ },
+ "claim": {
+  "text": "House wall collapsing in floodwater during Hurricane Milton, Florida",
+  "event_date": "2024-10-09",
+  "place": "Florida, USA",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": null,
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 29.61,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/watch?app=desktop&v=pjR9b6cKQDM",
+    "title": "Video shows wall caving in with gushing water due to Hurricane Ida in New Jersey basement ABC7 - YouTube",
+    "uploader": "ABC7",
+    "upload_date": "2021-09-03",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:42:51+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 17",
+    "match": {
+     "decision": true,
+     "consistent_frames": 29,
+     "max_inliers": 70,
+     "mirrored": false,
+     "temporal_offset": 0.6664830339321348,
+     "n_pairs": 85,
+     "score": 29.7,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 5,
+       "b_frame": 3,
+       "a_t": 14.666666666666666,
+       "b_t": 15.333149700598801,
+       "inliers": 70,
+       "flip": false
+      },
+      {
+       "a_frame": 6,
+       "b_frame": 3,
+       "a_t": 15.0,
+       "b_t": 15.333149700598801,
+       "inliers": 66,
+       "flip": false
+      },
+      {
+       "a_frame": 7,
+       "b_frame": 4,
+       "a_t": 15.333333333333334,
+       "b_t": 15.666479041916167,
+       "inliers": 64,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_dbe7a65a.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2021-09-03",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=pjR9b6cKQDM",
+    "title": "Video shows wall caving in with gushing water due to Hurricane Ida in New Jersey basement ABC7 - YouTube",
+    "uploader": "ABC7",
+    "upload_date": "2021-09-03",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:42:56+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 17",
+    "match": {
+     "decision": true,
+     "consistent_frames": 29,
+     "max_inliers": 70,
+     "mirrored": false,
+     "temporal_offset": 0.6664830339321348,
+     "n_pairs": 85,
+     "score": 29.7,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 5,
+       "b_frame": 3,
+       "a_t": 14.666666666666666,
+       "b_t": 15.333149700598801,
+       "inliers": 70,
+       "flip": false
+      },
+      {
+       "a_frame": 6,
+       "b_frame": 3,
+       "a_t": 15.0,
+       "b_t": 15.333149700598801,
+       "inliers": 66,
+       "flip": false
+      },
+      {
+       "a_frame": 7,
+       "b_frame": 4,
+       "a_t": 15.333333333333334,
+       "b_t": 15.666479041916167,
+       "inliers": 64,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_d8eaec78.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2021-09-03",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=DYUvH5ge8c0",
+    "title": "Wild Video Shows Wall Collapse Trap NJ Family in Ida's Floodwater - YouTube",
+    "uploader": "NBC New York",
+    "upload_date": "2021-09-04",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:43:13+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 17",
+    "match": {
+     "decision": true,
+     "consistent_frames": 8,
+     "max_inliers": 88,
+     "mirrored": false,
+     "temporal_offset": -5.660666666666666,
+     "n_pairs": 43,
+     "score": 8.88,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 2,
+       "b_frame": 2,
+       "a_t": 11.666666666666666,
+       "b_t": 6.006,
+       "inliers": 88,
+       "flip": false
+      },
+      {
+       "a_frame": 3,
+       "b_frame": 2,
+       "a_t": 12.0,
+       "b_t": 6.006,
+       "inliers": 87,
+       "flip": false
+      },
+      {
+       "a_frame": 4,
+       "b_frame": 2,
+       "a_t": 13.0,
+       "b_t": 6.006,
+       "inliers": 84,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_f0d5dab1.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2021-09-04",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=GHYolJVWcUM",
+    "title": "NYC Flooding Kills Several Residents of Basement Homes - YouTube",
+    "uploader": "Bulletin Buzz",
+    "upload_date": "2021-09-03",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:43:15+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 17",
+    "match": {
+     "decision": true,
+     "consistent_frames": 22,
+     "max_inliers": 52,
+     "mirrored": false,
+     "temporal_offset": 0.0,
+     "n_pairs": 39,
+     "score": 22.52,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 0,
+       "b_frame": 0,
+       "a_t": 0.0,
+       "b_t": 0.0,
+       "inliers": 52,
+       "flip": false
+      },
+      {
+       "a_frame": 10,
+       "b_frame": 2,
+       "a_t": 16.333333333333332,
+       "b_t": 16.333333333333332,
+       "inliers": 50,
+       "flip": false
+      },
+      {
+       "a_frame": 16,
+       "b_frame": 7,
+       "a_t": 18.333333333333332,
+       "b_t": 18.333333333333332,
+       "inliers": 49,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_2007d77e.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2021-09-03",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=WIDQbDai2jQ",
+    "title": "Basement wall collapses under pressure of Ida flood waters - YouTube",
+    "uploader": "Eyewitness News ABC7NY",
+    "upload_date": "2021-09-03",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:43:23+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 25",
+    "match": {
+     "decision": true,
+     "consistent_frames": 27,
+     "max_inliers": 86,
+     "mirrored": false,
+     "temporal_offset": -14.331340606060605,
+     "n_pairs": 106,
+     "score": 27.86,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 10,
+       "b_frame": 3,
+       "a_t": 16.333333333333332,
+       "b_t": 2.0019927272727274,
+       "inliers": 86,
+       "flip": false
+      },
+      {
+       "a_frame": 8,
+       "b_frame": 1,
+       "a_t": 15.666666666666666,
+       "b_t": 1.3346618181818182,
+       "inliers": 82,
+       "flip": false
+      },
+      {
+       "a_frame": 11,
+       "b_frame": 4,
+       "a_t": 16.666666666666668,
+       "b_t": 2.335658181818182,
+       "inliers": 77,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_654d12e1.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2021-09-03",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/watch?app=desktop&v=pjR9b6cKQDM",
+   "title": "Video shows wall caving in with gushing water due to Hurricane Ida in New Jersey basement ABC7 - YouTube",
+   "uploader": "ABC7",
+   "upload_date": "2021-09-03",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T10:42:51+00:00",
+   "adapter": "yandex",
+   "found_via": "frame 17",
+   "match": {
+    "decision": true,
+    "consistent_frames": 29,
+    "max_inliers": 70,
+    "mirrored": false,
+    "temporal_offset": 0.6664830339321348,
+    "n_pairs": 85,
+    "score": 29.7,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 5,
+      "b_frame": 3,
+      "a_t": 14.666666666666666,
+      "b_t": 15.333149700598801,
+      "inliers": 70,
+      "flip": false
+     },
+     {
+      "a_frame": 6,
+      "b_frame": 3,
+      "a_t": 15.0,
+      "b_t": 15.333149700598801,
+      "inliers": 66,
+      "flip": false
+     },
+     {
+      "a_frame": 7,
+      "b_frame": 4,
+      "a_t": 15.333333333333334,
+      "b_t": 15.666479041916167,
+      "inliers": 64,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/yandex_dbe7a65a.png",
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2021-09-03",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 29,
+  "candidate_status_counts": {
+   "not_proven": 4,
+   "unavailable": 4,
+   "proven": 5,
+   "pending": 15,
+   "too_long": 1
+  },
+  "adapters": {
+   "yandex": {
+    "frames": [
+     17,
+     33,
+     25
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 29,
+    "checked": 14,
+    "proven": 5
+   }
+  }
+ },
+ "clues": {
+  "status": "not_run"
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Florida, USA",
+   "name": "Florida, United States",
+   "lat": 27.7567667,
+   "lon": -81.4639835,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": [
+    {
+     "name": "Florida, Puerto Rico, 00650, United States",
+     "lat": 18.3755793,
+     "lon": -66.5602412,
+     "class": "boundary",
+     "type": "administrative"
+    }
+   ]
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2024-10-06",
+      "m3s": 7.2
+     },
+     {
+      "date": "2024-10-07",
+      "m3s": 8.62
+     },
+     {
+      "date": "2024-10-08",
+      "m3s": 9.96
+     },
+     {
+      "date": "2024-10-09",
+      "m3s": 12.15
+     },
+     {
+      "date": "2024-10-10",
+      "m3s": 13.96
+     },
+     {
+      "date": "2024-10-11",
+      "m3s": 14.56
+     },
+     {
+      "date": "2024-10-12",
+      "m3s": 15.98
+     }
+    ],
+    "baseline": 7.0649999999999995,
+    "peak": 15.98,
+    "ratio": 2.26,
+    "cell": [
+     27.875,
+     -81.47499
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2024-10-06",
+      "mm": 84.0
+     },
+     {
+      "date": "2024-10-07",
+      "mm": 6.9
+     },
+     {
+      "date": "2024-10-08",
+      "mm": 3.2
+     },
+     {
+      "date": "2024-10-09",
+      "mm": 45.8
+     },
+     {
+      "date": "2024-10-10",
+      "mm": 6.8
+     },
+     {
+      "date": "2024-10-11",
+      "mm": 0.8
+     },
+     {
+      "date": "2024-10-12",
+      "mm": 0.2
+     }
+    ],
+    "max_mm": 84.0
+   },
+   "status": "UNKNOWN"
+  },
+  "verdict": "NO_EVIDENCE",
+  "reasons": [
+   "no Copernicus flood activation within 150 km / +-3 d",
+   "discharge ratio 2.26 (peak 16.0 vs baseline 7.1 m3/s), max rain 84.0 mm/day"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened",
+   "event_type=unknown: event type unknown, so the river-flood model may not apply; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen (public hydrology/activation data cannot resolve flash floods, GLOFs or landslides)."
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=27.7567667&longitude=-81.4639835&daily=river_discharge&start_date=2024-10-06&end_date=2024-10-12",
+   "https://www.openstreetmap.org/?mlat=27.7567667&mlon=-81.4639835#map=10/27.7567667/-81.4639835"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Florida flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Florida+flood&mode=artli"
+  },
+  "verdict_display": "Insufficient corroboration \u2014 this does not show the event didn't happen"
+ },
+ "media_nature": {
+  "value": "unknown",
+  "confidence": 0.0,
+  "cited_frames": [],
+  "cited_timestamps_s": [],
+  "reasons": [],
+  "status": "NOT_RUN",
+  "note": "Muse clues were not available, so the media nature was not assessed."
+ },
+ "contradictions": [
+  {
+   "kind": "independently_dated_earlier_copy",
+   "text": "Footage was already published on 2021-09-03 (earliest copy found), before the claimed event date 2024-10-09.",
+   "evidence": [
+    "https://www.youtube.com/watch?app=desktop&v=pjR9b6cKQDM"
+   ],
+   "date_source": "yt-dlp metadata"
+  }
+ ],
+ "final_verdict": {
+  "label": "RECYCLED_FOOTAGE",
+  "summary": "The footage matches the earliest copy found, published on 2021-09-03 (https://www.youtube.com/watch?app=desktop&v=pjR9b6cKQDM, date independently fetched per yt-dlp metadata), before the claimed event date 2024-10-09. Matcher evidence: 29 temporally consistent frame(s), up to 70 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists.",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen."
+  ],
+  "basis": {
+   "earlier_proven_copies": 5,
+   "proven_copies": 5,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "unknown",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 253.1,
+ "_wall_s": 253.1
+}
