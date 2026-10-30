@@ -185,3 +185,73 @@ def test_country_level_location_never_supports(monkeypatch):
     r = run(monkeypatch, make_router(geo=geo, ems=EMS_NEAR))
     assert r["location"]["country_level"] and r["location"]["confidence"] == "low"
     assert r["verdict"] == "UNKNOWN" and "whole country" in " ".join(r["reasons"])
+
+
+# ---------------------------------------------------------------- ReliefWeb + GDELT (mocked)
+def _rw_payload(types=("Flood",), date="2024-09-28T00:00:00+00:00"):
+    return {"data": [{"id": "1", "fields": {"name": "Nepal: Floods - Sep 2024", "date": {"event": date},
+                                            "type": [{"name": t} for t in types], "status": "ongoing",
+                                            "url": "https://reliefweb.int/disaster/fl-2024-000001-npl"}}]}
+
+
+def test_reliefweb_match_supports(monkeypatch):
+    monkeypatch.setattr(P, "_http_post_json", lambda url, body: _rw_payload())
+    monkeypatch.setattr(P, "_http_json", make_router())
+    r = P.check(place="Kathmandu", date="2024-09-28", country="NP")
+    assert r["official_event"]["reliefweb"]["status"] == "MATCH"
+    assert r["verdict"] == "SUPPORTS"
+    assert any("ReliefWeb" in x and "reliefweb.int" in x for x in r["reasons"])
+
+
+def test_reliefweb_wrong_type_no_match(monkeypatch):
+    monkeypatch.setattr(P, "_http_post_json", lambda url, body: _rw_payload(types=("Earthquake",)))
+    out = P.reliefweb("NP", P._date(2024, 9, 28), 7, "flood")
+    assert out["status"] == "NO_MATCH" and out["disasters"] == []
+
+
+def test_reliefweb_degrades(monkeypatch):
+    def boom(url, body):
+        raise RuntimeError("403 Forbidden")
+    monkeypatch.setattr(P, "_http_post_json", boom)
+    out = P.reliefweb("NP", P._date(2024, 9, 28))
+    assert out["status"] == "UNAVAILABLE" and "appname" in out["reason"]
+    assert P.reliefweb(None, P._date(2024, 9, 28))["status"] == "SKIPPED"
+
+
+def test_reliefweb_cached(monkeypatch):
+    calls = []
+    monkeypatch.setattr(P, "_http_post_json", lambda url, body: calls.append(1) or _rw_payload())
+    P.reliefweb("NP", P._date(2024, 9, 28))
+    P.reliefweb("NP", P._date(2024, 9, 28))
+    assert len(calls) == 1
+
+
+def test_gdelt_news_coverage_context_only(monkeypatch):
+    arts = [{"url": f"https://n.example/{i}", "title": "t", "domain": "n.example", "seendate": "20240928T000000Z"} for i in range(7)]
+    monkeypatch.setattr(P, "_http_json", lambda url, params: {"articles": arts if params["enddatetime"].startswith("20241001") else arts[:2]})
+    n = P.news_coverage("Kathmandu, Nepal", P._date(2024, 9, 28), 3, "flood")
+    assert n["status"] == "OK" and n["context_only"] and n["label"] == "news coverage"
+    assert n["articles_in_window"] == 7 and n["articles_baseline_30d"] == 2
+    assert len(n["sample_links"]) == 5
+
+
+def test_gdelt_alone_never_supports(monkeypatch):
+    monkeypatch.setattr(P, "_http_post_json", lambda url, body: {"data": []})
+    router = make_router(elev=3200)
+
+    def both(url, params):
+        if url == P.GDELT_API:
+            return {"articles": [{"url": "https://n.example/a", "title": "t"}] * 50}
+        return router(url, params)
+    monkeypatch.setattr(P, "_http_json", both)
+    r = P.check(place="Kathmandu", date="2024-09-28", country="NP")
+    assert r["news_coverage"]["articles_in_window"] == 50
+    assert r["verdict"] == "NO_EVIDENCE"
+
+
+def test_gdelt_degrades(monkeypatch):
+    def boom(url, params):
+        raise ValueError("not json")
+    monkeypatch.setattr(P, "_http_json", boom)
+    assert P.news_coverage("Kathmandu", P._date(2024, 9, 28))["status"] == "UNAVAILABLE"
+    assert P.news_coverage(None, P._date(2024, 9, 28))["status"] == "SKIPPED"

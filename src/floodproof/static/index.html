@@ -216,6 +216,14 @@ function render(rep, ref) {
   const ep = v.earliest_proven_copy;
   vm.append(h("p", {class: "note", text: ep ? "Earliest copy found: " + ep.url + " (" + ep.upload_date + "). This is the earliest copy this tool found, not asserted to be the original source." : "No dated copy found."}));
   if (v.input_publication) vm.append(h("p", {class: "note"}, "The input URL itself was published " + v.input_publication.upload_date + " (" + v.input_publication.date_source + ")."));
+  const ss = v.source_stats || {}, ad = v.adapters || {};
+  const names = Object.keys(ss);
+  if (names.length || Object.keys(ad).length) {
+    const rows = ["memory", "gvision", "youtube_api", "yandex", "lens", "tavily"].filter((n) => ss[n] || ad[n]);
+    vm.append(h("div", {class: "note"}, h("strong", {text: "Discovery sources (candidates found / proven by the matcher)"}),
+      h("ul", {class: "plain"}, rows.map((n) => { const st = ss[n], a = ad[n] || {};
+        return h("li", {text: n + ": " + (st ? st.candidates + " found, " + st.proven + " proven" : "0 found") + (a.skipped ? " \u2014 " + a.skipped : "") + ((a.errors || []).length ? " (error)" : "")}); }))));
+  }
   vm.append(limitsBox([v.provenance_note, "Checked " + v.candidates_checked + " of " + v.candidates_total + " candidate sources; search is not exhaustive.", "A visual match shows shared footage, not that a claim is false or the footage fake."].filter(Boolean)));
   out.append(vm);
 
@@ -259,6 +267,12 @@ function render(rep, ref) {
   if (pl.source && pl.lat != null) pc.append(h("p", {class: "note", text: "Location: " + (pl.name || pl.query) + " (source: " + pl.source + ")" + (pl.fallback_from ? "; the claimed place \u201c" + pl.fallback_from + "\u201d could not be resolved" : "")}));
   if (ph.reason) pc.append(h("p", {text: ph.reason}));
   if ((ph.reasons || []).length) pc.append(h("ul", {class: "plain"}, ph.reasons.map((r) => h("li", {text: r}))));
+  const oe = ph.official_event || {}, rw = oe.reliefweb, nc = ph.news_coverage;
+  if (rw) pc.append(h("div", {class: "note"}, h("strong", {text: "Official event (ReliefWeb): "}),
+    rw.status === "MATCH" ? (rw.disasters || []).slice(0, 3).map((d, i) => [i ? "; " : "", link(d.url, d.name + " (" + d.date + ")")]) : (rw.status === "NO_MATCH" ? "no matching official entry within \u00b1" + rw.window_days + " days" : (rw.reason || rw.status))));
+  if (nc) pc.append(h("div", {class: "note"}, h("strong", {text: "News coverage (GDELT, context only): "}),
+    nc.status === "OK" ? nc.articles_in_window + " articles in the claim window vs " + nc.articles_baseline_30d + " in the 30 days before (capped at 250 each)" : (nc.reason || nc.status),
+    (nc.sample_links || []).length ? h("div", {}, nc.sample_links.slice(0, 3).map((l, i) => [i ? " | " : "", link(l.url, (l.domain || l.title || l.url).slice(0, 40))])) : null));
   if ((ph.links || []).length) pc.append(h("p", {class: "note"}, "Sources: ", ph.links.map((u, i) => [i ? " | " : "", link(u, u.replace(/^https?:\/\//, "").slice(0, 48))])));
   pc.append(limitsBox((ph.limits || []).concat(["Physical support is context only; it never changes the verdict on its own."])));
   out.append(pc);

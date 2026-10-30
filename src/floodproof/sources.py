@@ -1,13 +1,17 @@
 """Candidate discovery adapters. They only PROPOSE URLs; nothing counts until the matcher proves it.
 
-Order used by pipeline.investigate(): memory lookup -> Yandex reverse image search (2-3 keyframes, scripted
-Playwright; a captcha means we skip, we never try to bypass it) -> Tavily text search from Muse queries.
+Order used by pipeline.investigate(): memory lookup -> Google Vision web detection (GOOGLE_API_KEY) -> YouTube Data API
+search (GOOGLE_API_KEY) -> Yandex reverse image search (2-3 keyframes, scripted Playwright; a captcha means we skip, we
+never try to bypass it) -> SerpApi Google Lens (SERPAPI_KEY, only if nothing is proven yet, 1 call) -> Tavily text search
+from Muse queries. Key-gated adapters are inert ("skipped (no key)") until their key exists.
 `verify_candidates` downloads each candidate (<=360p, first <=150 s), runs the matcher, and keeps matcher-proven ones.
 """
 from __future__ import annotations
 
 import concurrent.futures as cf
+import base64
 import hashlib
+import logging
 import os
 import re
 import time
@@ -24,6 +28,10 @@ from . import media
 VIDEO_HOSTS = ("youtube.com/watch", "youtube.com/shorts", "youtu.be", "instagram.com/reel", "instagram.com/p/",
                "facebook.com/watch", "facebook.com/reel", "x.com/", "twitter.com/", "tiktok.com", "dailymotion.com/video",
                "vimeo.com")
+log = logging.getLogger("floodproof.sources")
+SKIP_NO_KEY = "skipped (no key)"
+LENS_HOSTS = ("instagram.com", "tiktok.com", "facebook.com", "fb.watch", "youtube.com", "youtu.be")
+PUBLIC_BASE = "https://floodproof.aether-soft.tech"
 IMG_RE = re.compile(r"\.(jpe?g|png|webp|gif)(\?|$)", re.I)
 
 
@@ -31,7 +39,7 @@ IMG_RE = re.compile(r"\.(jpe?g|png|webp|gif)(\?|$)", re.I)
 class Candidate:
     url: str
     title: str = ""
-    adapter: str = ""            # memory | yandex | tavily
+    adapter: str = ""            # memory | gvision | youtube_api | yandex | lens | tavily
     hint: str = ""               # which keyframe / query produced it
     status: str = "pending"      # proven | not_proven | unavailable | too_long | later_than_query | download_failed | error
     upload_date: str | None = None
@@ -48,6 +56,7 @@ class Candidate:
     date_independent: bool = False          # True only if upload_date came from a live fetch in THIS investigation
     date_note: str | None = None
     date_alternatives: list = field(default_factory=list)
+    also_from: list = field(default_factory=list)   # other adapters that proposed the same URL (merged by dedupe)
 
     def to_dict(self):
         return asdict(self)
@@ -74,6 +83,180 @@ def memory_candidates(mem, feats: ClipFeatures, evidence_dir: Path | None = None
                                str(Path(evidence_dir) / f"memory_{e['id']}.png") if evidence_dir else None, e,
                                stored_date=e.get("upload_date"), date_independent=False))
     return cands, res
+
+
+# ---------------------------------------------------------------- key-gated adapters (inert without a key)
+def _post_json(url, params=None, body=None, timeout=60):
+    """POST json -> dict; isolated so tests can monkeypatch (no network in tests)."""
+    r = requests.post(url, params=params, json=body, timeout=timeout)
+    r.raise_for_status()
+    return r.json()
+
+
+def _get_json(url, params=None, timeout=60):
+    r = requests.get(url, params=params, timeout=timeout)
+    r.raise_for_status()
+    return r.json()
+
+
+def _spread_frames(feats: ClipFeatures, n):
+    """n sharp keyframe ids, spread out in time."""
+    sharp = sorted(((cv2.Laplacian(cv2.cvtColor(f, cv2.COLOR_BGR2GRAY), cv2.CV_64F).var(), i) for i, f in enumerate(feats.frames)), reverse=True)
+    pick = []
+    for _, i in sharp:
+        if all(abs(i - j) > max(1, len(feats) * 0.12) for j in pick):
+            pick.append(i)
+        if len(pick) == n:
+            break
+    return pick or list(range(min(n, len(feats))))
+
+
+def _yt_from_thumb(u):
+    m = re.search(r"i\d?\.ytimg\.com/vi(?:_webp)?/([\w-]{11})/", u)
+    return f"https://www.youtube.com/watch?v={m.group(1)}" if m else None
+
+
+def gvision_candidates(feats: ClipFeatures, n_frames=4, max_links=40, key=None, frames: list | None = None):
+    """Google Cloud Vision WEB_DETECTION on 3-4 keyframes. Candidates only; the matcher still has to prove each."""
+    load_env()
+    key = key or os.environ.get("GOOGLE_API_KEY")
+    info = dict(source="gvision", frames=[], calls=0, errors=[])
+    if not key:
+        log.info("gvision: %s", SKIP_NO_KEY)
+        return [], dict(info, skipped=SKIP_NO_KEY)
+    pick = list(frames) if frames else _spread_frames(feats, min(max(n_frames, 3), 4))
+    reqs = []
+    for i in pick:
+        ok, buf = cv2.imencode(".jpg", feats.frames[i], [cv2.IMWRITE_JPEG_QUALITY, 85])
+        if ok:
+            reqs.append(dict(image=dict(content=base64.b64encode(buf.tobytes()).decode()),
+                             features=[dict(type="WEB_DETECTION", maxResults=30)]))
+            info["frames"].append(int(i))
+    if not reqs:
+        return [], dict(info, errors=["no frames"])
+    try:
+        resp = _post_json("https://vision.googleapis.com/v1/images:annotate", params={"key": key}, body=dict(requests=reqs))
+        info["calls"] = 1
+    except Exception as e:
+        info["errors"].append(type(e).__name__ + ": " + str(e)[:100].replace(key, "***"))
+        return [], info
+    seen = {}
+    for fi, r in zip(info["frames"], resp.get("responses", [])):
+        if r.get("error"):
+            info["errors"].append(str(r["error"].get("message"))[:100]); continue
+        wd = r.get("webDetection") or {}
+        for pg in wd.get("pagesWithMatchingImages", []):
+            u = pg.get("url")
+            if u:
+                seen.setdefault(_clean_url(u), (pg.get("pageTitle") or "", f"frame {fi} page match"))
+        for kind in ("fullMatchingImages", "partialMatchingImages"):
+            for im in wd.get(kind, []):
+                u = im.get("url") or ""
+                u = _yt_from_thumb(u) or (None if IMG_RE.search(u) or "ytimg.com" in u else u)
+                if u:
+                    seen.setdefault(_clean_url(u), ("", f"frame {fi} {kind}"))
+    items = sorted(seen.items(), key=lambda kv: not any(h in kv[0] for h in VIDEO_HOSTS))[:max_links]
+    return [Candidate(u, re.sub(r"<[^>]+>", "", t), "gvision", h) for u, (t, h) in items], info
+
+
+def youtube_api_candidates(queries, claim_date=None, max_queries=3, max_results=15, key=None):
+    """YouTube Data API v3 search.list: videos published on/before claim date + 1 day, oldest-relevant first (order=date).
+    The snippet publishedAt is kept only as stored_date; verify_candidate still re-fetches the date independently."""
+    import datetime as dt
+    load_env()
+    key = key or os.environ.get("GOOGLE_API_KEY")
+    info = dict(source="youtube_api", queries=0, errors=[])
+    if not key:
+        log.info("youtube_api: %s", SKIP_NO_KEY)
+        return [], dict(info, skipped=SKIP_NO_KEY)
+    params0 = dict(part="snippet", type="video", order="date", maxResults=max_results, key=key)
+    if claim_date:
+        try:
+            before = dt.date.fromisoformat(claim_date) + dt.timedelta(days=1)
+            params0["publishedBefore"] = f"{before.isoformat()}T00:00:00Z"
+        except ValueError:
+            pass
+    seen = {}
+    for q in list(queries)[:max_queries]:
+        try:
+            r = _get_json("https://www.googleapis.com/youtube/v3/search", params=dict(params0, q=q[:200]))
+            info["queries"] += 1
+        except Exception as e:
+            info["errors"].append(type(e).__name__ + ": " + str(e)[:100].replace(key, "***")); continue
+        for it in r.get("items", []):
+            vid = (it.get("id") or {}).get("videoId")
+            sn = it.get("snippet") or {}
+            if vid:
+                seen.setdefault(f"https://www.youtube.com/watch?v={vid}", (sn.get("title", ""), (sn.get("publishedAt") or "")[:10] or None, q))
+    out = []
+    for u, (t, d, q) in seen.items():
+        c = Candidate(u, t, "youtube_api", f"query: {q[:60]}")
+        c.stored_date = d
+        out.append(c)
+    return out, info
+
+
+def public_frame_url(img_path: Path, out_dir: Path, runs_dir: Path, base: str | None = None):
+    """Public URL of a keyframe JPEG, only if it lives inside a served run dir (<runs>/<id>/...). Else None."""
+    try:
+        img_path, out_dir, runs_dir = Path(img_path).resolve(), Path(out_dir).resolve(), Path(runs_dir).resolve()
+        if out_dir.parent != runs_dir or out_dir not in img_path.parents or img_path.suffix.lower() not in (".jpg", ".jpeg", ".png"):
+            return None
+        return f"{(base or os.environ.get('FLOODPROOF_PUBLIC_BASE') or PUBLIC_BASE).rstrip('/')}/files/run/{out_dir.name}/{img_path.relative_to(out_dir).as_posix()}"
+    except Exception:
+        return None
+
+
+def lens_candidates(image_url: str | None, max_links=30, key=None):
+    """SerpApi google_lens on ONE public image URL (max 1 call per investigation). Keeps Instagram/TikTok/Facebook/YouTube links."""
+    load_env()
+    key = key or os.environ.get("SERPAPI_KEY")
+    info = dict(source="lens", calls=0, errors=[])
+    if not key:
+        log.info("lens: %s", SKIP_NO_KEY)
+        return [], dict(info, skipped=SKIP_NO_KEY)
+    if not image_url:
+        log.info("lens: skipped (no public image URL)")
+        return [], dict(info, skipped="no public image URL")
+    try:
+        r = _get_json("https://serpapi.com/search.json", params=dict(engine="google_lens", url=image_url, api_key=key))
+        info["calls"] = 1
+    except Exception as e:
+        info["errors"].append(type(e).__name__ + ": " + str(e)[:100].replace(key, "***"))
+        return [], info
+    seen = {}
+    for m in r.get("visual_matches", []):
+        u = m.get("link") or ""
+        if any(h in u for h in LENS_HOSTS):
+            seen.setdefault(_clean_url(u), m.get("title") or "")
+    return [Candidate(u, t, "lens", "google lens best keyframe") for u, t in list(seen.items())[:max_links]], info
+
+
+def merge_and_prioritize(cands):
+    """Dedupe by URL (remember every adapter that proposed it) and order for the verify budget: already proven first,
+    then URLs proposed by several sources, then video-platform URLs. Stable otherwise."""
+    uniq = {}
+    for c in cands:
+        k = uniq.get(c.url)
+        if k is None:
+            uniq[c.url] = c
+        elif c.adapter != k.adapter and c.adapter not in k.also_from:
+            k.also_from.append(c.adapter)
+    out = list(uniq.values())
+    out.sort(key=lambda c: (not c.proven, -len(c.also_from), not any(h in c.url for h in VIDEO_HOSTS)))
+    return out
+
+
+def source_stats(cands):
+    """Per-adapter {candidates, checked, proven}; a URL proposed by two adapters counts for both."""
+    st = {}
+    for c in cands:
+        for a in [c.adapter] + list(c.also_from):
+            d = st.setdefault(a, dict(candidates=0, checked=0, proven=0))
+            d["candidates"] += 1
+            d["checked"] += c.status != "pending"
+            d["proven"] += bool(c.proven)
+    return st
 
 
 # ---------------------------------------------------------------- yandex
@@ -218,7 +401,7 @@ def verify_candidate(c: Candidate, q: ClipFeatures, query_date: str | None = Non
 
 
 def verify_candidates(cands, q, query_date=None, self_url=None, evidence_dir=None, max_n=14, workers=3):
-    todo = [c for c in cands if not c.proven][:max_n]
+    todo = [c for c in cands if not c.proven and c.status == "pending"][:max_n]
     with cf.ThreadPoolExecutor(workers) as ex:
         list(ex.map(lambda c: verify_candidate(c, q, query_date, self_url, evidence_dir), todo))
     return cands

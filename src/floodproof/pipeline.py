@@ -57,9 +57,22 @@ def _physical(claim_d, clues, date):
     return res
 
 
+def _best_frame(feats, out: Path):
+    """Save the sharpest keyframe as frames/lens.jpg (served at /files/run/<id>/frames/...) and return its path."""
+    import cv2
+    ids = sources._spread_frames(feats, 1)
+    if not ids:
+        return None
+    p = out / "frames" / "lens.jpg"
+    p.parent.mkdir(exist_ok=True)
+    cv2.imwrite(str(p), feats.frames[ids[0]], [cv2.IMWRITE_JPEG_QUALITY, 85])
+    return p
+
+
 def investigate(source: str, claim: str | None = None, date: str | None = None, place: str | None = None,
                 claimed_source: str | None = None, out_dir: str | Path | None = None, memory: Memory | None = None,
                 use_memory=True, use_yandex=True, use_tavily=True, use_muse=True, remember=False,
+                use_gvision=True, use_youtube=True, use_lens=True,
                 max_verify=14, log=print) -> dict:
     """Full investigation. Returns the report dict (also written to out_dir/report.json with evidence/ PNGs)."""
     load_env()
@@ -106,21 +119,60 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
     claim_d["country_iso2"] = cp.get("country_iso2"); claim_d["event_type"] = cp.get("event_type") or "unknown"
 
     web = {}
+    claim_queries = [q["q"] for q in clues["queries"]] if clues.get("status") == "ok" else ([claim] if claim else [])
+    budget = dict(left=max_verify)
+
+    def _verify(label):
+        todo = sources.merge_and_prioritize(cands)
+        n = min(budget["left"], sum(1 for c in todo if not c.proven and c.status == "pending"))
+        if n <= 0:
+            return todo
+        log(f"verifying {n} candidates with the matcher ({label})")
+        sources.verify_candidates(todo, feats, query_date=clip.upload_date, self_url=self_url, evidence_dir=ev_dir, max_n=n)
+        budget["left"] -= n
+        return todo
+
+    def _drop_self():
+        if self_url:
+            cands[:] = [c for c in cands if c.url != sources._clean_url(self_url)]
+
+    if use_gvision:
+        log("[4/6] Google Vision web detection")
+        try:
+            gc, gi = sources.gvision_candidates(feats); cands += gc; web["gvision"] = gi
+        except Exception as e:
+            web["gvision"] = dict(status="error", error=type(e).__name__)
+    if use_youtube:
+        log("[4/6] YouTube Data API search")
+        try:
+            yc, yi = sources.youtube_api_candidates(claim_queries, date); cands += yc; web["youtube_api"] = yi
+        except Exception as e:
+            web["youtube_api"] = dict(status="error", error=type(e).__name__)
     if use_yandex:
         log("[4/6] Yandex reverse image search")
         try:
             yc, yi = sources.yandex_candidates(feats); cands += yc; web["yandex"] = yi
         except Exception as e:
             web["yandex"] = dict(status="error", error=str(e)[:150])
+    _drop_self()
+    if use_lens:
+        _verify("before Lens")                    # Lens is only worth its quota if nothing is proven yet
+        if not any(c.proven for c in cands):
+            try:
+                best = _best_frame(feats, out)
+                url = sources.public_frame_url(best, out, ROOT / "runs") if best else None
+                lc, li = sources.lens_candidates(url)
+                cands += lc; web["lens"] = li
+            except Exception as e:
+                web["lens"] = dict(status="error", error=type(e).__name__)
+        else:
+            web["lens"] = dict(skipped="not needed (a copy is already proven)")
     if use_tavily and clues.get("status") == "ok":
         log("[5/6] Tavily text search")
-        tc, ti = sources.tavily_candidates([q["q"] for q in clues["queries"]]); cands += tc; web["tavily"] = ti
-    seen, uniq = set(), []
-    for c in cands:
-        if c.url not in seen:
-            seen.add(c.url); uniq.append(c)
-    log(f"[6/6] verifying {min(len(uniq), max_verify)} of {len(uniq)} candidates with the matcher")
-    sources.verify_candidates(uniq, feats, query_date=clip.upload_date, self_url=self_url, evidence_dir=ev_dir, max_n=max_verify)
+        tc, ti = sources.tavily_candidates(claim_queries); cands += tc; web["tavily"] = ti
+    _drop_self()
+    uniq = _verify("final")
+    log(f"checked {len([c for c in uniq if c.status != 'pending'])} of {len(uniq)} candidates")
 
     proven = [c for c in uniq if c.proven]
     log(f"re-fetching dates independently for {sum(not c.date_independent for c in proven)} inherited-date copies")
@@ -144,7 +196,7 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
                   provenance_note="earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
                   candidates_checked=len([c for c in uniq if c.status not in ("pending",)]), candidates_total=len(uniq),
                   candidate_status_counts={s: sum(c.status == s for c in uniq) for s in {c.status for c in uniq}},
-                  adapters=web)
+                  adapters=web, source_stats=sources.source_stats(uniq))
 
     phys_place = claim_d.get("place")
     physical = _physical(claim_d, clues, date)
