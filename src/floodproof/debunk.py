@@ -52,13 +52,8 @@ def facts(r: dict) -> dict:
     if posted_only(r) and cm.get("event_date"):
         # the claim "date" is only the day the post was uploaded: never present it as the date of an event
         F["claim.event_date"] = f"{cm['event_date']} (POST DATE ONLY: the video was posted on this date; no event date was stated)"
-    pms = v.get("proven_matches") or []
     ep = v.get("earliest_proven_copy")
-    base = None
-    if ep:
-        base = "visual_matching.earliest_proven_copy"
-    elif v.get("input_publication") and fv["label"] == "RECYCLED_FOOTAGE":
-        ep, base = v["input_publication"], "visual_matching.input_publication"
+    base = "visual_matching.earliest_proven_copy"
     if ep:
         for k in ("url", "upload_date", "uploader"):
             if ep.get(k):
@@ -72,10 +67,61 @@ def facts(r: dict) -> dict:
         if "date_independent" in ep:
             F[f"{base}.date_independent"] = ep["date_independent"]
     F["visual_matching.status"] = v["status"]
+    # the other leading findings (A4): the input video's own publication before the claim (NOT an earlier copy), the uploader's own AI label, agreeing signals
+    ibc = r.get("input_publication_before_claim")
+    if ibc:
+        for k in ("input_date", "claim_date", "url"):
+            if ibc.get(k):
+                F[f"input_publication_before_claim.{k}"] = ibc[k]
+    dsc = r.get("disclosure") or {}
+    if dsc.get("type", "none") != "none":
+        F["disclosure.type"] = dsc["type"]
+        ev0 = (dsc.get("evidence") or [{}])[0]
+        if ev0.get("text"):
+            F["disclosure.evidence.0.text"] = ev0["text"]
+    sg = r.get("signals") or {}
+    if sg.get("qualifies"):
+        F["signals.count"] = sg["count"]
+        for i, a in enumerate((sg.get("agree") or [])[:3]):
+            F[f"signals.agree.{i}.label"] = a["label"]
     mn = r.get("media_nature") or {}
     if mn.get("value") == "mixed" and mn.get("summary"):
         F["media_nature.summary"] = mn["summary"]
     return {k: val for k, val in F.items() if val is not None}
+
+
+def has_earlier_copy(r: dict) -> bool:
+    """A matcher-proven, independently dated copy that predates the claim by the time-zone margin (the input's own post never counts)."""
+    from .report import proven_before, claim_date_for_logic
+    return bool(proven_before((r["visual_matching"].get("proven_matches") or []), claim_date_for_logic(r["claim"]), independent_only=True))
+
+
+LEAD_KINDS = ("copy", "ai_label", "input_before", "signals", "outcome")
+
+
+def lead_kind(r: dict) -> str:
+    """The strongest finding, which the card must lead with: a proven earlier copy > the uploader's own AI label > the input video posted
+    before the claimed event > agreeing signals > otherwise a plain statement of what was and was not found. Never the raw claim/post title."""
+    F = facts(r)
+    lab = F["final_verdict.label"]
+    if lab == "RECYCLED_FOOTAGE" and has_earlier_copy(r) and "visual_matching.earliest_proven_copy.upload_date" in F:
+        return "copy"
+    if "disclosure.type" in F:
+        return "ai_label"
+    if lab == "RECYCLED_FOOTAGE" and "input_publication_before_claim.input_date" in F:
+        return "input_before"
+    if "signals.count" in F:
+        return "signals"
+    return "outcome"
+
+
+LEAD_INSTRUCTION = {
+    "copy": "State the earliest proven copy first: the date it was published, where, and that this is before the claimed event date.",
+    "ai_label": "State first that the uploader's own post labels this video AI-generated / an animation / a reenactment (see disclosure.type), so it is not documentary footage of the claimed event.",
+    "input_before": "State first, using exactly this shape: 'This video was posted on <input_date>, before the claimed event on <claim_date>.' Do NOT call this an earlier copy or a match: it is the video's own post date.",
+    "signals": "State first that several independent signals agree with the claim (name them from signals.agree.*.label) and that this does not prove the footage is genuine.",
+    "outcome": "State first, plainly, what was and was not found (for example that no earlier copy was found, and what that does and does not mean).",
+}
 
 
 def posted_only(r: dict) -> bool:
@@ -111,7 +157,13 @@ def _template(r: dict, lang: str):
     S = []
     T = {
         "en": dict(
-            claim=lambda c: f"Claim: \"{c}\".",
+            claim=lambda c: f"Claim checked: \"{c}\".",
+            ai=lambda t: {"ai_generated": "The uploader's own post labels this video as AI-generated, so it is not documentary footage of the claimed event.",
+                          "animation": "The uploader's own post describes this video as an animation, so it is not documentary footage of the claimed event.",
+                          "reenactment": "The uploader's own post describes this video as a reenactment or illustration, so it is not documentary footage of the claimed event."}[t],
+            inb=lambda d1, d2: f"This video was posted on {d1}, before the claimed event on {d2}.",
+            inb2="This is the video's own post date, not an earlier copy found by the matcher. It does not show that the event did not happen.",
+            sig=lambda n, ls: f"{n} signals agree with the claim ({', '.join(ls)}), but this does not prove the footage is genuine.",
             nat=lambda sm: f"{sm}. This is an AI observation from sampled frames, not proof.",
             posted=lambda d: f"The video was posted on {d}; no event date was stated.",
             copy=lambda d, u, who, ev, ind: (f"Earliest copy found: this footage was published on {d}" + (f" by {who}" if who else "") + f" ({u})"
@@ -127,7 +179,13 @@ def _template(r: dict, lang: str):
             c2=lambda d, u: f"A matching copy dated {d} was found ({u}); it is not earlier than the claimed event.",
             c3="Search is not exhaustive."),
         "ne": dict(
-            claim=lambda c: f"दाबी: “{c}”।",
+            claim=lambda c: f"जाँच गरिएको दाबी: “{c}”।",
+            ai=lambda t: {"ai_generated": "अपलोडरको आफ्नै पोस्टले यो भिडियोलाई AI-निर्मित भनेको छ, त्यसैले यो दाबी गरिएको घटनाको वास्तविक फुटेज होइन।",
+                          "animation": "अपलोडरको आफ्नै पोस्टले यो भिडियोलाई एनिमेसन भनेको छ, त्यसैले यो दाबी गरिएको घटनाको वास्तविक फुटेज होइन।",
+                          "reenactment": "अपलोडरको आफ्नै पोस्टले यो भिडियोलाई पुनःनिर्माण वा चित्रण भनेको छ, त्यसैले यो दाबी गरिएको घटनाको वास्तविक फुटेज होइन।"}[t],
+            inb=lambda d1, d2: f"यो भिडियो {d1} मा पोस्ट गरिएको थियो, जुन दाबी गरिएको घटना ({d2}) भन्दा अघि हो।",
+            inb2="यो भिडियोकै आफ्नै पोस्ट मिति हो, म्याचरले भेटेको पुरानो प्रति होइन। यसले घटना नभएको भन्ने देखाउँदैन।",
+            sig=lambda n, ls: f"{n} संकेतहरू दाबीसँग मेल खान्छन् ({', '.join(ls)}), तर यसले भिडियो साँचो हो भन्ने प्रमाणित गर्दैन।",
             nat=lambda sm: "AI अवलोकन (प्रमाण होइन): भिडियोमा AI-निर्मित जस्ता देखिने दृश्य र वास्तविक क्यामेरा फुटेज मिसिएका हुन सक्छन्।",
             posted=lambda d: f"भिडियो {d} मा पोस्ट गरिएको थियो; घटनाको मिति उल्लेख गरिएको थिएन।",
             copy=lambda d, u, who, ev, ind: (f"भेटिएको सबैभन्दा पुरानो प्रति: यो भिडियो {d} मा" + (f" {who} द्वारा" if who else "") + f" ({u}) प्रकाशित भएको थियो"
@@ -143,7 +201,13 @@ def _template(r: dict, lang: str):
             c2=lambda d, u: f"{d} मितिको मिल्दो प्रति भेटियो ({u}); यो दाबी गरिएको घटनाभन्दा अघिको होइन।",
             c3="खोजी पूर्ण छैन।"),
         "hi": dict(
-            claim=lambda c: f"दावा: “{c}”।",
+            claim=lambda c: f"जाँचा गया दावा: “{c}”।",
+            ai=lambda t: {"ai_generated": "अपलोडर की अपनी पोस्ट इस वीडियो को AI से बना हुआ बताती है, इसलिए यह दावा की गई घटना का वास्तविक फुटेज नहीं है।",
+                          "animation": "अपलोडर की अपनी पोस्ट इस वीडियो को एनिमेशन बताती है, इसलिए यह दावा की गई घटना का वास्तविक फुटेज नहीं है।",
+                          "reenactment": "अपलोडर की अपनी पोस्ट इस वीडियो को पुनर्निर्माण या चित्रण बताती है, इसलिए यह दावा की गई घटना का वास्तविक फुटेज नहीं है।"}[t],
+            inb=lambda d1, d2: f"यह वीडियो {d1} को पोस्ट किया गया था, जो दावा की गई घटना ({d2}) से पहले है।",
+            inb2="यह वीडियो की अपनी पोस्ट तारीख है, मैचर को मिली कोई पुरानी प्रति नहीं। इससे यह साबित नहीं होता कि घटना नहीं हुई।",
+            sig=lambda n, ls: f"{n} संकेत दावे से मेल खाते हैं ({', '.join(ls)}), लेकिन इससे यह साबित नहीं होता कि फुटेज वास्तविक है।",
             nat=lambda sm: "AI अवलोकन (सबूत नहीं): वीडियो में AI से बने जैसे दिखने वाले शॉट और असली कैमरा फुटेज मिले हो सकते हैं।",
             posted=lambda d: f"वीडियो {d} को पोस्ट किया गया था; घटना की कोई तारीख नहीं बताई गई थी।",
             copy=lambda d, u, who, ev, ind: (f"मिली सबसे पुरानी प्रति: यह वीडियो {d} को" + (f" {who} द्वारा" if who else "") + f" ({u}) प्रकाशित हुआ था"
@@ -162,28 +226,47 @@ def _template(r: dict, lang: str):
     t = T.get(lang)
     if t is None:
         return None
+    d, u = (F.get(f"{ep}.upload_date"), F.get(f"{ep}.url")) if ep else (None, None)
+    kind = lead_kind(r)
+    # 1. the lead: the strongest finding. The claim text never comes first.
+    if kind == "ai_label":
+        S.append((t["ai"](F["disclosure.type"]), "disclosure.type"))
+    elif kind == "input_before":
+        S.append((t["inb"](F["input_publication_before_claim.input_date"], F["input_publication_before_claim.claim_date"]), "input_publication_before_claim.input_date"))
+        S.append((t["inb2"], "input_publication_before_claim.claim_date"))
+    elif kind == "signals":
+        S.append((t["sig"](F["signals.count"], [F[k] for k in sorted(F) if k.startswith("signals.agree.") and k.endswith(".label")]), "signals.count"))
+    # 2. the verdict-specific sentences
+    V = []
+    if lab == "RECYCLED_FOOTAGE" and ep and d and u and has_earlier_copy(r):
+        V.append((t["copy"](d, u, F.get(f"{ep}.uploader"), ev, F.get(f"{ep}.date_independent", True)), f"{ep}.upload_date"))
+        mt = t["match"](F.get(f"{ep}.match.consistent_frames"), F.get(f"{ep}.match.max_inliers"))
+        if mt:
+            V.append((mt, f"{ep}.match.consistent_frames"))
+        V += [(t["r1"], "final_verdict.label"), (t["r2"], "visual_matching.status")]
+    elif lab == "RECYCLED_FOOTAGE" and "input_publication_before_claim.input_date" in F:
+        if kind != "input_before":           # the lead is something else (the uploader's AI label): still state the post date
+            V.append((t["inb"](F["input_publication_before_claim.input_date"], F["input_publication_before_claim.claim_date"]), "input_publication_before_claim.input_date"))
+        V.append((t["u3"], "final_verdict.label"))
+    elif lab == "CONSISTENT_WITH_CLAIM":
+        V.append((t["c1"], "final_verdict.label"))
+        if ep and d and u:
+            V.append((t["c2"](d, u), f"{ep}.upload_date"))
+        V.append((t["c3"], "visual_matching.status"))
+    else:                                    # UNVERIFIED (and a RECYCLED label without a citable copy degrades to this)
+        if ep and d and u:
+            V.append((t["u2"](d, u), f"{ep}.upload_date"))
+        else:
+            V.append((t["u1"], "visual_matching.status"))
+        V.append((t["u3"], "final_verdict.label"))
+    # 3. the claim and the posted-date note come AFTER the lead sentence(s), never first
+    if kind in ("copy", "outcome"):
+        S, V = V[:1], V[1:]
     if claim:
         S.append((t["claim"](claim), "claim.text"))
     if ev_posted:
         S.append((t["posted"](ev_posted), "claim.event_date"))
-    d, u = (F.get(f"{ep}.upload_date"), F.get(f"{ep}.url")) if ep else (None, None)
-    if lab == "RECYCLED_FOOTAGE" and ep and d and u:
-        S.append((t["copy"](d, u, F.get(f"{ep}.uploader"), ev, F.get(f"{ep}.date_independent", True)), f"{ep}.upload_date"))
-        mt = t["match"](F.get(f"{ep}.match.consistent_frames"), F.get(f"{ep}.match.max_inliers"))
-        if mt:
-            S.append((mt, f"{ep}.match.consistent_frames"))
-        S += [(t["r1"], "final_verdict.label"), (t["r2"], "visual_matching.status")]
-    elif lab == "CONSISTENT_WITH_CLAIM":
-        S.append((t["c1"], "final_verdict.label"))
-        if ep and d and u:
-            S.append((t["c2"](d, u), f"{ep}.upload_date"))
-        S.append((t["c3"], "visual_matching.status"))
-    else:                                    # UNVERIFIED (and a RECYCLED label without a citable copy degrades to this)
-        if ep and d and u:
-            S.append((t["u2"](d, u), f"{ep}.upload_date"))
-        else:
-            S.append((t["u1"], "visual_matching.status"))
-        S.append((t["u3"], "final_verdict.label"))
+    S += V
     if "media_nature.summary" in F:
         S.insert(min(len(S), 2), (t["nat"](F["media_nature.summary"]), "media_nature.summary"))
     return S
@@ -245,10 +328,42 @@ def check_grounded(r: dict, sentences: list[dict], lang: str = "en") -> list[str
                     problems.append(f"recycling wording with verdict {lab}")
     joined = " ".join(_norm(s.get("text", "")) for s in sentences)
     if lab == "RECYCLED_FOOTAGE":
-        d = F.get("visual_matching.earliest_proven_copy.upload_date") or F.get("visual_matching.input_publication.upload_date")
+        d = (F.get("visual_matching.earliest_proven_copy.upload_date") if has_earlier_copy(r) else None) or F.get("input_publication_before_claim.input_date")
         if d and d not in joined:
             problems.append("RECYCLED verdict but earliest copy date missing")
+    problems += check_lead(r, sentences, lang)
     return problems
+
+
+_AI_WORDS = re.compile(r"\bAI\b|artificial|animat|reenact|illustrat|generated|एआई|एनिमेसन|एनिमेशन|AI-|पुनः?निर्माण|चित्रण", re.I)
+
+
+def check_lead(r: dict, sentences: list[dict], lang: str = "en") -> list[str]:
+    """The card must LEAD with the strongest finding and never open with the claim or the raw post title (A4)."""
+    if not sentences:
+        return []
+    first = _norm(sentences[0].get("text", "")).strip()
+    probs = []
+    claim = str((r.get("claim") or {}).get("text") or "").strip()
+    if claim and len(claim) >= 10 and claim.lower()[:40] in first.lower():
+        probs.append("card opens with the claim / post title instead of the strongest finding")
+    if re.match(r"^\W*(the\s+)?claim\b", first, re.I) or re.match(r"^\W*(दाबी|दावा)", first):
+        probs.append("card opens with 'the claim' instead of the strongest finding")
+    if lang == "en":
+        kind, F = lead_kind(r), facts(r)
+        if kind == "copy" and F.get("visual_matching.earliest_proven_copy.upload_date", "?") not in first:
+            probs.append("lead must state the earliest proven copy's date")
+        elif kind == "input_before":
+            i, c = F["input_publication_before_claim.input_date"], F["input_publication_before_claim.claim_date"]
+            if i not in first or c not in first:
+                probs.append("lead must say the video was posted on <date> before the claimed event on <date>")
+            if re.search(r"earlier copy|matched|match", first, re.I):
+                probs.append("input post date must not be described as an earlier copy / match")
+        elif kind == "ai_label" and not _AI_WORDS.search(first):
+            probs.append("lead must state the uploader's AI / animation label")
+        elif kind == "signals" and not re.search(r"signal", first, re.I):
+            probs.append("lead must state that signals agree")
+    return probs
 
 
 # ---------------------------------------------------------------- LLM generation
@@ -259,6 +374,9 @@ SYSTEM = ("You write short, shareable fact-check cards from a structured report.
           "If a fact says POST DATE ONLY, write exactly 'posted on YYYY-MM-DD; no event date was stated' and never call that date the date of an event. "
           "If a media_nature.summary fact is given, mention it as an AI observation from sampled frames, never as proof. "
           "A visual match proves the footage was published earlier; it does not prove the event did not happen. "
+          "LEAD with the strongest finding: the FIRST sentence of every card must state it (priority: a proven earlier copy; the uploader's own AI/animation label; "
+          "the input video posted before the claimed event, which is the video's own post date and NEVER an 'earlier copy' or 'match'; agreeing signals). "
+          "Never open with the claim or the post title, and never start with 'The claim is'; the claim may appear only after the lead. "
           "Reply with one JSON object only.")
 
 
@@ -268,7 +386,8 @@ def _prompt(r: dict, langs: list[str]) -> str:
     return (f"Facts (field path -> value):\n{json.dumps(F, ensure_ascii=False, indent=1)}\n\n"
             f"Verdict label: {F['final_verdict.label']}\n"
             f"Write the card in these languages: {json.dumps(names)}. Each card is 3 to 5 plain, natural sentences for a social-media reader, same content in each language.\n"
-            "Content to include: the claim; if an earliest copy is in the facts, its date, uploader/platform and URL and (for RECYCLED_FOOTAGE) that it predates the claimed event date; "
+            f"LEAD KIND: {lead_kind(r)}. {LEAD_INSTRUCTION[lead_kind(r)]} The first sentence must be this lead, in every language. Do not start with the claim or the post title.\n"
+            "Content to include: the finding above first, then the claim (optional, after the lead); if an earliest copy is in the facts, its date, uploader/platform and URL and (for RECYCLED_FOOTAGE) that it predates the claimed event date; "
             "the match evidence (consistent frames, inliers) when given; and one sentence saying what this does NOT prove. Do not print the label name itself.\n"
             "Return JSON: {\"<lang code>\": [{\"text\": \"one sentence\", \"ref\": \"<one field path from the facts above that the sentence is based on>\"}, ...], ...}\n"
             "Every sentence needs a ref. Use only the language codes requested.")
