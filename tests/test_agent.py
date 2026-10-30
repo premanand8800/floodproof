@@ -46,6 +46,7 @@ def mock_tools(monkeypatch, proven_urls=(), date="2020-01-01"):
     def vc(c, q, query_date=None, self_url=None, evidence_dir=None):
         if c.url in proven_urls:
             c.status, c.proven, c.upload_date, c.date_source, c.retrieved_at = "proven", True, date, "yt-dlp metadata", "now"
+            c.date_independent = True
             c.match = dict(decision=True, consistent_frames=33, max_inliers=210, temporal_offset=0.0, mirrored=False,
                            best_pairs=[dict(a_frame=0, b_frame=0, inliers=210, flip=False)], score=1.0)
         else:

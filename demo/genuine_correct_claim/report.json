@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.0",
-  "investigation_id": "3949a7111c",
-  "created_at": "2026-10-30T02:27:31+00:00",
+  "schema_version": "1.1",
+  "investigation_id": "9b3ea4fc05",
+  "created_at": "2026-10-30T05:37:44+00:00",
   "input": {
     "source": "https://www.youtube.com/watch?v=sIQTP1LJy30",
     "path": "(downloaded excerpt removed after run)",
@@ -76,7 +76,7 @@
     "mode": "hash-shortlist(top_6)+match",
     "entries_searched": 6,
     "entries_total": 37,
-    "seconds": 12.52,
+    "seconds": 29.27,
     "hits": [],
     "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
   },
@@ -89,20 +89,20 @@
       "url": "https://www.youtube.com/watch?v=sIQTP1LJy30",
       "upload_date": "2024-09-28",
       "date_source": "yt-dlp metadata",
-      "retrieved_at": "2026-10-30T02:27:30+00:00",
+      "retrieved_at": "2026-10-30T05:37:42+00:00",
       "uploader": "Voice of America"
     },
-    "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is not asserted to be the source.",
+    "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
     "candidates_checked": 14,
-    "candidates_total": 70,
+    "candidates_total": 69,
     "candidate_status_counts": {
-      "not_proven": 3,
-      "pending": 56,
-      "skipped_self": 1,
+      "unavailable": 2,
       "download_failed": 1,
       "later_than_query": 4,
-      "unavailable": 2,
-      "too_long": 3
+      "not_proven": 3,
+      "skipped_self": 1,
+      "too_long": 3,
+      "pending": 55
     },
     "adapters": {
       "yandex": {
@@ -124,7 +124,7 @@
   "clues": {
     "shows": [
       {
-        "text": "Muddy brown floodwater rushing past a multi-storey riverside building with arched ground floor, with hillside houses behind",
+        "text": "muddy brown floodwater rushing past a white multi-storey building with arches, with hillside houses above",
         "refs": [
           0,
           7
@@ -135,7 +135,7 @@
         ]
       },
       {
-        "text": "Wide muddy flood submerging trees around a small yellow statue/shrine, with mountains and buildings in background",
+        "text": "wide muddy flood submerging trees and a yellow statue, with mountains and overcast sky in background",
         "refs": [
           13,
           20
@@ -146,7 +146,7 @@
         ]
       },
       {
-        "text": "Washed-out/overexposed view of a flooded area with tilted poles and buildings in haze",
+        "text": "overexposed/whitened view of flooded built-up area with tilted poles and buildings in floodwater",
         "refs": [
           27
         ],
@@ -155,7 +155,7 @@
         ]
       },
       {
-        "text": "Close-up of fast-moving muddy water carrying floating debris including a red cylindrical object",
+        "text": "close view of fast muddy current carrying debris including a red cylindrical barrel-like object",
         "refs": [
           34
         ],
@@ -164,21 +164,12 @@
         ]
       },
       {
-        "text": "Wide swollen muddy river in flood in front of mid-rise apartment buildings under overcast sky",
+        "text": "wide swollen brown river flowing past mid-rise residential apartment blocks under grey cloudy sky",
         "refs": [
           40
         ],
         "timestamps_s": [
           28.03
-        ]
-      },
-      {
-        "text": "Black end card with VOA logo",
-        "refs": [
-          47
-        ],
-        "timestamps_s": [
-          34.37
         ]
       }
     ],
@@ -189,7 +180,6 @@
         7,
         13,
         20,
-        34,
         40
       ],
       "timestamps_s": [
@@ -197,23 +187,12 @@
         5.0,
         8.01,
         12.35,
-        22.69,
         28.03
       ]
     },
     "visible_text": [
       {
         "text": "Nepal",
-        "language": "en",
-        "refs": [
-          7
-        ],
-        "timestamps_s": [
-          5.0
-        ]
-      },
-      {
-        "text": "AP",
         "language": "en",
         "refs": [
           7
@@ -233,7 +212,7 @@
         ]
       },
       {
-        "text": "Flooding in",
+        "text": "Flooding in kills [truncated caption]",
         "language": "en",
         "refs": [
           13
@@ -243,17 +222,7 @@
         ]
       },
       {
-        "text": "kills",
-        "language": "en",
-        "refs": [
-          13
-        ],
-        "timestamps_s": [
-          8.01
-        ]
-      },
-      {
-        "text": "VOA",
+        "text": "VOA [logo watermark]",
         "language": "en",
         "refs": [
           7,
@@ -261,8 +230,7 @@
           20,
           27,
           34,
-          40,
-          47
+          40
         ],
         "timestamps_s": [
           5.0,
@@ -270,12 +238,27 @@
           12.35,
           19.35,
           22.69,
-          28.03,
-          34.37
+          28.03
         ]
       },
       {
-        "text": "For details, see the link in our bio/description",
+        "text": "AP [logo watermark]",
+        "language": "en",
+        "refs": [
+          7,
+          20,
+          34,
+          40
+        ],
+        "timestamps_s": [
+          5.0,
+          12.35,
+          22.69,
+          28.03
+        ]
+      },
+      {
+        "text": "VOA For details, see the link in our bio/description",
         "language": "en",
         "refs": [
           47
@@ -288,12 +271,12 @@
     "likely_location": {
       "place": "Kathmandu",
       "country": "Nepal",
-      "confidence": 0.85,
+      "confidence": 0.88,
       "lat": 27.7172,
       "lon": 85.324,
       "reasons": [
         {
-          "text": "On-screen caption explicitly states 'Flooding in Nepal's capital'",
+          "text": "on-screen AP label identifies footage as Nepal",
           "refs": [
             7
           ],
@@ -302,7 +285,7 @@
           ]
         },
         {
-          "text": "Top-left news label reads 'Nepal' with AP attribution",
+          "text": "VOA caption explicitly states flooding in Nepal's capital",
           "refs": [
             7
           ],
@@ -311,25 +294,81 @@
           ]
         },
         {
-          "text": "VOA news packaging and AP credit indicate professional news coverage of a Nepal flood event",
+          "text": "dense multi-storey masonry buildings, arched riverside building, wide valley river and hazy foothill mountains consistent with Kathmandu Valley",
           "refs": [
+            0,
             7,
-            13,
             20,
-            40,
-            47
+            40
           ],
           "timestamps_s": [
+            0.0,
             5.0,
-            8.01,
             12.35,
-            28.03,
-            34.37
+            28.03
           ]
         }
       ]
     },
-    "contradictions_with_claim": [],
+    "location_hypotheses": [
+      {
+        "place": "Kathmandu",
+        "country": "Nepal",
+        "confidence": 0.88,
+        "lat": 27.7172,
+        "lon": 85.324,
+        "cited_frames": [
+          0,
+          7,
+          20,
+          40
+        ],
+        "cited_timestamps_s": [
+          0.0,
+          5.0,
+          12.35,
+          28.03
+        ],
+        "reasons": [
+          {
+            "text": "on-screen AP label identifies footage as Nepal",
+            "refs": [
+              7
+            ],
+            "timestamps_s": [
+              5.0
+            ]
+          },
+          {
+            "text": "VOA caption explicitly states flooding in Nepal's capital",
+            "refs": [
+              7
+            ],
+            "timestamps_s": [
+              5.0
+            ]
+          },
+          {
+            "text": "dense multi-storey masonry buildings, arched riverside building, wide valley river and hazy foothill mountains consistent with Kathmandu Valley",
+            "refs": [
+              0,
+              7,
+              20,
+              40
+            ],
+            "timestamps_s": [
+              0.0,
+              5.0,
+              12.35,
+              28.03
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_HYPOTHESIS",
+        "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+      }
+    ],
+    "observations_against_claim": [],
     "claim_parsed": {
       "place": "Kathmandu",
       "country_iso2": "NP",
@@ -337,50 +376,50 @@
     },
     "queries": [
       {
-        "q": "VOA \"Flooding in Nepal's capital kills at least 32 people\" video",
+        "q": "VOA Flooding in Nepal's capital kills at least 32 people video",
         "language": "en",
-        "why": "Match exact on-screen caption to find original VOA post and date"
+        "why": "to find VOA original upload and its credited AP source date"
       },
       {
-        "q": "AP Nepal Kathmandu flooding September 2024 river video",
+        "q": "AP Nepal flooding September 2024 Kathmandu video",
         "language": "en",
-        "why": "Match AP credit to find wire-source footage"
+        "why": "to find earliest AP wire footage matching arched building clip"
       },
       {
-        "q": "Bagmati river flood yellow statue submerged Kathmandu video",
+        "q": "Kathmandu Bagmati river flood yellow statue submerged trees",
         "language": "en",
-        "why": "Distinctive yellow statue surrounded by floodwater is highly searchable"
+        "why": "to identify distinctive statue location without using claim date"
       },
       {
-        "q": "Kathmandu flood arched riverside building muddy torrent video",
+        "q": "Kathmandu river flood apartment blocks September 2024 video",
         "language": "en",
-        "why": "Distinctive arched building in first frames to geolocate"
+        "why": "to match wide river apartment clip to source"
       },
       {
         "q": "काठमाडौं बाढी सेप्टेम्बर २०२४ भिडियो",
         "language": "ne",
-        "why": "Local-language search for earliest Nepali uploads"
+        "why": "Nepali query to find earliest local uploads of same flood clips"
       },
       {
-        "q": "बागमती नदी बाढी काठमाडौं २०८१",
+        "q": "काठमाडौं बागमती बाढी मूर्ति डुबेको",
         "language": "ne",
-        "why": "Bagmati river flood is likely local description"
+        "why": "Nepali query for submerged statue to pinpoint location and source"
       },
       {
-        "q": "काठमाडौं डुबान मूर्ति बाढी",
+        "q": "काठमाडौं बाढी ३२ जनाको मृत्यु VOA AP",
         "language": "ne",
-        "why": "Local-language search for statue scene"
+        "why": "Nepali query to trace death-toll caption back to original news date"
       },
       {
-        "q": "Nepal flood floating red gas cylinder river video",
+        "q": "Nepal capital flood muddy river red barrel debris footage",
         "language": "en",
-        "why": "Distinctive floating debris to find matching uploads without using claimed place/date"
+        "why": "neutral visual detail query to find recycled use of debris clip"
       }
     ],
     "rejected_clues": [],
     "status": "ok",
     "model": "meta/muse-spark-1.3",
-    "cost_usd": 0.01492,
+    "cost_usd": 0.01254,
     "frames_shown": [
       0,
       7,
@@ -532,12 +571,13 @@
       "https://www.openstreetmap.org/?mlat=27.708317&mlon=85.3205817#map=10/27.708317/85.3205817"
     ]
   },
+  "contradictions": [],
   "final_verdict": {
     "label": "CONSISTENT_WITH_CLAIM",
-    "summary": "The input URL was itself published on 2024-09-28 (per yt-dlp metadata), which is not earlier than the claimed event date, so recycling relative to the claim is not established. The physical-world check supports the claimed place/date and no cited contradiction was found. This means no contradiction was found in the available evidence; it is not a finding that the footage is authentic.",
+    "summary": "The input URL was itself published on 2024-09-28 (per yt-dlp metadata), which is not earlier than the claimed event date, so recycling relative to the claim is not established. The earliest independently dated copy was published within days of the claimed event date, and no earlier copy or cited contradiction was found, and the physical-world check adds supporting context (context only; it did not change the verdict). This means no contradiction was found in the available evidence; it is not a finding that the footage is authentic.",
     "limits": [
       "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
-      "Upload dates are platform metadata for the copy found; the earliest copy found is not necessarily the true source.",
+      "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
       "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
       "'Not found' means not found by these adapters, not that no earlier copy exists."
     ],
@@ -545,9 +585,9 @@
       "earlier_proven_copies": 0,
       "proven_copies": 0,
       "physical_supports": true,
-      "cited_contradictions": 0,
+      "unverified_model_observations": 0,
       "date_conflicts": 0
     }
   },
-  "timing_s": 193.2
+  "timing_s": 198.7
 }

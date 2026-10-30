@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.0",
-  "investigation_id": "0d5411f372",
-  "created_at": "2026-10-30T02:24:17+00:00",
+  "schema_version": "1.1",
+  "investigation_id": "d88d36abfd",
+  "created_at": "2026-10-30T05:38:04+00:00",
   "input": {
     "source": "data/videos/yts_viral_nalagarh.mp4",
     "path": "/home/samir-kumal/hackethon/floodproof/data/videos/yts_viral_nalagarh.mp4",
@@ -76,7 +76,7 @@
     "mode": "hash-shortlist(top_6)+match",
     "entries_searched": 6,
     "entries_total": 37,
-    "seconds": 22.12,
+    "seconds": 45.96,
     "hits": [],
     "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
   },
@@ -86,14 +86,14 @@
     "earliest_proven_copy": null,
     "claimed_original": null,
     "input_publication": null,
-    "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is not asserted to be the source.",
+    "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
     "candidates_checked": 14,
     "candidates_total": 70,
     "candidate_status_counts": {
-      "too_long": 1,
       "unavailable": 6,
-      "pending": 56,
-      "not_proven": 7
+      "too_long": 1,
+      "not_proven": 7,
+      "pending": 56
     },
     "adapters": {
       "yandex": {
@@ -115,26 +115,12 @@
   "clues": {
     "shows": [
       {
-        "text": "Two men stranded on a small mud/sand island in the middle of a fast-flowing muddy swollen river",
+        "text": "Several men on the bank of a wide, fast-flowing muddy flooded river using a rope to attempt rescue of two men stranded on a small sandbar/island in mid-stream, with dense green trees in background",
         "refs": [
           0,
           7,
           13,
-          20
-        ],
-        "timestamps_s": [
-          0.0,
-          11.0,
-          21.33,
-          32.0
-        ]
-      },
-      {
-        "text": "Group of 4-6 men on the riverbank attempting rope rescue, pulling rope, holding coils of rope, wading at edge",
-        "refs": [
-          0,
-          7,
-          13,
+          20,
           27,
           34,
           40,
@@ -144,45 +130,29 @@
           0.0,
           11.0,
           21.33,
+          32.0,
           45.0,
           57.0,
           65.0,
           74.67
         ]
-      },
-      {
-        "text": "Wide monsoon-swollen brown river with dense green low-elevation forest/vegetation on far bank and foreground",
-        "refs": [
-          0,
-          7,
-          13,
-          20,
-          40
-        ],
-        "timestamps_s": [
-          0.0,
-          11.0,
-          21.33,
-          32.0,
-          65.0
-        ]
       }
     ],
     "scene_type": {
-      "value": "rural flooded riverbank",
+      "value": "flooded river",
       "refs": [
         0,
         7,
         13,
         20,
-        40
+        27
       ],
       "timestamps_s": [
         0.0,
         11.0,
         21.33,
         32.0,
-        65.0
+        45.0
       ]
     },
     "visible_text": [
@@ -212,72 +182,104 @@
       }
     ],
     "likely_location": {
-      "place": "Dharoli village (unidentified, captioned as धरौली गांव)",
+      "place": "Dharoli village (unidentified, Hindi-speaking region)",
       "country": "India",
-      "confidence": 0.6,
+      "confidence": 0.65,
       "lat": null,
       "lon": null,
       "reasons": [
         {
-          "text": "On-screen Hindi caption in all frames names Dharoli village, not Dharali",
+          "text": "Hindi on-screen caption names Dharoli village",
           "refs": [
             0,
             7,
             13,
-            20,
-            27,
-            34,
-            40,
-            47
+            20
           ],
           "timestamps_s": [
             0.0,
             11.0,
             21.33,
-            32.0,
-            45.0,
-            57.0,
-            65.0,
-            74.67
+            32.0
           ]
         },
         {
-          "text": "South Asian men, Hindi language overlay, monsoon river flood typical of Indian plains",
+          "text": "South Asian men, lush green lowland trees and wide muddy river plain, not high Himalayan terrain",
           "refs": [
             0,
             7,
             20,
-            34
+            27
           ],
           "timestamps_s": [
             0.0,
             11.0,
             32.0,
-            57.0
-          ]
-        },
-        {
-          "text": "Low-elevation dense green forest and wide muddy river, not high-altitude Himalayan valley morphology",
-          "refs": [
-            0,
-            7,
-            13,
-            20,
-            40
-          ],
-          "timestamps_s": [
-            0.0,
-            11.0,
-            21.33,
-            32.0,
-            65.0
+            45.0
           ]
         }
       ]
     },
-    "contradictions_with_claim": [
+    "location_hypotheses": [
       {
-        "text": "Caption says धरौली (Dharoli) not धराली (Dharali), the village destroyed in Uttarkashi 2025-08-05 flash flood",
+        "place": "Dharoli village (unidentified, Hindi-speaking region)",
+        "country": "India",
+        "confidence": 0.65,
+        "lat": null,
+        "lon": null,
+        "cited_frames": [
+          0,
+          7,
+          13,
+          20,
+          27
+        ],
+        "cited_timestamps_s": [
+          0.0,
+          11.0,
+          21.33,
+          32.0,
+          45.0
+        ],
+        "reasons": [
+          {
+            "text": "Hindi on-screen caption names Dharoli village",
+            "refs": [
+              0,
+              7,
+              13,
+              20
+            ],
+            "timestamps_s": [
+              0.0,
+              11.0,
+              21.33,
+              32.0
+            ]
+          },
+          {
+            "text": "South Asian men, lush green lowland trees and wide muddy river plain, not high Himalayan terrain",
+            "refs": [
+              0,
+              7,
+              20,
+              27
+            ],
+            "timestamps_s": [
+              0.0,
+              11.0,
+              32.0,
+              45.0
+            ]
+          }
+        ],
+        "status": "UNVERIFIED_HYPOTHESIS",
+        "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+      }
+    ],
+    "observations_against_claim": [
+      {
+        "text": "Overlay says 'Dharoli village' not Dharali, the village destroyed in Uttarkashi August 2025 event",
         "refs": [
           0,
           7,
@@ -291,54 +293,26 @@
           21.33,
           32.0,
           45.0
-        ]
+        ],
+        "status": "UNVERIFIED_MODEL_OBSERVATION"
       },
       {
-        "text": "Terrain is flat/low forested river plain, lacking steep Himalayan valley, mountains, buildings, or debris-flow/cloudburst destruction seen at Dharali-Uttarkashi",
+        "text": "Scene shows low-elevation vegetated riverbank rope-rescue with no mountains, buildings, debris-flow or cloudburst destruction visible",
         "refs": [
           0,
           7,
           13,
           20,
-          40
-        ],
-        "timestamps_s": [
-          0.0,
-          11.0,
-          21.33,
-          32.0,
-          65.0
-        ]
-      },
-      {
-        "text": "Shows slow river-island rope rescue in muddy floodwater, not a cloudburst/flash-flood debris torrent sweeping through a mountain town",
-        "refs": [
-          0,
-          7,
-          13,
           27
         ],
         "timestamps_s": [
           0.0,
           11.0,
           21.33,
+          32.0,
           45.0
-        ]
-      },
-      {
-        "text": "Low-resolution crop with large crying-emoji sticker and added caption indicates recycled edited re-share, not original disaster documentation",
-        "refs": [
-          0,
-          7,
-          34,
-          47
         ],
-        "timestamps_s": [
-          0.0,
-          11.0,
-          57.0,
-          74.67
-        ]
+        "status": "UNVERIFIED_MODEL_OBSERVATION"
       }
     ],
     "claim_parsed": {
@@ -348,50 +322,50 @@
     },
     "queries": [
       {
-        "q": "धरौली गांव का एक नया वीडियो बाढ़",
+        "q": "\"धरौली गांव का एक नया वीडियो\"",
         "language": "hi",
-        "why": "Exact on-screen caption to find earliest upload"
+        "why": "Exact overlay text to find earliest upload of this clip"
       },
       {
-        "q": "धरौली गांव नदी में फंसे दो व्यक्ति रस्सी से रेस्क्यू",
+        "q": "धरौली गांव बाढ़ में फंसे दो लोग रस्सी से बचाव वीडियो",
         "language": "hi",
-        "why": "Describes rescue action in local language"
+        "why": "Describes the rescue action in local language to find true source"
       },
       {
-        "q": "धरौली गांव बाढ़ में फंसे लोग वीडियो",
+        "q": "धरौली गांव नदी बाढ़ rescue rope video",
         "language": "hi",
-        "why": "Village name + flood to locate true source"
+        "why": "Village name + flood to locate original village event"
       },
       {
-        "q": "Dharoli village flood rope rescue video",
-        "language": "en",
-        "why": "Transliterated village name to find YouTube/Facebook copies"
-      },
-      {
-        "q": "two men stranded river island rope rescue India video",
-        "language": "en",
-        "why": "Neutral visual description avoiding claimed event name"
-      },
-      {
-        "q": "men stuck mid river mud island monsoon rescue rope India",
-        "language": "en",
-        "why": "Visual search for recycled flood rescue"
-      },
-      {
-        "q": "नदी के बीच टापू पर फंसे दो युवक रस्सी से बचाया",
+        "q": "नदी के बीच टापू पर फंसे लोगों को रस्सी से बचाया",
         "language": "hi",
-        "why": "Common phrasing for such rescues in Hindi media"
+        "why": "Neutral description of stranded-on-sandbar rescue without claim terms"
       },
       {
-        "q": "Dharauli Dharoli village river flood stranded rescue",
+        "q": "two men stranded middle of flooded river rope rescue India video",
         "language": "en",
-        "why": "Alternate spellings of village name to identify location"
+        "why": "Neutral English description to find re-uploads outside Hindi"
+      },
+      {
+        "q": "men stranded sandbar muddy river rope rescue viral video",
+        "language": "en",
+        "why": "Visual details to search for fact-checks or earlier posts"
+      },
+      {
+        "q": "Dharoli village flood river video",
+        "language": "en",
+        "why": "Transliterated village name variant to identify which Dharoli/Dharauli"
+      },
+      {
+        "q": "धरौली धारौली गांव बाढ़ नदी में फंसे",
+        "language": "hi",
+        "why": "Spelling variants of village name to catch earliest post"
       }
     ],
     "rejected_clues": [],
     "status": "ok",
     "model": "meta/muse-spark-1.3",
-    "cost_usd": 0.01262,
+    "cost_usd": 0.01316,
     "frames_shown": [
       0,
       7,
@@ -526,30 +500,34 @@
     ],
     "limits": [
       "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened",
-      "event_type=flash_flood: flash floods are too small and fast for GloFAS river discharge; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS"
+      "event_type=flash_flood: flash floods are too small and fast for GloFAS river discharge; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS",
+      "Insufficient corroboration — this does not show the event didn't happen (public hydrology/activation data cannot resolve flash floods, GLOFs or landslides)."
     ],
     "links": [
       "https://mapping.emergency.copernicus.eu/activations/",
       "https://flood-api.open-meteo.com/v1/flood?latitude=30.9635733&longitude=78.6362521&daily=river_discharge&start_date=2025-08-02&end_date=2025-08-08",
       "https://www.openstreetmap.org/?mlat=30.9635733&mlon=78.6362521#map=10/30.9635733/78.6362521"
-    ]
+    ],
+    "verdict_display": "Insufficient corroboration — this does not show the event didn't happen"
   },
+  "contradictions": [],
   "final_verdict": {
     "label": "UNVERIFIED",
-    "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. The physical-world check was not available or inconclusive. The claim could not be verified from the available evidence. Separately, the AI visual clues cite 4 cue(s) that argue against the claim (e.g. \"Caption says धरौली (Dharoli) not धराली (Dharali), the village destroyed in Uttarkashi 2025-08-05 flash flood\", frame ref [0, 7, 13, 20, 27]); these are model observations, not part of the visual-match proof.",
+    "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. Insufficient corroboration — this does not show the event didn't happen (physical-world check). The claim could not be verified from the available evidence. Separately, the AI visual clues report 2 unverified observation(s) that clash with the claim (e.g. \"Overlay says 'Dharoli village' not Dharali, the village destroyed in Uttarkashi August 2025 event\", frame ref [0, 7, 13, 20, 27]); these are model observations, not independent evidence and not part of the visual-match proof.",
     "limits": [
       "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
-      "Upload dates are platform metadata for the copy found; the earliest copy found is not necessarily the true source.",
+      "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
       "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
-      "'Not found' means not found by these adapters, not that no earlier copy exists."
+      "'Not found' means not found by these adapters, not that no earlier copy exists.",
+      "Insufficient corroboration — this does not show the event didn't happen."
     ],
     "basis": {
       "earlier_proven_copies": 0,
       "proven_copies": 0,
       "physical_supports": null,
-      "cited_contradictions": 4,
+      "unverified_model_observations": 2,
       "date_conflicts": 0
     }
   },
-  "timing_s": 215.6
+  "timing_s": 219.5
 }

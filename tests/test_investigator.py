@@ -30,6 +30,15 @@ def test_uncited_clues_are_rejected_not_reported():
     assert [s["text"] for s in out["shows"]] == ["river"] and out["shows"][0]["timestamps_s"] == [1.5]
     assert out["scene_type"] is None
     assert out["likely_location"]["place"] is None and out["likely_location"]["uncited_guess"]["place"] == "Alaska"
-    assert out["contradictions_with_claim"][0]["timestamps_s"] == [0.0, 4.5]
+    assert out["observations_against_claim"][0]["timestamps_s"] == [0.0, 4.5]
+    assert out["observations_against_claim"][0]["status"] == "UNVERIFIED_MODEL_OBSERVATION" and "contradictions_with_claim" not in out
+    assert out["location_hypotheses"] == []        # uncited guess is rejected, not a hypothesis
     assert len(out["queries"]) == 1
     assert {r["kind"] for r in out["rejected_clues"]} >= {"shows", "scene_type", "likely_location"}
+
+
+def test_cited_location_guess_becomes_unverified_hypothesis():
+    plan = dict(likely_location=dict(place="Alaska", country="US", confidence=.4, reasons=[dict(text="black ash glacier", refs=[1, 3])]))
+    out = _clean(plan, F, False)
+    h = out["location_hypotheses"][0]
+    assert h["status"] == "UNVERIFIED_HYPOTHESIS" and h["cited_frames"] == [1, 3] and h["confidence"] == .4

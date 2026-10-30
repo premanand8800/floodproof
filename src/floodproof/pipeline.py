@@ -21,6 +21,9 @@ def _proven_entry(c: sources.Candidate, out_dir: Path):
             pass
     return dict(url=c.url, title=c.title, uploader=c.uploader, upload_date=c.upload_date, date_source=c.date_source,
                 retrieved_at=c.retrieved_at, adapter=c.adapter, found_via=c.hint, match=c.match, evidence_png=ev,
+                stored_date=c.stored_date, stored_date_source=("memory entry (inherited)" if c.stored_date else None), independent_date=c.independent_date, independent_date_source=c.independent_date_source,
+                date_independent=bool(c.date_independent), date_note=c.date_note,
+                date_alternatives=list(c.date_alternatives or []),
                 memory_origin=(c.memory_entry or {}).get("origin"),
                 memory_context=(c.memory_entry or {}).get("event_context"))
 
@@ -53,7 +56,7 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
         cands += mc
         memory_layer = dict(status="HIT" if mc else "MISS", mode=res.mode, entries_searched=len(res.shortlisted),
                             entries_total=res.n_entries, seconds=res.seconds,
-                            hits=[dict(url=c.url, upload_date=c.upload_date, origin=(c.memory_entry or {}).get("origin"),
+                            hits=[dict(url=c.url, stored_date=c.stored_date, stored_date_source=("memory entry (inherited)" if c.stored_date else None), origin=(c.memory_entry or {}).get("origin"),
                                        context=(c.memory_entry or {}).get("event_context")) for c in mc],
                             note="memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching")
 
@@ -88,6 +91,13 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
     sources.verify_candidates(uniq, feats, query_date=clip.upload_date, self_url=self_url, evidence_dir=ev_dir, max_n=max_verify)
 
     proven = [c for c in uniq if c.proven]
+    log(f"re-fetching dates independently for {sum(not c.date_independent for c in proven)} inherited-date copies")
+    sources.enrich_dates(proven)
+    by_url = {c.url: c for c in proven}
+    for h in memory_layer.get("hits", []):
+        c = by_url.get(h["url"])
+        if c:
+            h.update(independent_date=c.independent_date, independent_date_source=c.independent_date_source, date_independent=c.date_independent)
     earliest = sources.earliest_proven_copy(uniq)
     claimed_orig = None
     if claimed_source:
@@ -99,7 +109,7 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
                   input_publication=(dict(url=clip.url, upload_date=clip.upload_date, date_source="yt-dlp metadata",
                                           retrieved_at=sources._now(), uploader=clip.uploader)
                                      if clip.url and clip.upload_date else None),
-                  provenance_note="earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is not asserted to be the source.",
+                  provenance_note="earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
                   candidates_checked=len([c for c in uniq if c.status not in ("pending",)]), candidates_total=len(uniq),
                   candidate_status_counts={s: sum(c.status == s for c in uniq) for s in {c.status for c in uniq}},
                   adapters=web)

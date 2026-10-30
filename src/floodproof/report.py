@@ -19,7 +19,7 @@ import uuid
 from pathlib import Path
 
 LABELS = ("RECYCLED_FOOTAGE", "CONSISTENT_WITH_CLAIM", "UNVERIFIED")
-SCHEMA_VERSION = "1.0"
+SCHEMA_VERSION = "1.1"
 REQUIRED_KEYS = ("schema_version", "investigation_id", "created_at", "input", "claim", "memory", "visual_matching",
                  "clues", "physical_world_check", "final_verdict")
 
@@ -37,9 +37,30 @@ def run_physical(place, lat, lon, date, window_days=3, event_type="unknown", cou
     try:
         d = physical.check(place, lat, lon, date, window_days=window_days,
                            event_type=event_type if event_type in EVENT_TYPES else 'unknown', country=country)
-        return d if isinstance(d, dict) else dict(status="ERROR", reason="physical.check did not return a dict")
+        return annotate_physical(d) if isinstance(d, dict) else dict(status="ERROR", reason="physical.check did not return a dict")
     except Exception as e:
         return dict(status="ERROR", reason=str(e)[:200])
+
+
+INSUFFICIENT = "Insufficient corroboration \u2014 this does not show the event didn't happen"
+
+
+def annotate_physical(p: dict) -> dict:
+    """NO_EVIDENCE keeps its enum value; the user-facing wording is 'insufficient corroboration', never 'no evidence'."""
+    if isinstance(p, dict) and p.get("verdict") == "NO_EVIDENCE":
+        p["verdict_display"] = INSUFFICIENT
+        lim = p.setdefault("limits", [])
+        if INSUFFICIENT not in lim:
+            lim.append(INSUFFICIENT + " (public hydrology/activation data cannot resolve flash floods, GLOFs or landslides).")
+    return p
+
+
+def physical_label(p: dict) -> str:
+    """User-facing text for a physical check dict."""
+    p = p or {}
+    if p.get("verdict") == "NO_EVIDENCE":
+        return INSUFFICIENT
+    return str(p.get("verdict") or p.get("status") or "NOT_RUN")
 
 
 def physical_supports(p: dict):
@@ -71,12 +92,20 @@ def date_conflicts(proven):
             for m in proven if len(set(all_dates(m))) > 1]
 
 
-def proven_before(proven, claim_date):
+def is_independent(m) -> bool:
+    """True if the copy's date was obtained live in this investigation (yt-dlp metadata, page meta, Wayback). A date that is
+    only inherited from memory is not independent. Legacy dicts: inferred from date_source."""
+    if "date_independent" in m:
+        return bool(m["date_independent"])
+    return not str(m.get("date_source") or "").startswith("memory")
+
+
+def proven_before(proven, claim_date, independent_only=False):
     """Matcher-proven copies strictly earlier than the claimed event date. If sources disagree on a copy's date, ALL
     reported dates must predate the claim (conservative: a conflict that straddles the claim date does not count)."""
     if not claim_date:
         return []
-    ok = [m for m in proven if all_dates(m) and max(all_dates(m)) < claim_date]
+    ok = [m for m in proven if all_dates(m) and max(all_dates(m)) < claim_date and (is_independent(m) or not independent_only)]
     return sorted(ok, key=lambda m: min(all_dates(m)))
 
 
@@ -96,13 +125,15 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
         proven = proven_real + [input_pub]   # the input's own publication also counts as 'previously published' evidence
     limits = [
         "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
-        "Upload dates are platform metadata for the copy found; the earliest copy found is not necessarily the true source.",
+        "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
         "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
         "'Not found' means not found by these adapters, not that no earlier copy exists.",
     ]
-    earlier = proven_before(proven, claim_date)
+    earlier = proven_before(proven, claim_date, independent_only=True)
+    unverified_earlier = [] if earlier else proven_before(proven, claim_date)    # earlier only on an inherited date
     conflicts = date_conflicts(proven)
-    contrad = [c for c in (clues or {}).get("contradictions_with_claim", [])] if (clues or {}).get("status") == "ok" else []
+    cl_ok = (clues or {}).get("status") == "ok"
+    contrad = list((clues or {}).get("observations_against_claim", (clues or {}).get("contradictions_with_claim", []))) if cl_ok else []
     phys = physical_supports(physical)
     ev = []   # evidence actually present, cited in the summary
     if earlier:
@@ -111,7 +142,7 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
         ev_txt = ("The input is itself that publication." if e["match"].get("identity") else
                   f"Matcher evidence: {e['match']['consistent_frames']} temporally consistent frame(s), up to {e['match']['max_inliers']} inliers"
                   f"{', mirrored' if e['match'].get('mirrored') else ''}.")
-        s = (f"The footage matches a copy published on {e['upload_date']} ({e['url']}, date per {e.get('date_source')}), before the claimed event date {claim_date}. "
+        s = (f"The footage matches the earliest copy found, published on {e['upload_date']} ({e['url']}, date independently fetched per {e.get('date_source')}), before the claimed event date {claim_date}. "
              f"{ev_txt} This shows the footage was previously published; it does not "
              "by itself show the footage is fake or that the claimed event did not happen.")
     else:
@@ -127,14 +158,28 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
                  + ", so recycling relative to the claim is not established. ")
         else:
             s = "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. "
-        if phys is True and not contrad and not earlier:
+        if unverified_earlier:
+            u = unverified_earlier[0]
+            unverified_reason = "earlier copy found, date not independently verified"
+            s += (f"An earlier copy was found ({u['url']}, dated {u['upload_date']}), but that date is only inherited from memory and could not be "
+                  "re-fetched independently, so it is not used as proof of recycling (" + unverified_reason + "). ")
+        # Physical-world SUPPORTS is context only and can NEVER raise the verdict (C2 H05 bug: a debunked clip judged consistent).
+        # CONSISTENT_WITH_CLAIM needs provenance evidence: an independently dated copy (input publication or proven copy) that
+        # falls within a few days of the claimed event date, no earlier independent copy, no observations against the claim.
+        ind = [m for m in proven if is_independent(m) and m.get("upload_date")]
+        timing_ok = bool(claim_date and ind and
+                         -1 <= (datetime.date.fromisoformat(min(m["upload_date"] for m in ind)[:10]) - datetime.date.fromisoformat(claim_date[:10])).days <= 3)
+        if timing_ok and not contrad and not earlier and not unverified_earlier and phys is not False:
             label = "CONSISTENT_WITH_CLAIM"
-            s += ("The physical-world check supports the claimed place/date and no cited contradiction was found. This means no "
-                  "contradiction was found in the available evidence; it is not a finding that the footage is authentic.")
+            s += ("The earliest independently dated copy was published within days of the claimed event date, and no earlier copy or cited contradiction was found"
+                  + (", and the physical-world check adds supporting context (context only; it did not change the verdict)" if phys else "")
+                  + ". This means no contradiction was found in the available evidence; it is not a finding that the footage is authentic.")
         else:
             label = "UNVERIFIED"
             if phys is False:
                 s += "The physical-world check did not support the claimed place/date. "
+            elif (physical or {}).get("verdict") == "NO_EVIDENCE":
+                s += INSUFFICIENT + " (physical-world check). "
             elif phys is None:
                 s += "The physical-world check was not available or inconclusive. "
             s += "The claim could not be verified from the available evidence."
@@ -143,10 +188,29 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
             c["url"] + " (" + ", ".join(f"{d['date']} per {d['source']}" for d in c["dates"]) + ")" for c in conflicts) + \
             ". Both dates are reported; the verdict uses the later one."
     if contrad:
-        s += (" Separately, the AI visual clues cite " + str(len(contrad)) + " cue(s) that argue against the claim (e.g. \""
-              + contrad[0]["text"][:140] + "\", frame ref " + str(contrad[0]["refs"]) + "); these are model observations, not part of the visual-match proof.")
-    return dict(label=label, summary=s, limits=limits, basis=dict(
-        earlier_proven_copies=len(earlier), proven_copies=len(proven_real), physical_supports=phys, cited_contradictions=len(contrad), date_conflicts=len(conflicts)))
+        s += (" Separately, the AI visual clues report " + str(len(contrad)) + " unverified observation(s) that clash with the claim (e.g. \""
+              + contrad[0]["text"][:140] + "\", frame ref " + str(contrad[0]["refs"]) + "); these are model observations, not independent evidence "
+              "and not part of the visual-match proof.")
+    if (physical or {}).get("verdict") == "NO_EVIDENCE":
+        limits.append(INSUFFICIENT + ".")
+    basis = dict(earlier_proven_copies=len(earlier), proven_copies=len(proven_real), physical_supports=phys,
+                 unverified_model_observations=len(contrad), date_conflicts=len(conflicts))
+    if unverified_earlier and label == "UNVERIFIED":
+        basis["unverified_reason"] = "earlier copy found, date not independently verified"
+    return dict(label=label, summary=s, limits=limits, basis=basis)
+
+
+def independent_contradictions(claim, proven, physical, input_pub=None):
+    """Claim-vs-evidence conflicts backed by INDEPENDENT evidence only. Muse observations and location hypotheses never qualify."""
+    out = []
+    cd = (claim or {}).get("event_date")
+    for m in proven_before(list(proven) + ([input_pub] if input_pub else []), cd, independent_only=True)[:1]:
+        out.append(dict(kind="independently_dated_earlier_copy", text=f"Footage was already published on {m['upload_date']} (earliest copy found), before the claimed event date {cd}.",
+                        evidence=[m["url"]], date_source=m.get("date_source")))
+    if (physical or {}).get("verdict") == "CONTRADICTS":
+        out.append(dict(kind="physical_world_data", text="; ".join((physical.get("reasons") or [])[:2]) or "physical-world data contradict the claim",
+                        evidence=list(physical.get("links") or [])[:3], note="weak: no physical trace found at model resolution"))
+    return out
 
 
 def build_report(*, input_meta, claim, memory, visual, clues, physical, investigation_id=None):
@@ -155,6 +219,7 @@ def build_report(*, input_meta, claim, memory, visual, clues, physical, investig
                created_at=datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
                input=input_meta, claim=claim, memory=memory, visual_matching=visual, clues=clues,
                physical_world_check=physical)
+    rep["contradictions"] = independent_contradictions(claim, proven, physical, input_publication(visual))
     rep["final_verdict"] = decide_verdict(claim, proven, clues, physical, input_meta, input_publication(visual))
     return rep
 
@@ -172,12 +237,25 @@ def validate_report(r: dict):
             assert k in m, f"proven match missing {k}"
         for k in ("consistent_frames", "max_inliers", "temporal_offset", "best_pairs"):
             assert k in m["match"], f"match evidence missing {k}"
+        assert isinstance(m.get("date_independent"), bool), "proven match missing date_independent"
+        if not m["date_independent"]:
+            assert str(m["date_source"] or "").startswith("memory") or not m.get("upload_date"), "non-independent date must be labelled as inherited"
+        if m.get("stored_date") and m.get("independent_date"):
+            assert m.get("independent_date_source"), "refetched date needs independent_date_source"
+    cl = r["clues"]
+    if cl.get("status") == "ok":
+        assert "contradictions_with_claim" not in cl, "model observations must not be filed as contradictions"
+        for h in cl.get("location_hypotheses", []):
+            assert h.get("status") == "UNVERIFIED_HYPOTHESIS" and h.get("cited_frames") is not None, "location guess must be a cited hypothesis"
+    for c in r.get("contradictions", []):
+        assert c.get("evidence") and c.get("kind") in ("independently_dated_earlier_copy", "physical_world_data"), "contradiction needs independent evidence"
     assert r["memory"]["status"] in ("HIT", "MISS", "NOT_RUN")
     fv = r["final_verdict"]
     assert fv["label"] in LABELS and fv["summary"] and fv["limits"]
     if fv["label"] == "RECYCLED_FOOTAGE":
         cd = r["claim"].get("event_date")
-        assert cd and proven_before(v["proven_matches"] + ([ip] if (ip := input_publication(v)) else []), cd), "RECYCLED requires a proven copy predating the claimed date"
+        assert cd and proven_before(v["proven_matches"] + ([ip] if (ip := input_publication(v)) else []), cd, independent_only=True), \
+            "RECYCLED requires a proven copy with an independently re-fetched date predating the claimed date"
     return r
 
 
@@ -194,17 +272,23 @@ def render_text(r: dict) -> str:
          f"Claim: {c.get('text')} (event date {c.get('event_date')})",
          f"Memory: {r['memory']['status']}   Visual matching: {v['status']} ({len(v.get('proven_matches', []))} proven)"]
     for m in v.get("proven_matches", []):
-        L.append(f"  - [{m['adapter']}] {m['url']} uploaded {m['upload_date']} ({m['date_source']}); "
+        dt = f"{m['upload_date']} ({m['date_source']}" + ("" if m.get("date_independent") else "; NOT independently verified") + ")"
+        if m.get("stored_date") and m["stored_date"] != m["upload_date"]:
+            dt += f" [memory said {m['stored_date']}]"
+        L.append(f"  - [{m['adapter']}] {m['url']} dated {dt}; "
                  f"{m['match']['consistent_frames']} frames, {m['match']['max_inliers']} inliers; evidence: {m.get('evidence_png')}")
     ep = v.get("earliest_proven_copy")
-    L.append(f"Earliest proven copy: {ep['url'] + ' ' + str(ep['upload_date']) if ep else 'none'}   Claimed original: {(v.get('claimed_original') or {}).get('url')}")
+    L.append(f"Earliest copy found: {ep['url'] + ' ' + str(ep['upload_date']) if ep else 'none'}   Source claimed by user: {(v.get('claimed_original') or {}).get('url')}")
     cl = r["clues"]
     if cl.get("status") == "ok":
-        ll = cl["likely_location"]
-        L.append(f"Muse clues: location guess {ll.get('place')}, {ll.get('country')} (conf {ll.get('confidence')}); "
-                 f"{len(cl['contradictions_with_claim'])} contradiction(s) cited; scene: {(cl.get('scene_type') or {}).get('value')}")
+        for h in cl.get("location_hypotheses", []):
+            L.append(f"Hypothesis (unverified): location {h.get('place')}, {h.get('country')} (conf {h.get('confidence')}), cited frames {h.get('cited_frames')}")
+        L.append(f"Muse clues: {len(cl.get('observations_against_claim', []))} unverified observation(s) clashing with the claim; "
+                 f"scene: {(cl.get('scene_type') or {}).get('value')}")
     else:
         L.append(f"Muse clues: {cl.get('status')}")
-    L.append(f"Physical-world check: {r['physical_world_check'].get('verdict') or r['physical_world_check'].get('status')}")
+    L.append(f"Physical-world check: {physical_label(r['physical_world_check'])}")
+    for c_ in r.get("contradictions", []):
+        L.append(f"Contradiction (independent evidence): {c_['text']}")
     L.append(f"VERDICT: {fv['label']}\n{fv['summary']}\nLimits:\n" + "\n".join(f"  * {x}" for x in fv["limits"]))
     return "\n".join(L)

@@ -42,6 +42,12 @@ class Candidate:
     match: dict | None = None
     evidence_png: str | None = None
     memory_entry: dict | None = None
+    stored_date: str | None = None          # date inherited from a memory entry (NOT evidence by itself)
+    independent_date: str | None = None       # date independently re-fetched (live metadata / page meta / Wayback)
+    independent_date_source: str | None = None
+    date_independent: bool = False          # True only if upload_date came from a live fetch in THIS investigation
+    date_note: str | None = None
+    date_alternatives: list = field(default_factory=list)
 
     def to_dict(self):
         return asdict(self)
@@ -63,9 +69,10 @@ def memory_candidates(mem, feats: ClipFeatures, evidence_dir: Path | None = None
     for h in res.hits:
         e = h.entry
         cands.append(Candidate(e["source_url"] or f"memory:{e['id']}", e.get("title") or "", "memory", f"entry {e['id']}",
-                               "proven", e.get("upload_date"), "memory entry" if e.get("upload_date") else None,
+                               "proven", e.get("upload_date"), "memory entry (inherited)" if e.get("upload_date") else None,
                                _now(), e.get("uploader"), True, h.match.to_dict(),
-                               str(Path(evidence_dir) / f"memory_{e['id']}.png") if evidence_dir else None, e))
+                               str(Path(evidence_dir) / f"memory_{e['id']}.png") if evidence_dir else None, e,
+                               stored_date=e.get("upload_date"), date_independent=False))
     return cands, res
 
 
@@ -182,6 +189,7 @@ def verify_candidate(c: Candidate, q: ClipFeatures, query_date: str | None = Non
         c.status = "unavailable"; return c
     c.upload_date, c.uploader = meta["upload_date"], meta["uploader"]
     c.date_source = "yt-dlp metadata" if c.upload_date else None
+    c.date_independent = bool(c.upload_date); c.independent_date = c.upload_date; c.independent_date_source = c.date_source
     c.retrieved_at = _now()
     if not c.title:
         c.title = meta.get("title") or ""
@@ -220,3 +228,30 @@ def earliest_proven_copy(cands):
     """Earliest matcher-proven copy by platform upload date (dated copies only). A copy, not necessarily the source."""
     dated = [c for c in cands if c.proven and c.upload_date]
     return min(dated, key=lambda c: c.upload_date) if dated else None
+
+
+def enrich_dates(cands, refetch=None):
+    """For proven copies whose date is only inherited (memory), re-fetch it independently. Sets upload_date/date_source to the
+    re-fetched value (inherited date kept in stored_date and, if different, in date_alternatives); on failure the inherited
+    date stays and date_independent stays False (the verdict layer then refuses RECYCLED on it). Never raises."""
+    from .provenance import refetch_date
+    refetch = refetch or refetch_date
+    for c in cands:
+        if not c.proven or c.date_independent:
+            continue
+        try:
+            r = refetch(c.url)
+        except Exception as e:                       # belt and braces: provenance never raises, but a patched one might
+            r = dict(date=None, status="failed", errors=[type(e).__name__])
+        if r.get("date"):
+            c.independent_date, c.independent_date_source = r["date"], r["source"]
+            if c.stored_date and c.stored_date != r["date"]:
+                c.date_alternatives = [dict(date=c.stored_date, source="memory entry (inherited)")]
+            c.upload_date, c.date_source, c.date_independent = r["date"], r["source"], True
+            c.retrieved_at = r.get("retrieved_at") or c.retrieved_at
+            c.date_note = ("Wayback snapshot date is an upper bound: the page existed by then, it may be older."
+                           if str(r["source"]).startswith("wayback") else None)
+        else:
+            c.date_independent = False
+            c.date_note = "date re-fetch failed (" + "; ".join(r.get("errors") or ["no reason"]) + "); inherited date not independently verified"
+    return cands

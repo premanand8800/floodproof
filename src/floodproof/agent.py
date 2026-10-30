@@ -102,7 +102,7 @@ class AgentState:
         return dict(status="ok", shows=[x["text"][:140] for x in c.get("shows", [])[:5]],
                     scene=(c.get("scene_type") or {}).get("value"),
                     visible_text=[x["text"][:80] for x in c.get("visible_text", [])[:6]],
-                    likely_place=ll.get("place"), country=ll.get("country"), confidence=ll.get("confidence"),
+                    location_hypothesis_unverified=ll.get("place"), country=ll.get("country"), confidence=ll.get("confidence"),
                     queries=[q["q"] for q in c.get("queries", [])[:8]], n_keyframes=len(self.feats),
                     frames_shown=c.get("frames_shown"))
 
@@ -113,7 +113,7 @@ class AgentState:
             self.proven[c.url] = c; self.verified[c.url] = c
         self.memory_layer = dict(status="HIT" if mc else "MISS", mode=res.mode, entries_searched=len(res.shortlisted),
                                  entries_total=res.n_entries, seconds=res.seconds,
-                                 hits=[dict(url=c.url, upload_date=c.upload_date) for c in mc])
+                                 hits=[dict(url=c.url, stored_date=c.stored_date) for c in mc])
         return dict(status=self.memory_layer["status"], proven=[dict(url=c.url, upload_date=c.upload_date, uploader=c.uploader,
                     consistent_frames=c.match["consistent_frames"]) for c in mc], entries_total=res.n_entries)
 
@@ -251,6 +251,11 @@ def audit_summary(summary: str, state: AgentState, original_url=None) -> list[di
 def build_agent_report(st: AgentState, trace, final, inv_id, input_meta, timing):
     """report.json is built ONLY from validated state (proven candidates, physical dict, clues), never from agent text."""
     proven = list(st.proven.values())
+    sources.enrich_dates(proven)
+    for h in st.memory_layer.get("hits", []):
+        c = st.proven.get(h["url"])
+        if c:
+            h.update(independent_date=c.independent_date, independent_date_source=c.independent_date_source, date_independent=c.date_independent)
     earliest = sources.earliest_proven_copy(proven)
     claim_d = dict(text=st.claim, event_date=st.date, place=st.place)
     cp = (st.clues.get("claim_parsed") or {}) if st.clues.get("status") == "ok" else {}
@@ -259,7 +264,7 @@ def build_agent_report(st: AgentState, trace, final, inv_id, input_meta, timing)
     visual = dict(status="FOUND" if proven else "NOT_FOUND", proven_matches=[_proven_entry(c, out) for c in proven],
                   earliest_proven_copy=_proven_entry(earliest, out) if earliest else None, claimed_original=None,
                   input_publication=None,
-                  provenance_note="earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is not asserted to be the source.",
+                  provenance_note="earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
                   candidates_checked=len(st.verified), candidates_total=len(st.proposed) + len(st.proven),
                   candidate_status_counts={s: sum(c.status == s for c in st.verified.values()) for s in {c.status for c in st.verified.values()}},
                   adapters=st.web, agent_page_reads=st.page_reads)

@@ -110,7 +110,19 @@ def _clean(plan: dict, feats: ClipFeatures, audio_ok: bool):
             ll = dict(place=None, country=None, confidence=0.0, lat=None, lon=None, reasons=[], note="uncited guess rejected",
                       uncited_guess=dict(place=ll.get("place"), country=ll.get("country")))
     out["likely_location"] = ll
-    out["contradictions_with_claim"] = [x for x in (fix(i, "contradiction") for i in plan.get("contradictions_with_claim", [])) if x]
+    # Location guesses are HYPOTHESES (model inference from visual cues), never evidence and never contradictions.
+    out["location_hypotheses"] = []
+    if isinstance(ll, dict) and ll.get("place") and ll.get("reasons"):
+        refs = sorted({r for x in ll["reasons"] for r in x["refs"] if isinstance(r, int)})
+        out["location_hypotheses"].append(dict(
+            place=ll.get("place"), country=ll.get("country"), confidence=ll.get("confidence"), lat=ll.get("lat"), lon=ll.get("lon"),
+            cited_frames=refs, cited_timestamps_s=[round(feats.times[r], 2) for r in refs],
+            reasons=ll["reasons"], status="UNVERIFIED_HYPOTHESIS",
+            note="Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."))
+    # What the model says visibly clashes with the claim: an unverified observation, NOT a contradiction. Contradictions
+    # (report['contradictions']) require independent evidence (physical-world data, an independently dated earlier copy).
+    out["observations_against_claim"] = [dict(x, status="UNVERIFIED_MODEL_OBSERVATION")
+                                         for x in (fix(i, "observation") for i in plan.get("contradictions_with_claim", [])) if x]
     out["claim_parsed"] = plan.get("claim_parsed") or {}
     out["queries"] = [q for q in plan.get("queries", []) if isinstance(q, dict) and q.get("q")][:10]
     out["rejected_clues"] = rejected
