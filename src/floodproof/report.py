@@ -19,7 +19,7 @@ import uuid
 from pathlib import Path
 
 LABELS = ("RECYCLED_FOOTAGE", "CONSISTENT_WITH_CLAIM", "UNVERIFIED")
-SCHEMA_VERSION = "1.3"   # 1.3: optional report["debunk"] (see debunk.py); 1.2 reports stay valid
+SCHEMA_VERSION = "1.4"   # 1.4: media_nature.per_frame + value "mixed", claim date bases *_partial_year; 1.3 reports stay valid; 1.3: optional report["debunk"] (see debunk.py); 1.2 reports stay valid
 REQUIRED_KEYS = ("schema_version", "investigation_id", "created_at", "input", "claim", "memory", "visual_matching",
                  "clues", "physical_world_check", "final_verdict")
 
@@ -124,6 +124,7 @@ NATURE_CHIP = {
     "animation_or_cgi": "Not camera footage: animated / reenactment (AI observation)",
     "likely_ai_generated": "Not camera footage: likely AI-generated (AI observation)",
     "screen_recording": "Screen recording, not original camera footage (AI observation)",
+    "mixed": "Mixed: AI-generated shots + real footage clips (AI observation)",
 }
 
 
@@ -133,7 +134,8 @@ def nature_sentence(mn):
     if v not in NATURE_CHIP or v == "camera_footage":
         return ""
     fr = ",".join(str(x) for x in (mn.get("cited_frames") or []))
-    return f" Media nature (AI observation from frames {fr}, not proof; does not change the label): " + NATURE_CHIP[v] + (" " if not NATURE_CHIP[v].endswith(".") else " ")
+    chip = mn.get("summary") if v == "mixed" and mn.get("summary") else NATURE_CHIP[v]
+    return f" Media nature (AI observation from frames {fr}, not proof; does not change the label): " + chip + (" " if not NATURE_CHIP[v].endswith(".") else " ")
 
 
 def claim_date_for_logic(claim):
@@ -293,17 +295,28 @@ def validate_report(r: dict):
     if r["schema_version"] >= "1.2":      # 1.1 demo reports stay valid without media_nature / claim.source
         mn = r.get("media_nature")
         assert isinstance(mn, dict) and mn.get("value") in ("camera_footage", "news_compilation", "animation_or_cgi", "likely_ai_generated",
-                                                          "screen_recording", "unknown"), "media_nature layer missing/invalid"
+                                                          "screen_recording", "mixed", "unknown"), "media_nature layer missing/invalid"
         assert mn.get("status") in ("AI_OBSERVATION_HYPOTHESIS", "NOT_RUN"), "media_nature must be labelled an AI observation"
         if mn["value"] != "unknown":
             assert mn.get("cited_frames"), "media_nature needs cited frames"
+        nk = (r.get("input") or {}).get("n_keyframes")
+        for x in mn.get("per_frame") or []:      # schema 1.4: every per-frame label must cite a real frame
+            assert isinstance(x.get("frame"), int) and not isinstance(x.get("frame"), bool) and x["frame"] >= 0 and (nk is None or x["frame"] < nk), \
+                "per-frame media label must cite a real frame"
+            assert x.get("label") in ("camera_footage", "likely_ai_generated", "animation_or_cgi", "graphic_or_text", "screen_recording", "unknown"), \
+                "unknown per-frame media label"
+        if mn["value"] == "mixed":
+            assert len({x["label"] for x in mn.get("per_frame") or [] if x["label"] not in ("unknown", "graphic_or_text")}) >= 2, \
+                "mixed needs at least two per-frame classes"
         cs = r["claim"].get("source")
         if cs is not None:
             for k in ("text", "event_date", "place"):
                 if cs.get(k) == "inferred_from_post":
                     assert (r["input"] or {}).get("url"), "inferred claim requires a URL input"
             if cs.get("event_date") == "inferred_from_post":
-                assert r["claim"].get("event_date_basis") in ("title", "description", "on_screen_text", "date_posted")
+                assert r["claim"].get("event_date_basis") in ("title", "description", "on_screen_text", "date_posted", "spoken_in_narration",
+                                                                "title_partial_year", "description_partial_year", "on_screen_text_partial_year",
+                                                                "spoken_in_narration_partial_year")
     assert r["memory"]["status"] in ("HIT", "MISS", "NOT_RUN")
     if r.get("debunk") is not None:      # optional (schema 1.3); older reports simply do not have it
         from .debunk import validate_debunk

@@ -20,6 +20,13 @@ def need(*keys):
 _feat_cache = {}
 
 
+@pytest.fixture(autouse=True)
+def isolated_gvision_state(tmp_path, monkeypatch):
+    """The Vision 'billing disabled' marker lives under sources.CACHE; never let a test read or write the real one."""
+    from floodproof import sources
+    monkeypatch.setattr(sources, "CACHE", tmp_path / "cache")
+
+
 @pytest.fixture(scope="session")
 def feats():
     from floodproof.matcher import ClipFeatures

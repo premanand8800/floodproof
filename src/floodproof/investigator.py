@@ -33,6 +33,8 @@ SCHEMA = """Return ONLY one JSON object (no prose) with exactly these keys:
  "claim_parsed": {"place": str|null, "country_iso2": str|null, "event_type": one of "flood","flash_flood","glof","landslide","cyclone","storm_surge","unknown"},  // what the CLAIM names
  "media_nature": {"value": one of "camera_footage","news_compilation","animation_or_cgi","likely_ai_generated","screen_recording","unknown",
                   "confidence": float 0-1, "refs": [..], "reasons": [{"text": str, "refs": [..]}]},   // what KIND of media this is, judged from the frames
+ "frame_labels": [{"frame": int, "label": one of "camera_footage","likely_ai_generated","animation_or_cgi","graphic_or_text","screen_recording","unknown",
+                   "confidence": float 0-1, "reason": str}],       // ONE entry for EVERY frame shown, judged on that frame alone
  "on_screen_dates": [{"date": "YYYY-MM-DD", "text": str, "refs": [..]}],   // dates legible on title cards/captions/timestamps (full date with year only); [] if none
  "queries": [{"q": str, "language": str, "why": str}]             // 8 search queries to find the earliest upload / true source
 }
@@ -40,6 +42,11 @@ media_nature: camera_footage = raw/phone/CCTV/drone footage; news_compilation = 
 clips, with presenter/graphics/logos/captions; animation_or_cgi = cartoon, animation, 3D render or reenactment; likely_ai_generated =
 photoreal but synthetic-looking (warping, impossible physics); screen_recording = recording of a screen/app. Cite the frames that show it
 (for camera_footage cite a few representative frames). This is an observation from the frames, not proof; use "unknown" if unsure.
+frame_labels: a video can MIX real camera clips with AI-generated shots, so label each frame separately. Tells of AI generation to look for:
+overly smooth or plastic textures, impossible physics (water, ice or debris moving wrongly), morphing or melting details, garbled or
+nonsense text, too-perfect cinematic lighting, and the generic staged-analyst / stock-footage look. Real camera footage shows
+natural noise, shake, compression artefacts and incidental detail. graphic_or_text = title card, infographic, map or chart overlay.
+If a frame is uncertain use "unknown" with low confidence. These are observations, never certainty; do not claim proof.
 RULES: 'refs' are the frame numbers printed before each image (e.g. [3,7]) or audio timestamps as strings like "audio@12.5".
 Every item MUST have at least one ref. Report only what is visible/audible; if unsure say so in confidence, do not invent.
 Do NOT trust the claim: the footage may be recycled from an earlier event, possibly in another country. Include queries in the
@@ -95,8 +102,18 @@ def _clean_audio(d: dict) -> dict:
         iso = _iso_ok(x.get("date")) if isinstance(x, dict) else None
         if iso and t_of(x) is not None:
             dates.append(dict(date=iso, text=str(x.get("text") or "")[:120], audio_t=t_of(x)))
+    partial = []
+    for x in (d.get("partial_dates") or []):
+        if not isinstance(x, dict) or t_of(x) is None:
+            continue
+        try:
+            mo, dy = int(x.get("month")), int(x.get("day"))
+        except (TypeError, ValueError):
+            continue
+        if 1 <= mo <= 12 and 1 <= dy <= 31:
+            partial.append(dict(month=mo, day=dy, text=str(x.get("text") or "")[:120], audio_t=t_of(x)))
     d["dropped_untimed"] = len(d.get("spoken_place_names") or []) - len(places) + len(d.get("spoken_dates") or []) - len(dates)
-    d["spoken_place_names"], d["spoken_dates"] = places, dates
+    d["spoken_place_names"], d["spoken_dates"], d["partial_dates"] = places, dates, partial
     return d
 
 
@@ -112,11 +129,13 @@ def analyze_audio(clip: Clip, workdir: Path | None = None) -> dict:
     truncated = bool(dur and dur > AUDIO_MAX_S)
     prompt = ("Listen to this audio from a viral disaster video. Return ONLY JSON: {\"has_speech\": bool, \"language\": str|null, "
               "\"transcript_summary\": str, \"spoken_place_names\": [{\"name\": str, \"audio_t\": float}], "
-              "\"spoken_dates\": [{\"date\": \"YYYY-MM-DD\", \"text\": str, \"audio_t\": float}], \"other_sounds\": [str]}. "
-              "spoken_dates: only full calendar dates (with year) that the speaker says. audio_t = seconds from the start of the audio. "
+              "\"spoken_dates\": [{\"date\": \"YYYY-MM-DD\", \"text\": str, \"audio_t\": float}], "
+              "\"partial_dates\": [{\"month\": int 1-12, \"day\": int, \"text\": str, \"audio_t\": float}], \"other_sounds\": [str]}. "
+              "spoken_dates: only full calendar dates (with year) that the speaker says. partial_dates: dates spoken with a day and month but NO year "
+              "(e.g. 'August 26'). Place names include countries and borders (e.g. 'Nepal', 'Nepal-China border'). audio_t = seconds from the start of the audio. "
               "If it is only music or noise, has_speech=false. Never invent words.")
     strict = ("Reply with ONE JSON object and nothing else: no prose, no markdown, no thinking. Keep transcript_summary under 60 words. "
-              "Keys: has_speech, language, transcript_summary, spoken_place_names [{name, audio_t}], spoken_dates [{date, text, audio_t}], other_sounds. "
+              "Keys: has_speech, language, transcript_summary, spoken_place_names [{name, audio_t}], spoken_dates [{date, text, audio_t}], partial_dates [{month, day, text, audio_t}], other_sounds. "
               "Every place and date MUST have audio_t, a number of seconds from the start; omit any you cannot time. ")
     data = base64.b64encode(mp3.read_bytes()).decode()
     audio_part = {"type": "input_audio", "input_audio": {"data": data, "format": "mp3"}}
@@ -156,7 +175,66 @@ def _valid_refs(refs, nframes, audio_ok):
     return good
 
 
-NATURES = ("camera_footage", "news_compilation", "animation_or_cgi", "likely_ai_generated", "screen_recording", "unknown")
+NATURES = ("camera_footage", "news_compilation", "animation_or_cgi", "likely_ai_generated", "screen_recording", "mixed", "unknown")
+FRAME_LABELS = ("camera_footage", "likely_ai_generated", "animation_or_cgi", "graphic_or_text", "screen_recording", "unknown")
+CLASS_NAMES = {"camera_footage": "camera footage", "likely_ai_generated": "likely AI-generated shots", "animation_or_cgi": "animation/CGI shots",
+               "screen_recording": "screen recording"}
+
+
+def _clean_frame_labels(items, feats, rejected):
+    """Per-frame media labels: each must cite a real frame (0 <= frame < len) and a known label, else it is rejected."""
+    out, seen = [], set()
+    for x in items or []:
+        f = x.get("frame") if isinstance(x, dict) else None
+        if isinstance(f, bool) or not isinstance(f, (int, float)) or not (0 <= int(f) < len(feats)) or int(f) in seen:
+            rejected.append(dict(kind="frame_label", item=x, reason="no valid frame reference")); continue
+        lab = x.get("label") if x.get("label") in FRAME_LABELS else "unknown"
+        try:
+            conf = max(0.0, min(1.0, float(x.get("confidence"))))
+        except (TypeError, ValueError):
+            conf = 0.0
+        f = int(f); seen.add(f)
+        out.append(dict(frame=f, t=round(feats.times[f], 2), label=lab, confidence=conf if lab != "unknown" else 0.0,
+                        reason=str(x.get("reason") or "")[:200]))
+    return sorted(out, key=lambda d: d["frame"])
+
+
+def derive_media_nature(frame_labels, overall, feats):
+    """Overall media_nature from the per-frame labels. >=2 distinct real classes -> 'mixed'; one class -> that value (a Muse
+    'news_compilation' is kept for uniform camera clips); none -> Muse's own overall value. Always an AI observation."""
+    by = {}
+    for x in frame_labels:
+        if x["label"] != "unknown":
+            by.setdefault(x["label"], []).append(x["frame"])
+    classes = [k for k in by if k in CLASS_NAMES]
+    if not frame_labels or not classes:
+        return dict(overall, per_frame=frame_labels, by_class=by)
+    conf = lambda fr: sum(x["confidence"] for x in frame_labels if x["frame"] in fr) / len(fr)
+    if len(classes) >= 2:
+        value = "mixed"
+        used = sorted(f for k in classes for f in by[k])
+        summary = "Mixed: " + " + ".join(f"{CLASS_NAMES[k]} (frames {','.join(map(str, by[k]))})"
+                                         for k in sorted(classes, key=lambda k: -len(by[k]))) + " (AI observation)"
+        c = sum(conf(by[k]) for k in classes) / len(classes)
+    else:
+        value, used = classes[0], sorted(by[classes[0]])
+        if value == "camera_footage" and overall.get("value") == "news_compilation":
+            value = "news_compilation"
+        summary = f"{CLASS_NAMES[classes[0]]} (frames {','.join(map(str, used))}) (AI observation)"
+        c = conf(by[classes[0]])
+    reasons = [dict(text=x["reason"], refs=[x["frame"]], timestamps_s=[x["t"]]) for x in frame_labels if x["label"] in classes and x["reason"]][:6]
+    return dict(value=value, confidence=round(c, 2), cited_frames=used, cited_timestamps_s=[round(feats.times[f], 2) for f in used],
+                reasons=reasons, status="AI_OBSERVATION_HYPOTHESIS", per_frame=frame_labels, by_class=by, summary=summary,
+                note="Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself.")
+
+
+def camera_frame_ids(clues, n):
+    """Keyframe ids (0..n-1) whose nearest labelled frame is camera_footage; [] if no per-frame labels or none are camera.
+    Real clips are the ones worth tracing to earlier copies; AI-generated shots have no original."""
+    labs = ((clues or {}).get("media_nature") or {}).get("per_frame") if (clues or {}).get("status") == "ok" else None
+    if not labs or not any(x["label"] == "camera_footage" for x in labs):
+        return []
+    return [i for i in range(n) if min(labs, key=lambda x: abs(x["frame"] - i))["label"] == "camera_footage"]
 
 
 def _clean_nature(mn, fix, feats):
@@ -226,7 +304,8 @@ def _clean(plan: dict, feats: ClipFeatures, audio_ok: bool):
     # (report['contradictions']) require independent evidence (physical-world data, an independently dated earlier copy).
     out["observations_against_claim"] = [dict(x, status="UNVERIFIED_MODEL_OBSERVATION")
                                          for x in (fix(i, "observation") for i in plan.get("contradictions_with_claim", [])) if x]
-    out["media_nature"] = _clean_nature(plan.get("media_nature"), fix, feats)
+    out["media_nature"] = derive_media_nature(_clean_frame_labels(plan.get("frame_labels"), feats, rejected),
+                                              _clean_nature(plan.get("media_nature"), fix, feats), feats)
     out["on_screen_dates"] = [dict(x, date=_iso_ok(x.get("date"))) for x in (fix(i, "on_screen_date") for i in plan.get("on_screen_dates", []) if isinstance(i, dict)) if x and _iso_ok(x.get("date"))]
     out["claim_parsed"] = plan.get("claim_parsed") or {}
     out["queries"] = [q for q in plan.get("queries", []) if isinstance(q, dict) and q.get("q")][:10]

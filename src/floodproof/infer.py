@@ -33,6 +33,78 @@ def parse_explicit_date(text) -> str | None:
     return None
 
 
+_PARTIAL_PATTERNS = (
+    re.compile(r"\b(\d{1,2})(?:st|nd|rd|th)?\s+(?:of\s+)?" + _MON + r"[a-z]*\b\.?(?!\s*,?\s*\d{4})", re.I),
+    re.compile(r"\b" + _MON + r"[a-z]*\b\.?\s+(\d{1,2})(?:st|nd|rd|th)?\b(?!\s*,?\s*\d{4})(?!\s*[:/.]\d)", re.I),
+)
+
+
+def resolve_partial_date(month, day, upload_date) -> str | None:
+    """Day+month without a year -> ISO using the upload year; the previous year if that date would fall AFTER the upload date."""
+    try:
+        up = datetime.date.fromisoformat(str(upload_date)[:10])
+        for y in (up.year, up.year - 1):
+            try:
+                d = datetime.date(y, int(month), int(day))
+            except ValueError:
+                continue
+            if d <= up:
+                return d.isoformat()
+    except (TypeError, ValueError):
+        pass
+    return None
+
+
+def parse_partial_date(text, upload_date) -> dict | None:
+    """First 'August 26' / '26 Aug' (no year) in text -> dict(date, month, day, text) with the year resolved from upload_date."""
+    if not text or not upload_date:
+        return None
+    for i, rx in enumerate(_PARTIAL_PATTERNS):
+        for m in rx.finditer(str(text)):
+            day, mon = (m[1], m[2]) if i == 0 else (m[2], m[1])
+            iso = resolve_partial_date(MONTHS[mon[:3].lower()], day, upload_date)
+            if iso:
+                return dict(date=iso, month=MONTHS[mon[:3].lower()], day=int(day), text=m[0])
+    return None
+
+
+PARTIAL_NOTE = "year taken from post date"
+
+# country name (as written in a post) -> ISO2, for country-level place inference. Country-level only: the physical check
+# already treats a whole country as too coarse to corroborate a local event.
+COUNTRIES = dict(nepal="NP", india="IN", pakistan="PK", bangladesh="BD", bhutan="BT", china="CN", afghanistan="AF", myanmar="MM",
+                 sri_lanka="LK", indonesia="ID", philippines="PH", thailand="TH", vietnam="VN", malaysia="MY", japan="JP",
+                 turkey="TR", iran="IR", iraq="IQ", syria="SY", yemen="YE", egypt="EG", sudan="SD", nigeria="NG", kenya="KE",
+                 ethiopia="ET", somalia="SO", uganda="UG", tanzania="TZ", mozambique="MZ", malawi="MW", zambia="ZM",
+                 zimbabwe="ZW", ghana="GH", niger="NE", mali="ML", cameroon="CM", italy="IT", france="FR", germany="DE",
+                 spain="ES", greece="GR", poland="PL", romania="RO", ukraine="UA", russia="RU", brazil="BR", colombia="CO",
+                 ecuador="EC", peru="PE", chile="CL", argentina="AR", bolivia="BO", mexico="MX", guatemala="GT", haiti="HT",
+                 honduras="HN", australia="AU", canada="CA", fiji="FJ", libya="LY", lebanon="LB", korea="KR", laos="LA",
+                 cambodia="KH", madagascar="MG")
+_EXTRA_NAMES = {"united states": "US", "south korea": "KR", "usa": "US"}
+_DISPLAY = {"US": "United States", "KR": "South Korea"}
+
+
+def country_name(iso2):
+    if iso2 in _DISPLAY:
+        return _DISPLAY[iso2]
+    k = next((k for k, v in COUNTRIES.items() if v == iso2), None)
+    return k.replace("_", " ").title() if k else None
+
+
+def find_country(iso2_hint, *texts):
+    """Country named in any text (word match, so "Nepal's" matches). The hint (claim_parsed country) wins, else first mention."""
+    blob = [(" " + _norm(t) + " ") for t in texts if t]
+    names = {k.replace("_", " "): v for k, v in COUNTRIES.items()}
+    names.update(_EXTRA_NAMES)
+    if iso2_hint:
+        for n, v in names.items():
+            if v == iso2_hint and any(f" {n} " in b for b in blob):
+                return v
+    hits = [(b.find(f" {n} "), v) for n, v in names.items() for b in blob if f" {n} " in b]
+    return min(hits)[1] if hits else None
+
+
 def _norm(s):
     return re.sub(r"[^a-z0-9]+", " ", str(s or "").lower()).strip()
 
@@ -86,6 +158,54 @@ def fallback_places(claim_d, clues, country_name=None):
     return out
 
 
+def _partial_from_sources(title, desc, screen, partial_spoken, aud, upload_date):
+    """(iso, basis, detail) for the first day+month-without-year date: title, description, on-screen text, narration."""
+    if not upload_date:
+        return None
+    for label, basis, text in (("post title", "title_partial_year", title), ("post description", "description_partial_year", desc)):
+        p = parse_partial_date(text, upload_date)
+        if p:
+            return p["date"], basis, f"date in the {label} without year ({p['text']!r}); {PARTIAL_NOTE}"
+    for x in screen:
+        p = parse_partial_date(x.get("text"), upload_date)
+        if p:
+            return p["date"], "on_screen_text_partial_year", f"date read from on-screen text without year ({p['text']!r}, frames {x.get('refs')}); {PARTIAL_NOTE}"
+    for x in partial_spoken:
+        iso = resolve_partial_date(x["month"], x["day"], upload_date)
+        if iso:
+            return iso, "spoken_in_narration_partial_year", (f"date spoken in narration without year ({x.get('text') or ''!r}, audio@{x['audio_t']}); "
+                                                            f"{PARTIAL_NOTE}; AI transcription, may contain errors")
+    p = parse_partial_date(aud.get("transcript_summary"), upload_date)
+    if p:
+        return p["date"], "spoken_in_narration_partial_year", (f"date mentioned in the AI narration summary without year ({p['text']!r}); {PARTIAL_NOTE}; "
+                                                              "AI transcription, may contain errors")
+    return None
+
+
+def _infer_place(out, src, cp, title, desc, screen, spoken_places, aud):
+    """Fallbacks when claim_parsed.place is a longer phrase than the post wording ("near Nepal-China border, high Himalayas"):
+    (1) a comma-separated part of that phrase that the post states, (2) a country named in the post, (3) a country named in the
+    narration. Every result is labelled; country-level is fine (the physical check treats it as too coarse)."""
+    post_texts = [title, desc] + [x.get("text") for x in screen]
+    spoken = [x.get("name") for x in spoken_places] + [aud.get("transcript_summary")]
+    for part in re.split(r"[,;()]", cp.get("place") or ""):
+        part = re.sub(r"^\s*(?:near|in|at|the|around|close to)\s+", "", part, flags=re.I).strip()
+        if len(part) >= 4 and place_in_text(part, *post_texts):
+            out["place"], src["place"], out["place_basis"] = part, "inferred_from_post", f"part of the claimed place stated in the post ({part!r})"
+            return
+    iso = find_country(cp.get("country_iso2"), *post_texts)
+    if iso:
+        out["place"], src["place"] = country_name(iso), "inferred_from_post"
+        out["place_basis"] = "country named in the post title/caption/on-screen text (country-level)"
+        out["country_iso2"] = iso
+        return
+    iso = find_country(cp.get("country_iso2"), *spoken)
+    if iso:
+        out["place"], src["place"] = country_name(iso), "inferred_from_narration"
+        out["place_basis"] = "country named in the narration (AI transcription, country-level)"
+        out["country_iso2"] = iso
+
+
 def infer_claim(clip, user_claim, user_date, user_place, clues) -> dict:
     """-> dict(text, event_date, place, source{text,event_date,place}, event_date_basis, inferred_note). Only fills EMPTY fields."""
     is_url = bool(getattr(clip, "url", None))
@@ -101,6 +221,7 @@ def infer_claim(clip, user_claim, user_date, user_place, clues) -> dict:
     aud_ok = aud.get("status") == "ok" and aud.get("has_speech") is not False
     spoken_dates = [x for x in (aud.get("spoken_dates") or []) if x.get("date") and x.get("audio_t") is not None] if aud_ok else []
     spoken_places = [x for x in (aud.get("spoken_place_names") or []) if x.get("name") and x.get("audio_t") is not None] if aud_ok else []
+    partial_spoken = [x for x in (aud.get("partial_dates") or []) if x.get("month") and x.get("day") and x.get("audio_t") is not None] if aud_ok else []
     if not is_url:
         if user_claim and not user_place and cp.get("place"):
             out["place"], src["place"] = cp["place"], "user_claim_text"
@@ -119,6 +240,8 @@ def infer_claim(clip, user_claim, user_date, user_place, clues) -> dict:
         elif spoken_dates:
             d, basis = spoken_dates[0]["date"], "spoken_in_narration"
             detail = f"date spoken in the narration ({spoken_dates[0].get('text')!r}, audio@{spoken_dates[0]['audio_t']}); AI transcription, may contain errors"
+        elif (pd_ := _partial_from_sources(title, desc, screen, partial_spoken, aud, getattr(clip, "upload_date", None))):
+            d, basis, detail = pd_
         elif getattr(clip, "upload_date", None):
             d, basis, detail = clip.upload_date, "date_posted", "no explicit date in title, caption or on-screen text; using the date this post was uploaded (claimed date = date posted)"
         else:
@@ -132,6 +255,8 @@ def infer_claim(clip, user_claim, user_date, user_place, clues) -> dict:
         out["place_basis"] = f"spoken in narration (audio@{sp['audio_t']})"
     elif not user_place and user_claim and cp.get("place"):
         out["place"], src["place"] = cp["place"], "user_claim_text"
+    if not user_place and not out["place"]:
+        _infer_place(out, src, cp, title, desc, screen, spoken_places, aud)
     if "inferred_from_post" in src.values():
         out["inferred_note"] = "Claim inferred from the post's title/caption (you did not enter one)"
     return out

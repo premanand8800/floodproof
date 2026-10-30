@@ -49,6 +49,9 @@ def facts(r: dict) -> dict:
     for k in ("text", "event_date", "place"):
         if cm.get(k):
             F[f"claim.{k}"] = cm[k]
+    if posted_only(r) and cm.get("event_date"):
+        # the claim "date" is only the day the post was uploaded: never present it as the date of an event
+        F["claim.event_date"] = f"{cm['event_date']} (POST DATE ONLY: the video was posted on this date; no event date was stated)"
     pms = v.get("proven_matches") or []
     ep = v.get("earliest_proven_copy")
     base = None
@@ -69,7 +72,15 @@ def facts(r: dict) -> dict:
         if "date_independent" in ep:
             F[f"{base}.date_independent"] = ep["date_independent"]
     F["visual_matching.status"] = v["status"]
+    mn = r.get("media_nature") or {}
+    if mn.get("value") == "mixed" and mn.get("summary"):
+        F["media_nature.summary"] = mn["summary"]
     return {k: val for k, val in F.items() if val is not None}
+
+
+def posted_only(r: dict) -> bool:
+    """True when claim.event_date is just the post (upload) date, not a stated event date."""
+    return (r.get("claim") or {}).get("event_date_basis") == "date_posted"
 
 
 def detect_langs(r: dict) -> list[str]:
@@ -94,11 +105,15 @@ def _template(r: dict, lang: str):
     F = facts(r)
     lab = F["final_verdict.label"]
     ep = next((k[:-4] for k in F if k.endswith(".url") and k.startswith("visual_matching.")), None)
-    claim, ev = F.get("claim.text"), F.get("claim.event_date")
+    claim = F.get("claim.text")
+    ev = (r["claim"].get("event_date") if not posted_only(r) else None) or None
+    ev_posted = r["claim"].get("event_date") if posted_only(r) else None
     S = []
     T = {
         "en": dict(
             claim=lambda c: f"Claim: \"{c}\".",
+            nat=lambda sm: f"{sm}. This is an AI observation from sampled frames, not proof.",
+            posted=lambda d: f"The video was posted on {d}; no event date was stated.",
             copy=lambda d, u, who, ev, ind: (f"Earliest copy found: this footage was published on {d}" + (f" by {who}" if who else "") + f" ({u})"
                                               + (f", before the claimed event date {ev}" if ev and d < ev else "") + "."
                                               + ("" if ind else " Its date is not independently verified.")),
@@ -113,6 +128,8 @@ def _template(r: dict, lang: str):
             c3="Search is not exhaustive."),
         "ne": dict(
             claim=lambda c: f"दाबी: “{c}”।",
+            nat=lambda sm: "AI अवलोकन (प्रमाण होइन): भिडियोमा AI-निर्मित जस्ता देखिने दृश्य र वास्तविक क्यामेरा फुटेज मिसिएका हुन सक्छन्।",
+            posted=lambda d: f"भिडियो {d} मा पोस्ट गरिएको थियो; घटनाको मिति उल्लेख गरिएको थिएन।",
             copy=lambda d, u, who, ev, ind: (f"भेटिएको सबैभन्दा पुरानो प्रति: यो भिडियो {d} मा" + (f" {who} द्वारा" if who else "") + f" ({u}) प्रकाशित भएको थियो"
                                              + (f", दाबी गरिएको घटनाको मिति {ev} भन्दा अघि" if ev and d < ev else "") + "।"
                                              + ("" if ind else " यसको मिति स्वतन्त्र रूपमा पुष्टि भएको छैन।")),
@@ -127,6 +144,8 @@ def _template(r: dict, lang: str):
             c3="खोजी पूर्ण छैन।"),
         "hi": dict(
             claim=lambda c: f"दावा: “{c}”।",
+            nat=lambda sm: "AI अवलोकन (सबूत नहीं): वीडियो में AI से बने जैसे दिखने वाले शॉट और असली कैमरा फुटेज मिले हो सकते हैं।",
+            posted=lambda d: f"वीडियो {d} को पोस्ट किया गया था; घटना की कोई तारीख नहीं बताई गई थी।",
             copy=lambda d, u, who, ev, ind: (f"मिली सबसे पुरानी प्रति: यह वीडियो {d} को" + (f" {who} द्वारा" if who else "") + f" ({u}) प्रकाशित हुआ था"
                                              + (f", दावा किए गए घटना की तारीख {ev} से पहले" if ev and d < ev else "") + "।"
                                              + ("" if ind else " इसकी तारीख स्वतंत्र रूप से सत्यापित नहीं है।")),
@@ -145,6 +164,8 @@ def _template(r: dict, lang: str):
         return None
     if claim:
         S.append((t["claim"](claim), "claim.text"))
+    if ev_posted:
+        S.append((t["posted"](ev_posted), "claim.event_date"))
     d, u = (F.get(f"{ep}.upload_date"), F.get(f"{ep}.url")) if ep else (None, None)
     if lab == "RECYCLED_FOOTAGE" and ep and d and u:
         S.append((t["copy"](d, u, F.get(f"{ep}.uploader"), ev, F.get(f"{ep}.date_independent", True)), f"{ep}.upload_date"))
@@ -163,6 +184,8 @@ def _template(r: dict, lang: str):
         else:
             S.append((t["u1"], "visual_matching.status"))
         S.append((t["u3"], "final_verdict.label"))
+    if "media_nature.summary" in F:
+        S.insert(min(len(S), 2), (t["nat"](F["media_nature.summary"]), "media_nature.summary"))
     return S
 
 
@@ -187,6 +210,7 @@ def check_grounded(r: dict, sentences: list[dict], lang: str = "en") -> list[str
     nums = {int(x) for x in NUM_RE.findall(blob)}
     F = facts(r)
     lab = r["final_verdict"]["label"]
+    post_date = r["claim"].get("event_date") if posted_only(r) else None
     if not sentences:
         return ["no sentences"]
     for s in sentences:
@@ -204,6 +228,9 @@ def check_grounded(r: dict, sentences: list[dict], lang: str = "en") -> list[str
         for d in DATE_RE.findall(text):
             if d not in blob:
                 problems.append(f"date not in report: {d}")
+            elif post_date and d == post_date and not (
+                    re.search(r"posted\s+(on\s+)?" + re.escape(d), text, re.I) if lang == "en" else ref == "claim.event_date"):
+                problems.append(f"post date {d} presented as an event date (it is only the date posted)")
         stripped = DATE_RE.sub(" ", URL_RE.sub(" ", text))
         for n in NUM_RE.findall(stripped):
             if int(n) not in nums:
@@ -229,6 +256,8 @@ SYSTEM = ("You write short, shareable fact-check cards from a structured report.
           "Never invent dates, URLs or numbers. Write dates exactly as YYYY-MM-DD and copy URLs exactly. "
           "Say 'earliest copy found' (never 'original', never 'fake'). Respect the verdict label: for UNVERIFIED or "
           "CONSISTENT_WITH_CLAIM say what was and was not found and never imply the video is fake or recycled. "
+          "If a fact says POST DATE ONLY, write exactly 'posted on YYYY-MM-DD; no event date was stated' and never call that date the date of an event. "
+          "If a media_nature.summary fact is given, mention it as an AI observation from sampled frames, never as proof. "
           "A visual match proves the footage was published earlier; it does not prove the event did not happen. "
           "Reply with one JSON object only.")
 

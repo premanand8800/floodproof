@@ -264,11 +264,13 @@ function render(rep, ref) {
     likely_ai_generated: "Not camera footage: likely AI-generated",
     screen_recording: "Screen recording, not original camera footage",
     news_compilation: "Edited news report containing third-party clips \u2014 earlier copies of individual clips are expected and do not by themselves mean recycling.",
-    camera_footage: "Looks like camera footage"};
+    camera_footage: "Looks like camera footage",
+    mixed: "Mixed: AI-generated shots + real footage clips"};
   if (NATURE[mn.value]) {
     const fr = (mn.cited_frames || []).join(",");
     out.append(h("section", {class: "nature " + (mn.value === "camera_footage" ? "n-cam" : "n-warn"), "aria-label": "Media nature (AI observation)"},
       h("div", {}, h("strong", {text: NATURE[mn.value]}), " ", h("span", {class: "note", text: "(AI observation" + (fr ? ", frames " + fr : "") + (mn.confidence ? ", confidence " + Number(mn.confidence).toFixed(2) : "") + "; a hypothesis, not proof; does not change the verdict)"})),
+      mn.value === "mixed" && mn.by_class ? h("ul", {class: "plain"}, Object.entries(mn.by_class).map(([k, fr2]) => h("li", {text: k.replaceAll("_", " ") + ": frames " + fr2.join(", ")}))) : null,
       (mn.reasons || []).length ? h("ul", {class: "plain"}, mn.reasons.slice(0, 3).map((x) => h("li", {text: x.text + " (frames " + (x.refs || []).join(",") + ")"}))) : null));
   }
 
@@ -278,7 +280,8 @@ function render(rep, ref) {
   const SRC = {inferred_from_post: " [inferred from the post]", user_claim_text: " [from your claim text]", inferred_from_narration: " [" + (cm.place_basis || "spoken in narration") + "]"};
   const BASIS = {title: "explicit date in the post title", description: "explicit date in the post description", on_screen_text: "date read from on-screen text", spoken_in_narration: "date spoken in the narration (AI transcription, may contain errors)", date_posted: "no explicit date found: claimed date = date posted"};
   [["Claim", cm.text, csrc.text], ["Claimed date", cm.event_date, csrc.event_date], ["Place", cm.place, csrc.place], ["Event type", cm.event_type, null]].forEach(([k, val, s]) => claimDl.append(h("dt", {text: k}), h("dd", {text: (val || "not given") + (val ? (SRC[s] || "") : "")})));
-  if (cm.event_date && csrc.event_date === "inferred_from_post") claimDl.append(h("dt", {text: "Date basis"}), h("dd", {text: BASIS[cm.event_date_basis] || cm.event_date_basis || ""}));
+  if (cm.event_date && csrc.event_date === "inferred_from_post") claimDl.append(h("dt", {text: "Date basis"}), h("dd", {text: BASIS[cm.event_date_basis] || cm.event_date_basis_detail || cm.event_date_basis || ""}));
+  if (cm.place_basis && csrc.place && csrc.place !== "user") claimDl.append(h("dt", {text: "Place basis"}), h("dd", {text: cm.place_basis}));
   const contra = rep.contradictions || [];
   out.append(card("Claim", (cm.inferred_note ? h("div", {class: "warn", text: cm.inferred_note}) : null), badge(contra.length ? contra.length + " contradiction(s) backed by independent evidence" : "No independently evidenced contradiction", contra.length ? "b-rec" : "b-na"),
     claimDl,
@@ -312,6 +315,7 @@ function render(rep, ref) {
     const rows = ["memory", "gvision", "youtube_api", "yandex", "lens", "tavily"].filter((n) => ss[n] || ad[n]);
     vm.append(h("div", {class: "note"}, h("strong", {text: "Discovery sources (candidates found / proven by the matcher)"}),
       h("ul", {class: "plain"}, rows.map((n) => { const st = ss[n], a = ad[n] || {};
+        if (a.unavailable) return h("li", {text: n + ": unavailable (" + a.unavailable + ")"});
         return h("li", {text: n + ": " + (st ? st.candidates + " found, " + st.proven + " proven" : "0 found") + (a.skipped ? " \u2014 " + a.skipped : "") + ((a.errors || []).length ? " (error)" : "")}); }))));
   }
   vm.append(limitsBox([v.provenance_note, "Checked " + v.candidates_checked + " of " + v.candidates_total + " candidate sources; search is not exhaustive.", "A visual match shows shared footage, not that a claim is false or the footage fake."].filter(Boolean)));

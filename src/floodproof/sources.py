@@ -99,16 +99,17 @@ def _get_json(url, params=None, timeout=60):
     return r.json()
 
 
-def _spread_frames(feats: ClipFeatures, n):
-    """n sharp keyframe ids, spread out in time."""
-    sharp = sorted(((cv2.Laplacian(cv2.cvtColor(f, cv2.COLOR_BGR2GRAY), cv2.CV_64F).var(), i) for i, f in enumerate(feats.frames)), reverse=True)
+def _spread_frames(feats: ClipFeatures, n, allowed=None):
+    """n sharp keyframe ids, spread out in time. `allowed` (e.g. the camera_footage frames) restricts the choice when non-empty."""
+    sharp = sorted(((cv2.Laplacian(cv2.cvtColor(f, cv2.COLOR_BGR2GRAY), cv2.CV_64F).var(), i) for i, f in enumerate(feats.frames)
+                    if not allowed or i in allowed), reverse=True)
     pick = []
     for _, i in sharp:
         if all(abs(i - j) > max(1, len(feats) * 0.12) for j in pick):
             pick.append(i)
         if len(pick) == n:
             break
-    return pick or list(range(min(n, len(feats))))
+    return pick or (sorted(allowed)[:n] if allowed else list(range(min(n, len(feats)))))
 
 
 def _yt_from_thumb(u):
@@ -116,7 +117,39 @@ def _yt_from_thumb(u):
     return f"https://www.youtube.com/watch?v={m.group(1)}" if m else None
 
 
-def gvision_candidates(feats: ClipFeatures, n_frames=4, max_links=40, key=None, frames: list | None = None):
+GV_DISABLED_TTL = 3600
+GV_UNAVAILABLE = "billing not enabled"
+
+
+def _gv_state_file():
+    return Path(CACHE) / "gvision_disabled.json"
+
+
+def gvision_disabled_until():
+    """Epoch seconds until which Vision is known to be unavailable (billing not enabled), or 0."""
+    import json
+    try:
+        return float(json.loads(_gv_state_file().read_text()).get("until", 0))
+    except Exception:
+        return 0.0
+
+
+def _gv_disable():
+    import json
+    try:
+        _gv_state_file().parent.mkdir(parents=True, exist_ok=True)
+        _gv_state_file().write_text(json.dumps(dict(until=time.time() + GV_DISABLED_TTL, reason=GV_UNAVAILABLE)))
+    except Exception:
+        pass
+
+
+def _is_billing_error(e) -> bool:
+    resp = getattr(e, "response", None)
+    txt = (str(e) + " " + str(getattr(resp, "text", "") or "")).lower()
+    return (getattr(resp, "status_code", None) == 403 or "403" in txt) and ("billing" in txt or "permission_denied" in txt)
+
+
+def gvision_candidates(feats: ClipFeatures, n_frames=4, max_links=40, key=None, frames: list | None = None, allowed=None):
     """Google Cloud Vision WEB_DETECTION on 3-4 keyframes. Candidates only; the matcher still has to prove each."""
     load_env()
     key = key or os.environ.get("GOOGLE_API_KEY")
@@ -124,7 +157,9 @@ def gvision_candidates(feats: ClipFeatures, n_frames=4, max_links=40, key=None, 
     if not key:
         log.info("gvision: %s", SKIP_NO_KEY)
         return [], dict(info, skipped=SKIP_NO_KEY)
-    pick = list(frames) if frames else _spread_frames(feats, min(max(n_frames, 3), 4))
+    if gvision_disabled_until() > time.time():
+        return [], dict(info, unavailable=GV_UNAVAILABLE, skipped=f"unavailable ({GV_UNAVAILABLE})", cached=True)
+    pick = list(frames) if frames else _spread_frames(feats, min(max(n_frames, 3), 4), allowed)
     reqs = []
     for i in pick:
         ok, buf = cv2.imencode(".jpg", feats.frames[i], [cv2.IMWRITE_JPEG_QUALITY, 85])
@@ -138,6 +173,9 @@ def gvision_candidates(feats: ClipFeatures, n_frames=4, max_links=40, key=None, 
         resp = _post_json("https://vision.googleapis.com/v1/images:annotate", params={"key": key}, body=dict(requests=reqs))
         info["calls"] = 1
     except Exception as e:
+        if _is_billing_error(e):          # the key has no billing: unavailable, not an error; do not retry for an hour
+            _gv_disable()
+            return [], dict(info, unavailable=GV_UNAVAILABLE, skipped=f"unavailable ({GV_UNAVAILABLE})")
         info["errors"].append(type(e).__name__ + ": " + str(e)[:100].replace(key, "***"))
         return [], info
     seen = {}
@@ -400,10 +438,43 @@ def verify_candidate(c: Candidate, q: ClipFeatures, query_date: str | None = Non
     return c
 
 
-def verify_candidates(cands, q, query_date=None, self_url=None, evidence_dir=None, max_n=14, workers=3):
+def _rank(c):
+    """Priority tier used by merge_and_prioritize (lower = checked earlier)."""
+    return (-len(c.also_from), not any(h in c.url for h in VIDEO_HOSTS))
+
+
+def can_stop_early(done, remaining, stop_before):
+    """Conservative early stop: a matcher-proven copy with an INDEPENDENTLY fetched date strictly before the claimed date exists,
+    and every remaining candidate is in a strictly lower priority tier than that copy (so nothing as promising is skipped)."""
+    if not stop_before or not remaining:
+        return False
+    good = [c for c in done if c.proven and c.date_independent and c.upload_date and c.upload_date < stop_before]
+    if not good:
+        return False
+    best = min(_rank(c) for c in good)
+    return all(_rank(c) > best for c in remaining)
+
+
+def verify_candidates(cands, q, query_date=None, self_url=None, evidence_dir=None, max_n=14, workers=3, stop_before=None, info=None):
+    """Download + match candidates concurrently (small pool: the matcher is CPU-bound), in priority order. With `stop_before`
+    (the claim date) it may stop early per can_stop_early; `info` (dict) receives checked/skipped/early_stop/seconds."""
+    t0 = time.time()
     todo = [c for c in cands if not c.proven and c.status == "pending"][:max_n]
+    done, nxt, stopped = [], 0, False
     with cf.ThreadPoolExecutor(workers) as ex:
-        list(ex.map(lambda c: verify_candidate(c, q, query_date, self_url, evidence_dir), todo))
+        live = set()
+        while nxt < len(todo) or live:
+            while nxt < len(todo) and len(live) < workers and not stopped:
+                live.add(ex.submit(verify_candidate, todo[nxt], q, query_date, self_url, evidence_dir)); nxt += 1
+            if not live:
+                break
+            fin, live = cf.wait(live, return_when=cf.FIRST_COMPLETED)
+            done += [f.result() for f in fin]
+            if not stopped and can_stop_early(done, todo[nxt:], stop_before):
+                stopped = True
+    if info is not None:
+        info.update(checked=len(done), considered=len(todo), seconds=round(time.time() - t0, 1), early_stop=stopped,
+                    skipped_lower_priority=len(todo) - nxt if stopped else 0)
     return cands
 
 
