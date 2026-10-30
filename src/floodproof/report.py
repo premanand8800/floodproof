@@ -19,7 +19,7 @@ import uuid
 from pathlib import Path
 
 LABELS = ("RECYCLED_FOOTAGE", "CONSISTENT_WITH_CLAIM", "UNVERIFIED")
-SCHEMA_VERSION = "1.1"
+SCHEMA_VERSION = "1.2"
 REQUIRED_KEYS = ("schema_version", "investigation_id", "created_at", "input", "claim", "memory", "visual_matching",
                  "clues", "physical_world_check", "final_verdict")
 
@@ -118,8 +118,35 @@ def input_publication(visual):
     return None
 
 
-def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=None):
-    claim_date = (claim or {}).get("event_date")
+NATURE_CHIP = {
+    "camera_footage": "Looks like camera footage (AI observation)",
+    "news_compilation": "Edited news report containing third-party clips \u2014 earlier copies of individual clips are expected and do not by themselves mean recycling.",
+    "animation_or_cgi": "Not camera footage: animated / reenactment (AI observation)",
+    "likely_ai_generated": "Not camera footage: likely AI-generated (AI observation)",
+    "screen_recording": "Screen recording, not original camera footage (AI observation)",
+}
+
+
+def nature_sentence(mn):
+    """One sentence for the verdict summary, or '' when unknown/absent. Always flagged as an AI observation."""
+    v = (mn or {}).get("value")
+    if v not in NATURE_CHIP or v == "camera_footage":
+        return ""
+    fr = ",".join(str(x) for x in (mn.get("cited_frames") or []))
+    return f" Media nature (AI observation from frames {fr}, not proof; does not change the label): " + NATURE_CHIP[v] + (" " if not NATURE_CHIP[v].endswith(".") else " ")
+
+
+def claim_date_for_logic(claim):
+    """A claimed date that is only 'date posted' says nothing about the event, so it never drives RECYCLED/CONSISTENT."""
+    c = claim or {}
+    return None if c.get("event_date_basis") == "date_posted" else c.get("event_date")
+
+
+def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=None, media_nature=None):
+    posted = (claim or {}).get("event_date_basis") == "date_posted"
+    post_date = (claim or {}).get("event_date") if posted else None
+    compilation = (media_nature or {}).get("value") == "news_compilation"
+    claim_date = claim_date_for_logic(claim)
     proven_real = list(proven)           # matcher-proven copies of OTHER uploads
     if input_pub:
         proven = proven_real + [input_pub]   # the input's own publication also counts as 'previously published' evidence
@@ -142,7 +169,7 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
         ev_txt = ("The input is itself that publication." if e["match"].get("identity") else
                   f"Matcher evidence: {e['match']['consistent_frames']} temporally consistent frame(s), up to {e['match']['max_inliers']} inliers"
                   f"{', mirrored' if e['match'].get('mirrored') else ''}.")
-        s = (f"The footage matches the earliest copy found, published on {e['upload_date']} ({e['url']}, date independently fetched per {e.get('date_source')}), before the claimed event date {claim_date}. "
+        s = (f"The {'video contains a clip published earlier: it matches' if compilation else 'footage matches'} the earliest copy found, published on {e['upload_date']} ({e['url']}, date independently fetched per {e.get('date_source')}), before the claimed event date {claim_date}. "
              f"{ev_txt} This shows the footage was previously published; it does not "
              "by itself show the footage is fake or that the claimed event did not happen.")
     else:
@@ -151,10 +178,11 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
                  "than the claimed event date, so recycling relative to the claim is not established. ")
         elif proven_real:
             e = min([m for m in proven_real if m.get("upload_date")] or proven_real, key=lambda m: m.get("upload_date") or "9999")
-            s = (f"The footage matches a previously published copy ({e['url']}"
+            s = (("The video contains a clip published earlier (" if compilation else "The footage matches a previously published copy (") + f"{e['url']}"
                  f"{', uploaded ' + e['upload_date'] if e.get('upload_date') else ', upload date unavailable'}), but "
                  + ("that date is not earlier than the claimed event date" if claim_date and e.get("upload_date")
-                    else "no claimed event date was given" if not claim_date else "its date is unknown")
+                    else ("the claimed date is only the date this post was published (" + str(post_date) + "), which says nothing about when the event happened"
+                          if posted else "no claimed event date was given") if not claim_date else "its date is unknown")
                  + ", so recycling relative to the claim is not established. ")
         else:
             s = "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. "
@@ -183,6 +211,9 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
             elif phys is None:
                 s += "The physical-world check was not available or inconclusive. "
             s += "The claim could not be verified from the available evidence."
+    s += nature_sentence(media_nature)
+    if (claim or {}).get("inferred_note"):
+        s = f"[{claim['inferred_note']}; date basis: {claim.get('event_date_basis')}.] " + s
     if conflicts:
         s += " Sources disagree on the publication date of: " + "; ".join(
             c["url"] + " (" + ", ".join(f"{d['date']} per {d['source']}" for d in c["dates"]) + ")" for c in conflicts) + \
@@ -194,7 +225,8 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
     if (physical or {}).get("verdict") == "NO_EVIDENCE":
         limits.append(INSUFFICIENT + ".")
     basis = dict(earlier_proven_copies=len(earlier), proven_copies=len(proven_real), physical_supports=phys,
-                 unverified_model_observations=len(contrad), date_conflicts=len(conflicts))
+                 unverified_model_observations=len(contrad), date_conflicts=len(conflicts),
+                 media_nature=(media_nature or {}).get("value"), claim_date_basis=(claim or {}).get("event_date_basis"))
     if unverified_earlier and label == "UNVERIFIED":
         basis["unverified_reason"] = "earlier copy found, date not independently verified"
     return dict(label=label, summary=s, limits=limits, basis=basis)
@@ -203,7 +235,7 @@ def decide_verdict(claim, proven, clues, physical, input_meta=None, input_pub=No
 def independent_contradictions(claim, proven, physical, input_pub=None):
     """Claim-vs-evidence conflicts backed by INDEPENDENT evidence only. Muse observations and location hypotheses never qualify."""
     out = []
-    cd = (claim or {}).get("event_date")
+    cd = claim_date_for_logic(claim)
     for m in proven_before(list(proven) + ([input_pub] if input_pub else []), cd, independent_only=True)[:1]:
         out.append(dict(kind="independently_dated_earlier_copy", text=f"Footage was already published on {m['upload_date']} (earliest copy found), before the claimed event date {cd}.",
                         evidence=[m["url"]], date_source=m.get("date_source")))
@@ -213,14 +245,21 @@ def independent_contradictions(claim, proven, physical, input_pub=None):
     return out
 
 
+def nature_layer(clues):
+    mn = (clues or {}).get("media_nature") if (clues or {}).get("status") == "ok" else None
+    return mn if isinstance(mn, dict) else dict(value="unknown", confidence=0.0, cited_frames=[], cited_timestamps_s=[], reasons=[],
+                                                 status="NOT_RUN", note="Muse clues were not available, so the media nature was not assessed.")
+
+
 def build_report(*, input_meta, claim, memory, visual, clues, physical, investigation_id=None):
     proven = visual.get("proven_matches", [])
     rep = dict(schema_version=SCHEMA_VERSION, investigation_id=investigation_id or uuid.uuid4().hex[:12],
                created_at=datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
                input=input_meta, claim=claim, memory=memory, visual_matching=visual, clues=clues,
                physical_world_check=physical)
+    rep["media_nature"] = nature_layer(clues)
     rep["contradictions"] = independent_contradictions(claim, proven, physical, input_publication(visual))
-    rep["final_verdict"] = decide_verdict(claim, proven, clues, physical, input_meta, input_publication(visual))
+    rep["final_verdict"] = decide_verdict(claim, proven, clues, physical, input_meta, input_publication(visual), rep["media_nature"])
     return rep
 
 
@@ -249,11 +288,25 @@ def validate_report(r: dict):
             assert h.get("status") == "UNVERIFIED_HYPOTHESIS" and h.get("cited_frames") is not None, "location guess must be a cited hypothesis"
     for c in r.get("contradictions", []):
         assert c.get("evidence") and c.get("kind") in ("independently_dated_earlier_copy", "physical_world_data"), "contradiction needs independent evidence"
+    if r["schema_version"] >= "1.2":      # 1.1 demo reports stay valid without media_nature / claim.source
+        mn = r.get("media_nature")
+        assert isinstance(mn, dict) and mn.get("value") in ("camera_footage", "news_compilation", "animation_or_cgi", "likely_ai_generated",
+                                                          "screen_recording", "unknown"), "media_nature layer missing/invalid"
+        assert mn.get("status") in ("AI_OBSERVATION_HYPOTHESIS", "NOT_RUN"), "media_nature must be labelled an AI observation"
+        if mn["value"] != "unknown":
+            assert mn.get("cited_frames"), "media_nature needs cited frames"
+        cs = r["claim"].get("source")
+        if cs is not None:
+            for k in ("text", "event_date", "place"):
+                if cs.get(k) == "inferred_from_post":
+                    assert (r["input"] or {}).get("url"), "inferred claim requires a URL input"
+            if cs.get("event_date") == "inferred_from_post":
+                assert r["claim"].get("event_date_basis") in ("title", "description", "on_screen_text", "date_posted")
     assert r["memory"]["status"] in ("HIT", "MISS", "NOT_RUN")
     fv = r["final_verdict"]
     assert fv["label"] in LABELS and fv["summary"] and fv["limits"]
     if fv["label"] == "RECYCLED_FOOTAGE":
-        cd = r["claim"].get("event_date")
+        cd = claim_date_for_logic(r["claim"])
         assert cd and proven_before(v["proven_matches"] + ([ip] if (ip := input_publication(v)) else []), cd, independent_only=True), \
             "RECYCLED requires a proven copy with an independently re-fetched date predating the claimed date"
     return r
@@ -269,7 +322,9 @@ def write_report(r: dict, out_dir: Path) -> Path:
 def render_text(r: dict) -> str:
     v, fv, c = r["visual_matching"], r["final_verdict"], r["claim"]
     L = [f"FloodProof investigation {r['investigation_id']}",
-         f"Claim: {c.get('text')} (event date {c.get('event_date')})",
+         f"Claim: {c.get('text')} (event date {c.get('event_date')}, place {c.get('place')})"
+         + (f"  [{c['inferred_note']}; date basis: {c.get('event_date_basis')}]" if c.get("inferred_note") else ""),
+         f"Media nature (AI observation): {(r.get('media_nature') or {}).get('value')} frames {(r.get('media_nature') or {}).get('cited_frames')}",
          f"Memory: {r['memory']['status']}   Visual matching: {v['status']} ({len(v.get('proven_matches', []))} proven)"]
     for m in v.get("proven_matches", []):
         dt = f"{m['upload_date']} ({m['date_source']}" + ("" if m.get("date_independent") else "; NOT independently verified") + ")"

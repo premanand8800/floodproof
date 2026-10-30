@@ -9,7 +9,7 @@ from . import ROOT, load_env, media
 from .matcher import ClipFeatures
 from .memory import Memory
 from .report import build_report, run_physical, write_report, validate_report
-from . import sources, investigator
+from . import sources, investigator, infer
 
 
 def _proven_entry(c: sources.Candidate, out_dir: Path):
@@ -60,17 +60,20 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
                                        context=(c.memory_entry or {}).get("event_context")) for c in mc],
                             note="memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching")
 
-    claim_d = dict(text=claim, event_date=date, place=place)
     clues = dict(status="not_run")
     if use_muse:
         log("[3/6] Muse Spark clues")
         try:
-            clues = investigator.investigate_clip(clip, feats, claim, date, frames_dir=out / "frames")
+            clues = investigator.investigate_clip(clip, feats, claim, date, frames_dir=out / "frames",
+                                                  post_text=(clip.title if (clip.url and not claim) else None) and
+                                                  ((clip.title or "") + (" | " + clip.description[:500] if clip.description else "")))
         except Exception as e:
             clues = dict(status="error", error=str(e)[:200])
     cp = (clues.get("claim_parsed") or {}) if clues.get("status") == "ok" else {}
-    if place is None:
-        claim_d["place"] = cp.get("place")
+    claim_d = infer.infer_claim(clip, claim, date, place, clues)
+    claim, date, place = claim_d["text"], claim_d["event_date"], claim_d["place"]
+    if claim_d.get("inferred_note"):
+        log(f"claim inferred from post: {claim_d['text']!r} date={date} ({claim_d['event_date_basis']}) place={place}")
     claim_d["country_iso2"] = cp.get("country_iso2"); claim_d["event_type"] = cp.get("event_type") or "unknown"
 
     web = {}

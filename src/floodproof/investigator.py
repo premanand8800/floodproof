@@ -31,8 +31,15 @@ SCHEMA = """Return ONLY one JSON object (no prose) with exactly these keys:
                      "reasons": [{"text": str, "refs": [..]}]},
  "contradictions_with_claim": [{"text": str, "refs": [..]}],       // visible cues that argue against the claim; [] if none
  "claim_parsed": {"place": str|null, "country_iso2": str|null, "event_type": one of "flood","flash_flood","glof","landslide","cyclone","storm_surge","unknown"},  // what the CLAIM names
+ "media_nature": {"value": one of "camera_footage","news_compilation","animation_or_cgi","likely_ai_generated","screen_recording","unknown",
+                  "confidence": float 0-1, "refs": [..], "reasons": [{"text": str, "refs": [..]}]},   // what KIND of media this is, judged from the frames
+ "on_screen_dates": [{"date": "YYYY-MM-DD", "text": str, "refs": [..]}],   // dates legible on title cards/captions/timestamps (full date with year only); [] if none
  "queries": [{"q": str, "language": str, "why": str}]             // 8 search queries to find the earliest upload / true source
 }
+media_nature: camera_footage = raw/phone/CCTV/drone footage; news_compilation = an edited news report/montage that contains third-party
+clips, with presenter/graphics/logos/captions; animation_or_cgi = cartoon, animation, 3D render or reenactment; likely_ai_generated =
+photoreal but synthetic-looking (warping, impossible physics); screen_recording = recording of a screen/app. Cite the frames that show it
+(for camera_footage cite a few representative frames). This is an observation from the frames, not proof; use "unknown" if unsure.
 RULES: 'refs' are the frame numbers printed before each image (e.g. [3,7]) or audio timestamps as strings like "audio@12.5".
 Every item MUST have at least one ref. Report only what is visible/audible; if unsure say so in confidence, do not invent.
 Do NOT trust the claim: the footage may be recycled from an earlier event, possibly in another country. Include queries in the
@@ -82,6 +89,35 @@ def _valid_refs(refs, nframes, audio_ok):
     return good
 
 
+NATURES = ("camera_footage", "news_compilation", "animation_or_cgi", "likely_ai_generated", "screen_recording", "unknown")
+
+
+def _clean_nature(mn, fix, feats):
+    """media_nature is an AI observation (hypothesis): needs cited frames and a known enum value, else it is 'unknown'."""
+    mn = mn if isinstance(mn, dict) else {}
+    val = mn.get("value") if mn.get("value") in NATURES else "unknown"
+    item = fix(dict(refs=mn.get("refs")), "media_nature") if val != "unknown" else None
+    if val != "unknown" and not item:
+        val = "unknown"
+    refs = sorted({r for r in (item or {}).get("refs", []) if isinstance(r, int)})
+    try:
+        conf = max(0.0, min(1.0, float(mn.get("confidence"))))
+    except (TypeError, ValueError):
+        conf = 0.0
+    reasons = [x for x in (fix(i, "media_nature_reason") for i in mn.get("reasons", []) if isinstance(i, dict)) if x]
+    return dict(value=val, confidence=conf if val != "unknown" else 0.0, cited_frames=refs,
+                cited_timestamps_s=[round(feats.times[r], 2) for r in refs], reasons=reasons, status="AI_OBSERVATION_HYPOTHESIS",
+                note="Model observation from sampled keyframes. Not proof; it never changes the verdict label by itself.")
+
+
+def _iso_ok(d):
+    import datetime
+    try:
+        return datetime.date.fromisoformat(str(d)[:10]).isoformat() if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(d)) else None
+    except ValueError:
+        return None
+
+
 def _clean(plan: dict, feats: ClipFeatures, audio_ok: bool):
     """Drop clue items that lack a valid frame/timestamp reference; attach timestamps to frame refs."""
     rejected = []
@@ -123,6 +159,8 @@ def _clean(plan: dict, feats: ClipFeatures, audio_ok: bool):
     # (report['contradictions']) require independent evidence (physical-world data, an independently dated earlier copy).
     out["observations_against_claim"] = [dict(x, status="UNVERIFIED_MODEL_OBSERVATION")
                                          for x in (fix(i, "observation") for i in plan.get("contradictions_with_claim", [])) if x]
+    out["media_nature"] = _clean_nature(plan.get("media_nature"), fix, feats)
+    out["on_screen_dates"] = [dict(x, date=_iso_ok(x.get("date"))) for x in (fix(i, "on_screen_date") for i in plan.get("on_screen_dates", []) if isinstance(i, dict)) if x and _iso_ok(x.get("date"))]
     out["claim_parsed"] = plan.get("claim_parsed") or {}
     out["queries"] = [q for q in plan.get("queries", []) if isinstance(q, dict) and q.get("q")][:10]
     out["rejected_clues"] = rejected
@@ -130,13 +168,16 @@ def _clean(plan: dict, feats: ClipFeatures, audio_ok: bool):
 
 
 def investigate_clip(clip: Clip, feats: ClipFeatures, claim: str | None = None, claim_date: str | None = None,
-                     n_frames=8, use_audio=True, frames_dir: Path | None = None) -> dict:
+                     n_frames=8, use_audio=True, frames_dir: Path | None = None, post_text: str | None = None) -> dict:
     """Run Muse over keyframes (+ narration). Returns clue dict (see SCHEMA) plus cost/model/frames metadata."""
     idx = pick_frames(feats, n_frames)
     audio = analyze_audio(clip) if (use_audio and clip.has_audio) else dict(status="skipped" if clip.has_audio else "no_audio_track")
     audio_ok = audio.get("status") == "ok" and audio.get("has_speech") is not False
     ctx = f"It is being shared with this claim: '{claim}'" + (f" (claimed event date {claim_date})" if claim_date else "") if claim else \
         "No claim text was supplied."
+    if post_text and not claim:
+        ctx += (f" The post itself carries this title/caption (unverified, written by the uploader): {post_text!r}. "
+                "Treat it as the claim for 'claim_parsed' only; judge media_nature from the frames alone.")
     atext = ""
     if audio.get("status") == "ok":
         atext = ("\nAudio analysis (from a separate audio model, timestamps in seconds): " +

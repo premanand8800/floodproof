@@ -64,6 +64,7 @@ pre.log{background:var(--bg);border:1px solid var(--line);border-radius:8px;padd
 .err{color:var(--rec)}
 .hide{display:none}
 footer{color:var(--mute);font-size:.82rem;margin-top:30px}
+.nature{margin:10px 0;padding:10px 14px;border-radius:8px;border:1px solid #c9a227;background:#fff8e1;color:#4a3b00}.nature.n-cam{border-color:#9bb;background:#eef6f6;color:#234}.nature ul{margin:6px 0 0 18px}
 </style>
 </head>
 <body>
@@ -166,11 +167,30 @@ function render(rep, ref) {
     h("div", {class: "limits-h", text: "Limitations (always shown)"}),
     h("ul", {class: "limits"}, (fv.limits || []).map((x) => h("li", {text: x})))));
 
+  // media nature: AI observation chip right under the verdict (never changes the label)
+  const mn = rep.media_nature || {};
+  const NATURE = {
+    animation_or_cgi: "Not camera footage: animated / reenactment",
+    likely_ai_generated: "Not camera footage: likely AI-generated",
+    screen_recording: "Screen recording, not original camera footage",
+    news_compilation: "Edited news report containing third-party clips \u2014 earlier copies of individual clips are expected and do not by themselves mean recycling.",
+    camera_footage: "Looks like camera footage"};
+  if (NATURE[mn.value]) {
+    const fr = (mn.cited_frames || []).join(",");
+    out.append(h("section", {class: "nature " + (mn.value === "camera_footage" ? "n-cam" : "n-warn"), "aria-label": "Media nature (AI observation)"},
+      h("div", {}, h("strong", {text: NATURE[mn.value]}), " ", h("span", {class: "note", text: "(AI observation" + (fr ? ", frames " + fr : "") + (mn.confidence ? ", confidence " + Number(mn.confidence).toFixed(2) : "") + "; a hypothesis, not proof; does not change the verdict)"})),
+      (mn.reasons || []).length ? h("ul", {class: "plain"}, mn.reasons.slice(0, 3).map((x) => h("li", {text: x.text + " (frames " + (x.refs || []).join(",") + ")"}))) : null));
+  }
+
   // claim
   const claimDl = h("dl", {class: "kv"});
-  [["Claim", cm.text], ["Claimed date", cm.event_date], ["Place", cm.place], ["Event type", cm.event_type]].forEach(([k, val]) => claimDl.append(h("dt", {text: k}), h("dd", {text: val || "not given"})));
+  const csrc = cm.source || {};
+  const SRC = {inferred_from_post: " [inferred from the post]", user_claim_text: " [from your claim text]"};
+  const BASIS = {title: "explicit date in the post title", description: "explicit date in the post description", on_screen_text: "date read from on-screen text", date_posted: "no explicit date found: claimed date = date posted"};
+  [["Claim", cm.text, csrc.text], ["Claimed date", cm.event_date, csrc.event_date], ["Place", cm.place, csrc.place], ["Event type", cm.event_type, null]].forEach(([k, val, s]) => claimDl.append(h("dt", {text: k}), h("dd", {text: (val || "not given") + (val ? (SRC[s] || "") : "")})));
+  if (cm.event_date && csrc.event_date === "inferred_from_post") claimDl.append(h("dt", {text: "Date basis"}), h("dd", {text: BASIS[cm.event_date_basis] || cm.event_date_basis || ""}));
   const contra = rep.contradictions || [];
-  out.append(card("Claim", badge(contra.length ? contra.length + " contradiction(s) backed by independent evidence" : "No independently evidenced contradiction", contra.length ? "b-rec" : "b-na"),
+  out.append(card("Claim", (cm.inferred_note ? h("div", {class: "warn", text: cm.inferred_note}) : null), badge(contra.length ? contra.length + " contradiction(s) backed by independent evidence" : "No independently evidenced contradiction", contra.length ? "b-rec" : "b-na"),
     claimDl,
     contra.map((c) => h("div", {class: "src"}, h("strong", {text: c.kind.replaceAll("_", " ") + ": "}), c.text, h("div", {class: "note"}, "Evidence: ", (c.evidence || []).map((u, i) => [i ? ", " : "", link(u)])), c.note ? h("div", {class: "note", text: c.note}) : null)),
     limitsBox(["Only conflicts backed by independent evidence are listed here. AI observations and location guesses are shown under 'Muse clues' and are never counted as contradictions."])));

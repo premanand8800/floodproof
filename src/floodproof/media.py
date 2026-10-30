@@ -31,6 +31,7 @@ class Clip:
     duration: float | None = None   # seconds of the *source* video (may exceed the downloaded excerpt)
     has_audio: bool = False
     truncated: bool = False         # downloaded excerpt shorter than source
+    description: str | None = None  # post caption/description (yt-dlp), used for claim inference
 
     def to_dict(self):
         return asdict(self)
@@ -105,7 +106,7 @@ def fetch(source: str, max_seconds=MAX_SECONDS, max_height=MAX_HEIGHT, workdir: 
     dur = info.get("duration")
     clip = Clip(str(path), info.get("webpage_url") or source, info.get("uploader") or info.get("channel"),
                 iso_date(info.get("upload_date")), info.get("title"), dur, has_audio_stream(path),
-                bool(dur and dur > max_seconds))
+                bool(dur and dur > max_seconds), (info.get("description") or None) and info["description"][:2000])
     meta_f.write_text(json.dumps(clip.to_dict()))
     return clip
 
