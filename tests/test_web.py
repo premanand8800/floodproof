@@ -51,7 +51,7 @@ def test_files_are_images_only_and_confined(client):
 def test_index_has_required_honesty_ui(client):
     html = client.get("/").text
     for s in ("What this does NOT mean", "Deep investigate (experimental)", "Extra investigation does not guarantee a better verdict",
-              "Hypothesis (unverified)", "Stored date", "Independent date", "Limitations (always shown)", "Show full trace"):
+              "Hypothesis (unverified)", "Stored date", "Independent date", "Limitations (", "Show full trace"):
         assert s in html
     import re
     assert not re.search(r"<script[^>]+src=", html)

@@ -214,7 +214,7 @@ def test_reliefweb_degrades(monkeypatch):
         raise RuntimeError("403 Forbidden")
     monkeypatch.setattr(P, "_http_post_json", boom)
     out = P.reliefweb("NP", P._date(2024, 9, 28))
-    assert out["status"] == "UNAVAILABLE" and "appname" in out["reason"]
+    assert out["status"] == "not_configured" and "appname" in out["reason"]
     assert P.reliefweb(None, P._date(2024, 9, 28))["status"] == "SKIPPED"
 
 

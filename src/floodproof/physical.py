@@ -10,7 +10,7 @@ import math
 import os
 import statistics
 import time
-from datetime import date as _date, datetime, timedelta
+from datetime import date as _date, datetime, timedelta, timezone
 from pathlib import Path
 
 import httpx
@@ -194,8 +194,12 @@ def _parse_point(wkt) -> tuple[float, float] | None:
         return None
 
 
-def official_event(lat: float, lon: float, day: _date, window_days: int) -> dict:
+EMS_CATEGORIES = {"wildfire": {"wildfire"}, "earthquake": {"earthquake"}, "tsunami": {"earthquake", "tsunami"}}
+
+
+def official_event(lat: float, lon: float, day: _date, window_days: int, event_type: str = "flood") -> dict:
     out = {"source": "copernicus_ems", "status": "NO_RECORD", "activations": []}
+    cats = EMS_CATEGORIES.get(event_type, {"flood"})
     lo = datetime.combine(day - timedelta(days=window_days), datetime.min.time())
     hi = datetime.combine(day + timedelta(days=window_days + 1), datetime.min.time())
     try:
@@ -207,7 +211,7 @@ def official_event(lat: float, lon: float, day: _date, window_days: int) -> dict
             if not results:
                 break
             for a in results:
-                if (a.get("category") or {}).get("slug") != "flood":
+                if (a.get("category") or {}).get("slug") not in cats:
                     continue
                 act = _parse_dt(a.get("activationTime"))
                 if act is None or act < lo:
@@ -254,6 +258,7 @@ RW_TYPES = {  # our event_type -> ReliefWeb disaster type names (any of)
     "flood": {"flood", "flash flood"}, "flash_flood": {"flash flood", "flood"}, "glof": {"flood", "flash flood"},
     "landslide": {"land slide", "mud slide", "landslide"}, "cyclone": {"tropical cyclone", "storm surge", "severe local storm"},
     "storm_surge": {"storm surge", "tropical cyclone", "flood"},
+    "tsunami": {"tsunami", "earthquake"}, "earthquake": {"earthquake"}, "wildfire": {"wild fire", "wildfire"},
     "unknown": {"flood", "flash flood", "land slide", "tropical cyclone"},
 }
 ISO2_TO_ISO3 = dict(AF="AFG", BD="BGD", BT="BTN", BR="BRA", BI="BDI", KH="KHM", CM="CMR", CN="CHN", CO="COL", CD="COD",
@@ -286,10 +291,13 @@ def reliefweb(country: str | None, day: _date, window_days: int = 7, event_type:
     try:
         data = _cached_post(url, body, ttl=RELIEFWEB_TTL_S)
     except Exception as e:  # noqa: BLE001
-        out["status"] = "UNAVAILABLE"
         msg = str(e)
-        out["reason"] = ("ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
-                         if "403" in msg else f"ReliefWeb request failed: {msg[:120]}")
+        if "403" in msg:        # no approved appname: a configuration gap, not a runtime failure; hidden from the UI
+            out["status"] = "not_configured"
+            out["reason"] = "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+        else:
+            out["status"] = "UNAVAILABLE"
+            out["reason"] = f"ReliefWeb request failed: {msg[:120]}"
         return out
     if isinstance(data, dict) and data.get("error"):
         out["status"] = "UNAVAILABLE"
@@ -314,7 +322,31 @@ GDELT_TTL_S = 12 * 3600
 GDELT_MIN_GAP_S = 5.5          # GDELT asks for at most one request per 5 s
 _last_gdelt = 0.0
 NEWS_WORDS = {"flood": "flood", "flash_flood": "flash flood", "glof": "glacial lake flood", "landslide": "landslide",
-              "cyclone": "cyclone", "storm_surge": "storm surge", "unknown": "flood"}
+              "cyclone": "cyclone", "storm_surge": "storm surge", "tsunami": "tsunami", "earthquake": "earthquake", "wildfire": "wildfire", "unknown": "flood"}
+
+
+GDELT_BACKOFF_S = (6, 12, 24)    # waits before retry 1..3 on HTTP 429 / empty body / non-JSON body
+
+
+def _gdelt_fetch(params: dict):
+    """One GDELT request with backoff: retries on 429, 5xx, an empty body or a non-JSON body. Successes are cached for 12 h
+    (failures never are). Raises the last error when every attempt failed."""
+    last = None
+    for attempt in range(len(GDELT_BACKOFF_S) + 1):
+        try:
+            data = _cached_json(GDELT_API, params, ttl=GDELT_TTL_S)
+            if isinstance(data, dict):
+                return data
+            last = ValueError("empty GDELT body")
+        except httpx.HTTPStatusError as e:
+            if e.response.status_code not in (429, 500, 502, 503, 504):
+                raise
+            last = e
+        except ValueError as e:          # json decode error = empty / HTML body
+            last = e
+        if attempt < len(GDELT_BACKOFF_S):
+            time.sleep(GDELT_BACKOFF_S[attempt])
+    raise last
 
 
 def _gdelt_count(query: str, start: datetime, end: datetime) -> tuple[int, list]:
@@ -327,13 +359,7 @@ def _gdelt_count(query: str, start: datetime, end: datetime) -> tuple[int, list]
         if wait > 0:
             time.sleep(wait)
     try:
-        try:
-            data = _cached_json(GDELT_API, params, ttl=GDELT_TTL_S)
-        except httpx.HTTPStatusError as e:      # shared IPs get 429 often: one slow retry, then degrade
-            if e.response.status_code != 429:
-                raise
-            time.sleep(12)
-            data = _cached_json(GDELT_API, params, ttl=GDELT_TTL_S)
+        data = _gdelt_fetch(params)
     finally:
         if not cached:
             _last_gdelt = time.time()
@@ -360,13 +386,47 @@ def news_coverage(place: str | None, day: _date, window_days: int = 3, event_typ
         n_base, _ = _gdelt_count(q, ws - timedelta(days=30), ws - timedelta(seconds=1))
     except Exception as e:  # noqa: BLE001
         out["status"] = "UNAVAILABLE"
-        out["reason"] = f"GDELT request failed: {str(e)[:120]}"
+        out["reason"] = "news coverage unavailable right now"
+        out["error_type"] = type(e).__name__
         return out
     out.update(status="OK", articles_in_window=n_win, articles_baseline_30d=n_base, capped_at=250,
                sample_links=[{"url": a.get("url"), "title": a.get("title"), "domain": a.get("domain"),
                               "seen": a.get("seendate")} for a in arts[:5] if a.get("url")])
     out["note"] = ("news coverage is context only; it counts articles that mention the place and event words and "
                    "never proves a specific video is real")
+    return out
+
+
+# ---------------------------------------------------------------- USGS earthquakes (earthquake / tsunami claims)
+USGS_API = "https://earthquake.usgs.gov/fdsnws/event/1/query"
+USGS_TTL_S = 24 * 3600
+USGS_TYPES = {"earthquake", "tsunami"}
+
+
+def usgs_events(lat: float, lon: float, day: _date, window_days: int = 2, min_magnitude: float = 5.0, radius_km: int = 500) -> dict:
+    """USGS FDSN events (M>=5, +-window_days, within radius_km of the specific place). Cached 24 h. Never raises.
+    status: MATCH | NO_MATCH | ERROR. Strongest magnitude first."""
+    out = {"source": "usgs", "status": "NO_MATCH", "events": [], "window_days": window_days, "min_magnitude": min_magnitude, "radius_km": radius_km}
+    params = {"format": "geojson", "starttime": (day - timedelta(days=window_days)).isoformat(),
+              "endtime": (day + timedelta(days=window_days + 1)).isoformat(), "minmagnitude": min_magnitude,
+              "latitude": lat, "longitude": lon, "maxradiuskm": radius_km, "orderby": "magnitude", "limit": 20}
+    try:
+        data = _cached_json(USGS_API, params, ttl=USGS_TTL_S)
+        for f in (data.get("features") or []):
+            pr, geo = f.get("properties") or {}, (f.get("geometry") or {}).get("coordinates") or []
+            if len(geo) < 2:
+                continue
+            ts = pr.get("time")
+            out["events"].append({"id": f.get("id"), "mag": pr.get("mag"), "place": pr.get("place"),
+                                  "time": datetime.fromtimestamp(ts / 1000, timezone.utc).isoformat(timespec="minutes") if ts else None,
+                                  "distance_km": round(haversine_km(lat, lon, geo[1], geo[0]), 1),
+                                  "depth_km": geo[2] if len(geo) > 2 else None, "tsunami_flag": pr.get("tsunami"),
+                                  "url": pr.get("url") or f"https://earthquake.usgs.gov/earthquakes/eventpage/{f.get('id')}"})
+        if out["events"]:
+            out["status"] = "MATCH"
+    except Exception as e:  # noqa: BLE001
+        out["status"] = "ERROR"
+        out["error_type"] = type(e).__name__
     return out
 
 
@@ -437,13 +497,17 @@ def elevation(lat: float, lon: float) -> float | None:
 
 
 # ---------------------------------------------------------------- main
-EVENT_TYPES = {"flood", "flash_flood", "glof", "landslide", "cyclone", "storm_surge", "unknown"}
+EVENT_TYPES = {"flood", "flash_flood", "glof", "landslide", "cyclone", "storm_surge", "tsunami", "earthquake", "wildfire", "unknown"}
+NO_DISCHARGE = {"tsunami", "earthquake", "wildfire"}     # river discharge is not a meaningful check for these types
 NOT_RESOLVED_BY_GLOFAS = {
     "flash_flood": "flash floods are too small and fast for GloFAS river discharge",
     "glof": "glacial lake outburst floods are not represented in GloFAS river discharge",
     "landslide": "landslides are not represented in river discharge or daily rain totals",
     "cyclone": "cyclone wind/surge damage is not represented in GloFAS river discharge",
     "storm_surge": "storm surge/coastal flooding is not represented in GloFAS river discharge",
+    "tsunami": "river discharge does not apply to tsunami; the USGS earthquake catalogue is checked instead",
+    "earthquake": "river discharge does not apply to earthquakes; the USGS earthquake catalogue is checked instead",
+    "wildfire": "river discharge is not applicable to wildfires",
     "unknown": "event type unknown, so the river-flood model may not apply",
 }
 
@@ -478,19 +542,29 @@ def check(place: str | None = None, lat: float | None = None, lon: float | None 
         return res
     la, lo = loc["lat"], loc["lon"]
     from concurrent.futures import ThreadPoolExecutor      # four independent network look-ups: run them at once
-    with ThreadPoolExecutor(4) as ex:
-        f_ev = ex.submit(official_event, la, lo, day, window_days)
-        f_hy = ex.submit(hydrology, la, lo, day, window_days)
+    no_discharge = event_type in NO_DISCHARGE
+    with ThreadPoolExecutor(5) as ex:
+        f_ev = ex.submit(official_event, la, lo, day, window_days, *([event_type] if event_type in EMS_CATEGORIES else []))
+        f_hy = None if no_discharge else ex.submit(hydrology, la, lo, day, window_days)
         f_rw = ex.submit(reliefweb, country, day, 7, event_type)
         f_nw = ex.submit(news_coverage, place or loc.get("query"), day, window_days, event_type)
-        ev, hy, rw, nw = f_ev.result(), f_hy.result(), f_rw.result(), f_nw.result()
+        f_us = ex.submit(usgs_events, la, lo, day, 2) if event_type in USGS_TYPES else None
+        ev, rw, nw = f_ev.result(), f_rw.result(), f_nw.result()
+        hy = (f_hy.result() if f_hy else
+              {"source": "open-meteo glofas v4", "river_discharge": None, "rain": None,
+               "status": "NOT_APPLICABLE" if event_type == "wildfire" else "SKIPPED",
+               "reason": NOT_RESOLVED_BY_GLOFAS[event_type]})
+        us = f_us.result() if f_us else None
     res["official_event"], res["hydrology"] = ev, hy
     ev["reliefweb"] = rw
+    if us is not None:
+        ev["usgs"] = us
     res["news_coverage"] = nw
     links.append("https://mapping.emergency.copernicus.eu/activations/")
-    links.append(f"https://flood-api.open-meteo.com/v1/flood?latitude={la}&longitude={lo}"
-                 f"&daily=river_discharge&start_date={day - timedelta(days=window_days)}"
-                 f"&end_date={day + timedelta(days=window_days)}")
+    if not no_discharge:
+        links.append(f"https://flood-api.open-meteo.com/v1/flood?latitude={la}&longitude={lo}"
+                     f"&daily=river_discharge&start_date={day - timedelta(days=window_days)}"
+                     f"&end_date={day + timedelta(days=window_days)}")
     links.append(f"https://www.openstreetmap.org/?mlat={la}&mlon={lo}#map=10/{la}/{lo}")
 
     rd, rn = hy.get("river_discharge"), hy.get("rain")
@@ -506,6 +580,12 @@ def check(place: str | None = None, lat: float | None = None, lon: float | None 
             links.append(a["url"])
             reasons.append(f"Copernicus EMS {a['code']} ({a['title']}), {a['distance_km']} km away, "
                            f"event {a['event_time'] or a['activation_time']}")
+    if us is not None and us["status"] == "MATCH":
+        support = True
+        for e in us["events"][:2]:
+            links.append(e["url"])
+            reasons.append(f"USGS earthquake M{e['mag']} {e['place']}, {e['distance_km']} km from the place, {e['time']} "
+                           f"(+-{us['window_days']} d, M>={us['min_magnitude']:g}): {e['url']}")
     if rw["status"] == "MATCH":
         support = True
         for d in rw["disasters"][:3]:
@@ -525,6 +605,15 @@ def check(place: str | None = None, lat: float | None = None, lon: float | None 
 
     if loc["confidence"] == "low":
         reasons.append("location confidence low")
+        return res
+    if no_discharge:
+        if ev["status"] == "ERROR" and (us is None or us["status"] == "ERROR"):
+            reasons.append("a data source failed; cannot assess")
+            return res
+        reasons.append(("no USGS earthquake M>=5 within 500 km / +-2 d" if us is not None else "wildfire: river discharge not applicable")
+                       + f"; no matching official activation within {MAX_KM:.0f} km")
+        limits.append(f"event_type={event_type}: {NOT_RESOLVED_BY_GLOFAS[event_type]}; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS")
+        res["verdict"] = "NO_EVIDENCE"
         return res
     if ev["status"] == "ERROR" or ratio is None or mm is None:
         reasons.append("a data source failed; cannot assess")

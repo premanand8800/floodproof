@@ -30,7 +30,7 @@ SCHEMA = """Return ONLY one JSON object (no prose) with exactly these keys:
  "likely_location": {"place": str, "country": str, "confidence": float 0-1, "lat": float|null, "lon": float|null,
                      "reasons": [{"text": str, "refs": [..]}]},
  "contradictions_with_claim": [{"text": str, "refs": [..]}],       // visible cues that argue against the claim; [] if none
- "claim_parsed": {"place": str|null, "country_iso2": str|null, "event_type": one of "flood","flash_flood","glof","landslide","cyclone","storm_surge","unknown"},  // what the CLAIM names
+ "claim_parsed": {"place": str|null, "country_iso2": str|null, "event_type": one of "flood","flash_flood","glof","landslide","cyclone","storm_surge","tsunami","earthquake","wildfire","unknown"},  // what the CLAIM names
  "media_nature": {"value": one of "camera_footage","news_compilation","animation_or_cgi","likely_ai_generated","screen_recording","unknown",
                   "confidence": float 0-1, "refs": [..], "reasons": [{"text": str, "refs": [..]}]},   // what KIND of media this is, judged from the frames
  "frame_labels": [{"frame": int, "label": one of "camera_footage","likely_ai_generated","animation_or_cgi","graphic_or_text","screen_recording","unknown",

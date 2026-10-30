@@ -167,11 +167,22 @@ class MatchResult:
     a: ClipFeatures = field(default=None, repr=False)
     b: ClipFeatures = field(default=None, repr=False)
     stage: str = "full"
+    consistent_pairs: list = field(default_factory=list, repr=False)   # EVERY pair of the consensus set (ia, ib, inliers, flip)
+
+    def matched_frames(self, cap=60):
+        """One entry per matched input frame (its best pair inside the consensus set): the per-frame data behind report.source_map."""
+        best = {}
+        for (i, j, n, f) in self.consistent_pairs:
+            if i not in best or n > best[i][1]:
+                best[i] = (j, n, f)
+        return [dict(a_frame=i, a_t=round(self.a.times[i], 2) if self.a else None, b_frame=j,
+                     b_t=round(self.b.times[j], 2) if self.b else None, inliers=n, flip=bool(f))
+                for i, (j, n, f) in sorted(best.items())][:cap]
 
     def to_dict(self):
         return dict(decision=self.decision, consistent_frames=self.consistent_frames, max_inliers=self.max_inliers,
                     mirrored=self.mirrored, temporal_offset=self.temporal_offset, n_pairs=self.n_pairs,
-                    score=round(self.score, 2), stage=self.stage,
+                    score=round(self.score, 2), stage=self.stage, matched_frames=self.matched_frames(),
                     best_pairs=[dict(a_frame=i, b_frame=j, a_t=self.a.times[i] if self.a else None,
                                      b_t=self.b.times[j] if self.b else None, inliers=n, flip=bool(f))
                                 for (i, j, n, sp, f) in self.pairs])
@@ -218,6 +229,7 @@ def _consensus(A, B, res):
     out.consistent_frames, out.max_inliers, out.mirrored = nd, best[0][2], bool(best[0][4])
     out.temporal_offset = B.times[best[0][1]] - A.times[best[0][0]]
     out.pairs = best[:3]
+    out.consistent_pairs = [(y[0], y[1], y[2], y[4]) for y in best]
     out.score = float(nd) + min(best[0][2], 100) / 100.0
     out.decision = decide(nd, best[0][2])
     return out

@@ -15,16 +15,17 @@ from __future__ import annotations
 
 import datetime
 import json
+import re
 import uuid
 from pathlib import Path
 
 LABELS = ("RECYCLED_FOOTAGE", "CONSISTENT_WITH_CLAIM", "UNVERIFIED")
-SCHEMA_VERSION = "1.5"   # 1.5: optional proven_matches[].proof (clean frames, inliers, explanation); 1.4: media_nature.per_frame + value "mixed", claim date bases *_partial_year; 1.3 reports stay valid; 1.3: optional report["debunk"] (see debunk.py); 1.2 reports stay valid
+SCHEMA_VERSION = "1.5"   # 1.5 also carries optional disclosure, claim_presence, signals, headline (none changes the label); 1.5: optional proven_matches[].proof (clean frames, inliers, explanation); 1.4: media_nature.per_frame + value "mixed", claim date bases *_partial_year; 1.3 reports stay valid; 1.3: optional report["debunk"] (see debunk.py); 1.2 reports stay valid
 REQUIRED_KEYS = ("schema_version", "investigation_id", "created_at", "input", "claim", "memory", "visual_matching",
                  "clues", "physical_world_check", "final_verdict")
 
 
-EVENT_TYPES = ("flood", "flash_flood", "glof", "landslide", "cyclone", "storm_surge", "unknown")
+EVENT_TYPES = ("flood", "flash_flood", "glof", "landslide", "cyclone", "storm_surge", "tsunami", "earthquake", "wildfire", "unknown")
 
 
 def run_physical(place, lat, lon, date, window_days=3, event_type="unknown", country=None):
@@ -257,6 +258,296 @@ def nature_layer(clues):
                                                  status="NOT_RUN", note="Muse clues were not available, so the media nature was not assessed.")
 
 
+# ---------------------------------------------------------------- clarity layer: disclosure, signals, headline
+# NONE of this changes final_verdict.label. Physical / official-event support, in-clip signals and the uploader's own words
+# are context: real events are exactly what recycled fakes get attached to (global G08: physical SUPPORTS on a debunked
+# clip; held-out C2 H05: a wrong CONSISTENT verdict). Only a matcher-proven, independently dated earlier copy can produce
+# RECYCLED_FOOTAGE, and CONSISTENT_WITH_CLAIM still needs an independently dated copy near the claimed date.
+DISCLOSURE_TYPES = ("ai_generated", "animation", "reenactment", "none")
+CLAIM_PRESENCE = ("asserts_real_event", "tribute_or_explainer", "no_claim")
+TONES = ("recycled", "ai_disclosed", "signals_agree", "unverified", "consistent")
+SIGNALS_NEEDED = 3
+
+_BROADCASTERS_CI = re.compile(r"\b(NHK|BBC|Reuters|AFP|CNN|Al Jazeera|Sky News|NDTV|Kyodo|Xinhua|CGTN|France ?24|DW News|ABC News|NBC News|"
+                              r"CBS News|Fox News|Getty Images|National Geographic|Fuji TV|TV Asahi|Nippon TV|TRT World|Channel 4 News)\b", re.I)
+_BROADCASTERS_CS = re.compile(r"\b(AP|ANI|PTI|TBS|ITV)\b")
+
+
+def _norm(s):
+    return re.sub(r"[^a-z0-9]+", " ", str(s or "").lower()).strip()
+
+
+def disclosure_layer(input_meta, clues):
+    from .infer import detect_disclosure
+    vt = (clues or {}).get("visible_text") if (clues or {}).get("status") == "ok" else None
+    return detect_disclosure((input_meta or {}).get("title"), (input_meta or {}).get("description"), vt)
+
+
+def claim_presence_layer(input_meta, claim, disclosure):
+    from .infer import claim_presence
+    return claim_presence((input_meta or {}).get("title"), (input_meta or {}).get("description"), (claim or {}).get("text"), disclosure)
+
+
+def event_phrase(claim):
+    c = claim or {}
+    et = c.get("event_type") if c.get("event_type") not in (None, "unknown") else None
+    place = c.get("place")
+    if et:
+        return "the " + (f"{place} " if place else "") + et.replace("_", " ")
+    return "the event" + (f" in {place}" if place else "")
+
+
+def _within_days(a, b, n):
+    try:
+        return abs((datetime.date.fromisoformat(str(a)[:10]) - datetime.date.fromisoformat(str(b)[:10])).days) <= n
+    except (TypeError, ValueError):
+        return False
+
+
+def signals_assessment(claim, clues, physical, proven, input_pub, media_nature, disclosure):
+    """Count independent-ish signals that AGREE with the claim, and anything that contradicts. Context only; never the label."""
+    c = claim or {}
+    cd = claim_date_for_logic(c)
+    ok = (clues or {}).get("status") == "ok"
+    aud = ((clues or {}).get("audio") or {}) if ok else {}
+    speech = aud.get("status") == "ok" and aud.get("has_speech") is not False
+    agree, against = [], []
+    # 1. date in narration / on-screen text equals the claimed date
+    if cd and ok:
+        hits = []
+        for x in (aud.get("spoken_dates") or []) if speech else []:
+            if x.get("date") == cd:
+                hits.append(f"narration says {x.get('text') or x['date']}")
+        for x in (aud.get("partial_dates") or []) if speech else []:
+            if x.get("month") and x.get("day") and cd[5:7] == f"{int(x['month']):02d}" and cd[8:10] == f"{int(x['day']):02d}":
+                hits.append(f"narration says {x.get('text') or 'the same day and month'}")
+        for x in clues.get("on_screen_dates") or []:
+            if x.get("date") == cd:
+                hits.append(f"on-screen text shows {x.get('text') or x['date']}")
+        if hits:
+            agree.append(dict(key="date", label="Date named in the clip", detail=hits[0] + f" (claimed {cd})", field="clues.audio.spoken_dates"))
+    # 2. place named in the narration / on-screen text is inside the claimed region
+    if ok:
+        from .infer import country_name
+        claimed = {_norm(c.get("place")), _norm((c.get("specific_place") or {}).get("name")), _norm(country_name(c.get("country_iso2")))} - {""}
+        names = [x.get("name") for x in (aud.get("spoken_place_names") or []) if speech and x.get("name")] + \
+                [x.get("text") for x in clues.get("visible_text") or [] if x.get("is_place") and x.get("text")]
+        for n in names:
+            nn = _norm(n)
+            if nn and any(nn == k or nn in k or k in nn for k in claimed):
+                agree.append(dict(key="place", label="Place named in the clip", detail=f"{n} (claimed place: {c.get('place')})", field="clues.audio.spoken_place_names"))
+                break
+    # 3. broadcaster logo or credit visible in the video
+    if ok:
+        for x in clues.get("visible_text") or []:
+            t = str(x.get("text") or "")
+            m = _BROADCASTERS_CI.search(t) or _BROADCASTERS_CS.search(t)
+            if m:
+                agree.append(dict(key="broadcaster", label="Broadcaster logo or credit", detail=f"{m.group(0)} visible on screen (a logo can be added to a copy; context only)", field="clues.visible_text"))
+                break
+    # 4. an official event record at a specific location within +-2 days
+    loc = (physical or {}).get("location") or {}
+    oe = (physical or {}).get("official_event") or {}
+    if cd and loc.get("lat") is not None and not loc.get("country_level"):
+        rec = None
+        for a in oe.get("activations") or []:
+            if _within_days(a.get("event_time") or a.get("activation_time"), cd, 2):
+                rec = f"Copernicus EMS {a.get('code')}: {a.get('title')}, {a.get('distance_km')} km away"
+                break
+        us = oe.get("usgs") or {}
+        if not rec and us.get("status") == "MATCH" and us.get("events"):
+            e = us["events"][0]
+            rec = f"USGS M{e.get('mag')} {e.get('place')}, {e.get('distance_km')} km away"
+        if rec:
+            agree.append(dict(key="official_event", label="Official event record", detail=rec, field="physical_world_check.official_event"))
+    # 5. no proven earlier copy (independent or inherited-date)
+    allp = list(proven) + ([input_pub] if input_pub else [])
+    if cd and not proven_before(allp, cd):
+        agree.append(dict(key="no_earlier_copy", label="No earlier copy proven", detail="the frame matcher found no earlier copy (absence of evidence, not proof)", field="visual_matching.status"))
+    # contradictions: anything here blocks the signals-agree headline
+    if proven_before(allp, cd, independent_only=True):
+        against.append("a proven earlier copy exists")
+    if physical_supports(physical) is False:
+        against.append("the physical-world check does not support the claimed place/date")
+    if (disclosure or {}).get("type", "none") != "none":
+        against.append("the uploader labels the video " + disclosure["type"].replace("_", " "))
+    mv = (media_nature or {}).get("value")
+    if mv in ("animation_or_cgi", "likely_ai_generated", "screen_recording", "mixed"):
+        against.append(f"the frames look like {mv.replace('_', ' ')} (AI observation)")
+    return dict(agree=agree, against=against, count=len(agree), needed=SIGNALS_NEEDED,
+                qualifies=bool(len(agree) >= SIGNALS_NEEDED and not against),
+                note="Context only: these signals never change the label. Real events are what fakes get attached to, so signals that agree with a claim do not prove the footage is genuine.")
+
+
+def _host(u):
+    return re.sub(r"^https?://(?:www\.)?", "", str(u or "")).split("/")[0]
+
+
+def build_headline(rep) -> dict:
+    """Deterministic headline: precedence proven earlier copy > uploader self-disclosure > signals agree > consistent > plain.
+    -> dict(sentence, facts [{text, field}] (<= 3), tone). Never changes the label."""
+    fv, claim, vis = rep["final_verdict"], rep.get("claim") or {}, rep.get("visual_matching") or {}
+    disc, presence, sig = rep.get("disclosure") or {}, rep.get("claim_presence") or {}, rep.get("signals") or {}
+    event = event_phrase(claim)
+    label = fv["label"]
+    proven = vis.get("proven_matches") or []
+    ip = input_publication(vis)
+    cd = claim_date_for_logic(claim)
+    if label == "RECYCLED_FOOTAGE":
+        e = proven_before(proven + ([ip] if ip else []), cd, independent_only=True)[0]
+        m = e.get("match") or {}
+        f2 = ("The input URL is itself that earlier publication" if m.get("identity") else
+              f"The frame matcher links the two: {m.get('consistent_frames')} consistent frames, up to {m.get('max_inliers')} inliers")
+        return dict(tone="recycled",
+                    sentence=f"This footage was already published on {e['upload_date']}, before the claimed event date {cd}.",
+                    facts=[dict(text=f"Earliest copy found: {_host(e.get('url'))}, dated {e['upload_date']} (date from {e.get('date_source')})", field="visual_matching.earliest_proven_copy"),
+                           dict(text=f2, field="visual_matching.proven_matches"),
+                           dict(text="Recycled does not mean fake, and the claimed event itself may be real", field="final_verdict.label")])
+    if disc.get("type", "none") != "none":
+        t = disc["type"]
+        what = {"ai_generated": "AI-generated", "animation": "an animation", "reenactment": "a reenactment or illustration"}[t]
+        verb = "labels this video" if t == "ai_generated" else "describes this video as"
+        ev = (disc.get("evidence") or [{}])[0]
+        facts = [dict(text=f"The uploader's own words ({ev.get('field', '?').replace('_', ' ')}): “{ev.get('text', '')}”", field="disclosure.evidence")]
+        if presence.get("reason"):
+            facts.append(dict(text=presence["reason"][0].upper() + presence["reason"][1:], field="claim_presence"))
+        mn = rep.get("media_nature") or {}
+        if mn.get("value") in ("animation_or_cgi", "likely_ai_generated", "mixed"):
+            facts.append(dict(text="Muse reads the frames as " + mn["value"].replace("_", " ") + " too (AI observation, not proof)", field="media_nature.value"))
+        else:
+            facts.append(dict(text=f"No earlier copy was proven among {vis.get('candidates_checked', 0)} candidates checked", field="visual_matching.candidates_checked"))
+        return dict(tone="ai_disclosed", sentence=f"The uploader {verb} {what}. It is not documentary footage of {event}.", facts=facts[:3])
+    if label == "CONSISTENT_WITH_CLAIM":
+        ind = [m for m in proven + ([ip] if ip else []) if is_independent(m) and m.get("upload_date")]
+        d0 = min((m["upload_date"] for m in ind), default="?")
+        return dict(tone="consistent",
+                    sentence=f"No contradiction found: the earliest independently dated copy ({d0}) falls within days of the claimed event date {cd}. This is not proof the footage is authentic.",
+                    facts=[dict(text=f"Earliest independently dated copy: {d0}", field="visual_matching.earliest_proven_copy"),
+                           dict(text="No earlier copy and no independent contradiction were found", field="contradictions"),
+                           dict(text="Physical-world data is context only and did not change the label", field="physical_world_check.verdict")])
+    if sig.get("qualifies"):
+        return dict(tone="signals_agree",
+                    sentence=f"Signals point to genuine footage of {event} ({sig['count']} signals agree). Not proven by a dated copy.",
+                    facts=[dict(text=f"{s['label']}: {s['detail']}", field=s["field"]) for s in sig["agree"][:3]])
+    n_checked = vis.get("candidates_checked", 0)
+    basis = claim.get("event_date_basis")
+    f1 = (dict(text=f"No matcher-proven earlier copy among {n_checked} candidates checked", field="visual_matching.candidates_checked") if not proven else
+          dict(text=f"{len(proven)} copy(ies) matched, but none is independently dated before the claim", field="visual_matching.proven_matches"))
+    f2 = (dict(text="No event date is known; only the date this video was posted", field="claim.event_date_basis") if (basis == "date_posted" or not claim.get("event_date")) else
+          dict(text=f"Claimed event date {claim['event_date']} (from {str(basis).replace('_', ' ')})", field="claim.event_date_basis"))
+    f3 = dict(text="Physical-world check: " + physical_label(rep.get("physical_world_check") or {}), field="physical_world_check.verdict")
+    return dict(tone="unverified", sentence="We could not verify this video from the available evidence. That does not mean it is fake, and it does not mean it is genuine.",
+                facts=[f1, f2, f3])
+
+
+# ---------------------------------------------------------------- source map: a timeline per segment of the INPUT video
+SEGMENT_KINDS = ("matched_source", "ai_generated", "animation", "graphic", "camera_unmatched", "unknown")
+_MUSE_KIND = {"likely_ai_generated": "ai_generated", "animation_or_cgi": "animation", "graphic_or_text": "graphic",
+              "screen_recording": "graphic", "camera_footage": "camera_unmatched"}
+PLATFORMS = {"instagram.com": "Instagram", "youtube.com": "YouTube", "youtu.be": "YouTube", "facebook.com": "Facebook", "fb.watch": "Facebook",
+             "x.com": "X", "twitter.com": "X", "tiktok.com": "TikTok", "vimeo.com": "Vimeo"}
+
+
+def platform_of(url):
+    h = _host(url)
+    return PLATFORMS.get(h) or PLATFORMS.get(h.split(":")[0]) or h or "unknown"
+
+
+def build_source_map(rep) -> list:
+    """Per-segment provenance of the input video. A segment gets a SOURCE only from a matcher proof (the matched input frames of a
+    proven copy); frames without a proof get Muse's per-frame media label (an AI observation) or 'unknown'. Contiguous frames that
+    share the same sources are merged. Never guesses: no proof, no source."""
+    inp = rep.get("input") or {}
+    times = inp.get("keyframe_times_s") or []
+    n = len(times)
+    proven = (rep.get("visual_matching") or {}).get("proven_matches") or []
+    if not n:
+        return []
+    by_frame = {i: [] for i in range(n)}
+    for m in proven:
+        mt = m.get("match") or {}
+        mf = mt.get("matched_frames")
+        if mf is None:                                   # older reports: only the best pairs were stored
+            mf = [dict(a_frame=p["a_frame"], b_frame=p["b_frame"], a_t=p.get("a_t"), b_t=p.get("b_t"), inliers=p.get("inliers")) for p in mt.get("best_pairs") or []]
+        for x in mf:
+            f = x.get("a_frame")
+            if isinstance(f, int) and 0 <= f < n:
+                by_frame[f].append((m, x))
+    labels = {x["frame"]: x["label"] for x in ((rep.get("media_nature") or {}).get("per_frame") or []) if isinstance(x.get("frame"), int)}
+    dur = inp.get("duration")
+    gaps = sorted(float(times[i + 1]) - float(times[i]) for i in range(n - 1)) or [1.0]
+    end_total = float(times[-1]) + gaps[len(gaps) // 2]           # the last keyframe covers one typical gap, never more than is evidenced
+    if isinstance(dur, (int, float)) and dur:
+        end_total = min(end_total, float(dur))
+    end_total = max(end_total, float(times[-1]))
+    bounds = [0.0] + [round((float(times[i]) + float(times[i + 1])) / 2, 2) for i in range(n - 1)] + [round(end_total, 2)]
+    segs = []
+    for i in range(n):
+        hits = by_frame[i]
+        urls = tuple(sorted({m["url"] for m, _ in hits}))
+        kind = "matched_source" if hits else _MUSE_KIND.get(labels.get(i), "unknown")
+        key = (kind, urls)
+        if segs and segs[-1]["_key"] == key:
+            segs[-1]["end_s"] = bounds[i + 1]
+            segs[-1]["frames"].append(i)
+            segs[-1]["_hits"].extend(hits)
+        else:
+            segs.append(dict(_key=key, start_s=bounds[i], end_s=bounds[i + 1], kind=kind, frames=[i], _hits=list(hits)))
+    out = []
+    for sg in segs:
+        srcs = []
+        for url in sg["_key"][1]:
+            hs = [(m, x) for m, x in sg["_hits"] if m["url"] == url]
+            m = hs[0][0]
+            best = max(hs, key=lambda mx: mx[1].get("inliers") or 0)[1]
+            pr = m.get("proof") or {}
+            srcs.append(dict(url=url, date=m.get("upload_date"), date_source=m.get("date_source"), date_independent=bool(m.get("date_independent")),
+                             platform=platform_of(url), frames_matched=len({x["a_frame"] for _, x in hs}),
+                             copy_t_range=[min(x["b_t"] for _, x in hs if x.get("b_t") is not None), max(x["b_t"] for _, x in hs if x.get("b_t") is not None)]
+                             if any(x.get("b_t") is not None for _, x in hs) else None,
+                             best_pair=dict(a_frame=best["a_frame"], b_frame=best.get("b_frame"), inliers=best.get("inliers")),
+                             evidence_png=m.get("evidence_png"),
+                             proof=dict(viral_frame=pr["viral_frame"], copy_frame=pr["copy_frame"], viral_t=pr["viral_t"], copy_t=pr["copy_t"]) if pr.get("viral_frame") else None))
+        out.append(dict(start_s=sg["start_s"], end_s=sg["end_s"], kind=sg["kind"], sources=srcs, frames=sg["frames"],
+                        basis="matcher proof" if sg["kind"] == "matched_source" else
+                        ("Muse per-frame media label (AI observation, not proof)" if sg["kind"] != "unknown" else "no source found")))
+    return out
+
+
+def validate_source_map(r):
+    sm = r["source_map"]
+    assert isinstance(sm, list), "source_map must be a list"
+    urls = {m["url"]: m for m in (r.get("visual_matching") or {}).get("proven_matches", [])}
+    nk = (r.get("input") or {}).get("n_keyframes")
+    prev_end = None
+    for sg in sm:
+        assert sg.get("kind") in SEGMENT_KINDS, "source_map kind invalid"
+        assert isinstance(sg.get("start_s"), (int, float)) and isinstance(sg.get("end_s"), (int, float)) and sg["start_s"] <= sg["end_s"], "segment times invalid"
+        assert prev_end is None or sg["start_s"] >= prev_end - 1e-6, "segments must be ordered and not overlap"
+        prev_end = sg["end_s"]
+        assert isinstance(sg.get("frames"), list) and all(isinstance(f, int) and f >= 0 and (nk is None or f < nk) for f in sg["frames"]), "segment frames invalid"
+        assert (sg["kind"] == "matched_source") == bool(sg.get("sources")), "a segment has sources iff it is matched_source (no proof, no source)"
+        for s in sg.get("sources") or []:
+            m = urls.get(s.get("url"))
+            assert m is not None, "a source must be a matcher-proven copy"
+            assert s.get("date") == m.get("upload_date") and s.get("date_source") == m.get("date_source"), "source date must be the proven copy's date"
+            assert isinstance(s.get("frames_matched"), int) and 1 <= s["frames_matched"] <= len(sg["frames"]), "frames_matched invalid"
+
+
+def add_clarity(rep):
+    """Compute (or recompute) the clarity layers of a finished report from the report itself. Context only: the label is never touched."""
+    label = rep["final_verdict"]["label"]
+    vis = rep.get("visual_matching") or {}
+    rep["disclosure"] = disclosure_layer(rep.get("input"), rep.get("clues"))
+    rep["claim_presence"] = claim_presence_layer(rep.get("input"), rep.get("claim"), rep["disclosure"])
+    rep["signals"] = signals_assessment(rep.get("claim"), rep.get("clues"), rep.get("physical_world_check"), vis.get("proven_matches", []),
+                                        input_publication(vis), rep.get("media_nature"), rep["disclosure"])
+    rep["headline"] = build_headline(rep)
+    rep["source_map"] = build_source_map(rep)
+    assert rep["final_verdict"]["label"] == label
+    return rep
+
+
 def build_report(*, input_meta, claim, memory, visual, clues, physical, investigation_id=None):
     proven = visual.get("proven_matches", [])
     rep = dict(schema_version=SCHEMA_VERSION, investigation_id=investigation_id or uuid.uuid4().hex[:12],
@@ -266,6 +557,7 @@ def build_report(*, input_meta, claim, memory, visual, clues, physical, investig
     rep["media_nature"] = nature_layer(clues)
     rep["contradictions"] = independent_contradictions(claim, proven, physical, input_publication(visual))
     rep["final_verdict"] = decide_verdict(claim, proven, clues, physical, input_meta, input_publication(visual), rep["media_nature"])
+    add_clarity(rep)      # context layers (disclosure, claim presence, signals, headline, source map); never touches the label
     return rep
 
 
@@ -348,6 +640,22 @@ def validate_report(r: dict):
     if r.get("debunk") is not None:      # optional (schema 1.3); older reports simply do not have it
         from .debunk import validate_debunk
         validate_debunk(r["debunk"])
+    if r.get("disclosure") is not None:       # optional clarity layer
+        d = r["disclosure"]
+        assert d.get("type") in DISCLOSURE_TYPES and isinstance(d.get("evidence"), list), "disclosure invalid"
+        assert (d["type"] == "none") == (not d["evidence"]), "disclosure needs evidence iff its type is not none"
+        for e in d["evidence"]:
+            assert e.get("field") and e.get("text"), "disclosure evidence needs field and text"
+        assert (r.get("claim_presence") or {}).get("value") in CLAIM_PRESENCE, "claim_presence invalid"
+    if r.get("headline") is not None:
+        hl = r["headline"]
+        assert hl.get("tone") in TONES and str(hl.get("sentence") or "").strip(), "headline needs tone and sentence"
+        assert isinstance(hl.get("facts"), list) and len(hl["facts"]) <= 3 and all(f.get("text") and f.get("field") for f in hl["facts"]), \
+            "headline facts: at most 3, each citing a report field"
+        assert hl["tone"] != "recycled" or r["final_verdict"]["label"] == "RECYCLED_FOOTAGE", "recycled headline needs the RECYCLED label"
+        assert hl["tone"] != "signals_agree" or (r.get("signals") or {}).get("qualifies"), "signals_agree headline needs a qualifying assessment"
+    if r.get("source_map") is not None:
+        validate_source_map(r)
     fv = r["final_verdict"]
     assert fv["label"] in LABELS and fv["summary"] and fv["limits"]
     if fv["label"] == "RECYCLED_FOOTAGE":

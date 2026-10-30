@@ -162,9 +162,9 @@ def gvision_candidates(feats: ClipFeatures, n_frames=4, max_links=40, key=None, 
     info = dict(source="gvision", frames=[], calls=0, errors=[])
     if not key:
         log.info("gvision: %s", SKIP_NO_KEY)
-        return [], dict(info, skipped=SKIP_NO_KEY)
+        return [], dict(info, status="not_configured", skipped=SKIP_NO_KEY)
     if gvision_disabled_until() > time.time():
-        return [], dict(info, unavailable=GV_UNAVAILABLE, skipped=f"unavailable ({GV_UNAVAILABLE})", cached=True)
+        return [], dict(info, status="not_configured", unavailable=GV_UNAVAILABLE, skipped=f"unavailable ({GV_UNAVAILABLE})", cached=True)
     pick = list(frames) if frames else _spread_frames(feats, min(max(n_frames, 3), 4), allowed)
     reqs = []
     for i in pick:
@@ -181,7 +181,7 @@ def gvision_candidates(feats: ClipFeatures, n_frames=4, max_links=40, key=None, 
     except Exception as e:
         if _is_billing_error(e):          # the key has no billing: unavailable, not an error; do not retry for an hour
             _gv_disable()
-            return [], dict(info, unavailable=GV_UNAVAILABLE, skipped=f"unavailable ({GV_UNAVAILABLE})")
+            return [], dict(info, status="not_configured", unavailable=GV_UNAVAILABLE, skipped=f"unavailable ({GV_UNAVAILABLE})")
         info["errors"].append(type(e).__name__ + ": " + str(e)[:100].replace(key, "***"))
         return [], info
     seen = {}
@@ -203,17 +203,41 @@ def gvision_candidates(feats: ClipFeatures, n_frames=4, max_links=40, key=None, 
     return [Candidate(u, re.sub(r"<[^>]+>", "", t), "gvision", h) for u, (t, h) in items], info
 
 
+_YT_NOISE = {"video", "videos", "footage", "original", "archive", "映像", "動画", "vidéo", "video:", "rare", "real", "news"}
+
+
+def _diversify(queries):
+    """Alternate non-ASCII (local-language) and ASCII (English) queries so a short query budget covers both. Order within each kept."""
+    a = [q for q in queries if q and not q.isascii()]
+    b = [q for q in queries if q and q.isascii()]
+    out = []
+    while a or b:
+        if a:
+            out.append(a.pop(0))
+        if b:
+            out.append(b.pop(0))
+    return out
+
+
+def _simplify_query(q):
+    """Shorter fallback for an over-specific query: drop noise words and cap at 3 terms (an over-long query returned 0 results)."""
+    toks = [t for t in re.split(r"\s+", q.strip()) if t and t.lower() not in _YT_NOISE and not re.fullmatch(r"\d{4}", t)]
+    return " ".join(toks[:3])
+
+
 def youtube_api_candidates(queries, claim_date=None, max_queries=3, max_results=15, key=None):
-    """YouTube Data API v3 search.list: videos published on/before claim date + 1 day, oldest-relevant first (order=date).
-    The snippet publishedAt is kept only as stored_date; verify_candidate still re-fetches the date independently."""
+    """YouTube Data API v3 search.list: videos published on/before claim date + 1 day. Per query: a date-ordered pass AND a
+    relevance pass (order=date alone returns only the newest uploads before the cutoff, which hides the clip itself on a popular
+    topic); a query that returns nothing is retried once in a shorter form. The snippet publishedAt is kept only as stored_date;
+    verify_candidate still re-fetches the date independently."""
     import datetime as dt
     load_env()
     key = key or os.environ.get("GOOGLE_API_KEY")
-    info = dict(source="youtube_api", queries=0, errors=[])
+    info = dict(source="youtube_api", queries=0, errors=[], zero_result_queries=[])
     if not key:
         log.info("youtube_api: %s", SKIP_NO_KEY)
-        return [], dict(info, skipped=SKIP_NO_KEY)
-    params0 = dict(part="snippet", type="video", order="date", maxResults=max_results, key=key)
+        return [], dict(info, status="not_configured", skipped=SKIP_NO_KEY)
+    params0 = dict(part="snippet", type="video", maxResults=max_results, key=key)
     if claim_date:
         try:
             before = dt.date.fromisoformat(claim_date) + dt.timedelta(days=1)
@@ -221,17 +245,30 @@ def youtube_api_candidates(queries, claim_date=None, max_queries=3, max_results=
         except ValueError:
             pass
     seen = {}
-    for q in list(queries)[:max_queries]:
+
+    def run(q, **extra):
+        p = dict(params0, q=q[:200], **extra)
         try:
-            r = _get_json("https://www.googleapis.com/youtube/v3/search", params=dict(params0, q=q[:200]))
+            r = _get_json("https://www.googleapis.com/youtube/v3/search", params=p)
             info["queries"] += 1
         except Exception as e:
-            info["errors"].append(type(e).__name__ + ": " + str(e)[:100].replace(key, "***")); continue
+            info["errors"].append(type(e).__name__ + ": " + str(e)[:100].replace(key, "***")); return 0
+        n = 0
         for it in r.get("items", []):
             vid = (it.get("id") or {}).get("videoId")
             sn = it.get("snippet") or {}
             if vid:
+                n += 1
                 seen.setdefault(f"https://www.youtube.com/watch?v={vid}", (sn.get("title", ""), (sn.get("publishedAt") or "")[:10] or None, q))
+        return n
+    for q in _diversify(list(queries))[:max_queries]:
+        n = run(q, order="date")
+        n += run(q, order="relevance", maxResults=10)
+        if not n:
+            info["zero_result_queries"].append(q[:80])
+            short = _simplify_query(q)
+            if short and short != q:
+                run(short, order="relevance", maxResults=10)
     out = []
     for u, (t, d, q) in seen.items():
         c = Candidate(u, t, "youtube_api", f"query: {q[:60]}")

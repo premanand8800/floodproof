@@ -86,6 +86,14 @@ pre.log{background:var(--bg);border:1px solid var(--line);border-radius:8px;padd
 footer{color:var(--mute);font-size:.82rem;margin-top:30px}
 .nature{margin:10px 0;padding:10px 14px;border-radius:8px;border:1px solid #c9a227;background:#fff8e1;color:#4a3b00}.nature.n-cam{border-color:#9bb;background:#eef6f6;color:#234}.nature ul{margin:6px 0 0 18px}
 
+.banner .lab{font-size:1.05rem}
+.hl{font-size:clamp(1.15rem,3.6vw,1.5rem);font-weight:800;line-height:1.3;margin:10px 0 6px;color:var(--ink)}
+ul.facts{margin:4px 0 8px;padding-left:20px;font-size:1rem}
+ul.facts li{margin:3px 0}
+code.cite{font-size:.72rem;color:var(--mute);white-space:nowrap}
+.lim1{font-size:.88rem;color:var(--mute);margin:8px 0 2px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 0}
+.sig-ok::marker{content:"\2713  "}.sig-no::marker{content:"\2717  "}
 .tagline{display:inline-block;margin:6px 0 0;padding:3px 10px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;font-size:.85rem;letter-spacing:.02em}
 .strip{margin:10px 0;padding:12px 14px;border-radius:12px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);font-size:1.02rem}
 .strip b{font-size:1.25rem}.strip .note{display:block;margin-top:4px}
@@ -182,7 +190,8 @@ function baseOf(ref) { return ref.kind + "/" + ref.name; }
 function img(ref, rel, alt, cls) {
   return h("img", {class: cls, loading: "lazy", alt, src: "/files/" + baseOf(ref) + "/" + String(rel).split("/").map(encodeURIComponent).join("/")});
 }
-const limitsBox = (items) => h("div", {}, h("div", {class: "limits-h", text: "Limits of this layer"}), h("ul", {class: "limits"}, (items || []).map((x) => h("li", {text: x}))));
+const limitsBox = (items) => h("details", {class: "layer-limits"}, h("summary", {text: "Limits of this layer"}), h("ul", {class: "limits"}, (items || []).map((x) => h("li", {text: x}))));
+const GENERIC_FAIL = "This check could not be completed right now.";
 function card(title, statusBadge, ...kids) {
   return h("section", {class: "card"}, h("div", {class: "card-h"}, h("h2", {text: title}), statusBadge), ...kids);
 }
@@ -321,18 +330,29 @@ function heroFor(rep, ref) {
 }
 
 const LANGNAME = {en: "English", ne: "नेपाली (Nepali)", hi: "हिन्दी (Hindi)"};
+// One bullet per sentence, never an empty one: accepts {sentence, ref} (current), {text, ref} (older writers) or a bare string, and
+// falls back to the card text itself when a language has no usable per-sentence refs.
+function refItems(d, lg) {
+  const raw = (d.field_refs || {})[lg];
+  const items = (Array.isArray(raw) ? raw : []).map((x) => typeof x === "string" ? {sentence: x, ref: ""} :
+    {sentence: String((x && (x.sentence || x.text || x.s)) || "").trim(), ref: (x && x.ref) || ""}).filter((x) => x.sentence);
+  if (items.length) return items;
+  return String((d.texts || {})[lg] || "").split(/(?<=[.!?\u0964])\s+/).map((t) => t.trim()).filter(Boolean).map((t) => ({sentence: t, ref: ""}));
+}
 function debunkCard(rep) {
   const d = rep.debunk;
   if (!d || !d.texts) return null;
   const langs = Object.keys(d.texts);
   const ta = h("textarea", {class: "dtext", readonly: true, "aria-label": "Shareable debunk text"});
   const refsBox = h("ul", {class: "plain"});
+  const refsDet = h("details", {}, h("summary", {text: "Where each sentence comes from"}), refsBox);
   const tabs = h("div", {class: "tabs", role: "tablist"});
   const status = h("span", {class: "note", role: "status"});
   const show = (lg) => {
     ta.value = d.texts[lg]; ta.lang = lg;
     [...tabs.children].forEach((b) => b.setAttribute("aria-selected", b.dataset.lg === lg ? "true" : "false"));
-    refsBox.replaceChildren(...((d.field_refs || {})[lg] || []).map((x) => h("li", {}, x.sentence, " ", h("code", {text: "[" + x.ref + "]"}))));
+    refsBox.replaceChildren(...refItems(d, lg).map((x) => h("li", {}, x.sentence, " ", x.ref ? h("code", {text: "[" + x.ref + "]"}) : null)));
+    refsDet.classList.toggle("hide", !refsBox.children.length);
   };
   langs.forEach((lg) => tabs.append(h("button", {type: "button", role: "tab", "data-lg": lg, text: LANGNAME[lg] || lg})));
   [...tabs.children].forEach((b) => { b.onclick = () => show(b.dataset.lg); });
@@ -344,7 +364,7 @@ function debunkCard(rep) {
   const c = card("Shareable debunk card", badge(d.grounded ? "checked against the report" : "template (model text rejected)", d.grounded ? "b-ok" : "b-unv"),
     tabs, ta, h("div", {style: "margin-top:8px"}, copy, status),
     h("div", {class: "note", text: "Written from this report only; every date, link and number was checked against report.json. Model: " + d.model + "."}),
-    h("details", {}, h("summary", {text: "Where each sentence comes from"}), refsBox));
+    refsDet);
   c.classList.add("dcard");
   show(langs[0]);
   return c;
@@ -356,14 +376,31 @@ function render(rep, ref) {
   const V = VERDICT[fv.label] || VERDICT.UNVERIFIED;
 
   const hero = proofHero(rep, ref) || heroFor(rep, ref); if (hero) out.append(hero);
-  // verdict banner: the label, never a score
-  out.append(h("section", {class: "banner " + V.cls, "aria-label": "Verdict"},
-    h("div", {class: "lab", text: V.title + " (" + fv.label + ")"}),
-    h("p", {text: fv.summary}),
+  // verdict banner: the label chip, then the headline sentence + facts; everything long is one click away
+  const hl = rep.headline, dsc = rep.disclosure || {}, cpr = rep.claim_presence || {}, sg = rep.signals || {};
+  const banner = h("section", {class: "banner " + V.cls, "aria-label": "Verdict"}, h("div", {class: "lab", text: V.title + " (" + fv.label + ")"}));
+  if (hl) {
+    banner.append(h("p", {class: "hl", text: hl.sentence}),
+      h("ul", {class: "facts"}, (hl.facts || []).slice(0, 3).map((f) => h("li", {}, f.text, " ", h("code", {class: "cite", text: "[" + f.field + "]"})))));
+  } else banner.append(h("p", {text: fv.summary}));
+  const chips = h("div", {class: "chips"});
+  if (dsc.type && dsc.type !== "none") chips.append(badge("Uploader's own label: " + dsc.type.replaceAll("_", " "), "b-hyp"));
+  if (cpr.value === "tribute_or_explainer") chips.append(badge("Presented as a tribute / explainer", "b-na"));
+  if (cpr.value === "no_claim") chips.append(badge("No event claim in the post", "b-na"));
+  if (chips.children.length) banner.append(chips);
+  banner.append(h("p", {class: "lim1", text: "Not proof either way: a visual match shows shared footage, and \u201cnot found\u201d does not mean no earlier copy exists. Full limitations are one click away."}));
+  banner.append(h("details", {}, h("summary", {text: "Full summary and what this does NOT mean"}),
+    hl ? h("p", {text: fv.summary}) : null,
     h("div", {class: "not-mean"}, h("strong", {text: "What this does NOT mean: "}), V.notMean),
-    (fv.basis && fv.basis.unverified_reason) ? h("div", {class: "warn", text: "Reason: " + fv.basis.unverified_reason}) : null,
-    h("div", {class: "limits-h", text: "Limitations (always shown)"}),
-    h("ul", {class: "limits"}, (fv.limits || []).map((x) => h("li", {text: x})))));
+    (fv.basis && fv.basis.unverified_reason) ? h("div", {class: "warn", text: "Reason: " + fv.basis.unverified_reason}) : null));
+  banner.append(h("details", {}, h("summary", {text: "Limitations (" + (fv.limits || []).length + ")"}), h("ul", {class: "limits"}, (fv.limits || []).map((x) => h("li", {text: x})))));
+  if ((sg.agree || []).length || (sg.against || []).length) {
+    banner.append(h("details", {}, h("summary", {text: "Signals checked (" + (sg.agree || []).length + " agree" + ((sg.against || []).length ? ", " + sg.against.length + " against" : "") + "; context only)"}),
+      h("ul", {class: "plain"}, (sg.agree || []).map((x) => h("li", {class: "sig-ok"}, h("strong", {text: x.label + ": "}), x.detail)),
+        (sg.against || []).map((x) => h("li", {class: "sig-no", text: "Against: " + x}))),
+      h("div", {class: "note", text: sg.note || "Signals never change the label."})));
+  }
+  out.append(banner);
 
   const dc = debunkCard(rep); if (dc) out.append(dc);
 
@@ -422,7 +459,7 @@ function render(rep, ref) {
   const ss = v.source_stats || {}, ad = v.adapters || {};
   const names = Object.keys(ss);
   if (names.length || Object.keys(ad).length) {
-    const rows = ["memory", "gvision", "youtube_api", "yandex", "lens", "tavily"].filter((n) => ss[n] || ad[n]);
+    const rows = ["memory", "gvision", "youtube_api", "yandex", "lens", "tavily"].filter((n) => (ss[n] || ad[n]) && !(ad[n] && (ad[n].status === "not_configured" || ad[n].unavailable)));
     vm.append(h("div", {class: "note"}, h("strong", {text: "Discovery sources (candidates found / proven by the matcher)"}),
       h("ul", {class: "plain"}, rows.map((n) => { const st = ss[n], a = ad[n] || {};
         if (a.unavailable) return h("li", {text: n + ": unavailable (" + a.unavailable + ")"});
@@ -453,13 +490,13 @@ function render(rep, ref) {
         (au.spoken_place_names || []).length ? h("div", {class: "note", text: "Spoken places: " + au.spoken_place_names.map((x) => x.name + T(x)).join("; ")}) : null,
         (au.spoken_dates || []).length ? h("div", {class: "note", text: "Spoken dates: " + au.spoken_dates.map((x) => x.date + (x.text ? " \u201c" + x.text + "\u201d" : "") + T(x)).join("; ")}) : null,
         h("div", {class: "note", text: "AI transcription, may contain errors. Hypothesis only, not evidence."})));
-    } else if (au.status === "error") mc.append(h("p", {class: "note", text: "Narration analysis failed: " + (au.error || "error")}));
+    } else if (au.status === "error") mc.append(h("p", {class: "note", text: "Narration analysis was not available for this run."}));
     if ((cl.frame_images || []).length) {
       const fr = h("div", {class: "frames"});
       cl.frame_images.forEach((p) => { const b = p.split("/").pop(); fr.append(h("figure", {}, img(ref, "frames/" + b, "Keyframe " + b), h("figcaption", {text: b.replace(".jpg", "")}))); });
       mc.append(fr);
     }
-  } else mc.append(h("p", {class: "note", text: "Clues unavailable: " + (cl.error || cl.status)}));
+  } else mc.append(h("p", {class: "note", text: cl.status === "not_run" ? "AI clues were not run." : "AI clues were not available for this run."}));
   mc.append(limitsBox(["These are model inferences from a few keyframes. They are hypotheses to check, not evidence, and are never counted as contradictions.", "Model location guesses can be confidently wrong (look-alike terrain)."]));
   out.append(mc);
 
@@ -469,13 +506,14 @@ function render(rep, ref) {
   if (pv === "NO_EVIDENCE") pc.append(h("p", {text: ph.verdict_display || "Insufficient corroboration — this does not show the event didn't happen"}));
   const pl = ph.location || {};
   if (pl.source && pl.lat != null) pc.append(h("p", {class: "note", text: "Location: " + (pl.name || pl.query) + " (source: " + pl.source + ")" + (pl.fallback_from ? "; the claimed place \u201c" + pl.fallback_from + "\u201d could not be resolved" : "")}));
-  if (ph.reason) pc.append(h("p", {text: ph.reason}));
+  if (ph.reason) pc.append(h("p", {text: ph.status === "ERROR" ? "The physical-world check could not be completed right now." : ph.reason}));
   if ((ph.reasons || []).length) pc.append(h("ul", {class: "plain"}, ph.reasons.map((r) => h("li", {text: r}))));
   const oe = ph.official_event || {}, rw = oe.reliefweb, nc = ph.news_coverage;
-  if (rw) pc.append(h("div", {class: "note"}, h("strong", {text: "Official event (ReliefWeb): "}),
-    rw.status === "MATCH" ? (rw.disasters || []).slice(0, 3).map((d, i) => [i ? "; " : "", link(d.url, d.name + " (" + d.date + ")")]) : (rw.status === "NO_MATCH" ? "no matching official entry within \u00b1" + rw.window_days + " days" : (rw.reason || rw.status))));
+  const rwShown = rw && rw.status !== "not_configured" && !(rw.status === "UNAVAILABLE" && /appname/i.test(rw.reason || ""));
+  if (rwShown) pc.append(h("div", {class: "note"}, h("strong", {text: "Official event (ReliefWeb): "}),
+    rw.status === "MATCH" ? (rw.disasters || []).slice(0, 3).map((d, i) => [i ? "; " : "", link(d.url, d.name + " (" + d.date + ")")]) : (rw.status === "NO_MATCH" ? "no matching official entry within \u00b1" + rw.window_days + " days" : "official disaster entries unavailable right now")));
   if (nc) pc.append(h("div", {class: "note"}, h("strong", {text: "News coverage (GDELT, context only): "}),
-    nc.status === "OK" ? nc.articles_in_window + " articles in the claim window vs " + nc.articles_baseline_30d + " in the 30 days before (capped at 250 each)" : (nc.reason || nc.status),
+    nc.status === "OK" ? nc.articles_in_window + " articles in the claim window vs " + nc.articles_baseline_30d + " in the 30 days before (capped at 250 each)" : (nc.status === "SKIPPED" ? "not checked (no place to query)" : "news coverage unavailable right now"),
     (nc.sample_links || []).length ? h("div", {}, nc.sample_links.slice(0, 3).map((l, i) => [i ? " | " : "", link(l.url, (l.domain || l.title || l.url).slice(0, 40))])) : null));
   if ((ph.links || []).length) pc.append(h("p", {class: "note"}, "Sources: ", ph.links.map((u, i) => [i ? " | " : "", link(u, u.replace(/^https?:\/\//, "").slice(0, 48))])));
   pc.append(limitsBox((ph.limits || []).concat(["Physical support is context only; it never changes the verdict on its own."])));
@@ -507,7 +545,7 @@ function render(rep, ref) {
 
 async function openReport(kind, name) {
   const r = await fetch("/api/report/" + kind + "/" + encodeURIComponent(name));
-  if (!r.ok) { $("#out").replaceChildren(h("p", {class: "err", text: "Could not load report: " + (await r.text()).slice(0, 200)})); return; }
+  if (!r.ok) { $("#out").replaceChildren(h("p", {class: "err", text: "Could not load this report."})); return; }
   render(await r.json(), {kind, name});
 }
 
@@ -534,14 +572,14 @@ $("#form").onsubmit = async (ev) => {
   const fd = new FormData($("#form")); if (!$("#deep").checked) fd.delete("deep");
   $("#go").disabled = true; $("#status").textContent = " Running..."; const log = $("#log"); log.classList.remove("hide"); log.textContent = "";
   const r = await fetch("/api/investigate", {method: "POST", body: fd});
-  if (!r.ok) { $("#status").textContent = " " + (await r.text()).slice(0, 200); $("#go").disabled = false; return; }
+  if (!r.ok) { $("#status").textContent = r.status === 429 ? " Daily limit reached. Open a saved example instead." : " The request could not be started."; $("#go").disabled = false; return; }
   const {job} = await r.json();
   const tick = async () => {
     const j = await (await fetch("/api/job/" + job)).json();
     log.textContent = j.log.join("\n"); $("#status").textContent = " " + j.status + " (" + j.seconds + " s)";
     if (j.status === "running") return setTimeout(tick, 2500);
     $("#go").disabled = false;
-    if (j.status === "done") openReport("run", j.report); else $("#status").textContent = " Failed: " + j.error;
+    if (j.status === "done") openReport("run", j.report); else $("#status").textContent = " The investigation could not be completed. Please try again.";
   };
   tick();
 };

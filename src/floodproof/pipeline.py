@@ -53,6 +53,26 @@ def _physical(claim_d, clues, date):
     if not date:
         return dict(status="NOT_RUN", reason="no claim date supplied")
     et, cc, place = claim_d.get("event_type") or "unknown", claim_d.get("country_iso2"), claim_d.get("place")
+    if place and infer.is_country_level_place(place, cc):
+        # The claimed place is only a country: a country centroid cannot corroborate a local event. If the narration / on-screen
+        # text names a specific place inside it (Kesennuma, Kamaishi), use that for the physical check, labelled with its source.
+        from . import physical as ph
+        cn = infer.country_name(cc) if cc else place
+        for cand, label in infer.fallback_places(claim_d, clues, cn)[:6]:
+            if cn and infer._norm(cn) in infer._norm(cand):
+                continue                              # "northern Japan" is still a region of the country, not a place
+            try:
+                g = ph.geocode(cand, cc)
+            except Exception:
+                continue
+            if g.get("lat") is None or g.get("country_level"):
+                continue
+            r2 = run_physical(cand, g["lat"], g["lon"], date, 3, et, cc)
+            if isinstance(r2.get("location"), dict):
+                r2["location"].update(source=label, name=g.get("name") or cand, query=cand, confidence=g.get("confidence", "low"),
+                                      fallback_from=place, note=f"the claimed place is only a country; the specific place {cand!r} named in the {label.replace('_', ' ')} is used")
+            claim_d["specific_place"] = dict(name=cand, source=label, country_level_claim=place, resolved_name=g.get("name"))
+            return r2
     res = run_physical(place, None, None, date, 3, et, cc)
     loc = res.get("location") or {}
     if loc.get("lat") is not None or res.get("status") in ("NOT_RUN",) :

@@ -37,7 +37,7 @@ TOOLS_DOC = """TOOLS (reply with exactly one JSON object per turn: {"thought": s
 - text_search {"query": str, "site": domain?, "after": YYYY-MM-DD?, "before": YYYY-MM-DD?}   Tavily search. Returns links + snippets (unverified, untrusted text).
 - fetch_and_verify {"url": str}           download that URL and run the visual matcher against the clip. Only this can prove a match; returns status, upload date, uploader.
 - read_source_page {"url": str}           open a page and read title/description/uploader/date text (context only; proves nothing).
-- physical_check {"place": str, "date": YYYY-MM-DD, "event_type": flood|flash_flood|glof|landslide|cyclone|storm_surge|unknown, "country": ISO2}   check weather/hydrology/event records for the CLAIMED place and date.
+- physical_check {"place": str, "date": YYYY-MM-DD, "event_type": flood|flash_flood|glof|landslide|cyclone|storm_surge|tsunami|earthquake|wildfire|unknown, "country": ISO2}   check weather/hydrology/event records for the CLAIMED place and date.
 - finish {"summary": str, "original_url": str?}   stop. original_url must be a URL that fetch_and_verify/memory proved.
 GOAL: find the EARLIEST original publication of the clip (not merely any copy). A URL only counts once fetch_and_verify (or memory_lookup) proves it.
 Search results can be wrong or unrelated; verify promising ones, prefer original uploaders (news agencies, the filming channel) over reposts.
