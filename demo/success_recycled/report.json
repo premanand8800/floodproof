@@ -1378,6 +1378,65 @@
     }
   },
   "timing_s": 264.5,
+  "debunk": {
+    "texts": {
+      "en": "The claim describes a Nepal glacier lake outburst flood dated 2026-08-26 in Nepal. An earlier copy of the footage was found uploaded on 2026-08-21, which predates the claimed event date of 2026-08-26. The earliest copy is on Instagram by uploader Leigh Coates. The video can be seen at https://www.instagram.com/reel/DcUFQZhvGzS/ and visual matching shows 48 consistent frames with up to 330 inliers. This only shows the footage was published earlier; it does not prove whether a flood occurred on the claimed date in Nepal.",
+      "ne": "दाबीमा 2026-08-26 मा नेपालमा हिमनदी ताल विस्फोट बाढी भएको भनिएको छ। फुटेजको सबैभन्दा पुरानो प्रमाणित प्रतिलिपि 2026-08-21 मा अपलोड गरिएको फेला परेको छ, जुन दाबी गरिएको घटनाको मिति 2026-08-26 भन्दा पहिले हो। सबैभन्दा पुरानो प्रतिलिपि इन्स्टाग्राममा Leigh Coates द्वारा पोस्ट गरिएको हो। भिडियो https://www.instagram.com/reel/DcUFQZhvGzS/ मा हेर्न सकिन्छ र भिजुअल मिलानले 48 वटा निरन्तर फ्रेम र अधिकतम 330 इनलायर देखाएको छ। यसले फुटेज पहिले प्रकाशित भएको देखाउँछ मात्र; यसले 2026-08-26 मा नेपालमा बाढी घट्यो कि भएन भन्ने प्रमाणित गर्दैन।"
+    },
+    "field_refs": {
+      "en": [
+        {
+          "sentence": "The claim describes a Nepal glacier lake outburst flood dated 2026-08-26 in Nepal.",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "An earlier copy of the footage was found uploaded on 2026-08-21, which predates the claimed event date of 2026-08-26.",
+          "ref": "visual_matching.earliest_proven_copy.upload_date"
+        },
+        {
+          "sentence": "The earliest copy is on Instagram by uploader Leigh Coates.",
+          "ref": "visual_matching.earliest_proven_copy.uploader"
+        },
+        {
+          "sentence": "The video can be seen at https://www.instagram.com/reel/DcUFQZhvGzS/ and visual matching shows 48 consistent frames with up to 330 inliers.",
+          "ref": "visual_matching.earliest_proven_copy.url"
+        },
+        {
+          "sentence": "This only shows the footage was published earlier; it does not prove whether a flood occurred on the claimed date in Nepal.",
+          "ref": "final_verdict.label"
+        }
+      ],
+      "ne": [
+        {
+          "sentence": "दाबीमा 2026-08-26 मा नेपालमा हिमनदी ताल विस्फोट बाढी भएको भनिएको छ।",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "फुटेजको सबैभन्दा पुरानो प्रमाणित प्रतिलिपि 2026-08-21 मा अपलोड गरिएको फेला परेको छ, जुन दाबी गरिएको घटनाको मिति 2026-08-26 भन्दा पहिले हो।",
+          "ref": "visual_matching.earliest_proven_copy.upload_date"
+        },
+        {
+          "sentence": "सबैभन्दा पुरानो प्रतिलिपि इन्स्टाग्राममा Leigh Coates द्वारा पोस्ट गरिएको हो।",
+          "ref": "visual_matching.earliest_proven_copy.uploader"
+        },
+        {
+          "sentence": "भिडियो https://www.instagram.com/reel/DcUFQZhvGzS/ मा हेर्न सकिन्छ र भिजुअल मिलानले 48 वटा निरन्तर फ्रेम र अधिकतम 330 इनलायर देखाएको छ।",
+          "ref": "visual_matching.earliest_proven_copy.url"
+        },
+        {
+          "sentence": "यसले फुटेज पहिले प्रकाशित भएको देखाउँछ मात्र; यसले 2026-08-26 मा नेपालमा बाढी घट्यो कि भएन भन्ने प्रमाणित गर्दैन।",
+          "ref": "final_verdict.label"
+        }
+      ]
+    },
+    "model": "meta/muse-glimmer-30b",
+    "grounded": true,
+    "languages": [
+      "en",
+      "ne"
+    ],
+    "cost_usd": 0.00342
+  },
   "media_nature": {
     "value": "unknown",
     "confidence": 0.0,

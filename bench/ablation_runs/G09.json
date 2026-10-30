@@ -1,0 +1,281 @@
+{
+ "schema_version": "1.2",
+ "investigation_id": "b54a005aac",
+ "created_at": "2026-10-30T10:55:47+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a86ed53237bbce27c/data/global/G09.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/G09.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "G09.mp4",
+  "duration": 13.52,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 37,
+  "keyframe_times_s": [
+   0.0,
+   0.32,
+   0.64,
+   1.6,
+   2.24,
+   2.56,
+   2.88,
+   3.2,
+   3.52,
+   3.84,
+   4.16,
+   4.48,
+   4.8,
+   5.12,
+   5.44,
+   5.76,
+   6.08,
+   6.4,
+   7.04,
+   7.36,
+   7.68,
+   8.0,
+   8.32,
+   8.64,
+   8.96,
+   9.28,
+   9.6,
+   9.92,
+   10.24,
+   10.56,
+   10.88,
+   11.52,
+   11.84,
+   12.16,
+   12.48,
+   12.8,
+   13.44
+  ]
+ },
+ "claim": {
+  "text": "Real tsunami footage after the M8.8 Kamchatka, Russia earthquake (wave behind a wave)",
+  "event_date": "2025-07-30",
+  "place": "Kamchatka, Russia",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": null,
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 16.89,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "NOT_FOUND",
+  "proven_matches": [],
+  "earliest_proven_copy": null,
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 40,
+  "candidate_status_counts": {
+   "not_proven": 6,
+   "unavailable": 6,
+   "pending": 26,
+   "too_long": 1,
+   "download_failed": 1
+  },
+  "adapters": {
+   "yandex": {
+    "frames": [
+     12,
+     25,
+     36
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 40,
+    "checked": 14,
+    "proven": 0
+   }
+  }
+ },
+ "clues": {
+  "status": "not_run"
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Kamchatka, Russia",
+   "name": "Kamchatka Krai, Far Eastern Federal District, Russia",
+   "lat": 57.1914882,
+   "lon": 160.0383819,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2025-07-27",
+      "m3s": 3.52
+     },
+     {
+      "date": "2025-07-28",
+      "m3s": 3.46
+     },
+     {
+      "date": "2025-07-29",
+      "m3s": 3.19
+     },
+     {
+      "date": "2025-07-30",
+      "m3s": 2.78
+     },
+     {
+      "date": "2025-07-31",
+      "m3s": 2.72
+     },
+     {
+      "date": "2025-08-01",
+      "m3s": 2.47
+     },
+     {
+      "date": "2025-08-02",
+      "m3s": 2.67
+     }
+    ],
+    "baseline": 4.904999999999999,
+    "peak": 3.52,
+    "ratio": 0.72,
+    "cell": [
+     57.175003,
+     159.92502
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2025-07-27",
+      "mm": 4.3
+     },
+     {
+      "date": "2025-07-28",
+      "mm": 2.1
+     },
+     {
+      "date": "2025-07-29",
+      "mm": 0.4
+     },
+     {
+      "date": "2025-07-30",
+      "mm": 0.1
+     },
+     {
+      "date": "2025-07-31",
+      "mm": 6.0
+     },
+     {
+      "date": "2025-08-01",
+      "mm": 9.9
+     },
+     {
+      "date": "2025-08-02",
+      "mm": 0.7
+     }
+    ],
+    "max_mm": 9.9
+   },
+   "status": "NORMAL"
+  },
+  "verdict": "NO_EVIDENCE",
+  "reasons": [
+   "no Copernicus flood activation within 150 km / +-3 d",
+   "discharge ratio 0.72 (peak 3.5 vs baseline 4.9 m3/s), max rain 9.9 mm/day"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened",
+   "event_type=unknown: event type unknown, so the river-flood model may not apply; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen (public hydrology/activation data cannot resolve flash floods, GLOFs or landslides)."
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=57.1914882&longitude=160.0383819&daily=river_discharge&start_date=2025-07-27&end_date=2025-08-02",
+   "https://www.openstreetmap.org/?mlat=57.1914882&mlon=160.0383819#map=10/57.1914882/160.0383819"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Kamchatka flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Kamchatka+flood&mode=art"
+  },
+  "verdict_display": "Insufficient corroboration \u2014 this does not show the event didn't happen"
+ },
+ "media_nature": {
+  "value": "unknown",
+  "confidence": 0.0,
+  "cited_frames": [],
+  "cited_timestamps_s": [],
+  "reasons": [],
+  "status": "NOT_RUN",
+  "note": "Muse clues were not available, so the media nature was not assessed."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "UNVERIFIED",
+  "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. Insufficient corroboration \u2014 this does not show the event didn't happen (physical-world check). The claim could not be verified from the available evidence.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists.",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 0,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "unknown",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 218.3,
+ "_wall_s": 218.3
+}

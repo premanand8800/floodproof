@@ -1,0 +1,543 @@
+{
+ "schema_version": "1.2",
+ "investigation_id": "38db325cc6",
+ "created_at": "2026-10-30T10:37:44+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a86ed53237bbce27c/data/heldout/H06.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/heldout/H06.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "H06.mp4",
+  "duration": 49.166666666666664,
+  "has_audio": true,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   0.67,
+   1.67,
+   2.67,
+   3.67,
+   4.67,
+   5.67,
+   6.67,
+   7.67,
+   8.67,
+   9.67,
+   10.67,
+   11.67,
+   12.67,
+   13.67,
+   14.67,
+   15.67,
+   16.67,
+   17.67,
+   18.67,
+   19.67,
+   20.67,
+   21.67,
+   22.67,
+   23.67,
+   24.67,
+   25.67,
+   26.67,
+   27.67,
+   28.67,
+   29.67,
+   30.67,
+   31.67,
+   32.67,
+   33.67,
+   34.67,
+   35.67,
+   36.67,
+   38.33,
+   40.33,
+   41.33,
+   42.33,
+   43.67,
+   44.67,
+   45.67,
+   46.67,
+   47.67,
+   49.0
+  ]
+ },
+ "claim": {
+  "text": "Dubai/UAE storm flooding (Mar 2026)",
+  "event_date": "2026-03-28",
+  "place": "Dubai, UAE",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": null,
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 14.06,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/watch?v=Rl-kNCjWLgI",
+    "title": "\u0414\u0443\u0431\u0430\u0439 \u0437\u0430\u043b\u0438\u0432\u0430\u0435\u0442 - YouTube",
+    "uploader": "\u0425\u043e\u0440\u043e\u0448\u0438\u0435 \u041d\u043e\u0432\u043e\u0441\u0442\u0438",
+    "upload_date": "2024-04-17",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:36:34+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 23",
+    "match": {
+     "decision": true,
+     "consistent_frames": 3,
+     "max_inliers": 60,
+     "mirrored": false,
+     "temporal_offset": 28.333333333333336,
+     "n_pairs": 5,
+     "score": 3.6,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 14,
+       "b_frame": 18,
+       "a_t": 13.666666666666666,
+       "b_t": 42.0,
+       "inliers": 60,
+       "flip": false
+      },
+      {
+       "a_frame": 12,
+       "b_frame": 17,
+       "a_t": 11.666666666666666,
+       "b_t": 40.666666666666664,
+       "inliers": 46,
+       "flip": false
+      },
+      {
+       "a_frame": 9,
+       "b_frame": 14,
+       "a_t": 8.666666666666666,
+       "b_t": 37.0,
+       "inliers": 44,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_f32e2c8b.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2024-04-17",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://vkvideo.ru/video-219999929_456239113",
+    "title": "\u041e\u0431\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0430 \u0437\u0430 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0435 \u0441\u0443\u0442\u043a\u0438 \ud83c\udf27 \u0410\u044d\u0440\u043e\u043f\u043e\u0440\u0442 \u0442\u0435\u043f\u0435\u0440\u044c \u0431\u043e\u043b\u044c\u0448\u0435 \u043f\u043e\u0445\u043e\u0436 \u043d\u0430 \u043f\u043e\u0440\u0442, Dubai mall \u0437\u0430\u0442\u043e\u043f\u0438\u043b\u043e, \u043f\u043e \u0434\u043e\u0440\u043e\u0433\u0430\u043c \u043c\u043e\u0436\u043d\u043e \u0435\u0437\u0434\u0438\u0442\u044c \u0438\u043b\u0438 ",
+    "uploader": "DoBuy.ru \u2014 \u0442\u043e\u0432\u0430\u0440\u044b \u0438\u0437 \u041e\u0410\u042d",
+    "upload_date": "2024-04-17",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:36:46+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 47",
+    "match": {
+     "decision": true,
+     "consistent_frames": 10,
+     "max_inliers": 212,
+     "mirrored": false,
+     "temporal_offset": -37.35226216851292,
+     "n_pairs": 131,
+     "score": 11.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 46,
+       "b_frame": 26,
+       "a_t": 47.666666666666664,
+       "b_t": 10.314404498153744,
+       "inliers": 212,
+       "flip": false
+      },
+      {
+       "a_frame": 45,
+       "b_frame": 24,
+       "a_t": 46.666666666666664,
+       "b_t": 9.648959046659954,
+       "inliers": 209,
+       "flip": false
+      },
+      {
+       "a_frame": 45,
+       "b_frame": 23,
+       "a_t": 46.666666666666664,
+       "b_t": 9.316236320913058,
+       "inliers": 185,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_f40dd79e.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2024-04-17",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://vkvideo.ru/video-125235428_456247348",
+    "title": "\u0412\u0438\u0434\u0435\u043e \u043e\u0442 \u041f\u043e\u0434\u0441\u043b\u0443\u0448\u0430\u043d\u043e \"\u0421\u043d\u044f\u0442\u043e \u043d\u0430\" \u0427\u0421-\u0427\u041f \u0422\u0438\u043f\u0438\u0447\u043d\u044b\u0439 \u0422\u044e\u043c\u0435\u043d\u044c - \u0412\u0438\u0434\u0435\u043e \u043e\u0442 \u041f\u043e\u0434\u0441\u043b\u0443\u0448\u0430\u043d\u043e \"\u0421\u043d\u044f\u0442\u043e \u043d\u0430\" \u0427\u0421-\u0427\u041f \u0422\u0438\u043f\u0438\u0447\u043d\u044b\u0439 \u0422\u044e\u043c\u0435\u043d\u044c VK \u0412\u0438\u0434\u0435\u043e",
+    "uploader": "\u041f\u043e\u0434\u0441\u043b\u0443\u0448\u0430\u043d\u043e \"\u0421\u043d\u044f\u0442\u043e \u043d\u0430\" \u0427\u0421-\u0427\u041f \u0422\u0438\u043f\u0438\u0447\u043d\u044b\u0439 \u0422\u044e\u043c\u0435\u043d\u044c",
+    "upload_date": "2024-04-16",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T10:36:49+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 47",
+    "match": {
+     "decision": true,
+     "consistent_frames": 10,
+     "max_inliers": 240,
+     "mirrored": false,
+     "temporal_offset": -37.35775393518519,
+     "n_pairs": 153,
+     "score": 11.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 45,
+       "b_frame": 25,
+       "a_t": 46.666666666666664,
+       "b_t": 9.308912731481481,
+       "inliers": 240,
+       "flip": false
+      },
+      {
+       "a_frame": 39,
+       "b_frame": 5,
+       "a_t": 40.333333333333336,
+       "b_t": 2.8889729166666664,
+       "inliers": 232,
+       "flip": false
+      },
+      {
+       "a_frame": 38,
+       "b_frame": 3,
+       "a_t": 38.333333333333336,
+       "b_t": 1.283987962962963,
+       "inliers": 227,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_74ac8c6d.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2024-04-16",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://vkvideo.ru/video-125235428_456247348",
+   "title": "\u0412\u0438\u0434\u0435\u043e \u043e\u0442 \u041f\u043e\u0434\u0441\u043b\u0443\u0448\u0430\u043d\u043e \"\u0421\u043d\u044f\u0442\u043e \u043d\u0430\" \u0427\u0421-\u0427\u041f \u0422\u0438\u043f\u0438\u0447\u043d\u044b\u0439 \u0422\u044e\u043c\u0435\u043d\u044c - \u0412\u0438\u0434\u0435\u043e \u043e\u0442 \u041f\u043e\u0434\u0441\u043b\u0443\u0448\u0430\u043d\u043e \"\u0421\u043d\u044f\u0442\u043e \u043d\u0430\" \u0427\u0421-\u0427\u041f \u0422\u0438\u043f\u0438\u0447\u043d\u044b\u0439 \u0422\u044e\u043c\u0435\u043d\u044c VK \u0412\u0438\u0434\u0435\u043e",
+   "uploader": "\u041f\u043e\u0434\u0441\u043b\u0443\u0448\u0430\u043d\u043e \"\u0421\u043d\u044f\u0442\u043e \u043d\u0430\" \u0427\u0421-\u0427\u041f \u0422\u0438\u043f\u0438\u0447\u043d\u044b\u0439 \u0422\u044e\u043c\u0435\u043d\u044c",
+   "upload_date": "2024-04-16",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T10:36:49+00:00",
+   "adapter": "yandex",
+   "found_via": "frame 47",
+   "match": {
+    "decision": true,
+    "consistent_frames": 10,
+    "max_inliers": 240,
+    "mirrored": false,
+    "temporal_offset": -37.35775393518519,
+    "n_pairs": 153,
+    "score": 11.0,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 45,
+      "b_frame": 25,
+      "a_t": 46.666666666666664,
+      "b_t": 9.308912731481481,
+      "inliers": 240,
+      "flip": false
+     },
+     {
+      "a_frame": 39,
+      "b_frame": 5,
+      "a_t": 40.333333333333336,
+      "b_t": 2.8889729166666664,
+      "inliers": 232,
+      "flip": false
+     },
+     {
+      "a_frame": 38,
+      "b_frame": 3,
+      "a_t": 38.333333333333336,
+      "b_t": 1.283987962962963,
+      "inliers": 227,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/yandex_74ac8c6d.png",
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2024-04-16",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 40,
+  "candidate_status_counts": {
+   "not_proven": 7,
+   "unavailable": 3,
+   "proven": 3,
+   "pending": 26,
+   "download_failed": 1
+  },
+  "adapters": {
+   "yandex": {
+    "frames": [
+     47,
+     23,
+     39
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 40,
+    "checked": 14,
+    "proven": 3
+   }
+  }
+ },
+ "clues": {
+  "status": "not_run"
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Dubai, UAE",
+   "name": "Dubai, Dubai Emirate, United Arab Emirates",
+   "lat": 25.0742823,
+   "lon": 55.1885624,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": [
+    {
+     "name": "Dubai, Dubai Emirate, United Arab Emirates",
+     "lat": 25.2647227,
+     "lon": 55.2924146,
+     "class": "place",
+     "type": "city"
+    },
+    {
+     "name": "Dubai Emirate, United Arab Emirates",
+     "lat": 24.8047465,
+     "lon": 56.1460508,
+     "class": "boundary",
+     "type": "administrative"
+    },
+    {
+     "name": "Dubai, United Arab Emirates",
+     "lat": 25.0790538,
+     "lon": 55.4796626,
+     "class": "place",
+     "type": "state"
+    }
+   ]
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2026-03-25",
+      "m3s": 9.09
+     },
+     {
+      "date": "2026-03-26",
+      "m3s": 106.89
+     },
+     {
+      "date": "2026-03-27",
+      "m3s": 210.35
+     },
+     {
+      "date": "2026-03-28",
+      "m3s": 168.82
+     },
+     {
+      "date": "2026-03-29",
+      "m3s": 70.12
+     },
+     {
+      "date": "2026-03-30",
+      "m3s": 76.62
+     },
+     {
+      "date": "2026-03-31",
+      "m3s": 41.76
+     }
+    ],
+    "baseline": 1.28,
+    "peak": 210.35,
+    "ratio": 164.34,
+    "cell": [
+     25.075005,
+     55.075012
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2026-03-25",
+      "mm": 56.6
+     },
+     {
+      "date": "2026-03-26",
+      "mm": 138.1
+     },
+     {
+      "date": "2026-03-27",
+      "mm": 14.3
+     },
+     {
+      "date": "2026-03-28",
+      "mm": 0.0
+     },
+     {
+      "date": "2026-03-29",
+      "mm": 0.0
+     },
+     {
+      "date": "2026-03-30",
+      "mm": 0.0
+     },
+     {
+      "date": "2026-03-31",
+      "mm": 3.7
+     }
+    ],
+    "max_mm": 138.1
+   },
+   "status": "ANOMALOUS"
+  },
+  "verdict": "SUPPORTS",
+  "reasons": [
+   "river discharge peak 210.3 m3/s is 164.34x the 30-day baseline 1.3 m3/s",
+   "rain 138 mm/day in window (>= 100)"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=25.0742823&longitude=55.1885624&daily=river_discharge&start_date=2026-03-25&end_date=2026-03-31",
+   "https://www.openstreetmap.org/?mlat=25.0742823&mlon=55.1885624#map=10/25.0742823/55.1885624"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Dubai flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Dubai+flood&mode=artlist"
+  }
+ },
+ "media_nature": {
+  "value": "unknown",
+  "confidence": 0.0,
+  "cited_frames": [],
+  "cited_timestamps_s": [],
+  "reasons": [],
+  "status": "NOT_RUN",
+  "note": "Muse clues were not available, so the media nature was not assessed."
+ },
+ "contradictions": [
+  {
+   "kind": "independently_dated_earlier_copy",
+   "text": "Footage was already published on 2024-04-16 (earliest copy found), before the claimed event date 2026-03-28.",
+   "evidence": [
+    "https://vkvideo.ru/video-125235428_456247348"
+   ],
+   "date_source": "yt-dlp metadata"
+  }
+ ],
+ "final_verdict": {
+  "label": "RECYCLED_FOOTAGE",
+  "summary": "The footage matches the earliest copy found, published on 2024-04-16 (https://vkvideo.ru/video-125235428_456247348, date independently fetched per yt-dlp metadata), before the claimed event date 2026-03-28. Matcher evidence: 10 temporally consistent frame(s), up to 240 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 3,
+   "proven_copies": 3,
+   "physical_supports": true,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "unknown",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 171.4,
+ "_wall_s": 171.4
+}
