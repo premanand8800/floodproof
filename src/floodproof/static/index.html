@@ -174,7 +174,7 @@ function h(tag, attrs, ...kids) {
     if (v == null || v === false) continue;
     if (k === "class") e.className = v; else if (k === "text") e.textContent = v; else e.setAttribute(k, v === true ? "" : v);
   }
-  for (const c of kids.flat()) if (c != null && c !== false) e.append(c.nodeType ? c : document.createTextNode(String(c)));
+  for (const c of kids.flat(Infinity)) if (c != null && c !== false) e.append(c.nodeType ? c : document.createTextNode(String(c)));
   return e;
 }
 const badge = (txt, cls) => h("span", {class: "badge " + cls, text: txt});
@@ -522,7 +522,9 @@ function render(rep, ref) {
   });
   const ep = v.earliest_proven_copy;
   vm.append(h("p", {class: "note", text: ep ? "Earliest copy found: " + ep.url + " (" + ep.upload_date + "). This is the earliest copy this tool found, not asserted to be the original source." : "No dated copy found."}));
-  if (v.input_publication) vm.append(h("p", {class: "note"}, "The input URL itself was published " + v.input_publication.upload_date + " (" + v.input_publication.date_source + ")."));
+  if (v.input_publication) vm.append(h("p", {class: "note"}, "The input URL itself was published " + v.input_publication.upload_date + " (" + v.input_publication.date_source + "). This is the video's own publication, not an earlier copy."));
+  if (rep.input_publication_before_claim) vm.append(h("div", {class: "warn", text: "Separate finding (not a matcher result): " + rep.input_publication_before_claim.text + " Posted " + rep.input_publication_before_claim.input_date + ", claimed event " + rep.input_publication_before_claim.claim_date + "."}));
+  if ((fv.basis || {}).time_zone_margin) vm.append(h("div", {class: "warn", text: "Time-zone margin: " + fv.basis.time_zone_margin.note + "."}));
   const ss = v.source_stats || {}, ad = v.adapters || {};
   const names = Object.keys(ss);
   if (names.length || Object.keys(ad).length) {
