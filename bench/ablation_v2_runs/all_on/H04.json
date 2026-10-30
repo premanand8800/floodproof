@@ -1,0 +1,1595 @@
+{
+ "schema_version": "1.5",
+ "investigation_id": "7617c1a3e9",
+ "created_at": "2026-10-30T16:23:59+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/heldout/H04.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/heldout/H04.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "H04.mp4",
+  "duration": 19.066666666666666,
+  "has_audio": true,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 9,
+  "keyframe_times_s": [
+   0.0,
+   2.33,
+   3.33,
+   3.67,
+   4.67,
+   5.0,
+   6.67,
+   7.67,
+   12.0
+  ]
+ },
+ "claim": {
+  "text": "Earthquake in Nepal (Jul 2022)",
+  "event_date": "2022-07-12",
+  "place": "Nepal",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "NP",
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 12.72,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/watch?v=5eJJpmYmJQU",
+    "title": "Deprem an\u0131nda yap\u0131labilecekler B\u00f6l\u00fcm 2 - YouTube",
+    "uploader": "Kenan Kesmez",
+    "upload_date": "2017-06-21",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T16:23:39+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 7",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 1,
+     "max_inliers": 73,
+     "mirrored": false,
+     "temporal_offset": 49.333333333333336,
+     "n_pairs": 6,
+     "score": 1.73,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 7,
+       "b_frame": 16,
+       "a_t": 7.666666666666667,
+       "b_t": 57.0,
+       "inliers": 73,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_6dbe5236.png",
+    "proof": {
+     "viral_frame": "evidence/proof_yandex_6dbe5236_viral.jpg",
+     "copy_frame": "evidence/proof_yandex_6dbe5236_copy.jpg",
+     "viral_t": 7.67,
+     "copy_t": 57.0,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.2137,
+       0.4262,
+       0.212,
+       0.2648
+      ],
+      [
+       0.2137,
+       0.4262,
+       0.212,
+       0.2648
+      ],
+      [
+       0.0893,
+       0.5427,
+       0.0872,
+       0.6346
+      ],
+      [
+       0.0893,
+       0.5427,
+       0.0872,
+       0.6346
+      ],
+      [
+       0.6414,
+       0.481,
+       0.6421,
+       0.4381
+      ],
+      [
+       0.2116,
+       0.5192,
+       0.2108,
+       0.5597
+      ],
+      [
+       0.2017,
+       0.5285,
+       0.1995,
+       0.5885
+      ],
+      [
+       0.1063,
+       0.5296,
+       0.1058,
+       0.5917
+      ],
+      [
+       0.0578,
+       0.4741,
+       0.056,
+       0.4167
+      ],
+      [
+       0.0578,
+       0.4741,
+       0.056,
+       0.4167
+      ],
+      [
+       0.0952,
+       0.5213,
+       0.0935,
+       0.5684
+      ],
+      [
+       0.2624,
+       0.4582,
+       0.2582,
+       0.3672
+      ],
+      [
+       0.8757,
+       0.4703,
+       0.8769,
+       0.4029
+      ],
+      [
+       0.1069,
+       0.5655,
+       0.1052,
+       0.7061
+      ],
+      [
+       0.1069,
+       0.5655,
+       0.1052,
+       0.7061
+      ],
+      [
+       0.428,
+       0.4959,
+       0.4276,
+       0.486
+      ],
+      [
+       0.0804,
+       0.4685,
+       0.0787,
+       0.3981
+      ],
+      [
+       0.1046,
+       0.5192,
+       0.1043,
+       0.5587
+      ],
+      [
+       0.4551,
+       0.4236,
+       0.4547,
+       0.2561
+      ],
+      [
+       0.0892,
+       0.5601,
+       0.089,
+       0.6892
+      ],
+      [
+       0.0892,
+       0.5601,
+       0.089,
+       0.6892
+      ],
+      [
+       0.8616,
+       0.3567,
+       0.8631,
+       0.0469
+      ],
+      [
+       0.1094,
+       0.5555,
+       0.1099,
+       0.6765
+      ],
+      [
+       0.6876,
+       0.4409,
+       0.6879,
+       0.3123
+      ],
+      [
+       0.4396,
+       0.504,
+       0.44,
+       0.5121
+      ],
+      [
+       0.4887,
+       0.424,
+       0.4882,
+       0.2571
+      ],
+      [
+       0.2138,
+       0.5431,
+       0.213,
+       0.6367
+      ],
+      [
+       0.0973,
+       0.4674,
+       0.0953,
+       0.3926
+      ],
+      [
+       0.0891,
+       0.5318,
+       0.089,
+       0.5984
+      ],
+      [
+       0.4601,
+       0.4892,
+       0.4591,
+       0.4655
+      ],
+      [
+       0.9692,
+       0.468,
+       0.9717,
+       0.3943
+      ],
+      [
+       0.678,
+       0.4365,
+       0.6802,
+       0.3034
+      ],
+      [
+       0.678,
+       0.4365,
+       0.6802,
+       0.3034
+      ],
+      [
+       0.6788,
+       0.4372,
+       0.6802,
+       0.3034
+      ],
+      [
+       0.2674,
+       0.4525,
+       0.2655,
+       0.348
+      ],
+      [
+       0.6535,
+       0.4728,
+       0.6545,
+       0.4104
+      ],
+      [
+       0.31,
+       0.4578,
+       0.3082,
+       0.3665
+      ],
+      [
+       0.31,
+       0.4578,
+       0.3082,
+       0.3665
+      ],
+      [
+       0.6465,
+       0.4897,
+       0.6472,
+       0.4648
+      ],
+      [
+       0.064,
+       0.509,
+       0.0611,
+       0.5293
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2017-06-21",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/watch?v=5eJJpmYmJQU",
+   "title": "Deprem an\u0131nda yap\u0131labilecekler B\u00f6l\u00fcm 2 - YouTube",
+   "uploader": "Kenan Kesmez",
+   "upload_date": "2017-06-21",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T16:23:39+00:00",
+   "adapter": "yandex",
+   "found_via": "frame 7",
+   "also_found_by": [],
+   "match": {
+    "decision": true,
+    "consistent_frames": 1,
+    "max_inliers": 73,
+    "mirrored": false,
+    "temporal_offset": 49.333333333333336,
+    "n_pairs": 6,
+    "score": 1.73,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 7,
+      "b_frame": 16,
+      "a_t": 7.666666666666667,
+      "b_t": 57.0,
+      "inliers": 73,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/yandex_6dbe5236.png",
+   "proof": {
+    "viral_frame": "evidence/proof_yandex_6dbe5236_viral.jpg",
+    "copy_frame": "evidence/proof_yandex_6dbe5236_copy.jpg",
+    "viral_t": 7.67,
+    "copy_t": 57.0,
+    "mirrored": false,
+    "inliers": [
+     [
+      0.2137,
+      0.4262,
+      0.212,
+      0.2648
+     ],
+     [
+      0.2137,
+      0.4262,
+      0.212,
+      0.2648
+     ],
+     [
+      0.0893,
+      0.5427,
+      0.0872,
+      0.6346
+     ],
+     [
+      0.0893,
+      0.5427,
+      0.0872,
+      0.6346
+     ],
+     [
+      0.6414,
+      0.481,
+      0.6421,
+      0.4381
+     ],
+     [
+      0.2116,
+      0.5192,
+      0.2108,
+      0.5597
+     ],
+     [
+      0.2017,
+      0.5285,
+      0.1995,
+      0.5885
+     ],
+     [
+      0.1063,
+      0.5296,
+      0.1058,
+      0.5917
+     ],
+     [
+      0.0578,
+      0.4741,
+      0.056,
+      0.4167
+     ],
+     [
+      0.0578,
+      0.4741,
+      0.056,
+      0.4167
+     ],
+     [
+      0.0952,
+      0.5213,
+      0.0935,
+      0.5684
+     ],
+     [
+      0.2624,
+      0.4582,
+      0.2582,
+      0.3672
+     ],
+     [
+      0.8757,
+      0.4703,
+      0.8769,
+      0.4029
+     ],
+     [
+      0.1069,
+      0.5655,
+      0.1052,
+      0.7061
+     ],
+     [
+      0.1069,
+      0.5655,
+      0.1052,
+      0.7061
+     ],
+     [
+      0.428,
+      0.4959,
+      0.4276,
+      0.486
+     ],
+     [
+      0.0804,
+      0.4685,
+      0.0787,
+      0.3981
+     ],
+     [
+      0.1046,
+      0.5192,
+      0.1043,
+      0.5587
+     ],
+     [
+      0.4551,
+      0.4236,
+      0.4547,
+      0.2561
+     ],
+     [
+      0.0892,
+      0.5601,
+      0.089,
+      0.6892
+     ],
+     [
+      0.0892,
+      0.5601,
+      0.089,
+      0.6892
+     ],
+     [
+      0.8616,
+      0.3567,
+      0.8631,
+      0.0469
+     ],
+     [
+      0.1094,
+      0.5555,
+      0.1099,
+      0.6765
+     ],
+     [
+      0.6876,
+      0.4409,
+      0.6879,
+      0.3123
+     ],
+     [
+      0.4396,
+      0.504,
+      0.44,
+      0.5121
+     ],
+     [
+      0.4887,
+      0.424,
+      0.4882,
+      0.2571
+     ],
+     [
+      0.2138,
+      0.5431,
+      0.213,
+      0.6367
+     ],
+     [
+      0.0973,
+      0.4674,
+      0.0953,
+      0.3926
+     ],
+     [
+      0.0891,
+      0.5318,
+      0.089,
+      0.5984
+     ],
+     [
+      0.4601,
+      0.4892,
+      0.4591,
+      0.4655
+     ],
+     [
+      0.9692,
+      0.468,
+      0.9717,
+      0.3943
+     ],
+     [
+      0.678,
+      0.4365,
+      0.6802,
+      0.3034
+     ],
+     [
+      0.678,
+      0.4365,
+      0.6802,
+      0.3034
+     ],
+     [
+      0.6788,
+      0.4372,
+      0.6802,
+      0.3034
+     ],
+     [
+      0.2674,
+      0.4525,
+      0.2655,
+      0.348
+     ],
+     [
+      0.6535,
+      0.4728,
+      0.6545,
+      0.4104
+     ],
+     [
+      0.31,
+      0.4578,
+      0.3082,
+      0.3665
+     ],
+     [
+      0.31,
+      0.4578,
+      0.3082,
+      0.3665
+     ],
+     [
+      0.6465,
+      0.4897,
+      0.6472,
+      0.4648
+     ],
+     [
+      0.064,
+      0.509,
+      0.0611,
+      0.5293
+     ]
+    ]
+   },
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2017-06-21",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 13,
+  "candidates_total": 77,
+  "candidate_status_counts": {
+   "not_proven": 8,
+   "proven": 1,
+   "pending": 64,
+   "too_long": 2,
+   "unavailable": 2
+  },
+  "adapters": {
+   "lens": {
+    "source": "lens",
+    "calls": 1,
+    "errors": []
+   },
+   "youtube_api": {
+    "source": "youtube_api",
+    "queries": 3,
+    "errors": []
+   },
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     7,
+     0,
+     4
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 39,
+    "checked": 3,
+    "proven": 1
+   },
+   "lens": {
+    "candidates": 9,
+    "checked": 6,
+    "proven": 0
+   },
+   "tavily": {
+    "candidates": 30,
+    "checked": 5,
+    "proven": 0
+   },
+   "youtube_api": {
+    "candidates": 1,
+    "checked": 1,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {
+   "yandex": [
+    "https://www.youtube.com/watch?v=5eJJpmYmJQU"
+   ]
+  },
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": "camera_footage",
+   "note": "9 of 9 keyframes are near frames labelled camera_footage"
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "elevated CCTV view of a busy multi-lane urban road intersection with cars, trucks, motorcycles and pedestrians moving",
+    "refs": [
+     0,
+     1,
+     2,
+     3,
+     5,
+     6
+    ],
+    "timestamps_s": [
+     0.0,
+     2.33,
+     3.33,
+     3.67,
+     5.0,
+     6.67
+    ]
+   },
+   {
+    "text": "crowd of people standing and gathered in the middle of a street intersection with parked vehicles and shops in background",
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     7.67
+    ]
+   },
+   {
+    "text": "wide divided highway viewed from elevated CCTV with sparse traffic and central divider",
+    "refs": [
+     8
+    ],
+    "timestamps_s": [
+     12.0
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "dense urban street",
+   "refs": [
+    0,
+    7,
+    8
+   ],
+   "timestamps_s": [
+    0.0,
+    7.67,
+    12.0
+   ]
+  },
+  "visible_text": [
+   {
+    "text": "2079/3/28",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     0,
+     1,
+     2,
+     3,
+     5,
+     6,
+     7,
+     8
+    ],
+    "timestamps_s": [
+     0.0,
+     2.33,
+     3.33,
+     3.67,
+     5.0,
+     6.67,
+     7.67,
+     12.0
+    ]
+   },
+   {
+    "text": "Nepal ma bhukamp",
+    "language": "ne",
+    "is_place": false,
+    "refs": [
+     0,
+     1,
+     2,
+     3,
+     5,
+     6,
+     7,
+     8
+    ],
+    "timestamps_s": [
+     0.0,
+     2.33,
+     3.33,
+     3.67,
+     5.0,
+     6.67,
+     7.67,
+     12.0
+    ]
+   },
+   {
+    "text": "TikTok @khesharilalyadav15",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     0,
+     1,
+     2,
+     3,
+     5,
+     6,
+     7,
+     8
+    ],
+    "timestamps_s": [
+     0.0,
+     2.33,
+     3.33,
+     3.67,
+     5.0,
+     6.67,
+     7.67,
+     12.0
+    ]
+   }
+  ],
+  "likely_location": {
+   "place": "Nepal",
+   "country": "Nepal",
+   "confidence": 0.6,
+   "lat": null,
+   "lon": null,
+   "reasons": [
+    {
+     "text": "on-screen overlay text says 'Nepal ma bhukamp' meaning earthquake in Nepal",
+     "refs": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      8
+     ],
+     "timestamps_s": [
+      0.0,
+      2.33,
+      3.33,
+      3.67,
+      5.0,
+      6.67,
+      7.67,
+      12.0
+     ]
+    },
+    {
+     "text": "urban streetscape, vehicles, shops and crowd appearance consistent with South Asia but no specific landmark identifiable",
+     "refs": [
+      0,
+      7,
+      8
+     ],
+     "timestamps_s": [
+      0.0,
+      7.67,
+      12.0
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "Nepal",
+    "country": "Nepal",
+    "confidence": 0.6,
+    "lat": null,
+    "lon": null,
+    "cited_frames": [
+     0,
+     1,
+     2,
+     3,
+     5,
+     6,
+     7,
+     8
+    ],
+    "cited_timestamps_s": [
+     0.0,
+     2.33,
+     3.33,
+     3.67,
+     5.0,
+     6.67,
+     7.67,
+     12.0
+    ],
+    "reasons": [
+     {
+      "text": "on-screen overlay text says 'Nepal ma bhukamp' meaning earthquake in Nepal",
+      "refs": [
+       0,
+       1,
+       2,
+       3,
+       5,
+       6,
+       7,
+       8
+      ],
+      "timestamps_s": [
+       0.0,
+       2.33,
+       3.33,
+       3.67,
+       5.0,
+       6.67,
+       7.67,
+       12.0
+      ]
+     },
+     {
+      "text": "urban streetscape, vehicles, shops and crowd appearance consistent with South Asia but no specific landmark identifiable",
+      "refs": [
+       0,
+       7,
+       8
+      ],
+      "timestamps_s": [
+       0.0,
+       7.67,
+       12.0
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [],
+  "media_nature": {
+   "value": "camera_footage",
+   "confidence": 0.84,
+   "cited_frames": [
+    0,
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    8
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    2.33,
+    3.33,
+    3.67,
+    5.0,
+    6.67,
+    7.67,
+    12.0
+   ],
+   "reasons": [
+    {
+     "text": "static elevated CCTV view of street traffic with natural noise and compression",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "same CCTV street view with continuous traffic movement",
+     "refs": [
+      1
+     ],
+     "timestamps_s": [
+      2.33
+     ]
+    },
+    {
+     "text": "same CCTV street view with vehicles and motorcycles",
+     "refs": [
+      2
+     ],
+     "timestamps_s": [
+      3.33
+     ]
+    },
+    {
+     "text": "same CCTV street view with natural detail",
+     "refs": [
+      3
+     ],
+     "timestamps_s": [
+      3.67
+     ]
+    },
+    {
+     "text": "same CCTV street view, slightly different traffic positions",
+     "refs": [
+      5
+     ],
+     "timestamps_s": [
+      5.0
+     ]
+    },
+    {
+     "text": "same CCTV street view with cars and motorcycles",
+     "refs": [
+      6
+     ],
+     "timestamps_s": [
+      6.67
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "static elevated CCTV view of street traffic with natural noise and compression"
+    },
+    {
+     "frame": 1,
+     "t": 2.33,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "same CCTV street view with continuous traffic movement"
+    },
+    {
+     "frame": 2,
+     "t": 3.33,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "same CCTV street view with vehicles and motorcycles"
+    },
+    {
+     "frame": 3,
+     "t": 3.67,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "same CCTV street view with natural detail"
+    },
+    {
+     "frame": 5,
+     "t": 5.0,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "same CCTV street view, slightly different traffic positions"
+    },
+    {
+     "frame": 6,
+     "t": 6.67,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "same CCTV street view with cars and motorcycles"
+    },
+    {
+     "frame": 7,
+     "t": 7.67,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "different CCTV angle of crowd in intersection, natural crowd detail"
+    },
+    {
+     "frame": 8,
+     "t": 12.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "elevated CCTV of divided highway with natural detail"
+    }
+   ],
+   "by_class": {
+    "camera_footage": [
+     0,
+     1,
+     2,
+     3,
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   "summary": "camera footage (frames 0,1,2,3,5,6,7,8) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [
+   {
+    "date": "2079-03-28",
+    "text": "2079/3/28",
+    "refs": [
+     0,
+     1,
+     2,
+     3,
+     5,
+     6,
+     7,
+     8
+    ],
+    "timestamps_s": [
+     0.0,
+     2.33,
+     3.33,
+     3.67,
+     5.0,
+     6.67,
+     7.67,
+     12.0
+    ]
+   }
+  ],
+  "claim_parsed": {
+   "place": "Nepal",
+   "country_iso2": "NP",
+   "event_type": "unknown"
+  },
+  "queries": [
+   {
+    "q": "Nepal ma bhukamp 2079/3/28",
+    "language": "ne",
+    "why": "exact on-screen caption to find original upload"
+   },
+   {
+    "q": "2079 Ashad 28 bhukampa Nepal",
+    "language": "ne",
+    "why": "Bikram Sambat date of claimed event in local language"
+   },
+   {
+    "q": "Nepal earthquake July 12 2022 CCTV",
+    "language": "en",
+    "why": "Gregorian equivalent of 2079/3/28 to verify claimed event"
+   },
+   {
+    "q": "Kathmandu earthquake CCTV traffic July 2022",
+    "language": "en",
+    "why": "neutral description of footage without claimed name"
+   },
+   {
+    "q": "khesharilalyadav15 Nepal ma bhukamp TikTok",
+    "language": "en",
+    "why": "watermark username to trace earliest TikTok upload"
+   },
+   {
+    "q": "Nepal bhukampa CCTV sadak bhid 2079",
+    "language": "ne",
+    "why": "local language description of street CCTV crowd scene"
+   },
+   {
+    "q": "12 July 2022 Nepal earthquake epicenter magnitude",
+    "language": "en",
+    "why": "verify if any earthquake occurred on claimed date"
+   },
+   {
+    "q": "Nepal earthquake street CCTV people running outside",
+    "language": "en",
+    "why": "generic visual search for recycled CCTV earthquake clips"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.02295,
+  "frames_shown": [
+   0,
+   1,
+   2,
+   3,
+   5,
+   6,
+   7,
+   8
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "1": 2.33,
+   "2": 3.33,
+   "3": 3.67,
+   "5": 5.0,
+   "6": 6.67,
+   "7": 7.67,
+   "8": 12.0
+  },
+  "audio": {
+   "has_speech": false,
+   "language": null,
+   "transcript_summary": "No audio data was provided for analysis, so no speech, dates, or place names can be transcribed or verified. No words are invented.",
+   "spoken_place_names": [],
+   "spoken_dates": [],
+   "partial_dates": [],
+   "other_sounds": [],
+   "dropped_untimed": 0,
+   "status": "ok",
+   "model": "meta/muse-spark-open",
+   "cost_usd": 0.00608,
+   "truncated": false,
+   "analyzed_seconds": 19.066666666666666,
+   "attempts": 1
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H04/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H04/frames/frame_01_t2.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H04/frames/frame_02_t3.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H04/frames/frame_03_t3.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H04/frames/frame_05_t5.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H04/frames/frame_06_t6.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H04/frames/frame_07_t7.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H04/frames/frame_08_t12.0.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Nepal",
+   "name": "Nepal",
+   "lat": 28.3780464,
+   "lon": 83.9999901,
+   "source": "nominatim",
+   "confidence": "low",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": true,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "UNAVAILABLE",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2022-07-09",
+      "m3s": 105.17
+     },
+     {
+      "date": "2022-07-10",
+      "m3s": 95.61
+     },
+     {
+      "date": "2022-07-11",
+      "m3s": 90.83
+     },
+     {
+      "date": "2022-07-12",
+      "m3s": 88.33
+     },
+     {
+      "date": "2022-07-13",
+      "m3s": 86.3
+     },
+     {
+      "date": "2022-07-14",
+      "m3s": 81.79
+     },
+     {
+      "date": "2022-07-15",
+      "m3s": 78.07
+     }
+    ],
+    "baseline": 70.19,
+    "peak": 105.17,
+    "ratio": 1.5,
+    "cell": [
+     28.275002,
+     83.875
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2022-07-09",
+      "mm": 62.4
+     },
+     {
+      "date": "2022-07-10",
+      "mm": 17.6
+     },
+     {
+      "date": "2022-07-11",
+      "mm": 16.4
+     },
+     {
+      "date": "2022-07-12",
+      "mm": 3.5
+     },
+     {
+      "date": "2022-07-13",
+      "mm": 22.5
+     },
+     {
+      "date": "2022-07-14",
+      "mm": 26.6
+     },
+     {
+      "date": "2022-07-15",
+      "mm": 13.8
+     }
+    ],
+    "max_mm": 62.4
+   },
+   "status": "UNKNOWN"
+  },
+  "verdict": "UNKNOWN",
+  "reasons": [
+   "location resolved only to a whole country; too coarse to corroborate a local event"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=28.3780464&longitude=83.9999901&daily=river_discharge&start_date=2022-07-09&end_date=2022-07-15",
+   "https://www.openstreetmap.org/?mlat=28.3780464&mlon=83.9999901#map=10/28.3780464/83.9999901"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "OK",
+   "articles_in_window": 29,
+   "articles_baseline_30d": 168,
+   "sample_links": [
+    {
+     "url": "https://www.latestly.com/agency-news/world-news-india-provides-flood-relief-materials-to-nepal-3954007.html",
+     "title": "World News | India Provides Flood Relief Materials to Nepal",
+     "domain": "latestly.com",
+     "seen": "20220715T151500Z"
+    },
+    {
+     "url": "https://www.businesstoday.in/latest/economy/story/govt-provides-flood-relief-materials-to-nepal-341680-2022-07-15",
+     "title": "Govt provides flood relief materials to Nepal",
+     "domain": "businesstoday.in",
+     "seen": "20220715T143000Z"
+    },
+    {
+     "url": "http://www.telegraphnepal.com/nepal-will-the-hindu-muslim-grand-gulf-disintegrate-india/",
+     "title": "Nepal : Will the Hindu - Muslim grand gulf disintegrate India ? \u2013 Telegraph Nepal",
+     "domain": "telegraphnepal.com",
+     "seen": "20220715T120000Z"
+    },
+    {
+     "url": "https://english.newstracklive.com/news/india-hands-over-disaster-relief-materials-to-nepal-sc57-nu318-ta318-1239639-1.html",
+     "title": "India hands over disaster relief materials to Nepal",
+     "domain": "english.newstracklive.com",
+     "seen": "20220715T104500Z"
+    },
+    {
+     "url": "http://www.dhakacourier.com.bd/news/Nation_this_week/The-official-death-toll-from-the-devastating-floods/5464",
+     "title": "The official death toll from the devastating floods",
+     "domain": "dhakacourier.com.bd",
+     "seen": "20220715T103000Z"
+    }
+   ],
+   "context_only": true,
+   "query": "Nepal flood",
+   "capped_at": 250,
+   "note": "news coverage is context only; it counts articles that mention the place and event words and never proves a specific video is real"
+  }
+ },
+ "media_nature": {
+  "value": "camera_footage",
+  "confidence": 0.84,
+  "cited_frames": [
+   0,
+   1,
+   2,
+   3,
+   5,
+   6,
+   7,
+   8
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   2.33,
+   3.33,
+   3.67,
+   5.0,
+   6.67,
+   7.67,
+   12.0
+  ],
+  "reasons": [
+   {
+    "text": "static elevated CCTV view of street traffic with natural noise and compression",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "same CCTV street view with continuous traffic movement",
+    "refs": [
+     1
+    ],
+    "timestamps_s": [
+     2.33
+    ]
+   },
+   {
+    "text": "same CCTV street view with vehicles and motorcycles",
+    "refs": [
+     2
+    ],
+    "timestamps_s": [
+     3.33
+    ]
+   },
+   {
+    "text": "same CCTV street view with natural detail",
+    "refs": [
+     3
+    ],
+    "timestamps_s": [
+     3.67
+    ]
+   },
+   {
+    "text": "same CCTV street view, slightly different traffic positions",
+    "refs": [
+     5
+    ],
+    "timestamps_s": [
+     5.0
+    ]
+   },
+   {
+    "text": "same CCTV street view with cars and motorcycles",
+    "refs": [
+     6
+    ],
+    "timestamps_s": [
+     6.67
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "static elevated CCTV view of street traffic with natural noise and compression"
+   },
+   {
+    "frame": 1,
+    "t": 2.33,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "same CCTV street view with continuous traffic movement"
+   },
+   {
+    "frame": 2,
+    "t": 3.33,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "same CCTV street view with vehicles and motorcycles"
+   },
+   {
+    "frame": 3,
+    "t": 3.67,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "same CCTV street view with natural detail"
+   },
+   {
+    "frame": 5,
+    "t": 5.0,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "same CCTV street view, slightly different traffic positions"
+   },
+   {
+    "frame": 6,
+    "t": 6.67,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "same CCTV street view with cars and motorcycles"
+   },
+   {
+    "frame": 7,
+    "t": 7.67,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "different CCTV angle of crowd in intersection, natural crowd detail"
+   },
+   {
+    "frame": 8,
+    "t": 12.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "elevated CCTV of divided highway with natural detail"
+   }
+  ],
+  "by_class": {
+   "camera_footage": [
+    0,
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    8
+   ]
+  },
+  "summary": "camera footage (frames 0,1,2,3,5,6,7,8) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [
+  {
+   "kind": "independently_dated_earlier_copy",
+   "text": "Footage was already published on 2017-06-21 (earliest copy found), before the claimed event date 2022-07-12.",
+   "evidence": [
+    "https://www.youtube.com/watch?v=5eJJpmYmJQU"
+   ],
+   "date_source": "yt-dlp metadata"
+  }
+ ],
+ "final_verdict": {
+  "label": "RECYCLED_FOOTAGE",
+  "summary": "The footage matches the earliest copy found, published on 2017-06-21 (https://www.youtube.com/watch?v=5eJJpmYmJQU, date independently fetched per yt-dlp metadata), before the claimed event date 2022-07-12. Matcher evidence: 1 temporally consistent frame(s), up to 73 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 1,
+   "proven_copies": 1,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "camera_footage",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 100.6,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 0.9,
+  "muse": 0.0,
+  "memory": 12.7,
+  "memory_muse_wait_claim": 12.7,
+  "discovery": 65.8,
+  "discovery_by_source": {
+   "lens": 2.9,
+   "youtube_api": 1.2,
+   "tavily": 7.4,
+   "yandex": 65.8
+  },
+  "verify_total_incl_overlap": 21.2,
+  "dates_physical_report_wait": 21.2,
+  "verify_workers": 3,
+  "verify_seconds": 33.6,
+  "verify_checked": 14
+ },
+ "_wall_s": 100.6,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 3
+}

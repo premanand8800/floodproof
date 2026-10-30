@@ -1,0 +1,2262 @@
+{
+ "schema_version": "1.5",
+ "investigation_id": "78bfdf4fa9",
+ "created_at": "2026-10-30T17:02:12+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/global/N01.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/N01.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "N01.mp4",
+  "duration": 49.28256666666667,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   0.67,
+   2.0,
+   3.34,
+   4.34,
+   6.01,
+   7.01,
+   8.01,
+   9.01,
+   10.01,
+   11.01,
+   12.01,
+   12.68,
+   13.68,
+   14.68,
+   16.02,
+   17.02,
+   18.69,
+   19.69,
+   20.69,
+   21.69,
+   22.69,
+   23.69,
+   24.69,
+   25.36,
+   26.36,
+   27.36,
+   28.36,
+   29.36,
+   30.36,
+   31.36,
+   32.37,
+   33.37,
+   34.37,
+   35.37,
+   36.37,
+   37.04,
+   38.04,
+   39.04,
+   40.04,
+   41.04,
+   42.04,
+   43.71,
+   45.05,
+   46.05,
+   47.05,
+   48.05,
+   49.05
+  ]
+ },
+ "claim": {
+  "text": "Wildfire beside a highway near Jerusalem, Israel",
+  "event_date": "2025-04-30",
+  "place": "Jerusalem, Israel",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "IL",
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 15.53,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/watch?v=MC8yN3hVRQ4",
+    "title": "YouTube",
+    "uploader": "10 News",
+    "upload_date": "2025-04-30",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T17:00:33+00:00",
+    "adapter": "lens",
+    "found_via": "google lens best keyframe",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 3,
+     "max_inliers": 78,
+     "mirrored": false,
+     "temporal_offset": 35.54333333333334,
+     "n_pairs": 18,
+     "score": 3.78,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 3,
+       "b_frame": 12,
+       "a_t": 3.336666666666667,
+       "b_t": 38.88,
+       "inliers": 78,
+       "flip": false
+      },
+      {
+       "a_frame": 4,
+       "b_frame": 12,
+       "a_t": 4.337666666666666,
+       "b_t": 38.88,
+       "inliers": 48,
+       "flip": false
+      },
+      {
+       "a_frame": 0,
+       "b_frame": 11,
+       "a_t": 0.0,
+       "b_t": 35.52,
+       "inliers": 36,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/lens_4ef1d1e4.png",
+    "proof": {
+     "viral_frame": "evidence/proof_lens_4ef1d1e4_viral.jpg",
+     "copy_frame": "evidence/proof_lens_4ef1d1e4_copy.jpg",
+     "viral_t": 3.34,
+     "copy_t": 38.88,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.7966,
+       0.5453,
+       0.4519,
+       0.5501
+      ],
+      [
+       0.7397,
+       0.5709,
+       0.3881,
+       0.5765
+      ],
+      [
+       0.8263,
+       0.3842,
+       0.4845,
+       0.3726
+      ],
+      [
+       0.8977,
+       0.5492,
+       0.5631,
+       0.551
+      ],
+      [
+       0.9118,
+       0.4435,
+       0.5797,
+       0.4404
+      ],
+      [
+       0.8176,
+       0.5875,
+       0.4743,
+       0.595
+      ],
+      [
+       0.8137,
+       0.7466,
+       0.4693,
+       0.7692
+      ],
+      [
+       0.9274,
+       0.3524,
+       0.5966,
+       0.334
+      ],
+      [
+       0.8666,
+       0.5502,
+       0.5273,
+       0.5533
+      ],
+      [
+       0.7992,
+       0.495,
+       0.4549,
+       0.4929
+      ],
+      [
+       0.706,
+       0.2986,
+       0.3516,
+       0.275
+      ],
+      [
+       0.8346,
+       0.6704,
+       0.4949,
+       0.6875
+      ],
+      [
+       0.8745,
+       0.4256,
+       0.5338,
+       0.4153
+      ],
+      [
+       0.8745,
+       0.4256,
+       0.5338,
+       0.4153
+      ],
+      [
+       0.9202,
+       0.3091,
+       0.5869,
+       0.2867
+      ],
+      [
+       0.8856,
+       0.6308,
+       0.5504,
+       0.6439
+      ],
+      [
+       0.8703,
+       0.4251,
+       0.5338,
+       0.4153
+      ],
+      [
+       0.8703,
+       0.4251,
+       0.5338,
+       0.4153
+      ],
+      [
+       0.9342,
+       0.4058,
+       0.6036,
+       0.3898
+      ],
+      [
+       0.8037,
+       0.5101,
+       0.4565,
+       0.5113
+      ],
+      [
+       0.7816,
+       0.5784,
+       0.4349,
+       0.5848
+      ],
+      [
+       0.9502,
+       0.8583,
+       0.6208,
+       0.8939
+      ],
+      [
+       0.8209,
+       0.7549,
+       0.4777,
+       0.7818
+      ],
+      [
+       0.9122,
+       0.3151,
+       0.5781,
+       0.2938
+      ],
+      [
+       0.9122,
+       0.3151,
+       0.5781,
+       0.2938
+      ],
+      [
+       0.8138,
+       0.4957,
+       0.4712,
+       0.4896
+      ],
+      [
+       0.9104,
+       0.5787,
+       0.578,
+       0.5845
+      ],
+      [
+       0.7382,
+       0.4917,
+       0.3913,
+       0.4923
+      ],
+      [
+       0.9041,
+       0.8167,
+       0.5695,
+       0.8491
+      ],
+      [
+       0.9213,
+       0.3268,
+       0.5898,
+       0.3079
+      ],
+      [
+       0.8917,
+       0.3034,
+       0.5557,
+       0.2825
+      ],
+      [
+       0.8021,
+       0.4168,
+       0.4581,
+       0.4055
+      ],
+      [
+       0.8924,
+       0.8573,
+       0.5582,
+       0.8933
+      ],
+      [
+       0.9163,
+       0.8214,
+       0.5842,
+       0.8516
+      ],
+      [
+       0.9415,
+       0.3858,
+       0.6114,
+       0.3712
+      ],
+      [
+       0.7576,
+       0.4607,
+       0.4089,
+       0.4575
+      ],
+      [
+       0.7558,
+       0.5704,
+       0.406,
+       0.5767
+      ],
+      [
+       0.9128,
+       0.8792,
+       0.5796,
+       0.9183
+      ],
+      [
+       0.913,
+       0.8245,
+       0.5811,
+       0.8547
+      ],
+      [
+       0.9175,
+       0.5375,
+       0.5848,
+       0.5385
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2025-04-30",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=b3IDvWWwmS4",
+    "title": "Israel video# shorts #shortvideo - YouTube",
+    "uploader": "Oye Mustafa Mewati",
+    "upload_date": "2025-05-03",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T17:01:55+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 2",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 5,
+     "max_inliers": 67,
+     "mirrored": false,
+     "temporal_offset": 0.3336666666666668,
+     "n_pairs": 11,
+     "score": 5.67,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 1,
+       "b_frame": 2,
+       "a_t": 0.6673333333333333,
+       "b_t": 1.0010000000000001,
+       "inliers": 67,
+       "flip": false
+      },
+      {
+       "a_frame": 2,
+       "b_frame": 4,
+       "a_t": 2.0020000000000002,
+       "b_t": 2.3356666666666666,
+       "inliers": 61,
+       "flip": false
+      },
+      {
+       "a_frame": 4,
+       "b_frame": 10,
+       "a_t": 4.337666666666666,
+       "b_t": 4.671333333333333,
+       "inliers": 59,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_39ace07f.png",
+    "proof": {
+     "viral_frame": "evidence/proof_yandex_39ace07f_viral.jpg",
+     "copy_frame": "evidence/proof_yandex_39ace07f_copy.jpg",
+     "viral_t": 0.67,
+     "copy_t": 1.0,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.2126,
+       0.6057,
+       0.6566,
+       0.5982
+      ],
+      [
+       0.227,
+       0.7611,
+       0.6956,
+       0.7396
+      ],
+      [
+       0.2605,
+       0.6796,
+       0.7863,
+       0.664
+      ],
+      [
+       0.2678,
+       0.6127,
+       0.8153,
+       0.6046
+      ],
+      [
+       0.1112,
+       0.7745,
+       0.3585,
+       0.7542
+      ],
+      [
+       0.2705,
+       0.6596,
+       0.8223,
+       0.6485
+      ],
+      [
+       0.1429,
+       0.5721,
+       0.4498,
+       0.5676
+      ],
+      [
+       0.0799,
+       0.5673,
+       0.2671,
+       0.5625
+      ],
+      [
+       0.1814,
+       0.6194,
+       0.5629,
+       0.6111
+      ],
+      [
+       0.0378,
+       0.5646,
+       0.1448,
+       0.5599
+      ],
+      [
+       0.0378,
+       0.5646,
+       0.1448,
+       0.5599
+      ],
+      [
+       0.0371,
+       0.5886,
+       0.1411,
+       0.585
+      ],
+      [
+       0.2213,
+       0.6323,
+       0.6759,
+       0.6206
+      ],
+      [
+       0.1249,
+       0.6525,
+       0.3987,
+       0.6419
+      ],
+      [
+       0.2376,
+       0.819,
+       0.724,
+       0.7933
+      ],
+      [
+       0.0342,
+       0.6534,
+       0.1337,
+       0.6427
+      ],
+      [
+       0.1281,
+       0.6764,
+       0.4067,
+       0.6654
+      ],
+      [
+       0.0654,
+       0.3992,
+       0.22,
+       0.4027
+      ],
+      [
+       0.2415,
+       0.7747,
+       0.7376,
+       0.7545
+      ],
+      [
+       0.1417,
+       0.554,
+       0.4465,
+       0.5508
+      ],
+      [
+       0.293,
+       0.6667,
+       0.8876,
+       0.655
+      ],
+      [
+       0.2421,
+       0.6381,
+       0.739,
+       0.6286
+      ],
+      [
+       0.2754,
+       0.7222,
+       0.8348,
+       0.7074
+      ],
+      [
+       0.2302,
+       0.8716,
+       0.705,
+       0.8453
+      ],
+      [
+       0.2302,
+       0.8716,
+       0.705,
+       0.8453
+      ],
+      [
+       0.2491,
+       0.5772,
+       0.76,
+       0.5727
+      ],
+      [
+       0.0887,
+       0.7109,
+       0.2923,
+       0.6962
+      ],
+      [
+       0.2462,
+       0.8339,
+       0.7512,
+       0.8091
+      ],
+      [
+       0.2538,
+       0.5574,
+       0.7732,
+       0.554
+      ],
+      [
+       0.2038,
+       0.7105,
+       0.6278,
+       0.6905
+      ],
+      [
+       0.2561,
+       0.5869,
+       0.7824,
+       0.5805
+      ],
+      [
+       0.0666,
+       0.4965,
+       0.2305,
+       0.498
+      ],
+      [
+       0.3033,
+       0.5241,
+       0.9195,
+       0.5237
+      ],
+      [
+       0.1442,
+       0.6036,
+       0.4535,
+       0.5973
+      ],
+      [
+       0.1442,
+       0.6036,
+       0.4535,
+       0.5973
+      ],
+      [
+       0.115,
+       0.6111,
+       0.3682,
+       0.6044
+      ],
+      [
+       0.136,
+       0.541,
+       0.4301,
+       0.5377
+      ],
+      [
+       0.2814,
+       0.7321,
+       0.8582,
+       0.7174
+      ],
+      [
+       0.2984,
+       0.6443,
+       0.905,
+       0.6338
+      ],
+      [
+       0.0218,
+       0.4142,
+       0.097,
+       0.4222
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2025-05-03",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=Tntucl9uW4c",
+    "title": "\u0418\u0437\u0440\u0430\u0438\u043b\u044c \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0430\u0435\u0442 \u043f\u043e\u043b\u044b\u0445\u0430\u0442\u044c. 30.04.2025 - YouTube",
+    "uploader": "A T",
+    "upload_date": "2025-04-30",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T17:01:55+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 2",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 4,
+     "max_inliers": 64,
+     "mirrored": false,
+     "temporal_offset": -24.701743589743586,
+     "n_pairs": 8,
+     "score": 4.64,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 33,
+       "b_frame": 14,
+       "a_t": 34.367666666666665,
+       "b_t": 9.665923076923077,
+       "inliers": 64,
+       "flip": false
+      },
+      {
+       "a_frame": 31,
+       "b_frame": 13,
+       "a_t": 32.36566666666667,
+       "b_t": 7.332769230769231,
+       "inliers": 63,
+       "flip": false
+      },
+      {
+       "a_frame": 35,
+       "b_frame": 15,
+       "a_t": 36.36966666666667,
+       "b_t": 11.332461538461539,
+       "inliers": 47,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_1dbd4d6d.png",
+    "proof": {
+     "viral_frame": "evidence/proof_yandex_1dbd4d6d_viral.jpg",
+     "copy_frame": "evidence/proof_yandex_1dbd4d6d_copy.jpg",
+     "viral_t": 34.37,
+     "copy_t": 9.67,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.1236,
+       0.7458,
+       0.4658,
+       0.7675
+      ],
+      [
+       0.1079,
+       0.8666,
+       0.4497,
+       0.8873
+      ],
+      [
+       0.2323,
+       0.7443,
+       0.5791,
+       0.7506
+      ],
+      [
+       0.2323,
+       0.7454,
+       0.5791,
+       0.7506
+      ],
+      [
+       0.1045,
+       0.9027,
+       0.4476,
+       0.9286
+      ],
+      [
+       0.1274,
+       0.7282,
+       0.471,
+       0.7509
+      ],
+      [
+       0.27,
+       0.611,
+       0.6168,
+       0.6155
+      ],
+      [
+       0.27,
+       0.611,
+       0.6168,
+       0.6155
+      ],
+      [
+       0.2637,
+       0.6771,
+       0.6107,
+       0.6822
+      ],
+      [
+       0.128,
+       0.7551,
+       0.472,
+       0.7794
+      ],
+      [
+       0.2441,
+       0.7129,
+       0.5893,
+       0.7159
+      ],
+      [
+       0.2441,
+       0.7129,
+       0.5893,
+       0.7159
+      ],
+      [
+       0.1759,
+       0.5633,
+       0.5225,
+       0.5688
+      ],
+      [
+       0.1759,
+       0.5633,
+       0.5225,
+       0.5688
+      ],
+      [
+       0.2033,
+       0.7472,
+       0.5511,
+       0.7689
+      ],
+      [
+       0.1352,
+       0.7059,
+       0.4802,
+       0.7203
+      ],
+      [
+       0.1833,
+       0.5527,
+       0.5268,
+       0.5545
+      ],
+      [
+       0.2449,
+       0.6359,
+       0.5914,
+       0.6404
+      ],
+      [
+       0.2983,
+       0.7613,
+       0.6452,
+       0.7667
+      ],
+      [
+       0.1861,
+       0.5826,
+       0.533,
+       0.587
+      ],
+      [
+       0.2154,
+       0.6231,
+       0.564,
+       0.6329
+      ],
+      [
+       0.2928,
+       0.6618,
+       0.6401,
+       0.6658
+      ],
+      [
+       0.2419,
+       0.8015,
+       0.5888,
+       0.8065
+      ],
+      [
+       0.2455,
+       0.7621,
+       0.5918,
+       0.7667
+      ],
+      [
+       0.2354,
+       0.8524,
+       0.5824,
+       0.8591
+      ],
+      [
+       0.2354,
+       0.8524,
+       0.5824,
+       0.8591
+      ],
+      [
+       0.072,
+       0.8212,
+       0.4148,
+       0.844
+      ],
+      [
+       0.1061,
+       0.6852,
+       0.4496,
+       0.7031
+      ],
+      [
+       0.1546,
+       0.5906,
+       0.5013,
+       0.5928
+      ],
+      [
+       0.1921,
+       0.6666,
+       0.5376,
+       0.6786
+      ],
+      [
+       0.1727,
+       0.6059,
+       0.5185,
+       0.6091
+      ],
+      [
+       0.2207,
+       0.6477,
+       0.5706,
+       0.6623
+      ],
+      [
+       0.1609,
+       0.5289,
+       0.5057,
+       0.5318
+      ],
+      [
+       0.0713,
+       0.78,
+       0.4142,
+       0.8042
+      ],
+      [
+       0.0143,
+       0.4101,
+       0.3611,
+       0.4159
+      ],
+      [
+       0.0231,
+       0.4159,
+       0.3692,
+       0.42
+      ],
+      [
+       0.2143,
+       0.7329,
+       0.5642,
+       0.744
+      ],
+      [
+       0.2505,
+       0.5785,
+       0.5965,
+       0.583
+      ],
+      [
+       0.2977,
+       0.6419,
+       0.645,
+       0.6458
+      ],
+      [
+       0.0378,
+       0.4315,
+       0.3835,
+       0.4359
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2025-04-30",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/watch?v=MC8yN3hVRQ4",
+   "title": "YouTube",
+   "uploader": "10 News",
+   "upload_date": "2025-04-30",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T17:00:33+00:00",
+   "adapter": "lens",
+   "found_via": "google lens best keyframe",
+   "also_found_by": [],
+   "match": {
+    "decision": true,
+    "consistent_frames": 3,
+    "max_inliers": 78,
+    "mirrored": false,
+    "temporal_offset": 35.54333333333334,
+    "n_pairs": 18,
+    "score": 3.78,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 3,
+      "b_frame": 12,
+      "a_t": 3.336666666666667,
+      "b_t": 38.88,
+      "inliers": 78,
+      "flip": false
+     },
+     {
+      "a_frame": 4,
+      "b_frame": 12,
+      "a_t": 4.337666666666666,
+      "b_t": 38.88,
+      "inliers": 48,
+      "flip": false
+     },
+     {
+      "a_frame": 0,
+      "b_frame": 11,
+      "a_t": 0.0,
+      "b_t": 35.52,
+      "inliers": 36,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/lens_4ef1d1e4.png",
+   "proof": {
+    "viral_frame": "evidence/proof_lens_4ef1d1e4_viral.jpg",
+    "copy_frame": "evidence/proof_lens_4ef1d1e4_copy.jpg",
+    "viral_t": 3.34,
+    "copy_t": 38.88,
+    "mirrored": false,
+    "inliers": [
+     [
+      0.7966,
+      0.5453,
+      0.4519,
+      0.5501
+     ],
+     [
+      0.7397,
+      0.5709,
+      0.3881,
+      0.5765
+     ],
+     [
+      0.8263,
+      0.3842,
+      0.4845,
+      0.3726
+     ],
+     [
+      0.8977,
+      0.5492,
+      0.5631,
+      0.551
+     ],
+     [
+      0.9118,
+      0.4435,
+      0.5797,
+      0.4404
+     ],
+     [
+      0.8176,
+      0.5875,
+      0.4743,
+      0.595
+     ],
+     [
+      0.8137,
+      0.7466,
+      0.4693,
+      0.7692
+     ],
+     [
+      0.9274,
+      0.3524,
+      0.5966,
+      0.334
+     ],
+     [
+      0.8666,
+      0.5502,
+      0.5273,
+      0.5533
+     ],
+     [
+      0.7992,
+      0.495,
+      0.4549,
+      0.4929
+     ],
+     [
+      0.706,
+      0.2986,
+      0.3516,
+      0.275
+     ],
+     [
+      0.8346,
+      0.6704,
+      0.4949,
+      0.6875
+     ],
+     [
+      0.8745,
+      0.4256,
+      0.5338,
+      0.4153
+     ],
+     [
+      0.8745,
+      0.4256,
+      0.5338,
+      0.4153
+     ],
+     [
+      0.9202,
+      0.3091,
+      0.5869,
+      0.2867
+     ],
+     [
+      0.8856,
+      0.6308,
+      0.5504,
+      0.6439
+     ],
+     [
+      0.8703,
+      0.4251,
+      0.5338,
+      0.4153
+     ],
+     [
+      0.8703,
+      0.4251,
+      0.5338,
+      0.4153
+     ],
+     [
+      0.9342,
+      0.4058,
+      0.6036,
+      0.3898
+     ],
+     [
+      0.8037,
+      0.5101,
+      0.4565,
+      0.5113
+     ],
+     [
+      0.7816,
+      0.5784,
+      0.4349,
+      0.5848
+     ],
+     [
+      0.9502,
+      0.8583,
+      0.6208,
+      0.8939
+     ],
+     [
+      0.8209,
+      0.7549,
+      0.4777,
+      0.7818
+     ],
+     [
+      0.9122,
+      0.3151,
+      0.5781,
+      0.2938
+     ],
+     [
+      0.9122,
+      0.3151,
+      0.5781,
+      0.2938
+     ],
+     [
+      0.8138,
+      0.4957,
+      0.4712,
+      0.4896
+     ],
+     [
+      0.9104,
+      0.5787,
+      0.578,
+      0.5845
+     ],
+     [
+      0.7382,
+      0.4917,
+      0.3913,
+      0.4923
+     ],
+     [
+      0.9041,
+      0.8167,
+      0.5695,
+      0.8491
+     ],
+     [
+      0.9213,
+      0.3268,
+      0.5898,
+      0.3079
+     ],
+     [
+      0.8917,
+      0.3034,
+      0.5557,
+      0.2825
+     ],
+     [
+      0.8021,
+      0.4168,
+      0.4581,
+      0.4055
+     ],
+     [
+      0.8924,
+      0.8573,
+      0.5582,
+      0.8933
+     ],
+     [
+      0.9163,
+      0.8214,
+      0.5842,
+      0.8516
+     ],
+     [
+      0.9415,
+      0.3858,
+      0.6114,
+      0.3712
+     ],
+     [
+      0.7576,
+      0.4607,
+      0.4089,
+      0.4575
+     ],
+     [
+      0.7558,
+      0.5704,
+      0.406,
+      0.5767
+     ],
+     [
+      0.9128,
+      0.8792,
+      0.5796,
+      0.9183
+     ],
+     [
+      0.913,
+      0.8245,
+      0.5811,
+      0.8547
+     ],
+     [
+      0.9175,
+      0.5375,
+      0.5848,
+      0.5385
+     ]
+    ]
+   },
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2025-04-30",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 47,
+  "candidate_status_counts": {
+   "not_proven": 5,
+   "proven": 3,
+   "pending": 33,
+   "download_failed": 2,
+   "too_long": 1,
+   "unavailable": 3
+  },
+  "adapters": {
+   "lens": {
+    "source": "lens",
+    "calls": 1,
+    "errors": []
+   },
+   "youtube_api": {
+    "source": "youtube_api",
+    "queries": 1,
+    "errors": [
+     "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp",
+     "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp"
+    ]
+   },
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     2,
+     21,
+     14
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "lens": {
+    "candidates": 9,
+    "checked": 9,
+    "proven": 1
+   },
+   "yandex": {
+    "candidates": 38,
+    "checked": 5,
+    "proven": 2
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {
+   "lens": [
+    "https://www.youtube.com/watch?v=MC8yN3hVRQ4"
+   ],
+   "yandex": [
+    "https://www.youtube.com/watch?v=b3IDvWWwmS4",
+    "https://www.youtube.com/watch?v=Tntucl9uW4c"
+   ]
+  },
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": "camera_footage",
+   "note": "48 of 48 keyframes are near frames labelled camera_footage"
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "large wildfire with tall flames and thick brown-grey smoke burning beside a multi-lane highway",
+    "refs": [
+     0,
+     7,
+     40
+    ],
+    "timestamps_s": [
+     0.0,
+     8.01,
+     41.04
+    ]
+   },
+   {
+    "text": "cars stopped and queued in traffic jam on smoke-filled highway with drivers outside vehicles",
+    "refs": [
+     0,
+     13,
+     20,
+     27
+    ],
+    "timestamps_s": [
+     0.0,
+     13.68,
+     21.69,
+     28.36
+    ]
+   },
+   {
+    "text": "police officers blocking road with patrol cars and traffic cones as smoke rises behind",
+    "refs": [
+     13,
+     34,
+     40
+    ],
+    "timestamps_s": [
+     13.68,
+     35.37,
+     41.04
+    ]
+   },
+   {
+    "text": "firefighting helicopter in smoky sky dropping water over fire near highway and buildings",
+    "refs": [
+     34,
+     47
+    ],
+    "timestamps_s": [
+     35.37,
+     49.05
+    ]
+   },
+   {
+    "text": "woman in orange vest and respirator mask speaking to camera beside queued cars",
+    "refs": [
+     20
+    ],
+    "timestamps_s": [
+     21.69
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "highway with roadside wildfire",
+   "refs": [
+    0,
+    7,
+    13,
+    40
+   ],
+   "timestamps_s": [
+    0.0,
+    8.01,
+    13.68,
+    41.04
+   ]
+  },
+  "visible_text": [
+   {
+    "text": "CNN",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     7,
+     20,
+     27,
+     40,
+     47
+    ],
+    "timestamps_s": [
+     8.01,
+     21.69,
+     28.36,
+     41.04,
+     49.05
+    ]
+   },
+   {
+    "text": "VIDEO OBTAINED BY REUTERS, ISRAEL FIRE DEPARTMENT",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     8.01
+    ]
+   },
+   {
+    "text": "HIGHWAY 1 NEAR JERUSALEM",
+    "language": "en",
+    "is_place": true,
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     8.01
+    ]
+   },
+   {
+    "text": "APRIL 30",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     8.01
+    ]
+   },
+   {
+    "text": "ISRAELI POLICE VIA REUTERS",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     13,
+     34,
+     40,
+     47
+    ],
+    "timestamps_s": [
+     13.68,
+     35.37,
+     41.04,
+     49.05
+    ]
+   },
+   {
+    "text": "UNITED HATZALAH",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     20,
+     27
+    ],
+    "timestamps_s": [
+     21.69,
+     28.36
+    ]
+   },
+   {
+    "text": "DEPUTY DIRECTOR, UNITED HATZALAH Linor Attias",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     20
+    ],
+    "timestamps_s": [
+     21.69
+    ]
+   },
+   {
+    "text": "CENTRAL ISRAEL",
+    "language": "en",
+    "is_place": true,
+    "refs": [
+     40
+    ],
+    "timestamps_s": [
+     41.04
+    ]
+   }
+  ],
+  "likely_location": {
+   "place": "Highway 1 near Jerusalem",
+   "country": "Israel",
+   "confidence": 0.92,
+   "lat": 31.8,
+   "lon": 35.05,
+   "reasons": [
+    {
+     "text": "on-screen caption states HIGHWAY 1 NEAR JERUSALEM and CENTRAL ISRAEL",
+     "refs": [
+      7,
+      40
+     ],
+     "timestamps_s": [
+      8.01,
+      41.04
+     ]
+    },
+    {
+     "text": "credits to ISRAELI POLICE, ISRAEL FIRE DEPARTMENT and UNITED HATZALAH, Israeli emergency services",
+     "refs": [
+      7,
+      13,
+      20
+     ],
+     "timestamps_s": [
+      8.01,
+      13.68,
+      21.69
+     ]
+    },
+    {
+     "text": "white cars with yellow Israeli license plates, Israeli police uniforms and landscape",
+     "refs": [
+      13,
+      40
+     ],
+     "timestamps_s": [
+      13.68,
+      41.04
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "Highway 1 near Jerusalem",
+    "country": "Israel",
+    "confidence": 0.92,
+    "lat": 31.8,
+    "lon": 35.05,
+    "cited_frames": [
+     7,
+     13,
+     20,
+     40
+    ],
+    "cited_timestamps_s": [
+     8.01,
+     13.68,
+     21.69,
+     41.04
+    ],
+    "reasons": [
+     {
+      "text": "on-screen caption states HIGHWAY 1 NEAR JERUSALEM and CENTRAL ISRAEL",
+      "refs": [
+       7,
+       40
+      ],
+      "timestamps_s": [
+       8.01,
+       41.04
+      ]
+     },
+     {
+      "text": "credits to ISRAELI POLICE, ISRAEL FIRE DEPARTMENT and UNITED HATZALAH, Israeli emergency services",
+      "refs": [
+       7,
+       13,
+       20
+      ],
+      "timestamps_s": [
+       8.01,
+       13.68,
+       21.69
+      ]
+     },
+     {
+      "text": "white cars with yellow Israeli license plates, Israeli police uniforms and landscape",
+      "refs": [
+       13,
+       40
+      ],
+      "timestamps_s": [
+       13.68,
+       41.04
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [],
+  "media_nature": {
+   "value": "news_compilation",
+   "confidence": 0.89,
+   "cited_frames": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    8.01,
+    13.68,
+    21.69,
+    28.36,
+    35.37,
+    41.04,
+    49.05
+   ],
+   "reasons": [
+    {
+     "text": "triptych of shaky phone/dashcam clips of highway smoke and flames with natural compression artefacts",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "dashcam driving view of smoky highway with cars, overlaid news graphics",
+     "refs": [
+      7
+     ],
+     "timestamps_s": [
+      8.01
+     ]
+    },
+    {
+     "text": "handheld street view of police roadblock and queued cars with smoke",
+     "refs": [
+      13
+     ],
+     "timestamps_s": [
+      13.68
+     ]
+    },
+    {
+     "text": "handheld street view of queued cars and woman in mask speaking",
+     "refs": [
+      20
+     ],
+     "timestamps_s": [
+      21.69
+     ]
+    },
+    {
+     "text": "handheld view alongside queued cars in heavy smoke",
+     "refs": [
+      27
+     ],
+     "timestamps_s": [
+      28.36
+     ]
+    },
+    {
+     "text": "handheld crowd view and separate clip of helicopter water drop",
+     "refs": [
+      34
+     ],
+     "timestamps_s": [
+      35.37
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "triptych of shaky phone/dashcam clips of highway smoke and flames with natural compression artefacts"
+    },
+    {
+     "frame": 7,
+     "t": 8.01,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "dashcam driving view of smoky highway with cars, overlaid news graphics"
+    },
+    {
+     "frame": 13,
+     "t": 13.68,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "handheld street view of police roadblock and queued cars with smoke"
+    },
+    {
+     "frame": 20,
+     "t": 21.69,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "handheld street view of queued cars and woman in mask speaking"
+    },
+    {
+     "frame": 27,
+     "t": 28.36,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "handheld view alongside queued cars in heavy smoke"
+    },
+    {
+     "frame": 34,
+     "t": 35.37,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "handheld crowd view and separate clip of helicopter water drop"
+    },
+    {
+     "frame": 40,
+     "t": 41.04,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "street-level view of responder beside highway flames"
+    },
+    {
+     "frame": 47,
+     "t": 49.05,
+     "label": "camera_footage",
+     "confidence": 0.88,
+     "reason": "long-range view of helicopter dropping water near building in smoke"
+    }
+   ],
+   "by_class": {
+    "camera_footage": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ]
+   },
+   "summary": "camera footage (frames 0,7,13,20,27,34,40,47) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "place": "near Jerusalem",
+   "country_iso2": "IL",
+   "event_type": "unknown"
+  },
+  "queries": [
+   {
+    "q": "Highway 1 Jerusalem wildfire April 30 Reuters video",
+    "language": "en",
+    "why": "match location caption and agency credit to find earliest upload"
+   },
+   {
+    "q": "Central Israel highway fire Israeli police via Reuters April",
+    "language": "en",
+    "why": "match second location banner and source credit"
+   },
+   {
+    "q": "United Hatzalah Linor Attias highway fire interview",
+    "language": "en",
+    "why": "unique named person overlay to trace original report"
+   },
+   {
+    "q": "CNN Highway 1 near Jerusalem April 30 fire",
+    "language": "en",
+    "why": "match broadcaster packaging to find broadcast date"
+   },
+   {
+    "q": "\u05e9\u05e8\u05d9\u05e4\u05d4 \u05db\u05d1\u05d9\u05e9 1 \u05d9\u05e8\u05d5\u05e9\u05dc\u05d9\u05dd 30 \u05d1\u05d0\u05e4\u05e8\u05d9\u05dc",
+    "language": "he",
+    "why": "likely local language for Highway 1 Jerusalem fire date"
+   },
+   {
+    "q": "\u05e9\u05e8\u05d9\u05e4\u05d5\u05ea \u05db\u05d1\u05d9\u05e9 1 \u05de\u05e9\u05d8\u05e8\u05ea \u05d9\u05e9\u05e8\u05d0\u05dc \u05d5\u05d9\u05d3\u05d0\u05d5",
+    "language": "he",
+    "why": "likely local language for Israeli police video of Highway 1 fires"
+   },
+   {
+    "q": "\u05d0\u05d9\u05d7\u05d5\u05d3 \u05d4\u05e6\u05dc\u05d4 \u05dc\u05d9\u05e0\u05d5\u05e8 \u05d0\u05d8\u05d9\u05d0\u05e1 \u05e9\u05e8\u05d9\u05e4\u05d4 \u05db\u05d1\u05d9\u05e9 1",
+    "language": "he",
+    "why": "likely local language for United Hatzalah deputy director at fire"
+   },
+   {
+    "q": "Israel Highway 1 brush fire helicopter water drop traffic jam",
+    "language": "en",
+    "why": "neutral description of visuals without claimed place name to find true source"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.01852,
+  "frames_shown": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "7": 8.01,
+   "13": 13.68,
+   "20": 21.69,
+   "27": 28.36,
+   "34": 35.37,
+   "40": 41.04,
+   "47": 49.05
+  },
+  "audio": {
+   "status": "no_audio_track"
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N01/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N01/frames/frame_07_t8.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N01/frames/frame_13_t13.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N01/frames/frame_20_t21.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N01/frames/frame_27_t28.4.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N01/frames/frame_34_t35.4.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N01/frames/frame_40_t41.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N01/frames/frame_47_t49.0.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Jerusalem, Israel",
+   "name": "Jerusalem, Jerusalem Subdistrict, Jerusalem District, Israel",
+   "lat": 31.7788472,
+   "lon": 35.2257856,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": [
+    {
+     "name": "Jerusalem, Geula, Jerusalem, Jerusalem Subdistrict, Jerusalem District, Israel",
+     "lat": 31.7884543,
+     "lon": 35.2187712,
+     "class": "boundary",
+     "type": "administrative"
+    },
+    {
+     "name": "Jerusalem District, Israel",
+     "lat": 31.7428253,
+     "lon": 35.064069,
+     "class": "boundary",
+     "type": "administrative"
+    }
+   ]
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2025-04-27",
+      "m3s": 0.78
+     },
+     {
+      "date": "2025-04-28",
+      "m3s": 0.78
+     },
+     {
+      "date": "2025-04-29",
+      "m3s": 0.78
+     },
+     {
+      "date": "2025-04-30",
+      "m3s": 0.78
+     },
+     {
+      "date": "2025-05-01",
+      "m3s": 0.78
+     },
+     {
+      "date": "2025-05-02",
+      "m3s": 0.78
+     },
+     {
+      "date": "2025-05-03",
+      "m3s": 0.91
+     }
+    ],
+    "baseline": 0.85,
+    "peak": 0.91,
+    "ratio": 1.07,
+    "cell": [
+     31.775002,
+     35.125015
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2025-04-27",
+      "mm": 0.0
+     },
+     {
+      "date": "2025-04-28",
+      "mm": 0.0
+     },
+     {
+      "date": "2025-04-29",
+      "mm": 0.0
+     },
+     {
+      "date": "2025-04-30",
+      "mm": 0.2
+     },
+     {
+      "date": "2025-05-01",
+      "mm": 1.3
+     },
+     {
+      "date": "2025-05-02",
+      "mm": 0.7
+     },
+     {
+      "date": "2025-05-03",
+      "mm": 1.0
+     }
+    ],
+    "max_mm": 1.3
+   },
+   "status": "NORMAL"
+  },
+  "verdict": "NO_EVIDENCE",
+  "reasons": [
+   "no Copernicus flood activation within 150 km / +-3 d",
+   "discharge ratio 1.07 (peak 0.9 vs baseline 0.8 m3/s), max rain 1.3 mm/day"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened",
+   "event_type=unknown: event type unknown, so the river-flood model may not apply; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen (public hydrology/activation data cannot resolve flash floods, GLOFs or landslides)."
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=31.7788472&longitude=35.2257856&daily=river_discharge&start_date=2025-04-27&end_date=2025-05-03",
+   "https://www.openstreetmap.org/?mlat=31.7788472&mlon=35.2257856#map=10/31.7788472/35.2257856"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Jerusalem flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Jerusalem+flood&mode=art"
+  },
+  "verdict_display": "Insufficient corroboration \u2014 this does not show the event didn't happen"
+ },
+ "media_nature": {
+  "value": "news_compilation",
+  "confidence": 0.89,
+  "cited_frames": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   8.01,
+   13.68,
+   21.69,
+   28.36,
+   35.37,
+   41.04,
+   49.05
+  ],
+  "reasons": [
+   {
+    "text": "triptych of shaky phone/dashcam clips of highway smoke and flames with natural compression artefacts",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "dashcam driving view of smoky highway with cars, overlaid news graphics",
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     8.01
+    ]
+   },
+   {
+    "text": "handheld street view of police roadblock and queued cars with smoke",
+    "refs": [
+     13
+    ],
+    "timestamps_s": [
+     13.68
+    ]
+   },
+   {
+    "text": "handheld street view of queued cars and woman in mask speaking",
+    "refs": [
+     20
+    ],
+    "timestamps_s": [
+     21.69
+    ]
+   },
+   {
+    "text": "handheld view alongside queued cars in heavy smoke",
+    "refs": [
+     27
+    ],
+    "timestamps_s": [
+     28.36
+    ]
+   },
+   {
+    "text": "handheld crowd view and separate clip of helicopter water drop",
+    "refs": [
+     34
+    ],
+    "timestamps_s": [
+     35.37
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "triptych of shaky phone/dashcam clips of highway smoke and flames with natural compression artefacts"
+   },
+   {
+    "frame": 7,
+    "t": 8.01,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "dashcam driving view of smoky highway with cars, overlaid news graphics"
+   },
+   {
+    "frame": 13,
+    "t": 13.68,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "handheld street view of police roadblock and queued cars with smoke"
+   },
+   {
+    "frame": 20,
+    "t": 21.69,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "handheld street view of queued cars and woman in mask speaking"
+   },
+   {
+    "frame": 27,
+    "t": 28.36,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "handheld view alongside queued cars in heavy smoke"
+   },
+   {
+    "frame": 34,
+    "t": 35.37,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "handheld crowd view and separate clip of helicopter water drop"
+   },
+   {
+    "frame": 40,
+    "t": 41.04,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "street-level view of responder beside highway flames"
+   },
+   {
+    "frame": 47,
+    "t": 49.05,
+    "label": "camera_footage",
+    "confidence": 0.88,
+    "reason": "long-range view of helicopter dropping water near building in smoke"
+   }
+  ],
+  "by_class": {
+   "camera_footage": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ]
+  },
+  "summary": "camera footage (frames 0,7,13,20,27,34,40,47) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "CONSISTENT_WITH_CLAIM",
+  "summary": "The video contains a clip published earlier (https://www.youtube.com/watch?v=MC8yN3hVRQ4, uploaded 2025-04-30), but that date is not earlier than the claimed event date, so recycling relative to the claim is not established. The earliest independently dated copy was published within days of the claimed event date, and no earlier copy or cited contradiction was found. This means no contradiction was found in the available evidence; it is not a finding that the footage is authentic. Media nature (AI observation from frames 0,7,13,20,27,34,40,47, not proof; does not change the label): Edited news report containing third-party clips \u2014 earlier copies of individual clips are expected and do not by themselves mean recycling. ",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists.",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 3,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "news_compilation",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 122.1,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 2.5,
+  "muse": 0.0,
+  "memory": 15.5,
+  "memory_muse_wait_claim": 15.5,
+  "discovery": 85.3,
+  "discovery_by_source": {
+   "lens": 3.1,
+   "youtube_api": 1.0,
+   "tavily": 3.0,
+   "yandex": 85.3
+  },
+  "verify_total_incl_overlap": 18.8,
+  "dates_physical_report_wait": 18.8,
+  "verify_workers": 3,
+  "verify_seconds": 48.0,
+  "verify_checked": 14
+ },
+ "_wall_s": 122.1,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 17
+}

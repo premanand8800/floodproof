@@ -1,0 +1,1273 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "2552b9e1c7",
+ "created_at": "2026-10-30T13:09:36+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/global/N03.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/N03.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "N03.mp4",
+  "duration": 60.0,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   1.33,
+   3.0,
+   4.33,
+   6.67,
+   7.33,
+   9.67,
+   11.0,
+   13.33,
+   14.33,
+   16.67,
+   17.67,
+   21.67,
+   24.33,
+   26.0,
+   27.0,
+   28.33,
+   29.67,
+   30.67,
+   33.0,
+   33.67,
+   35.0,
+   35.67,
+   36.67,
+   37.33,
+   38.67,
+   39.33,
+   40.33,
+   41.0,
+   42.0,
+   42.67,
+   43.67,
+   45.33,
+   46.0,
+   47.0,
+   47.67,
+   48.67,
+   49.67,
+   50.67,
+   51.33,
+   52.67,
+   54.33,
+   55.33,
+   56.0,
+   57.0,
+   57.67,
+   58.67,
+   59.67
+  ]
+ },
+ "claim": {
+  "text": "Large waves hit North Beach, Durban, South Africa",
+  "event_date": "2017-03-12",
+  "place": "Durban, South Africa",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "ZA",
+  "event_type": "storm_surge"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 13.9,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/watch?v=bnnoPfZ7_mo",
+    "title": "Massive waves shut down Durban North Beach",
+    "uploader": "Expresso Show",
+    "upload_date": "2017-03-14",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T13:08:46+00:00",
+    "adapter": "tavily",
+    "found_via": "muse query: Durban waves March 2017 beach",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 27,
+     "max_inliers": 190,
+     "mirrored": false,
+     "temporal_offset": 92.28,
+     "n_pairs": 397,
+     "score": 28.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 19,
+       "b_frame": 42,
+       "a_t": 33.0,
+       "b_t": 125.28,
+       "inliers": 190,
+       "flip": false
+      },
+      {
+       "a_frame": 18,
+       "b_frame": 41,
+       "a_t": 30.666666666666668,
+       "b_t": 122.88,
+       "inliers": 175,
+       "flip": false
+      },
+      {
+       "a_frame": 9,
+       "b_frame": 35,
+       "a_t": 14.333333333333334,
+       "b_t": 106.56,
+       "inliers": 173,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/tavily_ebd7c6a8.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2017-03-14",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=jrFohQZ7qOw",
+    "title": "Durban beach front hit by a freak wave on Sunday 12th March 2017 ...",
+    "uploader": "Sal Musa",
+    "upload_date": "2017-03-13",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T13:09:14+00:00",
+    "adapter": "tavily",
+    "found_via": "muse query: Durban waves March 2017 beach",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 43,
+     "max_inliers": 333,
+     "mirrored": false,
+     "temporal_offset": 0.0,
+     "n_pairs": 694,
+     "score": 44.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 13,
+       "b_frame": 9,
+       "a_t": 24.333333333333332,
+       "b_t": 24.333333333333332,
+       "inliers": 333,
+       "flip": false
+      },
+      {
+       "a_frame": 11,
+       "b_frame": 8,
+       "a_t": 17.666666666666668,
+       "b_t": 17.666666666666668,
+       "inliers": 324,
+       "flip": false
+      },
+      {
+       "a_frame": 14,
+       "b_frame": 10,
+       "a_t": 26.0,
+       "b_t": 26.0,
+       "inliers": 321,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/tavily_70038ed6.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2017-03-13",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=vBkbkIovE8A",
+    "title": "digha torneto beach side \ud83c\udfd6 \ud83c\udf0a \ud83d\udc87 \u2642/every body is dead/very bad news/#brown #munda #ahit #video - YouTube",
+    "uploader": "BM Ahit comedy",
+    "upload_date": "2022-10-10",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T13:08:45+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 18",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 43,
+     "max_inliers": 365,
+     "mirrored": false,
+     "temporal_offset": -7.453786523470285e-05,
+     "n_pairs": 691,
+     "score": 44.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 10,
+       "b_frame": 7,
+       "a_t": 16.666666666666668,
+       "b_t": 16.666592128801433,
+       "inliers": 365,
+       "flip": false
+      },
+      {
+       "a_frame": 9,
+       "b_frame": 6,
+       "a_t": 14.333333333333334,
+       "b_t": 14.33326923076923,
+       "inliers": 347,
+       "flip": false
+      },
+      {
+       "a_frame": 15,
+       "b_frame": 11,
+       "a_t": 27.0,
+       "b_t": 26.99987924865832,
+       "inliers": 340,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_b165be86.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2022-10-10",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=2itzrExPKQs",
+    "title": "10 March 2020 - YouTube",
+    "uploader": "\u121b\u122c \u130e\u1303\u121c \u1200\u1265\u1273\u121d",
+    "upload_date": "2020-03-10",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T13:08:46+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 18",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 3,
+     "max_inliers": 34,
+     "mirrored": false,
+     "temporal_offset": 84.10666666666665,
+     "n_pairs": 23,
+     "score": 3.34,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 24,
+       "b_frame": 38,
+       "a_t": 37.333333333333336,
+       "b_t": 121.44,
+       "inliers": 34,
+       "flip": false
+      },
+      {
+       "a_frame": 23,
+       "b_frame": 38,
+       "a_t": 36.666666666666664,
+       "b_t": 121.44,
+       "inliers": 30,
+       "flip": false
+      },
+      {
+       "a_frame": 22,
+       "b_frame": 38,
+       "a_t": 35.666666666666664,
+       "b_t": 121.44,
+       "inliers": 16,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_94bab6c8.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2020-03-10",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=InsrGmYLAvo",
+    "title": "\u0417\u0435\u043c\u043b\u0435\u0442\u0440\u044f\u0441\u0435\u043d\u0438\u0435 \u0432 \u0422\u0443\u0440\u0446\u0438\u0438 #\u0432\u0438\u0434\u0435\u043e #\u0437\u0435\u043c\u043b\u0435\u0442\u0440\u044f\u0441\u0435\u043d\u0438\u0435 - YouTube",
+    "uploader": "TELON",
+    "upload_date": "2023-02-06",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T13:09:11+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 18",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 43,
+     "max_inliers": 302,
+     "mirrored": false,
+     "temporal_offset": -0.9816872994039372,
+     "n_pairs": 760,
+     "score": 44.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 20,
+       "b_frame": 17,
+       "a_t": 33.666666666666664,
+       "b_t": 32.68497936726273,
+       "inliers": 302,
+       "flip": false
+      },
+      {
+       "a_frame": 13,
+       "b_frame": 12,
+       "a_t": 24.333333333333332,
+       "b_t": 23.440742778541953,
+       "inliers": 299,
+       "flip": false
+      },
+      {
+       "a_frame": 9,
+       "b_frame": 8,
+       "a_t": 14.333333333333334,
+       "b_t": 13.2060522696011,
+       "inliers": 294,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_85682bfb.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2023-02-06",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=7Wu7OWtLz04",
+    "title": "\u0422sunami in \u0422urkey - YouTube",
+    "uploader": "WIKI",
+    "upload_date": "2023-02-06",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T13:09:15+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 18",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 44,
+     "max_inliers": 344,
+     "mirrored": false,
+     "temporal_offset": 5.0,
+     "n_pairs": 834,
+     "score": 45.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 11,
+       "b_frame": 15,
+       "a_t": 17.666666666666668,
+       "b_t": 22.666666666666668,
+       "inliers": 344,
+       "flip": false
+      },
+      {
+       "a_frame": 20,
+       "b_frame": 24,
+       "a_t": 33.666666666666664,
+       "b_t": 38.666666666666664,
+       "inliers": 328,
+       "flip": false
+      },
+      {
+       "a_frame": 14,
+       "b_frame": 18,
+       "a_t": 26.0,
+       "b_t": 31.333333333333332,
+       "inliers": 319,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_81e08b48.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2023-02-06",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/watch?v=jrFohQZ7qOw",
+   "title": "Durban beach front hit by a freak wave on Sunday 12th March 2017 ...",
+   "uploader": "Sal Musa",
+   "upload_date": "2017-03-13",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T13:09:14+00:00",
+   "adapter": "tavily",
+   "found_via": "muse query: Durban waves March 2017 beach",
+   "also_found_by": [],
+   "match": {
+    "decision": true,
+    "consistent_frames": 43,
+    "max_inliers": 333,
+    "mirrored": false,
+    "temporal_offset": 0.0,
+    "n_pairs": 694,
+    "score": 44.0,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 13,
+      "b_frame": 9,
+      "a_t": 24.333333333333332,
+      "b_t": 24.333333333333332,
+      "inliers": 333,
+      "flip": false
+     },
+     {
+      "a_frame": 11,
+      "b_frame": 8,
+      "a_t": 17.666666666666668,
+      "b_t": 17.666666666666668,
+      "inliers": 324,
+      "flip": false
+     },
+     {
+      "a_frame": 14,
+      "b_frame": 10,
+      "a_t": 26.0,
+      "b_t": 26.0,
+      "inliers": 321,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/tavily_70038ed6.png",
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2017-03-13",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 68,
+  "candidate_status_counts": {
+   "download_failed": 1,
+   "not_proven": 1,
+   "proven": 6,
+   "pending": 54,
+   "unavailable": 1,
+   "too_long": 5
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     18,
+     11,
+     0
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "tavily": {
+    "candidates": 30,
+    "checked": 10,
+    "proven": 2
+   },
+   "yandex": {
+    "candidates": 38,
+    "checked": 4,
+    "proven": 4
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {
+   "tavily": [
+    "https://www.youtube.com/watch?v=bnnoPfZ7_mo",
+    "https://www.youtube.com/watch?v=jrFohQZ7qOw"
+   ],
+   "yandex": [
+    "https://www.youtube.com/watch?v=vBkbkIovE8A",
+    "https://www.youtube.com/watch?v=2itzrExPKQs",
+    "https://www.youtube.com/watch?v=InsrGmYLAvo",
+    "https://www.youtube.com/watch?v=7Wu7OWtLz04"
+   ]
+  },
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": "camera_footage",
+   "note": "48 of 48 keyframes are near frames labelled camera_footage"
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "aerial high-angle view of very large ocean waves surging onto a sandy urban beach, washing over promenade, palm trees and crowded areas near blue pools and small structures",
+    "refs": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40
+    ],
+    "timestamps_s": [
+     0.0,
+     11.0,
+     24.33,
+     33.67,
+     40.33,
+     47.0,
+     52.67
+    ]
+   },
+   {
+    "text": "eye-level view of rough ocean with multiple white-capped wave lines breaking toward shore",
+    "refs": [
+     47
+    ],
+    "timestamps_s": [
+     59.67
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "coastal",
+   "refs": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ],
+   "timestamps_s": [
+    0.0,
+    11.0,
+    24.33,
+    33.67,
+    40.33,
+    47.0,
+    52.67,
+    59.67
+   ]
+  },
+  "visible_text": [],
+  "likely_location": {
+   "place": "North Beach, Durban",
+   "country": "South Africa",
+   "confidence": 0.62,
+   "lat": -29.86,
+   "lon": 31.037,
+   "reasons": [
+    {
+     "text": "wide sandy urban beach with palm-lined promenade, paddling-pool / waterpark complex with blue pools on left, and pier-like structures matches Durban North Beach layout",
+     "refs": [
+      0,
+      7,
+      13,
+      20,
+      40
+     ],
+     "timestamps_s": [
+      0.0,
+      11.0,
+      24.33,
+      33.67,
+      52.67
+     ]
+    },
+    {
+     "text": "large storm-swell washing fully over beach onto promenade is consistent with reported Durban March 2017 high-surf event, no inconsistent architecture, vegetation or signage seen",
+     "refs": [
+      27,
+      34,
+      40
+     ],
+     "timestamps_s": [
+      40.33,
+      47.0,
+      52.67
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "North Beach, Durban",
+    "country": "South Africa",
+    "confidence": 0.62,
+    "lat": -29.86,
+    "lon": 31.037,
+    "cited_frames": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40
+    ],
+    "cited_timestamps_s": [
+     0.0,
+     11.0,
+     24.33,
+     33.67,
+     40.33,
+     47.0,
+     52.67
+    ],
+    "reasons": [
+     {
+      "text": "wide sandy urban beach with palm-lined promenade, paddling-pool / waterpark complex with blue pools on left, and pier-like structures matches Durban North Beach layout",
+      "refs": [
+       0,
+       7,
+       13,
+       20,
+       40
+      ],
+      "timestamps_s": [
+       0.0,
+       11.0,
+       24.33,
+       33.67,
+       52.67
+      ]
+     },
+     {
+      "text": "large storm-swell washing fully over beach onto promenade is consistent with reported Durban March 2017 high-surf event, no inconsistent architecture, vegetation or signage seen",
+      "refs": [
+       27,
+       34,
+       40
+      ],
+      "timestamps_s": [
+       40.33,
+       47.0,
+       52.67
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [],
+  "media_nature": {
+   "value": "camera_footage",
+   "confidence": 0.73,
+   "cited_frames": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    11.0,
+    24.33,
+    33.67,
+    40.33,
+    47.0,
+    52.67,
+    59.67
+   ],
+   "reasons": [
+    {
+     "text": "natural aerial perspective, compression blur and noise, no synthetic warping",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "consistent real-world detail, crowd and foam patterns, low-res phone look",
+     "refs": [
+      7
+     ],
+     "timestamps_s": [
+      11.0
+     ]
+    },
+    {
+     "text": "natural lighting and shake, incidental beach detail",
+     "refs": [
+      13
+     ],
+     "timestamps_s": [
+      24.33
+     ]
+    },
+    {
+     "text": "real crowd dispersion and water flow, compression artefacts",
+     "refs": [
+      20
+     ],
+     "timestamps_s": [
+      33.67
+     ]
+    },
+    {
+     "text": "turbulent water looks natural though blurry, no AI morphing seen",
+     "refs": [
+      27
+     ],
+     "timestamps_s": [
+      40.33
+     ]
+    },
+    {
+     "text": "hazy low-res surf and palm trees, natural noise",
+     "refs": [
+      34
+     ],
+     "timestamps_s": [
+      47.0
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "camera_footage",
+     "confidence": 0.75,
+     "reason": "natural aerial perspective, compression blur and noise, no synthetic warping"
+    },
+    {
+     "frame": 7,
+     "t": 11.0,
+     "label": "camera_footage",
+     "confidence": 0.75,
+     "reason": "consistent real-world detail, crowd and foam patterns, low-res phone look"
+    },
+    {
+     "frame": 13,
+     "t": 24.33,
+     "label": "camera_footage",
+     "confidence": 0.75,
+     "reason": "natural lighting and shake, incidental beach detail"
+    },
+    {
+     "frame": 20,
+     "t": 33.67,
+     "label": "camera_footage",
+     "confidence": 0.75,
+     "reason": "real crowd dispersion and water flow, compression artefacts"
+    },
+    {
+     "frame": 27,
+     "t": 40.33,
+     "label": "camera_footage",
+     "confidence": 0.7,
+     "reason": "turbulent water looks natural though blurry, no AI morphing seen"
+    },
+    {
+     "frame": 34,
+     "t": 47.0,
+     "label": "camera_footage",
+     "confidence": 0.7,
+     "reason": "hazy low-res surf and palm trees, natural noise"
+    },
+    {
+     "frame": 40,
+     "t": 52.67,
+     "label": "camera_footage",
+     "confidence": 0.75,
+     "reason": "consistent coastal infrastructure and wave run-up, real camera look"
+    },
+    {
+     "frame": 47,
+     "t": 59.67,
+     "label": "camera_footage",
+     "confidence": 0.7,
+     "reason": "simple ocean wave field with natural color gradient, no synthetic perfection"
+    }
+   ],
+   "by_class": {
+    "camera_footage": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ]
+   },
+   "summary": "camera footage (frames 0,7,13,20,27,34,40,47) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "place": "North Beach, Durban",
+   "country_iso2": "ZA",
+   "event_type": "storm_surge"
+  },
+  "queries": [
+   {
+    "q": "Durban North Beach huge waves wash over promenade",
+    "language": "en",
+    "why": "neutral description to find source without using claimed date"
+   },
+   {
+    "q": "Durban beach storm surge promenade flooding video",
+    "language": "en",
+    "why": "find news reports of storm surge at same location"
+   },
+   {
+    "q": "Durban waves March 2017 beach",
+    "language": "en",
+    "why": "test claimed event date with local reports"
+   },
+   {
+    "q": "Durban North Beach high surf 12 March 2017",
+    "language": "en",
+    "why": "verify specific claimed date"
+   },
+   {
+    "q": "amaza amakhulu ogwini Durban North Beach",
+    "language": "zu",
+    "why": "Zulu local-language search for earliest upload"
+   },
+   {
+    "q": "Durban strand groot golwe promenade oorstroom",
+    "language": "af",
+    "why": "Afrikaans local-language search for recycled footage"
+   },
+   {
+    "q": "Durban paddling pools waves flood aerial video",
+    "language": "en",
+    "why": "distinctive blue-pool landmark to identify true beach"
+   },
+   {
+    "q": "South Africa beach waves overtop palm promenade crowd runs",
+    "language": "en",
+    "why": "visual-detail search avoiding place name to catch misattributed copies"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.01196,
+  "frames_shown": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "7": 11.0,
+   "13": 24.33,
+   "20": 33.67,
+   "27": 40.33,
+   "34": 47.0,
+   "40": 52.67,
+   "47": 59.67
+  },
+  "audio": {
+   "status": "no_audio_track"
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N03/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N03/frames/frame_07_t11.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N03/frames/frame_13_t24.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N03/frames/frame_20_t33.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N03/frames/frame_27_t40.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N03/frames/frame_34_t47.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N03/frames/frame_40_t52.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/N03/frames/frame_47_t59.7.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Durban, South Africa",
+   "name": "Durban, eThekwini Metropolitan Municipality, KwaZulu-Natal, 4057, South Africa",
+   "lat": -29.8618145,
+   "lon": 31.009909,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "place",
+   "type": "city",
+   "country_level": false,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "UNAVAILABLE",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2017-03-09",
+      "m3s": 26.35
+     },
+     {
+      "date": "2017-03-10",
+      "m3s": 12.24
+     },
+     {
+      "date": "2017-03-11",
+      "m3s": 6.57
+     },
+     {
+      "date": "2017-03-12",
+      "m3s": 3.91
+     },
+     {
+      "date": "2017-03-13",
+      "m3s": 2.87
+     },
+     {
+      "date": "2017-03-14",
+      "m3s": 2.16
+     },
+     {
+      "date": "2017-03-15",
+      "m3s": 2.03
+     }
+    ],
+    "baseline": 3.7649999999999997,
+    "peak": 26.35,
+    "ratio": 7.0,
+    "cell": [
+     -29.974998,
+     30.925003
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2017-03-09",
+      "mm": 14.7
+     },
+     {
+      "date": "2017-03-10",
+      "mm": 1.4
+     },
+     {
+      "date": "2017-03-11",
+      "mm": 0.0
+     },
+     {
+      "date": "2017-03-12",
+      "mm": 0.6
+     },
+     {
+      "date": "2017-03-13",
+      "mm": 0.7
+     },
+     {
+      "date": "2017-03-14",
+      "mm": 0.2
+     },
+     {
+      "date": "2017-03-15",
+      "mm": 0.1
+     }
+    ],
+    "max_mm": 14.7
+   },
+   "status": "ANOMALOUS"
+  },
+  "verdict": "SUPPORTS",
+  "reasons": [
+   "river discharge peak 26.4 m3/s is 7.0x the 30-day baseline 3.8 m3/s"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=-29.8618145&longitude=31.009909&daily=river_discharge&start_date=2017-03-09&end_date=2017-03-15",
+   "https://www.openstreetmap.org/?mlat=-29.8618145&mlon=31.009909#map=10/-29.8618145/31.009909"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Durban storm surge",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Durban+storm+surge&mode="
+  }
+ },
+ "media_nature": {
+  "value": "camera_footage",
+  "confidence": 0.73,
+  "cited_frames": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   11.0,
+   24.33,
+   33.67,
+   40.33,
+   47.0,
+   52.67,
+   59.67
+  ],
+  "reasons": [
+   {
+    "text": "natural aerial perspective, compression blur and noise, no synthetic warping",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "consistent real-world detail, crowd and foam patterns, low-res phone look",
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     11.0
+    ]
+   },
+   {
+    "text": "natural lighting and shake, incidental beach detail",
+    "refs": [
+     13
+    ],
+    "timestamps_s": [
+     24.33
+    ]
+   },
+   {
+    "text": "real crowd dispersion and water flow, compression artefacts",
+    "refs": [
+     20
+    ],
+    "timestamps_s": [
+     33.67
+    ]
+   },
+   {
+    "text": "turbulent water looks natural though blurry, no AI morphing seen",
+    "refs": [
+     27
+    ],
+    "timestamps_s": [
+     40.33
+    ]
+   },
+   {
+    "text": "hazy low-res surf and palm trees, natural noise",
+    "refs": [
+     34
+    ],
+    "timestamps_s": [
+     47.0
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "camera_footage",
+    "confidence": 0.75,
+    "reason": "natural aerial perspective, compression blur and noise, no synthetic warping"
+   },
+   {
+    "frame": 7,
+    "t": 11.0,
+    "label": "camera_footage",
+    "confidence": 0.75,
+    "reason": "consistent real-world detail, crowd and foam patterns, low-res phone look"
+   },
+   {
+    "frame": 13,
+    "t": 24.33,
+    "label": "camera_footage",
+    "confidence": 0.75,
+    "reason": "natural lighting and shake, incidental beach detail"
+   },
+   {
+    "frame": 20,
+    "t": 33.67,
+    "label": "camera_footage",
+    "confidence": 0.75,
+    "reason": "real crowd dispersion and water flow, compression artefacts"
+   },
+   {
+    "frame": 27,
+    "t": 40.33,
+    "label": "camera_footage",
+    "confidence": 0.7,
+    "reason": "turbulent water looks natural though blurry, no AI morphing seen"
+   },
+   {
+    "frame": 34,
+    "t": 47.0,
+    "label": "camera_footage",
+    "confidence": 0.7,
+    "reason": "hazy low-res surf and palm trees, natural noise"
+   },
+   {
+    "frame": 40,
+    "t": 52.67,
+    "label": "camera_footage",
+    "confidence": 0.75,
+    "reason": "consistent coastal infrastructure and wave run-up, real camera look"
+   },
+   {
+    "frame": 47,
+    "t": 59.67,
+    "label": "camera_footage",
+    "confidence": 0.7,
+    "reason": "simple ocean wave field with natural color gradient, no synthetic perfection"
+   }
+  ],
+  "by_class": {
+   "camera_footage": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ]
+  },
+  "summary": "camera footage (frames 0,7,13,20,27,34,40,47) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "CONSISTENT_WITH_CLAIM",
+  "summary": "The footage matches a previously published copy (https://www.youtube.com/watch?v=jrFohQZ7qOw, uploaded 2017-03-13), but that date is not earlier than the claimed event date, so recycling relative to the claim is not established. The earliest independently dated copy was published within days of the claimed event date, and no earlier copy or cited contradiction was found, and the physical-world check adds supporting context (context only; it did not change the verdict). This means no contradiction was found in the available evidence; it is not a finding that the footage is authentic.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 6,
+   "physical_supports": true,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "camera_footage",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 137.5,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 3.5,
+  "muse": 13.4,
+  "memory": 13.9,
+  "memory_muse_wait_claim": 13.9,
+  "discovery": 67.6,
+  "discovery_by_source": {
+   "tavily": 12.4,
+   "yandex": 67.6
+  },
+  "verify_total_incl_overlap": 52.5,
+  "dates_physical_report_wait": 52.5,
+  "verify_workers": 3,
+  "verify_seconds": 76.9,
+  "verify_checked": 14
+ },
+ "_wall_s": 137.5,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 0
+}

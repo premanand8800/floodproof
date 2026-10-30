@@ -1,0 +1,288 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "ef05da0de7",
+ "created_at": "2026-10-30T13:25:35+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/global/N02.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/N02.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "N02.mp4",
+  "duration": 59.99326666666667,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   1.33,
+   3.67,
+   4.67,
+   5.34,
+   6.01,
+   6.67,
+   7.34,
+   8.01,
+   8.68,
+   9.34,
+   10.01,
+   11.01,
+   12.01,
+   14.35,
+   15.02,
+   16.02,
+   16.68,
+   17.35,
+   19.35,
+   20.69,
+   21.69,
+   23.02,
+   24.02,
+   24.69,
+   25.69,
+   26.36,
+   27.36,
+   28.36,
+   29.36,
+   30.36,
+   31.36,
+   33.03,
+   34.03,
+   35.7,
+   36.37,
+   38.04,
+   39.04,
+   40.37,
+   41.37,
+   42.04,
+   43.71,
+   45.05,
+   47.38,
+   48.05,
+   49.05,
+   51.05,
+   54.05
+  ]
+ },
+ "claim": {
+  "text": "Hurricane Beryl landfall, Carriacou, Grenada",
+  "event_date": "2024-07-01",
+  "place": "Carriacou, Grenada",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": null,
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 3.57,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "NOT_FOUND",
+  "proven_matches": [],
+  "earliest_proven_copy": null,
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 52,
+  "candidate_status_counts": {
+   "pending": 38,
+   "unavailable": 2,
+   "not_proven": 8,
+   "too_long": 3,
+   "download_failed": 1
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 3,
+    "errors": [],
+    "query_source": "claim text (Muse unavailable)"
+   },
+   "yandex": {
+    "frames": [
+     38,
+     30,
+     0
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 40,
+    "checked": 5,
+    "proven": 0
+   },
+   "tavily": {
+    "candidates": 12,
+    "checked": 9,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {},
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": null,
+   "note": null
+  }
+ },
+ "clues": {
+  "status": "not_run"
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Carriacou, Grenada",
+   "name": "Carriacou, Six Roads, Carriacou and Petite Martinique, Grenada",
+   "lat": 12.4829985,
+   "lon": -61.4448436,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "place",
+   "type": "island",
+   "country_level": false,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": null,
+   "rain": {
+    "series": [
+     {
+      "date": "2024-06-28",
+      "mm": 0.7
+     },
+     {
+      "date": "2024-06-29",
+      "mm": 7.8
+     },
+     {
+      "date": "2024-06-30",
+      "mm": 2.7
+     },
+     {
+      "date": "2024-07-01",
+      "mm": 88.6
+     },
+     {
+      "date": "2024-07-02",
+      "mm": 0.6
+     },
+     {
+      "date": "2024-07-03",
+      "mm": 47.9
+     },
+     {
+      "date": "2024-07-04",
+      "mm": 0.8
+     }
+    ],
+    "max_mm": 88.6
+   },
+   "status": "UNKNOWN",
+   "errors": [
+    "discharge: no discharge data"
+   ]
+  },
+  "verdict": "UNKNOWN",
+  "reasons": [
+   "a data source failed; cannot assess"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=12.4829985&longitude=-61.4448436&daily=river_discharge&start_date=2024-06-28&end_date=2024-07-04",
+   "https://www.openstreetmap.org/?mlat=12.4829985&mlon=-61.4448436#map=10/12.4829985/-61.4448436"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Carriacou flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Carriacou+flood&mode=art"
+  }
+ },
+ "media_nature": {
+  "value": "unknown",
+  "confidence": 0.0,
+  "cited_frames": [],
+  "cited_timestamps_s": [],
+  "reasons": [],
+  "status": "NOT_RUN",
+  "note": "Muse clues were not available, so the media nature was not assessed."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "UNVERIFIED",
+  "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. The physical-world check was not available or inconclusive. The claim could not be verified from the available evidence.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 0,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "unknown",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 113.2,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 1.2,
+  "memory": 3.6,
+  "memory_muse_wait_claim": 3.6,
+  "discovery": 95.4,
+  "discovery_by_source": {
+   "tavily": 4.5,
+   "yandex": 65.4
+  },
+  "verify_total_incl_overlap": 13.1,
+  "dates_physical_report_wait": 13.1,
+  "verify_workers": 3,
+  "verify_seconds": 104.0,
+  "verify_checked": 14
+ },
+ "_wall_s": 113.2,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 0
+}

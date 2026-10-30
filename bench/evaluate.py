@@ -32,7 +32,7 @@ SIBLINGS = [{"ig_sainj", "yts_sainj"}, {"yt_tauktae1", "yt_tauktae2"}, {"ig_waya
             {"yt_ie_nalagarh", "yt_indexp_punjab"}, {"yt_tribune_nalagarh", "yt_indexp_punjab"}]
 REVIEWED_URL_SIBLINGS = {  # same footage, no local key: (original key, other url)
     ("yt_tauktae1", "https://www.youtube.com/watch?v=TR79k9CyWhw"), ("yt_tauktae2", "https://www.youtube.com/watch?v=TR79k9CyWhw")}
-# real viral clips -> keys of their fact-checked originals (bench/cases.jsonl via search_loop.CASES)
+# real viral clips -> keys of their fact-checked originals (bench/cases.jsonl via prototypes/search_loop.py CASES)
 REAL = {"x_iambmane": ["ig_leigh", "yt_leigh"], "x_dmuppavarapu": ["yt_leigh", "ig_leigh"],
         "yts_viral_nalagarh": ["yt_ie_nalagarh", "yt_tribune_nalagarh"], "ig_viral_italy": ["yt_sun_italy"]}
 

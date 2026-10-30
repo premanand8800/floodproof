@@ -1,0 +1,2389 @@
+{
+ "schema_version": "1.5",
+ "investigation_id": "aa32d523b8",
+ "created_at": "2026-10-30T16:33:41+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/global/G02.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/G02.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "G02.mp4",
+  "duration": 27.266666666666666,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 42,
+  "keyframe_times_s": [
+   0.0,
+   5.33,
+   11.67,
+   12.0,
+   13.0,
+   14.67,
+   15.0,
+   15.33,
+   15.67,
+   16.0,
+   16.33,
+   16.67,
+   17.0,
+   17.33,
+   17.67,
+   18.0,
+   18.33,
+   18.67,
+   19.0,
+   19.33,
+   19.67,
+   20.0,
+   20.33,
+   20.67,
+   21.0,
+   21.33,
+   21.67,
+   22.0,
+   22.67,
+   23.0,
+   23.33,
+   23.67,
+   24.0,
+   24.33,
+   24.67,
+   25.0,
+   25.33,
+   25.67,
+   26.0,
+   26.33,
+   26.67,
+   27.0
+  ]
+ },
+ "claim": {
+  "text": "House wall collapsing in floodwater during Hurricane Milton, Florida",
+  "event_date": "2024-10-09",
+  "place": "Florida, USA",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "US",
+  "event_type": "cyclone"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 19.76,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/watch?v=WIDQbDai2jQ",
+    "title": "Basement wall collapses under pressure of Ida flood waters ...",
+    "uploader": "Eyewitness News ABC7NY",
+    "upload_date": "2021-09-03",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T16:31:23+00:00",
+    "adapter": "lens",
+    "found_via": "google lens best keyframe",
+    "also_found_by": [
+     "yandex"
+    ],
+    "match": {
+     "decision": true,
+     "consistent_frames": 27,
+     "max_inliers": 86,
+     "mirrored": false,
+     "temporal_offset": -14.331340606060605,
+     "n_pairs": 106,
+     "score": 27.86,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 10,
+       "b_frame": 3,
+       "a_t": 16.333333333333332,
+       "b_t": 2.0019927272727274,
+       "inliers": 86,
+       "flip": false
+      },
+      {
+       "a_frame": 8,
+       "b_frame": 1,
+       "a_t": 15.666666666666666,
+       "b_t": 1.3346618181818182,
+       "inliers": 82,
+       "flip": false
+      },
+      {
+       "a_frame": 11,
+       "b_frame": 4,
+       "a_t": 16.666666666666668,
+       "b_t": 2.335658181818182,
+       "inliers": 77,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/lens_654d12e1.png",
+    "proof": {
+     "viral_frame": "evidence/proof_lens_654d12e1_viral.jpg",
+     "copy_frame": "evidence/proof_lens_654d12e1_copy.jpg",
+     "viral_t": 16.33,
+     "copy_t": 2.0,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.3329,
+       0.4124,
+       0.3254,
+       0.2185
+      ],
+      [
+       0.495,
+       0.4252,
+       0.4936,
+       0.2621
+      ],
+      [
+       0.5938,
+       0.3996,
+       0.5964,
+       0.1747
+      ],
+      [
+       0.5141,
+       0.427,
+       0.5138,
+       0.2657
+      ],
+      [
+       0.634,
+       0.4311,
+       0.6356,
+       0.2764
+      ],
+      [
+       0.1356,
+       0.5134,
+       0.1298,
+       0.5426
+      ],
+      [
+       0.5333,
+       0.3997,
+       0.5338,
+       0.1743
+      ],
+      [
+       0.5333,
+       0.3997,
+       0.5338,
+       0.1743
+      ],
+      [
+       0.5427,
+       0.4215,
+       0.5426,
+       0.246
+      ],
+      [
+       0.5427,
+       0.4215,
+       0.5426,
+       0.246
+      ],
+      [
+       0.1707,
+       0.4731,
+       0.1627,
+       0.4126
+      ],
+      [
+       0.2098,
+       0.4513,
+       0.1974,
+       0.3497
+      ],
+      [
+       0.1883,
+       0.5614,
+       0.1866,
+       0.6864
+      ],
+      [
+       0.5831,
+       0.595,
+       0.5857,
+       0.8121
+      ],
+      [
+       0.6409,
+       0.4133,
+       0.6473,
+       0.2211
+      ],
+      [
+       0.5862,
+       0.417,
+       0.5903,
+       0.2299
+      ],
+      [
+       0.4862,
+       0.4137,
+       0.4834,
+       0.2211
+      ],
+      [
+       0.6803,
+       0.5707,
+       0.6867,
+       0.7336
+      ],
+      [
+       0.5915,
+       0.418,
+       0.5903,
+       0.2299
+      ],
+      [
+       0.2369,
+       0.4172,
+       0.2275,
+       0.2335
+      ],
+      [
+       0.5872,
+       0.4486,
+       0.5879,
+       0.3288
+      ],
+      [
+       0.5028,
+       0.4892,
+       0.5086,
+       0.4604
+      ],
+      [
+       0.4801,
+       0.3988,
+       0.4797,
+       0.1723
+      ],
+      [
+       0.702,
+       0.5584,
+       0.709,
+       0.6929
+      ],
+      [
+       0.3093,
+       0.4175,
+       0.3021,
+       0.2336
+      ],
+      [
+       0.551,
+       0.4144,
+       0.5507,
+       0.2239
+      ],
+      [
+       0.6742,
+       0.5525,
+       0.68,
+       0.6757
+      ],
+      [
+       0.5502,
+       0.4065,
+       0.554,
+       0.2017
+      ],
+      [
+       0.2563,
+       0.4198,
+       0.2475,
+       0.2361
+      ],
+      [
+       0.607,
+       0.5556,
+       0.6108,
+       0.6836
+      ],
+      [
+       0.6199,
+       0.4456,
+       0.6234,
+       0.3232
+      ],
+      [
+       0.6052,
+       0.5915,
+       0.6096,
+       0.8005
+      ],
+      [
+       0.6719,
+       0.5358,
+       0.6768,
+       0.6178
+      ],
+      [
+       0.671,
+       0.5367,
+       0.6768,
+       0.6178
+      ],
+      [
+       0.7206,
+       0.4501,
+       0.7279,
+       0.3415
+      ],
+      [
+       0.2911,
+       0.4404,
+       0.2839,
+       0.3091
+      ],
+      [
+       0.8358,
+       0.413,
+       0.8403,
+       0.2157
+      ],
+      [
+       0.8358,
+       0.413,
+       0.8403,
+       0.2157
+      ],
+      [
+       0.5554,
+       0.464,
+       0.5579,
+       0.3851
+      ],
+      [
+       0.6743,
+       0.5207,
+       0.6787,
+       0.5712
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2021-09-03",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=DYUvH5ge8c0",
+    "title": "YouTube",
+    "uploader": "NBC New York",
+    "upload_date": "2021-09-04",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T16:31:25+00:00",
+    "adapter": "lens",
+    "found_via": "google lens best keyframe",
+    "also_found_by": [
+     "yandex"
+    ],
+    "match": {
+     "decision": true,
+     "consistent_frames": 8,
+     "max_inliers": 88,
+     "mirrored": false,
+     "temporal_offset": -5.660666666666666,
+     "n_pairs": 43,
+     "score": 8.88,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 2,
+       "b_frame": 2,
+       "a_t": 11.666666666666666,
+       "b_t": 6.006,
+       "inliers": 88,
+       "flip": false
+      },
+      {
+       "a_frame": 3,
+       "b_frame": 2,
+       "a_t": 12.0,
+       "b_t": 6.006,
+       "inliers": 87,
+       "flip": false
+      },
+      {
+       "a_frame": 4,
+       "b_frame": 2,
+       "a_t": 13.0,
+       "b_t": 6.006,
+       "inliers": 84,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/lens_f0d5dab1.png",
+    "proof": {
+     "viral_frame": "evidence/proof_lens_f0d5dab1_viral.jpg",
+     "copy_frame": "evidence/proof_lens_f0d5dab1_copy.jpg",
+     "viral_t": 11.67,
+     "copy_t": 6.01,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.6206,
+       0.418,
+       0.6203,
+       0.2394
+      ],
+      [
+       0.2418,
+       0.4489,
+       0.2417,
+       0.3383
+      ],
+      [
+       0.6977,
+       0.5323,
+       0.698,
+       0.6121
+      ],
+      [
+       0.2054,
+       0.4557,
+       0.2054,
+       0.3641
+      ],
+      [
+       0.6925,
+       0.5178,
+       0.6921,
+       0.5638
+      ],
+      [
+       0.1316,
+       0.4599,
+       0.1315,
+       0.3751
+      ],
+      [
+       0.1316,
+       0.4599,
+       0.1315,
+       0.3751
+      ],
+      [
+       0.2095,
+       0.5191,
+       0.2102,
+       0.5661
+      ],
+      [
+       0.2095,
+       0.5191,
+       0.2102,
+       0.5661
+      ],
+      [
+       0.4436,
+       0.4329,
+       0.4419,
+       0.2882
+      ],
+      [
+       0.719,
+       0.4472,
+       0.7184,
+       0.3307
+      ],
+      [
+       0.337,
+       0.4348,
+       0.3361,
+       0.2956
+      ],
+      [
+       0.2585,
+       0.4609,
+       0.2574,
+       0.3788
+      ],
+      [
+       0.6803,
+       0.5701,
+       0.6802,
+       0.734
+      ],
+      [
+       0.4381,
+       0.426,
+       0.4374,
+       0.2655
+      ],
+      [
+       0.6068,
+       0.4365,
+       0.6075,
+       0.2999
+      ],
+      [
+       0.6068,
+       0.4365,
+       0.6075,
+       0.2999
+      ],
+      [
+       0.2321,
+       0.4204,
+       0.2321,
+       0.2466
+      ],
+      [
+       0.5446,
+       0.415,
+       0.5454,
+       0.2298
+      ],
+      [
+       0.5446,
+       0.415,
+       0.5454,
+       0.2298
+      ],
+      [
+       0.2332,
+       0.4703,
+       0.2329,
+       0.4086
+      ],
+      [
+       0.4192,
+       0.428,
+       0.4187,
+       0.2721
+      ],
+      [
+       0.2486,
+       0.4896,
+       0.2457,
+       0.4761
+      ],
+      [
+       0.6416,
+       0.4169,
+       0.6414,
+       0.2341
+      ],
+      [
+       0.2733,
+       0.4346,
+       0.274,
+       0.2934
+      ],
+      [
+       0.6559,
+       0.5754,
+       0.6559,
+       0.7548
+      ],
+      [
+       0.3582,
+       0.4375,
+       0.3587,
+       0.3042
+      ],
+      [
+       0.3582,
+       0.4375,
+       0.3587,
+       0.3042
+      ],
+      [
+       0.6704,
+       0.5237,
+       0.6682,
+       0.5855
+      ],
+      [
+       0.5986,
+       0.5418,
+       0.5951,
+       0.6479
+      ],
+      [
+       0.5755,
+       0.5745,
+       0.5748,
+       0.7512
+      ],
+      [
+       0.6177,
+       0.4086,
+       0.6146,
+       0.211
+      ],
+      [
+       0.3497,
+       0.4373,
+       0.3494,
+       0.3015
+      ],
+      [
+       0.7235,
+       0.5475,
+       0.7239,
+       0.661
+      ],
+      [
+       0.1709,
+       0.4688,
+       0.1697,
+       0.4036
+      ],
+      [
+       0.2893,
+       0.4128,
+       0.2895,
+       0.2251
+      ],
+      [
+       0.5803,
+       0.4408,
+       0.5821,
+       0.3142
+      ],
+      [
+       0.5803,
+       0.4408,
+       0.5821,
+       0.3142
+      ],
+      [
+       0.1636,
+       0.4595,
+       0.1642,
+       0.373
+      ],
+      [
+       0.659,
+       0.5634,
+       0.6592,
+       0.7103
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2021-09-04",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.tiktok.com/@nick_kratka/video/7423111816735247658",
+    "title": "Directly in Milton's path\u2026 #hurricane #florida #southflorida ...",
+    "uploader": "nick_kratka",
+    "upload_date": "2024-10-07",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T16:32:22+00:00",
+    "adapter": "lens",
+    "found_via": "google lens best keyframe",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 2,
+     "max_inliers": 16,
+     "mirrored": false,
+     "temporal_offset": 17.0,
+     "n_pairs": 7,
+     "score": 2.16,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 1,
+       "b_frame": 17,
+       "a_t": 5.333333333333333,
+       "b_t": 22.333333333333332,
+       "inliers": 16,
+       "flip": false
+      },
+      {
+       "a_frame": 3,
+       "b_frame": 24,
+       "a_t": 12.0,
+       "b_t": 30.0,
+       "inliers": 15,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/lens_5e512017.png",
+    "proof": {
+     "viral_frame": "evidence/proof_lens_5e512017_viral.jpg",
+     "copy_frame": "evidence/proof_lens_5e512017_copy.jpg",
+     "viral_t": 5.33,
+     "copy_t": 22.33,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.9205,
+       0.7204,
+       0.921,
+       0.7206
+      ],
+      [
+       0.9205,
+       0.7204,
+       0.921,
+       0.7206
+      ],
+      [
+       0.894,
+       0.7247,
+       0.8938,
+       0.7255
+      ],
+      [
+       0.8121,
+       0.2061,
+       0.5101,
+       0.0709
+      ],
+      [
+       0.9499,
+       0.7202,
+       0.9502,
+       0.7199
+      ],
+      [
+       0.8926,
+       0.712,
+       0.8936,
+       0.7121
+      ],
+      [
+       0.8811,
+       0.7194,
+       0.8808,
+       0.7198
+      ],
+      [
+       0.8811,
+       0.7194,
+       0.8808,
+       0.7198
+      ],
+      [
+       0.8256,
+       0.7251,
+       0.8253,
+       0.7254
+      ],
+      [
+       0.8355,
+       0.7168,
+       0.8349,
+       0.7171
+      ],
+      [
+       0.8355,
+       0.7168,
+       0.8349,
+       0.7171
+      ],
+      [
+       0.3381,
+       0.1862,
+       0.0921,
+       0.4331
+      ],
+      [
+       0.9025,
+       0.7166,
+       0.903,
+       0.7163
+      ],
+      [
+       0.9433,
+       0.7125,
+       0.9441,
+       0.7114
+      ],
+      [
+       0.7577,
+       0.7163,
+       0.7557,
+       0.718
+      ],
+      [
+       0.7577,
+       0.7163,
+       0.7557,
+       0.718
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2024-10-07",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=rZy2Um1H9do",
+    "title": "Watch: Terrifying Moment NJ Home Wall Collapses Trapping 2 In Basement",
+    "uploader": "NBC News",
+    "upload_date": "2021-09-06",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T16:31:23+00:00",
+    "adapter": "tavily",
+    "found_via": "muse query: wall collapses flood water inside room security camera",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 21,
+     "max_inliers": 84,
+     "mirrored": false,
+     "temporal_offset": -9.321369315342327,
+     "n_pairs": 78,
+     "score": 21.84,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 25,
+       "b_frame": 8,
+       "a_t": 21.333333333333332,
+       "b_t": 12.011964017991005,
+       "inliers": 84,
+       "flip": false
+      },
+      {
+       "a_frame": 16,
+       "b_frame": 5,
+       "a_t": 18.333333333333332,
+       "b_t": 9.34263868065967,
+       "inliers": 81,
+       "flip": false
+      },
+      {
+       "a_frame": 6,
+       "b_frame": 1,
+       "a_t": 15.0,
+       "b_t": 6.339647676161919,
+       "inliers": 78,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/tavily_bf60901d.png",
+    "proof": {
+     "viral_frame": "evidence/proof_tavily_bf60901d_viral.jpg",
+     "copy_frame": "evidence/proof_tavily_bf60901d_copy.jpg",
+     "viral_t": 21.33,
+     "copy_t": 12.01,
+     "mirrored": false,
+     "inliers": [
+      [
+       0.4558,
+       0.4243,
+       0.4555,
+       0.2554
+      ],
+      [
+       0.4558,
+       0.4243,
+       0.4555,
+       0.2554
+      ],
+      [
+       0.6566,
+       0.4968,
+       0.6566,
+       0.4985
+      ],
+      [
+       0.6566,
+       0.4968,
+       0.6566,
+       0.4985
+      ],
+      [
+       0.037,
+       0.4978,
+       0.0355,
+       0.4908
+      ],
+      [
+       0.1221,
+       0.4991,
+       0.1192,
+       0.4998
+      ],
+      [
+       0.4171,
+       0.4519,
+       0.4156,
+       0.3468
+      ],
+      [
+       0.3838,
+       0.4093,
+       0.3847,
+       0.2061
+      ],
+      [
+       0.5259,
+       0.4015,
+       0.5243,
+       0.18
+      ],
+      [
+       0.4824,
+       0.4782,
+       0.4811,
+       0.4327
+      ],
+      [
+       0.5141,
+       0.5582,
+       0.5228,
+       0.6872
+      ],
+      [
+       0.6849,
+       0.4405,
+       0.6856,
+       0.3122
+      ],
+      [
+       0.4716,
+       0.4017,
+       0.4673,
+       0.1819
+      ],
+      [
+       0.2794,
+       0.4647,
+       0.2794,
+       0.3865
+      ],
+      [
+       0.0941,
+       0.5435,
+       0.0923,
+       0.6418
+      ],
+      [
+       0.2496,
+       0.5196,
+       0.244,
+       0.569
+      ],
+      [
+       0.6299,
+       0.515,
+       0.6301,
+       0.5485
+      ],
+      [
+       0.072,
+       0.4888,
+       0.0683,
+       0.465
+      ],
+      [
+       0.5254,
+       0.3913,
+       0.5253,
+       0.1472
+      ],
+      [
+       0.5391,
+       0.4549,
+       0.5392,
+       0.3568
+      ],
+      [
+       0.3347,
+       0.4183,
+       0.3328,
+       0.237
+      ],
+      [
+       0.2707,
+       0.4517,
+       0.2704,
+       0.3437
+      ],
+      [
+       0.6137,
+       0.4566,
+       0.6128,
+       0.3579
+      ],
+      [
+       0.2448,
+       0.5024,
+       0.2428,
+       0.5085
+      ],
+      [
+       0.494,
+       0.3809,
+       0.498,
+       0.1152
+      ],
+      [
+       0.3101,
+       0.4217,
+       0.3079,
+       0.2461
+      ],
+      [
+       0.2974,
+       0.4352,
+       0.2954,
+       0.2954
+      ],
+      [
+       0.8963,
+       0.4955,
+       0.8961,
+       0.4778
+      ],
+      [
+       0.4967,
+       0.4169,
+       0.4977,
+       0.2298
+      ],
+      [
+       0.4425,
+       0.4773,
+       0.4415,
+       0.4251
+      ],
+      [
+       0.3992,
+       0.3962,
+       0.4006,
+       0.1636
+      ],
+      [
+       0.4708,
+       0.6165,
+       0.4741,
+       0.8782
+      ],
+      [
+       0.2709,
+       0.4607,
+       0.2712,
+       0.374
+      ],
+      [
+       0.3377,
+       0.4495,
+       0.3362,
+       0.3411
+      ],
+      [
+       0.5171,
+       0.5045,
+       0.5146,
+       0.5173
+      ],
+      [
+       0.5171,
+       0.5045,
+       0.5146,
+       0.5173
+      ],
+      [
+       0.0681,
+       0.5003,
+       0.0678,
+       0.5013
+      ],
+      [
+       0.6016,
+       0.4757,
+       0.5989,
+       0.4235
+      ],
+      [
+       0.3031,
+       0.6147,
+       0.2994,
+       0.8737
+      ],
+      [
+       0.0905,
+       0.5167,
+       0.089,
+       0.5549
+      ]
+     ]
+    },
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2021-09-06",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/watch?v=WIDQbDai2jQ",
+   "title": "Basement wall collapses under pressure of Ida flood waters ...",
+   "uploader": "Eyewitness News ABC7NY",
+   "upload_date": "2021-09-03",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T16:31:23+00:00",
+   "adapter": "lens",
+   "found_via": "google lens best keyframe",
+   "also_found_by": [
+    "yandex"
+   ],
+   "match": {
+    "decision": true,
+    "consistent_frames": 27,
+    "max_inliers": 86,
+    "mirrored": false,
+    "temporal_offset": -14.331340606060605,
+    "n_pairs": 106,
+    "score": 27.86,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 10,
+      "b_frame": 3,
+      "a_t": 16.333333333333332,
+      "b_t": 2.0019927272727274,
+      "inliers": 86,
+      "flip": false
+     },
+     {
+      "a_frame": 8,
+      "b_frame": 1,
+      "a_t": 15.666666666666666,
+      "b_t": 1.3346618181818182,
+      "inliers": 82,
+      "flip": false
+     },
+     {
+      "a_frame": 11,
+      "b_frame": 4,
+      "a_t": 16.666666666666668,
+      "b_t": 2.335658181818182,
+      "inliers": 77,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/lens_654d12e1.png",
+   "proof": {
+    "viral_frame": "evidence/proof_lens_654d12e1_viral.jpg",
+    "copy_frame": "evidence/proof_lens_654d12e1_copy.jpg",
+    "viral_t": 16.33,
+    "copy_t": 2.0,
+    "mirrored": false,
+    "inliers": [
+     [
+      0.3329,
+      0.4124,
+      0.3254,
+      0.2185
+     ],
+     [
+      0.495,
+      0.4252,
+      0.4936,
+      0.2621
+     ],
+     [
+      0.5938,
+      0.3996,
+      0.5964,
+      0.1747
+     ],
+     [
+      0.5141,
+      0.427,
+      0.5138,
+      0.2657
+     ],
+     [
+      0.634,
+      0.4311,
+      0.6356,
+      0.2764
+     ],
+     [
+      0.1356,
+      0.5134,
+      0.1298,
+      0.5426
+     ],
+     [
+      0.5333,
+      0.3997,
+      0.5338,
+      0.1743
+     ],
+     [
+      0.5333,
+      0.3997,
+      0.5338,
+      0.1743
+     ],
+     [
+      0.5427,
+      0.4215,
+      0.5426,
+      0.246
+     ],
+     [
+      0.5427,
+      0.4215,
+      0.5426,
+      0.246
+     ],
+     [
+      0.1707,
+      0.4731,
+      0.1627,
+      0.4126
+     ],
+     [
+      0.2098,
+      0.4513,
+      0.1974,
+      0.3497
+     ],
+     [
+      0.1883,
+      0.5614,
+      0.1866,
+      0.6864
+     ],
+     [
+      0.5831,
+      0.595,
+      0.5857,
+      0.8121
+     ],
+     [
+      0.6409,
+      0.4133,
+      0.6473,
+      0.2211
+     ],
+     [
+      0.5862,
+      0.417,
+      0.5903,
+      0.2299
+     ],
+     [
+      0.4862,
+      0.4137,
+      0.4834,
+      0.2211
+     ],
+     [
+      0.6803,
+      0.5707,
+      0.6867,
+      0.7336
+     ],
+     [
+      0.5915,
+      0.418,
+      0.5903,
+      0.2299
+     ],
+     [
+      0.2369,
+      0.4172,
+      0.2275,
+      0.2335
+     ],
+     [
+      0.5872,
+      0.4486,
+      0.5879,
+      0.3288
+     ],
+     [
+      0.5028,
+      0.4892,
+      0.5086,
+      0.4604
+     ],
+     [
+      0.4801,
+      0.3988,
+      0.4797,
+      0.1723
+     ],
+     [
+      0.702,
+      0.5584,
+      0.709,
+      0.6929
+     ],
+     [
+      0.3093,
+      0.4175,
+      0.3021,
+      0.2336
+     ],
+     [
+      0.551,
+      0.4144,
+      0.5507,
+      0.2239
+     ],
+     [
+      0.6742,
+      0.5525,
+      0.68,
+      0.6757
+     ],
+     [
+      0.5502,
+      0.4065,
+      0.554,
+      0.2017
+     ],
+     [
+      0.2563,
+      0.4198,
+      0.2475,
+      0.2361
+     ],
+     [
+      0.607,
+      0.5556,
+      0.6108,
+      0.6836
+     ],
+     [
+      0.6199,
+      0.4456,
+      0.6234,
+      0.3232
+     ],
+     [
+      0.6052,
+      0.5915,
+      0.6096,
+      0.8005
+     ],
+     [
+      0.6719,
+      0.5358,
+      0.6768,
+      0.6178
+     ],
+     [
+      0.671,
+      0.5367,
+      0.6768,
+      0.6178
+     ],
+     [
+      0.7206,
+      0.4501,
+      0.7279,
+      0.3415
+     ],
+     [
+      0.2911,
+      0.4404,
+      0.2839,
+      0.3091
+     ],
+     [
+      0.8358,
+      0.413,
+      0.8403,
+      0.2157
+     ],
+     [
+      0.8358,
+      0.413,
+      0.8403,
+      0.2157
+     ],
+     [
+      0.5554,
+      0.464,
+      0.5579,
+      0.3851
+     ],
+     [
+      0.6743,
+      0.5207,
+      0.6787,
+      0.5712
+     ]
+    ]
+   },
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2021-09-03",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 68,
+  "candidate_status_counts": {
+   "not_proven": 7,
+   "proven": 4,
+   "pending": 54,
+   "download_failed": 1,
+   "too_long": 1,
+   "unavailable": 1
+  },
+  "adapters": {
+   "lens": {
+    "source": "lens",
+    "calls": 1,
+    "errors": []
+   },
+   "youtube_api": {
+    "source": "youtube_api",
+    "queries": 1,
+    "errors": [
+     "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp",
+     "HTTPError: 429 Client Error: Too Many Requests for url: https://www.googleapis.com/youtube/v3/search?part=snipp"
+    ]
+   },
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     17,
+     11,
+     33
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "lens": {
+    "candidates": 12,
+    "checked": 6,
+    "proven": 3
+   },
+   "yandex": {
+    "candidates": 28,
+    "checked": 5,
+    "proven": 2
+   },
+   "tavily": {
+    "candidates": 30,
+    "checked": 5,
+    "proven": 1
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {
+   "lens": [
+    "https://www.youtube.com/watch?v=WIDQbDai2jQ",
+    "https://www.youtube.com/watch?v=DYUvH5ge8c0",
+    "https://www.tiktok.com/@nick_kratka/video/7423111816735247658"
+   ],
+   "tavily": [
+    "https://www.youtube.com/watch?v=rZy2Um1H9do"
+   ],
+   "yandex": [
+    "https://www.youtube.com/watch?v=WIDQbDai2jQ",
+    "https://www.youtube.com/watch?v=DYUvH5ge8c0"
+   ]
+  },
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": "camera_footage",
+   "note": "42 of 42 keyframes are near frames labelled camera_footage"
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "Flooded indoor room filmed from fixed fisheye camera with murky brown water covering floor, papers and furniture floating",
+    "refs": [
+     0,
+     6
+    ],
+    "timestamps_s": [
+     0.0,
+     15.0
+    ]
+   },
+   {
+    "text": "Far wall/windows give way and turbulent floodwater rushes into the room, tossing furniture, debris and containers around",
+    "refs": [
+     12,
+     18,
+     23,
+     29,
+     35,
+     41
+    ],
+    "timestamps_s": [
+     17.0,
+     19.0,
+     20.67,
+     23.0,
+     25.0,
+     27.0
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "flooded building interior",
+   "refs": [
+    0,
+    6,
+    12,
+    18,
+    23,
+    29,
+    35,
+    41
+   ],
+   "timestamps_s": [
+    0.0,
+    15.0,
+    17.0,
+    19.0,
+    20.67,
+    23.0,
+    25.0,
+    27.0
+   ]
+  },
+  "visible_text": [
+   {
+    "text": "House wall collapses in florida hurricane",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     0,
+     6,
+     12,
+     18,
+     23,
+     29,
+     35,
+     41
+    ],
+    "timestamps_s": [
+     0.0,
+     15.0,
+     17.0,
+     19.0,
+     20.67,
+     23.0,
+     25.0,
+     27.0
+    ]
+   },
+   {
+    "text": "TikTok",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     0,
+     6,
+     12,
+     18,
+     23,
+     29,
+     35,
+     41
+    ],
+    "timestamps_s": [
+     0.0,
+     15.0,
+     17.0,
+     19.0,
+     20.67,
+     23.0,
+     25.0,
+     27.0
+    ]
+   },
+   {
+    "text": "@daily_mrpostman",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     0,
+     6,
+     12,
+     18,
+     23,
+     29,
+     35,
+     41
+    ],
+    "timestamps_s": [
+     0.0,
+     15.0,
+     17.0,
+     19.0,
+     20.67,
+     23.0,
+     25.0,
+     27.0
+    ]
+   }
+  ],
+  "likely_location": {
+   "place": "unknown",
+   "country": "unknown",
+   "confidence": 0.0,
+   "lat": null,
+   "lon": null,
+   "reasons": [
+    {
+     "text": "Only generic flooded indoor room visible with no exterior, landmarks, street signs, language cues or architectural details to identify place or country",
+     "refs": [
+      0,
+      6,
+      12,
+      18
+     ],
+     "timestamps_s": [
+      0.0,
+      15.0,
+      17.0,
+      19.0
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "unknown",
+    "country": "unknown",
+    "confidence": 0.0,
+    "lat": null,
+    "lon": null,
+    "cited_frames": [
+     0,
+     6,
+     12,
+     18
+    ],
+    "cited_timestamps_s": [
+     0.0,
+     15.0,
+     17.0,
+     19.0
+    ],
+    "reasons": [
+     {
+      "text": "Only generic flooded indoor room visible with no exterior, landmarks, street signs, language cues or architectural details to identify place or country",
+      "refs": [
+       0,
+       6,
+       12,
+       18
+      ],
+      "timestamps_s": [
+       0.0,
+       15.0,
+       17.0,
+       19.0
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [
+   {
+    "text": "No visible geographic, linguistic or event-specific cues linking the interior to Florida or to Hurricane Milton on 2024-10-09",
+    "refs": [
+     0,
+     6,
+     12,
+     18,
+     23,
+     29,
+     35,
+     41
+    ],
+    "timestamps_s": [
+     0.0,
+     15.0,
+     17.0,
+     19.0,
+     20.67,
+     23.0,
+     25.0,
+     27.0
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   },
+   {
+    "text": "Location caption is an added TikTok overlay from repost account @daily_mrpostman, not an in-camera timestamp, news graphic or original source identifier",
+    "refs": [
+     0,
+     6,
+     12,
+     18
+    ],
+    "timestamps_s": [
+     0.0,
+     15.0,
+     17.0,
+     19.0
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   },
+   {
+    "text": "Interior with office-like desks, cabinets and large open space does not clearly match a house as claimed",
+    "refs": [
+     0,
+     6
+    ],
+    "timestamps_s": [
+     0.0,
+     15.0
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   }
+  ],
+  "media_nature": {
+   "value": "camera_footage",
+   "confidence": 0.81,
+   "cited_frames": [
+    0,
+    6,
+    12,
+    18,
+    23,
+    29,
+    35,
+    41
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    15.0,
+    17.0,
+    19.0,
+    20.67,
+    23.0,
+    25.0,
+    27.0
+   ],
+   "reasons": [
+    {
+     "text": "Fixed fisheye interior view with natural noise, lighting and floating debris; no AI warping",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "Same fixed security-camera view of flooded room with natural detail",
+     "refs": [
+      6
+     ],
+     "timestamps_s": [
+      15.0
+     ]
+    },
+    {
+     "text": "Blurry but shows natural turbulent water entry and debris motion",
+     "refs": [
+      12
+     ],
+     "timestamps_s": [
+      17.0
+     ]
+    },
+    {
+     "text": "Turbulent water and tumbling furniture with natural motion blur",
+     "refs": [
+      18
+     ],
+     "timestamps_s": [
+      19.0
+     ]
+    },
+    {
+     "text": "Continued fixed-view flood rush with natural physics",
+     "refs": [
+      23
+     ],
+     "timestamps_s": [
+      20.67
+     ]
+    },
+    {
+     "text": "Water-borne debris and furniture in fixed fisheye view",
+     "refs": [
+      29
+     ],
+     "timestamps_s": [
+      23.0
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "Fixed fisheye interior view with natural noise, lighting and floating debris; no AI warping"
+    },
+    {
+     "frame": 6,
+     "t": 15.0,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "Same fixed security-camera view of flooded room with natural detail"
+    },
+    {
+     "frame": 12,
+     "t": 17.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "Blurry but shows natural turbulent water entry and debris motion"
+    },
+    {
+     "frame": 18,
+     "t": 19.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "Turbulent water and tumbling furniture with natural motion blur"
+    },
+    {
+     "frame": 23,
+     "t": 20.67,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "Continued fixed-view flood rush with natural physics"
+    },
+    {
+     "frame": 29,
+     "t": 23.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "Water-borne debris and furniture in fixed fisheye view"
+    },
+    {
+     "frame": 35,
+     "t": 25.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "Same CCTV viewpoint with churning water, no synthetic tells"
+    },
+    {
+     "frame": 41,
+     "t": 27.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "Fixed interior camera with dark turbulent floodwater and displaced furniture"
+    }
+   ],
+   "by_class": {
+    "camera_footage": [
+     0,
+     6,
+     12,
+     18,
+     23,
+     29,
+     35,
+     41
+    ]
+   },
+   "summary": "camera footage (frames 0,6,12,18,23,29,35,41) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "place": "Florida",
+   "country_iso2": "US",
+   "event_type": "cyclone"
+  },
+  "queries": [
+   {
+    "q": "wall collapses flood water inside room security camera",
+    "language": "en",
+    "why": "Neutral description to find earliest upload of wall-collapse flood clip"
+   },
+   {
+    "q": "house wall collapses flooding interior video furniture washed away",
+    "language": "en",
+    "why": "Matches overlay text without claimed hurricane name to find recycled copies"
+   },
+   {
+    "q": "CCTV wall collapse flood furniture floating office",
+    "language": "en",
+    "why": "Interior looks office-like, may be original description"
+   },
+   {
+    "q": "indoor security camera wall breaks floodwater rushes in",
+    "language": "en",
+    "why": "Describes key action to locate true source"
+   },
+   {
+    "q": "flooded room fisheye camera wall gives way video",
+    "language": "en",
+    "why": "Fisheye lens is distinctive for reverse image search"
+   },
+   {
+    "q": "muro colapsa inundacion interior camara seguridad video",
+    "language": "es",
+    "why": "Spanish query for Florida/US Hispanic media copies"
+   },
+   {
+    "q": "mur s'effondre inondation interieur video surveillance",
+    "language": "fr",
+    "why": "Find non-English reposts that may predate claim"
+   },
+   {
+    "q": "TikTok @daily_mrpostman house wall collapses florida hurricane",
+    "language": "en",
+    "why": "Trace reposting account to identify source and date"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.01771,
+  "frames_shown": [
+   0,
+   6,
+   12,
+   18,
+   23,
+   29,
+   35,
+   41
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "6": 15.0,
+   "12": 17.0,
+   "18": 19.0,
+   "23": 20.67,
+   "29": 23.0,
+   "35": 25.0,
+   "41": 27.0
+  },
+  "audio": {
+   "status": "no_audio_track"
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_06_t15.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_12_t17.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_18_t19.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_23_t20.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_29_t23.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_35_t25.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G02/frames/frame_41_t27.0.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Florida, USA",
+   "name": "Florida, United States",
+   "lat": 27.7567667,
+   "lon": -81.4639835,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": [
+    {
+     "name": "Florida, Puerto Rico, 00650, United States",
+     "lat": 18.3755793,
+     "lon": -66.5602412,
+     "class": "boundary",
+     "type": "administrative"
+    }
+   ]
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "UNAVAILABLE",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2024-10-06",
+      "m3s": 7.2
+     },
+     {
+      "date": "2024-10-07",
+      "m3s": 8.62
+     },
+     {
+      "date": "2024-10-08",
+      "m3s": 9.96
+     },
+     {
+      "date": "2024-10-09",
+      "m3s": 12.15
+     },
+     {
+      "date": "2024-10-10",
+      "m3s": 13.96
+     },
+     {
+      "date": "2024-10-11",
+      "m3s": 14.56
+     },
+     {
+      "date": "2024-10-12",
+      "m3s": 15.98
+     }
+    ],
+    "baseline": 7.0649999999999995,
+    "peak": 15.98,
+    "ratio": 2.26,
+    "cell": [
+     27.875,
+     -81.47499
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2024-10-06",
+      "mm": 84.0
+     },
+     {
+      "date": "2024-10-07",
+      "mm": 6.9
+     },
+     {
+      "date": "2024-10-08",
+      "mm": 3.2
+     },
+     {
+      "date": "2024-10-09",
+      "mm": 45.8
+     },
+     {
+      "date": "2024-10-10",
+      "mm": 6.8
+     },
+     {
+      "date": "2024-10-11",
+      "mm": 0.8
+     },
+     {
+      "date": "2024-10-12",
+      "mm": 0.2
+     }
+    ],
+    "max_mm": 84.0
+   },
+   "status": "UNKNOWN"
+  },
+  "verdict": "NO_EVIDENCE",
+  "reasons": [
+   "no Copernicus flood activation within 150 km / +-3 d",
+   "discharge ratio 2.26 (peak 16.0 vs baseline 7.1 m3/s), max rain 84.0 mm/day"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened",
+   "event_type=cyclone: cyclone wind/surge damage is not represented in GloFAS river discharge; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen (public hydrology/activation data cannot resolve flash floods, GLOFs or landslides)."
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=27.7567667&longitude=-81.4639835&daily=river_discharge&start_date=2024-10-06&end_date=2024-10-12",
+   "https://www.openstreetmap.org/?mlat=27.7567667&mlon=-81.4639835#map=10/27.7567667/-81.4639835"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Florida cyclone",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Florida+cyclone&mode=art"
+  },
+  "verdict_display": "Insufficient corroboration \u2014 this does not show the event didn't happen"
+ },
+ "media_nature": {
+  "value": "camera_footage",
+  "confidence": 0.81,
+  "cited_frames": [
+   0,
+   6,
+   12,
+   18,
+   23,
+   29,
+   35,
+   41
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   15.0,
+   17.0,
+   19.0,
+   20.67,
+   23.0,
+   25.0,
+   27.0
+  ],
+  "reasons": [
+   {
+    "text": "Fixed fisheye interior view with natural noise, lighting and floating debris; no AI warping",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "Same fixed security-camera view of flooded room with natural detail",
+    "refs": [
+     6
+    ],
+    "timestamps_s": [
+     15.0
+    ]
+   },
+   {
+    "text": "Blurry but shows natural turbulent water entry and debris motion",
+    "refs": [
+     12
+    ],
+    "timestamps_s": [
+     17.0
+    ]
+   },
+   {
+    "text": "Turbulent water and tumbling furniture with natural motion blur",
+    "refs": [
+     18
+    ],
+    "timestamps_s": [
+     19.0
+    ]
+   },
+   {
+    "text": "Continued fixed-view flood rush with natural physics",
+    "refs": [
+     23
+    ],
+    "timestamps_s": [
+     20.67
+    ]
+   },
+   {
+    "text": "Water-borne debris and furniture in fixed fisheye view",
+    "refs": [
+     29
+    ],
+    "timestamps_s": [
+     23.0
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "Fixed fisheye interior view with natural noise, lighting and floating debris; no AI warping"
+   },
+   {
+    "frame": 6,
+    "t": 15.0,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "Same fixed security-camera view of flooded room with natural detail"
+   },
+   {
+    "frame": 12,
+    "t": 17.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "Blurry but shows natural turbulent water entry and debris motion"
+   },
+   {
+    "frame": 18,
+    "t": 19.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "Turbulent water and tumbling furniture with natural motion blur"
+   },
+   {
+    "frame": 23,
+    "t": 20.67,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "Continued fixed-view flood rush with natural physics"
+   },
+   {
+    "frame": 29,
+    "t": 23.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "Water-borne debris and furniture in fixed fisheye view"
+   },
+   {
+    "frame": 35,
+    "t": 25.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "Same CCTV viewpoint with churning water, no synthetic tells"
+   },
+   {
+    "frame": 41,
+    "t": 27.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "Fixed interior camera with dark turbulent floodwater and displaced furniture"
+   }
+  ],
+  "by_class": {
+   "camera_footage": [
+    0,
+    6,
+    12,
+    18,
+    23,
+    29,
+    35,
+    41
+   ]
+  },
+  "summary": "camera footage (frames 0,6,12,18,23,29,35,41) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [
+  {
+   "kind": "independently_dated_earlier_copy",
+   "text": "Footage was already published on 2021-09-03 (earliest copy found), before the claimed event date 2024-10-09.",
+   "evidence": [
+    "https://www.youtube.com/watch?v=WIDQbDai2jQ"
+   ],
+   "date_source": "yt-dlp metadata"
+  }
+ ],
+ "final_verdict": {
+  "label": "RECYCLED_FOOTAGE",
+  "summary": "The footage matches the earliest copy found, published on 2021-09-03 (https://www.youtube.com/watch?v=WIDQbDai2jQ, date independently fetched per yt-dlp metadata), before the claimed event date 2024-10-09. Matcher evidence: 27 temporally consistent frame(s), up to 86 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen. Separately, the AI visual clues report 3 unverified observation(s) that clash with the claim (e.g. \"No visible geographic, linguistic or event-specific cues linking the interior to Florida or to Hurricane Milton on 2024-10-09\", frame ref [0, 6, 12, 18, 23, 29, 35, 41]); these are model observations, not independent evidence and not part of the visual-match proof.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists.",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen."
+  ],
+  "basis": {
+   "earlier_proven_copies": 4,
+   "proven_copies": 4,
+   "physical_supports": null,
+   "unverified_model_observations": 3,
+   "date_conflicts": 0,
+   "media_nature": "camera_footage",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 176.0,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 2.3,
+  "muse": 0.0,
+  "memory": 19.8,
+  "memory_muse_wait_claim": 19.8,
+  "discovery": 116.4,
+  "discovery_by_source": {
+   "lens": 2.7,
+   "youtube_api": 0.8,
+   "tavily": 14.4,
+   "yandex": 67.3
+  },
+  "verify_total_incl_overlap": 37.6,
+  "dates_physical_report_wait": 37.6,
+  "verify_workers": 3,
+  "verify_seconds": 139.5,
+  "verify_checked": 14
+ },
+ "_wall_s": 176.0,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 9
+}

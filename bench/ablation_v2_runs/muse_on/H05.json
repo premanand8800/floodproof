@@ -1,0 +1,883 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "75b7a83ebc",
+ "created_at": "2026-10-30T12:41:20+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/heldout/H05.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/heldout/H05.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "H05.mp4",
+  "duration": 32.80011777777778,
+  "has_audio": true,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   1.0,
+   2.33,
+   4.0,
+   4.33,
+   5.0,
+   5.67,
+   6.0,
+   6.67,
+   7.33,
+   8.0,
+   8.33,
+   9.0,
+   9.67,
+   10.0,
+   10.67,
+   11.67,
+   12.33,
+   13.67,
+   14.33,
+   15.67,
+   16.33,
+   17.0,
+   17.67,
+   18.0,
+   18.67,
+   19.33,
+   19.67,
+   20.67,
+   21.33,
+   22.0,
+   22.33,
+   23.33,
+   24.0,
+   24.33,
+   25.0,
+   25.67,
+   26.0,
+   26.67,
+   27.67,
+   28.33,
+   28.67,
+   29.33,
+   30.0,
+   30.33,
+   31.33,
+   32.0,
+   32.67
+  ]
+ },
+ "claim": {
+  "text": "Rasuwa (Nepal) floods (2026)",
+  "event_date": null,
+  "place": "Rasuwa, Nepal",
+  "source": {
+   "text": "user",
+   "event_date": null,
+   "place": "user"
+  },
+  "event_date_basis": null,
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "NP",
+  "event_type": "flood"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 20.67,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/watch?v=95pUW7cTazE",
+    "title": "\u0e19 \u0e33 \u0e44 \u0e2b \u0e25 \u0e2b \u0e25 \u0e32 \u0e01 \u0e1d \u0e19 \u0e15 \u0e01 \u0e2b \u0e19 \u0e01 \u0e1a \u0e32 \u0e19 \u0e17 \u0e07 \u0e2b \u0e25 \u0e07 \u0e1e \u0e07 \u0e25 \u0e07",
+    "uploader": "\u0e40\u0e01\u0e29\u0e15\u0e23 \u0e2d\u0e35\u0e2a\u0e32\u0e19",
+    "upload_date": "2026-08-12",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T12:40:39+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 44",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 27,
+     "max_inliers": 256,
+     "mirrored": false,
+     "temporal_offset": -4.333662965381508,
+     "n_pairs": 599,
+     "score": 28.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 19,
+       "b_frame": 16,
+       "a_t": 14.33338480126468,
+       "b_t": 9.999721835883172,
+       "inliers": 256,
+       "flip": false
+      },
+      {
+       "a_frame": 21,
+       "b_frame": 19,
+       "a_t": 16.333391982836496,
+       "b_t": 11.999666203059807,
+       "inliers": 255,
+       "flip": false
+      },
+      {
+       "a_frame": 18,
+       "b_frame": 15,
+       "a_t": 13.66671574074074,
+       "b_t": 9.33307371349096,
+       "inliers": 241,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_5945408d.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2026-08-12",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/watch?v=95pUW7cTazE",
+   "title": "\u0e19 \u0e33 \u0e44 \u0e2b \u0e25 \u0e2b \u0e25 \u0e32 \u0e01 \u0e1d \u0e19 \u0e15 \u0e01 \u0e2b \u0e19 \u0e01 \u0e1a \u0e32 \u0e19 \u0e17 \u0e07 \u0e2b \u0e25 \u0e07 \u0e1e \u0e07 \u0e25 \u0e07",
+   "uploader": "\u0e40\u0e01\u0e29\u0e15\u0e23 \u0e2d\u0e35\u0e2a\u0e32\u0e19",
+   "upload_date": "2026-08-12",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T12:40:39+00:00",
+   "adapter": "yandex",
+   "found_via": "frame 44",
+   "also_found_by": [],
+   "match": {
+    "decision": true,
+    "consistent_frames": 27,
+    "max_inliers": 256,
+    "mirrored": false,
+    "temporal_offset": -4.333662965381508,
+    "n_pairs": 599,
+    "score": 28.0,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 19,
+      "b_frame": 16,
+      "a_t": 14.33338480126468,
+      "b_t": 9.999721835883172,
+      "inliers": 256,
+      "flip": false
+     },
+     {
+      "a_frame": 21,
+      "b_frame": 19,
+      "a_t": 16.333391982836496,
+      "b_t": 11.999666203059807,
+      "inliers": 255,
+      "flip": false
+     },
+     {
+      "a_frame": 18,
+      "b_frame": 15,
+      "a_t": 13.66671574074074,
+      "b_t": 9.33307371349096,
+      "inliers": 241,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/yandex_5945408d.png",
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2026-08-12",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 69,
+  "candidate_status_counts": {
+   "download_failed": 1,
+   "not_proven": 8,
+   "proven": 1,
+   "pending": 55,
+   "unavailable": 2,
+   "too_long": 2
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     2,
+     44,
+     21
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 40,
+    "checked": 4,
+    "proven": 1
+   },
+   "tavily": {
+    "candidates": 29,
+    "checked": 10,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {
+   "yandex": [
+    "https://www.youtube.com/watch?v=95pUW7cTazE"
+   ]
+  },
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": "camera_footage",
+   "note": "48 of 48 keyframes are near frames labelled camera_footage"
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "muddy brown flash flood and debris sweeping through a mountain settlement with low houses with green metal roofs, viewed from elevated viewpoint with onlookers holding umbrellas in foreground in heavy rain",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "shaky blurry close-up ground-level view of wet path, vegetation and a person's legs/feet moving, likely person filming while moving",
+    "refs": [
+     7,
+     13
+    ],
+    "timestamps_s": [
+     6.0,
+     9.67
+    ]
+   },
+   {
+    "text": "wide elevated views of debris-covered flooded village with mud, destroyed ground, scattered trees, green-roof houses in background and black-and-white concrete barriers in foreground during heavy rain",
+    "refs": [
+     20,
+     27,
+     34,
+     40,
+     47
+    ],
+    "timestamps_s": [
+     15.67,
+     19.67,
+     24.33,
+     28.33,
+     32.67
+    ]
+   },
+   {
+    "text": "loud rushing water with overlapping indistinct crowd shouting; no clear words verifiable",
+    "refs": [
+     "audio@0.0"
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "flooded mountain village",
+   "refs": [
+    0,
+    20,
+    27,
+    34
+   ],
+   "timestamps_s": [
+    0.0,
+    15.67,
+    19.67,
+    24.33
+   ]
+  },
+  "visible_text": [],
+  "likely_location": {
+   "place": "Unidentified Himalayan mountain village",
+   "country": "Unknown",
+   "confidence": 0.35,
+   "lat": null,
+   "lon": null,
+   "reasons": [
+    {
+     "text": "steep misty hills, monsoon rain, small houses with green metal roofs and concrete road barriers typical of Himalayan foothills in Nepal/North India",
+     "refs": [
+      0,
+      20,
+      27,
+      34
+     ],
+     "timestamps_s": [
+      0.0,
+      15.67,
+      19.67,
+      24.33
+     ]
+    },
+    {
+     "text": "muddy debris-rich flash flood character consistent with Himalayan glacial/cloudburst events, but no distinctive landmark, sign or language to pinpoint village",
+     "refs": [
+      20,
+      27,
+      40,
+      47
+     ],
+     "timestamps_s": [
+      15.67,
+      19.67,
+      28.33,
+      32.67
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "Unidentified Himalayan mountain village",
+    "country": "Unknown",
+    "confidence": 0.35,
+    "lat": null,
+    "lon": null,
+    "cited_frames": [
+     0,
+     20,
+     27,
+     34,
+     40,
+     47
+    ],
+    "cited_timestamps_s": [
+     0.0,
+     15.67,
+     19.67,
+     24.33,
+     28.33,
+     32.67
+    ],
+    "reasons": [
+     {
+      "text": "steep misty hills, monsoon rain, small houses with green metal roofs and concrete road barriers typical of Himalayan foothills in Nepal/North India",
+      "refs": [
+       0,
+       20,
+       27,
+       34
+      ],
+      "timestamps_s": [
+       0.0,
+       15.67,
+       19.67,
+       24.33
+      ]
+     },
+     {
+      "text": "muddy debris-rich flash flood character consistent with Himalayan glacial/cloudburst events, but no distinctive landmark, sign or language to pinpoint village",
+      "refs": [
+       20,
+       27,
+       40,
+       47
+      ],
+      "timestamps_s": [
+       15.67,
+       19.67,
+       28.33,
+       32.67
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [],
+  "media_nature": {
+   "value": "camera_footage",
+   "confidence": 0.88,
+   "cited_frames": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    6.0,
+    9.67,
+    15.67,
+    19.67,
+    24.33,
+    28.33,
+    32.67
+   ],
+   "reasons": [
+    {
+     "text": "handheld phone view of real flood with natural rain, umbrellas, noise and compression",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "blurry natural motion blur of ground, vegetation and legs while moving, no AI cues",
+     "refs": [
+      7
+     ],
+     "timestamps_s": [
+      6.0
+     ]
+    },
+    {
+     "text": "blurry natural ground vegetation and foot, handheld shake",
+     "refs": [
+      13
+     ],
+     "timestamps_s": [
+      9.67
+     ]
+    },
+    {
+     "text": "natural wide flood scene with haze, debris detail and real barriers",
+     "refs": [
+      20
+     ],
+     "timestamps_s": [
+      15.67
+     ]
+    },
+    {
+     "text": "natural flood debris, trees and houses with atmospheric haze",
+     "refs": [
+      27
+     ],
+     "timestamps_s": [
+      19.67
+     ]
+    },
+    {
+     "text": "consistent real flood view with natural texture and rain haze",
+     "refs": [
+      34
+     ],
+     "timestamps_s": [
+      24.33
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "handheld phone view of real flood with natural rain, umbrellas, noise and compression"
+    },
+    {
+     "frame": 7,
+     "t": 6.0,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "blurry natural motion blur of ground, vegetation and legs while moving, no AI cues"
+    },
+    {
+     "frame": 13,
+     "t": 9.67,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "blurry natural ground vegetation and foot, handheld shake"
+    },
+    {
+     "frame": 20,
+     "t": 15.67,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "natural wide flood scene with haze, debris detail and real barriers"
+    },
+    {
+     "frame": 27,
+     "t": 19.67,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "natural flood debris, trees and houses with atmospheric haze"
+    },
+    {
+     "frame": 34,
+     "t": 24.33,
+     "label": "camera_footage",
+     "confidence": 0.9,
+     "reason": "consistent real flood view with natural texture and rain haze"
+    },
+    {
+     "frame": 40,
+     "t": 28.33,
+     "label": "camera_footage",
+     "confidence": 0.88,
+     "reason": "motion-blurred but natural flood and barrier detail"
+    },
+    {
+     "frame": 47,
+     "t": 32.67,
+     "label": "camera_footage",
+     "confidence": 0.88,
+     "reason": "natural panning blur of flooded village, no synthetic warping"
+    }
+   ],
+   "by_class": {
+    "camera_footage": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     34,
+     40,
+     47
+    ]
+   },
+   "summary": "camera footage (frames 0,7,13,20,27,34,40,47) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "place": "Rasuwa",
+   "country_iso2": "NP",
+   "event_type": "flood"
+  },
+  "queries": [
+   {
+    "q": "mountain village flash flood mud debris green roofs video umbrellas",
+    "language": "en",
+    "why": "neutral visual description to find earliest upload without using claim name"
+   },
+   {
+    "q": "Himalayan village buried mud flood houses swept away video",
+    "language": "en",
+    "why": "neutral English query for recycled Himalayan flood clips"
+   },
+   {
+    "q": "Uttarkashi Dharali flash flood village video",
+    "language": "en",
+    "why": "similar green-roof Himalayan village flood in India often confused with Nepal"
+   },
+   {
+    "q": "Rasuwa flood village footage Lende river",
+    "language": "en",
+    "why": "check claimed Nepal event for matching viewpoint"
+   },
+   {
+    "q": "\u0930\u0938\u0941\u0935\u093e \u092c\u093e\u0922\u0940 \u0917\u093e\u0909\u0901 \u092d\u093f\u0921\u093f\u092f\u094b",
+    "language": "ne",
+    "why": "Nepali query for claimed Rasuwa flood source"
+   },
+   {
+    "q": "\u0939\u093f\u092e\u093e\u0932\u0940 \u0917\u093e\u0909\u0901\u092e\u093e \u092c\u093e\u0922\u0940 \u092a\u0939\u093f\u0930\u094b \u0939\u0930\u093f\u092f\u094b \u091b\u093e\u0928\u094b \u0918\u0930 \u092d\u093f\u0921\u093f\u092f\u094b",
+    "language": "ne",
+    "why": "Nepali visual description to find original upload"
+   },
+   {
+    "q": "\u092a\u0939\u093e\u0921\u093c\u0940 \u0917\u093e\u0902\u0935 \u092e\u0947\u0902 \u092c\u093e\u0922\u093c \u092e\u0932\u092c\u093e \u0918\u0930 \u092c\u0939 \u0917\u090f \u0935\u0940\u0921\u093f\u092f\u094b",
+    "language": "hi",
+    "why": "Hindi query for Indian Himalayan flood videos that may be recycled as Nepal"
+   },
+   {
+    "q": "Uttarakhand Himachal cloudburst village debris flood 2025 video",
+    "language": "en",
+    "why": "search recent monsoon events with same landscape for alternate source"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.02513,
+  "frames_shown": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "7": 6.0,
+   "13": 9.67,
+   "20": 15.67,
+   "27": 19.67,
+   "34": 24.33,
+   "40": 28.33,
+   "47": 32.67
+  },
+  "audio": {
+   "has_speech": true,
+   "language": null,
+   "transcript_summary": "Loud rushing water with overlapping indistinct crowd shouting; no clear words, place names, or dates can be verified from this noisy audio.",
+   "spoken_place_names": [],
+   "spoken_dates": [],
+   "partial_dates": [],
+   "other_sounds": [
+    "rushing water",
+    "crowd shouting",
+    "loud background noise"
+   ],
+   "dropped_untimed": 0,
+   "status": "ok",
+   "model": "meta/muse-spark-open",
+   "cost_usd": 0.01198,
+   "truncated": false,
+   "analyzed_seconds": 32.80011777777778,
+   "attempts": 2
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H05/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H05/frames/frame_07_t6.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H05/frames/frame_13_t9.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H05/frames/frame_20_t15.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H05/frames/frame_27_t19.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H05/frames/frame_34_t24.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H05/frames/frame_40_t28.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H05/frames/frame_47_t32.7.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "status": "NOT_RUN",
+  "reason": "no claim date supplied"
+ },
+ "media_nature": {
+  "value": "camera_footage",
+  "confidence": 0.88,
+  "cited_frames": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   6.0,
+   9.67,
+   15.67,
+   19.67,
+   24.33,
+   28.33,
+   32.67
+  ],
+  "reasons": [
+   {
+    "text": "handheld phone view of real flood with natural rain, umbrellas, noise and compression",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "blurry natural motion blur of ground, vegetation and legs while moving, no AI cues",
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     6.0
+    ]
+   },
+   {
+    "text": "blurry natural ground vegetation and foot, handheld shake",
+    "refs": [
+     13
+    ],
+    "timestamps_s": [
+     9.67
+    ]
+   },
+   {
+    "text": "natural wide flood scene with haze, debris detail and real barriers",
+    "refs": [
+     20
+    ],
+    "timestamps_s": [
+     15.67
+    ]
+   },
+   {
+    "text": "natural flood debris, trees and houses with atmospheric haze",
+    "refs": [
+     27
+    ],
+    "timestamps_s": [
+     19.67
+    ]
+   },
+   {
+    "text": "consistent real flood view with natural texture and rain haze",
+    "refs": [
+     34
+    ],
+    "timestamps_s": [
+     24.33
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "handheld phone view of real flood with natural rain, umbrellas, noise and compression"
+   },
+   {
+    "frame": 7,
+    "t": 6.0,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "blurry natural motion blur of ground, vegetation and legs while moving, no AI cues"
+   },
+   {
+    "frame": 13,
+    "t": 9.67,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "blurry natural ground vegetation and foot, handheld shake"
+   },
+   {
+    "frame": 20,
+    "t": 15.67,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "natural wide flood scene with haze, debris detail and real barriers"
+   },
+   {
+    "frame": 27,
+    "t": 19.67,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "natural flood debris, trees and houses with atmospheric haze"
+   },
+   {
+    "frame": 34,
+    "t": 24.33,
+    "label": "camera_footage",
+    "confidence": 0.9,
+    "reason": "consistent real flood view with natural texture and rain haze"
+   },
+   {
+    "frame": 40,
+    "t": 28.33,
+    "label": "camera_footage",
+    "confidence": 0.88,
+    "reason": "motion-blurred but natural flood and barrier detail"
+   },
+   {
+    "frame": 47,
+    "t": 32.67,
+    "label": "camera_footage",
+    "confidence": 0.88,
+    "reason": "natural panning blur of flooded village, no synthetic warping"
+   }
+  ],
+  "by_class": {
+   "camera_footage": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    34,
+    40,
+    47
+   ]
+  },
+  "summary": "camera footage (frames 0,7,13,20,27,34,40,47) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "UNVERIFIED",
+  "summary": "The footage matches a previously published copy (https://www.youtube.com/watch?v=95pUW7cTazE, uploaded 2026-08-12), but no claimed event date was given, so recycling relative to the claim is not established. The physical-world check was not available or inconclusive. The claim could not be verified from the available evidence.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 1,
+   "physical_supports": null,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "camera_footage",
+   "claim_date_basis": null
+  }
+ },
+ "timing_s": 161.0,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 1.9,
+  "memory": 20.7,
+  "muse": 27.8,
+  "memory_muse_wait_claim": 27.8,
+  "discovery": 88.7,
+  "discovery_by_source": {
+   "tavily": 13.7,
+   "yandex": 67.9
+  },
+  "verify_total_incl_overlap": 42.5,
+  "dates_physical_report_wait": 42.5,
+  "verify_workers": 3,
+  "verify_seconds": 117.5,
+  "verify_checked": 14
+ },
+ "_wall_s": 161.0,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 0
+}

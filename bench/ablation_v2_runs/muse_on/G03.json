@@ -1,0 +1,955 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "0779b2f225",
+ "created_at": "2026-10-30T12:53:23+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/global/G03.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/G03.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "G03.mp4",
+  "duration": 8.266666666666667,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 25,
+  "keyframe_times_s": [
+   0.0,
+   0.33,
+   0.67,
+   1.0,
+   1.33,
+   1.67,
+   2.0,
+   2.33,
+   2.67,
+   3.0,
+   3.33,
+   3.67,
+   4.0,
+   4.33,
+   4.67,
+   5.0,
+   5.33,
+   5.67,
+   6.0,
+   6.33,
+   6.67,
+   7.0,
+   7.33,
+   7.67,
+   8.0
+  ]
+ },
+ "claim": {
+  "text": "Tornado in Texas (mirrored YouTube upload 'Tornado in Texas')",
+  "event_date": "2024-05-29",
+  "place": "Texas, USA",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "US",
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 12.33,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "NOT_FOUND",
+  "proven_matches": [],
+  "earliest_proven_copy": null,
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 68,
+  "candidate_status_counts": {
+   "not_proven": 6,
+   "download_failed": 1,
+   "too_long": 7,
+   "pending": 54
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     0,
+     4,
+     9
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 38,
+    "checked": 4,
+    "proven": 0
+   },
+   "tavily": {
+    "candidates": 30,
+    "checked": 10,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {},
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": null,
+   "note": null
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "A large dark tornado funnel churning over brick apartment-like buildings under stormy clouds, with debris/birds in the air",
+    "refs": [
+     0,
+     3,
+     7
+    ],
+    "timestamps_s": [
+     0.0,
+     1.0,
+     2.33
+    ]
+   },
+   {
+    "text": "A massive dark funnel with glowing orange core looming over commercial buildings and parking lot, with bright flashes and lightning bolt through the funnel",
+    "refs": [
+     10,
+     14,
+     17,
+     21,
+     24
+    ],
+    "timestamps_s": [
+     3.33,
+     4.67,
+     5.67,
+     7.0,
+     8.0
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "dense urban street",
+   "refs": [
+    0,
+    3,
+    7,
+    10,
+    14,
+    17,
+    21,
+    24
+   ],
+   "timestamps_s": [
+    0.0,
+    1.0,
+    2.33,
+    3.33,
+    4.67,
+    5.67,
+    7.0,
+    8.0
+   ]
+  },
+  "visible_text": [
+   {
+    "text": "Torndo in USA",
+    "language": "en",
+    "is_place": false,
+    "refs": [
+     0,
+     3,
+     7,
+     10,
+     14,
+     17,
+     21,
+     24
+    ],
+    "timestamps_s": [
+     0.0,
+     1.0,
+     2.33,
+     3.33,
+     4.67,
+     5.67,
+     7.0,
+     8.0
+    ]
+   }
+  ],
+  "likely_location": {
+   "place": "unknown",
+   "country": "unknown",
+   "confidence": 0.05,
+   "lat": null,
+   "lon": null,
+   "reasons": [
+    {
+     "text": "No identifiable landmarks, street signs or geographic features visible; buildings are generic and blurry",
+     "refs": [
+      0,
+      3,
+      10,
+      21
+     ],
+     "timestamps_s": [
+      0.0,
+      1.0,
+      3.33,
+      7.0
+     ]
+    },
+    {
+     "text": "Visuals show synthetic-looking physics and textures suggesting AI generation rather than a real place",
+     "refs": [
+      10,
+      14,
+      17,
+      21,
+      24
+     ],
+     "timestamps_s": [
+      3.33,
+      4.67,
+      5.67,
+      7.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "unknown",
+    "country": "unknown",
+    "confidence": 0.05,
+    "lat": null,
+    "lon": null,
+    "cited_frames": [
+     0,
+     3,
+     10,
+     14,
+     17,
+     21,
+     24
+    ],
+    "cited_timestamps_s": [
+     0.0,
+     1.0,
+     3.33,
+     4.67,
+     5.67,
+     7.0,
+     8.0
+    ],
+    "reasons": [
+     {
+      "text": "No identifiable landmarks, street signs or geographic features visible; buildings are generic and blurry",
+      "refs": [
+       0,
+       3,
+       10,
+       21
+      ],
+      "timestamps_s": [
+       0.0,
+       1.0,
+       3.33,
+       7.0
+      ]
+     },
+     {
+      "text": "Visuals show synthetic-looking physics and textures suggesting AI generation rather than a real place",
+      "refs": [
+       10,
+       14,
+       17,
+       21,
+       24
+      ],
+      "timestamps_s": [
+       3.33,
+       4.67,
+       5.67,
+       7.0,
+       8.0
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [
+   {
+    "text": "On-screen caption misspelled as 'Torndo in USA' with no mention of Texas",
+    "refs": [
+     0,
+     3,
+     7,
+     10,
+     14,
+     17,
+     21,
+     24
+    ],
+    "timestamps_s": [
+     0.0,
+     1.0,
+     2.33,
+     3.33,
+     4.67,
+     5.67,
+     7.0,
+     8.0
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   },
+   {
+    "text": "Tornado shows impossible physics: glowing orange core, overexposed white flash and cartoonish lightning bolt",
+    "refs": [
+     10,
+     14,
+     17,
+     21,
+     24
+    ],
+    "timestamps_s": [
+     3.33,
+     4.67,
+     5.67,
+     7.0,
+     8.0
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   },
+   {
+    "text": "Overly smooth plastic textures, morphing clouds and lack of natural noise/shake indicate synthetic CGI/AI, not real 2024 Texas footage",
+    "refs": [
+     0,
+     3,
+     7,
+     10,
+     14,
+     17,
+     21,
+     24
+    ],
+    "timestamps_s": [
+     0.0,
+     1.0,
+     2.33,
+     3.33,
+     4.67,
+     5.67,
+     7.0,
+     8.0
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   }
+  ],
+  "media_nature": {
+   "value": "likely_ai_generated",
+   "confidence": 0.88,
+   "cited_frames": [
+    0,
+    3,
+    7,
+    10,
+    14,
+    17,
+    21,
+    24
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    1.0,
+    2.33,
+    3.33,
+    4.67,
+    5.67,
+    7.0,
+    8.0
+   ],
+   "reasons": [
+    {
+     "text": "Plastic-smooth storm clouds and unnatural lighting, low detail brick building",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "Overly smooth dark funnel with floating debris, synthetic texture",
+     "refs": [
+      3
+     ],
+     "timestamps_s": [
+      1.0
+     ]
+    },
+    {
+     "text": "Warped clouds and smeared building details typical of synthetic video",
+     "refs": [
+      7
+     ],
+     "timestamps_s": [
+      2.33
+     ]
+    },
+    {
+     "text": "Impossible glowing orange tornado core with plastic texture",
+     "refs": [
+      10
+     ],
+     "timestamps_s": [
+      3.33
+     ]
+    },
+    {
+     "text": "Intense white overexposure bloom inside funnel, impossible physics",
+     "refs": [
+      14
+     ],
+     "timestamps_s": [
+      4.67
+     ]
+    },
+    {
+     "text": "Cartoonish lightning bolt composited through glowing funnel",
+     "refs": [
+      17
+     ],
+     "timestamps_s": [
+      5.67
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "likely_ai_generated",
+     "confidence": 0.85,
+     "reason": "Plastic-smooth storm clouds and unnatural lighting, low detail brick building"
+    },
+    {
+     "frame": 3,
+     "t": 1.0,
+     "label": "likely_ai_generated",
+     "confidence": 0.85,
+     "reason": "Overly smooth dark funnel with floating debris, synthetic texture"
+    },
+    {
+     "frame": 7,
+     "t": 2.33,
+     "label": "likely_ai_generated",
+     "confidence": 0.85,
+     "reason": "Warped clouds and smeared building details typical of synthetic video"
+    },
+    {
+     "frame": 10,
+     "t": 3.33,
+     "label": "likely_ai_generated",
+     "confidence": 0.9,
+     "reason": "Impossible glowing orange tornado core with plastic texture"
+    },
+    {
+     "frame": 14,
+     "t": 4.67,
+     "label": "likely_ai_generated",
+     "confidence": 0.92,
+     "reason": "Intense white overexposure bloom inside funnel, impossible physics"
+    },
+    {
+     "frame": 17,
+     "t": 5.67,
+     "label": "likely_ai_generated",
+     "confidence": 0.9,
+     "reason": "Cartoonish lightning bolt composited through glowing funnel"
+    },
+    {
+     "frame": 21,
+     "t": 7.0,
+     "label": "likely_ai_generated",
+     "confidence": 0.9,
+     "reason": "Glowing orange funnel with smooth synthetic smoke"
+    },
+    {
+     "frame": 24,
+     "t": 8.0,
+     "label": "likely_ai_generated",
+     "confidence": 0.9,
+     "reason": "Same glowing synthetic funnel, overly smooth and cinematic"
+    }
+   ],
+   "by_class": {
+    "likely_ai_generated": [
+     0,
+     3,
+     7,
+     10,
+     14,
+     17,
+     21,
+     24
+    ]
+   },
+   "summary": "likely AI-generated shots (frames 0,3,7,10,14,17,21,24) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "place": "Texas",
+   "country_iso2": "US",
+   "event_type": "unknown"
+  },
+  "queries": [
+   {
+    "q": "\"Torndo in USA\" tornado video",
+    "language": "en",
+    "why": "Exact misspelled caption to find earliest upload"
+   },
+   {
+    "q": "glowing orange tornado lightning viral video fake",
+    "language": "en",
+    "why": "Distinctive glowing funnel to find source/debunk"
+   },
+   {
+    "q": "AI tornado USA TikTok",
+    "language": "en",
+    "why": "Likely AI-generated clip shared on short-form platforms"
+   },
+   {
+    "q": "Tornado in Texas mirrored YouTube upload",
+    "language": "en",
+    "why": "Claimed title to trace mirrored upload"
+   },
+   {
+    "q": "fiery tornado parking lot lightning AI video",
+    "language": "en",
+    "why": "Second scene description to find original"
+   },
+   {
+    "q": "tornado over brick building dark funnel video USA",
+    "language": "en",
+    "why": "First scene description to find original"
+   },
+   {
+    "q": "tornado Texas May 29 2024 real footage",
+    "language": "en",
+    "why": "Verify what real Texas event occurred on claimed date"
+   },
+   {
+    "q": "fake tornado video Orange glow debunked",
+    "language": "en",
+    "why": "Find fact-checks of synthetic tornado clips"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.01347,
+  "frames_shown": [
+   0,
+   3,
+   7,
+   10,
+   14,
+   17,
+   21,
+   24
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "3": 1.0,
+   "7": 2.33,
+   "10": 3.33,
+   "14": 4.67,
+   "17": 5.67,
+   "21": 7.0,
+   "24": 8.0
+  },
+  "audio": {
+   "status": "no_audio_track"
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G03/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G03/frames/frame_03_t1.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G03/frames/frame_07_t2.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G03/frames/frame_10_t3.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G03/frames/frame_14_t4.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G03/frames/frame_17_t5.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G03/frames/frame_21_t7.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G03/frames/frame_24_t8.0.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Texas, USA",
+   "name": "Texas, United States",
+   "lat": 31.2638905,
+   "lon": -98.5456116,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": [
+    {
+     "name": "Texas County, Missouri, United States",
+     "lat": 37.3354601,
+     "lon": -91.9808332,
+     "class": "boundary",
+     "type": "administrative"
+    },
+    {
+     "name": "Texas County, Oklahoma, United States",
+     "lat": 36.7390314,
+     "lon": -101.4953594,
+     "class": "boundary",
+     "type": "administrative"
+    }
+   ]
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "UNAVAILABLE",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2024-05-26",
+      "m3s": 20.09
+     },
+     {
+      "date": "2024-05-27",
+      "m3s": 21.65
+     },
+     {
+      "date": "2024-05-28",
+      "m3s": 22.23
+     },
+     {
+      "date": "2024-05-29",
+      "m3s": 19.94
+     },
+     {
+      "date": "2024-05-30",
+      "m3s": 18.41
+     },
+     {
+      "date": "2024-05-31",
+      "m3s": 12.71
+     },
+     {
+      "date": "2024-06-01",
+      "m3s": 9.05
+     }
+    ],
+    "baseline": 11.45,
+    "peak": 22.23,
+    "ratio": 1.94,
+    "cell": [
+     31.175003,
+     -98.62499
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2024-05-26",
+      "mm": 4.7
+     },
+     {
+      "date": "2024-05-27",
+      "mm": 1.2
+     },
+     {
+      "date": "2024-05-28",
+      "mm": 0.0
+     },
+     {
+      "date": "2024-05-29",
+      "mm": 13.1
+     },
+     {
+      "date": "2024-05-30",
+      "mm": 6.3
+     },
+     {
+      "date": "2024-05-31",
+      "mm": 10.2
+     },
+     {
+      "date": "2024-06-01",
+      "mm": 4.1
+     }
+    ],
+    "max_mm": 13.1
+   },
+   "status": "UNKNOWN"
+  },
+  "verdict": "NO_EVIDENCE",
+  "reasons": [
+   "no Copernicus flood activation within 150 km / +-3 d",
+   "discharge ratio 1.94 (peak 22.2 vs baseline 11.4 m3/s), max rain 13.1 mm/day"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened",
+   "event_type=unknown: event type unknown, so the river-flood model may not apply; strongest negative verdict is NO_EVIDENCE, never CONTRADICTS",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen (public hydrology/activation data cannot resolve flash floods, GLOFs or landslides)."
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=31.2638905&longitude=-98.5456116&daily=river_discharge&start_date=2024-05-26&end_date=2024-06-01",
+   "https://www.openstreetmap.org/?mlat=31.2638905&mlon=-98.5456116#map=10/31.2638905/-98.5456116"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Texas flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Texas+flood&mode=artlist"
+  },
+  "verdict_display": "Insufficient corroboration \u2014 this does not show the event didn't happen"
+ },
+ "media_nature": {
+  "value": "likely_ai_generated",
+  "confidence": 0.88,
+  "cited_frames": [
+   0,
+   3,
+   7,
+   10,
+   14,
+   17,
+   21,
+   24
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   1.0,
+   2.33,
+   3.33,
+   4.67,
+   5.67,
+   7.0,
+   8.0
+  ],
+  "reasons": [
+   {
+    "text": "Plastic-smooth storm clouds and unnatural lighting, low detail brick building",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "Overly smooth dark funnel with floating debris, synthetic texture",
+    "refs": [
+     3
+    ],
+    "timestamps_s": [
+     1.0
+    ]
+   },
+   {
+    "text": "Warped clouds and smeared building details typical of synthetic video",
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     2.33
+    ]
+   },
+   {
+    "text": "Impossible glowing orange tornado core with plastic texture",
+    "refs": [
+     10
+    ],
+    "timestamps_s": [
+     3.33
+    ]
+   },
+   {
+    "text": "Intense white overexposure bloom inside funnel, impossible physics",
+    "refs": [
+     14
+    ],
+    "timestamps_s": [
+     4.67
+    ]
+   },
+   {
+    "text": "Cartoonish lightning bolt composited through glowing funnel",
+    "refs": [
+     17
+    ],
+    "timestamps_s": [
+     5.67
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "likely_ai_generated",
+    "confidence": 0.85,
+    "reason": "Plastic-smooth storm clouds and unnatural lighting, low detail brick building"
+   },
+   {
+    "frame": 3,
+    "t": 1.0,
+    "label": "likely_ai_generated",
+    "confidence": 0.85,
+    "reason": "Overly smooth dark funnel with floating debris, synthetic texture"
+   },
+   {
+    "frame": 7,
+    "t": 2.33,
+    "label": "likely_ai_generated",
+    "confidence": 0.85,
+    "reason": "Warped clouds and smeared building details typical of synthetic video"
+   },
+   {
+    "frame": 10,
+    "t": 3.33,
+    "label": "likely_ai_generated",
+    "confidence": 0.9,
+    "reason": "Impossible glowing orange tornado core with plastic texture"
+   },
+   {
+    "frame": 14,
+    "t": 4.67,
+    "label": "likely_ai_generated",
+    "confidence": 0.92,
+    "reason": "Intense white overexposure bloom inside funnel, impossible physics"
+   },
+   {
+    "frame": 17,
+    "t": 5.67,
+    "label": "likely_ai_generated",
+    "confidence": 0.9,
+    "reason": "Cartoonish lightning bolt composited through glowing funnel"
+   },
+   {
+    "frame": 21,
+    "t": 7.0,
+    "label": "likely_ai_generated",
+    "confidence": 0.9,
+    "reason": "Glowing orange funnel with smooth synthetic smoke"
+   },
+   {
+    "frame": 24,
+    "t": 8.0,
+    "label": "likely_ai_generated",
+    "confidence": 0.9,
+    "reason": "Same glowing synthetic funnel, overly smooth and cinematic"
+   }
+  ],
+  "by_class": {
+   "likely_ai_generated": [
+    0,
+    3,
+    7,
+    10,
+    14,
+    17,
+    21,
+    24
+   ]
+  },
+  "summary": "likely AI-generated shots (frames 0,3,7,10,14,17,21,24) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "UNVERIFIED",
+  "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. Insufficient corroboration \u2014 this does not show the event didn't happen (physical-world check). The claim could not be verified from the available evidence. Media nature (AI observation from frames 0,3,7,10,14,17,21,24, not proof; does not change the label): Not camera footage: likely AI-generated (AI observation)  Separately, the AI visual clues report 3 unverified observation(s) that clash with the claim (e.g. \"On-screen caption misspelled as 'Torndo in USA' with no mention of Texas\", frame ref [0, 3, 7, 10, 14, 17, 21, 24]); these are model observations, not independent evidence and not part of the visual-match proof.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists.",
+   "Insufficient corroboration \u2014 this does not show the event didn't happen."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 0,
+   "physical_supports": null,
+   "unverified_model_observations": 3,
+   "date_conflicts": 0,
+   "media_nature": "likely_ai_generated",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 94.3,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 1.3,
+  "muse": 9.9,
+  "memory": 12.3,
+  "memory_muse_wait_claim": 12.3,
+  "discovery": 65.2,
+  "discovery_by_source": {
+   "tavily": 12.3,
+   "yandex": 65.2
+  },
+  "verify_total_incl_overlap": 15.5,
+  "dates_physical_report_wait": 15.5,
+  "verify_workers": 3,
+  "verify_seconds": 28.4,
+  "verify_checked": 14
+ },
+ "_wall_s": 94.3,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 0
+}

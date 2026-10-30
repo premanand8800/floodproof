@@ -1,0 +1,1248 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "6e4ee37579",
+ "created_at": "2026-10-30T12:47:41+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/heldout/H08.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/heldout/H08.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "H08.mp4",
+  "duration": 25.766666666666666,
+  "has_audio": true,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   0.33,
+   1.0,
+   1.33,
+   2.0,
+   2.67,
+   3.0,
+   3.67,
+   4.0,
+   4.67,
+   5.33,
+   5.67,
+   6.33,
+   7.0,
+   7.33,
+   8.0,
+   8.33,
+   9.0,
+   9.67,
+   10.0,
+   10.67,
+   11.0,
+   11.67,
+   12.33,
+   12.67,
+   13.33,
+   14.0,
+   14.33,
+   15.0,
+   15.33,
+   16.0,
+   16.67,
+   17.0,
+   17.67,
+   18.0,
+   18.67,
+   19.33,
+   19.67,
+   20.33,
+   21.0,
+   21.33,
+   22.0,
+   22.33,
+   23.33,
+   24.0,
+   24.33,
+   25.0,
+   25.67
+  ]
+ },
+ "claim": {
+  "text": "Elephant rescuing man in Bhotekoshi flood, Nepal (Aug 2026)",
+  "event_date": "2026-08-26",
+  "place": "Bhotekoshi, Nepal",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "NP",
+  "event_type": "flood"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 6.83,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/shorts/XYYRj6hyLNY",
+    "title": "Elephant 'Rescues' Man From Raging Floodwaters",
+    "uploader": "Pakistan Observer",
+    "upload_date": "2026-08-27",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T12:46:20+00:00",
+    "adapter": "tavily",
+    "found_via": "muse query: elephant rescues man from flood river video",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 15,
+     "max_inliers": 54,
+     "mirrored": true,
+     "temporal_offset": -2.666666666666668,
+     "n_pairs": 66,
+     "score": 15.54,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 23,
+       "b_frame": 23,
+       "a_t": 12.333333333333334,
+       "b_t": 9.666666666666666,
+       "inliers": 54,
+       "flip": true
+      },
+      {
+       "a_frame": 20,
+       "b_frame": 20,
+       "a_t": 10.666666666666666,
+       "b_t": 8.333333333333334,
+       "inliers": 52,
+       "flip": true
+      },
+      {
+       "a_frame": 26,
+       "b_frame": 26,
+       "a_t": 14.0,
+       "b_t": 11.0,
+       "inliers": 47,
+       "flip": true
+      }
+     ]
+    },
+    "evidence_png": "evidence/tavily_710fd52b.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2026-08-27",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/shorts/3ce4hJZiX1M",
+    "title": "Baby Elephant Rescues Man From Getting Drowned In Flood",
+    "uploader": "The Voice Of Sikkim",
+    "upload_date": "2026-08-09",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T12:46:35+00:00",
+    "adapter": "tavily",
+    "found_via": "muse query: elephant rescues man from flood river video",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 12,
+     "max_inliers": 37,
+     "mirrored": false,
+     "temporal_offset": 5.653333333333334,
+     "n_pairs": 21,
+     "score": 12.37,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 20,
+       "b_frame": 27,
+       "a_t": 10.666666666666666,
+       "b_t": 16.32,
+       "inliers": 37,
+       "flip": false
+      },
+      {
+       "a_frame": 21,
+       "b_frame": 28,
+       "a_t": 11.0,
+       "b_t": 16.64,
+       "inliers": 31,
+       "flip": false
+      },
+      {
+       "a_frame": 24,
+       "b_frame": 30,
+       "a_t": 12.666666666666666,
+       "b_t": 17.92,
+       "inliers": 29,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/tavily_1a315575.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2026-08-09",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/shorts/-w4PmbwAUQ8",
+    "title": "\u0421\u043b\u043e\u043d \u0441\u043f\u0430\u0441 \u0447\u0435\u043b\u043e\u0432\u0435\u043a\u0430 \u0438\u0437 \u0431\u0443\u0440\u043d\u043e\u0433\u043e \u043f\u043e\u0442\u043e\u043a\u0430 \u0432 \u041d\u0435\u043f\u0430\u043b\u0435 - YouTube",
+    "uploader": "NEWS.BY: \u043d\u043e\u0432\u043e\u0441\u0442\u0438 \u0411\u0435\u043b\u0430\u0440\u0443\u0441\u0438 \u0438 \u043c\u0438\u0440\u0430",
+    "upload_date": "2026-08-29",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T12:47:30+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 26",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 16,
+     "max_inliers": 66,
+     "mirrored": false,
+     "temporal_offset": -3.0,
+     "n_pairs": 68,
+     "score": 16.66,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 19,
+       "b_frame": 18,
+       "a_t": 10.0,
+       "b_t": 7.0,
+       "inliers": 66,
+       "flip": false
+      },
+      {
+       "a_frame": 20,
+       "b_frame": 18,
+       "a_t": 10.666666666666666,
+       "b_t": 7.0,
+       "inliers": 53,
+       "flip": false
+      },
+      {
+       "a_frame": 22,
+       "b_frame": 21,
+       "a_t": 11.666666666666666,
+       "b_t": 8.333333333333334,
+       "inliers": 52,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_2b3a1810.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2026-08-29",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/shorts/L0sTp44eY7w",
+    "title": "\u0421\u043b\u043e\u043d \u0441\u043f\u0430\u0441 \u0447\u0435\u043b\u043e\u0432\u0435\u043a\u0430 \u0438\u0437 \u0431\u0443\u0440\u043d\u043e\u0433\u043e \u043f\u043e\u0442\u043e\u043a\u0430 \u0432 \u041d\u0435\u043f\u0430\u043b\u0435 - YouTube",
+    "uploader": "\u0410 \u0412\u042b \u0417\u041d\u0410\u041b\u0418?",
+    "upload_date": "2026-09-02",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T12:47:32+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 26",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 17,
+     "max_inliers": 46,
+     "mirrored": false,
+     "temporal_offset": -3.666666666666666,
+     "n_pairs": 60,
+     "score": 17.46,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 20,
+       "b_frame": 18,
+       "a_t": 10.666666666666666,
+       "b_t": 7.0,
+       "inliers": 46,
+       "flip": false
+      },
+      {
+       "a_frame": 28,
+       "b_frame": 28,
+       "a_t": 15.0,
+       "b_t": 11.0,
+       "inliers": 46,
+       "flip": false
+      },
+      {
+       "a_frame": 19,
+       "b_frame": 16,
+       "a_t": 10.0,
+       "b_t": 6.333333333333333,
+       "inliers": 43,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_34ed9860.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2026-09-02",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/shorts/3ce4hJZiX1M",
+   "title": "Baby Elephant Rescues Man From Getting Drowned In Flood",
+   "uploader": "The Voice Of Sikkim",
+   "upload_date": "2026-08-09",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T12:46:35+00:00",
+   "adapter": "tavily",
+   "found_via": "muse query: elephant rescues man from flood river video",
+   "also_found_by": [],
+   "match": {
+    "decision": true,
+    "consistent_frames": 12,
+    "max_inliers": 37,
+    "mirrored": false,
+    "temporal_offset": 5.653333333333334,
+    "n_pairs": 21,
+    "score": 12.37,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 20,
+      "b_frame": 27,
+      "a_t": 10.666666666666666,
+      "b_t": 16.32,
+      "inliers": 37,
+      "flip": false
+     },
+     {
+      "a_frame": 21,
+      "b_frame": 28,
+      "a_t": 11.0,
+      "b_t": 16.64,
+      "inliers": 31,
+      "flip": false
+     },
+     {
+      "a_frame": 24,
+      "b_frame": 30,
+      "a_t": 12.666666666666666,
+      "b_t": 17.92,
+      "inliers": 29,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/tavily_1a315575.png",
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2026-08-09",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 69,
+  "candidate_status_counts": {
+   "pending": 55,
+   "unavailable": 3,
+   "not_proven": 7,
+   "proven": 4
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     20,
+     0,
+     26
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "tavily": {
+    "candidates": 30,
+    "checked": 10,
+    "proven": 2
+   },
+   "yandex": {
+    "candidates": 39,
+    "checked": 4,
+    "proven": 2
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {
+   "tavily": [
+    "https://www.youtube.com/shorts/XYYRj6hyLNY",
+    "https://www.youtube.com/shorts/3ce4hJZiX1M"
+   ],
+   "yandex": [
+    "https://www.youtube.com/shorts/-w4PmbwAUQ8",
+    "https://www.youtube.com/shorts/L0sTp44eY7w"
+   ]
+  },
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": "camera_footage",
+   "note": "42 of 48 keyframes are near frames labelled camera_footage"
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "wide fast-flowing muddy brown river in flood with floating debris and tree-lined bank in distance",
+    "refs": [
+     0,
+     47
+    ],
+    "timestamps_s": [
+     0.0,
+     25.67
+    ]
+   },
+   {
+    "text": "elephant partially submerged in muddy floodwater, only trunk/foot visible above surface",
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     3.67
+    ]
+   },
+   {
+    "text": "extremely blurry green vegetation close-up with no discernible action",
+    "refs": [
+     13
+    ],
+    "timestamps_s": [
+     7.0
+    ]
+   },
+   {
+    "text": "elephant on vegetated riverbank entering muddy water",
+    "refs": [
+     20
+    ],
+    "timestamps_s": [
+     10.67
+    ]
+   },
+   {
+    "text": "elephant standing in shallow muddy water extending trunk toward a person struggling in the water",
+    "refs": [
+     27,
+     34
+    ],
+    "timestamps_s": [
+     14.33,
+     18.0
+    ]
+   },
+   {
+    "text": "person in floodwater climbing onto elephant's head/back while elephant stands in water",
+    "refs": [
+     34,
+     40
+    ],
+    "timestamps_s": [
+     18.0,
+     21.33
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "flooded river",
+   "refs": [
+    0,
+    20,
+    27,
+    47
+   ],
+   "timestamps_s": [
+    0.0,
+    10.67,
+    14.33,
+    25.67
+   ]
+  },
+  "visible_text": [],
+  "likely_location": {
+   "place": "Unknown",
+   "country": "Unknown",
+   "confidence": 0.15,
+   "lat": null,
+   "lon": null,
+   "reasons": [
+    {
+     "text": "wide muddy river with lush green vegetation and Asian elephant suggests tropical/subtropical South or Southeast Asia, but no distinctive landmark visible",
+     "refs": [
+      0,
+      20,
+      27
+     ],
+     "timestamps_s": [
+      0.0,
+      10.67,
+      14.33
+     ]
+    },
+    {
+     "text": "very low resolution and no signs, buildings, text or landmarks to identify country or river",
+     "refs": [
+      0,
+      20,
+      27,
+      40
+     ],
+     "timestamps_s": [
+      0.0,
+      10.67,
+      14.33,
+      21.33
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "Unknown",
+    "country": "Unknown",
+    "confidence": 0.15,
+    "lat": null,
+    "lon": null,
+    "cited_frames": [
+     0,
+     20,
+     27,
+     40
+    ],
+    "cited_timestamps_s": [
+     0.0,
+     10.67,
+     14.33,
+     21.33
+    ],
+    "reasons": [
+     {
+      "text": "wide muddy river with lush green vegetation and Asian elephant suggests tropical/subtropical South or Southeast Asia, but no distinctive landmark visible",
+      "refs": [
+       0,
+       20,
+       27
+      ],
+      "timestamps_s": [
+       0.0,
+       10.67,
+       14.33
+      ]
+     },
+     {
+      "text": "very low resolution and no signs, buildings, text or landmarks to identify country or river",
+      "refs": [
+       0,
+       20,
+       27,
+       40
+      ],
+      "timestamps_s": [
+       0.0,
+       10.67,
+       14.33,
+       21.33
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [
+   {
+    "text": "no visible text, sign, landmark, or geographic identifier confirms Bhotekoshi or Nepal",
+    "refs": [
+     0,
+     20,
+     27,
+     40,
+     47
+    ],
+    "timestamps_s": [
+     0.0,
+     10.67,
+     14.33,
+     21.33,
+     25.67
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   },
+   {
+    "text": "audio is only energetic English pop dance track with female vocals, no narration, place names or dates to support claimed location and date",
+    "refs": [
+     "audio@0"
+    ],
+    "timestamps_s": [
+     0.0
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   },
+   {
+    "text": "opening and closing wide river shots appear near-identical, suggesting looping or edited compilation rather than continuous raw documentation of dated event",
+    "refs": [
+     0,
+     47
+    ],
+    "timestamps_s": [
+     0.0,
+     25.67
+    ],
+    "status": "UNVERIFIED_MODEL_OBSERVATION"
+   }
+  ],
+  "media_nature": {
+   "value": "camera_footage",
+   "confidence": 0.6,
+   "cited_frames": [
+    0,
+    7,
+    20,
+    27,
+    34,
+    40,
+    47
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    3.67,
+    10.67,
+    14.33,
+    18.0,
+    21.33,
+    25.67
+   ],
+   "reasons": [
+    {
+     "text": "wide muddy river with natural noise and compression, looks like handheld phone footage",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "very low-res muddy water with indistinct shape, appears natural footage but detail lost",
+     "refs": [
+      7
+     ],
+     "timestamps_s": [
+      3.67
+     ]
+    },
+    {
+     "text": "elephant on vegetated bank with natural texture and motion blur, typical low-res wildlife footage",
+     "refs": [
+      20
+     ],
+     "timestamps_s": [
+      10.67
+     ]
+    },
+    {
+     "text": "elephant and person in floodwater with natural pose and compression artefacts",
+     "refs": [
+      27
+     ],
+     "timestamps_s": [
+      14.33
+     ]
+    },
+    {
+     "text": "close low-res view of elephant interacting with person in water, looks like real footage despite blur",
+     "refs": [
+      34
+     ],
+     "timestamps_s": [
+      18.0
+     ]
+    },
+    {
+     "text": "person climbing on elephant in muddy water, natural but very blurry handheld look",
+     "refs": [
+      40
+     ],
+     "timestamps_s": [
+      21.33
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "camera_footage",
+     "confidence": 0.7,
+     "reason": "wide muddy river with natural noise and compression, looks like handheld phone footage"
+    },
+    {
+     "frame": 7,
+     "t": 3.67,
+     "label": "camera_footage",
+     "confidence": 0.5,
+     "reason": "very low-res muddy water with indistinct shape, appears natural footage but detail lost"
+    },
+    {
+     "frame": 13,
+     "t": 7.0,
+     "label": "unknown",
+     "confidence": 0.0,
+     "reason": "extremely blurry green smear with no discernible subject to judge"
+    },
+    {
+     "frame": 20,
+     "t": 10.67,
+     "label": "camera_footage",
+     "confidence": 0.6,
+     "reason": "elephant on vegetated bank with natural texture and motion blur, typical low-res wildlife footage"
+    },
+    {
+     "frame": 27,
+     "t": 14.33,
+     "label": "camera_footage",
+     "confidence": 0.6,
+     "reason": "elephant and person in floodwater with natural pose and compression artefacts"
+    },
+    {
+     "frame": 34,
+     "t": 18.0,
+     "label": "camera_footage",
+     "confidence": 0.55,
+     "reason": "close low-res view of elephant interacting with person in water, looks like real footage despite blur"
+    },
+    {
+     "frame": 40,
+     "t": 21.33,
+     "label": "camera_footage",
+     "confidence": 0.55,
+     "reason": "person climbing on elephant in muddy water, natural but very blurry handheld look"
+    },
+    {
+     "frame": 47,
+     "t": 25.67,
+     "label": "camera_footage",
+     "confidence": 0.7,
+     "reason": "same wide muddy river view as opening, natural handheld flood footage look"
+    }
+   ],
+   "by_class": {
+    "camera_footage": [
+     0,
+     7,
+     20,
+     27,
+     34,
+     40,
+     47
+    ]
+   },
+   "summary": "camera footage (frames 0,7,20,27,34,40,47) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "place": "Bhotekoshi",
+   "country_iso2": "NP",
+   "event_type": "flood"
+  },
+  "queries": [
+   {
+    "q": "elephant rescues man from flood river video",
+    "language": "en",
+    "why": "neutral English to find earliest upload of elephant rescue clip"
+   },
+   {
+    "q": "elephant saves drowning man river viral video",
+    "language": "en",
+    "why": "alternative English phrasing to find true source without claimed location"
+   },
+   {
+    "q": "elephant helps man floodwater original video",
+    "language": "en",
+    "why": "to locate unedited original and date"
+   },
+   {
+    "q": "man climbs on elephant in flooded river",
+    "language": "en",
+    "why": "describes core visual action to match recycled posts"
+   },
+   {
+    "q": "\u0939\u093e\u0924\u094d\u0924\u0940\u0932\u0947 \u092e\u093e\u0928\u094d\u091b\u0947 \u092c\u091a\u093e\u092f\u094b \u092c\u093e\u0922\u0940 \u092d\u093f\u0921\u093f\u092f\u094b",
+    "language": "ne",
+    "why": "Nepali query for claimed country to check local reports"
+   },
+   {
+    "q": "\u092d\u094b\u091f\u0947\u0915\u094b\u0936\u0940 \u092c\u093e\u0922\u0940 \u0939\u093e\u0924\u094d\u0924\u0940\u0932\u0947 \u092e\u093e\u0928\u094d\u091b\u0947 \u092c\u091a\u093e\u092f\u094b",
+    "language": "ne",
+    "why": "Nepali query using claimed place name to verify or debunk claim"
+   },
+   {
+    "q": "\u0939\u093e\u0925\u0940 \u0928\u0947 \u092c\u093e\u0922\u093c \u092e\u0947\u0902 \u0906\u0926\u092e\u0940 \u0915\u094b \u092c\u091a\u093e\u092f\u093e \u0935\u0940\u0921\u093f\u092f\u094b",
+    "language": "hi",
+    "why": "Hindi query for South Asian circulation of same clip"
+   },
+   {
+    "q": "gajah selamatkan orang banjir sungai video viral",
+    "language": "ms",
+    "why": "Southeast Asian language query because elephant habitat also fits SE Asia, to find alternate origin"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.02573,
+  "frames_shown": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "7": 3.67,
+   "13": 7.0,
+   "20": 10.67,
+   "27": 14.33,
+   "34": 18.0,
+   "40": 21.33,
+   "47": 25.67
+  },
+  "audio": {
+   "has_speech": true,
+   "language": "en",
+   "transcript_summary": "Energetic English pop dance track with female vocals singing lyrics. No spoken narration, no place names, borders, or dates mentioned.",
+   "spoken_place_names": [],
+   "spoken_dates": [],
+   "partial_dates": [],
+   "other_sounds": [
+    "electronic dance music",
+    "female singing",
+    "percussion"
+   ],
+   "dropped_untimed": 0,
+   "status": "ok",
+   "model": "meta/muse-spark-open",
+   "cost_usd": 0.00958,
+   "truncated": false,
+   "analyzed_seconds": 25.766666666666666,
+   "attempts": 2
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H08/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H08/frames/frame_07_t3.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H08/frames/frame_13_t7.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H08/frames/frame_20_t10.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H08/frames/frame_27_t14.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H08/frames/frame_34_t18.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H08/frames/frame_40_t21.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H08/frames/frame_47_t25.7.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Bhotekoshi, Nepal",
+   "name": "Bhotekoshi, Sindhupalchowk, Bagamati Province, Nepal",
+   "lat": 27.932976,
+   "lon": 85.9058163,
+   "source": "nominatim",
+   "confidence": "medium",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": [
+    {
+     "name": "Bhotekoshi, Sindhupalchowk, Bagamati Province, Nepal",
+     "lat": 27.905365,
+     "lon": 85.9210581,
+     "class": "place",
+     "type": "village"
+    }
+   ]
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "CONFIRMED_EVENT",
+   "activations": [
+    {
+     "code": "EMSR927",
+     "title": "Flood in Nepal",
+     "event_time": "2026-08-25T22:00:00",
+     "activation_time": "2026-08-26T09:53:00",
+     "country": "Nepal",
+     "distance_km": 62.4,
+     "reason": "On the 26 August 2026, a flash flood reportedly triggered by a Glacial Lake Outburst Flood (GLOF) in Nepal has caused significant damage in Rasuwa District. Copernicus EMS Rapid Mapping was requested to provide flood extent and damage assessment emergency mapping.",
+     "url": "https://rapidmapping.emergency.copernicus.eu/EMSR927"
+    }
+   ],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "UNAVAILABLE",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2026-08-23",
+      "m3s": 222.36
+     },
+     {
+      "date": "2026-08-24",
+      "m3s": 221.84
+     },
+     {
+      "date": "2026-08-25",
+      "m3s": 212.8
+     },
+     {
+      "date": "2026-08-26",
+      "m3s": 205.06
+     },
+     {
+      "date": "2026-08-27",
+      "m3s": 219.8
+     },
+     {
+      "date": "2026-08-28",
+      "m3s": 208.41
+     },
+     {
+      "date": "2026-08-29",
+      "m3s": 206.01
+     }
+    ],
+    "baseline": 246.17,
+    "peak": 222.36,
+    "ratio": 0.9,
+    "cell": [
+     27.825005,
+     85.82501
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2026-08-23",
+      "mm": 12.4
+     },
+     {
+      "date": "2026-08-24",
+      "mm": 4.4
+     },
+     {
+      "date": "2026-08-25",
+      "mm": 9.1
+     },
+     {
+      "date": "2026-08-26",
+      "mm": 7.2
+     },
+     {
+      "date": "2026-08-27",
+      "mm": 5.9
+     },
+     {
+      "date": "2026-08-28",
+      "mm": 12.0
+     },
+     {
+      "date": "2026-08-29",
+      "mm": 28.4
+     }
+    ],
+    "max_mm": 28.4
+   },
+   "status": "UNKNOWN"
+  },
+  "verdict": "SUPPORTS",
+  "reasons": [
+   "Copernicus EMS EMSR927 (Flood in Nepal), 62.4 km away, event 2026-08-25T22:00:00"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=27.932976&longitude=85.9058163&daily=river_discharge&start_date=2026-08-23&end_date=2026-08-29",
+   "https://www.openstreetmap.org/?mlat=27.932976&mlon=85.9058163#map=10/27.932976/85.9058163",
+   "https://rapidmapping.emergency.copernicus.eu/EMSR927"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Bhotekoshi flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Bhotekoshi+flood&mode=ar"
+  }
+ },
+ "media_nature": {
+  "value": "camera_footage",
+  "confidence": 0.6,
+  "cited_frames": [
+   0,
+   7,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   3.67,
+   10.67,
+   14.33,
+   18.0,
+   21.33,
+   25.67
+  ],
+  "reasons": [
+   {
+    "text": "wide muddy river with natural noise and compression, looks like handheld phone footage",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "very low-res muddy water with indistinct shape, appears natural footage but detail lost",
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     3.67
+    ]
+   },
+   {
+    "text": "elephant on vegetated bank with natural texture and motion blur, typical low-res wildlife footage",
+    "refs": [
+     20
+    ],
+    "timestamps_s": [
+     10.67
+    ]
+   },
+   {
+    "text": "elephant and person in floodwater with natural pose and compression artefacts",
+    "refs": [
+     27
+    ],
+    "timestamps_s": [
+     14.33
+    ]
+   },
+   {
+    "text": "close low-res view of elephant interacting with person in water, looks like real footage despite blur",
+    "refs": [
+     34
+    ],
+    "timestamps_s": [
+     18.0
+    ]
+   },
+   {
+    "text": "person climbing on elephant in muddy water, natural but very blurry handheld look",
+    "refs": [
+     40
+    ],
+    "timestamps_s": [
+     21.33
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "camera_footage",
+    "confidence": 0.7,
+    "reason": "wide muddy river with natural noise and compression, looks like handheld phone footage"
+   },
+   {
+    "frame": 7,
+    "t": 3.67,
+    "label": "camera_footage",
+    "confidence": 0.5,
+    "reason": "very low-res muddy water with indistinct shape, appears natural footage but detail lost"
+   },
+   {
+    "frame": 13,
+    "t": 7.0,
+    "label": "unknown",
+    "confidence": 0.0,
+    "reason": "extremely blurry green smear with no discernible subject to judge"
+   },
+   {
+    "frame": 20,
+    "t": 10.67,
+    "label": "camera_footage",
+    "confidence": 0.6,
+    "reason": "elephant on vegetated bank with natural texture and motion blur, typical low-res wildlife footage"
+   },
+   {
+    "frame": 27,
+    "t": 14.33,
+    "label": "camera_footage",
+    "confidence": 0.6,
+    "reason": "elephant and person in floodwater with natural pose and compression artefacts"
+   },
+   {
+    "frame": 34,
+    "t": 18.0,
+    "label": "camera_footage",
+    "confidence": 0.55,
+    "reason": "close low-res view of elephant interacting with person in water, looks like real footage despite blur"
+   },
+   {
+    "frame": 40,
+    "t": 21.33,
+    "label": "camera_footage",
+    "confidence": 0.55,
+    "reason": "person climbing on elephant in muddy water, natural but very blurry handheld look"
+   },
+   {
+    "frame": 47,
+    "t": 25.67,
+    "label": "camera_footage",
+    "confidence": 0.7,
+    "reason": "same wide muddy river view as opening, natural handheld flood footage look"
+   }
+  ],
+  "by_class": {
+   "camera_footage": [
+    0,
+    7,
+    20,
+    27,
+    34,
+    40,
+    47
+   ]
+  },
+  "summary": "camera footage (frames 0,7,20,27,34,40,47) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [
+  {
+   "kind": "independently_dated_earlier_copy",
+   "text": "Footage was already published on 2026-08-09 (earliest copy found), before the claimed event date 2026-08-26.",
+   "evidence": [
+    "https://www.youtube.com/shorts/3ce4hJZiX1M"
+   ],
+   "date_source": "yt-dlp metadata"
+  }
+ ],
+ "final_verdict": {
+  "label": "RECYCLED_FOOTAGE",
+  "summary": "The footage matches the earliest copy found, published on 2026-08-09 (https://www.youtube.com/shorts/3ce4hJZiX1M, date independently fetched per yt-dlp metadata), before the claimed event date 2026-08-26. Matcher evidence: 12 temporally consistent frame(s), up to 37 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen. Separately, the AI visual clues report 3 unverified observation(s) that clash with the claim (e.g. \"no visible text, sign, landmark, or geographic identifier confirms Bhotekoshi or Nepal\", frame ref [0, 20, 27, 40, 47]); these are model observations, not independent evidence and not part of the visual-match proof.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 1,
+   "proven_copies": 4,
+   "physical_supports": true,
+   "unverified_model_observations": 3,
+   "date_conflicts": 0,
+   "media_nature": "camera_footage",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 124.1,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 1.8,
+  "memory": 6.8,
+  "muse": 26.0,
+  "memory_muse_wait_claim": 26.0,
+  "discovery": 65.4,
+  "discovery_by_source": {
+   "tavily": 12.3,
+   "yandex": 65.4
+  },
+  "verify_total_incl_overlap": 31.0,
+  "dates_physical_report_wait": 31.0,
+  "verify_workers": 3,
+  "verify_seconds": 74.2,
+  "verify_checked": 14
+ },
+ "_wall_s": 124.1,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 0
+}

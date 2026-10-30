@@ -1,0 +1,1221 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "51741d28fc",
+ "created_at": "2026-10-30T12:43:25+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/heldout/H06.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/heldout/H06.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "H06.mp4",
+  "duration": 49.166666666666664,
+  "has_audio": true,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   0.67,
+   1.67,
+   2.67,
+   3.67,
+   4.67,
+   5.67,
+   6.67,
+   7.67,
+   8.67,
+   9.67,
+   10.67,
+   11.67,
+   12.67,
+   13.67,
+   14.67,
+   15.67,
+   16.67,
+   17.67,
+   18.67,
+   19.67,
+   20.67,
+   21.67,
+   22.67,
+   23.67,
+   24.67,
+   25.67,
+   26.67,
+   27.67,
+   28.67,
+   29.67,
+   30.67,
+   31.67,
+   32.67,
+   33.67,
+   34.67,
+   35.67,
+   36.67,
+   38.33,
+   40.33,
+   41.33,
+   42.33,
+   43.67,
+   44.67,
+   45.67,
+   46.67,
+   47.67,
+   49.0
+  ]
+ },
+ "claim": {
+  "text": "Dubai/UAE storm flooding (Mar 2026)",
+  "event_date": "2026-03-28",
+  "place": "Dubai, UAE",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "AE",
+  "event_type": "flood"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 15.86,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/watch?v=4240hSL9fNQ",
+    "title": "Airport UNDERWATER After Huge Storms Hit Middle East",
+    "uploader": "Onlooker UK",
+    "upload_date": "2024-04-17",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T12:41:57+00:00",
+    "adapter": "tavily",
+    "found_via": "muse query: Dubai airport flydubai flooded tarmac storm flooding",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 3,
+     "max_inliers": 43,
+     "mirrored": false,
+     "temporal_offset": 0.0,
+     "n_pairs": 3,
+     "score": 3.43,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 0,
+       "b_frame": 0,
+       "a_t": 0.0,
+       "b_t": 0.0,
+       "inliers": 43,
+       "flip": false
+      },
+      {
+       "a_frame": 12,
+       "b_frame": 4,
+       "a_t": 11.666666666666666,
+       "b_t": 11.52,
+       "inliers": 37,
+       "flip": false
+      },
+      {
+       "a_frame": 9,
+       "b_frame": 3,
+       "a_t": 8.666666666666666,
+       "b_t": 8.64,
+       "inliers": 28,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/tavily_84eb280d.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2024-04-17",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=KdcVDdCR0Q0",
+    "title": "Dubai floods: Authorities in the UAE deny cloud seeding ...",
+    "uploader": "Sky News",
+    "upload_date": "2024-04-18",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T12:41:58+00:00",
+    "adapter": "tavily",
+    "found_via": "muse query: Dubai airport flydubai flooded tarmac storm flooding",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 3,
+     "max_inliers": 66,
+     "mirrored": false,
+     "temporal_offset": 3.346666666666664,
+     "n_pairs": 8,
+     "score": 3.66,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 39,
+       "b_frame": 18,
+       "a_t": 40.333333333333336,
+       "b_t": 43.68,
+       "inliers": 66,
+       "flip": false
+      },
+      {
+       "a_frame": 41,
+       "b_frame": 19,
+       "a_t": 42.333333333333336,
+       "b_t": 45.12,
+       "inliers": 56,
+       "flip": false
+      },
+      {
+       "a_frame": 40,
+       "b_frame": 18,
+       "a_t": 41.333333333333336,
+       "b_t": 43.68,
+       "inliers": 31,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/tavily_a4102373.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2024-04-18",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=l8hkGH4iPb4",
+    "title": "Intense Flooding Hits UAE, Dubai International Airport Diverts Flights | 10 News First",
+    "uploader": "10 News",
+    "upload_date": "2024-04-17",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T12:42:53+00:00",
+    "adapter": "tavily",
+    "found_via": "muse query: Dubai metro flooded inside water people wading video",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 8,
+     "max_inliers": 134,
+     "mirrored": false,
+     "temporal_offset": 69.58666666666667,
+     "n_pairs": 30,
+     "score": 9.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 39,
+       "b_frame": 35,
+       "a_t": 40.333333333333336,
+       "b_t": 109.92,
+       "inliers": 134,
+       "flip": false
+      },
+      {
+       "a_frame": 46,
+       "b_frame": 38,
+       "a_t": 47.666666666666664,
+       "b_t": 118.08,
+       "inliers": 119,
+       "flip": false
+      },
+      {
+       "a_frame": 47,
+       "b_frame": 38,
+       "a_t": 49.0,
+       "b_t": 118.08,
+       "inliers": 118,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/tavily_6100ae18.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2024-04-17",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/watch?v=4240hSL9fNQ",
+   "title": "Airport UNDERWATER After Huge Storms Hit Middle East",
+   "uploader": "Onlooker UK",
+   "upload_date": "2024-04-17",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T12:41:57+00:00",
+   "adapter": "tavily",
+   "found_via": "muse query: Dubai airport flydubai flooded tarmac storm flooding",
+   "also_found_by": [],
+   "match": {
+    "decision": true,
+    "consistent_frames": 3,
+    "max_inliers": 43,
+    "mirrored": false,
+    "temporal_offset": 0.0,
+    "n_pairs": 3,
+    "score": 3.43,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 0,
+      "b_frame": 0,
+      "a_t": 0.0,
+      "b_t": 0.0,
+      "inliers": 43,
+      "flip": false
+     },
+     {
+      "a_frame": 12,
+      "b_frame": 4,
+      "a_t": 11.666666666666666,
+      "b_t": 11.52,
+      "inliers": 37,
+      "flip": false
+     },
+     {
+      "a_frame": 9,
+      "b_frame": 3,
+      "a_t": 8.666666666666666,
+      "b_t": 8.64,
+      "inliers": 28,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/tavily_84eb280d.png",
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2024-04-17",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 70,
+  "candidate_status_counts": {
+   "pending": 56,
+   "too_long": 5,
+   "not_proven": 6,
+   "proven": 3
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     47,
+     23,
+     39
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "tavily": {
+    "candidates": 30,
+    "checked": 10,
+    "proven": 3
+   },
+   "yandex": {
+    "candidates": 40,
+    "checked": 4,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {
+   "tavily": [
+    "https://www.youtube.com/watch?v=4240hSL9fNQ",
+    "https://www.youtube.com/watch?v=KdcVDdCR0Q0",
+    "https://www.youtube.com/watch?v=l8hkGH4iPb4"
+   ]
+  },
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": "camera_footage",
+   "note": "41 of 48 keyframes are near frames labelled camera_footage"
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "refs": [
+     0,
+     7
+    ],
+    "text": "Commercial airliner with flydubai livery on heavily flooded airport tarmac in heavy rain with standing water and spray",
+    "timestamps_s": [
+     0.0,
+     6.67
+    ]
+   },
+   {
+    "refs": [
+     13
+    ],
+    "text": "Flooded airfield with deep standing water and partially submerged ground equipment, aircraft tail blurred in background",
+    "timestamps_s": [
+     12.67
+    ]
+   },
+   {
+    "refs": [
+     20,
+     27
+    ],
+    "text": "Flooded modern indoor hall with glass railings and stairs where people wade through ankle to shin-deep water",
+    "timestamps_s": [
+     19.67,
+     26.67
+    ]
+   },
+   {
+    "refs": [
+     34,
+     40
+    ],
+    "text": "Interior floor with water ingress near large glass windows and storefront, wet reflective flooring",
+    "timestamps_s": [
+     33.67,
+     41.33
+    ]
+   },
+   {
+    "refs": [
+     47
+    ],
+    "text": "Crowd on upper balcony looking down at flooded lower-level retail store with debris floating in water",
+    "timestamps_s": [
+     49.0
+    ]
+   }
+  ],
+  "scene_type": {
+   "refs": [
+    0,
+    7,
+    20,
+    27,
+    47
+   ],
+   "value": "airport tarmac and flooded indoor transit/commercial interior",
+   "timestamps_s": [
+    0.0,
+    6.67,
+    19.67,
+    26.67,
+    49.0
+   ]
+  },
+  "visible_text": [
+   {
+    "is_place": true,
+    "language": "en",
+    "refs": [
+     0
+    ],
+    "text": "dubai",
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "is_place": false,
+    "language": "en",
+    "refs": [
+     47
+    ],
+    "text": "ing tiger",
+    "timestamps_s": [
+     49.0
+    ]
+   }
+  ],
+  "likely_location": {
+   "confidence": 0.65,
+   "country": "United Arab Emirates",
+   "lat": 25.2532,
+   "lon": 55.3657,
+   "place": "Dubai International Airport and metro/mall area, Dubai",
+   "reasons": [
+    {
+     "refs": [
+      0
+     ],
+     "text": "flydubai livery with 'dubai' text on fuselage points to Dubai-based airline at Dubai airport",
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "refs": [
+      0,
+      7,
+      13
+     ],
+     "text": "flooded tarmac with airliners is consistent with airport flooding",
+     "timestamps_s": [
+      0.0,
+      6.67,
+      12.67
+     ]
+    },
+    {
+     "refs": [
+      20,
+      27,
+      47,
+      "audio@0.0"
+     ],
+     "text": "flooded indoor halls with crowds and retail store plus audio saying 'inside the metro' matches metro/mall flooding",
+     "timestamps_s": [
+      19.67,
+      26.67,
+      49.0,
+      0.0
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "Dubai International Airport and metro/mall area, Dubai",
+    "country": "United Arab Emirates",
+    "confidence": 0.65,
+    "lat": 25.2532,
+    "lon": 55.3657,
+    "cited_frames": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     47
+    ],
+    "cited_timestamps_s": [
+     0.0,
+     6.67,
+     12.67,
+     19.67,
+     26.67,
+     49.0
+    ],
+    "reasons": [
+     {
+      "refs": [
+       0
+      ],
+      "text": "flydubai livery with 'dubai' text on fuselage points to Dubai-based airline at Dubai airport",
+      "timestamps_s": [
+       0.0
+      ]
+     },
+     {
+      "refs": [
+       0,
+       7,
+       13
+      ],
+      "text": "flooded tarmac with airliners is consistent with airport flooding",
+      "timestamps_s": [
+       0.0,
+       6.67,
+       12.67
+      ]
+     },
+     {
+      "refs": [
+       20,
+       27,
+       47,
+       "audio@0.0"
+      ],
+      "text": "flooded indoor halls with crowds and retail store plus audio saying 'inside the metro' matches metro/mall flooding",
+      "timestamps_s": [
+       19.67,
+       26.67,
+       49.0,
+       0.0
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [],
+  "media_nature": {
+   "value": "camera_footage",
+   "confidence": 0.65,
+   "cited_frames": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    40,
+    47
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    6.67,
+    12.67,
+    19.67,
+    26.67,
+    41.33,
+    49.0
+   ],
+   "reasons": [
+    {
+     "text": "blurry handheld shot of real aircraft in rain, natural noise and motion blur",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "very blurry storm shot of aircraft, looks like phone video in heavy rain",
+     "refs": [
+      7
+     ],
+     "timestamps_s": [
+      6.67
+     ]
+    },
+    {
+     "text": "extremely blurry water surface, but texture looks like real flood water",
+     "refs": [
+      13
+     ],
+     "timestamps_s": [
+      12.67
+     ]
+    },
+    {
+     "text": "shaky indoor phone video of flooded hall with people",
+     "refs": [
+      20
+     ],
+     "timestamps_s": [
+      19.67
+     ]
+    },
+    {
+     "text": "handheld overhead view of people wading, natural poses and reflections",
+     "refs": [
+      27
+     ],
+     "timestamps_s": [
+      26.67
+     ]
+    },
+    {
+     "text": "handheld indoor shot of wet floor and storefront, natural reflections",
+     "refs": [
+      40
+     ],
+     "timestamps_s": [
+      41.33
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "camera_footage",
+     "confidence": 0.7,
+     "reason": "blurry handheld shot of real aircraft in rain, natural noise and motion blur"
+    },
+    {
+     "frame": 7,
+     "t": 6.67,
+     "label": "camera_footage",
+     "confidence": 0.65,
+     "reason": "very blurry storm shot of aircraft, looks like phone video in heavy rain"
+    },
+    {
+     "frame": 13,
+     "t": 12.67,
+     "label": "camera_footage",
+     "confidence": 0.5,
+     "reason": "extremely blurry water surface, but texture looks like real flood water"
+    },
+    {
+     "frame": 20,
+     "t": 19.67,
+     "label": "camera_footage",
+     "confidence": 0.7,
+     "reason": "shaky indoor phone video of flooded hall with people"
+    },
+    {
+     "frame": 27,
+     "t": 26.67,
+     "label": "camera_footage",
+     "confidence": 0.7,
+     "reason": "handheld overhead view of people wading, natural poses and reflections"
+    },
+    {
+     "frame": 34,
+     "t": 33.67,
+     "label": "unknown",
+     "confidence": 0.0,
+     "reason": "too blurry to determine content, appears to be interior floor and glass"
+    },
+    {
+     "frame": 40,
+     "t": 41.33,
+     "label": "camera_footage",
+     "confidence": 0.6,
+     "reason": "handheld indoor shot of wet floor and storefront, natural reflections"
+    },
+    {
+     "frame": 47,
+     "t": 49.0,
+     "label": "camera_footage",
+     "confidence": 0.7,
+     "reason": "handheld balcony view of crowd and flooded shop below, natural detail"
+    }
+   ],
+   "by_class": {
+    "camera_footage": [
+     0,
+     7,
+     13,
+     20,
+     27,
+     40,
+     47
+    ]
+   },
+   "summary": "camera footage (frames 0,7,13,20,27,40,47) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "country_iso2": "AE",
+   "event_type": "flood",
+   "place": "Dubai/UAE"
+  },
+  "queries": [
+   {
+    "language": "en",
+    "q": "Dubai airport flydubai flooded tarmac storm flooding",
+    "why": "find earliest upload of airport clip with airline livery"
+   },
+   {
+    "language": "en",
+    "q": "Dubai metro flooded inside water people wading video",
+    "why": "match audio claim of inside metro with indoor flood clips"
+   },
+   {
+    "language": "en",
+    "q": "Dubai mall Flying Tiger store flooded water video",
+    "why": "unique store branding to identify true location/event"
+   },
+   {
+    "language": "en",
+    "q": "Dubai April 2024 floods airport metro mall footage",
+    "why": "check if recycled from well-known earlier Dubai flood"
+   },
+   {
+    "language": "ar",
+    "q": "\u0645\u0637\u0627\u0631 \u062f\u0628\u064a \u063a\u0631\u0642 \u0627\u0644\u0641\u064a\u0636\u0627\u0646\u0627\u062a \u0637\u0627\u0626\u0631\u0629 \u0641\u0644\u0627\u064a \u062f\u0628\u064a",
+    "why": "search in Arabic for airport flooding source"
+   },
+   {
+    "language": "ar",
+    "q": "\u0645\u062a\u0631\u0648 \u062f\u0628\u064a \u063a\u0631\u0642 \u0645\u064a\u0627\u0647 \u0641\u064a\u0636\u0627\u0646 \u0641\u064a\u062f\u064a\u0648",
+    "why": "search in Arabic for metro flooding source"
+   },
+   {
+    "language": "ar",
+    "q": "\u062f\u0628\u064a \u0645\u0648\u0644 \u063a\u0631\u0642 \u0645\u062d\u0644\u0627\u062a \u0641\u064a\u0636\u0627\u0646",
+    "why": "search in Arabic for mall shop flooding"
+   },
+   {
+    "language": "en",
+    "q": "\"inside the metro\" \"oh my goodness\" Dubai flood",
+    "why": "search spoken phrase to find original upload"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.02173,
+  "frames_shown": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   34,
+   40,
+   47
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "7": 6.67,
+   "13": 12.67,
+   "20": 19.67,
+   "27": 26.67,
+   "34": 33.67,
+   "40": 41.33,
+   "47": 49.0
+  },
+  "audio": {
+   "has_speech": true,
+   "language": "en",
+   "transcript_summary": "Speaker in English says 'This is inside the metro. Inside the metro. Then look at outside. Oh my goodness. Oh my goodness.' No specific place names, countries, borders, or calendar dates with year or month/day are spoken.",
+   "spoken_place_names": [],
+   "spoken_dates": [],
+   "partial_dates": [],
+   "other_sounds": [
+    "loud rushing floodwater",
+    "heavy rain",
+    "wind",
+    "indistinct background voices"
+   ],
+   "dropped_untimed": 0,
+   "status": "ok",
+   "model": "meta/muse-spark-open",
+   "cost_usd": 0.00576,
+   "truncated": false,
+   "analyzed_seconds": 49.166666666666664,
+   "attempts": 1
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H06/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H06/frames/frame_07_t6.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H06/frames/frame_13_t12.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H06/frames/frame_20_t19.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H06/frames/frame_27_t26.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H06/frames/frame_34_t33.7.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H06/frames/frame_40_t41.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/H06/frames/frame_47_t49.0.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Dubai, UAE",
+   "name": "Dubai, Dubai Emirate, United Arab Emirates",
+   "lat": 25.0742823,
+   "lon": 55.1885624,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": [
+    {
+     "name": "Dubai, Dubai Emirate, United Arab Emirates",
+     "lat": 25.2647227,
+     "lon": 55.2924146,
+     "class": "place",
+     "type": "city"
+    },
+    {
+     "name": "Dubai Emirate, United Arab Emirates",
+     "lat": 24.8047465,
+     "lon": 56.1460508,
+     "class": "boundary",
+     "type": "administrative"
+    },
+    {
+     "name": "Dubai, United Arab Emirates",
+     "lat": 25.0790538,
+     "lon": 55.4796626,
+     "class": "place",
+     "type": "state"
+    }
+   ]
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2026-03-25",
+      "m3s": 9.09
+     },
+     {
+      "date": "2026-03-26",
+      "m3s": 106.89
+     },
+     {
+      "date": "2026-03-27",
+      "m3s": 210.35
+     },
+     {
+      "date": "2026-03-28",
+      "m3s": 168.82
+     },
+     {
+      "date": "2026-03-29",
+      "m3s": 70.12
+     },
+     {
+      "date": "2026-03-30",
+      "m3s": 76.62
+     },
+     {
+      "date": "2026-03-31",
+      "m3s": 41.76
+     }
+    ],
+    "baseline": 1.28,
+    "peak": 210.35,
+    "ratio": 164.34,
+    "cell": [
+     25.075005,
+     55.075012
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2026-03-25",
+      "mm": 56.6
+     },
+     {
+      "date": "2026-03-26",
+      "mm": 138.1
+     },
+     {
+      "date": "2026-03-27",
+      "mm": 14.3
+     },
+     {
+      "date": "2026-03-28",
+      "mm": 0.0
+     },
+     {
+      "date": "2026-03-29",
+      "mm": 0.0
+     },
+     {
+      "date": "2026-03-30",
+      "mm": 0.0
+     },
+     {
+      "date": "2026-03-31",
+      "mm": 3.7
+     }
+    ],
+    "max_mm": 138.1
+   },
+   "status": "ANOMALOUS"
+  },
+  "verdict": "SUPPORTS",
+  "reasons": [
+   "river discharge peak 210.3 m3/s is 164.34x the 30-day baseline 1.3 m3/s",
+   "rain 138 mm/day in window (>= 100)"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=25.0742823&longitude=55.1885624&daily=river_discharge&start_date=2026-03-25&end_date=2026-03-31",
+   "https://www.openstreetmap.org/?mlat=25.0742823&mlon=55.1885624#map=10/25.0742823/55.1885624"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "OK",
+   "articles_in_window": 24,
+   "articles_baseline_30d": 250,
+   "sample_links": [
+    {
+     "url": "https://www.manilatimes.net/2026/03/31/tmt-newswire/plentisoft/lead-development-showcases-jubail-islands-integrated-water-system-amid-uae-rainfall/2311342",
+     "title": "LEAD Development Showcases Jubail Island Integrated Water System Amid UAE Rainfall",
+     "domain": "manilatimes.net",
+     "seen": "20260331T123000Z"
+    },
+    {
+     "url": "https://www.cna.com.tw:443/news/aopl/202603310354.aspx",
+     "title": "\u7f8e\u4ee5\u8972\u4f0a\u6717\u8ecd\u4e8b\u8a2d\u65bd \u8377\u83ab\u8332\u6d77\u5cfd\u5cf6\u5dbc\u6d77\u6c34\u6de1\u5316\u5ee0\u505c\u904b | \u570b\u969b",
+     "domain": "cna.com.tw",
+     "seen": "20260331T123000Z"
+    },
+    {
+     "url": "https://udn.com/news/story/6811/9413972",
+     "title": "\u5c0d\u6297\u6cb9\u50f9\u885d\u64ca \u5357\u97d3\u8ffd\u52a0\u9810\u7b97173\u5104\u7f8e\u5143\u8d85\u524d\u90e8\u7f72 \u652f\u6301\u51cd\u6f32\u5728\u5167\u7a69\u5b9a\u63aa\u65bd | \u5168\u7403\u8ca1\u7d93 | \u5168\u7403",
+     "domain": "udn.com",
+     "seen": "20260331T060000Z"
+    },
+    {
+     "url": "https://www.thehindu.com/elections/kerala-assembly/kerala-assembly-elections-2026-past-scandals-and-dramatis-personae-that-rocked-elections-in-kerala/article70799404.ece",
+     "title": "Kerala Assembly Elections 2026 : past scandals and dramatis personae that rocked elections in Kerala",
+     "domain": "thehindu.com",
+     "seen": "20260331T050000Z"
+    },
+    {
+     "url": "https://www.telegraf.rs/vesti/svet/4298557-iranski-rat-dronovima-otkriva-duboke-pukotine-u-protivvazdusnoj-odbrani-sad-i-njenih-saveznika",
+     "title": "Iranski rat dronovima otkriva duboke pukotine u protivvazdu\u0161noj odbrani SAD i njenih saveznika",
+     "domain": "telegraf.rs",
+     "seen": "20260330T163000Z"
+    }
+   ],
+   "context_only": true,
+   "query": "Dubai flood",
+   "capped_at": 250,
+   "note": "news coverage is context only; it counts articles that mention the place and event words and never proves a specific video is real"
+  }
+ },
+ "media_nature": {
+  "value": "camera_footage",
+  "confidence": 0.65,
+  "cited_frames": [
+   0,
+   7,
+   13,
+   20,
+   27,
+   40,
+   47
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   6.67,
+   12.67,
+   19.67,
+   26.67,
+   41.33,
+   49.0
+  ],
+  "reasons": [
+   {
+    "text": "blurry handheld shot of real aircraft in rain, natural noise and motion blur",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "very blurry storm shot of aircraft, looks like phone video in heavy rain",
+    "refs": [
+     7
+    ],
+    "timestamps_s": [
+     6.67
+    ]
+   },
+   {
+    "text": "extremely blurry water surface, but texture looks like real flood water",
+    "refs": [
+     13
+    ],
+    "timestamps_s": [
+     12.67
+    ]
+   },
+   {
+    "text": "shaky indoor phone video of flooded hall with people",
+    "refs": [
+     20
+    ],
+    "timestamps_s": [
+     19.67
+    ]
+   },
+   {
+    "text": "handheld overhead view of people wading, natural poses and reflections",
+    "refs": [
+     27
+    ],
+    "timestamps_s": [
+     26.67
+    ]
+   },
+   {
+    "text": "handheld indoor shot of wet floor and storefront, natural reflections",
+    "refs": [
+     40
+    ],
+    "timestamps_s": [
+     41.33
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "camera_footage",
+    "confidence": 0.7,
+    "reason": "blurry handheld shot of real aircraft in rain, natural noise and motion blur"
+   },
+   {
+    "frame": 7,
+    "t": 6.67,
+    "label": "camera_footage",
+    "confidence": 0.65,
+    "reason": "very blurry storm shot of aircraft, looks like phone video in heavy rain"
+   },
+   {
+    "frame": 13,
+    "t": 12.67,
+    "label": "camera_footage",
+    "confidence": 0.5,
+    "reason": "extremely blurry water surface, but texture looks like real flood water"
+   },
+   {
+    "frame": 20,
+    "t": 19.67,
+    "label": "camera_footage",
+    "confidence": 0.7,
+    "reason": "shaky indoor phone video of flooded hall with people"
+   },
+   {
+    "frame": 27,
+    "t": 26.67,
+    "label": "camera_footage",
+    "confidence": 0.7,
+    "reason": "handheld overhead view of people wading, natural poses and reflections"
+   },
+   {
+    "frame": 34,
+    "t": 33.67,
+    "label": "unknown",
+    "confidence": 0.0,
+    "reason": "too blurry to determine content, appears to be interior floor and glass"
+   },
+   {
+    "frame": 40,
+    "t": 41.33,
+    "label": "camera_footage",
+    "confidence": 0.6,
+    "reason": "handheld indoor shot of wet floor and storefront, natural reflections"
+   },
+   {
+    "frame": 47,
+    "t": 49.0,
+    "label": "camera_footage",
+    "confidence": 0.7,
+    "reason": "handheld balcony view of crowd and flooded shop below, natural detail"
+   }
+  ],
+  "by_class": {
+   "camera_footage": [
+    0,
+    7,
+    13,
+    20,
+    27,
+    40,
+    47
+   ]
+  },
+  "summary": "camera footage (frames 0,7,13,20,27,40,47) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [
+  {
+   "kind": "independently_dated_earlier_copy",
+   "text": "Footage was already published on 2024-04-17 (earliest copy found), before the claimed event date 2026-03-28.",
+   "evidence": [
+    "https://www.youtube.com/watch?v=4240hSL9fNQ"
+   ],
+   "date_source": "yt-dlp metadata"
+  }
+ ],
+ "final_verdict": {
+  "label": "RECYCLED_FOOTAGE",
+  "summary": "The footage matches the earliest copy found, published on 2024-04-17 (https://www.youtube.com/watch?v=4240hSL9fNQ, date independently fetched per yt-dlp metadata), before the claimed event date 2026-03-28. Matcher evidence: 3 temporally consistent frame(s), up to 43 inliers. This shows the footage was previously published; it does not by itself show the footage is fake or that the claimed event did not happen.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 3,
+   "proven_copies": 3,
+   "physical_supports": true,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "camera_footage",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 124.7,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 3.0,
+  "memory": 15.9,
+  "muse": 20.2,
+  "memory_muse_wait_claim": 20.2,
+  "discovery": 67.6,
+  "discovery_by_source": {
+   "tavily": 11.6,
+   "yandex": 67.6
+  },
+  "verify_total_incl_overlap": 34.0,
+  "dates_physical_report_wait": 34.0,
+  "verify_workers": 3,
+  "verify_seconds": 72.4,
+  "verify_checked": 14
+ },
+ "_wall_s": 124.7,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 0
+}

@@ -1,0 +1,329 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "dc0bf618f5",
+ "created_at": "2026-10-30T13:19:16+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/global/G08.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/G08.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "G08.mp4",
+  "duration": 7.5,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 23,
+  "keyframe_times_s": [
+   0.0,
+   0.33,
+   0.67,
+   1.0,
+   1.33,
+   1.67,
+   2.0,
+   2.33,
+   2.67,
+   3.0,
+   3.33,
+   3.67,
+   4.0,
+   4.33,
+   4.67,
+   5.0,
+   5.33,
+   5.67,
+   6.0,
+   6.33,
+   6.67,
+   7.0,
+   7.33
+  ]
+ },
+ "claim": {
+  "text": "Flooded supermarket in New York (recent NYC flooding)",
+  "event_date": "2023-09-29",
+  "place": "New York City, USA",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": null,
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 7.73,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "NOT_FOUND",
+  "proven_matches": [],
+  "earliest_proven_copy": null,
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 58,
+  "candidate_status_counts": {
+   "unavailable": 4,
+   "download_failed": 5,
+   "not_proven": 5,
+   "pending": 44
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 3,
+    "errors": [],
+    "query_source": "claim text (Muse unavailable)"
+   },
+   "yandex": {
+    "frames": [
+     0,
+     9,
+     4
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 40,
+    "checked": 4,
+    "proven": 0
+   },
+   "tavily": {
+    "candidates": 18,
+    "checked": 10,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {},
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": null,
+   "note": null
+  }
+ },
+ "clues": {
+  "status": "not_run"
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "New York City, USA",
+   "name": "New York, United States",
+   "lat": 40.7127281,
+   "lon": -74.0060152,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2023-09-26",
+      "m3s": 296.17
+     },
+     {
+      "date": "2023-09-27",
+      "m3s": 262.63
+     },
+     {
+      "date": "2023-09-28",
+      "m3s": 217.27
+     },
+     {
+      "date": "2023-09-29",
+      "m3s": 137.04
+     },
+     {
+      "date": "2023-09-30",
+      "m3s": 208.89
+     },
+     {
+      "date": "2023-10-01",
+      "m3s": 275.06
+     },
+     {
+      "date": "2023-10-02",
+      "m3s": 241.66
+     }
+    ],
+    "baseline": 59.48,
+    "peak": 296.17,
+    "ratio": 4.98,
+    "cell": [
+     40.625,
+     -74.12499
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2023-09-26",
+      "mm": 8.6
+     },
+     {
+      "date": "2023-09-27",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-09-28",
+      "mm": 0.1
+     },
+     {
+      "date": "2023-09-29",
+      "mm": 69.1
+     },
+     {
+      "date": "2023-09-30",
+      "mm": 1.8
+     },
+     {
+      "date": "2023-10-01",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-10-02",
+      "mm": 0.0
+     }
+    ],
+    "max_mm": 69.1
+   },
+   "status": "ANOMALOUS"
+  },
+  "verdict": "SUPPORTS",
+  "reasons": [
+   "river discharge peak 296.2 m3/s is 4.98x the 30-day baseline 59.5 m3/s"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=40.7127281&longitude=-74.0060152&daily=river_discharge&start_date=2023-09-26&end_date=2023-10-02",
+   "https://www.openstreetmap.org/?mlat=40.7127281&mlon=-74.0060152#map=10/40.7127281/-74.0060152"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "OK",
+   "articles_in_window": 250,
+   "articles_baseline_30d": 250,
+   "sample_links": [
+    {
+     "url": "https://www.nydailynews.com/2023/10/02/mayor-adams-didnt-heed-de-blasio-era-nyc-storm-protocols-before-crippling-flash-floods/",
+     "title": "Mayor Adams didnt heed de Blasio - era NYC storm protocols before crippling flash floods",
+     "domain": "nydailynews.com",
+     "seen": "20231003T003000Z"
+    },
+    {
+     "url": "https://hotair.com/karen-townsend/2023/10/02/oh-so-now-they-want-to-close-the-southern-border-n581848",
+     "title": "Oh , so NOW they want to close the southern border",
+     "domain": "hotair.com",
+     "seen": "20231003T001500Z"
+    },
+    {
+     "url": "https://www.thecentersquare.com/national/article_e10218c8-6162-11ee-b403-631e39991f33.html",
+     "title": "Democratic governors to Biden : Migrant crisis is  untenable , border  too open  ",
+     "domain": "thecentersquare.com",
+     "seen": "20231002T231500Z"
+    },
+    {
+     "url": "https://www.northcountrypublicradio.org/news/story/48562/20231002/supporters-of-ny-heat-act-ask-hochul-to-make-the-measure-part-of-her-budget",
+     "title": "Supporters of NY HEAT Act ask Hochul to make the measure part of her budget",
+     "domain": "northcountrypublicradio.org",
+     "seen": "20231002T231500Z"
+    },
+    {
+     "url": "https://www.youralaskalink.com/news/national/democratic-governors-to-biden-migrant-crisis-is-untenable-border-too-open/article_6c857628-dedd-5a6d-bb3f-f2a82cc7f138.html",
+     "title": "Democratic governors to Biden : Migrant crisis is  untenable , border  too open  ",
+     "domain": "youralaskalink.com",
+     "seen": "20231002T224500Z"
+    }
+   ],
+   "context_only": true,
+   "query": "\"New York City\" flood",
+   "capped_at": 250,
+   "note": "news coverage is context only; it counts articles that mention the place and event words and never proves a specific video is real"
+  }
+ },
+ "media_nature": {
+  "value": "unknown",
+  "confidence": 0.0,
+  "cited_frames": [],
+  "cited_timestamps_s": [],
+  "reasons": [],
+  "status": "NOT_RUN",
+  "note": "Muse clues were not available, so the media nature was not assessed."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "UNVERIFIED",
+  "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. The claim could not be verified from the available evidence.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 0,
+   "physical_supports": true,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "unknown",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 117.8,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 0.9,
+  "memory": 7.7,
+  "memory_muse_wait_claim": 7.7,
+  "discovery": 66.1,
+  "discovery_by_source": {
+   "tavily": 5.2,
+   "yandex": 66.1
+  },
+  "verify_total_incl_overlap": 43.1,
+  "dates_physical_report_wait": 43.1,
+  "verify_workers": 3,
+  "verify_seconds": 59.7,
+  "verify_checked": 14
+ },
+ "_wall_s": 117.8,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 0
+}

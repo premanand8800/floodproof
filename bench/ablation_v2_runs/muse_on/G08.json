@@ -1,0 +1,786 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "3a540892fb",
+ "created_at": "2026-10-30T13:00:43+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/global/G08.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/G08.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "G08.mp4",
+  "duration": 7.5,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 23,
+  "keyframe_times_s": [
+   0.0,
+   0.33,
+   0.67,
+   1.0,
+   1.33,
+   1.67,
+   2.0,
+   2.33,
+   2.67,
+   3.0,
+   3.33,
+   3.67,
+   4.0,
+   4.33,
+   4.67,
+   5.0,
+   5.33,
+   5.67,
+   6.0,
+   6.33,
+   6.67,
+   7.0,
+   7.33
+  ]
+ },
+ "claim": {
+  "text": "Flooded supermarket in New York (recent NYC flooding)",
+  "event_date": "2023-09-29",
+  "place": "New York City, USA",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": "US",
+  "event_type": "flood"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 8.12,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "NOT_FOUND",
+  "proven_matches": [],
+  "earliest_proven_copy": null,
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 70,
+  "candidate_status_counts": {
+   "download_failed": 1,
+   "not_proven": 6,
+   "pending": 56,
+   "unavailable": 6,
+   "too_long": 1
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 18,
+    "errors": [],
+    "query_source": "muse query"
+   },
+   "yandex": {
+    "frames": [
+     0,
+     9,
+     4
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "yandex": {
+    "candidates": 40,
+    "checked": 3,
+    "proven": 0
+   },
+   "tavily": {
+    "candidates": 30,
+    "checked": 11,
+    "proven": 0
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {},
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": "camera_footage",
+   "note": "23 of 23 keyframes are near frames labelled camera_footage"
+  }
+ },
+ "clues": {
+  "shows": [
+   {
+    "text": "interior of a large supermarket flooded with knee-deep murky brown water, shoppers wading through aisles beside refrigerated shelves, floating red shopping baskets/crates, one man pushing a girl sitting in a shopping cart",
+    "refs": [
+     0,
+     3,
+     6,
+     9,
+     13,
+     16,
+     19,
+     22
+    ],
+    "timestamps_s": [
+     0.0,
+     1.0,
+     2.0,
+     3.0,
+     4.33,
+     5.33,
+     6.33,
+     7.33
+    ]
+   }
+  ],
+  "scene_type": {
+   "value": "flooded indoor supermarket",
+   "refs": [
+    0,
+    3,
+    6,
+    16
+   ],
+   "timestamps_s": [
+    0.0,
+    1.0,
+    2.0,
+    5.33
+   ]
+  },
+  "visible_text": [],
+  "likely_location": {
+   "place": "Unknown",
+   "country": "Unknown",
+   "confidence": 0.1,
+   "lat": null,
+   "lon": null,
+   "reasons": [
+    {
+     "text": "low-resolution blurry frames show no legible signs, logos, language text, or exterior landmarks to identify city or country",
+     "refs": [
+      0,
+      3,
+      6,
+      9
+     ],
+     "timestamps_s": [
+      0.0,
+      1.0,
+      2.0,
+      3.0
+     ]
+    }
+   ]
+  },
+  "location_hypotheses": [
+   {
+    "place": "Unknown",
+    "country": "Unknown",
+    "confidence": 0.1,
+    "lat": null,
+    "lon": null,
+    "cited_frames": [
+     0,
+     3,
+     6,
+     9
+    ],
+    "cited_timestamps_s": [
+     0.0,
+     1.0,
+     2.0,
+     3.0
+    ],
+    "reasons": [
+     {
+      "text": "low-resolution blurry frames show no legible signs, logos, language text, or exterior landmarks to identify city or country",
+      "refs": [
+       0,
+       3,
+       6,
+       9
+      ],
+      "timestamps_s": [
+       0.0,
+       1.0,
+       2.0,
+       3.0
+      ]
+     }
+    ],
+    "status": "UNVERIFIED_HYPOTHESIS",
+    "note": "Model inference from visual cues. Not verified by any independent source; not evidence for or against the claim."
+   }
+  ],
+  "observations_against_claim": [],
+  "media_nature": {
+   "value": "camera_footage",
+   "confidence": 0.79,
+   "cited_frames": [
+    0,
+    3,
+    6,
+    9,
+    13,
+    16,
+    19,
+    22
+   ],
+   "cited_timestamps_s": [
+    0.0,
+    1.0,
+    2.0,
+    3.0,
+    4.33,
+    5.33,
+    6.33,
+    7.33
+   ],
+   "reasons": [
+    {
+     "text": "shaky blurry phone view of flooded aisle with person wading, natural noise and blur",
+     "refs": [
+      0
+     ],
+     "timestamps_s": [
+      0.0
+     ]
+    },
+    {
+     "text": "shaky phone view of flooded interior with people wading, motion blur",
+     "refs": [
+      3
+     ],
+     "timestamps_s": [
+      1.0
+     ]
+    },
+    {
+     "text": "close handheld view of man pushing girl in cart in floodwater, natural detail",
+     "refs": [
+      6
+     ],
+     "timestamps_s": [
+      2.0
+     ]
+    },
+    {
+     "text": "blurry handheld pan of flooded refrigerated shelves, no synthetic look",
+     "refs": [
+      9
+     ],
+     "timestamps_s": [
+      3.0
+     ]
+    },
+    {
+     "text": "blurry handheld view of floating red object in brown water",
+     "refs": [
+      13
+     ],
+     "timestamps_s": [
+      4.33
+     ]
+    },
+    {
+     "text": "shaky wide view of flooded store with floating red basket, natural artefacts",
+     "refs": [
+      16
+     ],
+     "timestamps_s": [
+      5.33
+     ]
+    }
+   ],
+   "status": "AI_OBSERVATION_HYPOTHESIS",
+   "per_frame": [
+    {
+     "frame": 0,
+     "t": 0.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "shaky blurry phone view of flooded aisle with person wading, natural noise and blur"
+    },
+    {
+     "frame": 3,
+     "t": 1.0,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "shaky phone view of flooded interior with people wading, motion blur"
+    },
+    {
+     "frame": 6,
+     "t": 2.0,
+     "label": "camera_footage",
+     "confidence": 0.85,
+     "reason": "close handheld view of man pushing girl in cart in floodwater, natural detail"
+    },
+    {
+     "frame": 9,
+     "t": 3.0,
+     "label": "camera_footage",
+     "confidence": 0.75,
+     "reason": "blurry handheld pan of flooded refrigerated shelves, no synthetic look"
+    },
+    {
+     "frame": 13,
+     "t": 4.33,
+     "label": "camera_footage",
+     "confidence": 0.75,
+     "reason": "blurry handheld view of floating red object in brown water"
+    },
+    {
+     "frame": 16,
+     "t": 5.33,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "shaky wide view of flooded store with floating red basket, natural artefacts"
+    },
+    {
+     "frame": 19,
+     "t": 6.33,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "handheld view of floating red baskets and wading shopper"
+    },
+    {
+     "frame": 22,
+     "t": 7.33,
+     "label": "camera_footage",
+     "confidence": 0.8,
+     "reason": "shaky phone view of flooded aisle with floating debris and shopper"
+    }
+   ],
+   "by_class": {
+    "camera_footage": [
+     0,
+     3,
+     6,
+     9,
+     13,
+     16,
+     19,
+     22
+    ]
+   },
+   "summary": "camera footage (frames 0,3,6,9,13,16,19,22) (AI observation)",
+   "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+  },
+  "on_screen_dates": [],
+  "claim_parsed": {
+   "place": "New York",
+   "country_iso2": "US",
+   "event_type": "flood"
+  },
+  "queries": [
+   {
+    "q": "flooded supermarket interior shoppers wading water video",
+    "language": "en",
+    "why": "neutral description to find earliest upload of this clip"
+   },
+   {
+    "q": "supermarket flood shopping cart girl man orange shirt",
+    "language": "en",
+    "why": "distinct visual detail to match source"
+   },
+   {
+    "q": "supermercado inundado agua hasta las rodillas clientes video",
+    "language": "es",
+    "why": "likely local language if clip is from Latin America, to find original"
+   },
+   {
+    "q": "supermercado alagado clientes andando na agua video",
+    "language": "pt",
+    "why": "alternative local language to find recycled flood video"
+   },
+   {
+    "q": "supermarch\u00e9 inond\u00e9 clients pataugent rayons video",
+    "language": "fr",
+    "why": "broad search to catch non-US source"
+   },
+   {
+    "q": "flood inside grocery store floating baskets viral video",
+    "language": "en",
+    "why": "floating red baskets are distinctive, avoid claimed place name"
+   },
+   {
+    "q": "New York supermarket flooded September 29 2023 fact check",
+    "language": "en",
+    "why": "check debunks linking this video to claimed NYC date"
+   },
+   {
+    "q": "supermercado inundacion 2023 agua adentro tienda video viral",
+    "language": "es",
+    "why": "search for earlier flood event using same footage without NYC claim"
+   }
+  ],
+  "rejected_clues": [],
+  "status": "ok",
+  "model": "meta/muse-spark-1.3",
+  "cost_usd": 0.01357,
+  "frames_shown": [
+   0,
+   3,
+   6,
+   9,
+   13,
+   16,
+   19,
+   22
+  ],
+  "frame_times_s": {
+   "0": 0.0,
+   "3": 1.0,
+   "6": 2.0,
+   "9": 3.0,
+   "13": 4.33,
+   "16": 5.33,
+   "19": 6.33,
+   "22": 7.33
+  },
+  "audio": {
+   "status": "no_audio_track"
+  },
+  "frame_images": [
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_00_t0.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_03_t1.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_06_t2.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_09_t3.0.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_13_t4.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_16_t5.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_19_t6.3.jpg",
+   "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/.cache/ablation_v2/muse_on/G08/frames/frame_22_t7.3.jpg"
+  ]
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "New York City, USA",
+   "name": "New York, United States",
+   "lat": 40.7127281,
+   "lon": -74.0060152,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "boundary",
+   "type": "administrative",
+   "country_level": false,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "UNAVAILABLE",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "ReliefWeb refused the appname (approved appname required; set RELIEFWEB_APPNAME)"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2023-09-26",
+      "m3s": 296.17
+     },
+     {
+      "date": "2023-09-27",
+      "m3s": 262.63
+     },
+     {
+      "date": "2023-09-28",
+      "m3s": 217.27
+     },
+     {
+      "date": "2023-09-29",
+      "m3s": 137.04
+     },
+     {
+      "date": "2023-09-30",
+      "m3s": 208.89
+     },
+     {
+      "date": "2023-10-01",
+      "m3s": 275.06
+     },
+     {
+      "date": "2023-10-02",
+      "m3s": 241.66
+     }
+    ],
+    "baseline": 59.48,
+    "peak": 296.17,
+    "ratio": 4.98,
+    "cell": [
+     40.625,
+     -74.12499
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2023-09-26",
+      "mm": 8.6
+     },
+     {
+      "date": "2023-09-27",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-09-28",
+      "mm": 0.1
+     },
+     {
+      "date": "2023-09-29",
+      "mm": 69.1
+     },
+     {
+      "date": "2023-09-30",
+      "mm": 1.8
+     },
+     {
+      "date": "2023-10-01",
+      "mm": 0.0
+     },
+     {
+      "date": "2023-10-02",
+      "mm": 0.0
+     }
+    ],
+    "max_mm": 69.1
+   },
+   "status": "ANOMALOUS"
+  },
+  "verdict": "SUPPORTS",
+  "reasons": [
+   "river discharge peak 296.2 m3/s is 4.98x the 30-day baseline 59.5 m3/s"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=40.7127281&longitude=-74.0060152&daily=river_discharge&start_date=2023-09-26&end_date=2023-10-02",
+   "https://www.openstreetmap.org/?mlat=40.7127281&mlon=-74.0060152#map=10/40.7127281/-74.0060152"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "\"New York City\" flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=%22New+York+City%22+floo"
+  }
+ },
+ "media_nature": {
+  "value": "camera_footage",
+  "confidence": 0.79,
+  "cited_frames": [
+   0,
+   3,
+   6,
+   9,
+   13,
+   16,
+   19,
+   22
+  ],
+  "cited_timestamps_s": [
+   0.0,
+   1.0,
+   2.0,
+   3.0,
+   4.33,
+   5.33,
+   6.33,
+   7.33
+  ],
+  "reasons": [
+   {
+    "text": "shaky blurry phone view of flooded aisle with person wading, natural noise and blur",
+    "refs": [
+     0
+    ],
+    "timestamps_s": [
+     0.0
+    ]
+   },
+   {
+    "text": "shaky phone view of flooded interior with people wading, motion blur",
+    "refs": [
+     3
+    ],
+    "timestamps_s": [
+     1.0
+    ]
+   },
+   {
+    "text": "close handheld view of man pushing girl in cart in floodwater, natural detail",
+    "refs": [
+     6
+    ],
+    "timestamps_s": [
+     2.0
+    ]
+   },
+   {
+    "text": "blurry handheld pan of flooded refrigerated shelves, no synthetic look",
+    "refs": [
+     9
+    ],
+    "timestamps_s": [
+     3.0
+    ]
+   },
+   {
+    "text": "blurry handheld view of floating red object in brown water",
+    "refs": [
+     13
+    ],
+    "timestamps_s": [
+     4.33
+    ]
+   },
+   {
+    "text": "shaky wide view of flooded store with floating red basket, natural artefacts",
+    "refs": [
+     16
+    ],
+    "timestamps_s": [
+     5.33
+    ]
+   }
+  ],
+  "status": "AI_OBSERVATION_HYPOTHESIS",
+  "per_frame": [
+   {
+    "frame": 0,
+    "t": 0.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "shaky blurry phone view of flooded aisle with person wading, natural noise and blur"
+   },
+   {
+    "frame": 3,
+    "t": 1.0,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "shaky phone view of flooded interior with people wading, motion blur"
+   },
+   {
+    "frame": 6,
+    "t": 2.0,
+    "label": "camera_footage",
+    "confidence": 0.85,
+    "reason": "close handheld view of man pushing girl in cart in floodwater, natural detail"
+   },
+   {
+    "frame": 9,
+    "t": 3.0,
+    "label": "camera_footage",
+    "confidence": 0.75,
+    "reason": "blurry handheld pan of flooded refrigerated shelves, no synthetic look"
+   },
+   {
+    "frame": 13,
+    "t": 4.33,
+    "label": "camera_footage",
+    "confidence": 0.75,
+    "reason": "blurry handheld view of floating red object in brown water"
+   },
+   {
+    "frame": 16,
+    "t": 5.33,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "shaky wide view of flooded store with floating red basket, natural artefacts"
+   },
+   {
+    "frame": 19,
+    "t": 6.33,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "handheld view of floating red baskets and wading shopper"
+   },
+   {
+    "frame": 22,
+    "t": 7.33,
+    "label": "camera_footage",
+    "confidence": 0.8,
+    "reason": "shaky phone view of flooded aisle with floating debris and shopper"
+   }
+  ],
+  "by_class": {
+   "camera_footage": [
+    0,
+    3,
+    6,
+    9,
+    13,
+    16,
+    19,
+    22
+   ]
+  },
+  "summary": "camera footage (frames 0,3,6,9,13,16,19,22) (AI observation)",
+  "note": "Per-frame model observation from sampled keyframes. Not proof; it never changes the verdict label by itself."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "UNVERIFIED",
+  "summary": "No matcher-proven earlier copy was found by memory lookup, reverse image search or text search. The claim could not be verified from the available evidence.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 0,
+   "physical_supports": true,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "camera_footage",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 114.2,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 0.9,
+  "memory": 8.1,
+  "muse": 10.7,
+  "memory_muse_wait_claim": 10.8,
+  "discovery": 66.4,
+  "discovery_by_source": {
+   "tavily": 12.7,
+   "yandex": 66.4
+  },
+  "verify_total_incl_overlap": 36.2,
+  "dates_physical_report_wait": 36.2,
+  "verify_workers": 3,
+  "verify_seconds": 61.7,
+  "verify_checked": 14
+ },
+ "_wall_s": 114.3,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 0
+}

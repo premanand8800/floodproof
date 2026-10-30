@@ -1,0 +1,792 @@
+{
+ "schema_version": "1.4",
+ "investigation_id": "da3a198632",
+ "created_at": "2026-10-30T13:27:25+00:00",
+ "input": {
+  "source": "/home/samir-kumal/hackethon/floodproof/.claude/worktrees/agent-a3b06239340696d57/data/global/N03.mp4",
+  "path": "/home/samir-kumal/hackethon/floodproof/data/global/N03.mp4",
+  "url": null,
+  "uploader": null,
+  "upload_date": null,
+  "title": "N03.mp4",
+  "duration": 60.0,
+  "has_audio": false,
+  "truncated": false,
+  "description": null,
+  "n_keyframes": 48,
+  "keyframe_times_s": [
+   0.0,
+   1.33,
+   3.0,
+   4.33,
+   6.67,
+   7.33,
+   9.67,
+   11.0,
+   13.33,
+   14.33,
+   16.67,
+   17.67,
+   21.67,
+   24.33,
+   26.0,
+   27.0,
+   28.33,
+   29.67,
+   30.67,
+   33.0,
+   33.67,
+   35.0,
+   35.67,
+   36.67,
+   37.33,
+   38.67,
+   39.33,
+   40.33,
+   41.0,
+   42.0,
+   42.67,
+   43.67,
+   45.33,
+   46.0,
+   47.0,
+   47.67,
+   48.67,
+   49.67,
+   50.67,
+   51.33,
+   52.67,
+   54.33,
+   55.33,
+   56.0,
+   57.0,
+   57.67,
+   58.67,
+   59.67
+  ]
+ },
+ "claim": {
+  "text": "Large waves hit North Beach, Durban, South Africa",
+  "event_date": "2017-03-12",
+  "place": "Durban, South Africa",
+  "source": {
+   "text": "user",
+   "event_date": "user",
+   "place": "user"
+  },
+  "event_date_basis": "user",
+  "event_date_basis_detail": null,
+  "inferred_note": null,
+  "country_iso2": null,
+  "event_type": "unknown"
+ },
+ "memory": {
+  "status": "MISS",
+  "mode": "hash-shortlist(top_6)+match",
+  "entries_searched": 6,
+  "entries_total": 37,
+  "seconds": 7.81,
+  "hits": [],
+  "note": "memory is a hash-shortlist + matcher proof, not an exhaustive scan; a fresh crop may need full matching"
+ },
+ "visual_matching": {
+  "status": "FOUND",
+  "proven_matches": [
+   {
+    "url": "https://www.youtube.com/shorts/MRufCsTdcTw",
+    "title": "Huge Waves Hit Durban Beach!",
+    "uploader": "The History Moments",
+    "upload_date": "2026-09-08",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T13:25:49+00:00",
+    "adapter": "tavily",
+    "found_via": "claim text (Muse unavailable): Large waves hit North Beach, Durban, South Africa",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 6,
+     "max_inliers": 89,
+     "mirrored": false,
+     "temporal_offset": -2.3208020050125313,
+     "n_pairs": 52,
+     "score": 6.89,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 5,
+       "b_frame": 4,
+       "a_t": 7.333333333333333,
+       "b_t": 5.012531328320802,
+       "inliers": 89,
+       "flip": false
+      },
+      {
+       "a_frame": 4,
+       "b_frame": 3,
+       "a_t": 6.666666666666667,
+       "b_t": 3.6758563074352546,
+       "inliers": 87,
+       "flip": false
+      },
+      {
+       "a_frame": 2,
+       "b_frame": 0,
+       "a_t": 3.0,
+       "b_t": 0.0,
+       "inliers": 74,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/tavily_07e1ef5f.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2026-09-08",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=bnnoPfZ7_mo",
+    "title": "Massive waves shut down Durban North Beach",
+    "uploader": "Expresso Show",
+    "upload_date": "2017-03-14",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T13:25:49+00:00",
+    "adapter": "tavily",
+    "found_via": "claim text (Muse unavailable): Large waves hit North Beach, Durban, South Africa",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 27,
+     "max_inliers": 190,
+     "mirrored": false,
+     "temporal_offset": 92.28,
+     "n_pairs": 397,
+     "score": 28.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 19,
+       "b_frame": 42,
+       "a_t": 33.0,
+       "b_t": 125.28,
+       "inliers": 190,
+       "flip": false
+      },
+      {
+       "a_frame": 18,
+       "b_frame": 41,
+       "a_t": 30.666666666666668,
+       "b_t": 122.88,
+       "inliers": 175,
+       "flip": false
+      },
+      {
+       "a_frame": 9,
+       "b_frame": 35,
+       "a_t": 14.333333333333334,
+       "b_t": 106.56,
+       "inliers": 173,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/tavily_ebd7c6a8.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2017-03-14",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=vBkbkIovE8A",
+    "title": "digha torneto beach side \ud83c\udfd6 \ud83c\udf0a \ud83d\udc87 \u2642/every body is dead/very bad news/#brown #munda #ahit #video - YouTube",
+    "uploader": "BM Ahit comedy",
+    "upload_date": "2022-10-10",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T13:26:52+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 18",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 43,
+     "max_inliers": 365,
+     "mirrored": false,
+     "temporal_offset": -7.453786523470285e-05,
+     "n_pairs": 691,
+     "score": 44.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 10,
+       "b_frame": 7,
+       "a_t": 16.666666666666668,
+       "b_t": 16.666592128801433,
+       "inliers": 365,
+       "flip": false
+      },
+      {
+       "a_frame": 9,
+       "b_frame": 6,
+       "a_t": 14.333333333333334,
+       "b_t": 14.33326923076923,
+       "inliers": 347,
+       "flip": false
+      },
+      {
+       "a_frame": 15,
+       "b_frame": 11,
+       "a_t": 27.0,
+       "b_t": 26.99987924865832,
+       "inliers": 340,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_b165be86.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2022-10-10",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=2itzrExPKQs",
+    "title": "10 March 2020 - YouTube",
+    "uploader": "\u121b\u122c \u130e\u1303\u121c \u1200\u1265\u1273\u121d",
+    "upload_date": "2020-03-10",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T13:26:52+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 18",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 3,
+     "max_inliers": 34,
+     "mirrored": false,
+     "temporal_offset": 84.10666666666665,
+     "n_pairs": 23,
+     "score": 3.34,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 24,
+       "b_frame": 38,
+       "a_t": 37.333333333333336,
+       "b_t": 121.44,
+       "inliers": 34,
+       "flip": false
+      },
+      {
+       "a_frame": 23,
+       "b_frame": 38,
+       "a_t": 36.666666666666664,
+       "b_t": 121.44,
+       "inliers": 30,
+       "flip": false
+      },
+      {
+       "a_frame": 22,
+       "b_frame": 38,
+       "a_t": 35.666666666666664,
+       "b_t": 121.44,
+       "inliers": 16,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_94bab6c8.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2020-03-10",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=InsrGmYLAvo",
+    "title": "\u0417\u0435\u043c\u043b\u0435\u0442\u0440\u044f\u0441\u0435\u043d\u0438\u0435 \u0432 \u0422\u0443\u0440\u0446\u0438\u0438 #\u0432\u0438\u0434\u0435\u043e #\u0437\u0435\u043c\u043b\u0435\u0442\u0440\u044f\u0441\u0435\u043d\u0438\u0435 - YouTube",
+    "uploader": "TELON",
+    "upload_date": "2023-02-06",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T13:27:00+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 18",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 43,
+     "max_inliers": 302,
+     "mirrored": false,
+     "temporal_offset": -0.9816872994039372,
+     "n_pairs": 760,
+     "score": 44.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 20,
+       "b_frame": 17,
+       "a_t": 33.666666666666664,
+       "b_t": 32.68497936726273,
+       "inliers": 302,
+       "flip": false
+      },
+      {
+       "a_frame": 13,
+       "b_frame": 12,
+       "a_t": 24.333333333333332,
+       "b_t": 23.440742778541953,
+       "inliers": 299,
+       "flip": false
+      },
+      {
+       "a_frame": 9,
+       "b_frame": 8,
+       "a_t": 14.333333333333334,
+       "b_t": 13.2060522696011,
+       "inliers": 294,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_85682bfb.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2023-02-06",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=7Wu7OWtLz04",
+    "title": "\u0422sunami in \u0422urkey - YouTube",
+    "uploader": "WIKI",
+    "upload_date": "2023-02-06",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T13:27:05+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 18",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 44,
+     "max_inliers": 344,
+     "mirrored": false,
+     "temporal_offset": 5.0,
+     "n_pairs": 834,
+     "score": 45.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 11,
+       "b_frame": 15,
+       "a_t": 17.666666666666668,
+       "b_t": 22.666666666666668,
+       "inliers": 344,
+       "flip": false
+      },
+      {
+       "a_frame": 20,
+       "b_frame": 24,
+       "a_t": 33.666666666666664,
+       "b_t": 38.666666666666664,
+       "inliers": 328,
+       "flip": false
+      },
+      {
+       "a_frame": 14,
+       "b_frame": 18,
+       "a_t": 26.0,
+       "b_t": 31.333333333333332,
+       "inliers": 319,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_81e08b48.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2023-02-06",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=mnViNcnYies",
+    "title": "\u0645\u062e\u0644\u0641\u0627\u062a \u0632\u0644\u0632\u0627\u0644 \u062a\u0631\u0643\u064a\u0629 \u0627\u0644\u0645\u062f\u0645\u0631 \u0644\u062d\u0638\u0629 \u0627\u0646\u0647\u064a\u0627\u0631 \u0645\u0628\u0646\u0649 \u0633\u0643\u0646\u064a \u0648 \u062d\u062f\u0648\u062b \u0645\u0648\u062c\u0627\u062a \u062a\u0633\u0648\u0646\u0627\u0645\u064a \u0639\u0644\u0649 \u0627\u0644\u0633\u0627\u062d\u0644 \u0627\u0644\u062c\u0646\u0648\u0628\u064a \u0627\u0644\u062a\u0631\u0643\u064a - YouTube",
+    "uploader": "\u0623\u062d\u062f\u0627\u062b \u062d\u0648\u0644 \u0627\u0644\u0639\u0627\u0644\u0645",
+    "upload_date": "2023-02-06",
+    "date_source": "yt-dlp metadata",
+    "retrieved_at": "2026-10-30T13:27:08+00:00",
+    "adapter": "yandex",
+    "found_via": "frame 18",
+    "also_found_by": [],
+    "match": {
+     "decision": true,
+     "consistent_frames": 42,
+     "max_inliers": 233,
+     "mirrored": false,
+     "temporal_offset": 20.999999999999996,
+     "n_pairs": 555,
+     "score": 43.0,
+     "stage": "full",
+     "best_pairs": [
+      {
+       "a_frame": 17,
+       "b_frame": 28,
+       "a_t": 29.666666666666668,
+       "b_t": 50.666666666666664,
+       "inliers": 233,
+       "flip": false
+      },
+      {
+       "a_frame": 18,
+       "b_frame": 28,
+       "a_t": 30.666666666666668,
+       "b_t": 50.666666666666664,
+       "inliers": 227,
+       "flip": false
+      },
+      {
+       "a_frame": 19,
+       "b_frame": 29,
+       "a_t": 33.0,
+       "b_t": 53.333333333333336,
+       "inliers": 220,
+       "flip": false
+      }
+     ]
+    },
+    "evidence_png": "evidence/yandex_4b356566.png",
+    "stored_date": null,
+    "stored_date_source": null,
+    "independent_date": "2023-02-06",
+    "independent_date_source": "yt-dlp metadata",
+    "date_independent": true,
+    "date_note": null,
+    "date_alternatives": [],
+    "memory_origin": null,
+    "memory_context": null
+   }
+  ],
+  "earliest_proven_copy": {
+   "url": "https://www.youtube.com/watch?v=bnnoPfZ7_mo",
+   "title": "Massive waves shut down Durban North Beach",
+   "uploader": "Expresso Show",
+   "upload_date": "2017-03-14",
+   "date_source": "yt-dlp metadata",
+   "retrieved_at": "2026-10-30T13:25:49+00:00",
+   "adapter": "tavily",
+   "found_via": "claim text (Muse unavailable): Large waves hit North Beach, Durban, South Africa",
+   "also_found_by": [],
+   "match": {
+    "decision": true,
+    "consistent_frames": 27,
+    "max_inliers": 190,
+    "mirrored": false,
+    "temporal_offset": 92.28,
+    "n_pairs": 397,
+    "score": 28.0,
+    "stage": "full",
+    "best_pairs": [
+     {
+      "a_frame": 19,
+      "b_frame": 42,
+      "a_t": 33.0,
+      "b_t": 125.28,
+      "inliers": 190,
+      "flip": false
+     },
+     {
+      "a_frame": 18,
+      "b_frame": 41,
+      "a_t": 30.666666666666668,
+      "b_t": 122.88,
+      "inliers": 175,
+      "flip": false
+     },
+     {
+      "a_frame": 9,
+      "b_frame": 35,
+      "a_t": 14.333333333333334,
+      "b_t": 106.56,
+      "inliers": 173,
+      "flip": false
+     }
+    ]
+   },
+   "evidence_png": "evidence/tavily_ebd7c6a8.png",
+   "stored_date": null,
+   "stored_date_source": null,
+   "independent_date": "2017-03-14",
+   "independent_date_source": "yt-dlp metadata",
+   "date_independent": true,
+   "date_note": null,
+   "date_alternatives": [],
+   "memory_origin": null,
+   "memory_context": null
+  },
+  "claimed_original": null,
+  "input_publication": null,
+  "provenance_note": "earliest_proven_copy is the earliest matcher-proven copy by platform upload date; it is the earliest copy found and is not asserted to be the original source.",
+  "candidates_checked": 14,
+  "candidates_total": 52,
+  "candidate_status_counts": {
+   "pending": 38,
+   "unavailable": 3,
+   "not_proven": 2,
+   "too_long": 1,
+   "proven": 7,
+   "download_failed": 1
+  },
+  "adapters": {
+   "tavily": {
+    "queries": 3,
+    "errors": [],
+    "query_source": "claim text (Muse unavailable)"
+   },
+   "yandex": {
+    "frames": [
+     18,
+     8,
+     0
+    ],
+    "captcha": false,
+    "searched": 3,
+    "errors": []
+   }
+  },
+  "source_stats": {
+   "tavily": {
+    "candidates": 12,
+    "checked": 9,
+    "proven": 2
+   },
+   "yandex": {
+    "candidates": 40,
+    "checked": 5,
+    "proven": 5
+   }
+  },
+  "early_stop": {
+   "stopped": false
+  },
+  "proven_by_source": {
+   "tavily": [
+    "https://www.youtube.com/shorts/MRufCsTdcTw",
+    "https://www.youtube.com/watch?v=bnnoPfZ7_mo"
+   ],
+   "yandex": [
+    "https://www.youtube.com/watch?v=vBkbkIovE8A",
+    "https://www.youtube.com/watch?v=2itzrExPKQs",
+    "https://www.youtube.com/watch?v=InsrGmYLAvo",
+    "https://www.youtube.com/watch?v=7Wu7OWtLz04",
+    "https://www.youtube.com/watch?v=mnViNcnYies"
+   ]
+  },
+  "fast_path": null,
+  "keyframe_selection": {
+   "preferred": null,
+   "note": null
+  }
+ },
+ "clues": {
+  "status": "not_run"
+ },
+ "physical_world_check": {
+  "location": {
+   "query": "Durban, South Africa",
+   "name": "Durban, eThekwini Metropolitan Municipality, KwaZulu-Natal, 4057, South Africa",
+   "lat": -29.8618145,
+   "lon": 31.009909,
+   "source": "nominatim",
+   "confidence": "high",
+   "class": "place",
+   "type": "city",
+   "country_level": false,
+   "alternatives": []
+  },
+  "official_event": {
+   "source": "copernicus_ems",
+   "status": "NO_RECORD",
+   "activations": [],
+   "reliefweb": {
+    "source": "reliefweb",
+    "status": "SKIPPED",
+    "disasters": [],
+    "window_days": 7,
+    "reason": "country unknown or not mapped; ReliefWeb needs a country"
+   }
+  },
+  "hydrology": {
+   "source": "open-meteo glofas v4",
+   "river_discharge": {
+    "series": [
+     {
+      "date": "2017-03-09",
+      "m3s": 26.35
+     },
+     {
+      "date": "2017-03-10",
+      "m3s": 12.24
+     },
+     {
+      "date": "2017-03-11",
+      "m3s": 6.57
+     },
+     {
+      "date": "2017-03-12",
+      "m3s": 3.91
+     },
+     {
+      "date": "2017-03-13",
+      "m3s": 2.87
+     },
+     {
+      "date": "2017-03-14",
+      "m3s": 2.16
+     },
+     {
+      "date": "2017-03-15",
+      "m3s": 2.03
+     }
+    ],
+    "baseline": 3.7649999999999997,
+    "peak": 26.35,
+    "ratio": 7.0,
+    "cell": [
+     -29.974998,
+     30.925003
+    ]
+   },
+   "rain": {
+    "series": [
+     {
+      "date": "2017-03-09",
+      "mm": 14.7
+     },
+     {
+      "date": "2017-03-10",
+      "mm": 1.4
+     },
+     {
+      "date": "2017-03-11",
+      "mm": 0.0
+     },
+     {
+      "date": "2017-03-12",
+      "mm": 0.6
+     },
+     {
+      "date": "2017-03-13",
+      "mm": 0.7
+     },
+     {
+      "date": "2017-03-14",
+      "mm": 0.2
+     },
+     {
+      "date": "2017-03-15",
+      "mm": 0.1
+     }
+    ],
+    "max_mm": 14.7
+   },
+   "status": "ANOMALOUS"
+  },
+  "verdict": "SUPPORTS",
+  "reasons": [
+   "river discharge peak 26.4 m3/s is 7.0x the 30-day baseline 3.8 m3/s"
+  ],
+  "limits": [
+   "GloFAS ~5 km resolution cannot resolve flash floods or glacial lake outbursts; absence of a model signal is not evidence that no flood happened"
+  ],
+  "links": [
+   "https://mapping.emergency.copernicus.eu/activations/",
+   "https://flood-api.open-meteo.com/v1/flood?latitude=-29.8618145&longitude=31.009909&daily=river_discharge&start_date=2017-03-09&end_date=2017-03-15",
+   "https://www.openstreetmap.org/?mlat=-29.8618145&mlon=31.009909#map=10/-29.8618145/31.009909"
+  ],
+  "news_coverage": {
+   "source": "gdelt",
+   "label": "news coverage",
+   "status": "UNAVAILABLE",
+   "articles_in_window": null,
+   "articles_baseline_30d": null,
+   "sample_links": [],
+   "context_only": true,
+   "query": "Durban flood",
+   "reason": "GDELT request failed: Client error '429 Too Many Requests' for url 'https://api.gdeltproject.org/api/v2/doc/doc?query=Durban+flood&mode=artlis"
+  }
+ },
+ "media_nature": {
+  "value": "unknown",
+  "confidence": 0.0,
+  "cited_frames": [],
+  "cited_timestamps_s": [],
+  "reasons": [],
+  "status": "NOT_RUN",
+  "note": "Muse clues were not available, so the media nature was not assessed."
+ },
+ "contradictions": [],
+ "final_verdict": {
+  "label": "CONSISTENT_WITH_CLAIM",
+  "summary": "The footage matches a previously published copy (https://www.youtube.com/watch?v=bnnoPfZ7_mo, uploaded 2017-03-14), but that date is not earlier than the claimed event date, so recycling relative to the claim is not established. The earliest independently dated copy was published within days of the claimed event date, and no earlier copy or cited contradiction was found, and the physical-world check adds supporting context (context only; it did not change the verdict). This means no contradiction was found in the available evidence; it is not a finding that the footage is authentic.",
+  "limits": [
+   "A visual match proves shared footage ('previously published'), not that a claim is false or that the footage is fake.",
+   "Upload dates are platform metadata (or an archive snapshot date, an upper bound) for the copy found; the earliest copy found is not necessarily the original source.",
+   "Search is not exhaustive: memory covers only indexed clips, reverse search rarely finds originals, and heavy crops/edits can evade hash shortlisting.",
+   "'Not found' means not found by these adapters, not that no earlier copy exists."
+  ],
+  "basis": {
+   "earlier_proven_copies": 0,
+   "proven_copies": 7,
+   "physical_supports": true,
+   "unverified_model_observations": 0,
+   "date_conflicts": 0,
+   "media_nature": "unknown",
+   "claim_date_basis": "user"
+  }
+ },
+ "timing_s": 110.1,
+ "stage_timings_s": {
+  "fetch_and_keyframes": 1.5,
+  "memory": 7.8,
+  "memory_muse_wait_claim": 7.8,
+  "discovery": 65.9,
+  "discovery_by_source": {
+   "tavily": 2.7,
+   "yandex": 65.9
+  },
+  "verify_total_incl_overlap": 34.9,
+  "dates_physical_report_wait": 34.9,
+  "verify_workers": 3,
+  "verify_seconds": 71.1,
+  "verify_checked": 14
+ },
+ "_wall_s": 110.1,
+ "_clues_source": "live",
+ "_lens_calls_so_far": 0
+}
