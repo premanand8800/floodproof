@@ -42,6 +42,50 @@ def place_in_text(place, *texts) -> bool:
     return bool(p) and any(p in _norm(t) for t in texts if t)
 
 
+def _spoken_match(place, spoken_places):
+    p = _norm(place)
+    for x in spoken_places:
+        n = _norm(x.get("name"))
+        if n and p and (n in p or p in n):
+            return x
+    return None
+
+
+AI_LOC = "ai_location_hypothesis (used only to look up data, not as proof)"
+
+
+def fallback_places(claim_d, clues, country_name=None):
+    """Ordered [(place, source_label)] to try when the claimed place does not geocode. Narration, then on-screen text, then Muse's
+    top location hypothesis (only if confidence >= 0.6 and it cites frames). Every entry keeps its label; none is proof."""
+    ok = (clues or {}).get("status") == "ok"
+    if not ok:
+        return []
+    skip = {_norm(country_name), _norm(claim_d.get("place"))} - {""}
+    claimed = _norm(claim_d.get("place"))
+    seen, out = set(), []
+
+    def add(name, label):
+        k = _norm(name)
+        if k and k not in skip and k not in seen and not (claimed and k in claimed):   # a coarser part of the claimed place adds nothing
+            seen.add(k); out.append((str(name).strip(), label))
+    aud = clues.get("audio") or {}
+    if aud.get("status") == "ok" and aud.get("has_speech") is not False:
+        for x in aud.get("spoken_place_names") or []:
+            if x.get("audio_t") is not None:
+                add(x.get("name"), "narration")
+    for x in clues.get("visible_text") or []:
+        if x.get("refs") and x.get("text") and len(str(x["text"])) <= 60 and x.get("is_place") is True:
+            add(x["text"], "on_screen_text")
+    ll = clues.get("likely_location") or {}
+    try:
+        conf = float(ll.get("confidence") or 0)
+    except (TypeError, ValueError):
+        conf = 0.0
+    if ll.get("place") and conf >= 0.6 and ll.get("reasons"):
+        add(ll["place"], AI_LOC)
+    return out
+
+
 def infer_claim(clip, user_claim, user_date, user_place, clues) -> dict:
     """-> dict(text, event_date, place, source{text,event_date,place}, event_date_basis, inferred_note). Only fills EMPTY fields."""
     is_url = bool(getattr(clip, "url", None))
@@ -53,6 +97,10 @@ def infer_claim(clip, user_claim, user_date, user_place, clues) -> dict:
     ok = (clues or {}).get("status") == "ok"
     screen = [x for x in (clues.get("visible_text") or [])] if ok else []
     screen_dates = [x for x in (clues.get("on_screen_dates") or []) if x.get("date")] if ok else []
+    aud = (clues.get("audio") or {}) if ok else {}
+    aud_ok = aud.get("status") == "ok" and aud.get("has_speech") is not False
+    spoken_dates = [x for x in (aud.get("spoken_dates") or []) if x.get("date") and x.get("audio_t") is not None] if aud_ok else []
+    spoken_places = [x for x in (aud.get("spoken_place_names") or []) if x.get("name") and x.get("audio_t") is not None] if aud_ok else []
     if not is_url:
         if user_claim and not user_place and cp.get("place"):
             out["place"], src["place"] = cp["place"], "user_claim_text"
@@ -68,6 +116,9 @@ def infer_claim(clip, user_claim, user_date, user_place, clues) -> dict:
         elif screen_dates:
             d, basis = screen_dates[0]["date"], "on_screen_text"
             detail = f"date read from on-screen text ({screen_dates[0].get('text')!r}, frames {screen_dates[0].get('refs')})"
+        elif spoken_dates:
+            d, basis = spoken_dates[0]["date"], "spoken_in_narration"
+            detail = f"date spoken in the narration ({spoken_dates[0].get('text')!r}, audio@{spoken_dates[0]['audio_t']}); AI transcription, may contain errors"
         elif getattr(clip, "upload_date", None):
             d, basis, detail = clip.upload_date, "date_posted", "no explicit date in title, caption or on-screen text; using the date this post was uploaded (claimed date = date posted)"
         else:
@@ -76,6 +127,9 @@ def infer_claim(clip, user_claim, user_date, user_place, clues) -> dict:
             out["event_date"], src["event_date"], out["event_date_basis"], out["event_date_basis_detail"] = d, "inferred_from_post", basis, detail
     if not user_place and cp.get("place") and place_in_text(cp["place"], title, desc, *[x.get("text") for x in screen]):
         out["place"], src["place"] = cp["place"], "inferred_from_post"
+    elif not user_place and cp.get("place") and (sp := _spoken_match(cp["place"], spoken_places)):
+        out["place"], src["place"] = cp["place"], "inferred_from_narration"
+        out["place_basis"] = f"spoken in narration (audio@{sp['audio_t']})"
     elif not user_place and user_claim and cp.get("place"):
         out["place"], src["place"] = cp["place"], "user_claim_text"
     if "inferred_from_post" in src.values():

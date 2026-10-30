@@ -28,6 +28,35 @@ def _proven_entry(c: sources.Candidate, out_dir: Path):
                 memory_context=(c.memory_entry or {}).get("event_context"))
 
 
+def _physical(claim_d, clues, date):
+    """Physical check; if the claimed place does not geocode, try narration / on-screen / Muse-hypothesis places (labelled)."""
+    if not date:
+        return dict(status="NOT_RUN", reason="no claim date supplied")
+    et, cc, place = claim_d.get("event_type") or "unknown", claim_d.get("country_iso2"), claim_d.get("place")
+    res = run_physical(place, None, None, date, 3, et, cc)
+    loc = res.get("location") or {}
+    if loc.get("lat") is not None or res.get("status") in ("NOT_RUN",) :
+        return res
+    from . import physical as ph
+    tried = [place] if place else []
+    for cand, label in infer.fallback_places(claim_d, clues)[:5]:
+        try:
+            g = ph.geocode(cand, cc)
+        except Exception:
+            continue
+        tried.append(cand)
+        if g.get("lat") is None:
+            continue
+        r2 = run_physical(cand, g["lat"], g["lon"], date, 3, et, cc)
+        if isinstance(r2.get("location"), dict):
+            r2["location"].update(source=label, name=g.get("name") or cand, query=cand, confidence=g.get("confidence", "low"),
+                                  fallback_from=place, note="claimed place did not resolve; this location comes from a fallback")
+        return r2
+    if tried and isinstance(res.get("location"), dict):
+        res["location"]["fallback_tried"] = tried
+    return res
+
+
 def investigate(source: str, claim: str | None = None, date: str | None = None, place: str | None = None,
                 claimed_source: str | None = None, out_dir: str | Path | None = None, memory: Memory | None = None,
                 use_memory=True, use_yandex=True, use_tavily=True, use_muse=True, remember=False,
@@ -118,7 +147,7 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
                   adapters=web)
 
     phys_place = claim_d.get("place")
-    physical = run_physical(phys_place, None, None, date, 3, claim_d.get("event_type") or "unknown", claim_d.get("country_iso2")) if date else dict(status="NOT_RUN", reason="no claim date supplied")
+    physical = _physical(claim_d, clues, date)
     rep = build_report(input_meta=input_meta, claim=claim_d, memory=memory_layer, visual=visual, clues=clues,
                        physical=physical, investigation_id=inv_id)
     rep["timing_s"] = round(time.time() - t0, 1)

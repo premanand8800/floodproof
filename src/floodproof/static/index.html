@@ -185,8 +185,8 @@ function render(rep, ref) {
   // claim
   const claimDl = h("dl", {class: "kv"});
   const csrc = cm.source || {};
-  const SRC = {inferred_from_post: " [inferred from the post]", user_claim_text: " [from your claim text]"};
-  const BASIS = {title: "explicit date in the post title", description: "explicit date in the post description", on_screen_text: "date read from on-screen text", date_posted: "no explicit date found: claimed date = date posted"};
+  const SRC = {inferred_from_post: " [inferred from the post]", user_claim_text: " [from your claim text]", inferred_from_narration: " [" + (cm.place_basis || "spoken in narration") + "]"};
+  const BASIS = {title: "explicit date in the post title", description: "explicit date in the post description", on_screen_text: "date read from on-screen text", spoken_in_narration: "date spoken in the narration (AI transcription, may contain errors)", date_posted: "no explicit date found: claimed date = date posted"};
   [["Claim", cm.text, csrc.text], ["Claimed date", cm.event_date, csrc.event_date], ["Place", cm.place, csrc.place], ["Event type", cm.event_type, null]].forEach(([k, val, s]) => claimDl.append(h("dt", {text: k}), h("dd", {text: (val || "not given") + (val ? (SRC[s] || "") : "")})));
   if (cm.event_date && csrc.event_date === "inferred_from_post") claimDl.append(h("dt", {text: "Date basis"}), h("dd", {text: BASIS[cm.event_date_basis] || cm.event_date_basis || ""}));
   const contra = rep.contradictions || [];
@@ -232,6 +232,16 @@ function render(rep, ref) {
       h("ul", {class: "plain"}, obs.map((o) => h("li", {text: o.text + " [frames " + o.refs.join(", ") + "]"})))));
     if ((cl.shows || []).length) mc.append(h("div", {class: "src"}, h("strong", {text: "What the model says the footage shows"}), h("ul", {class: "plain"}, cl.shows.map((s) => h("li", {text: s.text + " [frames " + s.refs.join(", ") + "]"})))));
     if ((cl.visible_text || []).length) mc.append(h("p", {class: "note", text: "Visible text: " + cl.visible_text.map((t) => t.text).join(" | ")}));
+    const au = cl.audio || {};
+    if (au.status === "ok" && au.has_speech !== false) {
+      const T = (x) => " (audio@" + x.audio_t + "s)";
+      mc.append(h("div", {class: "src"}, h("strong", {text: "Narration (Muse Spark Open)"}), " ", badge("AI transcript", "b-hyp"),
+        h("div", {class: "note", text: "Language: " + (au.language || "unknown") + (au.truncated ? "; only the first " + au.analyzed_seconds + " s were analysed" : "")}),
+        au.transcript_summary ? h("p", {text: au.transcript_summary}) : null,
+        (au.spoken_place_names || []).length ? h("div", {class: "note", text: "Spoken places: " + au.spoken_place_names.map((x) => x.name + T(x)).join("; ")}) : null,
+        (au.spoken_dates || []).length ? h("div", {class: "note", text: "Spoken dates: " + au.spoken_dates.map((x) => x.date + (x.text ? " \u201c" + x.text + "\u201d" : "") + T(x)).join("; ")}) : null,
+        h("div", {class: "note", text: "AI transcription, may contain errors. Hypothesis only, not evidence."})));
+    } else if (au.status === "error") mc.append(h("p", {class: "note", text: "Narration analysis failed: " + (au.error || "error")}));
     if ((cl.frame_images || []).length) {
       const fr = h("div", {class: "frames"});
       cl.frame_images.forEach((p) => { const b = p.split("/").pop(); fr.append(h("figure", {}, img(ref, "frames/" + b, "Keyframe " + b), h("figcaption", {text: b.replace(".jpg", "")}))); });
@@ -245,6 +255,8 @@ function render(rep, ref) {
   const pv = ph.verdict, pdisp = pv === "NO_EVIDENCE" ? ["Insufficient corroboration", "b-na"] : (PHYS[pv] || STATUS[ph.status] || [ph.status || pv || "Not run", "b-na"]);
   const pc = card("Physical-world check", badge(...pdisp));
   if (pv === "NO_EVIDENCE") pc.append(h("p", {text: ph.verdict_display || "Insufficient corroboration — this does not show the event didn't happen"}));
+  const pl = ph.location || {};
+  if (pl.source && pl.lat != null) pc.append(h("p", {class: "note", text: "Location: " + (pl.name || pl.query) + " (source: " + pl.source + ")" + (pl.fallback_from ? "; the claimed place \u201c" + pl.fallback_from + "\u201d could not be resolved" : "")}));
   if (ph.reason) pc.append(h("p", {text: ph.reason}));
   if ((ph.reasons || []).length) pc.append(h("ul", {class: "plain"}, ph.reasons.map((r) => h("li", {text: r}))));
   if ((ph.links || []).length) pc.append(h("p", {class: "note"}, "Sources: ", ph.links.map((u, i) => [i ? " | " : "", link(u, u.replace(/^https?:\/\//, "").slice(0, 48))])));

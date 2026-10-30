@@ -26,7 +26,7 @@ SCHEMA = """Return ONLY one JSON object (no prose) with exactly these keys:
 {
  "shows": [{"text": str, "refs": [frame index ints]}],              // what the footage actually shows
  "scene_type": {"value": str, "refs": [..]},                        // e.g. "debris-covered glacier", "dense urban street", "coastal"
- "visible_text": [{"text": str, "language": str, "refs": [..]}],   // OCR of every legible caption, sign, logo, watermark
+ "visible_text": [{"text": str, "language": str, "is_place": bool (true only if the text is a geographic place name), "refs": [..]}],   // OCR of every legible caption, sign, logo, watermark
  "likely_location": {"place": str, "country": str, "confidence": float 0-1, "lat": float|null, "lon": float|null,
                      "reasons": [{"text": str, "refs": [..]}]},
  "contradictions_with_claim": [{"text": str, "refs": [..]}],       // visible cues that argue against the claim; [] if none
@@ -55,24 +55,91 @@ def pick_frames(feats: ClipFeatures, n=8):
     return sorted(set(np.linspace(0, len(feats) - 1, min(n, len(feats))).round().astype(int).tolist()))
 
 
+AUDIO_MAX_S = 90
+
+
+def _lenient_json(txt):
+    """parse_json, else strip code fences / take the first balanced {...}; None if nothing parses."""
+    import json
+    t = re.sub(r"```(?:json)?", "", txt or "")
+    try:
+        return parse_json(t)
+    except Exception:
+        pass
+    i = t.find("{")
+    while i != -1:
+        depth = 0
+        for j in range(i, len(t)):
+            depth += (t[j] == "{") - (t[j] == "}")
+            if depth == 0:
+                try:
+                    return json.loads(t[i:j + 1])
+                except Exception:
+                    break
+        i = t.find("{", i + 1)
+    return None
+
+
+def _clean_audio(d: dict) -> dict:
+    """Keep only items with a numeric audio_t (never invent); normalise spoken dates to ISO."""
+    def t_of(x):
+        v = x.get("audio_t") if isinstance(x, dict) else None
+        if isinstance(v, str):
+            m = re.fullmatch(r"\s*(?:(\d+):)?(\d+(?:\.\d+)?)\s*s?\s*", v)
+            v = (int(m[1] or 0) * 60 + float(m[2])) if m else None
+        return float(v) if isinstance(v, (int, float)) and not isinstance(v, bool) and v >= 0 else None
+    places = [dict(name=str(x["name"]).strip(), audio_t=t_of(x)) for x in (d.get("spoken_place_names") or [])
+              if isinstance(x, dict) and str(x.get("name") or "").strip() and t_of(x) is not None]
+    dates = []
+    for x in (d.get("spoken_dates") or []):
+        iso = _iso_ok(x.get("date")) if isinstance(x, dict) else None
+        if iso and t_of(x) is not None:
+            dates.append(dict(date=iso, text=str(x.get("text") or "")[:120], audio_t=t_of(x)))
+    d["dropped_untimed"] = len(d.get("spoken_place_names") or []) - len(places) + len(d.get("spoken_dates") or []) - len(dates)
+    d["spoken_place_names"], d["spoken_dates"] = places, dates
+    return d
+
+
 def analyze_audio(clip: Clip, workdir: Path | None = None) -> dict:
-    """Narration analysis with Muse Spark Open. Returns dict with status; never raises."""
+    """Narration analysis with Muse Spark Open. Returns dict with status; never raises.
+    Sends at most the first AUDIO_MAX_S seconds (mono, 32 kbps); retries once with a stricter prompt if no JSON came back."""
     if not clip.has_audio:
         return dict(status="no_audio_track")
-    wd = workdir or (CACHE / "audio"); mp3 = extract_audio(clip.path, wd / (Path(clip.path).stem + ".mp3"))
+    wd = workdir or (CACHE / "audio"); mp3 = extract_audio(clip.path, wd / (Path(clip.path).stem + ".mp3"), max_seconds=AUDIO_MAX_S)
     if not mp3:
         return dict(status="audio_extract_failed")
+    dur = getattr(clip, "duration", None)
+    truncated = bool(dur and dur > AUDIO_MAX_S)
     prompt = ("Listen to this audio from a viral disaster video. Return ONLY JSON: {\"has_speech\": bool, \"language\": str|null, "
-              "\"transcript_summary\": str, \"spoken_place_names\": [{\"name\": str, \"audio_t\": float}], \"other_sounds\": [str]}. "
+              "\"transcript_summary\": str, \"spoken_place_names\": [{\"name\": str, \"audio_t\": float}], "
+              "\"spoken_dates\": [{\"date\": \"YYYY-MM-DD\", \"text\": str, \"audio_t\": float}], \"other_sounds\": [str]}. "
+              "spoken_dates: only full calendar dates (with year) that the speaker says. audio_t = seconds from the start of the audio. "
               "If it is only music or noise, has_speech=false. Never invent words.")
-    try:
-        txt, cost = chat(AUDIO_MODEL, [{"type": "text", "text": prompt},
-                                       {"type": "input_audio", "input_audio": {"data": base64.b64encode(mp3.read_bytes()).decode(), "format": "mp3"}}],
-                         max_tokens=3000)
-        d = parse_json(txt); d.update(status="ok", model=AUDIO_MODEL, cost_usd=round(cost, 5))
-        return d
-    except Exception as e:
-        return dict(status="error", error=str(e)[:200], model=AUDIO_MODEL)
+    strict = ("Reply with ONE JSON object and nothing else: no prose, no markdown, no thinking. Keep transcript_summary under 60 words. "
+              "Keys: has_speech, language, transcript_summary, spoken_place_names [{name, audio_t}], spoken_dates [{date, text, audio_t}], other_sounds. "
+              "Every place and date MUST have audio_t, a number of seconds from the start; omit any you cannot time. ")
+    data = base64.b64encode(mp3.read_bytes()).decode()
+    audio_part = {"type": "input_audio", "input_audio": {"data": data, "format": "mp3"}}
+    cost, raw, err, best = 0.0, "", None, None
+    for attempt, (p, mt) in enumerate(((prompt, 6000), (strict + prompt, 8000))):
+        try:
+            raw, c = chat(AUDIO_MODEL, [{"type": "text", "text": p}, audio_part], max_tokens=mt)
+            cost += c
+        except Exception as e:
+            err = str(e)[:200]; continue
+        d = _lenient_json(raw)
+        if isinstance(d, dict):
+            d = _clean_audio(d)
+            if attempt == 0 and d["dropped_untimed"] and not (d["spoken_place_names"] or d["spoken_dates"]):
+                best = d; err = "items had no audio_t"; continue      # retry once asking explicitly for timestamps
+            d.update(status="ok", model=AUDIO_MODEL, cost_usd=round(cost, 5), truncated=truncated, analyzed_seconds=AUDIO_MAX_S if truncated else dur,
+                     attempts=attempt + 1)
+            return d
+        err = "no JSON object in model reply" + (" (empty reply)" if not (raw or "").strip() else "")
+    if best:
+        best.update(status="ok", model=AUDIO_MODEL, cost_usd=round(cost, 5), truncated=truncated, analyzed_seconds=AUDIO_MAX_S if truncated else dur, attempts=2)
+        return best
+    return dict(status="error", error=err, model=AUDIO_MODEL, cost_usd=round(cost, 5), raw_reply=(raw or "")[:300], attempts=2, truncated=truncated)
 
 
 def _valid_refs(refs, nframes, audio_ok):
@@ -182,7 +249,7 @@ def investigate_clip(clip: Clip, feats: ClipFeatures, claim: str | None = None, 
     if audio.get("status") == "ok":
         atext = ("\nAudio analysis (from a separate audio model, timestamps in seconds): " +
                  f"speech={audio.get('has_speech')}, language={audio.get('language')}, summary={audio.get('transcript_summary')}, "
-                 f"spoken place names={audio.get('spoken_place_names')}. Cite as \"audio@<seconds>\".\n")
+                 f"spoken place names={audio.get('spoken_place_names')}, spoken dates={audio.get('spoken_dates')}. Cite as \"audio@<seconds>\".\n")
     content = [{"type": "text", "text": f"These are {len(idx)} keyframes (numbered) from a viral disaster video. {ctx}.{atext}\n" + SCHEMA}]
     for i in idx:
         content.append({"type": "text", "text": f"Frame {i} (t={feats.times[i]:.1f}s):"})
