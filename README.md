@@ -8,6 +8,22 @@ During disasters, old or foreign footage goes viral with false captions. During 
 
 Live: https://floodproof.aether-soft.tech · Built for the Meta Global AI Developer Hackathon with Meta Muse models.
 
+## Results at a glance
+
+Numbers as `bench/EVALUATION.md` states them (all scorers make no API calls; nothing was tuned on the frozen sets):
+
+- **Earlier copy proven for 10/17 debunked viral clips (pipeline), 11/17 with all sources.** (Held-out 5/9 + global 5/8 for the pipeline; 11/17 with Muse + YouTube API + Google Lens in the ablation.)
+- **0 false accusations** in every experiment. 0/3 genuine clips falsely flagged in the global set.
+- **~1.4-1.7¢ per check** ($0.153 over 9 held-out cases, $0.156 over 11 global cases).
+- **Originals found: 0/17.** We prove that footage was published earlier; we do not find where it came from.
+- **InVID timing: TBD (manual test).**
+
+**What Muse is for (ablation, `bench/ablation_v2_RESULTS.md`).** Muse's effect on *discovery* is small: 8/17 with Muse versus 7/17 without is within Yandex's run-to-run noise, so do not read it as an effect. Muse's value is elsewhere: the explanation of each proof, the media type (camera footage, animation, likely AI-generated, compilation), narration analysis, claim inference from the post, the multilingual debunk card, and the relevance gate.
+
+**Relevance gate (`bench/gate_RESULTS.md`, 20 public videos, one run, a smoke test).** 0/10 relevant clips wrongly rejected; 9/10 irrelevant clips stopped (the tenth ran, which is the safe direction); mean $0.0024 per check; median 32 s per check before this sprint. One relevant clip (a tsunami tribute) was saved only by the metadata keyword veto, so that veto is load-bearing.
+
+**Dates and time zones.** Platform upload dates are UTC calendar dates. A copy counts as earlier than the claimed event only if it is at least 2 days earlier (or its exact timestamp precedes the claimed day everywhere on Earth); otherwise the verdict stays UNVERIFIED with the note "copy dated within a day of the claimed event; time-zone uncertainty". The input video's own publication is never counted as an "earlier copy": when it predates the claimed event it is reported as its own finding ("this video was posted on D1, before the claimed event on D2").
+
 ## How it works
 
 1. **Input.** A video URL or file, plus an optional claim, date and place. Empty fields are inferred from the post's title, caption, on-screen text and narration, and each inferred field is labelled with its source.
