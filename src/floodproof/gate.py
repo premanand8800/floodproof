@@ -3,6 +3,8 @@
 Cheap and conservative. Metadata (yt-dlp, no download) + 4 stream-seeked frames -> one small Muse call.
 Only a confident "no" (confidence >= 0.8, cited frames, no disaster keywords in the metadata) stops the pipeline;
 "yes" and "unsure" always run. The caller can override with force=True ("Run anyway").
+Uploaded files are never stopped: they carry no title or tags, so the keyword veto that saved a relevant tribute video in
+the frozen test cannot protect them. A confident "no" on an upload becomes 'run_warned' (the full check still runs).
 """
 from __future__ import annotations
 
@@ -150,6 +152,8 @@ def check(source: str, is_url: bool | None = None, force=False, log=print) -> di
         if cf.exists():
             c = json.loads(cf.read_text())
             c.update(cost=0.0, seconds=round(time.time() - t0, 1), cached=True)
+            if c["decision"] == "stop" and not is_url:      # a stop cached before uploads were exempt
+                c["decision"] = "run_warned"
             if force and c["decision"] == "stop":
                 c["decision"] = "run_forced"
             return c
@@ -160,6 +164,8 @@ def check(source: str, is_url: bool | None = None, force=False, log=print) -> di
             raise RuntimeError(f"only {len(frames)} frames could be grabbed")
         ans, model, cost = _ask(frames, meta)
         verdict, n = decide(ans, meta)
+        if verdict == "stop" and not is_url:
+            verdict = "run_warned"
         sec.update(decision=verdict, kind=n["kind"], reason=n["reason"], refs=n["refs"], confidence=n["confidence"],
                    relevant=n["relevant"], shows_disaster_or_emergency=n["shows"], model=model, cost=round(cost, 5))
         sec["seconds"] = round(time.time() - t0, 1)

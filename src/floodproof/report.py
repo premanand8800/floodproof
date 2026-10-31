@@ -721,7 +721,7 @@ def validate_proof(p):
         assert ex.get("model"), "explanation needs model"
 
 
-GATE_DECISIONS = ("run", "stop", "run_forced")
+GATE_DECISIONS = ("run", "stop", "run_forced", "run_warned")
 
 
 def validate_gate(g):
@@ -729,7 +729,7 @@ def validate_gate(g):
     assert isinstance(g.get("metadata_signals", {}), dict) and isinstance(g.get("refs", []), list), "gate signals/refs invalid"
     for k in ("cost", "seconds"):
         assert isinstance(g.get(k), (int, float)) and not isinstance(g.get(k), bool), f"gate.{k} must be a number"
-    if g["decision"] == "stop":
+    if g["decision"] in ("stop", "run_warned"):
         assert g.get("kind") and g.get("reason") and g["refs"], "a gate stop needs kind, reason and cited frames"
         assert isinstance(g.get("confidence"), (int, float)) and g["confidence"] >= 0.8, "a gate stop needs confidence >= 0.8"
 

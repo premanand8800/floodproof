@@ -107,3 +107,24 @@ def test_web_passes_force(monkeypatch, tmp_path):
     time.sleep(0.2)
     web.JOBS.clear()
     assert got["a"][-1] is True
+
+
+def test_uploads_are_never_stopped(monkeypatch, tmp_path):
+    calls = []
+    _patch(monkeypatch, tmp_path, _ans(), calls)
+    f = tmp_path / "clip.mp4"; f.write_bytes(b"\0" * 4096)
+    monkeypatch.setattr(gate, "grab_frames", lambda src, dur, n=gate.N_FRAMES: [b"x" * 2000] * 4)
+    g = gate.check(str(f), is_url=False)
+    assert g["decision"] == "run_warned" and g["kind"] == "music_video" and g["refs"]   # the warning keeps the reason
+    report.validate_gate(g)
+    g2 = gate.check(str(f), is_url=False)
+    assert g2["decision"] == "run_warned" and g2["cached"] and len(calls) == 1
+
+
+def test_cached_upload_stop_from_before_the_exemption_runs(monkeypatch, tmp_path):
+    monkeypatch.setattr(gate, "GATE_CACHE", tmp_path / "gate")
+    f = tmp_path / "old.mp4"; f.write_bytes(b"\1" * 4096)
+    (tmp_path / "gate").mkdir()
+    (tmp_path / "gate" / f"{gate._file_key(str(f))}.json").write_text(json.dumps(dict(
+        decision="stop", kind="gaming", reason="a game", refs=[2], confidence=0.9, metadata_signals={}, cost=0.0, seconds=1.0)))
+    assert gate.check(str(f), is_url=False)["decision"] == "run_warned"
