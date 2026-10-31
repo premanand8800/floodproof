@@ -83,3 +83,34 @@ def test_index_script_parses(tmp_path):
     for i, code in enumerate(js):
         f = tmp_path / f"s{i}.js"; f.write_text(code)
         assert subprocess.run([node, "--check", str(f)], capture_output=True).returncode == 0, f"script {i} has a syntax error"
+
+
+def test_job_api_exposes_live_events_and_run_media(tmp_path, monkeypatch):
+    """Structured '§' progress lines go to events (not the log); the job API lists keyframes and proof pairs written so far."""
+    from fastapi.testclient import TestClient
+    from floodproof import web
+    monkeypatch.setattr(web, "RUNS_DIR", tmp_path)
+    d = tmp_path / "abc123"; (d / "frames").mkdir(parents=True); (d / "evidence").mkdir()
+    (d / "frames" / "frame_00_t0.0.jpg").write_bytes(b"x"); (d / "frames" / "lens.jpg").write_bytes(b"x")
+    (d / "evidence" / "proof_yandex_1_viral.jpg").write_bytes(b"x"); (d / "evidence" / "proof_yandex_1_copy.jpg").write_bytes(b"x")
+
+    def fake_investigate(source, claim, date, place, out_dir=None, force=False, log=print):
+        log("[1/6] fetching clip + keyframes")
+        log('§{"type": "search", "source": "yandex", "candidates": 40, "seconds": 60.1}')
+        raise RuntimeError("stop here")
+    monkeypatch.setattr("floodproof.pipeline.investigate", fake_investigate)
+    web.JOBS["abc123"] = dict(status="running", log=[], events=[], started=0, deep=False)
+    web._run_job("abc123", "https://youtu.be/x", None, None, None, False)
+    j = TestClient(web.create_app()).get("/api/job/abc123").json()
+    assert j["events"] == [{"type": "search", "source": "yandex", "candidates": 40, "seconds": 60.1}]
+    assert all(not x.startswith("§") for x in j["log"])
+    assert j["media"] == {"frames": ["frames/frame_00_t0.0.jpg"],
+                          "proofs": [{"viral": "evidence/proof_yandex_1_viral.jpg", "copy": "evidence/proof_yandex_1_copy.jpg", "source": "yandex"}]}
+
+
+def test_pipeline_event_helper_never_raises():
+    from floodproof.pipeline import _event
+    out = []
+    _event(out.append, "gate", kind="music_video", decision="stop")
+    assert out == ['§{"type": "gate", "kind": "music_video", "decision": "stop"}']
+    _event(lambda m: (_ for _ in ()).throw(RuntimeError("log broke")), "x")     # swallowed

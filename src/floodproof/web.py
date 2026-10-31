@@ -130,9 +130,34 @@ def bench_headline() -> dict:
                 sources=["bench/heldout_rescored.json (system B)", "bench/global_rescored.json", "bench/heldout_RESULTS.md and bench/global_RESULTS.md (cost)"])
 
 
+def _run_media(job_id: str) -> dict:
+    """What a running investigation has written so far: keyframe JPEGs and matcher proof pairs (served by /files/run/...)."""
+    try:
+        d = _dir("run", job_id)
+    except FileNotFoundError:
+        return dict(frames=[], proofs=[])
+    frames = sorted(p.name for p in (d / "frames").glob("frame_*.jpg")) if (d / "frames").is_dir() else []
+    proofs = []
+    ev = d / "evidence"
+    if ev.is_dir():
+        for v in sorted(ev.glob("proof_*_viral.jpg"), key=lambda p: p.stat().st_mtime):
+            c = v.with_name(v.name[:-len("_viral.jpg")] + "_copy.jpg")
+            if c.exists():
+                proofs.append(dict(viral="evidence/" + v.name, copy="evidence/" + c.name, source=v.name.split("_")[1]))
+    return dict(frames=["frames/" + f for f in frames], proofs=proofs)
+
+
 def _run_job(job_id, source, claim, date, place, deep, force=False):
     job = JOBS[job_id]
-    log = lambda *a: job["log"].append(" ".join(str(x) for x in a)[:300])
+    def log(*a):
+        line = " ".join(str(x) for x in a)
+        if line.startswith("§"):                    # structured progress event for the live run view (never the report)
+            try:
+                job["events"].append(json.loads(line[1:]))
+            except Exception:
+                pass
+            return
+        job["log"].append(line[:300])
     out = RUNS_DIR / job_id
     try:
         if deep:
@@ -218,7 +243,7 @@ def create_app():
             if not trusted:
                 _RUNS_TODAY[today] = _RUNS_TODAY.get(today, 0) + 1
         job_id = uuid.uuid4().hex[:10]
-        JOBS[job_id] = dict(status="running", log=[], started=time.time(), deep=want_deep)
+        JOBS[job_id] = dict(status="running", log=[], events=[], started=time.time(), deep=want_deep)
         threading.Thread(target=_run_job, args=(job_id, source, claim or None, date or None, place or None, JOBS[job_id]["deep"], force in ("1", "true", "on")),
                          daemon=True).start()
         return dict(job=job_id)
@@ -229,7 +254,7 @@ def create_app():
         if not j:
             raise HTTPException(404)
         return JSONResponse(dict(status=j["status"], log=j["log"][-30:], report=j.get("report"), error=j.get("error"),
-                                 seconds=round(time.time() - j["started"])))
+                                 seconds=round(time.time() - j["started"]), events=j.get("events", [])[-40:], media=_run_media(job_id)))
 
     return app
 

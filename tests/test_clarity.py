@@ -475,5 +475,5 @@ def test_replay_is_built_from_report_fields_and_autoplays():
     for field in ("stage_timings_s", "candidate_status_counts", "source_stats", "proven_matches", "rep.snowball", "rep.gate"):
         assert field in html                                   # every step reads a saved report field
     assert "Math.random" not in html.split("function replaySteps")[1].split("function render(")[0]   # nothing simulated
-    assert html.count("AUTOPLAY = true") == 2                  # showcase card click + finished live run
+    assert html.count("AUTOPLAY = true") == 3                  # showcase card, the Nepal story button, a finished live run
     assert "rk-proof" in html and ".rp-step.proof" not in html  # step classes cannot collide with the .proof image style

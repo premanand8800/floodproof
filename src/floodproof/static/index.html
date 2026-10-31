@@ -6,7 +6,7 @@
 <title>FloodProof: is this disaster video real?</title>
 <meta name="description" content="FloodProof finds the earlier copy of a viral disaster video and shows you the proof. No fake score. Evidence.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 :root{
   --bg:#f3f6f9;--surface:#fff;--surface2:#eaf0f5;--ink:#0b1b2b;--mute:#475869;--line:#d3dde6;
@@ -15,7 +15,7 @@
   --hero1:#0a1c30;--hero2:#0d3a4d;--hero-ink:#f2f8fb;--hero-mute:#b4c8d6;
   --shadow:0 1px 2px rgba(11,27,43,.06),0 8px 24px rgba(11,27,43,.06);
   --accent:#ff7a2f;--accent-ink:#1d0b02;--accent-text:#c2410c;
-  --r:16px;--ff-h:"Space Grotesk",system-ui,sans-serif;--ff-b:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--ff-m:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:16px;--ff-h:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;--ff-b:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--ff-s:"Instrument Serif",Georgia,"Times New Roman",serif;--ff-m:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
   --bg:#07111b;--surface:#0e1c2a;--surface2:#142638;--ink:#e8f0f6;--mute:#a6b8c7;--line:#223548;
@@ -53,9 +53,9 @@ button,input,textarea,select,summary{font:inherit;color:inherit}
 .topnav{background:var(--surface);border-bottom:1px solid var(--line)}
 /* home hero */
 .hero{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(160deg,#050d17 0%,var(--hero1) 45%,var(--hero2) 100%);color:var(--hero-ink);padding-bottom:56px;border-bottom-left-radius:28px;border-bottom-right-radius:28px}
-.hero h1{font-size:clamp(2.3rem,6.4vw,4.4rem);font-weight:700;max-width:18ch;margin:18px 0 14px;line-height:1.02;letter-spacing:-.025em;text-wrap:balance}
+.hero h1{font-size:clamp(2.4rem,6.6vw,4.7rem);font-weight:800;max-width:18ch;margin:18px 0 14px;line-height:1.02;letter-spacing:-.025em;text-wrap:balance}
 .hero h1 em{font-style:normal;display:block;margin-top:14px;font-size:max(1.15rem,.42em);font-weight:500;letter-spacing:-.01em;line-height:1.3;color:var(--hero-mute);max-width:34ch}
-.hero h1 .acc{color:var(--accent);font-weight:700;text-shadow:0 0 22px rgba(255,122,47,.55)}
+.hero h1 .acc{color:var(--accent);font-family:var(--ff-s);font-style:italic;font-weight:400;font-size:1.32em;letter-spacing:0;text-shadow:0 0 22px rgba(255,122,47,.55)}
 .hero-wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:82%;z-index:-1;pointer-events:none}
 .hero-wave .glow{fill:none;stroke:var(--accent);stroke-width:2.5;filter:drop-shadow(0 0 6px rgba(255,122,47,.9)) drop-shadow(0 0 22px rgba(255,122,47,.5))}
 .hero-wave .ghost{fill:none;stroke:rgba(255,255,255,.08);stroke-width:1.5}
@@ -179,6 +179,54 @@ ul.plain,ul.limits{margin:6px 0;padding-left:20px}
 @keyframes rpIn{from{opacity:.15;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.rp-step.enter,.rp-q li.enter{animation:none}}
 @media (max-width:560px){.rp-step{grid-template-columns:14px 1fr}.rp-t{grid-column:2}.rp-body{grid-column:2}}
+.w{display:inline-block;animation:wIn .75s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i) * 75ms + 80ms)}
+@keyframes wIn{from{opacity:0;transform:translateY(.45em);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+.hero-wave .glow{stroke-dasharray:2200;stroke-dashoffset:0;animation:draw 2.2s .4s cubic-bezier(.5,0,.2,1) both}
+@keyframes draw{from{stroke-dashoffset:2200}to{stroke-dashoffset:0}}
+/* Nepal story band */
+.story{margin:56px 0 8px;border-radius:24px;padding:clamp(24px,5vw,48px);background:linear-gradient(150deg,#050d17,#0b2a38);color:#e9f1f6;position:relative;overflow:hidden;isolation:isolate}
+.story::after{content:"";position:absolute;inset:auto -10% -60% 40%;height:120%;background:radial-gradient(closest-side,rgba(255,122,47,.22),transparent);z-index:-1}
+.story .kick{font:600 .78rem var(--ff-m);letter-spacing:.12em;text-transform:uppercase;color:#ffb28a;margin:0 0 14px}
+.story .big{font-family:var(--ff-h);font-weight:500;font-size:clamp(1.45rem,3.4vw,2.35rem);line-height:1.22;letter-spacing:-.015em;max-width:30ch;margin:0 0 22px;color:#9fb4c3;text-wrap:balance}
+.story .big b{color:#fff;font-weight:800}
+.story .big b.hot{color:var(--accent);text-shadow:0 0 18px rgba(255,122,47,.45)}
+.story .btn{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+/* live run stage: real frames, Muse's findings and the proof as they arrive */
+.stage{background:linear-gradient(160deg,#050d17,#0a1c30 50%,#0d3a4d);color:#e9f1f6;border-radius:24px;padding:clamp(18px,4vw,32px);margin-top:24px;position:relative;overflow:hidden;isolation:isolate}
+.stage .card-h h2{color:#fff}
+.stage .elapsed{color:#ffb28a;font-family:var(--ff-m)}
+.rv-now{font-family:var(--ff-h);font-weight:800;font-size:clamp(1.6rem,4.4vw,2.8rem);line-height:1.08;letter-spacing:-.02em;margin:14px 0 4px;min-height:1.1em}
+.rv-now .dots::after{content:"";animation:dots 1.4s steps(4) infinite}
+@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+.rv-sub{color:#9fb4c3;margin:0 0 18px;min-height:1.5em}
+.stage .steps{margin:8px 0 18px}.stage .steps li{color:#7f95a6}.stage .steps li i{background:#0a1826;border-color:#24394c;color:#9fb4c3}
+.stage .steps li::before{background:#24394c}
+.stage .steps li.done i{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.stage .steps li.done::before,.stage .steps li.cur::before{background:var(--accent)}
+.stage .steps li.cur i{border-color:var(--accent);color:var(--accent);box-shadow:0 0 0 4px rgba(255,122,47,.2)}
+.film{position:relative;display:flex;gap:8px;overflow:hidden;min-height:92px;padding:6px 0;border-radius:12px}
+.film img{flex:none;width:132px;height:80px;object-fit:cover;border-radius:8px;border:1px solid rgba(255,255,255,.12);animation:pop .5s cubic-bezier(.2,.8,.2,1) both}
+.film .ph{flex:1;border-radius:10px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 132px,transparent 132px 140px);height:80px}
+.film.scan::after{content:"";position:absolute;top:0;bottom:0;width:70px;left:-80px;background:linear-gradient(90deg,transparent,rgba(255,122,47,.55),transparent);mix-blend-mode:screen;animation:scan 1.8s linear infinite}
+@keyframes scan{to{left:100%}}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.94)}to{opacity:1;transform:none}}
+.feed{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.feed>li{border:1px solid rgba(255,255,255,.1);border-left:3px solid var(--k,#3a5368);border-radius:12px;padding:10px 14px;background:rgba(5,13,23,.45);animation:pop .45s cubic-bezier(.2,.8,.2,1) both;min-width:0;overflow-wrap:anywhere}
+.feed>li.f-muse{--k:#c5b3ff}.feed>li.f-search{--k:#ffd070}.feed>li.f-proof{--k:#82dc9e}
+.feed .who{font:600 .7rem var(--ff-m);letter-spacing:.08em;text-transform:uppercase;color:var(--k,#9fb4c3);display:block;margin-bottom:2px}
+.feed .q{list-style:none;margin:6px 0 0;padding:0;font:.8rem var(--ff-m);color:#cfe0ea}
+.feed .q li{animation:pop .3s both}
+.feed .q li::before{content:"› ";color:var(--accent)}
+.match{margin-top:18px;border-radius:18px;padding:18px;background:rgba(130,220,158,.08);border:2px solid #82dc9e;animation:flash 1.2s ease-out both}
+@keyframes flash{0%{box-shadow:0 0 0 0 rgba(130,220,158,.7);transform:scale(.97)}40%{transform:scale(1.01)}100%{box-shadow:0 0 0 22px transparent;transform:none}}
+.match h3{font-family:var(--ff-h);font-weight:800;font-size:clamp(1.4rem,3.6vw,2.1rem);color:#82dc9e;letter-spacing:.01em}
+.match .pair2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.match figure{margin:0;background:#02070d;border-radius:10px;display:grid;place-items:center;overflow:hidden}.match img{display:block;max-width:100%;height:clamp(180px,32vw,320px);object-fit:contain}
+.match figcaption{width:100%;padding:6px 10px;background:rgba(5,13,23,.8)}
+.match figcaption{font-size:.8rem;color:#9fb4c3;margin-top:4px}
+.stage .note,.stage details.mini summary{color:#9fb4c3}
+.stage .log{background:rgba(0,0,0,.35);color:#cfe0ea}
+@media (prefers-reduced-motion:reduce){.w,.hero-wave .glow,.film img,.feed>li,.feed .q li,.match{animation:none}.film.scan::after{display:none}.rv-now .dots::after{animation:none;content:"..."}}
 .warn{background:var(--unvbg);color:var(--unv);border-radius:10px;padding:8px 12px;font-size:.9rem;margin-top:8px}
 .phero{border:2px solid var(--rec);border-radius:var(--r);background:var(--surface);padding:18px;margin-top:20px;box-shadow:var(--shadow)}
 .pair{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
@@ -268,7 +316,7 @@ details.layer .lb{padding:0 18px 18px}
     <a class="brand" href="#/" aria-label="FloodProof home"><svg aria-hidden="true"><use href="#logo"/></svg><span>FloodProof</span></a>
     <button class="themebtn" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
   </div>
-  <h1>Is this disaster video real? <em>FloodProof finds the earlier copy and shows you <span class="acc">the proof.</span></em></h1>
+  <h1 aria-label="Is this disaster video real? FloodProof finds the earlier copy and shows you the proof."><span class="w" style="--i:0">Is</span> <span class="w" style="--i:1">this</span> <span class="w" style="--i:2">disaster</span> <span class="w" style="--i:3">video</span> <span class="w" style="--i:4">real?</span> <em><span class="w" style="--i:5">FloodProof</span> <span class="w" style="--i:6">finds</span> <span class="w" style="--i:7">the</span> <span class="w" style="--i:8">earlier</span> <span class="w" style="--i:9">copy</span> <span class="w" style="--i:10">and</span> <span class="w" style="--i:11">shows</span> <span class="w" style="--i:12">you</span> <span class="w acc" style="--i:14">the proof.</span></em></h1>
   <p class="lead">Paste a link or drop a clip. If the footage was posted before, you get the matching frames, the date and a shareable debunk in plain language.</p>
   <form id="form" class="check" aria-label="Check a video" novalidate>
     <label class="sr" for="url">Video link</label>
@@ -306,6 +354,11 @@ details.layer .lb{padding:0 18px 18px}
 <div class="wrap" id="v-home">
   <div class="stats" id="stats" hidden></div>
   <div class="statnote note" id="statnote" hidden>Measured on real viral clips already debunked by fact-checkers. <button class="linkbtn" type="button" id="howbtn">How we measured</button></div>
+  <section class="story" aria-label="Why we built FloodProof">
+    <p class="kick">Nepal · August 2026</p>
+    <p class="big">As the <b>Rasuwa glacier flood</b> hit Nepal, a clip of an <b>Alaska glacier</b> went viral as the disaster. FloodProof found the same footage <b class="hot">posted 5 days before</b> the flood it claimed to show.</p>
+    <a class="btn" href="#/report/demo/success_recycled" id="story-go">See the proof →</a>
+  </section>
   <section class="blk" aria-labelledby="demo-h">
     <div class="sec-h"><h2 id="demo-h">See it work</h2><span class="note">Saved examples open instantly. Nothing is run.</span></div>
     <div class="demos" id="picker"></div>
@@ -316,10 +369,14 @@ details.layer .lb{padding:0 18px 18px}
 <div id="v-run" hidden>
  <div class="topnav"><div class="wrap"><div class="bar"><a class="brand" href="#/" aria-label="FloodProof home"><svg aria-hidden="true"><use href="#logo"/></svg><span>FloodProof</span></a><button class="themebtn" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button></div></div></div>
  <div class="wrap">
-  <div class="runcard">
+  <div class="stage">
     <div class="card-h"><h2 id="run-title">Checking your video</h2><span class="elapsed" id="elapsed" role="timer" aria-label="Elapsed time">0:00</span></div>
+    <p class="rv-now" id="rv-now" aria-live="polite"><span id="rv-now-t">Starting</span><span class="dots" aria-hidden="true"></span></p>
+    <p class="rv-sub" id="run-note" role="status" aria-live="polite">This usually takes one to three minutes. Everything below is happening live.</p>
     <ol class="steps" id="steps" aria-label="Progress"></ol>
-    <p class="note" id="run-note" role="status" aria-live="polite">This usually takes one to three minutes. You can leave this tab open.</p>
+    <div class="film" id="rv-film" aria-label="Keyframes taken from your video"><div class="ph"></div></div>
+    <div id="rv-match"></div>
+    <ul class="feed" id="rv-feed" aria-label="What the investigation found so far"></ul>
     <details class="mini"><summary>Show raw log</summary><pre class="log" id="log"></pre></details>
     <div class="actions" id="run-actions" hidden style="margin-top:14px"><a class="btn" href="#/">Back to home</a></div>
   </div>
@@ -1066,6 +1123,7 @@ fetch("/api/demos").then((r) => r.json()).then((ds) => {
   });
 }).catch(() => {});
 
+$("#story-go").onclick = () => { AUTOPLAY = true; };
 // ---------- file drop
 const fileIn = $("#file"), drop = $("#drop");
 function paintFile() {
@@ -1117,10 +1175,62 @@ async function submitForm(force) {
   const {job} = await r.json();
   startRun(job);
 }
+const NOW = ["Asking Muse: is this a disaster video", "Pulling the clip and its keyframes", "Checking our memory of verified clips",
+  "Muse is reading the frames and narration", "Searching the web for earlier copies", "Comparing candidates frame by frame",
+  "Checking dates and disaster records", "Writing the report"];
+let LIVE = null;
+function liveReset(job) {
+  LIVE = {job, frames: new Set(), events: 0, proofs: 0, verifyShown: false};
+  $("#rv-film").replaceChildren(h("div", {class: "ph"})); $("#rv-film").classList.remove("scan");
+  $("#rv-feed").replaceChildren(); $("#rv-match").replaceChildren();
+}
+function feedItem(kind, who, ...kids) { const li = h("li", {class: "f-" + kind}, h("span", {class: "who", text: who}), ...kids); $("#rv-feed").append(li); return li; }
+function typeList(ul, items) { items.forEach((q, i) => setTimeout(() => ul.append(h("li", {text: q})), REDUCED() ? 0 : 260 * i)); }
+function liveEvent(e) {
+  if (e.type === "gate") {
+    feedItem("muse", "Muse · relevance check", e.decision === "stop" ? "This does not look like disaster footage." : "Disaster footage: yes. " , e.reason ? h("span", {class: "note", text: "“" + e.reason + "”"}) : "");
+  } else if (e.type === "muse") {
+    const facts = [];
+    if (e.kind) facts.push(String(e.kind).replaceAll("_", " "));
+    if (e.place) facts.push("looks like " + e.place + (e.country && e.country !== e.place ? ", " + e.country : ""));
+    if ((e.spoken_dates || []).length) facts.push("narration says " + e.spoken_dates.join(", "));
+    if ((e.text || []).length) facts.push("on screen: " + e.text.join(" | "));
+    const li = feedItem("muse", "Muse · what it sees", h("div", {text: (e.shows || [])[0] || "Read the frames."}),
+      facts.length ? h("div", {class: "note", text: facts.join(" · ")}) : "", h("div", {class: "note", text: "Search queries Muse wrote:"}));
+    const ul = h("ul", {class: "q"}); li.append(ul); typeList(ul, e.queries || []);
+  } else if (e.type === "search") {
+    feedItem("search", "Search · " + e.source.replace("_api", ""), h("strong", {text: e.candidates + " candidate" + (e.candidates === 1 ? "" : "s")}), " found in " + e.seconds + " s");
+  }
+}
+function liveUpdate(j) {
+  const L = LIVE, film = $("#rv-film"), media = j.media || {}, k = Math.max(0, stepIndex(j.log || []));
+  $("#rv-now-t").textContent = NOW[k] || "Working";
+  film.classList.toggle("scan", k <= 3 && j.status === "running");
+  (media.frames || []).forEach((f, i) => {
+    if (L.frames.has(f)) return; L.frames.add(f);
+    const ph = film.querySelector(".ph"); if (ph) ph.remove();
+    const im = h("img", {alt: "", src: "/files/run/" + encodeURIComponent(L.job) + "/" + f.split("/").map(encodeURIComponent).join("/")});
+    im.style.animationDelay = (REDUCED() ? 0 : (i % 8) * 90) + "ms"; film.append(im);
+  });
+  (j.events || []).slice(L.events).forEach(liveEvent); L.events = (j.events || []).length;
+  const last = (j.log || []).slice().reverse().find((x) => /checked \d+ of \d+|verifying up to/.test(x));
+  if (last && !L.verifyShown && /verifying up to/.test(last)) { L.verifyShown = true; feedItem("proof", "Matcher", "Downloading candidates and comparing them frame by frame. Only a proven match counts."); }
+  const ps = media.proofs || [];
+  if (ps.length > L.proofs) {
+    const p = ps[ps.length - 1], u = (x) => "/files/run/" + encodeURIComponent(L.job) + "/" + x.split("/").map(encodeURIComponent).join("/");
+    $("#rv-match").replaceChildren(h("section", {class: "match", "aria-label": "Match found"},
+      h("h3", {text: ps.length === 1 ? "Match found." : ps.length + " matches found."}),
+      h("p", {class: "note", style: "color:#cfe0ea", text: "The frame matcher proved this is the same footage (found via " + p.source + "). Checking its date next."}),
+      h("div", {class: "pair2"}, h("figure", {}, h("img", {src: u(p.viral), alt: "Frame from your video"}), h("figcaption", {text: "Your video"})),
+        h("figure", {}, h("img", {src: u(p.copy), alt: "Frame from the copy found online"}), h("figcaption", {text: "Copy found online"})))));
+    L.proofs = ps.length;
+    $("#rv-match").scrollIntoView({block: "center", behavior: REDUCED() ? "auto" : "smooth"});
+  }
+}
 function startRun(job) {
-  stopRun(); show("run");
+  stopRun(); show("run"); liveReset(job);
   const t0 = Date.now(); let server = 0;
-  $("#run-title").textContent = "Checking your video"; $("#run-note").textContent = "This usually takes one to three minutes. You can leave this tab open.";
+  $("#run-title").textContent = "Live investigation"; $("#run-note").textContent = "This usually takes one to three minutes. Everything below is happening live.";
   $("#run-actions").hidden = true; $("#log").textContent = ""; paintSteps(-1, false);
   const clock = () => { $("#elapsed").textContent = mmss(Math.max(server, Math.round((Date.now() - t0) / 1000))); };
   clock(); CLOCK = setInterval(clock, 1000);
@@ -1129,11 +1239,14 @@ function startRun(job) {
     try { j = await (await fetch("/api/job/" + job)).json(); } catch (e) { POLL = setTimeout(tick, 3000); return; }
     server = j.seconds || 0; clock();
     $("#log").textContent = (j.log || []).join("\n");
-    if (j.status === "running") { paintSteps(Math.max(0, stepIndex(j.log || [])), false); POLL = setTimeout(tick, 2000); return; }
+    try { liveUpdate(j); } catch (e) {}
+    if (j.status === "running") { paintSteps(Math.max(0, stepIndex(j.log || [])), false); POLL = setTimeout(tick, 1500); return; }
     stopRun(); $("#go").disabled = false; clock();
-    if (j.status === "done") { paintSteps(7, true); AUTOPLAY = true; location.hash = "#/report/run/" + encodeURIComponent(j.report); }
+    if (j.status === "done") { paintSteps(7, true); $("#rv-now-t").textContent = "Done. Opening the report"; $("#rv-film").classList.remove("scan");
+      AUTOPLAY = true; setTimeout(() => { location.hash = "#/report/run/" + encodeURIComponent(j.report); }, REDUCED() ? 0 : 1200); }
     else {
-      $("#run-title").textContent = "The check could not be completed"; $("#run-note").textContent = "Something went wrong on our side. Please try again, or open a saved example.";
+      $("#rv-film").classList.remove("scan"); $("#rv-now-t").textContent = "The check could not be completed";
+      $("#run-title").textContent = "Something went wrong"; $("#run-note").textContent = "Something went wrong on our side. Please try again, or open a saved example.";
       $("#run-actions").hidden = false;
     }
   };

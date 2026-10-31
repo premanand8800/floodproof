@@ -1,6 +1,7 @@
 """investigate(): the end-to-end entry point used by the CLI and the web app."""
 from __future__ import annotations
 
+import json
 import re
 import time
 import uuid
@@ -169,6 +170,14 @@ def _gate_stop_report(source, g, inv_id, out, t0):
     return rep
 
 
+def _event(log, etype, **data):
+    """A structured progress event for the live run view ('§' + JSON). The web UI parses it; it never feeds the report."""
+    try:
+        log("§" + json.dumps(dict(type=etype, **data), ensure_ascii=False, default=str))
+    except Exception:
+        pass
+
+
 def investigate(source: str, claim: str | None = None, date: str | None = None, place: str | None = None,
                 claimed_source: str | None = None, out_dir: str | Path | None = None, memory: Memory | None = None,
                 use_memory=True, use_yandex=True, use_tavily=True, use_muse=True, remember=False,
@@ -197,6 +206,7 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
         stage["fetch_keyframes_only"] = round(t_fetched - t0, 1); stage["gate_total"] = gate.get("seconds")
         stage["gate_wait_after_fetch"] = round(time.time() - t_fetched, 1)
         log(f"gate: {gate['decision']} kind={gate.get('kind')} conf={gate.get('confidence')} cost=${gate.get('cost')} {gate.get('seconds')}s")
+        _event(log, "gate", decision=gate.get("decision"), kind=gate.get("kind"), reason=gate.get("reason"), refs=gate.get("refs"))
         if gate["decision"] == "stop":
             return _gate_stop_report(source, gate, inv_id, out, t0)
     gate_pool.shutdown(wait=False)
@@ -262,6 +272,13 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
 
     web = {}
     claim_queries = [q["q"] for q in clues["queries"]] if clues.get("status") == "ok" else ([claim] if claim else [])
+    if clues.get("status") == "ok":
+        loc, aud = clues.get("likely_location") or {}, clues.get("audio") or {}
+        _event(log, "muse", kind=(clues.get("media_nature") or {}).get("value"), queries=claim_queries[:8],
+               text=[t.get("text") for t in (clues.get("visible_text") or [])][:3],
+               place=loc.get("place") if loc.get("place") not in (None, "", "unknown") else None, country=loc.get("country"),
+               spoken_dates=[d.get("date") for d in (aud.get("spoken_dates") or [])][:2],
+               shows=[x.get("text") for x in (clues.get("shows") or [])][:2])
     stage["memory_muse_wait_claim"] = round(time.time() - t_mark[0], 1); t_mark[0] = time.time()
 
     # Real camera clips are the ones worth tracing to earlier copies (AI-generated shots have no original): when Muse labelled any
@@ -324,6 +341,7 @@ def investigate(source: str, claim: str | None = None, date: str | None = None, 
             web[name] = dict(status="error", error=(str(err)[:150] if name == "yandex" else type(err).__name__))
         else:
             cs, info = res; cands.extend(cs); web[name] = info
+            _event(log, "search", source=name, candidates=len(cs), seconds=round(secs, 1))
         _drop_self()
 
     stop_ref = sources_stop_date(claim_d)

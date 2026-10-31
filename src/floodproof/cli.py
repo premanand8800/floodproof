@@ -37,7 +37,7 @@ def main(argv=None):
         from .report import render_text
         rep = investigate(a.source, a.claim, a.date, a.place, a.claimed_source, a.out, use_memory=not a.no_memory,
                           use_yandex=not a.no_yandex, use_tavily=not a.no_tavily, use_muse=not a.no_muse,
-                          remember=a.remember, use_snowball=True if a.snowball else None, log=lambda s: print(s, file=sys.stderr))
+                          remember=a.remember, use_snowball=True if a.snowball else None, log=lambda s: None if str(s).startswith("§") else print(s, file=sys.stderr))
         print(json.dumps(rep, indent=2, ensure_ascii=False, default=str) if a.json else render_text(rep))
         from pathlib import Path
         print(f"\nreport: {Path(a.out or 'runs/' + rep['investigation_id']).resolve()}/report.json", file=sys.stderr)
