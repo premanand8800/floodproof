@@ -563,7 +563,7 @@ function proofHero(rep, ref) {
       e.setAttribute("class", "mark"); e.setAttribute("cx", (x0 + x1) / 2); e.setAttribute("cy", (y0 + y1) / 2);
       e.setAttribute("rx", Math.max(18, (x1 - x0) / 2)); e.setAttribute("ry", Math.max(14, (y1 - y0) / 2));
       const t = document.createElementNS(SVGNS, "text");
-      t.setAttribute("class", "marktxt"); t.setAttribute("x", Math.max(bx0 + 6, x0)); t.setAttribute("y", Math.max(by0 + 40, y0 - 8)); t.textContent = "MATCHED REGION";
+      t.setAttribute("class", "marktxt"); t.setAttribute("x", Math.max(bx0 + 6, x0)); t.setAttribute("y", Math.min(by0 + bb.height - 10, y1 + 16)); t.textContent = "MATCHED REGION";   // below the region: the top band holds the exhibit label
       svg.append(e, t);
     };
     const showStamp = () => { if (stamp) stamp.classList.remove("pending"); mark(); };
