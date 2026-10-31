@@ -477,3 +477,10 @@ def test_replay_is_built_from_report_fields_and_autoplays():
     assert "Math.random" not in html.split("function replaySteps")[1].split("function render(")[0]   # nothing simulated
     assert html.count("AUTOPLAY = true") == 3                  # showcase card, the Nepal story button, a finished live run
     assert "rk-proof" in html and ".rp-step.proof" not in html  # step classes cannot collide with the .proof image style
+
+
+def test_evidence_file_touches_on_the_proof_view():
+    html = STATIC.read_text()
+    assert '"Exhibit A"' in html and '"Exhibit B"' in html and 'class: "tchip"' in html
+    assert '"MATCHED REGION"' in html and 'e.setAttribute("class", "mark")' in html   # marker drawn from the matcher's inlier points
+    assert '"Case FP-" + rep.investigation_id' in html

@@ -236,6 +236,15 @@ ul.plain,ul.limits{margin:6px 0;padding-left:20px}
 .pair svg{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible}
 .pair svg line{stroke:#19e36b;stroke-width:1.8;stroke-linecap:round;filter:drop-shadow(0 0 1.5px #000)}
 .pair svg circle{fill:#19e36b;stroke:#000;stroke-width:.6}
+/* evidence-file touches: exhibit labels, time chips, an investigator's marker on the matched region, case numbers */
+.pair figure{position:relative}
+.exh{position:absolute;top:8px;left:8px;z-index:2;font:600 .68rem var(--ff-m);letter-spacing:.08em;text-transform:uppercase;background:rgba(5,11,18,.82);color:#f2f8fb;border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:3px 7px;max-width:calc(100% - 96px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.exh b{color:var(--accent);font-weight:700}
+.tchip{position:absolute;top:8px;right:8px;z-index:2;font:.68rem var(--ff-m);background:rgba(5,11,18,.82);color:#cfe0ea;border-radius:5px;padding:2px 6px}
+.pair svg .mark{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-dasharray:7 5;filter:drop-shadow(0 0 4px rgba(255,122,47,.8))}
+.pair svg .marktxt{fill:var(--accent);font:600 11px var(--ff-m);letter-spacing:.06em;paint-order:stroke;stroke:#050b12;stroke-width:3px}
+.case{display:inline-block;font:600 .72rem var(--ff-m);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);border:1px solid var(--line);border-radius:6px;padding:2px 8px;margin-top:6px;width:fit-content}
+@media (max-width:560px){.exh .sfx,.tchip{display:none}.exh{max-width:calc(100% - 16px)}}
 .stamp{margin:16px 0 10px;padding:12px 14px;border:3px solid var(--rec);color:var(--rec);border-radius:12px;text-align:center;font-family:var(--ff-h);font-weight:700;font-size:clamp(1.05rem,3.6vw,1.6rem);line-height:1.25;transition:opacity .5s,transform .5s}
 .stamp.pending{opacity:0;transform:scale(1.06)}.stamp.neutral{border-color:var(--line);color:var(--ink)}
 @media (prefers-reduced-motion:reduce){.stamp,.steps li.cur i,label.drop,.demo,.exp>summary::before{transition:none;animation:none}.demo:hover{transform:none}}
@@ -520,8 +529,10 @@ function proofHero(rep, ref) {
   const pair = h("div", {class: "pair"});
   const ia = img(ref, p.viral_frame, "Frame from the viral video (A)", ""), ib = img(ref, p.copy_frame, "Frame from the earlier copy (B)", "");
   ia.loading = "eager"; ib.loading = "eager";
-  pair.append(h("figure", {}, ia, h("figcaption", {text: "A: the viral video, at " + p.viral_t + " s"})),
-              h("figure", {}, ib, h("figcaption", {text: "B: the earlier copy, at " + p.copy_t + " s"})));
+  pair.append(h("figure", {}, h("span", {class: "exh"}, h("b", {text: "Exhibit A"}), h("span", {class: "sfx", text: " · viral video"})), ia, h("span", {class: "tchip", text: "t = " + p.viral_t + " s"}),
+                h("figcaption", {text: "A: the viral video, at " + p.viral_t + " s"})),
+              h("figure", {}, h("span", {class: "exh"}, h("b", {text: "Exhibit B"}), h("span", {class: "sfx", text: " · posted " + (m.upload_date ? fmtDate(m.upload_date) : "earlier")})), ib, h("span", {class: "tchip", text: "t = " + p.copy_t + " s"}),
+                h("figcaption", {text: "B: the earlier copy, at " + p.copy_t + " s"})));
   const svg = document.createElementNS(SVGNS, "svg"); svg.setAttribute("aria-hidden", "true"); pair.append(svg);
   hero.append(pair);
   let raf = 0, run = 0;
@@ -542,7 +553,20 @@ function proofHero(rep, ref) {
       svg.append(l, d); return [l, d]; });
     const set = (k, f) => { const [l, d] = lines[k], q = pts[k]; l.style.opacity = f > 0 ? .85 : 0; d.style.opacity = f > 0 ? 1 : 0;
       l.setAttribute("x2", q[0] + (q[2] - q[0]) * f); l.setAttribute("y2", q[1] + (q[3] - q[1]) * f); };
-    const showStamp = () => stamp && stamp.classList.remove("pending");
+    const mark = () => {
+      if (n < 3) return;
+      const xs = pts.map((q) => q[2]), ys = pts.map((q) => q[3]), bb = pictureBox(ib), c = pair.getBoundingClientRect();
+      const bx0 = bb.left - c.left, by0 = bb.top - c.top, pad = 14;
+      const x0 = Math.max(bx0 + 2, Math.min(...xs) - pad), x1 = Math.min(bx0 + bb.width - 2, Math.max(...xs) + pad);
+      const y0 = Math.max(by0 + 2, Math.min(...ys) - pad), y1 = Math.min(by0 + bb.height - 2, Math.max(...ys) + pad);
+      const e = document.createElementNS(SVGNS, "ellipse");
+      e.setAttribute("class", "mark"); e.setAttribute("cx", (x0 + x1) / 2); e.setAttribute("cy", (y0 + y1) / 2);
+      e.setAttribute("rx", Math.max(18, (x1 - x0) / 2)); e.setAttribute("ry", Math.max(14, (y1 - y0) / 2));
+      const t = document.createElementNS(SVGNS, "text");
+      t.setAttribute("class", "marktxt"); t.setAttribute("x", Math.max(bx0 + 6, x0)); t.setAttribute("y", Math.max(by0 + 40, y0 - 8)); t.textContent = "MATCHED REGION";
+      svg.append(e, t);
+    };
+    const showStamp = () => { if (stamp) stamp.classList.remove("pending"); mark(); };
     if (!animate || REDUCED() || !n) { lines.forEach((_, k) => set(k, 1)); showStamp(); return; }
     if (stamp) stamp.classList.add("pending");
     const T = 1500, each = 600, t0 = performance.now();
@@ -1024,7 +1048,8 @@ function render(rep, ref) {
   }
 
   const hl = rep.headline, dsc = rep.disclosure || {}, cpr = rep.claim_presence || {}, sg = rep.signals || {};
-  const banner = h("section", {class: "vbanner " + V.cls, "aria-label": "Verdict"}, h("div", {class: "lab", text: V.label}), h("span", {class: "enum", text: V.enumText}));
+  const banner = h("section", {class: "vbanner " + V.cls, "aria-label": "Verdict"}, h("div", {class: "lab", text: V.label}), h("span", {class: "enum", text: V.enumText}),
+    rep.investigation_id ? h("span", {class: "case", text: "Case FP-" + rep.investigation_id}) : null);
   if (hl) {
     banner.append(h("p", {class: "hl", text: hl.sentence}),
       h("ul", {class: "facts"}, (hl.facts || []).slice(0, 3).map((f) => h("li", {}, f.text, h("code", {text: "[" + f.field + "]"})))));
@@ -1222,8 +1247,8 @@ function liveUpdate(j) {
     $("#rv-match").replaceChildren(h("section", {class: "match", "aria-label": "Match found"},
       h("h3", {text: ps.length === 1 ? "Match found." : ps.length + " matches found."}),
       h("p", {class: "note", style: "color:#cfe0ea", text: "The frame matcher proved this is the same footage (found via " + p.source + "). Checking its date next."}),
-      h("div", {class: "pair2"}, h("figure", {}, h("img", {src: u(p.viral), alt: "Frame from your video"}), h("figcaption", {text: "Your video"})),
-        h("figure", {}, h("img", {src: u(p.copy), alt: "Frame from the copy found online"}), h("figcaption", {text: "Copy found online"})))));
+      h("div", {class: "pair2"}, h("figure", {}, h("img", {src: u(p.viral), alt: "Frame from your video"}), h("figcaption", {text: "Exhibit A · your video"})),
+        h("figure", {}, h("img", {src: u(p.copy), alt: "Frame from the copy found online"}), h("figcaption", {text: "Exhibit B · copy found online"})))));
     L.proofs = ps.length;
     $("#rv-match").scrollIntoView({block: "center", behavior: REDUCED() ? "auto" : "smooth"});
   }
