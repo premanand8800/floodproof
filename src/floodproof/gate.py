@@ -113,6 +113,7 @@ def _ask(frames: list[bytes], meta: dict):
         try:
             txt, c = llm.chat(model, content, max_tokens=MAX_TOKENS if model == PRIMARY_MODEL else 3000, timeout=90)
             cost += c
+            _ask.provider = llm.last_provider()
             return llm.parse_json(txt), model, cost
         except Exception as e:                                   # fall through to the next model
             last = e
@@ -167,7 +168,7 @@ def check(source: str, is_url: bool | None = None, force=False, log=print) -> di
         if verdict == "stop" and not is_url:
             verdict = "run_warned"
         sec.update(decision=verdict, kind=n["kind"], reason=n["reason"], refs=n["refs"], confidence=n["confidence"],
-                   relevant=n["relevant"], shows_disaster_or_emergency=n["shows"], model=model, cost=round(cost, 5))
+                   relevant=n["relevant"], shows_disaster_or_emergency=n["shows"], model=model, provider=getattr(_ask, "provider", None), cost=round(cost, 5))
         sec["seconds"] = round(time.time() - t0, 1)
         GATE_CACHE.mkdir(parents=True, exist_ok=True)
         cf.write_text(json.dumps(sec))

@@ -57,11 +57,24 @@ Numbers as `bench/EVALUATION.md` states them (all scorers make no API calls; not
 - **Agent vs pipeline:** a pre-registered experiment showed the agent did not beat the fixed pipeline (`bench/heldout_RESULTS.md`), so the pipeline is the default.
 - All raw results, audits and scorers are in `bench/`. One-page summary of every experiment: [`bench/EVALUATION.md`](bench/EVALUATION.md); ablation v2: [`bench/ablation_v2_RESULTS.md`](bench/ablation_v2_RESULTS.md).
 
+## Meta models
+
+Honest status: the Meta Model API integration is implemented and unit-tested with mocked HTTP, but the team's Meta billing was not configured when this was written (every inference call returned HTTP 402), so no live Meta API or Baseten call has been verified yet. Real runs currently fall back to OpenRouter, and `report.json` says so (`provider` fields).
+
+| Model | Used for | Served by |
+|---|---|---|
+| Muse Spark 1.3 (`muse-spark-1.3`) | frame clues and queries (`clues.provider`), proof explanation, snowball reads, relevance-gate and debunk fallbacks | Meta Model API first; any error, timeout, 429 or billing problem falls back to OpenRouter (`meta/muse-spark-1.3`). `FLOODPROOF_META_API=0` disables the Meta route. |
+| Muse Voice Transcribe (`muse-voice-transcribe-1.0`) | narration transcript with turn-level timestamps (the API has no word-level timing) | Meta Model API only (`POST /v1/asr/transcribe`, WAV). If it fails, the old path (Spark Open listening to the audio) is used. |
+| Muse Spark Open (`meta/muse-spark-open`) | spoken places and dates extracted from the transcript, each citing a turn timestamp (`clues.audio.provider`); also direct audio listening fallback and the experimental Deep investigate agent | Baseten Model API (`meta-models/muse-spark-open-1026`, open weights, needs `BASETEN_API_KEY`, `FLOODPROOF_BASETEN=0` disables) first for the transcript extraction, then OpenRouter. The audio-input fallback and the agent stay on OpenRouter. |
+| Muse Glimmer 30B (`meta/muse-glimmer-30b`) | relevance gate and multilingual debunk card (primary) | OpenRouter only (not on the Meta API list) |
+
+Not used: Muse Wonder, Muse Image, SAM on the Meta API.
+
 ## Run it
 
 ```bash
 uv sync
-cp .env.example .env      # add OPENROUTER_API_KEY (Muse models); other keys are optional
+cp .env.example .env      # add OPENROUTER_API_KEY (Muse models); META_API_KEY, BASETEN_API_KEY and others are optional
 uv run floodproof investigate https://youtu.be/... --claim "Flood in Rasuwa" --date 2026-08-26
 uv run floodproof serve --port 8000     # web UI
 PYTHONPATH=src uv run --with pytest pytest -q    # network/key-dependent tests skip cleanly

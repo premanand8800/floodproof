@@ -8,7 +8,7 @@ from __future__ import annotations
 import base64
 from pathlib import Path
 
-from .llm import chat, parse_json
+from .llm import chat, parse_json, last_provider
 
 MODEL = "meta/muse-spark-1.3"
 LABEL = "AI explanation of a matcher-proven match: the proof is the geometric match, not this text"
@@ -50,6 +50,9 @@ def explain_proof(viral_path, copy_path, chat_fn=chat):
     try:
         txt, cost = chat_fn(MODEL, [{"type": "text", "text": PROMPT}, {"type": "text", "text": "Image A (viral video):"}, _part(viral_path),
                                     {"type": "text", "text": "Image B (earlier copy):"}, _part(copy_path)], max_tokens=4000)
-        return clean_explanation(parse_json(txt), cost=cost)
+        ex = clean_explanation(parse_json(txt), cost=cost)
+        if ex:
+            ex["provider"] = last_provider() if chat_fn is chat else "injected"
+        return ex
     except Exception:
         return None

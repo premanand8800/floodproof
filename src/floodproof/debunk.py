@@ -408,6 +408,7 @@ def generate_debunk(r: dict, chat=None) -> dict:
         try:
             obj, c = chat(model, r, langs)
             cost += c
+            prov = llm.last_provider() if chat is _call else "injected"
         except Exception as e:
             errors.append(f"{model}: {type(e).__name__}: {str(e)[:120]}"); continue
         texts, refs, bad = {}, {}, {}
@@ -420,7 +421,7 @@ def generate_debunk(r: dict, chat=None) -> dict:
                 texts[lg] = " ".join(x["text"].strip() for x in sents)
                 refs[lg] = [{"sentence": x["text"].strip(), "ref": x["ref"]} for x in sents]
         if not bad:
-            return dict(texts=texts, field_refs=refs, model=model, grounded=True, languages=langs, cost_usd=round(cost, 5))
+            return dict(texts=texts, field_refs=refs, model=model, provider=prov, grounded=True, languages=langs, cost_usd=round(cost, 5))
         errors.append(f"{model}: grounding failed {json.dumps(bad, ensure_ascii=False)[:300]}")
         used = model
     # fallback: deterministic template (grounded by construction) for en/ne/hi; unknown languages are dropped

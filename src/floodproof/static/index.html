@@ -899,7 +899,7 @@ function replaySteps(rep, ref) {
   const g = rep.gate;
   if (g) steps.push({kind: "muse", who: "Muse · relevance check", title: g.error ? "Relevance check skipped (the full check runs)" : g.decision === "stop" ? "Muse: this is not disaster footage" : "Muse: is this a disaster video? " + (g.relevant === "yes" ? "Yes" : g.decision === "run_warned" ? "Maybe not (ran anyway)" : "Not sure, so check it"),
     t: g.seconds, body: () => h("div", {}, g.reason ? h("div", {text: "“" + g.reason + "”"}) : null,
-      h("div", {class: "note", text: [g.kind ? g.kind.replaceAll("_", " ") : null, g.refs && g.refs.length ? "cited frames " + g.refs.join(", ") : null, g.model, g.cached ? "cached decision" : null].filter(Boolean).join(" · ")}))});
+      h("div", {class: "note", text: [g.kind ? g.kind.replaceAll("_", " ") : null, g.refs && g.refs.length ? "cited frames " + g.refs.join(", ") : null, g.model, g.provider === "meta_api" ? "Meta Model API" : g.provider === "openrouter" ? "OpenRouter" : null, g.cached ? "cached decision" : null].filter(Boolean).join(" · ")}))});
   const inp = rep.input || {};
   steps.push({kind: "plain", who: "Video", title: "Fetched the clip and picked " + (inp.n_keyframes || "?") + " keyframes", t: st.fetch_and_keyframes,
     body: () => h("div", {class: "note", text: [inp.title ? "“" + inp.title + "”" : null, inp.duration ? Math.round(inp.duration) + " s long" : null, inp.has_audio ? "has audio" : "no audio"].filter(Boolean).join(" · ")})});
@@ -922,6 +922,7 @@ function replaySteps(rep, ref) {
         if ((au.spoken_place_names || []).length) facts.push("Places spoken: " + au.spoken_place_names.slice(0, 3).map((x) => x.name).join(", "));
         const loc = cl.likely_location || {};
         if (loc.place && loc.place !== "unknown") facts.push("Where it might be (hypothesis): " + loc.place + (loc.country ? ", " + loc.country : ""));
+        b.append(h("div", {class: "note", text: ["Model: " + (cl.model || "Muse Spark"), cl.provider ? "served by " + (cl.provider === "meta_api" ? "Meta Model API" : cl.provider === "openrouter" ? "OpenRouter" : cl.provider) : null, au.transcriber ? "narration transcribed by " + au.transcriber : null].filter(Boolean).join(" · ")}));
         if (facts.length) b.append(h("ul", {}, facts.map((f) => h("li", {text: f}))));
         if ((cl.queries || []).length) b.append(h("div", {class: "note", text: "Search queries Muse wrote:"}));
         return b;

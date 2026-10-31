@@ -29,7 +29,7 @@ from pathlib import Path
 
 from . import ROOT
 from . import sources
-from .llm import chat
+from .llm import chat, last_provider
 
 MODEL = "meta/muse-spark-1.3"
 MAX_ROUNDS = 3
@@ -154,7 +154,8 @@ def read_seed(copy, meta, frame_path, earliest, chat_fn=chat, used=()):
     if not isinstance(d, dict):
         return dict(visible_text=[], usernames=[], queries=[], cost=float(cost or 0), error="unparseable reply")
     vis = clean_visible(d.get("visible_text"))
-    return dict(visible_text=vis, usernames=usernames_in(vis), queries=clean_queries(d.get("queries"), used), cost=float(cost or 0))
+    return dict(visible_text=vis, usernames=usernames_in(vis), queries=clean_queries(d.get("queries"), used), cost=float(cost or 0),
+                provider=last_provider() if chat_fn is chat else "injected")
 
 
 def read_copies(items, chat_fn=chat, cap=6):
@@ -171,12 +172,13 @@ def read_copies(items, chat_fn=chat, cap=6):
     except Exception:
         return {}, 0.0
     d = _lenient(txt)
+    prov = last_provider() if chat_fn is chat else "injected"
     out = {}
     for r in ((d or {}).get("reads") or []) if isinstance(d, dict) else []:
         i = r.get("index") if isinstance(r, dict) else None
         if isinstance(i, int) and not isinstance(i, bool) and 0 <= i < len(items):
             vis = clean_visible(r.get("visible_text"))
-            out[items[i][0]] = dict(visible_text=vis, usernames=usernames_in(vis), model=MODEL, label=LABEL)
+            out[items[i][0]] = dict(visible_text=vis, usernames=usernames_in(vis), model=MODEL, provider=prov, label=LABEL)
     return out, float(cost or 0)
 
 

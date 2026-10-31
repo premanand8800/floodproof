@@ -14,12 +14,13 @@ import cv2
 import numpy as np
 
 from . import CACHE
-from .llm import chat, parse_json
+from .llm import chat, parse_json, last_provider, meta_enabled, transcribe_meta, TRANSCRIBE_MODEL
 from .matcher import ClipFeatures
-from .media import Clip, extract_audio
+from .media import Clip, extract_audio, extract_wav
 
 VISION_MODEL = "meta/muse-spark-1.3"
 AUDIO_MODEL = "meta/muse-spark-open"
+EXTRACT_MODEL = "meta/muse-spark-open"       # text extraction from the transcript: Baseten first, OpenRouter fallback
 MAX_TOKENS = 5000
 
 SCHEMA = """Return ONLY one JSON object (no prose) with exactly these keys:
@@ -117,11 +118,63 @@ def _clean_audio(d: dict) -> dict:
     return d
 
 
+def analyze_audio_transcript(clip: Clip, workdir: Path | None = None, transcribe=transcribe_meta, chat_fn=chat) -> dict | None:
+    """Primary narration path: Muse Voice Transcribe (turn-level timestamps) -> Muse Spark extracts places/dates, each citing the timestamp
+    of the turn it was said in. Returns the audio dict, or None on any failure/empty speech so the caller can fall back to Spark Open audio."""
+    try:
+        wd = workdir or (CACHE / "audio")
+        wav = extract_wav(clip.path, wd / (Path(clip.path).stem + ".wav"), max_seconds=AUDIO_MAX_S)
+        if not wav:
+            return None
+        tr = transcribe(wav)
+        turns = tr.get("turns") or []
+        if not turns:                       # plain text only: no timestamps to cite, so use the fallback path
+            return None
+        dur = getattr(clip, "duration", None)
+        truncated = bool(dur and dur > AUDIO_MAX_S)
+        lines = "\n".join(f"[{t['start_s']:.1f}s] {t['text']}" for t in turns)
+        prompt = ("Below is a timestamped transcript (turn start seconds in brackets) of narration from a viral disaster video. Return ONLY JSON: "
+                  "{\"language\": str|null, \"spoken_place_names\": [{\"name\": str, \"audio_t\": float}], "
+                  "\"spoken_dates\": [{\"date\": \"YYYY-MM-DD\", \"text\": str, \"audio_t\": float}], "
+                  "\"partial_dates\": [{\"month\": int 1-12, \"day\": int, \"text\": str, \"audio_t\": float}]}. "
+                  "spoken_dates: only full calendar dates with a year that the speaker says. partial_dates: day and month but NO year. "
+                  "Place names include cities, regions, countries and borders. audio_t MUST be the bracketed start time of the turn where it is said. "
+                  "Only use words present in the transcript; never invent.\n\nTRANSCRIPT:\n" + lines[:6000])
+        raw, cost = chat_fn(EXTRACT_MODEL, [{"type": "text", "text": prompt}], max_tokens=4000, **({"baseten": True} if chat_fn is chat else {}))
+        prov = last_provider() if chat_fn is chat else "injected"
+        d = _lenient_json(raw)
+        if not isinstance(d, dict):
+            return None
+        starts = [t["start_s"] for t in turns]
+        d = _clean_audio(d)
+        for k in ("spoken_place_names", "spoken_dates", "partial_dates"):      # snap to the real turn start at or before the cited time
+            for x in d[k]:
+                x["audio_t"] = max([s for s in starts if s <= x["audio_t"] + 0.5] or [starts[0]])
+        d.update(status="ok", has_speech=True, transcript_summary=" ".join(t["text"] for t in turns)[:600], other_sounds=[],
+                 model=EXTRACT_MODEL, provider=prov, transcriber=TRANSCRIBE_MODEL, transcriber_provider="meta_api",
+                 timestamps="turn-level", turns=turns[:60], cost_usd=round(cost, 5), truncated=truncated,
+                 analyzed_seconds=AUDIO_MAX_S if truncated else dur, attempts=1)
+        return d
+    except Exception:
+        return None
+
+
 def analyze_audio(clip: Clip, workdir: Path | None = None) -> dict:
-    """Narration analysis with Muse Spark Open. Returns dict with status; never raises.
-    Sends at most the first AUDIO_MAX_S seconds (mono, 32 kbps); retries once with a stricter prompt if no JSON came back."""
+    """Narration analysis. Primary: Muse Voice Transcribe + Muse Spark extraction (timestamps from transcript turns).
+    Fallback: Muse Spark Open listens to the audio directly. Returns dict with status; never raises.
+    Sends at most the first AUDIO_MAX_S seconds; retries once with a stricter prompt if no JSON came back."""
     if not clip.has_audio:
         return dict(status="no_audio_track")
+    res = analyze_audio_transcript(clip, workdir) if meta_enabled() else None
+    if res:
+        return res
+    out = _analyze_audio_spark_open(clip, workdir)
+    if out.get("status") == "ok":
+        out.update(provider="openrouter", transcriber=None)
+    return out
+
+
+def _analyze_audio_spark_open(clip: Clip, workdir: Path | None = None) -> dict:
     wd = workdir or (CACHE / "audio"); mp3 = extract_audio(clip.path, wd / (Path(clip.path).stem + ".mp3"), max_seconds=AUDIO_MAX_S)
     if not mp3:
         return dict(status="audio_extract_failed")
@@ -334,13 +387,14 @@ def investigate_clip(clip: Clip, feats: ClipFeatures, claim: str | None = None, 
         content.append({"type": "text", "text": f"Frame {i} (t={feats.times[i]:.1f}s):"})
         content.append(_jpeg_part(feats.frames[i]))
     txt, cost = chat(VISION_MODEL, content, max_tokens=MAX_TOKENS)
+    provider = last_provider()
     try:
         plan = parse_json(txt)
     except Exception as e:
-        return dict(status="error", error=f"unparseable reply: {e}", raw=txt[:500], model=VISION_MODEL, cost_usd=round(cost, 5),
+        return dict(status="error", error=f"unparseable reply: {e}", raw=txt[:500], model=VISION_MODEL, provider=provider, cost_usd=round(cost, 5),
                     frames_shown=idx, audio=audio)
     out = _clean(plan, feats, audio_ok)
-    out.update(status="ok", model=VISION_MODEL, cost_usd=round(cost + audio.get("cost_usd", 0), 5), frames_shown=idx,
+    out.update(status="ok", model=VISION_MODEL, provider=provider, cost_usd=round(cost + audio.get("cost_usd", 0), 5), frames_shown=idx,
                frame_times_s={str(i): round(feats.times[i], 2) for i in idx}, audio=audio)
     if frames_dir:
         from .media import save_keyframe_jpgs

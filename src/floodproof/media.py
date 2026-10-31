@@ -153,6 +153,14 @@ def extract_audio(path, out_mp3: Path, max_seconds=60) -> Path | None:
     return out_mp3 if r.returncode == 0 and out_mp3.exists() and out_mp3.stat().st_size > 1000 else None
 
 
+def extract_wav(path, out_wav: Path, max_seconds=90) -> Path | None:
+    """Mono 16-bit PCM 16 kHz WAV (the format the Meta transcription API requires)."""
+    out_wav.parent.mkdir(parents=True, exist_ok=True)
+    r = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(path), "-vn", "-t", str(max_seconds), "-ac", "1",
+                        "-ar", "16000", "-c:a", "pcm_s16le", "-map_metadata", "-1", str(out_wav)], capture_output=True)
+    return out_wav if r.returncode == 0 and out_wav.exists() and out_wav.stat().st_size > 1000 else None
+
+
 def _prune_cache(keep: Path | None = None, max_bytes: int = DL_CACHE_MAX_BYTES):
     """Least-recently-used eviction so .cache/dl stays bounded. Never raises."""
     try:

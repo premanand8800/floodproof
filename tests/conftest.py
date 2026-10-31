@@ -60,3 +60,9 @@ def variant():
             make_variant(src, dst, VARIANTS[name])
         return ClipFeatures.from_path(dst)
     return get
+
+
+@pytest.fixture(autouse=True)
+def meta_api_off_by_default(monkeypatch):
+    """Tests never hit the real Meta API; test_meta_api.py enables it explicitly with a fake key and mocked HTTP."""
+    monkeypatch.setenv("FLOODPROOF_META_API", "0")
