@@ -701,7 +701,7 @@ function visualLayer(rep, ref) {
     lb.append(h("div", {class: "note"}, h("strong", {text: "Discovery sources (candidates found / proven by the matcher)"}),
       h("ul", {class: "plain"}, rows.map((n) => { const st = ss[n], a = ad[n] || {};
         if (a.unavailable) return h("li", {text: n + ": unavailable (" + a.unavailable + ")"});
-        return h("li", {text: n + ": " + (st ? st.candidates + " found, " + st.proven + " proven" : "0 found") + (a.skipped ? " — " + a.skipped : "") + ((a.errors || []).length ? " (error)" : "")}); }))));
+        return h("li", {text: n + ": " + (st ? st.candidates + " found, " + st.proven + " proven" : "0 found") + (a.skipped ? " — " + a.skipped : "") + (a.quota ? " — " + a.quota : "") + ((a.errors || []).length ? " (error)" : "")}); }))));
   }
   lb.append(limitsBox([v.provenance_note, "Checked " + v.candidates_checked + " of " + v.candidates_total + " candidate sources; search is not exhaustive.", "A visual match shows shared footage, not that a claim is false or the footage fake."].filter(Boolean)));
   return vm;
@@ -776,8 +776,9 @@ function memoryLayer(rep) {
 function gateLayer(rep) {
   const g = rep.gate;
   if (!g) return layer("Relevance gate", badge("Not run", "b-na"), h("p", {class: "note", text: "This report was made before the relevance gate existed, or the gate was skipped."}));
-  const stop = g.decision === "stop";
-  const gl = layer("Relevance gate", badge(stop ? "Stopped: not disaster footage" : "Passed", stop ? "b-unv" : "b-ok"));
+  const stop = g.decision === "stop", warned = g.decision === "run_warned";
+  const gl = layer("Relevance gate", badge(stop ? "Stopped: not disaster footage" : warned ? "Ran anyway: may not be disaster footage" : "Passed", stop || warned ? "b-unv" : "b-ok"));
+  if (warned) gl.querySelector(".lb").append(h("div", {class: "warn", text: "Uploaded files are never stopped by the relevance gate (they have no title or tags to double-check against), so the full check ran. The gate thought this may not be disaster footage."}));
   const dl = h("dl", {class: "kv"});
   [["Decision", g.decision], ["Kind", g.kind], ["Confidence", g.confidence != null ? Number(g.confidence).toFixed(2) : null], ["Reason", g.reason], ["Cited frames", (g.refs || []).join(", ")], ["Cost", "$" + Number(g.cost || 0).toFixed(4)]]
     .forEach(([k, val]) => { if (val) dl.append(h("dt", {text: k}), h("dd", {text: String(val)})); });

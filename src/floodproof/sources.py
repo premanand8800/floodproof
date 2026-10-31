@@ -228,15 +228,108 @@ def _simplify_query(q):
     return " ".join(toks[:3])
 
 
+# YouTube Data API quota: search.list costs 100 units and the default project quota is 10,000 units per day, reset at
+# midnight Pacific time. A local ledger keeps us under a budget (so judges' runs do not drain it), identical searches are
+# cached for a day, and once the budget is spent or the API says the quota is exceeded, search falls back to yt-dlp's
+# keyless "ytsearch" (no publishedBefore filter there; verify_candidate still re-fetches every date independently).
+YT_SEARCH_UNITS = 100
+YT_DAILY_BUDGET = int(os.environ.get("FLOODPROOF_YT_DAILY_UNITS", "9000"))
+YT_CACHE_TTL = 24 * 3600
+
+
+def _pacific_day():
+    import datetime as dt
+    from zoneinfo import ZoneInfo
+    return dt.datetime.now(ZoneInfo("America/Los_Angeles")).date().isoformat()
+
+
+def _yt_quota_file():
+    return Path(CACHE) / "youtube_quota.json"
+
+
+def yt_quota_state() -> dict:
+    """{day, units, exhausted} for the current Pacific day (a new day starts from zero)."""
+    import json
+    day = _pacific_day()
+    try:
+        s = json.loads(_yt_quota_file().read_text())
+        if s.get("day") == day:
+            return dict(day=day, units=int(s.get("units", 0)), exhausted=bool(s.get("exhausted", False)))
+    except Exception:
+        pass
+    return dict(day=day, units=0, exhausted=False)
+
+
+def _yt_quota_save(s):
+    import json
+    try:
+        _yt_quota_file().parent.mkdir(parents=True, exist_ok=True)
+        _yt_quota_file().write_text(json.dumps(s))
+    except Exception:
+        pass
+
+
+def yt_quota_available() -> bool:
+    s = yt_quota_state()
+    return not s["exhausted"] and s["units"] + YT_SEARCH_UNITS <= YT_DAILY_BUDGET
+
+
+def _yt_quota_spend(units=YT_SEARCH_UNITS):
+    s = yt_quota_state()
+    s["units"] += units
+    _yt_quota_save(s)
+
+
+def _yt_quota_mark_exhausted():
+    s = yt_quota_state()
+    s["exhausted"] = True
+    _yt_quota_save(s)
+
+
+def _is_quota_error(e) -> bool:
+    resp = getattr(e, "response", None)
+    code = getattr(resp, "status_code", None)
+    txt = (str(e) + " " + str(getattr(resp, "text", "") or "")).lower()
+    return code == 429 or "429" in txt or ("quota" in txt and (code == 403 or "403" in txt))
+
+
+def _yt_cache_get(p):
+    import json
+    k = hashlib.sha1(json.dumps({k: v for k, v in p.items() if k != "key"}, sort_keys=True).encode()).hexdigest()
+    f = Path(CACHE) / "yt_search" / f"{k}.json"
+    try:
+        if time.time() - f.stat().st_mtime < YT_CACHE_TTL:
+            return f, json.loads(f.read_text())
+    except Exception:
+        pass
+    return f, None
+
+
+def ytdlp_search(q, n=10):
+    """Keyless YouTube search through yt-dlp ('ytsearchN:'). Flat extraction: ids and titles only, no download.
+    Isolated so tests can monkeypatch it (no network in tests)."""
+    import yt_dlp
+    opts = {"quiet": True, "no_warnings": True, "skip_download": True, "extract_flat": True, "socket_timeout": 30}
+    with yt_dlp.YoutubeDL(opts) as y:
+        res = y.extract_info(f"ytsearch{int(n)}:{q}", download=False) or {}
+    out = []
+    for e in res.get("entries") or []:
+        vid = e.get("id")
+        if vid and len(vid) == 11:
+            d = e.get("upload_date")
+            out.append((vid, e.get("title") or "", f"{d[:4]}-{d[4:6]}-{d[6:8]}" if d and len(d) == 8 else None))
+    return out
+
+
 def youtube_api_candidates(queries, claim_date=None, max_queries=3, max_results=15, key=None, relevance_only=False):
     """YouTube Data API v3 search.list: videos published on/before claim date + 1 day. Per query: a date-ordered pass AND a
     relevance pass (order=date alone returns only the newest uploads before the cutoff, which hides the clip itself on a popular
     topic); a query that returns nothing is retried once in a shorter form. The snippet publishedAt is kept only as stored_date;
-    verify_candidate still re-fetches the date independently."""
+    verify_candidate still re-fetches the date independently. Quota-guarded: see YT_DAILY_BUDGET and ytdlp_search."""
     import datetime as dt
     load_env()
     key = key or os.environ.get("GOOGLE_API_KEY")
-    info = dict(source="youtube_api", queries=0, errors=[], zero_result_queries=[])
+    info = dict(source="youtube_api", queries=0, errors=[], zero_result_queries=[], cached=0, fallback_queries=0)
     if not key:
         log.info("youtube_api: %s", SKIP_NO_KEY)
         return [], dict(info, status="not_configured", skipped=SKIP_NO_KEY)
@@ -249,20 +342,51 @@ def youtube_api_candidates(queries, claim_date=None, max_queries=3, max_results=
             pass
     seen = {}
 
+    def fallback(q, n=10):
+        try:
+            hits = ytdlp_search(q[:200], n)
+            info["fallback_queries"] += 1
+        except Exception as e:
+            info["errors"].append("ytsearch " + type(e).__name__ + ": " + str(e)[:100]); return 0
+        cutoff = params0.get("publishedBefore", "")[:10]
+        for vid, t, d in hits:
+            if d and cutoff and d >= cutoff:       # keyless search has no date filter: drop what is known to be too late
+                continue
+            seen.setdefault(f"https://www.youtube.com/watch?v={vid}", (t, d, q, "ytsearch"))
+        return len(hits)
+
     def run(q, **extra):
         p = dict(params0, q=q[:200], **extra)
-        try:
-            r = _get_json("https://www.googleapis.com/youtube/v3/search", params=p)
-            info["queries"] += 1
-        except Exception as e:
-            info["errors"].append(type(e).__name__ + ": " + str(e)[:100].replace(key, "***")); return 0
+        cf_path, r = _yt_cache_get(p)
+        if r is not None:
+            info["cached"] += 1
+        elif not yt_quota_available():
+            info["quota"] = "daily budget used; keyless search used instead"
+            return 0 if extra.get("order") == "date" else fallback(q, extra.get("maxResults", 10))
+        else:
+            try:
+                r = _get_json("https://www.googleapis.com/youtube/v3/search", params=p)
+                info["queries"] += 1
+                _yt_quota_spend()
+            except Exception as e:
+                if _is_quota_error(e):
+                    _yt_quota_mark_exhausted()
+                    info["quota"] = "quota exceeded today; keyless search used instead"
+                    return 0 if extra.get("order") == "date" else fallback(q, extra.get("maxResults", 10))
+                info["errors"].append(type(e).__name__ + ": " + str(e)[:100].replace(key, "***")); return 0
+            try:
+                import json
+                cf_path.parent.mkdir(parents=True, exist_ok=True)
+                cf_path.write_text(json.dumps(r))
+            except Exception:
+                pass
         n = 0
         for it in r.get("items", []):
             vid = (it.get("id") or {}).get("videoId")
             sn = it.get("snippet") or {}
             if vid:
                 n += 1
-                seen.setdefault(f"https://www.youtube.com/watch?v={vid}", (sn.get("title", ""), (sn.get("publishedAt") or "")[:10] or None, q))
+                seen.setdefault(f"https://www.youtube.com/watch?v={vid}", (sn.get("title", ""), (sn.get("publishedAt") or "")[:10] or None, q, "query"))
         return n
     for q in _diversify(list(queries))[:max_queries]:
         n = 0 if relevance_only else run(q, order="date")      # relevance_only: one search (100 quota units) per query, used by the snowball
@@ -273,8 +397,8 @@ def youtube_api_candidates(queries, claim_date=None, max_queries=3, max_results=
             if short and short != q:
                 run(short, order="relevance", maxResults=10)
     out = []
-    for u, (t, d, q) in seen.items():
-        c = Candidate(u, t, "youtube_api", f"query: {q[:60]}")
+    for u, (t, d, q, via) in seen.items():
+        c = Candidate(u, t, "youtube_api", f"{via}: {q[:60]}")
         c.stored_date = d
         out.append(c)
     return out, info
