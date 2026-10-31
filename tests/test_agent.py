@@ -152,3 +152,13 @@ def test_tool_args_sanitised(clip_path, mem, tmp_path, monkeypatch):
 def test_same_video_url_matching():
     assert agent.same_video_url("https://www.youtube.com/watch?v=abcDEF12345&utm_source=x", "https://youtu.be/abcDEF12345")
     assert not agent.same_video_url("https://youtu.be/abcDEF12345", "https://youtu.be/zzzzzzzzzzz")
+
+
+def test_parse_action_accepts_raw_chat_template():
+    from floodproof.agent import _parse_action
+    raw = ('<|start|>assistant to=commentary<|message|>Looks recycled.<|eom|>'
+           '<|start|>assistant to=text_search<|message|>{"query": "helicopter glacier outburst"}<|call|>')
+    assert _parse_action(raw) == dict(tool="text_search", args={"query": "helicopter glacier outburst"}, thought="")
+    raw2 = '<|start|>assistant to=memory_lookup<|message|>{"thought": "check memory"}'
+    assert _parse_action(raw2) == dict(tool="memory_lookup", args={}, thought="check memory")
+    assert _parse_action('{"tool": "finish", "args": {"summary": "x"}}')["tool"] == "finish"

@@ -22,7 +22,7 @@ META_PRICE = (1.25e-6, 4.25e-6)      # USD per prompt / completion token; estima
 
 
 def last_provider():
-    """Provider that served this thread's most recent chat(): "meta_api" | "openrouter"."""
+    """Provider that served this thread's most recent chat(): "meta_api" | "baseten" | "openrouter"."""
     return getattr(_tl, "provider", "openrouter")
 
 
@@ -53,8 +53,8 @@ def _chat_meta(mid, msgs, max_tokens, timeout):
     return j["choices"][0]["message"].get("content") or "", cost
 
 
-BASETEN_URL = "https://inference.baseten.co/v1"      # OpenAI-compatible Model APIs, pay per call; NOT yet verified against a live key
-BASETEN_MODELS = {"meta/muse-spark-open": "meta-models/muse-spark-open-1026"}
+BASETEN_URL = "https://inference.baseten.co/v1"      # OpenAI-compatible Model APIs, pay per call; verified live 2026-10-31 (Bearer auth, tool calls work)
+BASETEN_MODELS = {"meta/muse-spark-open": "meta-models/muse-spark-open"}
 
 
 def baseten_enabled():

@@ -128,7 +128,7 @@ def test_baseten_first_then_openrouter(env, monkeypatch):
     def post(url, **k):
         urls.append(url)
         if "baseten" in url:
-            assert k["json"]["model"] == "meta-models/muse-spark-open-1026"
+            assert k["json"]["model"] == "meta-models/muse-spark-open"
             return Resp(200, ok_body("from baseten"))
         return Resp(200, ok_body("from openrouter"))
     monkeypatch.setattr(llm.requests, "post", post)

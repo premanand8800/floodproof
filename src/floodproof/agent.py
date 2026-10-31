@@ -18,7 +18,7 @@ import uuid
 from pathlib import Path
 
 from . import ROOT, load_env, media, sources, investigator
-from .llm import chat
+from .llm import chat, last_provider
 from .matcher import ClipFeatures
 from .memory import Memory
 from .pipeline import _proven_entry
@@ -214,7 +214,23 @@ def _short(obj, n=OBS_CHARS):
     return s if len(s) <= n else s[:n] + "...(truncated)"
 
 
+_HARMONY_CALL = re.compile(r"to=(?:functions\.)?([A-Za-z_]+)\s*(?:<\|constrain\|>\s*json\s*)?<\|message\|>(.*?)(?:<\|(?:call|eom|end)\|>|$)", re.S)
+
+
 def _parse_action(txt):
+    """One JSON tool call. Also accepts the raw chat-template form some open-weights hosts return in content
+    ('<|start|>assistant to=<tool><|message|>{args}'): the last addressed tool wins, its message is the args."""
+    calls = [(t, b) for t, b in _HARMONY_CALL.findall(txt or "") if t != "commentary"]
+    if calls:
+        tool, body = calls[-1]
+        try:
+            args = json.loads(re.search(r"\{.*\}", body, re.S).group(0)) if "{" in body else {}
+        except Exception:
+            return None
+        if isinstance(args, dict) and "tool" in args:
+            return args
+        thought = args.pop("thought", "") if isinstance(args, dict) else ""
+        return dict(tool=tool, args=args.get("args", args) if isinstance(args, dict) else {}, thought=thought)
     m = re.search(r"\{.*\}", txt or "", re.S)
     if not m:
         return None
@@ -271,7 +287,7 @@ def build_agent_report(st: AgentState, trace, final, inv_id, input_meta, timing)
     rep = build_report(input_meta=input_meta, claim=claim_d, memory=st.memory_layer, visual=visual, clues=st.clues,
                        physical=st.physical, investigation_id=inv_id)
     rep["agent_trace"] = dict(note="SHOWN, NOT TRUSTED: the trace and the agent's summary never feed final_verdict or proven_matches.",
-                              model=final["model"], steps=trace, agent_summary=final.get("summary"),
+                              model=final["model"], providers=final.get("providers"), steps=trace, agent_summary=final.get("summary"),
                               agent_original_url=final.get("original_url"), summary_audit=final["audit"],
                               stop_reason=final["stop_reason"], tool_calls=len([t for t in trace if t["tool"] in TOOL_NAMES]),
                               cost_usd=round(st.cost, 4))
@@ -284,7 +300,8 @@ def run_agent(source: str, claim=None, date=None, place=None, out_dir=None, memo
               max_calls=MAX_CALLS, time_cap=TIME_CAP_S, cost_cap=0.25, invalid_limit=4, model=AGENT_MODEL, llm=None, log=print) -> dict:
     """Run the agent on one clip. `llm(model, text, system) -> (reply_text, cost)` can be injected (tests mock it)."""
     load_env()
-    llm = llm or (lambda m, t, s: chat(m, [{"type": "text", "text": t}], max_tokens=1800, system=s, timeout=120))
+    own_llm = llm is None
+    llm = llm or (lambda m, t, s: chat(m, [{"type": "text", "text": t}], max_tokens=1800, system=s, timeout=120, baseten=True))
     t0 = time.time()
     inv_id = uuid.uuid4().hex[:10]
     out = Path(out_dir or ROOT / "runs" / inv_id); out.mkdir(parents=True, exist_ok=True)
@@ -299,6 +316,7 @@ def run_agent(source: str, claim=None, date=None, place=None, out_dir=None, memo
     trace, hist, calls, last_obs, seen_calls = [], [], 0, "(start)", set()
     stop_reason, final = "budget", dict(summary=None, original_url=None)
     cur_model = model
+    providers: list[str] = []          # which service served each model call (baseten / openrouter), shown in the trace
     header = (f"CLIP: {len(feats)} keyframes (ids 0-{len(feats) - 1}), duration {clip.duration and round(clip.duration)}s. "
               f"CLAIM attached to the clip: {claim!r}; claimed event date {date}; claimed place {place}. "
               "The clip is possibly recycled from an earlier event; the claim may be wrong.\n")
@@ -316,6 +334,7 @@ def run_agent(source: str, claim=None, date=None, place=None, out_dir=None, memo
             ("\n".join(hist[-14:]) or "(none)") + "\nChoose the next tool (JSON only)."
         try:
             txt, cost = llm(cur_model, prompt, system)
+            providers.append(last_provider() if own_llm else "injected")
         except Exception as e:
             if cur_model == model and model != FALLBACK_MODEL:
                 cur_model = FALLBACK_MODEL; trace.append(dict(step=step, tool="llm_fallback", reason=str(e)[:100])); continue
@@ -352,7 +371,7 @@ def run_agent(source: str, claim=None, date=None, place=None, out_dir=None, memo
                           result=_short(res, 700), duplicate=dup, seconds=round(time.time() - ts, 1), decision="continue"))
     if stop_reason != "agent_finished":
         trace.append(dict(step=step, tool="stop", reason=stop_reason, decision="stop"))
-    final.update(model=cur_model, stop_reason=stop_reason, audit=audit_summary(final.get("summary") or "", st, final.get("original_url")))
+    final.update(model=cur_model, providers=sorted(set(providers)), stop_reason=stop_reason, audit=audit_summary(final.get("summary") or "", st, final.get("original_url")))
     rep = build_agent_report(st, trace, final, inv_id, input_meta, round(time.time() - t0, 1))
     write_report(rep, out)
     media.cleanup(clip)
