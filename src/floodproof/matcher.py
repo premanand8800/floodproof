@@ -80,8 +80,8 @@ def _sift():
     return cv2.SIFT_create(nfeatures=_SIFT_N)
 
 
-def _feat(gray, sift):
-    kp, d = sift.detectAndCompute(gray, None)
+def _feat(gray, sift, mask=None):
+    kp, d = sift.detectAndCompute(gray, mask)
     pts = np.float32([k.pt for k in kp]).reshape(-1, 2)
     sz = np.float32([k.size for k in kp])
     return pts, sz, d
@@ -97,30 +97,38 @@ class ClipFeatures:
     dh: list
     feats: list                  # per frame: (pts Nx2, size N, desc Nx128 float32 | None)
     hist: np.ndarray = None
+    masks: list = field(default=None, repr=False)   # optional per-frame SIFT keep-masks (uint8, 0 = overlay); None = unmasked
     _flip: list = field(default=None, repr=False)
 
     @classmethod
-    def from_path(cls, path, fps=3.0, maxdur=120, maxframes=360, maxk=48):
+    def from_path(cls, path, fps=3.0, maxdur=120, maxframes=360, maxk=48, masker=None):
         kf = select_keyframes(read_frames(path, fps=fps, maxdur=maxdur, maxframes=maxframes), maxk=maxk)
         if not kf:
             raise ValueError(f"no decodable frames in {path}")
-        return cls.from_frames(str(path), [t for t, _ in kf], [f for _, f in kf])
+        if masker is None and os.environ.get("FLOODPROOF_SAM") == "1":   # opt-in, default OFF
+            from . import sam
+            masker = sam.masker()
+        return cls.from_frames(str(path), [t for t, _ in kf], [f for _, f in kf], masker=masker)
 
     @classmethod
-    def from_frames(cls, path, times, frames):
+    def from_frames(cls, path, times, frames, masker=None):
+        """masker: optional callable frame -> uint8 keep-mask or None (see floodproof.sam). Frames themselves are never altered."""
         sift = _sift()
+        masks = [masker(f) for f in frames] if masker else None
         ph, dh, feats = [], [], []
-        for f in frames:
+        for k, f in enumerate(frames):
             p, d = hashes(f)
             ph.append(p); dh.append(d)
-            feats.append(_feat(cv2.cvtColor(f, cv2.COLOR_BGR2GRAY), sift))
-        return cls(path, list(times), list(frames), ph, dh, feats, colour_hist(frames))
+            feats.append(_feat(cv2.cvtColor(f, cv2.COLOR_BGR2GRAY), sift, masks[k] if masks else None))
+        return cls(path, list(times), list(frames), ph, dh, feats, colour_hist(frames), masks)
 
     @property
     def flipped(self):
         if self._flip is None:
             sift = _sift()
-            self._flip = [_feat(cv2.flip(cv2.cvtColor(f, cv2.COLOR_BGR2GRAY), 1), sift) for f in self.frames]
+            ms = self.masks or [None] * len(self.frames)
+            self._flip = [_feat(cv2.flip(cv2.cvtColor(f, cv2.COLOR_BGR2GRAY), 1), sift, None if m is None else cv2.flip(m, 1))
+                          for f, m in zip(self.frames, ms)]
         return self._flip
 
     def __len__(self):
