@@ -28,6 +28,7 @@ LIMIT_TEXT = ("GloFAS ~5 km resolution cannot resolve flash floods or glacial la
               "absence of a model signal is not evidence that no flood happened")
 MAX_KM = 150.0
 EMS_TTL_S = 6 * 3600
+SOURCE_BUDGET_S = float(os.environ.get("FLOODPROOF_PHYSICAL_SOURCE_BUDGET", "30"))   # per check; under the pipeline's 45 s cap
 MIN_PEAK_M3S = 20.0  # ignore ratio spikes on tiny dry-season flows (documented deviation)
 PREFERRED_CLASSES = {"natural", "waterway", "place", "boundary", "water", "landuse"}
 
@@ -541,20 +542,36 @@ def check(place: str | None = None, lat: float | None = None, lon: float | None 
         reasons.append("location could not be resolved")
         return res
     la, lo = loc["lat"], loc["lon"]
-    from concurrent.futures import ThreadPoolExecutor      # four independent network look-ups: run them at once
+    from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeout   # independent network look-ups: run them at once
     no_discharge = event_type in NO_DISCHARGE
-    with ThreadPoolExecutor(5) as ex:
+    # One slow source (GDELT backoff, a stalled API) must not sink the others: each gets the remaining budget,
+    # and a source that misses it is reported as TIMEOUT on its own.
+    deadline = time.monotonic() + SOURCE_BUDGET_S
+    ex = ThreadPoolExecutor(5)
+
+    def _get(f, name, fallback):
+        try:
+            return f.result(timeout=max(0.1, deadline - time.monotonic()))
+        except FutureTimeout:
+            reasons.append(f"{name} did not answer within {SOURCE_BUDGET_S:.0f}s; skipped")
+            return fallback
+    try:
         f_ev = ex.submit(official_event, la, lo, day, window_days, *([event_type] if event_type in EMS_CATEGORIES else []))
         f_hy = None if no_discharge else ex.submit(hydrology, la, lo, day, window_days)
         f_rw = ex.submit(reliefweb, country, day, 7, event_type)
         f_nw = ex.submit(news_coverage, place or loc.get("query"), day, window_days, event_type)
         f_us = ex.submit(usgs_events, la, lo, day, 2) if event_type in USGS_TYPES else None
-        ev, rw, nw = f_ev.result(), f_rw.result(), f_nw.result()
-        hy = (f_hy.result() if f_hy else
+        ev = _get(f_ev, "Copernicus EMS", {"source": "copernicus_ems", "status": "ERROR", "reason": "timeout", "activations": []})
+        rw = _get(f_rw, "ReliefWeb", {"status": "TIMEOUT", "disasters": []})
+        nw = _get(f_nw, "GDELT news coverage", {"status": "TIMEOUT"})
+        hy = (_get(f_hy, "GloFAS/Open-Meteo", {"source": "open-meteo glofas v4", "river_discharge": None, "rain": None,
+                                              "status": "TIMEOUT"}) if f_hy else
               {"source": "open-meteo glofas v4", "river_discharge": None, "rain": None,
                "status": "NOT_APPLICABLE" if event_type == "wildfire" else "SKIPPED",
                "reason": NOT_RESOLVED_BY_GLOFAS[event_type]})
-        us = f_us.result() if f_us else None
+        us = _get(f_us, "USGS", {"status": "ERROR", "reason": "timeout", "events": []}) if f_us else None
+    finally:
+        ex.shutdown(wait=False, cancel_futures=True)
     res["official_event"], res["hydrology"] = ev, hy
     ev["reliefweb"] = rw
     if us is not None:

@@ -255,3 +255,22 @@ def test_gdelt_degrades(monkeypatch):
     monkeypatch.setattr(P, "_http_json", boom)
     assert P.news_coverage("Kathmandu", P._date(2024, 9, 28))["status"] == "UNAVAILABLE"
     assert P.news_coverage(None, P._date(2024, 9, 28))["status"] == "SKIPPED"
+
+
+def test_slow_source_times_out_alone(monkeypatch):
+    """A stalled source (here GDELT) is skipped after the budget; the other sources still report."""
+    import time as _t
+    from floodproof import physical as ph
+    monkeypatch.setattr(ph, "SOURCE_BUDGET_S", 0.5)
+    monkeypatch.setattr(ph, "geocode", lambda place, cc=None: {"query": place, "name": place, "lat": 28.1, "lon": 85.3,
+                                                                "source": "t", "confidence": "high", "alternatives": []})
+    monkeypatch.setattr(ph, "official_event", lambda *a, **k: {"source": "copernicus_ems", "status": "NO_EVENT", "activations": []})
+    monkeypatch.setattr(ph, "hydrology", lambda *a, **k: {"source": "x", "river_discharge": None, "rain": None, "status": "UNKNOWN"})
+    monkeypatch.setattr(ph, "reliefweb", lambda *a, **k: {"status": "NOT_CONFIGURED", "disasters": []})
+    monkeypatch.setattr(ph, "news_coverage", lambda *a, **k: __import__("threading").Event().wait(3) or {"status": "OK"})
+    t0 = _t.monotonic()
+    r = ph.check("Rasuwa", date="2026-08-26", event_type="flood", country="NP")
+    assert _t.monotonic() - t0 < 2
+    assert r["news_coverage"]["status"] == "TIMEOUT"
+    assert r["official_event"]["status"] == "NO_EVENT"
+    assert any("GDELT" in x for x in r["reasons"])
