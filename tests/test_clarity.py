@@ -466,3 +466,14 @@ def test_specific_place_suffix_is_stripped_for_geocoding(monkeypatch):
     clues = japan_clues(dict(audio=dict(status="ok", has_speech=True, spoken_dates=[], partial_dates=[], spoken_place_names=[dict(name="Northern Japan", audio_t=2.5), dict(name="Kamaishi City", audio_t=38.5)])))
     res = pipeline._physical(dict(place="Japan", country_iso2="JP", event_type="tsunami", text="x"), clues, "2011-03-11")
     assert res["location"]["lat"] == 39.27 and res["location"]["query"] == "Kamaishi City"
+
+
+# ---------------------------------------------------------------- I. investigation replay
+def test_replay_is_built_from_report_fields_and_autoplays():
+    html = STATIC.read_text()
+    assert "function replaySteps(rep, ref)" in html and "function replayCard(rep, ref)" in html
+    for field in ("stage_timings_s", "candidate_status_counts", "source_stats", "proven_matches", "rep.snowball", "rep.gate"):
+        assert field in html                                   # every step reads a saved report field
+    assert "Math.random" not in html.split("function replaySteps")[1].split("function render(")[0]   # nothing simulated
+    assert html.count("AUTOPLAY = true") == 2                  # showcase card click + finished live run
+    assert "rk-proof" in html and ".rp-step.proof" not in html  # step classes cannot collide with the .proof image style

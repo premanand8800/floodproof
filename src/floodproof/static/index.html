@@ -149,6 +149,29 @@ ul.plain,ul.limits{margin:6px 0;padding-left:20px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;margin-top:20px;box-shadow:var(--shadow)}
 .card>h2{margin-bottom:6px}
 .card-h{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+/* investigation replay: real steps from report.json, purple = Muse (hypothesis), green = matcher (proof), amber = search */
+.rp-sum{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.rp-sum .note{margin:0}
+.rp-list{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.rp-step{display:grid;grid-template-columns:14px 1fr auto;gap:4px 12px;align-items:start;padding:12px 14px;border:1px solid var(--line);border-left:4px solid var(--k);border-radius:12px;background:var(--surface)}
+.rp-step.rk-muse{--k:var(--ai)}.rp-step.rk-proof{--k:var(--ok)}.rp-step.rk-search{--k:var(--unv)}.rp-step.rk-plain{--k:var(--line)}.rp-step.rk-verdict{--k:var(--teal)}
+.rp-dot{width:12px;height:12px;border-radius:50%;background:var(--k);margin-top:6px}
+.rp-step h3{font-size:.98rem;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.rp-who{font:600 .72rem var(--ff-m);text-transform:uppercase;letter-spacing:.04em;color:var(--k)}
+.rp-step.rk-plain .rp-who{color:var(--mute)}
+.rp-t{font:.8rem var(--ff-m);color:var(--mute);white-space:nowrap}
+.rp-body{grid-column:2/4;min-width:0;font-size:.92rem}
+.rp-body ul{margin:6px 0 0;padding-left:18px}
+.rp-thumbs{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.rp-thumbs img{width:88px;height:56px;object-fit:cover;border-radius:6px;border:2px solid transparent}
+.rp-thumbs img.cited{border-color:var(--ai)}
+.rp-count{font:700 1.1rem var(--ff-m);color:var(--ok);font-variant-numeric:tabular-nums}
+.rp-step.hidden-step{display:none}
+.rp-step.enter{animation:rpIn .35s ease-out}
+.rp-q li.enter{animation:rpIn .25s ease-out}
+@keyframes rpIn{from{opacity:.15;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.rp-step.enter,.rp-q li.enter{animation:none}}
+@media (max-width:560px){.rp-step{grid-template-columns:14px 1fr}.rp-t{grid-column:2}.rp-body{grid-column:2}}
 .warn{background:var(--unvbg);color:var(--unv);border-radius:10px;padding:8px 12px;font-size:.9rem;margin-top:8px}
 .phero{border:2px solid var(--rec);border-radius:var(--r);background:var(--surface);padding:18px;margin-top:20px;box-shadow:var(--shadow)}
 .pair{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
@@ -803,6 +826,118 @@ function runAnyBtn(rep) {
   return b;
 }
 
+// ---------- investigation replay: every step and number below is read from this report.json (nothing is simulated)
+let RP_TOKEN = 0, AUTOPLAY = false;
+const secs = (x) => (x == null || isNaN(x) || x < 0.05) ? "" : (x >= 60 ? Math.floor(x / 60) + " min " + Math.round(x % 60) + " s" : (Math.round(x * 10) / 10) + " s");
+function replaySteps(rep, ref) {
+  const st = rep.stage_timings_s || {}, v = rep.visual_matching || {}, cl = rep.clues || {}, steps = [];
+  const g = rep.gate;
+  if (g) steps.push({kind: "muse", who: "Muse · relevance check", title: g.error ? "Relevance check skipped (the full check runs)" : g.decision === "stop" ? "Muse: this is not disaster footage" : "Muse: is this a disaster video? " + (g.relevant === "yes" ? "Yes" : g.decision === "run_warned" ? "Maybe not (ran anyway)" : "Not sure, so check it"),
+    t: g.seconds, body: () => h("div", {}, g.reason ? h("div", {text: "“" + g.reason + "”"}) : null,
+      h("div", {class: "note", text: [g.kind ? g.kind.replaceAll("_", " ") : null, g.refs && g.refs.length ? "cited frames " + g.refs.join(", ") : null, g.model, g.cached ? "cached decision" : null].filter(Boolean).join(" · ")}))});
+  const inp = rep.input || {};
+  steps.push({kind: "plain", who: "Video", title: "Fetched the clip and picked " + (inp.n_keyframes || "?") + " keyframes", t: st.fetch_and_keyframes,
+    body: () => h("div", {class: "note", text: [inp.title ? "“" + inp.title + "”" : null, inp.duration ? Math.round(inp.duration) + " s long" : null, inp.has_audio ? "has audio" : "no audio"].filter(Boolean).join(" · ")})});
+  const mem = rep.memory || {};
+  if (mem.status) steps.push({kind: (mem.hits || []).length ? "proof" : "plain", who: "Memory · matcher", title: (mem.hits || []).length ? "Memory: this footage was verified before" : "Memory: not seen before",
+    t: st.memory, body: () => h("div", {class: "note", text: mem.entries_total ? "Compared with " + (mem.entries_searched ?? "?") + " of " + mem.entries_total + " verified clips." : "No verified clips were stored yet when this ran."})});
+  if (cl.status === "ok") {
+    const au = cl.audio || {}, mn = rep.media_nature || {}, cited = new Set(mn.cited_frames || []);
+    steps.push({kind: "muse", who: "Muse · reads the clip", title: "Muse looked at " + (cl.frame_images || []).length + " frames" + (au.status === "ok" ? " and listened to the narration" : ""), t: st.muse, list: "rp-q",
+      items: (cl.queries || []).slice(0, 6).map((q) => q.q),
+      body: () => {
+        const b = h("div", {});
+        const th = h("div", {class: "rp-thumbs"});
+        (cl.frame_images || []).slice(0, 6).forEach((p) => { const base = p.split("/").pop(), i = img(ref, "frames/" + base, "Keyframe " + base, cited.has(+((/frame_(\d+)/.exec(base) || [])[1])) ? "cited" : ""); th.append(i); });
+        if (th.children.length) b.append(th);
+        const facts = [];
+        if (mn.summary) facts.push("What kind of video: " + mn.summary);
+        if ((cl.visible_text || []).length) facts.push("Text on screen: " + cl.visible_text.slice(0, 3).map((t) => t.text).join(" | "));
+        if ((au.spoken_dates || []).length) facts.push("Date spoken: " + au.spoken_dates.map((x) => x.date + " (audio " + x.audio_t + " s)").join("; "));
+        if ((au.spoken_place_names || []).length) facts.push("Places spoken: " + au.spoken_place_names.slice(0, 3).map((x) => x.name).join(", "));
+        const loc = cl.likely_location || {};
+        if (loc.place && loc.place !== "unknown") facts.push("Where it might be (hypothesis): " + loc.place + (loc.country ? ", " + loc.country : ""));
+        if (facts.length) b.append(h("ul", {}, facts.map((f) => h("li", {text: f}))));
+        if ((cl.queries || []).length) b.append(h("div", {class: "note", text: "Search queries Muse wrote:"}));
+        return b;
+      }});
+  }
+  const ss = v.source_stats || {}, ad = v.adapters || {}, live = Object.keys(ss);
+  if (v.candidates_total != null && !rep.fast_path) steps.push({kind: "search", who: "Search", title: "Searched " + live.length + " source" + (live.length === 1 ? "" : "s") + " for earlier copies: " + v.candidates_total + " candidates", t: st.discovery,
+    body: () => h("ul", {}, live.map((n) => h("li", {text: n + ": " + ss[n].candidates + " candidates" + (((st.discovery_by_source || {})[n]) != null ? " (" + secs(st.discovery_by_source[n]) + ")" : "")})),
+      Object.keys(ad).filter((n) => !ss[n] && ad[n] && ad[n].quota).map((n) => h("li", {text: n + ": " + ad[n].quota})))});
+  if (rep.fast_path) steps.push({kind: "search", who: "Search", title: "Skipped outside search: memory already proved an earlier copy", t: null, body: () => null});
+  const pm = v.proven_matches || [], ep = v.earliest_proven_copy, sc = v.candidate_status_counts || {};
+  const best = (ep && pm.find((m) => m.url === ep.url)) || pm[0], mt = (best || {}).match || {};
+  steps.push({kind: pm.length ? "proof" : "plain", who: "Matcher · proof", title: pm.length ? "Matcher proved " + pm.length + " cop" + (pm.length === 1 ? "y" : "ies") + " of this footage" : "Matcher proved no copy (" + (v.candidates_checked ?? 0) + " checked)",
+    t: st.verify_seconds, count: pm.length ? mt.max_inliers : null,
+    body: () => {
+      const b = h("div", {});
+      b.append(h("div", {class: "note", text: (v.candidates_checked ?? 0) + " of " + (v.candidates_total ?? 0) + " candidate" + (v.candidates_total === 1 ? "" : "s") + " downloaded and compared frame by frame: " + (sc.proven || 0) + " proven, " + (sc.not_proven || 0) + " not the same footage" + ((sc.download_failed || 0) + (sc.unavailable || 0) ? ", " + ((sc.download_failed || 0) + (sc.unavailable || 0)) + " could not be downloaded" : "") + "."}));
+      if (best) {
+        const p = best.proof;
+        if (p && p.viral_frame && p.copy_frame) b.append(h("div", {class: "rp-thumbs"}, img(ref, p.viral_frame, "Viral frame", ""), img(ref, p.copy_frame, "Earlier copy frame", "")));
+        b.append(h("div", {}, h("span", {class: "rp-count", "data-to": String(mt.max_inliers || 0), text: "0"}), " matching points in one frame pair · " + (mt.consistent_frames ?? "?") + " frames agree in time" + (mt.mirrored ? " · the copy is mirrored" : "")));
+      }
+      return b;
+    }});
+  const sb = rep.snowball;
+  if (sb && (sb.rounds || []).length) {
+    const nNew = sb.rounds.reduce((a, r) => a + (r.proven_new || []).length, 0);
+    steps.push({kind: "muse", who: "Muse + matcher · snowball", title: "Muse read the copy's title and uploader and searched again: " + nNew + " more cop" + (nNew === 1 ? "y" : "ies") + " proven", t: sb.seconds, list: "rp-q",
+      items: sb.rounds.flatMap((r) => (r.queries || []).map((q) => q.q + (q.source_field ? "  ← from the " + q.source_field : ""))).slice(0, 5),
+      body: () => h("div", {class: "note", text: "Every new copy still had to pass the matcher."})});
+  }
+  if (ep) steps.push({kind: ep.date_independent ? "proof" : "plain", who: "Dates", title: "Earliest copy found: " + platformOf(ep.url) + ", " + fmtDate(ep.upload_date), t: null,
+    body: () => h("div", {class: "note", text: (ep.date_source || "platform metadata") + (ep.date_independent ? ", re-fetched independently in this investigation" : ", not independently re-checked") + ". The earliest copy found is not necessarily the original."})});
+  const V = verdictOf(rep);
+  steps.push({kind: "verdict", who: "Verdict", title: V.label, t: rep.timing_s, tLabel: "total", body: () => (rep.headline || {}).sentence ? h("div", {text: rep.headline.sentence}) : null});
+  return steps;
+}
+function replayCard(rep, ref) {
+  const steps = replaySteps(rep, ref);
+  if (steps.length < 3) return null;
+  const v = rep.visual_matching || {};
+  const list = h("ol", {class: "rp-list", "aria-live": "polite"});
+  const btn = h("button", {type: "button", class: "btn ghost", text: "▶ Replay the investigation"});
+  const speed = h("span", {class: "note"});
+  const sum = h("div", {class: "rp-sum"}, h("p", {class: "note", text: steps.length + " steps · " + (secs(rep.timing_s) || "time not recorded") + (v.candidates_checked != null ? " · " + v.candidates_checked + " candidate" + (v.candidates_checked === 1 ? "" : "s") + " checked by the matcher" : "")}), btn, speed);
+  const card = h("section", {class: "card", "aria-label": "How this investigation ran"}, h("div", {class: "card-h"}, h("h2", {text: "How this investigation ran"}), badge("from the saved report", "b-na")),
+    sum, h("p", {class: "note", text: "Purple steps are Muse (AI observations, hypotheses). Green steps are the frame matcher (proof). Amber is search."}), list);
+  const rows = steps.map((s) => {
+    const li = h("li", {class: "rp-step rk-" + s.kind},
+      h("span", {class: "rp-dot", "aria-hidden": "true"}),
+      h("h3", {}, h("span", {class: "rp-who", text: s.who}), h("span", {text: s.title})),
+      h("span", {class: "rp-t", text: secs(s.t) ? (s.tLabel ? s.tLabel + " " : "") + secs(s.t) : ""}));
+    const body = h("div", {class: "rp-body"}); const b = s.body && s.body(); if (b) body.append(b);
+    let ul = null;
+    if ((s.items || []).length) { ul = h("ul", {class: s.list || ""}, s.items.map((q) => h("li", {class: "mono", text: q}))); body.append(ul); }
+    li.append(body); list.append(li);
+    return {li, ul, s};
+  });
+  const settle = () => { rows.forEach((r) => { r.li.classList.remove("hidden-step"); const c = r.li.querySelector(".rp-count"); if (c) c.textContent = c.dataset.to; if (r.ul) [...r.ul.children].forEach((x) => { x.hidden = false; }); }); };
+  settle();
+  function play() {
+    const tok = ++RP_TOKEN;
+    if (REDUCED()) { settle(); return; }
+    rows.forEach((r) => { r.li.classList.add("hidden-step"); r.li.classList.remove("enter"); if (r.ul) [...r.ul.children].forEach((x) => { x.hidden = true; }); });
+    let total = 0;
+    const later = (ms, fn) => { total += ms; setTimeout(() => { if (tok === RP_TOKEN) fn(); }, total); };
+    rows.forEach((r) => {
+      later(r === rows[0] ? 150 : 1100, () => { r.li.classList.remove("hidden-step"); r.li.classList.add("enter"); r.li.scrollIntoView({block: "nearest", behavior: "smooth"}); });
+      if (r.ul) [...r.ul.children].forEach((x) => later(320, () => { x.hidden = false; x.classList.add("enter"); }));
+      const c = r.li.querySelector(".rp-count");
+      if (c) later(200, () => { const to = +c.dataset.to || 0, t0 = performance.now();
+        const tick = (now) => { if (tok !== RP_TOKEN) return; const k = Math.min(1, (now - t0) / 1000); c.textContent = String(Math.round(to * k)); if (k < 1) requestAnimationFrame(tick); };
+        requestAnimationFrame(tick); });
+    });
+    const real = rep.timing_s || 0;
+    speed.textContent = real && total ? "about " + Math.max(1, Math.round(real / (total / 1000))) + "× faster than the real run" : "";
+  }
+  btn.onclick = play;
+  if (AUTOPLAY) { AUTOPLAY = false; setTimeout(play, 300); }
+  return card;
+}
 function render(rep, ref) {
   const out = $("#out"); out.replaceChildren(); show("report");
   const v = rep.visual_matching, fv = rep.final_verdict, ph = rep.physical_world_check || {};
@@ -846,6 +981,7 @@ function render(rep, ref) {
       h("div", {class: "note", text: sg.note || "Signals never change the label."})));
   }
   out.append(banner);
+  const rpc = replayCard(rep, ref); if (rpc) out.append(rpc);
 
   const hero = proofHero(rep, ref) || heroFor(rep, ref); if (hero) out.append(hero);
   const spr = spreadSection(rep, ref); if (spr) out.append(spr);
@@ -918,7 +1054,7 @@ fetch("/api/demos").then((r) => r.json()).then((ds) => {
   ds.map((d, i) => [d, i]).sort((a, b) => rank(a[0]) - rank(b[0]) || a[1] - b[1]).map((x) => x[0]).forEach((d, i) => {
     const th = d.thumb ? h("img", {class: "th", alt: "", loading: "lazy", src: "/files/demo/" + encodeURIComponent(d.name) + "/" + d.thumb.split("/").map(encodeURIComponent).join("/")}) : h("div", {class: "th none", text: "No matched frames to show"});
     const b = h("button", {type: "button", class: "demo" + (i === 0 ? " feat" : "")}, th, h("span", {class: "bd"}, pillOf(d.label, d.tone), h("span", {class: "t", text: d.title}), h("span", {class: "s", text: d.blurb || d.claim || ""})));
-    b.onclick = () => { location.hash = "#/report/demo/" + encodeURIComponent(d.name); }; p.append(b);
+    b.onclick = () => { AUTOPLAY = true; location.hash = "#/report/demo/" + encodeURIComponent(d.name); }; p.append(b);
   });
 }).catch(() => {});
 
@@ -987,7 +1123,7 @@ function startRun(job) {
     $("#log").textContent = (j.log || []).join("\n");
     if (j.status === "running") { paintSteps(Math.max(0, stepIndex(j.log || [])), false); POLL = setTimeout(tick, 2000); return; }
     stopRun(); $("#go").disabled = false; clock();
-    if (j.status === "done") { paintSteps(7, true); location.hash = "#/report/run/" + encodeURIComponent(j.report); }
+    if (j.status === "done") { paintSteps(7, true); AUTOPLAY = true; location.hash = "#/report/run/" + encodeURIComponent(j.report); }
     else {
       $("#run-title").textContent = "The check could not be completed"; $("#run-note").textContent = "Something went wrong on our side. Please try again, or open a saved example.";
       $("#run-actions").hidden = false;
