@@ -14,18 +14,19 @@
   --rec:#b3261e;--recbg:#fdecea;--unv:#855400;--unvbg:#fff3d1;--ok:#17683a;--okbg:#e4f4ea;--ai:#5a3d9f;--aibg:#eee9fa;
   --hero1:#0a1c30;--hero2:#0d3a4d;--hero-ink:#f2f8fb;--hero-mute:#b4c8d6;
   --shadow:0 1px 2px rgba(11,27,43,.06),0 8px 24px rgba(11,27,43,.06);
+  --accent:#ff7a2f;--accent-ink:#1d0b02;--accent-text:#c2410c;
   --r:16px;--ff-h:"Space Grotesk",system-ui,sans-serif;--ff-b:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--ff-m:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){
   --bg:#07111b;--surface:#0e1c2a;--surface2:#142638;--ink:#e8f0f6;--mute:#a6b8c7;--line:#223548;
   --teal:#4fd1e8;--teal-ink:#05222b;--teal-soft:#10303b;
   --rec:#ff9088;--recbg:#3a1a1a;--unv:#ffd070;--unvbg:#33270a;--ok:#82dc9e;--okbg:#14301f;--ai:#c5b3ff;--aibg:#272041;
-  --hero1:#08182a;--hero2:#0b3140;--shadow:0 1px 2px rgba(0,0,0,.4)}}
+  --hero1:#08182a;--hero2:#0b3140;--shadow:0 1px 2px rgba(0,0,0,.4);--accent-text:#ff9a5c}}
 :root[data-theme=dark]{
   --bg:#07111b;--surface:#0e1c2a;--surface2:#142638;--ink:#e8f0f6;--mute:#a6b8c7;--line:#223548;
   --teal:#4fd1e8;--teal-ink:#05222b;--teal-soft:#10303b;
   --rec:#ff9088;--recbg:#3a1a1a;--unv:#ffd070;--unvbg:#33270a;--ok:#82dc9e;--okbg:#14301f;--ai:#c5b3ff;--aibg:#272041;
-  --hero1:#08182a;--hero2:#0b3140;--shadow:0 1px 2px rgba(0,0,0,.4)}
+  --hero1:#08182a;--hero2:#0b3140;--shadow:0 1px 2px rgba(0,0,0,.4);--accent-text:#ff9a5c}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--ff-b);overflow-x:hidden}
@@ -51,11 +52,17 @@ button,input,textarea,select,summary{font:inherit;color:inherit}
 .themebtn{min-height:44px;min-width:44px;padding:0 14px;border-radius:12px;border:1px solid currentColor;background:transparent;cursor:pointer;font-weight:600}
 .topnav{background:var(--surface);border-bottom:1px solid var(--line)}
 /* home hero */
-.hero{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:var(--hero-ink);padding-bottom:56px;border-bottom-left-radius:28px;border-bottom-right-radius:28px}
-.hero h1{font-size:clamp(1.8rem,5vw,3rem);font-weight:700;max-width:26ch;margin:14px 0 10px;text-wrap:balance}
-.hero h1 em{font-style:normal;color:#6ee0f2;display:block}
+.hero{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(160deg,#050d17 0%,var(--hero1) 45%,var(--hero2) 100%);color:var(--hero-ink);padding-bottom:56px;border-bottom-left-radius:28px;border-bottom-right-radius:28px}
+.hero h1{font-size:clamp(2.3rem,6.4vw,4.4rem);font-weight:700;max-width:18ch;margin:18px 0 14px;line-height:1.02;letter-spacing:-.025em;text-wrap:balance}
+.hero h1 em{font-style:normal;display:block;margin-top:14px;font-size:max(1.15rem,.42em);font-weight:500;letter-spacing:-.01em;line-height:1.3;color:var(--hero-mute);max-width:34ch}
+.hero h1 .acc{color:var(--accent);font-weight:700;text-shadow:0 0 22px rgba(255,122,47,.55)}
+.hero-wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:82%;z-index:-1;pointer-events:none}
+.hero-wave .glow{fill:none;stroke:var(--accent);stroke-width:2.5;filter:drop-shadow(0 0 6px rgba(255,122,47,.9)) drop-shadow(0 0 22px rgba(255,122,47,.5))}
+.hero-wave .ghost{fill:none;stroke:rgba(255,255,255,.08);stroke-width:1.5}
+.hero-wave .tick{fill:var(--accent)}
+#go{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);box-shadow:0 6px 24px rgba(255,122,47,.35)}
 .hero .lead{color:var(--hero-mute);font-size:1.05rem;max-width:58ch;margin:0 0 22px}
-.brandline{display:inline-block;margin-top:18px;padding:4px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.4);font-weight:600;font-size:.85rem;letter-spacing:.03em}
+.brandline{display:inline-block;margin-top:18px;padding:4px 14px;border-radius:999px;border:1px solid rgba(255,122,47,.6);color:#ffd2b8;font-weight:600;font-size:.85rem;letter-spacing:.03em}
 .check{background:var(--surface);color:var(--ink);border-radius:20px;padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.28);max-width:860px}
 .urlrow{display:flex;gap:10px}
 .urlrow input{flex:1;min-width:0;font-size:1.05rem;min-height:58px}
@@ -91,7 +98,7 @@ section.blk{margin-top:48px}
 .sec-h h2{font-size:clamp(1.4rem,3vw,1.8rem)}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:-30px;position:relative}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;box-shadow:var(--shadow)}
-.stat b{display:block;font-family:var(--ff-h);font-size:clamp(2.2rem,4.4vw,3rem);line-height:1;color:var(--teal)}
+.stat b{display:block;font-family:var(--ff-h);font-size:clamp(2.2rem,4.4vw,3rem);line-height:1;color:var(--accent-text)}
 .stat span{display:block;margin-top:8px;font-weight:500}
 .statnote{margin:10px 2px 0;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .linkbtn{background:none;border:0;padding:0 4px;min-height:44px;color:var(--teal);text-decoration:underline;cursor:pointer;font-weight:600}
@@ -255,12 +262,13 @@ details.layer .lb{padding:0 18px 18px}
 </svg>
 
 <header class="hero" id="v-home-hero">
+ <svg class="hero-wave" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true"><path class="ghost" d="M0 330 C 200 330 300 260 460 260 S 760 330 960 250 S 1180 70 1300 90 S 1410 150 1440 150"/><path class="glow" d="M0 360 C 220 360 320 290 480 290 S 780 360 980 280 S 1190 110 1310 125 S 1415 185 1440 182"/><circle class="tick" cx="1310" cy="125" r="4.5"/></svg>
  <div class="wrap">
   <div class="bar">
     <a class="brand" href="#/" aria-label="FloodProof home"><svg aria-hidden="true"><use href="#logo"/></svg><span>FloodProof</span></a>
     <button class="themebtn" type="button" data-theme-toggle aria-label="Switch between light and dark theme">Theme</button>
   </div>
-  <h1>Is this disaster video real? <em>FloodProof finds the earlier copy and shows you the proof.</em></h1>
+  <h1>Is this disaster video real? <em>FloodProof finds the earlier copy and shows you <span class="acc">the proof.</span></em></h1>
   <p class="lead">Paste a link or drop a clip. If the footage was posted before, you get the matching frames, the date and a shareable debunk in plain language.</p>
   <form id="form" class="check" aria-label="Check a video" novalidate>
     <label class="sr" for="url">Video link</label>
@@ -290,7 +298,7 @@ details.layer .lb{padding:0 18px 18px}
     </details>
     <div id="status" role="status" aria-live="polite"></div>
   </form>
-  <span class="brandline">No fake score. Evidence.</span>
+  <span class="brandline">No fake score. Just proof.</span>
  </div>
 </header>
 
