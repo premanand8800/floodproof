@@ -548,85 +548,74 @@
   },
   "debunk": {
     "texts": {
-      "en": "The uploader’s own description identifies this video as an animation, so it is not documentary footage of the claimed event. It is presented as 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary'. The claim references an event date of 2026-08-26. No visual match for real-world footage was found in the search. This does not prove whether a glacier-collapse flood occurred in Nepal on that date.",
-      "ne": "अपलोडकर्ताको आफ्नै विवरणले यो भिडियोलाई एनिमेसनको रूपमा पहिचान गर्दछ, त्यसैले यो दावी गरिएको घटनाको दस्तावेजी फुटेज होइन। यसलाई 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary' को रूपमा प्रस्तुत गरिएको छ। दावीले 2026-08-26 को घटना मिति उल्लेख गर्दछ। खोजमा वास्तविक फुटेजको कुनै दृश्य मिलान फेला परेन। यसले 2026-08-26 मा नेपालमा हिमनदी-प्रकोप बाढी भएको थियो वा थिएन भन्ने कुरा प्रमाणित गर्दैन।",
-      "hi": "अपलोडर के अपने विवरण में इस वीडियो को एनिमेशन के रूप में पहचाना गया है, इसलिए यह दावा किए गए घटना का दस्तावेजी फुटेज नहीं है। इसे 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary' के रूप में प्रस्तुत किया गया है। दावा 2026-08-26 की घटना तिथि का उल्लेख करता है। खोज में वास्तविक फुटेज का कोई दृश्य मिलान नहीं मिला। इससे यह साबित नहीं होता कि उस तिथि को नेपाल में ग्लेशियर-पतन से बाढ़ आई थी या नहीं।"
+      "en": "The uploader's own title labels this video as a 2D Animation Documentary, so it is not real documentary footage of the claimed event. The video presents the claim 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary' about Nepal on 2026-08-26. Our search found no earliest copy of this footage published elsewhere. This does not prove whether the flood happened or not, and the animation by itself cannot verify a real event.",
+      "ne": "अपलोडरको आफ्नै शीर्षकले यो भिडियोलाई '2D Animation Documentary' भनेर लेबल गरेको छ, त्यसैले यो दाबी गरिएको घटनाको वास्तविक वृत्तचित्र फुटेज होइन। भिडियोले 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary' भन्ने दाबी नेपालमा 2026-08-26 मा भएको घटनाको बारेमा प्रस्तुत गर्दछ। हाम्रो खोजमा यो फुटेजको कुनै पनि अघिल्लो प्रतिलिपि अन्यत्र प्रकाशित भएको भेटिएन। यसले बाढी भयो वा भएन भन्ने प्रमाणित गर्दैन, र यो एनिमेसनले मात्र वास्तविक घटनालाई पुष्टि गर्न सक्दैन।",
+      "hi": "अपलोडर के अपने शीर्षक में इस वीडियो को 2D Animation Documentary के रूप में लेबल किया गया है, इसलिए यह दावा की गई घटना की वास्तविक डॉक्यूमेंट्री फुटेज नहीं है। वीडियो 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary' दावा को नेपाल में 2026-08-26 की घटना के बारे में प्रस्तुत करता है। हमारी खोज में इस फुटेज की कोई भी पहले प्रकाशित प्रति कहीं और नहीं मिली। यह साबित नहीं करता कि बाढ़ हुई या नहीं, और यह एनिमेशन अकेले किसी वास्तविक घटना की पुष्टि नहीं कर सकता।"
     },
     "field_refs": {
       "en": [
         {
-          "sentence": "The uploader’s own description identifies this video as an animation, so it is not documentary footage of the claimed event.",
+          "sentence": "The uploader's own title labels this video as a 2D Animation Documentary, so it is not real documentary footage of the claimed event.",
           "ref": "disclosure.type"
         },
         {
-          "sentence": "It is presented as 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary'.",
+          "sentence": "The video presents the claim 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary' about Nepal on 2026-08-26.",
           "ref": "claim.text"
         },
         {
-          "sentence": "The claim references an event date of 2026-08-26.",
-          "ref": "claim.event_date"
-        },
-        {
-          "sentence": "No visual match for real-world footage was found in the search.",
+          "sentence": "Our search found no earliest copy of this footage published elsewhere.",
           "ref": "visual_matching.status"
         },
         {
-          "sentence": "This does not prove whether a glacier-collapse flood occurred in Nepal on that date.",
+          "sentence": "This does not prove whether the flood happened or not, and the animation by itself cannot verify a real event.",
           "ref": "final_verdict.label"
         }
       ],
       "ne": [
         {
-          "sentence": "अपलोडकर्ताको आफ्नै विवरणले यो भिडियोलाई एनिमेसनको रूपमा पहिचान गर्दछ, त्यसैले यो दावी गरिएको घटनाको दस्तावेजी फुटेज होइन।",
+          "sentence": "अपलोडरको आफ्नै शीर्षकले यो भिडियोलाई '2D Animation Documentary' भनेर लेबल गरेको छ, त्यसैले यो दाबी गरिएको घटनाको वास्तविक वृत्तचित्र फुटेज होइन।",
           "ref": "disclosure.type"
         },
         {
-          "sentence": "यसलाई 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary' को रूपमा प्रस्तुत गरिएको छ।",
+          "sentence": "भिडियोले 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary' भन्ने दाबी नेपालमा 2026-08-26 मा भएको घटनाको बारेमा प्रस्तुत गर्दछ।",
           "ref": "claim.text"
         },
         {
-          "sentence": "दावीले 2026-08-26 को घटना मिति उल्लेख गर्दछ।",
-          "ref": "claim.event_date"
-        },
-        {
-          "sentence": "खोजमा वास्तविक फुटेजको कुनै दृश्य मिलान फेला परेन।",
+          "sentence": "हाम्रो खोजमा यो फुटेजको कुनै पनि अघिल्लो प्रतिलिपि अन्यत्र प्रकाशित भएको भेटिएन।",
           "ref": "visual_matching.status"
         },
         {
-          "sentence": "यसले 2026-08-26 मा नेपालमा हिमनदी-प्रकोप बाढी भएको थियो वा थिएन भन्ने कुरा प्रमाणित गर्दैन।",
+          "sentence": "यसले बाढी भयो वा भएन भन्ने प्रमाणित गर्दैन, र यो एनिमेसनले मात्र वास्तविक घटनालाई पुष्टि गर्न सक्दैन।",
           "ref": "final_verdict.label"
         }
       ],
       "hi": [
         {
-          "sentence": "अपलोडर के अपने विवरण में इस वीडियो को एनिमेशन के रूप में पहचाना गया है, इसलिए यह दावा किए गए घटना का दस्तावेजी फुटेज नहीं है।",
+          "sentence": "अपलोडर के अपने शीर्षक में इस वीडियो को 2D Animation Documentary के रूप में लेबल किया गया है, इसलिए यह दावा की गई घटना की वास्तविक डॉक्यूमेंट्री फुटेज नहीं है।",
           "ref": "disclosure.type"
         },
         {
-          "sentence": "इसे 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary' के रूप में प्रस्तुत किया गया है।",
+          "sentence": "वीडियो 'How Did the Nepal Flood Happen? | Glacier Collapse Explained | 2D Animation Documentary' दावा को नेपाल में 2026-08-26 की घटना के बारे में प्रस्तुत करता है।",
           "ref": "claim.text"
         },
         {
-          "sentence": "दावा 2026-08-26 की घटना तिथि का उल्लेख करता है।",
-          "ref": "claim.event_date"
-        },
-        {
-          "sentence": "खोज में वास्तविक फुटेज का कोई दृश्य मिलान नहीं मिला।",
+          "sentence": "हमारी खोज में इस फुटेज की कोई भी पहले प्रकाशित प्रति कहीं और नहीं मिली।",
           "ref": "visual_matching.status"
         },
         {
-          "sentence": "इससे यह साबित नहीं होता कि उस तिथि को नेपाल में ग्लेशियर-पतन से बाढ़ आई थी या नहीं।",
+          "sentence": "यह साबित नहीं करता कि बाढ़ हुई या नहीं, और यह एनिमेशन अकेले किसी वास्तविक घटना की पुष्टि नहीं कर सकता।",
           "ref": "final_verdict.label"
         }
       ]
     },
-    "model": "meta/muse-glimmer-30b",
+    "model": "meta/muse-spark-open",
+    "provider": "baseten",
     "grounded": true,
     "languages": [
       "en",
       "ne",
       "hi"
     ],
-    "cost_usd": 0.00465
+    "cost_usd": 0.02926
   }
 }

@@ -3255,5 +3255,57 @@
     "verify_workers": 3,
     "verify_seconds": 71.2,
     "verify_checked": 14
+  },
+  "debunk": {
+    "texts": {
+      "en": "The earliest copy found was published on 2023-09-04 on YouTube by rtsarovvideo at https://www.youtube.com/shorts/J73_BroiAEE, which is before the claimed event date of 2023-09-10. The video was later shared as showing a \"Tornado during Storm Daniel in Libya\" in Libya. Visual matching found 20 consistent frames with up to 36 inliers linking it to that earlier copy. This shows the footage existed earlier, but it does not prove whether the tornado in Libya did or did not occur.",
+      "ne": "फेला परेको सबैभन्दा पुरानो प्रति 2023-09-04 मा YouTube मा rtsarovvideo द्वारा https://www.youtube.com/shorts/J73_BroiAEE मा प्रकाशित भएको थियो, जुन दाबी गरिएको घटना मिति 2023-09-10 भन्दा पहिले हो। यो भिडियो पछि लिबियामा \"Tornado during Storm Daniel in Libya\" देखाउँछ भन्दै साझा गरिएको थियो। भिजुअल म्याचिङले त्यस पुरानो प्रतिसँग 20 वटा मिल्दो फ्रेम र अधिकतम 36 इनलायर्स फेला पारेको छ। यसले फुटेज पहिले नै अस्तित्वमा थियो भन्ने देखाउँछ, तर त्यस मितिमा लिबियामा आँधी आएको थियो वा थिएन भन्ने प्रमाणित गर्दैन।"
+    },
+    "field_refs": {
+      "en": [
+        {
+          "sentence": "The earliest copy found was published on 2023-09-04 on YouTube by rtsarovvideo at https://www.youtube.com/shorts/J73_BroiAEE, which is before the claimed event date of 2023-09-10.",
+          "ref": "visual_matching.earliest_proven_copy.upload_date"
+        },
+        {
+          "sentence": "The video was later shared as showing a \"Tornado during Storm Daniel in Libya\" in Libya.",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "Visual matching found 20 consistent frames with up to 36 inliers linking it to that earlier copy.",
+          "ref": "visual_matching.earliest_proven_copy.match.consistent_frames"
+        },
+        {
+          "sentence": "This shows the footage existed earlier, but it does not prove whether the tornado in Libya did or did not occur.",
+          "ref": "visual_matching.status"
+        }
+      ],
+      "ne": [
+        {
+          "sentence": "फेला परेको सबैभन्दा पुरानो प्रति 2023-09-04 मा YouTube मा rtsarovvideo द्वारा https://www.youtube.com/shorts/J73_BroiAEE मा प्रकाशित भएको थियो, जुन दाबी गरिएको घटना मिति 2023-09-10 भन्दा पहिले हो।",
+          "ref": "visual_matching.earliest_proven_copy.upload_date"
+        },
+        {
+          "sentence": "यो भिडियो पछि लिबियामा \"Tornado during Storm Daniel in Libya\" देखाउँछ भन्दै साझा गरिएको थियो।",
+          "ref": "claim.text"
+        },
+        {
+          "sentence": "भिजुअल म्याचिङले त्यस पुरानो प्रतिसँग 20 वटा मिल्दो फ्रेम र अधिकतम 36 इनलायर्स फेला पारेको छ।",
+          "ref": "visual_matching.earliest_proven_copy.match.consistent_frames"
+        },
+        {
+          "sentence": "यसले फुटेज पहिले नै अस्तित्वमा थियो भन्ने देखाउँछ, तर त्यस मितिमा लिबियामा आँधी आएको थियो वा थिएन भन्ने प्रमाणित गर्दैन।",
+          "ref": "visual_matching.status"
+        }
+      ]
+    },
+    "model": "meta/muse-spark-open",
+    "provider": "baseten",
+    "grounded": true,
+    "languages": [
+      "en",
+      "ne"
+    ],
+    "cost_usd": 0.03185
   }
 }

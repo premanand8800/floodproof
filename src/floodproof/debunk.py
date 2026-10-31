@@ -15,7 +15,8 @@ from urllib.parse import urlparse
 
 from . import llm
 
-MODEL = "meta/muse-glimmer-30b"
+MODEL = "meta/muse-spark-open"          # open weights, served by Baseten first (OpenRouter fallback); 8/8 demo cards grounded on 2026-10-31
+GLIMMER_MODEL = "meta/muse-glimmer-30b"
 FALLBACK_MODEL = "meta/muse-spark-1.3"
 BASE_LANGS = ("en", "ne")
 LANG_NAMES = {"en": "English", "ne": "Nepali", "hi": "Hindi"}
@@ -394,7 +395,7 @@ def _prompt(r: dict, langs: list[str]) -> str:
 
 
 def _call(model, r, langs):
-    txt, cost = llm.chat(model, _prompt(r, langs), max_tokens=8000, system=SYSTEM, timeout=180)
+    txt, cost = llm.chat(model, _prompt(r, langs), max_tokens=8000, system=SYSTEM, timeout=180, baseten=True)
     return llm.parse_json(txt), cost
 
 
@@ -403,7 +404,7 @@ def generate_debunk(r: dict, chat=None) -> dict:
     chat = chat or _call
     langs = detect_langs(r)
     cost, errors, used = 0.0, [], None
-    attempts = [MODEL, MODEL, FALLBACK_MODEL]          # one retry on the same model, then the fallback model
+    attempts = [MODEL, GLIMMER_MODEL, FALLBACK_MODEL]  # Spark Open (Baseten), then Glimmer, then Spark 1.3
     for model in attempts:
         try:
             obj, c = chat(model, r, langs)

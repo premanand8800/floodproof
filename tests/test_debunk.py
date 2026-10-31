@@ -92,11 +92,12 @@ def test_fallback_model_used_when_primary_errors():
 
     def chat(model, rr, langs):
         calls.append(model)
-        if model == debunk.MODEL:
+        if model in (debunk.MODEL, debunk.GLIMMER_MODEL):
             raise RuntimeError("boom")
         return good_obj(rr), 0.002
     d = debunk.generate_debunk(r, chat=chat)
-    assert d["model"] == debunk.FALLBACK_MODEL and d["grounded"] is True and calls[0] == debunk.MODEL
+    assert d["model"] == debunk.FALLBACK_MODEL and d["grounded"] is True
+    assert calls == [debunk.MODEL, debunk.GLIMMER_MODEL, debunk.FALLBACK_MODEL]
 
 
 def test_all_templates_pass_their_own_check_and_cover_all_demos():

@@ -682,7 +682,7 @@ function debunkCard(rep) {
   };
   const c = card("Shareable debunk card", badge(d.grounded ? "checked against the report" : "template (model text rejected)", d.grounded ? "b-ok" : "b-unv"),
     h("p", {class: "note", text: "Ready to post. Pick a language, then copy."}), tabs, ta, h("div", {class: "dactions"}, copy, status),
-    h("div", {class: "note", style: "margin-top:10px", text: "Written from this report only; every date, link and number was checked against report.json. Model: " + d.model + "."}),
+    h("div", {class: "note", style: "margin-top:10px", text: "Written from this report only; every date, link and number was checked against report.json. Model: " + d.model + (d.provider === "baseten" ? " (open weights), served by Baseten" : d.provider === "meta_api" ? ", served by the Meta Model API" : d.provider === "openrouter" ? ", served by OpenRouter" : "") + "."}),
     refsDet);
   showLang(langs[0]);
   return c;

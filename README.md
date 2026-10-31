@@ -59,14 +59,14 @@ Numbers as `bench/EVALUATION.md` states them (all scorers make no API calls; not
 
 ## Meta models
 
-Honest status: the Meta Model API integration is implemented and unit-tested with mocked HTTP, but the team's Meta billing was not configured when this was written (every inference call returned HTTP 402), so no live Meta API or Baseten call has been verified yet. Real runs currently fall back to OpenRouter, and `report.json` says so (`provider` fields).
+Honest status (2026-10-31): **live** today are Muse Spark 1.3 and Glimmer via OpenRouter, and Muse Spark Open on Baseten (the shareable debunk card on every report, the Deep investigate agent, and transcript extraction). The Meta Model API route (Spark 1.3, Voice Transcribe, SAM 3.1) is implemented and unit-tested with mocked HTTP, but the team's Meta billing is not configured yet (every inference call returns HTTP 402), so those calls fall back to OpenRouter and `report.json` says so (`provider` fields).
 
 | Model | Used for | Served by |
 |---|---|---|
 | Muse Spark 1.3 (`muse-spark-1.3`) | frame clues and queries (`clues.provider`), proof explanation, snowball reads, relevance-gate and debunk fallbacks | Meta Model API first; any error, timeout, 429 or billing problem falls back to OpenRouter (`meta/muse-spark-1.3`). `FLOODPROOF_META_API=0` disables the Meta route. |
 | Muse Voice Transcribe (`muse-voice-transcribe-1.0`) | narration transcript with turn-level timestamps (the API has no word-level timing) | Meta Model API only (`POST /v1/asr/transcribe`, WAV). If it fails, the old path (Spark Open listening to the audio) is used. |
-| Muse Spark Open (`meta/muse-spark-open`) | spoken places and dates extracted from the transcript, each citing a turn timestamp (`clues.audio.provider`); also direct audio listening fallback and the experimental Deep investigate agent | Baseten Model API (`meta-models/muse-spark-open`, open weights, needs `BASETEN_API_KEY`, `FLOODPROOF_BASETEN=0` disables) first for the transcript extraction and the Deep investigate agent (verified live: a full agent run, 16 tool calls, all served by Baseten), then OpenRouter. The audio-input fallback stays on OpenRouter (Baseten's endpoint takes text and images, not audio). |
-| Muse Glimmer 30B (`meta/muse-glimmer-30b`) | relevance gate and multilingual debunk card (primary) | OpenRouter only (not on the Meta API list) |
+| Muse Spark Open (`meta/muse-spark-open`) | **shareable debunk card on every report** (en/ne/hi, every sentence checked against report.json; `debunk.provider`; 16/18 first-attempt cards grounded across two passes over the 8 demos, Glimmer then Spark 1.3 as fallbacks); spoken places and dates extracted from the transcript, each citing a turn timestamp (`clues.audio.provider`); also direct audio listening fallback and the experimental Deep investigate agent | Baseten Model API (`meta-models/muse-spark-open`, open weights, needs `BASETEN_API_KEY`, `FLOODPROOF_BASETEN=0` disables) first for the debunk card, the transcript extraction and the Deep investigate agent (verified live: a full agent run, 16 tool calls, all served by Baseten), then OpenRouter. The audio-input fallback stays on OpenRouter (Baseten's endpoint takes text and images, not audio). |
+| Muse Glimmer 30B (`meta/muse-glimmer-30b`) | relevance gate (primary); debunk card fallback | OpenRouter only (not on the Meta API list) |
 
 Not used: Muse Wonder, Muse Image, SAM on the Meta API.
 

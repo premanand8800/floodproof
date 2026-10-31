@@ -711,61 +711,54 @@
   "timing_s": 198.7,
   "debunk": {
     "texts": {
-      "en": "No earlier copy of this footage was found in the search. The description refers to a Nepal flood in Kathmandu. The claimed event date is 2024-09-28. The claimed place is Kathmandu. This finding does not prove the footage shows that specific flood or confirms the event happened as described.",
-      "ne": "खोजीमा यस फुटेजको पहिलेको प्रतिलिपि फेला परेन। यो विवरण काठमाडौंमा नेपालमा आएको बाढीसँग सम्बन्धित छ। दाबी गरिएको घटनाको मिति 2024-09-28 हो। दाबी गरिएको स्थान काठमाडौं हो। यो निष्कर्षले फुटेजले त्यो विशेष बाढीलाई देखाउँछ भन्ने वा घटना वर्णन गरिएझैं भएको पुष्टि गर्दैन।"
+      "en": "No earlier copy of this video was found in our searches, which alone does not prove it is authentic or recent. The post describes a Nepal flood in Kathmandu. It links the scene to 2024-09-28. Not finding an earlier copy does not prove the video was actually filmed in Kathmandu on that date and independent verification is still needed.",
+      "ne": "हाम्रा खोजीमा यस भिडियोको पहिलेको कपी भेटिएन, जसले एक्लै यो प्रामाणिक वा हालसालैको हो भन्ने प्रमाणित गर्दैन। यो पोस्टले नेपाल बाढी, काठमाडौं देखाएको बताएको छ। यसले यो दृश्यलाई 2024-09-28 सँग जोडेको छ। पहिलेको कपी नभेटिनुले यो भिडियो वास्तवमै उक्त मितिमा काठमाडौंमा खिचिएको हो भन्ने प्रमाणित गर्दैन र स्वतन्त्र पुष्टि अझै आवश्यक छ।"
     },
     "field_refs": {
       "en": [
         {
-          "sentence": "No earlier copy of this footage was found in the search.",
+          "sentence": "No earlier copy of this video was found in our searches, which alone does not prove it is authentic or recent.",
           "ref": "visual_matching.status"
         },
         {
-          "sentence": "The description refers to a Nepal flood in Kathmandu.",
+          "sentence": "The post describes a Nepal flood in Kathmandu.",
           "ref": "claim.text"
         },
         {
-          "sentence": "The claimed event date is 2024-09-28.",
+          "sentence": "It links the scene to 2024-09-28.",
           "ref": "claim.event_date"
         },
         {
-          "sentence": "The claimed place is Kathmandu.",
-          "ref": "claim.place"
-        },
-        {
-          "sentence": "This finding does not prove the footage shows that specific flood or confirms the event happened as described.",
+          "sentence": "Not finding an earlier copy does not prove the video was actually filmed in Kathmandu on that date and independent verification is still needed.",
           "ref": "final_verdict.label"
         }
       ],
       "ne": [
         {
-          "sentence": "खोजीमा यस फुटेजको पहिलेको प्रतिलिपि फेला परेन।",
+          "sentence": "हाम्रा खोजीमा यस भिडियोको पहिलेको कपी भेटिएन, जसले एक्लै यो प्रामाणिक वा हालसालैको हो भन्ने प्रमाणित गर्दैन।",
           "ref": "visual_matching.status"
         },
         {
-          "sentence": "यो विवरण काठमाडौंमा नेपालमा आएको बाढीसँग सम्बन्धित छ।",
+          "sentence": "यो पोस्टले नेपाल बाढी, काठमाडौं देखाएको बताएको छ।",
           "ref": "claim.text"
         },
         {
-          "sentence": "दाबी गरिएको घटनाको मिति 2024-09-28 हो।",
+          "sentence": "यसले यो दृश्यलाई 2024-09-28 सँग जोडेको छ।",
           "ref": "claim.event_date"
         },
         {
-          "sentence": "दाबी गरिएको स्थान काठमाडौं हो।",
-          "ref": "claim.place"
-        },
-        {
-          "sentence": "यो निष्कर्षले फुटेजले त्यो विशेष बाढीलाई देखाउँछ भन्ने वा घटना वर्णन गरिएझैं भएको पुष्टि गर्दैन।",
+          "sentence": "पहिलेको कपी नभेटिनुले यो भिडियो वास्तवमै उक्त मितिमा काठमाडौंमा खिचिएको हो भन्ने प्रमाणित गर्दैन र स्वतन्त्र पुष्टि अझै आवश्यक छ।",
           "ref": "final_verdict.label"
         }
       ]
     },
-    "model": "meta/muse-glimmer-30b",
+    "model": "meta/muse-spark-open",
+    "provider": "baseten",
     "grounded": true,
     "languages": [
       "en",
       "ne"
     ],
-    "cost_usd": 0.00231
+    "cost_usd": 0.02552
   }
 }

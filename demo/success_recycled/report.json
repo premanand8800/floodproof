@@ -2795,53 +2795,54 @@
   },
   "debunk": {
     "texts": {
-      "en": "An earliest copy found was published on 2026-08-21 on Instagram by Leigh Coates, which is before the claimed event date of 2026-08-26. The claim is about a Nepal GLOF on 2026-08-26 in Nepal. The copy at https://www.instagram.com/reel/DcUFQZhvGzS/ matches the video with 48 consistent frames and a max of 330 inliers. A visual match shows the footage was published earlier and does not prove whether a GLOF actually happened in Nepal on the claimed date.",
-      "ne": "Instagram मा Leigh Coates द्वारा प्रकाशित 2026-08-21 को सबैभन्दा पुरानो प्रमाणित प्रतिलिपि फेला परेको छ, जुन दावी गरिएको घटना मिति 2026-08-26 भन्दा पहिलेको हो। दावी नेपालमा 2026-08-26 मा भएको GLOF को बारेमा हो। https://www.instagram.com/reel/DcUFQZhvGzS/ मा रहेको प्रतिलिपिले भिडियोसँग 48 सुसंगत फ्रेम र अधिकतम 330 inliers सहित मिलान देखाउँछ। दृश्य मिलानले फुटेज पहिले नै प्रकाशित भएको देखाउँछ र यसले 2026-08-26 मा नेपालमा GLOF साँच्चै भयो भन्ने प्रमाण गर्दैन।"
+      "en": "The earliest copy found of this footage was published on 2026-08-21 at https://www.instagram.com/reel/DcUFQZhvGzS/ by Leigh Coates, which is before the claimed event date of 2026-08-26. It is now being shared as showing a Nepal GLOF in Nepal. The visual match is strong with 48 consistent frames and up to 330 inliers. A visual match proves the footage was published earlier; it does not prove the event did not happen.",
+      "ne": "यस फुटेजको सबैभन्दा पहिले भेटिएको प्रतिलिपि (earliest copy found) 2026-08-21 मा https://www.instagram.com/reel/DcUFQZhvGzS/ मा Leigh Coates द्वारा प्रकाशित भएको थियो, जुन दाबी गरिएको घटना मिति 2026-08-26 भन्दा पहिले हो। यो क्लिप अहिले नेपालमा Nepal GLOF देखाएको भन्दै साझा गरिँदैछ। दृश्य मिलान 48 वटा मिल्दा फ्रेम र 330 सम्म इनलायरहरूसहित बलियो छ। दृश्य मिलानले फुटेज पहिले नै प्रकाशित भएको प्रमाणित गर्छ; यसले घटना नै नभएको प्रमाणित गर्दैन।"
     },
     "field_refs": {
       "en": [
         {
-          "sentence": "An earliest copy found was published on 2026-08-21 on Instagram by Leigh Coates, which is before the claimed event date of 2026-08-26.",
+          "sentence": "The earliest copy found of this footage was published on 2026-08-21 at https://www.instagram.com/reel/DcUFQZhvGzS/ by Leigh Coates, which is before the claimed event date of 2026-08-26.",
           "ref": "visual_matching.earliest_proven_copy.upload_date"
         },
         {
-          "sentence": "The claim is about a Nepal GLOF on 2026-08-26 in Nepal.",
+          "sentence": "It is now being shared as showing a Nepal GLOF in Nepal.",
           "ref": "claim.text"
         },
         {
-          "sentence": "The copy at https://www.instagram.com/reel/DcUFQZhvGzS/ matches the video with 48 consistent frames and a max of 330 inliers.",
+          "sentence": "The visual match is strong with 48 consistent frames and up to 330 inliers.",
           "ref": "visual_matching.earliest_proven_copy.match.consistent_frames"
         },
         {
-          "sentence": "A visual match shows the footage was published earlier and does not prove whether a GLOF actually happened in Nepal on the claimed date.",
-          "ref": "final_verdict.label"
+          "sentence": "A visual match proves the footage was published earlier; it does not prove the event did not happen.",
+          "ref": "visual_matching.status"
         }
       ],
       "ne": [
         {
-          "sentence": "Instagram मा Leigh Coates द्वारा प्रकाशित 2026-08-21 को सबैभन्दा पुरानो प्रमाणित प्रतिलिपि फेला परेको छ, जुन दावी गरिएको घटना मिति 2026-08-26 भन्दा पहिलेको हो।",
+          "sentence": "यस फुटेजको सबैभन्दा पहिले भेटिएको प्रतिलिपि (earliest copy found) 2026-08-21 मा https://www.instagram.com/reel/DcUFQZhvGzS/ मा Leigh Coates द्वारा प्रकाशित भएको थियो, जुन दाबी गरिएको घटना मिति 2026-08-26 भन्दा पहिले हो।",
           "ref": "visual_matching.earliest_proven_copy.upload_date"
         },
         {
-          "sentence": "दावी नेपालमा 2026-08-26 मा भएको GLOF को बारेमा हो।",
+          "sentence": "यो क्लिप अहिले नेपालमा Nepal GLOF देखाएको भन्दै साझा गरिँदैछ।",
           "ref": "claim.text"
         },
         {
-          "sentence": "https://www.instagram.com/reel/DcUFQZhvGzS/ मा रहेको प्रतिलिपिले भिडियोसँग 48 सुसंगत फ्रेम र अधिकतम 330 inliers सहित मिलान देखाउँछ।",
+          "sentence": "दृश्य मिलान 48 वटा मिल्दा फ्रेम र 330 सम्म इनलायरहरूसहित बलियो छ।",
           "ref": "visual_matching.earliest_proven_copy.match.consistent_frames"
         },
         {
-          "sentence": "दृश्य मिलानले फुटेज पहिले नै प्रकाशित भएको देखाउँछ र यसले 2026-08-26 मा नेपालमा GLOF साँच्चै भयो भन्ने प्रमाण गर्दैन।",
-          "ref": "final_verdict.label"
+          "sentence": "दृश्य मिलानले फुटेज पहिले नै प्रकाशित भएको प्रमाणित गर्छ; यसले घटना नै नभएको प्रमाणित गर्दैन।",
+          "ref": "visual_matching.status"
         }
       ]
     },
-    "model": "meta/muse-glimmer-30b",
+    "model": "meta/muse-spark-open",
+    "provider": "baseten",
     "grounded": true,
     "languages": [
       "en",
       "ne"
     ],
-    "cost_usd": 0.00318
+    "cost_usd": 0.02949
   }
 }

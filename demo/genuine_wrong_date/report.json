@@ -746,8 +746,8 @@
   "timing_s": 209.6,
   "debunk": {
     "texts": {
-      "en": "This video was posted on 2024-09-28, before the claimed event on 2026-08-26. It is being shared as Nepal flood, Kathmandu. The upload is available on YouTube at https://www.youtube.com/watch?v=sIQTP1LJy30. A post date earlier than the claimed event does not prove that flooding did not occur in Kathmandu on 2026-08-26.",
-      "ne": "यो भिडियो 2024-09-28 मा पोस्ट गरिएको थियो, दाबी गरिएको घटना 2026-08-26 भन्दा पहिले। यसलाई नेपाल बाढी, काठमाडौंको रूपमा साझा गरिएको छ। यो अपलोड युट्युबमा https://www.youtube.com/watch?v=sIQTP1LJy30 मा उपलब्ध छ। दाबी गरिएको मितिभन्दा पहिले पोस्ट मिति हुनुले 2026-08-26 मा काठमाडौंमा बाढी नआएको प्रमाण गर्दैन।"
+      "en": "This video was posted on 2024-09-28, before the claimed event on 2026-08-26. It is being shared as \"Nepal flood, Kathmandu\" said to show a flood in Kathmandu on 2026-08-26. Its own publication at https://www.youtube.com/watch?v=sIQTP1LJy30 on 2024-09-28 predates the claimed event date. No additional earlier visual matches were identified in the comparison. This does not prove no flood happened, only that this specific footage is not from 2026-08-26.",
+      "ne": "यो भिडियो 2024-09-28 मा पोस्ट गरिएको थियो, जुन दाबी गरिएको घटना मिति 2026-08-26 भन्दा पहिले हो। यसलाई “Nepal flood, Kathmandu” भनेर 2026-08-26 मा काठमाडौंमा आएको बाढीको दृश्य भनी साझा गरिँदैछ। यसको आफ्नै प्रकाशन https://www.youtube.com/watch?v=sIQTP1LJy30 मा 2024-09-28 मा भएको थियो, जुन दाबी गरिएको मितिभन्दा पहिले हो। तुलनात्मक भिजुअल खोजमा अन्य पहिलेको मिल्दो भिडियो भेटिएको थिएन। यो पुरानो हुनुले बाढी नै नभएको प्रमाणित गर्दैन, यसले यो फुटेज 2026-08-26 को होइन भन्ने मात्र देखाउँछ।"
     },
     "field_refs": {
       "en": [
@@ -756,43 +756,52 @@
           "ref": "input_publication_before_claim.input_date"
         },
         {
-          "sentence": "It is being shared as Nepal flood, Kathmandu.",
+          "sentence": "It is being shared as \"Nepal flood, Kathmandu\" said to show a flood in Kathmandu on 2026-08-26.",
           "ref": "claim.text"
         },
         {
-          "sentence": "The upload is available on YouTube at https://www.youtube.com/watch?v=sIQTP1LJy30.",
+          "sentence": "Its own publication at https://www.youtube.com/watch?v=sIQTP1LJy30 on 2024-09-28 predates the claimed event date.",
           "ref": "input_publication_before_claim.url"
         },
         {
-          "sentence": "A post date earlier than the claimed event does not prove that flooding did not occur in Kathmandu on 2026-08-26.",
-          "ref": "claim.event_date"
+          "sentence": "No additional earlier visual matches were identified in the comparison.",
+          "ref": "visual_matching.status"
+        },
+        {
+          "sentence": "This does not prove no flood happened, only that this specific footage is not from 2026-08-26.",
+          "ref": "final_verdict.label"
         }
       ],
       "ne": [
         {
-          "sentence": "यो भिडियो 2024-09-28 मा पोस्ट गरिएको थियो, दाबी गरिएको घटना 2026-08-26 भन्दा पहिले।",
+          "sentence": "यो भिडियो 2024-09-28 मा पोस्ट गरिएको थियो, जुन दाबी गरिएको घटना मिति 2026-08-26 भन्दा पहिले हो।",
           "ref": "input_publication_before_claim.input_date"
         },
         {
-          "sentence": "यसलाई नेपाल बाढी, काठमाडौंको रूपमा साझा गरिएको छ।",
+          "sentence": "यसलाई “Nepal flood, Kathmandu” भनेर 2026-08-26 मा काठमाडौंमा आएको बाढीको दृश्य भनी साझा गरिँदैछ।",
           "ref": "claim.text"
         },
         {
-          "sentence": "यो अपलोड युट्युबमा https://www.youtube.com/watch?v=sIQTP1LJy30 मा उपलब्ध छ।",
+          "sentence": "यसको आफ्नै प्रकाशन https://www.youtube.com/watch?v=sIQTP1LJy30 मा 2024-09-28 मा भएको थियो, जुन दाबी गरिएको मितिभन्दा पहिले हो।",
           "ref": "input_publication_before_claim.url"
         },
         {
-          "sentence": "दाबी गरिएको मितिभन्दा पहिले पोस्ट मिति हुनुले 2026-08-26 मा काठमाडौंमा बाढी नआएको प्रमाण गर्दैन।",
-          "ref": "claim.event_date"
+          "sentence": "तुलनात्मक भिजुअल खोजमा अन्य पहिलेको मिल्दो भिडियो भेटिएको थिएन।",
+          "ref": "visual_matching.status"
+        },
+        {
+          "sentence": "यो पुरानो हुनुले बाढी नै नभएको प्रमाणित गर्दैन, यसले यो फुटेज 2026-08-26 को होइन भन्ने मात्र देखाउँछ।",
+          "ref": "final_verdict.label"
         }
       ]
     },
-    "model": "meta/muse-glimmer-30b",
+    "model": "meta/muse-spark-open",
+    "provider": "baseten",
     "grounded": true,
     "languages": [
       "en",
       "ne"
     ],
-    "cost_usd": 0.0027
+    "cost_usd": 0.01831
   }
 }

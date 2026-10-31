@@ -1380,61 +1380,54 @@
   },
   "debunk": {
     "texts": {
-      "en": "Several independent signals in the video agree with the claim, including a date named in the clip, a place named in the clip, and a broadcaster logo or credit, but this agreement does not prove the footage is genuine. The video is presented as \"Rare Video: Japan Tsunami | National Geographic\". It is linked to the place Japan. The claimed event date is 2011-03-11. No earlier visual match was found for the footage.",
-      "ne": "भिडियोमा धेरै स्वतन्त्र सङ्केतहरूले दावीलाई समर्थन गर्छन्, जसमा क्लिपमा उल्लेखित मिति, क्लिपमा उल्लेखित स्थान, र प्रसारणकर्ता लोगो वा क्रेडिट समावेश छ, तर यो सहमतिले भिडियो प्रामाणिक छ भन्ने प्रमाण गर्दैन। भिडियोलाई \"Rare Video: Japan Tsunami | National Geographic\" को रूपमा प्रस्तुत गरिएको छ। यसलाई स्थान जापानसँग जोडिएको छ। दावी गरिएको घटना मिति 2011-03-11 हो। यस फुटेजको लागि पहिलेको दृश्य मिलान फेला परेको छैन।"
+      "en": "Several independent signals agree with the claim — Date named in the clip, Place named in the clip and Broadcaster logo or credit — but this alone does not prove the footage is genuine. The video is shared as 'Rare Video: Japan Tsunami | National Geographic' described as happening in Japan on 2011-03-11. Visual checks found no earliest copy of this footage elsewhere. Agreeing signals do not prove the footage is authentic, and not finding a matching copy does not by itself confirm it either.",
+      "ne": "धेरै स्वतन्त्र संकेतहरू दावीसँग मिल्छन् — क्लिपमा उल्लेख गरिएको मिति, क्लिपमा उल्लेख गरिएको स्थान र प्रसारक लोगो वा क्रेडिट — तर यसले मात्र फुटेज वास्तविक हो भन्ने प्रमाणित गर्दैन। यो भिडियो 'Rare Video: Japan Tsunami | National Geographic' को रूपमा जापानमा 2011-03-11 मा भएको घटनाको रूपमा साझा गरिएको छ। दृश्य जाँचमा यस फुटेजको अन्यत्र कुनै earliest copy फेला परेन। मिल्दा संकेतहरूले फुटेज प्रामाणिक हो भन्ने प्रमाणित गर्दैन, र मिल्दो प्रतिलिपि नभेटिनुले पनि एक्लै यसलाई पुष्टि गर्दैन।"
     },
     "field_refs": {
       "en": [
         {
-          "sentence": "Several independent signals in the video agree with the claim, including a date named in the clip, a place named in the clip, and a broadcaster logo or credit, but this agreement does not prove the footage is genuine.",
+          "sentence": "Several independent signals agree with the claim — Date named in the clip, Place named in the clip and Broadcaster logo or credit — but this alone does not prove the footage is genuine.",
           "ref": "signals.count"
         },
         {
-          "sentence": "The video is presented as \"Rare Video: Japan Tsunami | National Geographic\".",
+          "sentence": "The video is shared as 'Rare Video: Japan Tsunami | National Geographic' described as happening in Japan on 2011-03-11.",
           "ref": "claim.text"
         },
         {
-          "sentence": "It is linked to the place Japan.",
-          "ref": "claim.place"
-        },
-        {
-          "sentence": "The claimed event date is 2011-03-11.",
-          "ref": "claim.event_date"
-        },
-        {
-          "sentence": "No earlier visual match was found for the footage.",
+          "sentence": "Visual checks found no earliest copy of this footage elsewhere.",
           "ref": "visual_matching.status"
+        },
+        {
+          "sentence": "Agreeing signals do not prove the footage is authentic, and not finding a matching copy does not by itself confirm it either.",
+          "ref": "final_verdict.label"
         }
       ],
       "ne": [
         {
-          "sentence": "भिडियोमा धेरै स्वतन्त्र सङ्केतहरूले दावीलाई समर्थन गर्छन्, जसमा क्लिपमा उल्लेखित मिति, क्लिपमा उल्लेखित स्थान, र प्रसारणकर्ता लोगो वा क्रेडिट समावेश छ, तर यो सहमतिले भिडियो प्रामाणिक छ भन्ने प्रमाण गर्दैन।",
+          "sentence": "धेरै स्वतन्त्र संकेतहरू दावीसँग मिल्छन् — क्लिपमा उल्लेख गरिएको मिति, क्लिपमा उल्लेख गरिएको स्थान र प्रसारक लोगो वा क्रेडिट — तर यसले मात्र फुटेज वास्तविक हो भन्ने प्रमाणित गर्दैन।",
           "ref": "signals.count"
         },
         {
-          "sentence": "भिडियोलाई \"Rare Video: Japan Tsunami | National Geographic\" को रूपमा प्रस्तुत गरिएको छ।",
+          "sentence": "यो भिडियो 'Rare Video: Japan Tsunami | National Geographic' को रूपमा जापानमा 2011-03-11 मा भएको घटनाको रूपमा साझा गरिएको छ।",
           "ref": "claim.text"
         },
         {
-          "sentence": "यसलाई स्थान जापानसँग जोडिएको छ।",
-          "ref": "claim.place"
-        },
-        {
-          "sentence": "दावी गरिएको घटना मिति 2011-03-11 हो।",
-          "ref": "claim.event_date"
-        },
-        {
-          "sentence": "यस फुटेजको लागि पहिलेको दृश्य मिलान फेला परेको छैन।",
+          "sentence": "दृश्य जाँचमा यस फुटेजको अन्यत्र कुनै earliest copy फेला परेन।",
           "ref": "visual_matching.status"
+        },
+        {
+          "sentence": "मिल्दा संकेतहरूले फुटेज प्रामाणिक हो भन्ने प्रमाणित गर्दैन, र मिल्दो प्रतिलिपि नभेटिनुले पनि एक्लै यसलाई पुष्टि गर्दैन।",
+          "ref": "final_verdict.label"
         }
       ]
     },
-    "model": "meta/muse-glimmer-30b",
+    "model": "meta/muse-spark-open",
+    "provider": "baseten",
     "grounded": true,
     "languages": [
       "en",
       "ne"
     ],
-    "cost_usd": 0.00367
+    "cost_usd": 0.02027
   }
 }
