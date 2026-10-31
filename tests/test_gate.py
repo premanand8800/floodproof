@@ -67,6 +67,7 @@ def test_check_fails_open(monkeypatch, tmp_path):
 
 
 def test_model_fallback(monkeypatch):
+    monkeypatch.setenv("FLOODPROOF_GATE_MODEL", "glimmer")
     seen = []
 
     def chat(model, content, max_tokens=0, timeout=0):
@@ -128,3 +129,43 @@ def test_cached_upload_stop_from_before_the_exemption_runs(monkeypatch, tmp_path
     (tmp_path / "gate" / f"{gate._file_key(str(f))}.json").write_text(json.dumps(dict(
         decision="stop", kind="gaming", reason="a game", refs=[2], confidence=0.9, metadata_signals={}, cost=0.0, seconds=1.0)))
     assert gate.check(str(f), is_url=False)["decision"] == "run_warned"
+
+
+def _content_frames():
+    return [b"a" * 2000] * 4
+
+
+def test_spark_open_uses_baseten_with_tolerant_parse(monkeypatch):
+    monkeypatch.setenv("FLOODPROOF_GATE_MODEL", "spark-open")
+    seen = []
+
+    def chat(model, content, max_tokens=0, timeout=0, baseten=False, **kw):
+        seen.append((model, baseten, max_tokens))
+        return '<think>hmm {x}</think><|im_start|>{"relevant":"no","kind":"gaming","refs":[1],"confidence":0.9}', 0.002
+    monkeypatch.setattr(gate.llm, "chat", chat)
+    monkeypatch.setattr(gate.llm, "last_provider", lambda: "baseten")
+    ans, model, cost = gate._ask(_content_frames(), {})
+    assert model == gate.SPARK_OPEN and ans["kind"] == "gaming" and seen == [(gate.SPARK_OPEN, True, 3000)]
+    assert gate._ask.provider == "baseten"
+
+
+def test_spark_open_falls_back_to_glimmer(monkeypatch):
+    monkeypatch.setenv("FLOODPROOF_GATE_MODEL", "spark-open")
+    calls = []
+
+    def chat(model, content, **kw):
+        calls.append(model)
+        if model == gate.SPARK_OPEN:
+            return "I cannot answer, no json here", 0.001        # unparseable -> next model
+        return json.dumps(_ans()), 0.001
+    monkeypatch.setattr(gate.llm, "chat", chat)
+    monkeypatch.setattr(gate.llm, "last_provider", lambda: "openrouter")
+    ans, model, cost = gate._ask(_content_frames(), {})
+    assert calls == [gate.SPARK_OPEN, gate.PRIMARY_MODEL] and model == gate.PRIMARY_MODEL and cost == 0.002
+
+
+def test_default_is_spark_open_and_glimmer_opt_out(monkeypatch):
+    monkeypatch.delenv("FLOODPROOF_GATE_MODEL", raising=False)
+    assert gate._models()[0] == gate.SPARK_OPEN
+    monkeypatch.setenv("FLOODPROOF_GATE_MODEL", "glimmer")
+    assert gate._models() == [gate.PRIMARY_MODEL, gate.FALLBACK_MODEL]

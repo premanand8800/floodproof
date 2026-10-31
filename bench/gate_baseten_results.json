@@ -1,0 +1,491 @@
+[
+ {
+  "id": "I01",
+  "expected": "irrelevant",
+  "note": "music_video",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "music_video",
+  "provider": "baseten",
+  "reason": "All frames show Rick Astley music video performance with no disaster or emergency depicted.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 1.0,
+  "relevant": "no",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00362,
+  "seconds": 5.2,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I02",
+  "expected": "irrelevant",
+  "note": "gaming",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "gaming",
+  "provider": "baseten",
+  "reason": "All frames show Minecraft survival gameplay with inventory and terrain, no disaster or emergency depicted.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.99,
+  "relevant": "no",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00319,
+  "seconds": 8.2,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I03",
+  "expected": "irrelevant",
+  "note": "vlog",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "other",
+  "provider": "baseten",
+  "reason": "Lifestyle vlog of fall days showing normal rain on windshield and vlogging/talking heads with no disaster, emergency, or aftermath.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.98,
+  "relevant": "no",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00594,
+  "seconds": 29.9,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I04",
+  "expected": "irrelevant",
+  "note": "ad",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "ad",
+  "provider": "baseten",
+  "reason": "Super Bowl ad compilation with fictional aliens and people shows no disaster or emergency.",
+  "refs": [
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.99,
+  "relevant": "no",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00457,
+  "seconds": 27.8,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I05",
+  "expected": "irrelevant",
+  "note": "lecture",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "other",
+  "provider": "baseten",
+  "reason": "All frames show math education on limits with equations and graphs, no disaster or emergency.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 1.0,
+  "relevant": "no",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00387,
+  "seconds": 6.9,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I06",
+  "expected": "irrelevant",
+  "note": "cooking",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "other",
+  "provider": "baseten",
+  "reason": "Video is a cooking tutorial showing garlic, seasoning, and pasta preparation with no disaster content.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 1.0,
+  "relevant": "no",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00305,
+  "seconds": 5.1,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I07",
+  "expected": "irrelevant",
+  "note": "sports",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "other",
+  "provider": "baseten",
+  "reason": "All frames show NBA basketball gameplay with no disaster or emergency.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.99,
+  "relevant": "no",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00339,
+  "seconds": 7.9,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I08",
+  "expected": "irrelevant",
+  "note": "unboxing",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "other",
+  "provider": "baseten",
+  "reason": "All frames show iPhone unboxing/case setup with no disaster or emergency imagery, consistent with unboxing vlog metadata.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 1.0,
+  "relevant": "no",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00418,
+  "seconds": 24.1,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I09",
+  "expected": "irrelevant",
+  "note": "podcast",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "talking_head",
+  "provider": "baseten",
+  "reason": "Podcast talking heads about ancient civilizations; no flood/quake/fire/storm footage, only a historical archaeological still of skeletons.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.93,
+  "relevant": "no",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00816,
+  "seconds": 13.7,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "I10",
+  "expected": "irrelevant",
+  "note": "trailer",
+  "stopped": true,
+  "decision": "stop",
+  "kind": "other",
+  "provider": "baseten",
+  "reason": "Film trailer for Avengers: Doomsday with fictional VFX explosion, not real or claimed disaster footage.",
+  "refs": [
+   2,
+   4
+  ],
+  "confidence": 0.99,
+  "relevant": "no",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00554,
+  "seconds": 5.9,
+  "error": null,
+  "kw": []
+ },
+ {
+  "id": "R01",
+  "expected": "relevant",
+  "note": "tribute music video with flood footage",
+  "stopped": false,
+  "decision": "run",
+  "kind": "music_video",
+  "provider": "baseten",
+  "reason": "Tribute song video contains real flood/landslide footage of muddy torrents and submerged buildings.",
+  "refs": [
+   1,
+   2,
+   3
+  ],
+  "confidence": 0.95,
+  "relevant": "yes",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00463,
+  "seconds": 5.9,
+  "error": null,
+  "kw": [
+   "flood",
+   "victims"
+  ]
+ },
+ {
+  "id": "R02",
+  "expected": "relevant",
+  "note": "tsunami tribute video",
+  "stopped": false,
+  "decision": "run",
+  "kind": "music_video",
+  "provider": "baseten",
+  "reason": "Title claims 2011 Japanese Earthquake Tsunami tribute but all four frames show only tranquil beach sunsets with no disaster, damage, or emergency visible.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.6,
+  "relevant": "unsure",
+  "model": "meta/muse-spark-open",
+  "cost": 0.01202,
+  "seconds": 17.1,
+  "error": null,
+  "kw": [
+   "earthquake",
+   "tsunami"
+  ]
+ },
+ {
+  "id": "R03",
+  "expected": "relevant",
+  "note": "AI Nepal tribute (AI-generated before/after)",
+  "stopped": false,
+  "decision": "run",
+  "kind": "other",
+  "provider": "baseten",
+  "reason": "Frames show scenic clouds, temple with prayer flags, bridge crossing and tribute title with no flood, damage, fire or emergency visible",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.88,
+  "relevant": "no",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00841,
+  "seconds": 10.4,
+  "error": null,
+  "kw": [
+   "devastat",
+   "flash flood",
+   "rescue",
+   "survivor",
+   "victims"
+  ]
+ },
+ {
+  "id": "R04",
+  "expected": "relevant",
+  "note": "FRANCE 24 Nepal flood reconstruction",
+  "stopped": false,
+  "decision": "run",
+  "kind": "news_about_disaster",
+  "provider": "baseten",
+  "reason": "France 24 reconstruction shows massive Nepal flood/landslide debris flows inundating valleys and buildings.",
+  "refs": [
+   1,
+   2,
+   4
+  ],
+  "confidence": 0.98,
+  "relevant": "yes",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00448,
+  "seconds": 8.3,
+  "error": null,
+  "kw": [
+   "collapse",
+   "devastat",
+   "disaster",
+   "flood",
+   "glacier",
+   "landslide",
+   "rescue"
+  ]
+ },
+ {
+  "id": "R05",
+  "expected": "relevant",
+  "note": "Hurricane Beryl raw footage",
+  "stopped": false,
+  "decision": "run",
+  "kind": "disaster_footage",
+  "provider": "baseten",
+  "reason": "Frames show Category 4 hurricane eyewall with extreme winds, blinding rain, and flying debris in residential area.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.99,
+  "relevant": "yes",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00364,
+  "seconds": 7.1,
+  "error": null,
+  "kw": [
+   "hurricane",
+   "storm"
+  ]
+ },
+ {
+  "id": "R06",
+  "expected": "relevant",
+  "note": "Durban waves aerial",
+  "stopped": false,
+  "decision": "run",
+  "kind": "disaster_footage",
+  "provider": "baseten",
+  "reason": "Aerial video shows massive cyclone-driven storm waves overtopping and flooding Durban beach promenade.",
+  "refs": [
+   1,
+   2,
+   3
+  ],
+  "confidence": 0.97,
+  "relevant": "yes",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00482,
+  "seconds": 6.2,
+  "error": null,
+  "kw": [
+   "cyclone",
+   "storm"
+  ]
+ },
+ {
+  "id": "R07",
+  "expected": "relevant",
+  "note": "NatGeo Japan tsunami",
+  "stopped": false,
+  "decision": "run",
+  "kind": "news_about_disaster",
+  "provider": "baseten",
+  "reason": "Frame 2 shows town engulfed in dust/debris and Frame 4 shows tsunami whirlpool/flood surge consistent with claimed 2011 Japan tsunami.",
+  "refs": [
+   2,
+   4
+  ],
+  "confidence": 0.93,
+  "relevant": "yes",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00683,
+  "seconds": 7.3,
+  "error": null,
+  "kw": [
+   "disaster",
+   "earthquake",
+   "tsunami"
+  ]
+ },
+ {
+  "id": "R08",
+  "expected": "relevant",
+  "note": "short news clip Betrawoti flood",
+  "stopped": false,
+  "decision": "run",
+  "kind": "disaster_footage",
+  "provider": "baseten",
+  "reason": "Frames show massive muddy flood wave inundating buildings and farmland, matching flood disaster claim.",
+  "refs": [
+   1,
+   2,
+   4
+  ],
+  "confidence": 0.99,
+  "relevant": "yes",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00433,
+  "seconds": 5.7,
+  "error": null,
+  "kw": [
+   "flood"
+  ]
+ },
+ {
+  "id": "R09",
+  "expected": "relevant",
+  "note": "flash flood compilation",
+  "stopped": false,
+  "decision": "run",
+  "kind": "disaster_footage",
+  "provider": "baseten",
+  "reason": "Compilation video shows multiple flash flood scenes with submerged vehicle, flooded streets and breached embankment.",
+  "refs": [
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.95,
+  "relevant": "yes",
+  "model": "meta/muse-spark-open",
+  "cost": 0.00403,
+  "seconds": 25.0,
+  "error": null,
+  "kw": [
+   "disaster",
+   "flash flood",
+   "flood"
+  ]
+ },
+ {
+  "id": "R10",
+  "expected": "relevant",
+  "note": "BBC Pakistan floods news",
+  "stopped": false,
+  "decision": "run",
+  "kind": "news_about_disaster",
+  "provider": "baseten",
+  "reason": "BBC News report on deadly Pakistan floods showing aftermath, debris and rescue activity.",
+  "refs": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "confidence": 0.99,
+  "relevant": "yes",
+  "model": "meta/muse-spark-open",
+  "cost": 0.0044,
+  "seconds": 5.9,
+  "error": null,
+  "kw": [
+   "flash flood",
+   "flood"
+  ]
+ }
+]

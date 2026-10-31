@@ -21,6 +21,7 @@ from . import llm
 
 PRIMARY_MODEL = "meta/muse-glimmer-30b"
 FALLBACK_MODEL = "meta/muse-spark-1.3"
+SPARK_OPEN = "meta/muse-spark-open"      # open weights on Baseten; default gate model (bench/gate_baseten_RESULTS.md); FLOODPROOF_GATE_MODEL=glimmer reverts
 N_FRAMES = 4
 MIN_CONF_TO_STOP = 0.8
 MAX_TOKENS = 1500
@@ -103,18 +104,46 @@ def _file_key(path: str) -> str:
     return "file_" + h.hexdigest()[:16]
 
 
+def _models() -> list[str]:
+    import os
+    if os.environ.get("FLOODPROOF_GATE_MODEL", "spark-open").strip().lower() in ("glimmer", PRIMARY_MODEL):
+        return [PRIMARY_MODEL, FALLBACK_MODEL]
+    return [SPARK_OPEN, PRIMARY_MODEL, FALLBACK_MODEL]
+
+
+def _parse(txt: str) -> dict:
+    """Tolerant JSON extraction for reasoning models: drop think blocks and chat-template tokens, take the last object that parses."""
+    txt = re.sub(r"<think>.*?</think>", "", txt, flags=re.S)
+    txt = re.sub(r"<\|[^|>]*\|>|<\[^|>]*\]>", " ", txt)
+    try:
+        return llm.parse_json(txt)
+    except Exception:
+        pass
+    dec, best = json.JSONDecoder(), None
+    for m in re.finditer(r"\{", txt):
+        try:
+            o, _ = dec.raw_decode(txt[m.start():])
+        except ValueError:
+            continue
+        if isinstance(o, dict) and "relevant" in o:
+            best = o
+    if best is None:
+        raise ValueError("no gate JSON in model reply")
+    return best
+
+
 def _ask(frames: list[bytes], meta: dict):
     content = [{"type": "text", "text": PROMPT.format(n=len(frames), meta=json.dumps(meta, ensure_ascii=False)[:900])}]
     for i, b in enumerate(frames, 1):
         content.append({"type": "text", "text": f"Frame {i}:"})
         content.append({"type": "image_url", "image_url": {"url": "data:image/jpeg;base64," + base64.b64encode(b).decode()}})
     cost, last = 0.0, None
-    for model in (PRIMARY_MODEL, FALLBACK_MODEL):
+    for model in _models():
         try:
-            txt, c = llm.chat(model, content, max_tokens=MAX_TOKENS if model == PRIMARY_MODEL else 3000, timeout=90)
+            txt, c = llm.chat(model, content, max_tokens=MAX_TOKENS if model == PRIMARY_MODEL else 3000, timeout=90, **({"baseten": True} if model == SPARK_OPEN else {}))
             cost += c
             _ask.provider = llm.last_provider()
-            return llm.parse_json(txt), model, cost
+            return _parse(txt), model, cost
         except Exception as e:                                   # fall through to the next model
             last = e
     raise RuntimeError(f"gate model call failed: {str(last)[:150]}")
