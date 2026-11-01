@@ -140,10 +140,10 @@ Everything in this repository was built during the hackathon (Oct 27 – Nov 4, 
 | Time | Commit | What |
 |---|---|---|
 | 02:37–03:22 | `546676b`, `ed9ab46`, `352b6a4` | Snowball search and spread timeline (pre-registered, rule not met, ships off) |
-| 11:48–12:11 | `970014f`, `25bb6e6`, `f0cbfe6`, `fb3daa8` | YouTube quota guard; uploads never stopped by the gate; investigation replay; live run stage, new design |
+| 17:33–17:56 | `970014f`, `25bb6e6`, `f0cbfe6`, `fb3daa8` | YouTube quota guard; uploads never stopped by the gate; investigation replay; live run stage, new design |
 | 18:36–18:50 | `35761e2`, `499628c` | SAM 3.1 masking (pre-registered, off); Meta Model API routing, Voice Transcribe narration |
 | 19:36–20:19 | `f442754`, `b5ff459`, `a860968` | Muse Spark Open on Baseten: Deep investigate agent, debunk card, relevance gate (frozen re-test) |
-| 15:52–21:47 | `1bb88c8`, `e55b28b` | Proof view as an evidence file: exhibit labels, matched-region marker, case number |
+| 21:37–21:47 | `1bb88c8`, `e55b28b` | Proof view as an evidence file: exhibit labels, matched-region marker, case number |
 
 ## License
 
