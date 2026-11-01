@@ -16,7 +16,6 @@ Numbers as `bench/EVALUATION.md` states them (all scorers make no API calls; not
 - **0 false accusations** in every experiment. 0/3 genuine clips falsely flagged in the global set.
 - **~1.4-1.7¢ per check** ($0.153 over 9 held-out cases, $0.156 over 11 global cases).
 - **Originals found: 0/17.** We prove that footage was published earlier; we do not find where it came from.
-- **InVID timing: TBD (manual test).**
 
 **What Muse is for (ablation, `bench/ablation_v2_RESULTS.md`).** Muse's effect on *discovery* is small: 8/17 with Muse versus 7/17 without is within Yandex's run-to-run noise, so do not read it as an effect. Still, Muse's own search queries found **9 proven copies that no other source found** (5 cases; it changed the verdict in one, H06). Muse's main value is elsewhere: the explanation of each proof, the media type (camera footage, animation, likely AI-generated, compilation), narration analysis, claim inference from the post, the multilingual debunk card, and the relevance gate.
 
@@ -92,17 +91,25 @@ PYTHONPATH=src uv run --with pytest pytest -q    # network/key-dependent tests s
   - `physical.py`: physical-world check
   - `report.py`: schema and verdict rules
   - `agent.py`: Deep investigate
+  - `gate.py`: relevance gate (step 0)
+  - `explain.py`: Muse explanation of each proof
+  - `debunk.py`: shareable debunk card
+  - `snowball.py` and `spread.py`: snowball search and the "How it spread" timeline
+  - `llm.py`: model routing (Meta Model API, Baseten, OpenRouter fallback)
+  - `sam.py`: optional SAM 3.1 overlay masking (off)
   - `memory.py`: verified-clip memory
   - `web.py` and `static/`: the UI
 - `bench/`: frozen benchmarks, eval scripts and results
-- `demo/`: four reproducible demo reports (recycled, unverified, genuine with the correct date, genuine with the wrong date)
+- `demo/`: eight saved demo reports (recycled glacier clip, AI-generated glacier animation, genuine Japan tsunami, Libya tornado with its spread timeline, memory re-share, unverified, genuine with the correct date, genuine with the wrong date)
 - `tests/`: the test suite
 - `prototypes/`: early exploration scripts (search loop, reverse-image probes, matcher prototype), kept for history. Not imported by the product.
 - `scripts/demo_reshare.py`: the memory re-share demo.
 
 ## Built during the hackathon
 
-Commit timeline (from the repository history; every commit is dated 2026-10-30, local time):
+Everything in this repository was built during the hackathon (Oct 27 – Nov 4, 2026). Commit timeline from the repository history (local time, UTC+5:45):
+
+**2026-10-30**
 
 | Time | Commit | What |
 |---|---|---|
@@ -124,6 +131,19 @@ Commit timeline (from the repository history; every commit is dated 2026-10-30, 
 | 16:51 | `350085e` | Muse ablation v1 and memory re-share demo |
 | 17:24 | `76693fa` | Live-test fixes, fair parallel discovery/verify, memory fast path (schema 1.4) |
 | 17:28 | `5a09690` | Circularity guard: a post's own date cannot confirm an inferred claim date |
+| 18:08–18:32 | `38020f9`, `79e82f8` | Repo cleanup, CI; proof explained by Muse with clean proof frames and the animated proof view |
+| 21:45–22:59 | `eb6a4b7`, `2c29434`, `72af8e6`, `633d7f2` | Self-disclosure and signals-agree verdicts, USGS check; relevance gate; landmark veto (weak_match); ablation v2 and `bench/EVALUATION.md` |
+| 23:40–23:59 | `1217905`, `5c1eb8e`, `a564e86` | Web UI redesign; input's own date never an earlier copy, time-zone margin; faster discovery |
+
+**2026-10-31**
+
+| Time | Commit | What |
+|---|---|---|
+| 02:37–03:22 | `546676b`, `ed9ab46`, `352b6a4` | Snowball search and spread timeline (pre-registered, rule not met, ships off) |
+| 11:48–12:11 | `970014f`, `25bb6e6`, `f0cbfe6`, `fb3daa8` | YouTube quota guard; uploads never stopped by the gate; investigation replay; live run stage, new design |
+| 18:36–18:50 | `35761e2`, `499628c` | SAM 3.1 masking (pre-registered, off); Meta Model API routing, Voice Transcribe narration |
+| 19:36–20:19 | `f442754`, `b5ff459`, `a860968` | Muse Spark Open on Baseten: Deep investigate agent, debunk card, relevance gate (frozen re-test) |
+| 15:52–21:47 | `1bb88c8`, `e55b28b` | Proof view as an evidence file: exhibit labels, matched-region marker, case number |
 
 ## License
 
