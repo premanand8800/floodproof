@@ -10,7 +10,7 @@ Give it a video and the claim: it finds earlier copies, proves the match frame b
 
 <p>
 <a href="https://floodproof.aether-soft.tech"><img alt="Live demo floodproof.aether-soft.tech" src="https://img.shields.io/badge/Live_demo-floodproof.aether--soft.tech-0e7c92?style=for-the-badge"></a>
-<!-- VIDEO_BADGE -->
+<a href="https://www.youtube.com/watch?v=wuTlGvmnsM8"><img alt="Demo video YouTube" src="https://img.shields.io/badge/Demo_video-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white"></a>
 <a href="LICENSE"><img alt="License MIT" src="https://img.shields.io/badge/License-MIT-2ea44f?style=for-the-badge"></a>
 <a href="https://github.com/premanand8800/floodproof/actions/workflows/tests.yml"><img alt="GitHub Actions tests" src="https://github.com/premanand8800/floodproof/actions/workflows/tests.yml/badge.svg"></a>
 </p>
@@ -43,6 +43,7 @@ Give it a video and the claim: it finds earlier copies, proves the match frame b
 > [!TIP]
 > **For judges**
 >
+> - **Demo video (2:28):** https://www.youtube.com/watch?v=wuTlGvmnsM8
 > - **Live demo:** https://floodproof.aether-soft.tech (saved examples open instantly, nothing is run).
 > - **Start with the recycled clip:** https://floodproof.aether-soft.tech/#/report/demo/success_recycled (the Alaska
 >   glacier clip shared as the Rasuwa GLOF). Other saved cases, same URL pattern with `demo/<name>`:
