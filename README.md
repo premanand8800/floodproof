@@ -34,8 +34,8 @@ Give it a video and the claim: it finds earlier copies, proves the match frame b
 </p>
 
 <p>
-<a href="docs/screenshots/redesign_home_light_1440.png"><img src="docs/screenshots/redesign_home_light_1440.png" alt="FloodProof home page with saved examples" width="49%"></a>
-<a href="docs/screenshots/redesign_report_success_recycled_light_1440.png"><img src="docs/screenshots/redesign_report_success_recycled_light_1440.png" alt="FloodProof report: Alaska glacier clip shared as the Nepal GLOF, with matcher proof" width="49%"></a>
+<a href="docs/screenshots/readme_home.png"><img src="docs/screenshots/readme_home.png" alt="FloodProof home page with saved examples" width="49%"></a>
+<a href="docs/screenshots/readme_report.png"><img src="docs/screenshots/readme_report.png" alt="FloodProof report: Alaska glacier clip shared as the Nepal GLOF, with matcher proof" width="49%"></a>
 </p>
 
 </div>
